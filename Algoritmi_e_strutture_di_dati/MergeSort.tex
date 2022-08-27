@@ -1,0 +1,140 @@
+\subsubsection{\English{Merge sort}.}
+\label{AlgoritmiEStruttureDiDati_MergeSort}
+\begin{Definition}
+	Si chiama
+  \Define{\English{merge sort}}
+  l'algoritmo seguente:
+  \begin{enumerate}
+    \item\label{MergeSort_1} se $n = 0$ o $n = 1$, allora l'algoritmo termina;
+    \item\label{MergeSort_2} si suddivida la successione
+      $(e_i)_{i \in n}$
+      in due sottosuccessioni
+      $(e_i)_{i = 0}^{\left \lfloor \frac{n}{2} \right \rfloor - 1}$
+      e 
+      $(e_i)_{i = \left \lfloor \frac{n}{2} \right \rfloor}^{n - 1}$
+      e si applichi l'intero algoritmo su ciascuna di esse separatamente;
+    \item\label{MergeSort_3} si ponga
+      $I = 0$,
+      $I_1 = 0$,
+      $I_2 = \left \lfloor \frac{n}{2} \right \rfloor$;
+    \item\label{MergeSort_4} se $e_{I_1} < e_{I_2}$,
+      allora si ponga
+      $f_I = e_{I_1}$
+      e si incrementino di $1$ sia $I$ che $I_1$;
+    \item\label{MergeSort_5} se $e_{I_1} \geq e_{I_2}$,
+      allora si ponga
+      $f_I = e_{I_2}$
+      e si incrementino di $1$ sia $I$ che $I_2$;
+    \item\label{MergeSort_6} se
+      $I_1 > \left \lfloor \frac{n}{2} \right \rfloor - 1$, allora si
+      si ponga, per ogni $x \in n - I$,
+      $f_{I + x} = e_{I_2 + x}$
+      e si vada al punto \ref{MergeSort_9};
+    \item\label{MergeSort_7} se $I_2 > n - 1$, allora si
+      si ponga, per ogni $x \in n - I$,
+      $f_{I + x} = e_{I_1 + x}$
+      e si vada al punto \ref{MergeSort_9};
+    \item\label{MergeSort_8} si torni al punto \ref{MergeSort_4};
+    \item\label{MergeSort_9} per ogni $i \in n$, si ponga $e_i = f_i$:
+      l'algoritmo termina.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/MergeSort.cpp"}
+	\caption{\textit{Merge sort} implementato in \LanguageName{C++}.}
+\end{listing}
+\begin{Theorem}
+	Il \English{merge sort} risolve il problema dell'ordinamento.
+\end{Theorem}
+\Proof Se $n = 0$ o $n = 1$ la tesi \`e immediata, altrimenti procediamo
+per induzione su $n$ assumendo la tesi vera per ogni $n < N$
+($N \in \mathbb{N} \SetMin 2$) e proviamola per $N$.
+\par Le due successioni
+$(e_i)_{i = 0}^{\left \lfloor \frac{N}{2} \right \rfloor - 1}$
+e 
+$(e_i)_{i = \left \lfloor \frac{N}{2} \right \rfloor}^{N - 1}$
+sono ordinate dopo l'esecuzione del punto \ref{MergeSort_2}.
+Proviamo adesso per induzione su $I \in N$ che la successione
+$(f_i)_{i \in N}$
+\`e ordinata. Fissiamo $I \in N$ e supponiamo ordinata la sottosuccesione
+$(f_i)_{i = 0}^{I - 1}$.
+\par Sia $I \in N$. Se $I = 0$ la successione \`e vuota e non c'\`e nulla
+da dimostrare; se $I = 1$, la successione \`e composta da un solo elemento ed
+\`e dunque ordianta. Supponiamo $f_I$, con $I > 1$, definito con l'esecuzione
+del punto \ref{MergeSort_4}:
+\begin{itemize}
+  \item se $f_{I - 1}$ \`e stato definito con l'esecuzione del punto
+    \ref{MergeSort_4}, poich\'e la successione
+    $(e_i)_{i = 0}^{\left \lfloor \frac{n}{2} \right \rfloor - 1}$
+    \`e ordinata, deve essere $f_{I - 1} < f_I$;
+  \item se $f_{I - 1}$ \`e stato definito con l'esecuzione del punto
+    \ref{MergeSort_5}, allora $I_1$ deve essere uguale nell'esecuzione
+    di entrambi i punti e dunque $f_{I - 1} < f_I$;
+  \item se $f_{I - 1}$ \`e stato definito con l'esecuzione del punto
+    \ref{MergeSort_6}, poich\'e la successione
+    $(e_i)_{i = \left \lfloor \frac{n}{2} \right \rfloor}^{n - 1}$
+    \`e ordinata e $e_{\left \lfloor \frac{n}{2} \right \rfloor} < e_{I_2}$,
+    deve essere $f_{I - 1} < f_I$;
+  \item se $f_{I - 1}$ \`e stato definito con l'esecuzione del punto
+    \ref{MergeSort_7}, poich\'e la successione
+    $(e_i)_{i = 0}^{\left \lfloor \frac{n}{2} \right \rfloor - 1}$
+    \`e ordinata e $e_{n - 1} < e_{I_1}$, deve essere $f_{I - 1} < f_I$.
+\end{itemize}
+\par Dunque \`e ordinata anche la successione $(f_i)_{i = 0}^I$.
+\par Analogamente, \`e ordinata la successione $(f_i)_{i = 0}^I$, se
+$f_I$ \`e definito con l'esecuzione di \ref{MergeSort_5}, \ref{MergeSort_6}
+o \ref{MergeSort_7}.
+\par Dunque $(f_i)_{i \in N}$ \`e ordinata e ne consegue la correttezza
+dell'algoritmo.
+\EndProof
+\begin{Theorem}
+	Il \English{merge sort} ha costo
+	\begin{itemize}
+		\item $\BigO{n}$ spazio;
+		\item $\BigO{n \log n}$ tempo al caso pessimo.
+	\end{itemize}
+\end{Theorem}
+\Proof Il costo in spazio segue dalla necessit\`a di appoggiarsi su una
+successione ausiliaria $(f_i)_{i \in n}$ di $n$ elementi.
+\par Denotiamo $T(n)$ il costo dell'esecuzione del \English{merge sort} su
+una successione di $n$ elementi. Abbiamo chiaramente $T(0) = T(1) = 0$.
+\par Contiamo i confronti; dato che siamo interessati a un'analisi
+asintotica, possiamo assumere $n$ pari senza perdita di generalit\`a:
+\begin{itemize}
+  \item al passo \ref{MergeSort_2} si effettuano
+    $T \left ( \frac{n}{2} \right )
+      + T \left ( n - \frac{n}{2} \right )
+      = 2 T \left ( \frac{n}{2} \right )$;
+  \item gli altri confronti vengono effettuati ai passi
+    \ref{MergeSort_4} e \ref{MergeSort_5}, e ciascuno di questi
+    passi viene effettuato al pi\`u $n - 1$ volte: abbiamo dunque
+    ulteriori $2(n - 1) = \BigO{n}$ confronti.
+\end{itemize}
+\par Dunque, per opportuna costante $C > 0$, abbiamo
+\[
+	T(n) \leq
+	\begin{cases}
+		0\text{ se }n = 1,\\
+		2 T \left (\frac{n}{2} \right ) + C n\text{ per } n > 1.
+	\end{cases}
+\]
+\par Poich\'e abbiamo
+$2 \Identity \left ( \frac{n}{2} \right ) = n \leq 1 \Identity(n)$,
+per il teorema fondamentale delle ricorrenze, abbiamo
+$T(n) = \BigO{n \log n}$. \EndProof
+\begin{Corollary}
+  \label{AlgoritmiEStruttureDiDati_ComplessitaOrdinamento}
+	Il problema di ordinamento ha complessit\`a $\BigTheta{n \log n}$ e il
+  \English{merge sort} \`e asintoticamente ottimo.
+\end{Corollary}
+\Proof Abbiamo gi\`a dimostrato che il problema di ordinamento ha complessit\`a
+$\BigOmega{n \log n}$.
+Il teorema precedente ha provato che il problema ha complessit\`a
+$\BigO{n \log n}$.
+Ne deduciamo infine che esso ha complessit\`a $\BigTheta{n \log n}$. \EndProof
+\par Segnaliamo che la complessit\`a esatta del problema di ordinamento, cio\`e
+il numero minimo di confronti necessario per risolvere il problema di
+ordinamento in funzione di $n$, \`e un problema aperto, risolto solo per poche
+decine di casi particolari.
+\par Se modelliamo il problema con un albero di decisione, il problema equivale
+a calcolare l'altezza dell'albero di decisione.

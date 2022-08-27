@@ -1,0 +1,38 @@
+\section{Definizioni e teoremi di base.}
+\label{AritmeticaInVirgolaMobile_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	\label{AritmeticaInVirgolaMobile_DefinizioneNumeriInVirgolaMobile}
+	Siano
+	\begin{itemize}
+		\item $\FloatingPointNumberExponent_{\min},\FloatingPointNumberExponent_{\max} \in \mathbb{Z}$ con $\RealNumberExponent_{\min} \leq \RealNumberExponent_{\max}$;
+		\item $\FloatingPointNumberDigits \in \NotZero{\mathbb{N}}$.
+	\end{itemize}
+	Sono \Define{numeri in virgola mobile}[in virgola mobile][numero] in base $\FloatingPointNumberBase$ di \Define{precisione di macchina}[di macchina][precisione] $\MachinePrecision = \FloatingPointNumberBase^{1 - \FloatingPointNumberDigits}$ gli $x \in \mathbb{Q}$ tali che $x = 0$ o la rappresentazione di $x$ si scrive con al pi\`u $\FloatingPointNumberDigits$ cifre e con esponente $\FloatingPointNumberExponent \in [\FloatingPointNumberExponent_{\min},\FloatingPointNumberExponent_{\max}]$.
+\end{Definition}
+\begin{Definition}
+	\label{AritmeticaInVirgolaMobile_ApprossimazioneInVirgolaMobile}
+	Siano
+	\begin{itemize}
+		\item $x \in \mathbb{R}$;
+		\item $\FloatingPointNumberBase \in \NotZero{\mathbb{N}}$;
+		\item $\FloatingPointNumberExponent \in \mathbb{Z}$;
+		\item $(a_n)_{n \in \mathbb{N}} \in \FloatingPointNumberBase^\mathbb{N}$;
+	\end{itemize}
+	tali che $x = \Sign{x} \FloatingPointNumberBase^\FloatingPointNumberExponent \sum_{n \in \mathbb{N}} a_n \FloatingPointNumberBase^{- (n + 1)}$. Ora,
+	\begin{itemize}
+		\item se $\FloatingPointNumberExponent \in [\FloatingPointNumberExponent_{\min},\FloatingPointNumberExponent_{\max}]$, chiamiamo \Define{approssimazione in virgola mobile}[in virgola mobile][approssimazione] di $x$ in base $\FloatingPointNumberBase$ con $\FloatingPointNumberDigits$ \Define{cifre significative}[significativa][cifra] il numero in virgola mobile $\tilde{x} = \Sign{x} \FloatingPointNumberBase^\FloatingPointNumberExponent \sum_{n \in \FloatingPointNumberDigits} a_n \FloatingPointNumberBase^{- (n + 1)}$; in questo caso, chiamiamo inoltre \Define{errore di approssimazione in virgola mobile}[di approssimazione in virgola mobile][errore] l'errore dovuto all'approssimazione di $x$ con $\tilde{x}$;
+		\item se $\FloatingPointNumberExponent < \FloatingPointNumberExponent_{\min}$, allora non associamo nessuna approssimazione ad $x$: chiamiamo questa circostanza \Define{\English{underflow}};
+		\item se $\FloatingPointNumberExponent > \FloatingPointNumberExponent_{\max}$, allora non associamo nessuna approssimazione ad $x$: chiamiamo questa circostanza \Define{\English{overflow}} (\Define{traboccamento}).
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precedente, se approssimiamo un numero reale per cui si verifichi \English{underflow} con $0$ commettiamo un errore relativo del $100\%$.
+\end{Theorem}
+\Proof Segue per calcolo diretto. \EndProof
+\begin{Theorem}
+	Con le notazioni della definizione \ref{AritmeticaInVirgolaMobile_ApprossimazioneInVirgolaMobile}, abbiamo, nel caso $\FloatingPointNumberExponent \in [\FloatingPointNumberExponent_{\min},\FloatingPointNumberExponent_{\max}]$, denotata $\MachinePrecision$ la precisione di macchina,
+	\begin{itemize}
+		\item $\AbsoluteValue{\frac{x - \tilde{x}}{x}} < \MachinePrecision$, cio\`e l'errore relativo di approssimazione in virgola mobile \`e limitato dalla precisione di macchina;
+		\item $\AbsoluteValue{\frac{x - \tilde{x}}{\tilde{x}}} < \MachinePrecision$.
+	\end{itemize}
+\end{Theorem}

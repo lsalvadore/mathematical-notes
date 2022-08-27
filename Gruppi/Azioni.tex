@@ -1,0 +1,46 @@
+\section{Azioni di gruppi.}\label{Azioni}
+\begin{Definition}
+	Siano $\Operators$ un gruppo e $\Class$ una classe qualsiasi. Un'\Define{azione di gruppo}[di gruppo][azione] di $\Operators$ su $\Class$ \`e un'azione del sostegno di $\Operators$ su $\Class$ che \`e anche un omomorfismo di $\Operators$ con $\Class^\Class$. Quando un gruppo $\Operators$ \NIDefine{agisce} su una classe $\Class$ intendiamo sempre che si tratta di un'azione di gruppo, salvo avvisi contrari.
+\end{Definition}
+\begin{Theorem}
+	Un'azione di gruppo \`e un'azione sinistra.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $\Operators$ un gruppo che agisce su una classe $\Class$ tramite $\Action$. Abbiamo $\Image{\Action} \subseteq \Automorphisms{\Class}$.
+\end{Theorem}
+\Proof Sia $\Homomorphism \in \Image{\Action}$. Sia $\Operator \in \Operators$ tale che $\Action{\Operator} = \Homomorphism$. Abbiamo $\Homomorphism\Action(\Operator^{-1}) = \Action{\Operator}\Action(\Operator{-1}) = \Action(\Operator\Operator^{-1}) = \Action(1) = 1$, dunque $\Homomorphism$ \`e invertibile. \EndProof
+\begin{Theorem}
+	Sia $\Operators$ un gruppo che agisce su una classe $\Class$ tramite $\Action$. Per ogni $x \in \Class$, abbiamo $\Stabilizer{x} \IsSubgroup \Operators$.
+\end{Theorem}
+\Proof Siano $\Operator_1, \Operator_2 \in \Stabilizer{x}$. Abbiamo $(\Operator_1\Operator_2^{-1})(x) = x$. \EndProof
+\begin{Theorem}\label{action_equivalence}
+	Sia $\Operators$ un gruppo. Un'azione di gruppo $\Action: \Operators \rightarrow \Class^\Class$ determina una relazione d'equivalenza $\Equivalence$ su $\Class$ nel modo seguente: per $x, y \in \Class$ si ha $\Coimplies{\Equivalence[x][y]}{\Exists{\Operator \in \Operators}{\Operator \cdot x = y}}$. Le classi d'equivalenza di $\Equivalence$ coincidono con le orbite.
+\end{Theorem}
+\Proof Occorre provare che $\Equivalence$ \`e una relazione d'equivalenza. In effetti, abbiamo
+\begin{itemize}
+	\item per ogni $x \in \Class$, $1 \cdot x = x$ perch\'e $\Action$ \`e un'azione di gruppo;
+	\item per ogni $x, y \in \Class$ e $\Operator \in \Operators$ tali che $\Operator \cdot x = y$, $\Operator^{-1} \cdot y = \Operator^{-1} (\Operator x) = (\Operator^{-1} \Operator) x = 1 \cdot x = x$;
+	\item per ogni $x, y, z \in \Class$ e $\Operator_1, \Operator_2 \in \Operators$ tali che $\Operator_1 \cdot x = y$ e $\Operator_2 \cdot y = z$, $(\Operator_2\Operator_1) \cdot x = \Operator_2 (\Operator_1 x) = z$.
+\end{itemize}
+\par La concidenza di orbite e classi d'equivalenza segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Sia $\Group$ un gruppo. L'azione di $\Group$ su se stesso che a $g \in \Group$ associa l'automorfismo $x \mapsto gxg^{-1}$, detto \Define{automorfismo interno}[interno][automorfismo] associato a $g$, si chiama \Define{azione di coniugio}[di coniugio][azione] tramite $g$, e se $y \in \Orbit{x}$ si dice che $x$ e $y$ sono \Define{coniugati}[coniugati][elementi]. L'insieme di tutti gli automorfismi interni si denota $\InnerAutomorphisms$.
+\end{Definition}
+\begin{Theorem}\label{action_conjugation}
+	L'azione di coniugio di un gruppo $\Group$ su se stesso \`e un azione di gruppo.
+\end{Theorem}
+\Proof Per ogni $g, h, x \in \Group$, abbiamo $h(gxg^{-1})h^{-1} = (hg)x(hg)^{-1}$. \EndProof
+\begin{Corollary}
+	Dato un gruppo $\Group$, gli automorfismi interni di $\Group$ costituiscono un gruppo.
+\end{Corollary}
+\Proof Indicata con $\Action$ l'azione di coniugio di $\Group$, abbiamo $\InnerAutomorphisms{\Group} = \Image(\Action) \IsSubgroup \Automorphisms{\Group}$. \EndProof
+\begin{Corollary}
+	Il coniugio \`e una relazione d'equivalenza.
+\end{Corollary}
+\Proof Segue direttamente dai teoremi \ref{action_conjugation} e \ref{action_equivalence}. \EndProof
+\begin{Lemma}
+	\TheoremName{Lemma di Burnside}[di Burnside][lemma] Sia $\Operators$ un gruppo che agisce su una classe $\Class$. Indicata con $n$ la cardinalit\`a dell'insieme delle orbite determinate dall'azione di $\Operators$ su $\Class$ abbiamo $n\GroupOrder{\Operators} = \sum_{\Operator \in \Operators} \Cardinality{\Fixed{\Class}{\Operator}}$.
+\end{Lemma}
+\Proof Osserviamo che $\sum_{\Operator \in \Operators} \Cardinality{\Class}^{\Operator} = \Cardinality{\lbrace (\Operator,x) \in \Operators \times \Class | \Operator x = x \rbrace} = \sum_{x \in \Class} \Order{\Stabilizer{x}}$.
+\Proof Sia $R \subseteq \Class$ una classe contenente esattamente un rappresentante di ogni orbita. Abbiamo $n\GroupOrder{\Operators} = \GroupOrder{\Operators}\Cardinality{R} = \sum_{r \in R} \GroupOrder{\Operators} = \sum_{r \in R} \GroupOrder{\Stabilizer{r}}\Orbit{r} = \sum_{x \in \Class} \GroupOrder{\Stabilizer{x}} = \Cardinality{\lbrace (\Operator,x) \ in \Operators \times \Class | \Operator x = x \rbrace} = \sum_{\Operator \in \Operators} \Cardinality{\Fixed{\Class}{\Operator}}$. \EndProof

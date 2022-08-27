@@ -1,0 +1,36 @@
+\subsection{Metodo di Richardson.}
+\label{MetodiNumericiPerSistemiLineari_MetodoDiRichardson}
+\begin{Definition}
+  Con le notazioni del teorema \ref{th_MetodiIterativiPerSistemiLineari},
+  fissato $\alpha \in \mathbb{C}$
+  chiamiamo
+  \Define{metodo di Richardson}[di Richardson][metodo]
+  il metodo iterativo definito da
+  \begin{itemize}
+    \item $A = \alpha^{-1} \Identity$;
+    \item $B = \alpha^{-1} \Identity - \Matrix$.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni della definizione precedente abbiamo, per ogni $k \in \mathbb{N}$,
+  $X_{k + 1} = X_k - \alpha(\Matrix X_k - C)$.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+  X_{k + 1}
+  &= \IterationMatrix X_k + V,\\
+  &= A^{-1} B X_k + A^{-1} C,\\
+  &= \alpha \Identity (\alpha^{-1} \Identity - \Matrix) X_k
+    + \alpha \Identity C,\\
+  &= (\Identity - \alpha \Matrix) X_k + \alpha \Identity C,\\
+  &= X_k - \alpha(\Matrix X_k - C).
+\end{align*}
+\begin{Theorem}
+  Con le notazioni della definizione precendente, se $\Matrix$ \`e definita
+  positiva il metodo di Richardson converge per $\alpha = \Norm{\Matrix}^{-1}$,
+  per qualsiasi norma indotta $\Norm{\cdot}$.
+\end{Theorem}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/MetodoDiRichardson.m"}
+	\caption{Implementazione del metodo di Richardson in linguaggio \LanguageName{octave}.}
+\end{listing}

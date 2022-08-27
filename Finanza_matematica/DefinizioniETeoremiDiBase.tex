@@ -1,0 +1,69 @@
+\section{Prime definizione e primi teoremi.}\label{PrimeDefinizioniEPrimiTeoremi}
+\par In questa prima sezione descriviamo gli strumenti finanziari con cui lavoreremo e presentiamo un paio di teoremi, senza per il momento introdurre un modello matematico preciso.
+\begin{Definition}\label{AttivoIntuitivo}
+	Si chiama \Define{strumento finanziario} (anche \Define{attivit\`a finanziaria} o \Define{attivo finanziario}) un qualsiasi oggetto soggetto ad acquisto e vendita. Gli strumenti finanziari vengono scambiati nei \Define{mercati}: si chiama \Define{mercato primario} quello in cui \`e acquistabile per la prima volta lo strumento, \Define{mercato secondario} quello in cui \`e acquistabile successivamente (se i due mercati coincidono non si adotta nessuna distinzione e si parla solo di \Define{mercato}).
+\end{Definition}
+	Esempi di strumenti finanziari sono titoli di Stato, azioni, merci (tipicamente materie prime), valute... Invitiamo il lettore a familiarizzarsi con le varie tipologie di strumenti finanziari. Un esempio importante di distinzione tra mercato primario e mercato secondario si ha con i titoli di Stato, i quali sono (per lo meno in Italia) emessi dal Tesoro e messi in vendita in apposite aste (mercato primario), dopo le quali sono scambiabili in Borsa (mercato secondario).
+\begin{Definition}
+	Si chiama \Define{strumento finanziario derivato} qualsiasi strumento finanziario che dipenda da un altro strumento finanziario, detto \Define{sottostante}, per la sua emissione e il suo funzionamento (e dunque necessariamente anche per il suo valore).
+\end{Definition}
+	\par Presentiamo i derivati che studieremo nel corso di queste note.
+\begin{Definition}
+	Si chiama \Define{opzione} uno strumento finanziario definito dai seguenti parametri:
+	\begin{itemize}
+		\item il \Define{sottostante}: un qualsiasi strumento finanziario (di solito non derivato);
+		\item il \Define{tipo}: l'opzione si dice \Define{d'acquisto} (\Call) se fornisce la possibilit\`a (ma non l'obbligo) di acquistare il sottostante, \Define{di vendita} (\Put) se fornisce la possibilit\`a (ma non l'obbligo) di vendere il sottostante;
+		\item il \Define{prezzo di esercizio} (\Strike): il prezzo al quale viene eventualmente acquistato o ceduto il sottostante. Esso \`e fissato al momento dell'emissione dell'opzione: proprio in questo fatto risiede l'interesse dello strumento;
+		\item la \Define{scadenza}: il periodo nel quale (opzione \Define{europea}) o entro il quale (opzione \Define{americana}) l'opzione \`e esercitabile.
+	\end{itemize}
+\end{Definition}
+	\par Salvo avvisi contrari, considereremo solo opzioni europee.
+	\par Le opzioni, cos\`i come tutti gli strumenti derivati, pongono due importanti problemi:
+\begin{itemize}
+	\item la \Define{valutazione} (\Pricing): consiste nel determinare quale sia il giusto prezzo per la sottoscrizione di un'opzione;
+	\item la \Define{copertura} (\Hedging): \'e il problema, per chi ha emesso l'opzione, che consiste nell'essere capace di effettuare effettivamente l'operazione nel caso il sottoscrittore lo richieda.
+\end{itemize}
+	\par Presenteremo ora due teoremi che riguardano la valutazione delle opzioni, ma per fare ci\`o abbiamo prima bisogno di definire un altro paio di concetti e di dimostrare un Lemma.
+\begin{Definition}\label{PortafoglioIntuitivo}
+	Si chiama \Define{portafoglio} un qualsiasi insieme di strumenti finanziari (di solito si usa quest'espressione per indicare l'insieme di tutti gli strumenti in possesso alla stessa persona o alla stessa azienda). Il \Define{valore del portafoglio} al tempo $t$ \`e la somma di denaro che si otterrebbe vendendo tutte le attivit\`a finanziarie simultaneamente al tempo $t$.
+\end{Definition}
+\begin{Definition}\label{ArbitraggioIntuitivo}
+	Si chiama \Define{arbitraggio} un'operazione finanziaria che consente di guadagnare denaro (o quantomeno di non perderne) senza l'uso di nessun capitale iniziale.
+\end{Definition}
+\begin{Definition}
+	Si chiama \Define{vendita allo scoperto} la vendita di strumenti finanziari di cui non si dispone e che si prendono dunque in prestito: alla scadenza del prestito, essi devono essere ricomprati da chi ha eseguito la vendita (non necessarimente dallo stesso compratore) e resi al prestatore.
+\end{Definition}
+\begin{Lemma}\label{lemma_arbitraggio}
+	Siano $P_1$ e $P_2$ due portafogli e siano $V_1$ e $V_2$ i loro rispettivi valori al tempo $t_0$ e $W_1$ e $W_2$ i loro rispettivi valori al tempo $t_1 > t_0$. Se $V_1 > V_2$ e al tempo $t_0$ \`e gi\`a noto che $W_1 = W_2$, allora il possessore del portafoglio $P_1$ pu\`o realizzare un arbitraggio vendendo allo scoperto $P_1$ con scadenza $t_1$ e acquistando $P_2$.
+\end{Lemma}
+\Proof \`E chiaro che al tempo $t_0$ ricaviamo un profitto. La copertura della vendita allo scoperto si fa al tempo $t_1$ vendendo $P_2$ e ricomprando $P_1$, operazione senza senza costi. \EndProof
+\begin{Theorem}\label{parita_callput}
+	\TheoremName{Parit\`a \Call-\Put} Si consideri un mercato con un'attivit\`a finanziara $S$ di valore $S_t$ al generico tempo $t$, la quale fa da sottostante ad un'opzione\Call\ di \Strike $K$ a scadenza $T$ dal valore $C_t$ e ad un'opzione \Put\ di stesso \Strike e stessa scadenza dal valore di $P_t$. Supponiamo inoltre che sia possibile prestare denaro\footnote{Salvo avvisi contrari, considereremo gli interessi sempre continuamente composti (anche detti matematici): pertanto se la somma presa in prestito al tempo $t$ al tasso $r$ \`e $x$, al tempo $T > t$ la somma da restituire \`e $xe^{r(T - t)}$ e l'interesse maturato $x(e^{r(T - t)} - 1)$.} al tasso $r$. Affinch\'e non vi siano arbitraggi \`e necessario che sia verifacata la seguente identit\`a: $$C_t - P_t = S_t - Ke^{-r(T-t)}.$$
+\end{Theorem}
+\par Diamo ora la dimostrazione. Seguir\`a una piccola spiegazione per chiarire i alcuni punti.\\\\
+\Proof Consideriamo la formazione di due portafogli al tempo $t < T$:
+\begin{itemize}
+	\item $P_1$ \`e realizzato comprando una \Call\ e vendendo una \Put\ (si suppone di disporre di liquidit\`a a sufficienza): il suo valore $V_1$ \`e $C_t - P_t$;
+	\item $P_2$ invece \`e costruito comprando un'unit\`a dell'attivit\`a finanziaria $S$ e prendendo a prestito la somma di denaro $Ke^{-r(T-t)}$ con scadenza $T$: il suo valore $V_2$ \`e $S_t - Ke^{-r(T-t)}$.
+\end{itemize}
+\par Vediamo ora cosa succede al tempo $T$ al portafoglio $P_1$. Se $S_T \geq K$, allora la \Call\ avr\`a per valore $S_T - K$ mentre la \Put\ perder\`a ogni valore: il valore del portafoglio \`e dunque $W_1 = S_T - K$. Se invece $K \leq S_T$, allora perder\`a valore la \Call\ mentre verr\`a esercitata la \Put\ cosicch\'e il valore del portafoglio diventer\`a $W_1 = S_T - K$.
+\par Vediamo ora il portafoglio $P_2$. Il valore del portafoglio sar\`a $W_2 = S_T - Ke^{-r(T-t)} \cdot e^{r(T - t)} = S_T - K$.
+\par Il lemma \ref{lemma_arbitraggio} conclude la dimostrazione. \EndProof
+\par Perch\'e la precedente dimostrazione sia pienamente convincente a necessario giustifacare alcune affermazioni relative al problema del \Pricing, in particolare la nostra valutazione del prezzo delle opzioni al tempo $T$ e del prestito, sia al tempo $t$ che al tempo $T$.
+\par Introduciamo una notazione: $(x)^+ = \begin{cases} x \text{ se } x \geq 0,\\ 0 \text{ altrimenti}.\end{cases}$
+\par Vediamo il \Pricing\ della \Call\ al tempo $T$. Essa, se esercitata, permette di incassare la somma $(S_T - K)^+$. Pertanto, \`e chiaro che chi ne \`e in possesso non ha nessuna convenienza a venderla ad un prezzo inferiore di $(S_T - K)^+$, mentre a chi vorrebbe acquistarla non conviene pagare pi\`u di $(S_T - K)^+$: il suo giusto prezzo \`e dunque $(S_T - K)^+$. Un analogo ragionamento porta ad individuare il giusto prezzo della \Put\ in $(K - S_T)^+$.
+\par Per quanto riguarda il prestito, bisogna considerare in ogni momento qual \`e l'ammontare della somma da restituire: nessuno accetterebbe di acquistare un debito per una somma minore dell'importo che gli consentirebbe di pagarlo, mentre nessuno lo cederebbe pagando una somma maggiore.
+\begin{Theorem}
+	\TheoremName{Convessit\`a del \Pricing\ del \Call\ rispetto al prezzo \Strike.} Sia $S$ un attivo di valore $S_t$ al tempo $t$ e consideriamo una \Call\ $C$ con $S$ per sottostante valutata $C_t$ al tempo $t$ e di scadenza $T$ (indipendente da $t$). Perch\'e non vi siano arbitraggi, \`e necessario che $C_t$ sia funzione convessa dello \Strike, cio\`e che valga la relazione $C_t \left (\frac{K_1 + K_2}{2} \right ) \leq \frac{C_t(K_1)}{2} + \frac{C_t(K_2)}{2}$\footnote{La definizione generale di convessit\`a prevede che una funzione $f$ sia convessa quando $f(\lambda x + (1 - \lambda) y) \leq \lambda f(x) + (1 - \lambda)f(y)$: la propriet\`a qui enunciata \`e equivalente se assumiamo che $C_t$ sia continua, oppure limitata superiormente o ancora misurabile.}.
+\end{Theorem}
+\Proof Supponiamo al contrario $C_t \left (\frac{K_1 + K_2}{2} \right ) > \frac{C_t(K_1)}{2} + \frac{C_t(K_2)}{2}$ e sia, per fissare le idee, $K_1 < K_2$. Al tempo $t$, vendiamo due \Call\ con \Strike\ $\frac{K_1 + K_2}{2}$ e compriamo due \Call, una con \Strike\ $K_1$ e l'altra con \Strike\ $K_2$: per ipotesi, il ricavo \`e positivo. Vediamo cosa succede alla scadenza per assicurarci che la mossa non implichi una perdita successiva (e, soprattutto, maggiore del ricavo appena incassato); indichiamo con $V$ il valore del portafoglio al tempo $T$. Abbiamo
+\begin{equation}
+	V =
+	\begin{cases}
+		0\text{, se }S_T \leq K_1,\\
+		S_T - K_1\text{, se }K_1 < S_T \leq \frac{K_1 + K_2}{2},\\
+		S_T - K_1 - 2S_T + K_1 + K_2 = K_2 - S_T\text{, se }\frac{K_1 + K_2}{2} < S_T \leq K_2,\\
+		S_T - K_1 - 2S_T + K_1 + K_2 + S_T - K_2 = 0\text{, se } K_2 < S_T.
+	\end{cases}
+\end{equation}
+\par Si vede dunque che, in ogni caso $V \geq 0$: l'operazione \`e dunque un arbitraggio.\EndProof

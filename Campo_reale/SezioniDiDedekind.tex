@@ -1,0 +1,50 @@
+\section{Sezioni di Dedekind.}
+\label{CampoReale_SezioniDiDedekind}
+\begin{Definition}
+  Chiamiamo
+  \Define{sezione di Dedekind}[di Dedekind][sezione]
+  una partizione $(A,B)$ di $\mathbb{Q}$ in due parti tale che
+  \[
+    \ForAll{x \in A}{\ForAll{y \in B}{x < y}}.
+  \]
+  Denotiamo la classe di tutte le sezioni di Dedekind $\DedekindCuts$.
+  \par Definiamo su $\DedekindCuts$ le operazioni
+  \begin{itemize}
+    \item somma che a $(A,B), (C,D) \in \DedekindCuts$ associa la sezione
+      \[
+        (A,B) + (C,D)
+          = (\lbrace x | \Exists{a \in A}{\Exists{c \in C}{x = a + c}} \rbrace,
+          \lbrace y | \Exists{b \in B}{\Exists{d \in D}{y = b + d}} \rbrace);
+      \]
+    \item prodotto che a $(A,B), (C,D) \in \DedekindCuts$ associa la sezione
+      \[
+        (A,B) \cdot (C,D)
+          = (\lbrace x | \Exists{a \in A}{\Exists{c \in C}{x = ac}} \rbrace,
+          \lbrace y | \Exists{b \in B}{\Exists{d \in D}{y = bd}} \rbrace).
+      \]
+  \end{itemize}
+  Definiamo inoltre su $\DedekindCuts$ un ordinamento $\leq$ tale che
+  \[
+    \ForAll{(A,B) \in \DedekindCuts}{
+      \ForAll{(C,D) \in \DedekindCuts}{
+        \Implies{A \subseteq C}{(A,B) \leq (C,D)}}}.
+  \]
+\end{Definition}
+\begin{Theorem}
+  $\leq$ \`e un ordinamento totale su $\DedekindCuts$.
+\end{Theorem}
+\Proof Siano $(A,B), (C,D) \in \DedekindCuts$.
+\par Supponiamo
+$\Not{\Or{A \subseteq C}{C \subseteq A}}$.
+\begin{Theorem}
+  \label{CampoReale_Campo}
+  $\DedekindCuts$ \`e un campo.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+  \label{CampoReale_Archimedeo}
+\end{Theorem}
+\begin{Theorem}
+  Abbiamo $\DedekindCuts = \mathbb{R}$, a meno di isomorfismo di campi.
+\end{Theorem}
+\Proof Segue dai teoremi \ref{CampoReale_Campo}, \ref{CampoReale_Archimede}

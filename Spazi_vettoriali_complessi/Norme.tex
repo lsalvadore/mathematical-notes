@@ -1,0 +1,176 @@
+\section{Norme}
+\label{SpaziVettorialiComplessi_Norme}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $p \in \mathbb{R}$ tale che $p \geq 1$.
+  \end{itemize}
+  L'applicazione $\Norm{\cdot}[p]: \mathbb{C}^n \rightarrow \mathbb{R}$
+  definita per ogni $x \in \NormedSpace$ da
+  \[
+    \Norm{x}[p] = \sqrt[p]{\sum_{k \in n} \AbsoluteValue{x_k}^p}
+  \]
+  \`e una norma.
+\end{Theorem}
+\Proof Tutte le propriet\`a che definiscono una norma si verificano
+immediatamente per $\Norm{\cdot}[p]$ ad eccezione della disuguaglianza
+triangolare: procediamo duqnue a dimostrare la validit\`a anche di questa
+disuguaglianza.
+\par 
+
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $p \in \mathbb{R}$ tale che $p \geq 1$.
+  \end{itemize}
+  L'applicazione $\Norm{\cdot}[\infty]: \mathbb{C}^n \rightarrow \mathbb{R}$
+  definita per ogni $x \in \NormedSpace$ da
+  \[
+    \Norm{x}[\infty] = \max_{k \in n} \AbsoluteValue{x_k}
+  \]
+  \`e una norma.
+\end{Theorem}
+\begin{Theorem}
+  Sia $\Norm{\cdot}$ una norma su un $\mathbb{C}$-spazio vettoriale
+  $\NormedSpace$ di dimensione finita $n \in \mathbb{N}$.
+  $\Norm{\cdot}$ \`e un'applicazione continua rispetto alla topologia
+  di $\NormedSpace$ indotta da $\Norm{\cdot}[1]$.
+\end{Theorem}
+\Proof Fissiamo $\epsilon > 0$.
+\par Per la disuguaglianza triangolare abbiamo
+\begin{align*}
+  &\Norm{x} - \Norm{y} \leq \Norm{x - y},\\
+  &\Norm{y} - \Norm{x} \leq \Norm{y - x} = \Norm{x - y},
+\end{align*}
+da cui
+\[
+  \AbsoluteValue{\Norm{x} - \Norm{y}} \leq \Norm{x - y}.
+\]
+\par Abbiamo inoltre, denotati $(e_i)_{i \in n}$ i vettori della base canonica
+di $\mathbb{C}^n$,
+\begin{align*}
+  \Norm{x - y}
+  &= \Norm{\sum_{i \in n} (x_i - y_i) e_i},\\
+  &\leq \sum_{i \in n} \Norm{(x_i - y_i) e_i},\\
+  &= \sum_{i \in n} \AbsoluteValue{x_i - y_i} \Norm{e_i},\\
+  &\leq \sum_{i \in n} \AbsoluteValue{x_i - y_i} \max_{i \in n} \Norm{e_i},\\
+  &\leq \Norm{x - y}[1] \max_{i \in n} \Norm{e_i}.
+\end{align*}
+\par Poniamo ora
+$\delta = \frac{\epsilon}{\max_{i \in n} \Norm{e_i}}$ e supponiamo
+$\Norm{x - y}[1] < \delta$. Abbiamo infine
+\begin{align*}
+  \AbsoluteValue{\Norm{x} - \Norm{y}}
+  &\leq \Norm{x - y},\\
+  &\leq \Norm{x - y}[1] \max_{i \in n} \Norm{e_i},\\
+  &= \Norm{x - y}[1] \frac{\epsilon}{\delta},\\
+  &< \epsilon.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  \TheoremName{Teorema di equivalenza delle norme}[di equivalenza delle norme][teorema]
+  Fissato $n \in \NotZero{\mathbb{N}}$, siano $\Norm{\cdot}$ e $\Norm{\cdot}'$ due norme
+  su $\mathbb{C}^n$. Valgono i seguenti fatti:
+  \begin{itemize}
+    \item esistono costanti $m, M \in \RealNonNegative$ tali che, per ogni
+      $x \in \mathbb{C}^n$,
+      \[
+        m\Norm{x}' \leq \Norm{x} \leq M\Norm{x}';
+      \]
+    \item $\Norm{\cdot}$ e $\Norm{\cdot}'$ sono norme equivalenti.
+  \end{itemize}
+\end{Theorem}
+\Proof Assumiamo in un primo momento $\Norm{\cdot}' = \Norm{\cdot}[1]$.
+\par Se $x = 0$, allora la tesi \`e immediata.
+\par Supponiamo $x \neq 0$ e poniamo
+$y = \frac{x}{\Norm{x}[1]}$. Abbiamo $y \in \NSphere{n}$, dove $\NSphere{n}$ \`e
+la sfera unitaria rispetto alla norma $\Norm{\cdot}[1]$.
+\par L'insieme $\NSphere{n}$ \`e limitato per definizione e chiuso in quanto
+controimmagine di $1$ rispetto alla norma $\Norm{\cdot}[1]$, che \`e
+un'applicazione continua: $\NSphere{n}$ \`e dunque compatto.
+Ne consegue, per il teorema precedente e per il teorema di Weierstrass,
+ che la norma $\Norm{\cdot}$ ammette minimo $m \in \RealNonNegative$ e massimo
+$M \in \RealNonNegative$ su $\NSphere{n}$.
+\par Abbiamo allora
+\[
+  m \leq \Norm{y} \leq M,
+\]
+da cui,
+\[
+  m\Norm{x}[1] \leq \Norm{x} \leq M\Norm{x}[1].
+\]
+\par Ora, per $\Norm{\cdot}'$ arbitraria, basta osservare che per opportune
+costanti $m', M' \in \mathbb{R}$ abbiamo 
+\[
+  m'\Norm{x}[1] \leq \Norm{x}' \leq M'\Norm{x}[1],
+\]
+da cui, dividendo per $m'$ e combinando con la coppia di diseguaglianze
+precedente,
+\[
+  \Norm{x} \leq M\Norm{x}[1] \leq \frac{M}{m'}\Norm{x}';
+\]
+analogamente, dividendo per $M'$ e combinando,
+\[
+  \frac{m}{M'} \Norm{x}' \leq m\Norm{x}[1] \leq \Norm{x};
+\]
+e quindi
+\[
+  \frac{m}{M'} \Norm{x}' \leq m\Norm{x}[1] \leq \Norm{x}
+  \leq M\Norm{x}[1] \leq \frac{M}{m'}\Norm{x}'.
+\]
+\par Sia $\Open$ un aperto della topologia indotta da $\Norm{\cdot}$.
+Per ogni $x \in \Open$ esiste $r > 0$ tale che
+\[
+  \OpenBall{x}{r} = \lbrace y \in \mathbb{C}^n | \Norm{x - y} < r \rbrace
+    \subseteq \Open.
+\]
+\par Per quanto gi\`a provato, esiste $M \in \RealNonNegative$ tale che
+$\Norm{x - y} \leq M\Norm{x - y}'$.
+\par Poniamo inoltre
+\[
+  \OpenBall{x}{r}' = \lbrace y \in \mathbb{C}^n |
+    \Norm{x - y}' < \frac{r}{M} \rbrace.
+\]
+\par Per ogni $y \in \OpenBall{x}{r}'$, abbiamo
+\begin{align*}
+  \Norm{x - y}
+  &\leq M\Norm{x - y}',\\
+  &< M \frac{r}{M},\\
+  &= r.
+\end{align*}
+\par Ne deduciamo
+$\OpenBall{x}{r}' \subseteq \OpenBall{x}{r} \subseteq \Open$.
+Dunque $\Open$ \`e aperto rispetto alla topologia indotta da $\Norm{\cdot}'$.
+Quindi la topologia indotta da $\Norm{\cdot}'$ \`e pi\`u fine rispetto alla
+topologia indotta da $\Norm{\cdot}$. Analogamente si prova che la topologia
+indotta da $\Norm{\cdot}$ \`e pi\`u fine di quella indotta da $\Norm{\cdot}'$.
+E quindi infini le due topologie sono equivalenti. \EndProof
+\begin{Corollary}
+  Fissati $p, q \in \NotZero{\mathbb{N}}$, siano
+  \begin{itemize}
+    \item $\Norm{\cdot}[a]$ e $\Norm{\cdot}[b]$ norme su $\mathbb{C}^p$;
+    \item $\Norm{\cdot}[A]$ e $\Norm{\cdot}[B]$ norme su $\mathbb{C}^q$;
+    \item $f: \mathbb{C}^p \rightarrow \mathbb{C}^q$ un'applicazione
+      lipschitziana rispetto alle distanze indotte da $\Norm{\cdot}[a]$ e
+      $\Norm{\cdot}[A]$.
+  \end{itemize}
+  $f$ \`e lipschitziana anche rispetto alle distanze indotta da
+  $\Norm{\cdot}[b]$ e $\Norm{\cdot}[B]$.
+\end{Corollary}
+\Proof Sia $L > 0$ tale che, che per ogni $x, y \in \mathbb{C}^p$ abbiamo
+$\Norm{f(y) - f(x)}[A] \leq L \Norm{y - x}[a]$.
+\par Per il teorema di equivalenza delle norme,
+\begin{itemize}
+  \item esiste $M$ tale che, per ogni
+    $x, y \in \mathbb{C}^q$, $\Norm{y - x}[a] \leq M \Norm{y - x}[b]$;
+  \item esiste $m$ tale che, per ogni
+    $X, Y \in \mathbb{C}^p$, $m \Norm{Y - X}[B] \leq \Norm{Y - X}[A]$.
+\end{itemize}
+\par Ne deduciamo
+\begin{align*}
+  \Norm{f(y) - f(x)}[B]
+  &\leq m^{-1} \Norm{f(y) - f(x)}[A],\\
+  &\leq m^{-1} L \Norm{y - x}[a],\\
+  &\leq m^{-1} L M \Norm{y - x}[b]. \text{ \EndProof}
+\end{align*}

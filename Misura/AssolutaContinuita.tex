@@ -1,0 +1,21 @@
+\section{Assoluta continuit\`a.}
+\label{Misura_AssolutaContinuita}
+\begin{Definition}
+  Siano $\Measure$ e $\VarMeasure$ due misure definite sullo stesso spazio
+  misurabile $(\MeasurableSpace,\SigmaAlgebra)$.
+  $\Measure$ \`e
+  \Define{assolutamente continua}[assolutamente continua][misura]
+  rispetto a $\VarMeasure$, denotato
+  $\AbsoluteContinuousMeasure{\Measure}{\VarMeasure}$
+  quando
+  $\ForAll{\MeasurablePart \in \SigmaAlgebra}{
+    \Implies{\VarMeasure(\MeasurablePart) = 0}
+    {\Measure(\MeasurablePart) = 0}}$.
+  Qualora si abbia simultaneamente
+  $\AbsoluteContinuousMeasure{\Measure}{\VarMeasure}$
+  e
+  $\AbsoluteContinuousMeasure{\VarMeasure}{\Measure}$
+  si dice che
+  $\Measure$ e $\VarMeasure$ sono misure
+  \Define{equivalenti}[equivalenti][misure].
+\end{Definition}

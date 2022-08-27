@@ -1,0 +1,30 @@
+\section{Definizioni e teoremi di base.}\label{DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Si chiama \Define{corpo} un anello con identit\`a non banale in cui tutti gli elementi non nulli sono invertibili.
+\end{Definition}
+\par Nel seguito denoteremo con $+$ l'operazione rispetto alla quale il sostegno del corpo costituisce un gruppo commutativo, con $\cdot$ l'altra operazione e impiegheremo le notazioni coerenti per gli elementi neutri e gli inversi.
+\begin{Definition}
+	Un \Define{campo} \`e un corpo commutativo.
+\end{Definition}
+\begin{Theorem}
+	Se $\Prime \in \mathbb{Z}$ \`e primo, allora $\Quotient{\mathbb{Z}}{(\Prime)}$ \`e un campo.
+\end{Theorem}
+\Proof Segue dal fatto che $\mathbb{Z}$ \`e un dominio euclideo. \EndProof
+\begin{Theorem}
+	Sia $\Field$ un campo. Allora
+	\begin{itemize}
+		\item se $\Field = \mathbb{Q}$, allora $\Characteristic{\Field} = 0$;
+		\item se $\Field = \Quotient{\mathbb{Z}}{(\Prime)}$, dove $\Prime$ \`e un numero primo, allora $\Characteristic{\Field} = \Prime$;
+		\item $\Characteristic{\Field}$ \`e un numero nullo o primo;
+		\item se $\Characteristic{\Field} = \Prime$, dove $\Prime$ \`e un numero primo, allora $\Field$ contiene un sottocampo isomorfo a $\Quotient{\mathbb{Z}}{(\Prime)}$.
+		\item se $\Characteristic{\Field} = 0$, allora $\Field$ contiene un sottocampo\footnote{Un sottocampo di $\Field$ \`e un sottoinsieme di $\Field$ che \`e un campo con le operazioni date dalla restrizione delle operazioni definite su $\Field \times \Field$, \Cfr definizione \ref{DefEstensione}.} $\Field'$ isomorfo a $\mathbb{Q}$;
+	\end{itemize}
+\end{Theorem}
+\Proof Le prime due affermazioni sono ovvie.
+\par Siano $n, m \in \mathbb{Z}$ e supponiamo $\phi(nm) = 0$, dove $\phi: \mathbb{Z} \rightarrow \Field$ che a $n \in \mathbb{Z}$ associa $n \cdot 1$. Supponiamo $\phi(m) \neq 0$. Allora $\Characteristic{\Field}$ divide necessariamente $n$, quindi $\Kernel{\phi}$ \`e un ideale primo e $\Characteristic{\Field}$ \`e necessariamente primo o nullo: questo prova la terza affermazione.
+\par La quarta affermazione segue direttamente dal fatto che l'omomorfismo dedotto da $\phi$ per passaggio al quoziente \`e iniettivo.
+\par Per l'ultima affermazione, sempre l'omomorfismo dedotto da $\phi$ per passaggio al quotidiano dimostra che $\phi(\mathbb{Z})$ \`e un anello isomorfo a $\mathbb{Z}$, pertanto il campo dei quozienti di $\phi(\mathbb{Z})$ \`e isomorfo al campo dei quozienti di $\mathbb{Z}$, cio\`e $\mathbb{Q}$. \EndProof
+\begin{Theorem}
+	Sia $\phi: \Field_1 \rightarrow \Field_2$ un omomorfismo. Se $\phi \neq 0$, allora $\phi$ \`e iniettivo.
+\end{Theorem}
+\Proof Il nucleo di un omomorfismo di anelli con unit\`a, e dunque di campi, \`e un ideale e gli unici ideali di un campo sono $\SpanIdeal{0}$ e $\SpanIdeal{1}$. \EndProof

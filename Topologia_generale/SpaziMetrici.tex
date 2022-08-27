@@ -1,0 +1,144 @@
+\section{Spazi metrici.}\label{SpaziMetrici}
+\begin{Definition}
+	Sia $\MetricSpace$ una classe e $\Distance:
+\MetricSpace^2 \rightarrow \mathbb{R}^+$ un'applicazione
+tale che:
+	\begin{itemize}
+		\item $\ForAll{(x,y) \in \MetricSpace^2}{
+		\Coimplies{\Distance(x,y) = 0}{x = y}}$;
+		\item $\ForAll{(x,y) \in \MetricSpace^2}{
+		\Distance(x,y) = \Distance(y,x)}$ (simmetria);
+		\item $\ForAll{(x,y,z) \in \MetricSpace^3}{
+		\Distance(x,y) \leq \Distance(x,z) + \Distance(z,y)}$
+		(disuguaglianza triangolare).
+	\end{itemize}
+	$\Distance$ si chiama \Define{distanza} o \Define{metrica} su
+	$\MetricSpace$ e la coppia $(\MetricSpace,\Distance)$ si chiama
+	\Define{spazio metrico}[metrico][spazio].
+\end{Definition}
+\begin{Definition}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico. Dati $c \in
+	\MetricSpace$ e $r \in \mathbb{R}^+$ si definiscono
+	\begin{itemize}
+		\item \Define{palla aperta}[aperta][palla] centrata di $x$ di raggio $r$
+	la classe $\OpenBall{c}{r} = \lbrace x \in \MetricSpace |
+	\Distance(x,c) < r \rbrace$;
+		\item \Define{palla chiusa}[chiusa][palla] centrata di $x$ di raggio $r$
+	la classe $\ClosedBall{c}{r} = \lbrace x \in \MetricSpace |
+	\Distance(x,c) \leq r \rbrace$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	Le palle aperte di $\MetricSpace$ costituiscono una base per una
+	topologia su $\MetricSpace$
+\end{Theorem}
+\Proof Sia $c \in \MetricSpace$. Abbiamo $\MetricSpace =
+\bigcup_{r \in \mathbb{R}^+} \OpenBall{c}{r}$.
+\par Siano $c_1, c_2 \in \MetricSpace$, $r_1, r_2 \in \mathbb{R}^+$ e sia
+$c \in \OpenBall{c_1}{r_1} \cap \OpenBall{c_2}{r_2}$. Scegliamo
+$r < \min{r_1 - \Distance(c,c_1),r_2 - \Distance(c,c_2)}$.
+Se $x \in \OpenBall{c}{r}$, allora
+\begin{itemize}
+	\item $\Distance(x,c_1) \leq \Distance(x,c) + \Distance(c,c_1)
+	\leq r + \Distance(c,c_1)
+	< r_1 - \Distance(c,c_1) + \Distance(c,c_1)
+	< r_1$;
+	\item $\Distance(x,c_2) \leq \Distance(x,c) + \Distance(c,c_2)
+	\leq r + \Distance(c,c_2)
+	< r_2 - \Distance(c,c_2) + \Distance(c,c_2)
+	< r_2$.
+\end{itemize}
+Quindi, $\OpenBall{c}{r} \subseteq
+\OpenBall{c_1}{r_1} \cap \OpenBall{c_2}{r_2}$ e per il teorema
+\ref{th_BaseDiUnaTopologia}, le palle aperte costituiscono una base per
+una topologia su $\MetricSpace$. \EndProof
+\begin{Definition}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	La topologia di $\MetricSpace$ per cui le palle aperte
+	costituiscono una base si chiama
+	\Define{topologia indotta}[indotta da metrica][topolgia] da
+	$\Distance$. Se la distanza $\Distance$ \`e la distanza euclidea,
+	allora la topolgia indotta si chiama anche
+	\Define{topologia euclidea}[euclidea][topologia].
+\end{Definition}
+\par Salvo avvisi contrari, quando considereremo una topologia definita su uno spazio metrico si tratter\`a sempre delle topologia indotta dalla metrica del medesimo spazio. 
+\begin{Definition}
+  Due norme su uno stesso spazio vettoriale si dicono
+  \Define{equivalenti}[equivalenti][norme]
+  quando le distanze da esse indotte inducono la stessa topologia.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	Sia $x \in \MetricSpace$. La famiglia di palle aperte $(\OpenBall{x}{r})_{r > 0}$ costituisce una base locale per $x$.
+\end{Theorem}
+\Proof Segue immediatamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	$\MetricSpace$ \`e uno spazio di Hausdorff.
+\end{Theorem}
+\Proof Per ogni coppia di punti di $(x,y) \in \MetricSpace^2$, \`e sufficiente considerare gli aperti $\OpenBall{x}{r}$ e $\OpenBall{y}{r}$, con $r < \Distance{x}{y}$. \EndProof
+\begin{Definition}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico e sia $(a_i)_{i \in \mathbb{N}} \in \MetricSpace^\mathbb{N}$. $(a_i)_{i \in \mathbb{N}}$ si chiama \Define{successione di Cauchy}[di Cauchy][successione] o \Define{successione fondamentale}[fondamentale][successione] quando $\ForAll{\epsilon > 0}{\Exists{N \in \mathbb{N}}{\Implies{\And{n > N}{m > N}}{\Distance(a_n,a_m) < \epsilon}}}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	Sia $(a_i)_{i \in \mathbb{N}} \in \MetricSpace^\mathbb{N}$ una successione \`e convergente: $(a_i)_{i \in \mathbb{N}}$ \`e di Cauchy.
+\end{Theorem}
+\Proof Fissiamo $\epsilon > 0$ e poniamo $L = \lim_{i \rightarrow \infty} a_i$. Sia $N \in \mathbb{N}$ tale che $\Implies{i > N}{a_i \in \OpenBall{L}{\frac{\epsilon}{2}}}$.
+\par Siano $n, m > N$. Abbiamo $\Distance{a_n}{a_m} \leq \Distance{a_n}{L} + \Distance{a_m}{L} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon$. \EndProof
+\begin{Definition}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	Se ogni successione di Cauchy in $\MetricSpace$ \`e convergente, allora $\MetricSpace$ si dice \Define{completo}[metrico completo][spazio].
+\end{Definition}
+\begin{Theorem}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	Sia $(a_i)_{i \in \mathbb{N}} \in \MetricSpace^\mathbb{N}$ \`e una successione convergente a $L \in \MetricSpace$ se e solo se $\ForAll{\epsilon > 0}{\Exists{N \in \mathbb{N}}{\Implies{i > N}{\Distance{a_i}{L} < \epsilon}}}$.
+\end{Theorem}
+\Proof Se $(a_i)_{i \in \mathbb{N}}$ converge a $L$, allora per definizione di convergenza $\ForAll{\epsilon > 0}{\Exists{N \in \mathbb{N}}{\Implies{i > N}{a_i \in \OpenBall{L}{\epsilon}}}}$ e $a_i \in \OpenBall{L}{\epsilon}$ equivale a $\Distance{a_i}{L} < \epsilon$.
+\par Viceversa, assumiamo $\ForAll{\epsilon > 0}{\Exists{N \in \mathbb{N}}{\Implies{i > N}{\Distance{a_i}{L} < \epsilon}}}$. Sia $\Neighborhood \in \Neighborhoods{L}$: poich\'e $(\OpenBall{L}{r})_{r \in \mathbb{R}^+}$ costituisce una famiglia fondamentale di intorni di per $L$, esiste $\epsilon > 0$ tale che abbiamo $\OpenBall{L}{\epsilon} \subseteq \Neighborhood$: scegliendo $N \in \mathbb{N}$ tale che $\Implies{i > N}{\Distance{a_i}{L} < \epsilon}$, abbiamo, per ogni $i > n$, $a_i \in \OpenBall{a_i}{\epsilon} \subseteq \Neighborhood$. \EndProof
+\begin{Definition}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	Una parte $\Part \subseteq \MetricSpace$ si dice \Define{limitata}[limitata][parte] se \`e contenuta in una palla chiusa di $\MetricSpace$.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico.
+	Sia $(a_i)_{i \in \mathbb{N}} \in \MetricSpace^\mathbb{N}$ una successione convergente. $(a_i)_{i \in \mathbb{N}}$ \`e limitata.
+\end{Theorem}
+\Proof Fissiamo $\epsilon > 0$. Poniamo $L = \lim_{i \rightarrow \infty} a_i$.
+\par Siano $N \in \mathbb{N}$ tale che $\Implies{i > N}{\Distance{a_i}{L} < \epsilon}$ e $m = \max_{i \leq N} \Distance{a_i}{L}$. Poniamo $M = \max \lbrace \epsilon, m \rbrace$: la successione $(a_i)_{i \in \mathbb{N}}$ \`e interamente contenuta in $\ClosedBall{L}{M}$. \EndProof
+\begin{Definition}
+	Siano $(\MetricSpace,\Distance)$ e
+  $(\VarMetricSpace,\Distance')$ due spazi metrici e
+  $f: \MetricSpace \rightarrow \VarMetricSpace$.
+  Se \`e verifcata la proposizione
+  \[
+    \ForAll{\epsilon > 0}
+    {\Exists{\delta > 0}
+    {\ForAll{(x_1,x_2) \in \MetricSpace^2}
+    {\Implies{\Distance(x_1,x_2) < \delta}
+    {\Distance'(f(x_1),f(x_2)) < \epsilon}}}},
+  \]
+  allora diciamo che $f$ \`e
+  \Define{uniformemente continua}[uniformemente continua][applicazione].
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni del teorema precedente, se $f$ \`e uniformemente continua, allora $f$ \`e anche continua.
+\end{Theorem}
+\Proof Siano $x_0 \in \MetricSpace$ e $\epsilon > 0$. Per l'uniforme continuit\`a abbiamo $\Exists{\delta > 0}{\ForAll{x \in \Dom{f}}{\Implies{\Distance(x,x_0) < \delta}{\Distance(f(x),f(x_0)) < \epsilon}}}$ che equivale alla continuit\`a di $f$ in $x_0$. \EndProof
+\begin{Definition}
+	Siano $(\MetricSpace,\Distance)$ e $(\VarMetricSpace,\Distance)$ due spazi metrici e $f: \MetricSpace \rightarrow \VarMetricSpace$. Se esiste $L > 0$ tale che $\ForAll{(x,y) \in \MetricSpace}{\Distance(f(x),f(y)) \leq L \Distance(x,y)}$, allo si dice che $f$ verifica la \Define{condizione di Lipschitz}[di Lipschitz][condizione], che \`e \Define{lipschitziana}[lipschitziana][funzione] o ancora che \`e \Define{$L$-Lipschitz continua}[$L$-lipschitz continua][funzione].
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni del teorema precedente, se $f$ \`e lipschitziana, allora \`e anche uniformemente continua.
+\end{Theorem}
+\Proof Sia $\epsilon > 0$. Per ogni $(x,y) \in \MetricSpace^2$ tale che $\Distance(x,y) < L^{-1} \epsilon$ abbiamo $\Distance(f(x),f(y)) \leq L \Distance(x,y) < \epsilon$. \EndProof
+\begin{Theorem}
+  Sia $\NormedSpace$ un $\Field$-spazio vettoriale normato: la sua norma
+  $\Norm{\cdot}$ \`e un'applicazione uniformente continua.
+\end{Theorem}
+\Proof Fissiamo $\epsilon > 0$ e poniamo $\delta = \epsilon$.
+\par Siano $x, y \in \NormedSpace$ tali che
+$\Norm{x - y} < \epsilon$.
+Abbiamo, per la disugualianza triangolare,
+$\Norm{x} - \Norm{y} \leq \Norm{x - y} < \epsilon$. \EndProof

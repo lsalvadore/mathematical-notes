@@ -1,0 +1,119 @@
+\section{Definizioni e nozioni di base.}\label{DefinizioniENozioniDiBase}
+\begin{Definition}
+	Dato un anello $\Ring$, chiamiamo \Define{modulo sinistro}[modulo] su $\Ring$
+  o, pi\`u brevemente, $\Ring$-modulo sinistro il dato di
+	\begin{itemize}
+		\item un gruppo additivo $\Module$;
+		\item un'azione sinistra di $\Ring$ su $\Module$.
+	\end{itemize}
+	Gli elementi di $\Ring$ si chiamano
+  \Define{scalari}[scalare] e dunque l'anello $\Ring$ si chiama
+  \Define{anello degli scalari}[degli scalari][anello].
+  Se inoltre $\Ring$ \`e un campo, allora diciamo che $\Module$ \`e uno spazio
+  vettoriale o un $\Ring$-spazio vettoriale.
+  Gli elementi di uno spazio vettoriale si chiamano \Define{vettori}[vettore].
+  Inoltre,
+  \begin{itemize}
+    \item se $\Ring = \mathbb{R}$, allora il modulo si dice
+          \Define{reale}[reale][modulo];
+    \item se $\Ring = \mathbb{C}$, allora il modulo si dice
+          \Define{complesso}[complesso][modulo].
+  \end{itemize}
+\end{Definition}
+\par Identificheremo sempre un modulo col gruppo soggiacente. Nel seguito,
+salvo eccezioni esplicite, tutti i moduli saranno moduli sinistri.
+\begin{Definition}
+	Dati due moduli $\Module_1$ e $\Module_2$ su uno stesso anello $\Ring$ chiamiamo \Define{applicazione lineare}[lineare][applicazione] un omomorfismo dei gruppi additivi $\Module_1$ e $\Module_2$ compatibile con le rispettive azioni.
+\end{Definition}
+\begin{Theorem}
+	Fissato un anello $\Ring$ le applicazioni lineari tra $\Ring$-moduli sinistri costituiscono una categoria.
+\end{Theorem}
+\Proof Basta provare che la composizione di applicazioni lineari tra $\Ring$-moduli sinistri \`e un'applicazione lineare. Siano dunque $\Linear_1$ e $\Linear_2$ due applicazioni lineari componibili. La loro composizione $\Linear_2 \circ \Linear_1$ \`e un omomorfismo di gruppi perch\'e gli omomorfismi di gruppi costituiscono una categoria ed \`e compatibile con le azioni di $\Dom{\Linear_1}$ e $\Cod{\Linear_2}$ perch\'e per ogni $\Scalar \in \Ring$ abbiamo $(\Linear_2 \circ \Linear_1)(\Scalar\ModuleElement) = \Linear_2(\Scalar\Linear_1(\ModuleElement)) = \Scalar((\Linear_2 \circ \Linear_1)(\ModuleElement))$. \EndProof
+\begin{Definition}
+	Dato un anello $\Ring$ chiamiamo \Define{categoria dei $\Ring$-moduli sinistri}[dei $\Ring$-moduli sinistri][categoria] la categoria $\CatLeftModule{\Ring}$ di tutte le applicazioni lineare tra $\Ring$-moduli sinistri. Se $\Ring$ \`e un campo chiamiamo ancora la stessa categoria \Define{categoria dei $\Ring$-spazi vettoriali}[dei $\Ring$-spazi vettoriali][categoria] e la denotiamo $\CatVectorialSpace{\Ring}$.
+\end{Definition}
+\begin{Definition}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di $\Ring$-moduli e
+	$\Module$ un ulteriore $\Ring$-modulo. Un'applicazione
+	$\Multilinear: \bigtimes_{i \in n} \Module_i \rightarrow \Module$ si
+	dice \Define{multilineare}[multilineare][applicazione] quando \`e
+	lineare ogni sua $i$-esima ($i \in I$) applicazione parziale.
+	Inoltre,
+	\begin{itemize}
+		\item se $\Module = \Ring$ allora $\Multilinear$ si chiama
+		\Define{forma multilineare}[multilineare][forma];
+		\item se $n = 2, 3, ...$, allora l'applicazione si dice
+		rispettivamente \NIDefine{bilineare},
+		\NIDefine{trilineare} ecc. o anche $n$-lineare;
+		\item le forme lineari si chiamano anche
+		\Define{funzionali}[funzionale] o, nel caso in cui $\Ring$ sia un campo e dunque $\Module_0$ uno spazio vettoriale, \Define{covettori}[covettore].
+	\end{itemize}
+	Denotiamo
+	\begin{itemize}
+		\item $\Multilinears{(\Module_i)_{i \in n}}{\Module}$ la classe di tutte le applicazioni multilineari di dominio $\bigtimes_{i \in n} \Module_i$ e codominio $\Module$;
+		\item $\Homomorphisms{\Module_0}{\Module} = \Multilinears{\Module_0}{\Module}$;
+		\item $\MultilinearForms{(\Module_i)_{i \in n}} = \Multilinears{(\Module_i)_{i \in n}}{\Ring}$;
+		\item $\Dual{\Module} = \MultilinearForms{\Module}$; $\Dual{\Module}$ si chiama \Define{modulo duale}[duale][modulo] di $\Module$ e $\Dual{\Dual{\Module}}$ \Define{modulo biduale}[biduale][modulo].
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) e $\Module$ $\Ring$-moduli. Siano poi $(\Multilinear_0,\Multilinear_1,\Scalar) \in \Module^{\prod_{i \in n} \Module_i} \times \Module^{\prod_{i \in n} \Module_i} \times \Ring$. Definiamo
+	\begin{itemize}
+		\item la \Define{somma}[di applicazioni multilineari][somma] $\Multilinear_0 + \Multilinear_1$ come l'applicazione di $\Module^{\prod_{i \in n} \Module_i}$ che a $\ModuleElement \in \prod_{i \in n} \Module_i$ associa $\Multilinear_0(\ModuleElement) + \Multilinear_1(\ModuleElement) \in \Module$;
+		\item il \Define{prodotto per scalare}[per scalare di applicazioni multilineari][prodotto] $\Scalar \Multilinear_0$ come l'applicazione di $\Module^{\prod_{i \in n} \Module_i}$ che a $\ModuleElement \in \prod_{i \in n} \Module_i$ associa $\Scalar \Multilinear_0(\ModuleElement) \in \Module$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Siano $(\Module_i)_{i \in n}$ e $\Module$ $\Ring$-Moduli. $\Multilinears{(\Module_i)_{i \in n}}{\Module}$ con le operazioni di somma e prodotto per scalare della definizione precedenti \`e un $\Ring$-modulo.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $\Module$ un $\Ring$-modulo e sia $\VarModule \subseteq \Module$ non vuoto. $\VarModule$ \`e un sottomodulo di $\Module$ se e solo se
+	\begin{itemize}
+		\item $\ForAll{(\ModuleElement,\VarModuleElement) \in \Module^2}{\ModuleElement - \VarModuleElement \in \Module}$;
+		\item $\ForAll{(\Scalar,\ModuleElement) \in \Ring \times \Module}{\Scalar\ModuleElement \in \Module}$.
+	\end{itemize}
+\end{Theorem}
+\Proof La validit\`a delle due propriet\`a nel caso $\VarModule$ sia un modulo segue direttamente dalla definizione di modulo.
+\par Viceversa, se $\VarModule$ verifica le due propriet\`a, allora per la prima \`e un gruppo abeliano e per la seconda la restrizione dell'azione di $\Ring$ su $\Module$ a $\VarModule$ \`e un'azione su $\VarModule$. \EndProof
+\begin{Theorem}
+	Sia $\Linear: \Module \rightarrow \Module'$ un'applicazione
+	lineare tra i $\Ring$-moduli $\Module$ e $\Module'$. Sono
+	$\Ring$-moduli $\Kernel{\Linear}$ e $\Image{\Linear}$.
+\end{Theorem}
+\Proof Poich\'e un'applicazione lineare \`e un omomorfismo di gruppi
+abeliani, $\Kernel{\Linear}$ e $\Image{\Linear}$ sono gruppi abeliani.
+\par Inoltre, dato $\Scalar \in \Ring$, abbiamo
+\begin{itemize}
+	\item per $\ModuleElement \in \Kernel{\Linear}$,
+	$\Linear(\Scalar\ModuleElement) =
+	\Scalar\Linear(\ModuleElement) = 0$, quindi
+	$\Scalar\ModuleElement \in \Kernel{\Linear}$;
+	\item per $\ModuleElement' \in \Image{\Linear}$,
+	dato $\ModuleElement \in \Module$ tale che
+	$\Linear(\ModuleElement) = \ModuleElement'$,
+	$\Scalar\ModuleElement' =
+	\Scalar\Linear(\ModuleElement) =
+	\Linear(\Scalar\ModuleElement) \in \Image{\Linear}$. \EndProof
+\end{itemize}
+\begin{Definition}
+	Siano $\Module$ e $\VarModule$ $\Ring$-moduli. Chiamiamo \Define{equazione lineare}[lineare][equazione] un'equazione della forma $\Linear(x) = \VarModuleElement$ dove
+	\begin{itemize}
+		\item $\Linear: \Module \rightarrow \VarModule$ \`e un'applicazione lineare;
+		\item $x \in \Module$ \`e l'incognita;
+		\item $\VarModuleElement \in \VarModule$.
+	\end{itemize}
+	L'equazione si dice \Define{omogenea}[lineare omogenea][equazione] quando $\VarModuleElement = 0$. Inoltre, data l'equazione lineare $\Linear(x) = \VarModuleElement$, chiamiamo \Define{equazione omogenea associata}[omogenea associata][equazione] l'equazione $\Linear(x) = 0$.
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\Module$ e $\VarModule$ $\Ring$-moduli;
+		\item $\Linear: \Module \rightarrow \VarModule$ $\Ring$-moduli;
+		\item $\VarModuleElement \in \VarModule$;
+		\item $\ParticularSolution \in \Module$ una soluzione di $\Linear(x) = \VarModuleElement$, che chiameremo \Define{soluzione particolare}[particolare di un'equazione lineare][soluzione].
+	\end{itemize}
+	$\EqSolution \in \Module$ \`e soluzione di $\Linear(x) = \VarModuleElement$ se e solo se \`e della forma $\EqSolution = \ParticularSolution + \HomogeneousSolution$ per qualche soluzione $\HomogeneousSolution$ dell'equazioine omogenea associata.
+\end{Theorem}
+\Proof Se $\EqSolution = \ParticularSolution + \HomogeneousSolution$ per qualche soluzioen $\HomogeneousSolution$ dell'equazione omogenea associata, alloa $\Linear(\EqSolution) = \Linear(\ParticularSolution) + \Linear(\HomogeneousSolution) = \Linear(\ParticularSolution) + \Linear(\HomogeneousSolution) = \VarModuleElement$.
+\par Se invece $\EqSolution$ \`e soluzione di $\Linear(x) = \VarModuleElement$, allora $\Linear(\EqSolution - \ParticularSolution) = \Linear(\EqSolution) - \Linear(\ParticularSolution) = \VarModuleElement - \VarModuleElement = 0$. \EndProof

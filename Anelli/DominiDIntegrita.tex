@@ -1,0 +1,20 @@
+\subsection{Domini d'integrit\`a.}\label{DominiDIntegrita}
+\begin{Definition}
+	Un \Define{dominio d'integrit\`a}[d'integrit\`a][dominio] \`e un anello commutativo con identit\`a in cui $0$ \`e l'unico divisore di $0$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\IntegralDomain$ un dominio d'integrit\`a. Valgono le leggi di cancellazioni: se $a, b, c \in \IntegralDomain$, allora
+	\begin{itemize}
+		\item $ab = ac$ implica $b = c$;
+		\item $ba = ca$ implica $b = c$.
+	\end{itemize}
+\end{Theorem}
+\Proof Dimostriamo solo la prima legge: la seconda segue subito per commutativit\`a. Da $ab = ac$ segue $ab - ac = 0$, dunque $a(b - c) = 0$ e infine $b - c = 0$. \EndProof
+\begin{Theorem}
+	In un dominio d'integrit\`a $\IntegralDomain$ ogni elemento primo \`e irriducibile.
+\end{Theorem}
+\Proof Sia $p \in \IntegralDomain$ un elemento primo. Supponiamo $p = ab$, per opportuni $a, b \in \IntegralDomain$. $p$ \`e primo, quindi divide $a$ o divide $b$: per fissare le idee, diciamo che $p$ divide $a$. Allora, per opportuno $k \in \IntegralDomain$, $a = kp$, da cui $p = kpb$; ne deduciamo $p(1 - kb) = 0$: poich\'e $p \neq 0$, $b$ \`e invertibile e questo conclude la dimostrazione. \EndProof
+\begin{Theorem}\label{DomIntIrridMax}
+	Sia $\IntegralDomain$ un dominio d'integrit\`a. Un elemento $p \in \IntegralDomain$ \`e irriducibile se e solo se $\SpanIdeal{p}$ \`e massimale nell'insieme parzialmente ordinato per inclusione di tutti gli ideali principali di $\IntegralDomain$.
+\end{Theorem}
+\Proof Supponiamo $p$ irriducibile. Sia $a \in \PID$ tale che $\SpanIdeal{p} \subseteq \SpanIdeal{a} \subseteq \SpanIdeal{1}$. Abbiamo $p = ka$ per $k \in \PID$ opportuno, ma poich\'e $p$ \`e irriducibili, almeno uno tra $k$ ed $a$ deve essere un'unit\`a. Se $a$ \`e un'unit\`a allora $\SpanIdeal{a} = \SpanIdeal{1}$, se invece $k$ \`e un'unit\`a allora $a = k^{-1}p$, da cui $\SpanIdeal{p} = \SpanIdeal{a}$. \EndProof

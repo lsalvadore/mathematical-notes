@@ -1,0 +1,37 @@
+\section{Definizioni e teoremi di base.}
+\label{DefinizioniETeoremiDiBase}
+\begin{Definition}
+  Sia $\Class$ una classe. Definiamo
+  \Define{nozione di convergenza}[di convergenza][nozione]
+  una parte
+  $\NotionOfConvergence \subseteq \Class^\mathbb{N} \times \Class$.
+  Dato
+  $((x_n)_{n \in \mathbb{N}},x) \in \NotionOfConvergence$,
+  diciamo che
+  $(x_n)_{n \in \mathbb{N}}$
+  \Define{converge}[convergente][successione]
+  a $x$.
+\end{Definition}
+\begin{Theorem}
+  La definizione di convergenza in uno spazio topologico
+  $(\TopologicalSpace,\Topology)$
+  definisce una nozione di convergenza
+  $\NotionOfConvergence$ i cui elementi sono tutte e sole le coppie
+  $((x_n)_{n \in \mathbb{N}},x) \in \Class^\mathbb{N} \times \Class$,
+  tali che
+  $(x_n)_{n \in \mathbb{N}}$
+  converge a $x$.
+\end{Theorem}
+\Proof Immediata. \EndProof
+\begin{Definition}
+  Una classe $\Class$ in cui \`e definita una nozione di convergenza
+  $\NotionOfConvergence$ si dice
+  \Define{compatta per successioni}[per successioni][compattezza]
+  rispetto a $\NotionOfConvergence$
+  se ogni successione
+  $(x_n)_{n \in \mathbb{N}} \in \Class^\mathbb{N}$
+  ammette una sottosuccessione
+  $(x_f(n))_{n \in \mathbb{N}} \in \Class^\mathbb{N}$,
+  con $f: \mathbb{N} \rightarrow \mathbb{N}$ applicazione crescente,
+  convergente a un punto $x \in \Class$.
+\end{Definition}

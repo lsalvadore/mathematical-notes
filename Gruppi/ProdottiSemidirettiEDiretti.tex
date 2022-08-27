@@ -1,0 +1,137 @@
+\section{Prodotti semidiretti e diretti.}\label{ProdottiSemidirettiEDiretti}
+\begin{Theorem}
+	Siano $\Group_1$ e $\Group_2$ gruppi.
+	Sia $\Homomorphism: \Group_2 \rightarrow \Automorphisms{\Group_1}$
+	un omomorfismo.
+	Il magma definito dalla classe $\Group_1 \times \Group_2$
+	e dall'operazione $(x_1,y_1)(x_2,y_2) =
+	(x_1\Homomorphism(y_1)(x_2),y_1y_2)$ \`e un gruppo.
+\end{Theorem}
+\Proof
+Siano $x_1, x_2, x_3 \in \Group_1$ e
+$y_1, y_2, y_3 \in \Group_2$.
+Abbiamo
+\begin{itemize}
+	\item
+	$((x_1,y_1)(x_2,y_2))(x_3,y_3) =
+	(x_1\Homomorphism(y_1)(x_2),y_1y_2)(x_3,y_3) =
+	(x_1\Homomorphism(y_1)(x_2)\Homomorphism(y_1y_2)(x_3),y_1y_2y_3) =
+	(x_1\Homomorphism(y_1)(x_2)\Homomorphism(y_1)(\Homomorphism(y_2)(x_3)),y_1y_2y_3) =
+	(x_1\Homomorphism(y_1)(x_2\Homomorphism(y_2)(x_3)),y_1y_2y_3) =
+	(x_1,y_1)(x_2\Homomorphism(y_2)(x_3),y_2y_3) =
+	(x_1,y_1)((x_2,y_2)(x_3,y_3))$;
+	\item
+	$(x_1,y_1)(1,1) =
+	(x_1\Homomorphism(y_1)(1),y_1) =
+	(x_1,y_1)$;
+	\item
+	$(1,1)(x_1,y_1) =
+	(\Homomorphism(1)(x_1),y_1) =
+	(x_1,y_1)$;
+	\item
+	$(x_1,y_1)((\Homomorphism{y_1})^{-1}(x_1^{-1}),y_1^{-1}) =
+	(x_1\Homomorphism(y_1)((\Homomorphism(y_1))^{-1}(x_1^{-1}),y_1y_1^{-1}) =
+	(1,1)$.
+\end{itemize}
+\EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, chiamiamo il magma che abbiamo
+	dimostrato essere un gruppo
+	\Define{prodotto semidiretto}[semidiretto][prodotto]
+	di $\Group_1$ e $\Group_2$ secondo $\Homomorphism$
+	e lo denotiamo $\Group_1 \SemidirectProduct[\Homomorphism] \Group_2$, omettendo
+	$\Homomorphism$ quando esso \`e chiaro dal contesto.
+	Chiamiamo il prodotto $\Group_1 \times \Group_2$
+	\Define{prodotto diretto}[diretto][prodotto]
+	di $\Group_1$ e $\Group_2$ per distinguerlo pi\`u chiaramente
+	dal prodotto semidiretto.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Group_1$ e $\Group_2$ gruppi e sia
+	$\Homomorphism: \Group_2 \rightarrow \Automorphisms{\Group_1}$
+	un omomorfismo.
+	$\Group_1 \SemidirectProduct_{\Homomorphism} \Group_2 =
+	\Group_1 \times \Group_2$ se e solo se
+	$\Homomorphism$ \`e l'omomorfismo
+	che a ogni $y \in \Group_2$ associa $\Identity[\Group_1] \in \Automorphisms{\Group_1}$.
+\end{Theorem}
+\Proof
+Siano $x_1, x_2 \in \Group_1$ e $y_1, y_2 \in \Group_2$.
+Abbiamo
+$(x_1\Homomorphism(y_1)(x_2),y_1y_2)$
+se e solo se
+$x_1\Homomorphism(y_1)x_2 = x_1x_2$,
+che equivale a
+$\Homomorphism(y_1)x_2 = x_2$.
+Quindi
+$\Isomorphic{\Group_1 \SemidirectProduct{\Homomorphism} \Group_2}
+{\Group_1 \times \Group_2}$ equivale a
+$\ForAll{y \in \Group_2}
+{\Homomorphism{y} = \Identity[\Group_1]}$.
+\EndProof
+\begin{Theorem}
+	Sia $\Group$ un gruppo e siano
+	$\NormalSubgroup$ e $\Subgroup$ gruppi tali che
+	\begin{itemize}
+		\item
+		$\NormalSubgroup \IsNormalSubgroup \Group$;
+		\item
+		$\Subgroup \IsSubgroup \Group$;
+		\item
+		$\Group = \NormalSubgroup\Subgroup$;
+		\item
+		$\NormalSubgroup \cap \Subgroup = \lbrace 1 \rbrace$.
+	\end{itemize}
+	Sia inoltre $\InnerAutomorphism: \Subgroup \rightarrow \Automorphisms{\NormalSubgroup}$ l'azione per
+	coniugio di $\Subgroup$ su $\NormalSubgroup$.
+	L'applicazione
+	$\Isomorphism: \NormalSubgroup \SemidirectProduct_{\InnerAutomorphism} \Subgroup \rightarrow
+	\Group$
+	che a $(x,y) \in \NormalSubgroup \SemidirectProduct_{\InnerAutomorphism} \Subgroup$ associa
+	$(x,y) \in \Group$ \`e un isomorfismo.
+\end{Theorem}
+\Proof
+Siano $x_1,x_2 \in \NormalSubgroup$ e $y_1,y_2 \in \Subgroup$.
+Abbiamo $\Isomorphism((x_1,y_1)(x_2,y_2)) =
+\Isomorphism((x_1y_1x_2y_1^{-1},y_1y_2)) =
+x_1y_1x_2y_1^{-1}y_1y_2 =
+x_1y_1x_2y_2 =
+\Isomorphism((x_1,y_1))\Isomorphism((x_2,y_2))$.
+Quindi $\Isomorphism$ \`e un omomorfismo.
+\par
+Poich\'e $\Group = \NormalSubgroup\Subgroup$,
+$\Isomorphism$ \`e suriettivo.
+\par
+Sia $(x,y) \in \Kernel{\Isomorphism}$. Allora
+$xy = 1$, da cui $y = x^{-1}$, ma poich\'e
+$\NormalSubgroup \cap \Subgroup = \lbrace 1 \rbrace$,
+non pu\`o che essere $x = y = 1$. Quindi $\Isomorphism$
+\`e anche iniettivo e pertanto un isomorfismo. \EndProof
+\begin{Corollary}
+	Con le ipotesi del teorema precedente,
+	$\Subgroup \IsNormalSubgroup \Group$
+	equivale a $\Isomorphic{\Group}
+	{\NormalSubgroup \times \Subgroup}$.
+\end{Corollary}
+\Proof
+$\Group$ \`e isomorfo a $\NormalSubgroup \times \Subgroup$
+se e solo se, per ogni $x \in \NormalSubgroup$ e ogni
+$y \in \Subgroup$ abbiamo $yxy^{-1} = x$, che equivale a
+$yxy^{-1}x = 1$.
+\par
+Se $\Subgroup \IsNormalSubgroup \Group$, allora
+$yxy^{-1}x^{-1} \in \NormalSubgroup \cap \Subgroup$, quindi
+certamente $yxy^{-1}x^{-1} = 1$.
+\par
+Assumiamo ora invece 
+$\ForAll{x \in \NormalSubgroup}
+{\ForAll{y \in \Subgroup}
+{yxy^{-1}x^{-1} = 1}}$.
+Sia $g \in \Group$. Per opportuni $a \in \NormalSubgroup$ e
+$b \in Subgroup$ abbiamo $g = ab$.
+Sia $y \in \Subgroup$.
+Abbiamo $gyg^{-1} =
+abyb^{-1}a^{-1} =
+byb^{-1} \in \Subgroup$.
+Dunque $\Subgroup \IsNormalSubgroup \Group$.
+\EndProof

@@ -1,0 +1,29 @@
+\ProvidesPackage{math-text}
+
+\newcommand{\NIDefine}[1]{\emph{#1}}
+\DeclareDocumentCommand \Define {m o o}
+	{
+		\IfNoValueTF{#3}
+		{
+			\IfNoValueTF{#2}
+			{\NIDefine{#1}\index{#1}}
+			{\NIDefine{#1}\index{#2}}
+		}
+		{\NIDefine{#1}\index{#3!#2}}
+	}
+
+\newcommand{\NITheoremName}[1]{\emph{(#1)}}
+\DeclareDocumentCommand \TheoremName {m o o}
+	{
+		\IfNoValueTF{#3}
+		{
+			\IfNoValueTF{#2}
+			{\NITheoremName{#1}\index{#1}}
+			{\NITheoremName{#1}\index{#2}}
+		}
+		{\NITheoremName{#1}\index{#3!#2}}
+	}
+
+\newcommand{\Citeq}[1]{(\ref{#1})}
+\newcommand{\EndProof}{$\square$}
+\newcommand{\EndSolution}{\EndProof}

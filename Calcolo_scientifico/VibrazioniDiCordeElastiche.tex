@@ -1,0 +1,76 @@
+\subsubsection{Vibrazioni di corde elastiche.}
+\label{CalcoloScientifico_VibrazioniDiCordeElastiche}
+\par Consideriamo una successione finita di
+$N \in \NotZero{\mathbb{N}}$ punti materiali
+$(\PointMass_k)_{k \in N}$ di massa $(\Mass_k)_{k \in N}$
+e coordinate $(X_k)_{k \in N}$ (nel piano e nello spazio indifferentemente)
+tali che
+\begin{itemize}
+  \item i punti $\PointMass_0$ e $\PointMass_{N - 1}$ siano vincolati
+    nella loro posizione al tempo iniziale $t = 0$;
+  \item per ogni $k \in N - 1$, $\PointMass_k$ e $\PointMass_{k + 1}$
+    sono collegati da una corda elastica di costante elastica
+    $\ElasticConstant_k$;
+  \item per ogni $k \in \NotZero{(N - 1)}$, $\PointMass_k$ \`e soggetto
+    ad una forza d'attrito dinamico con coefficiente $\Friction_k$.
+\end{itemize}
+\par Sia $k \in \NotZero{(N - 1)}$. Per la seconda legge di Newton, abbiamo
+\[
+  \Mass_k X_k = - \ElasticConstant X_k - \Friction_k \dot{X_k}.
+\]
+Inoltre, abbiamo le condizioni al bordo
+\[
+  \begin{cases}
+    \ForAll{t \in \RealNonNegative}{X_0(t) = X_0(0)},\\
+    \ForAll{t \in \RealNonNegative}{X_{N - 1}(t) = X_{N - 1}(0)},\\
+    \dot{X_0} = \dot{X_{N - 1}} = 0.
+  \end{cases}
+\]
+\par Poniamo ora
+\begin{itemize}
+  \item $M \in \mathbb{R}^{N \times N}$ uguale alla matrice diagonale i cui
+    elementi sono la successione delle masse:
+    \[
+      M =
+      \lmatrix
+      \begin{array}{ccc}
+        \Mass_0 & &\\
+        & \ddots &\\
+        & & \Mass_{N - 1}
+      \end{array}
+      \rmatrix.
+    \]
+  \item $R \in \mathbb{R}^{N \times N}$ uguale alla matrice diagonale i cui
+    elementi sono la successione dei coefficienti di attrito:
+    \[
+      R =
+      \lmatrix
+      \begin{array}{ccc}
+        \Friction_0 & &\\
+        & \ddots &\\
+        & & \Friction_{N - 1}
+      \end{array}
+      \rmatrix.
+    \]
+  \item $K \in \mathbb{R}^{N \times N}$ uguale alla matrice tridiagonale i
+    cui elementi sono
+    $K_k^j =
+    \begin{cases}
+      - \ElasticConstant_k&\text{ se }k = j + 1,\\
+      \ElasticConstant_k + \ElasticConstant_{k + 1}&\text{ se }k = j,\\
+      - \ElasticConstant_{k + 1}&\text{ se }k = j - 1,
+    \end{cases}$
+    vale a dire
+    \[
+      K =
+      \lmatrix
+      \begin{array}{cccccc}
+        \ElasticConstant_0 + \ElasticConstant_1 & - \ElasticConstant_1 &&&&\\
+        - \ElasticConstant_0 & \ddots & \ddots &&&\\
+        & \ddots & \ddots & \ddots & &\\
+        && \ddots & \ddots & - \ElasticConstant\\
+        &&& - \ElasticConstant & \ElasticConstant + \ElasticConstant
+      \end{array}
+      \rmatrix.
+    \]
+\end{itemize}

@@ -1,0 +1,76 @@
+\section{Metodi iterativi.}
+\label{MetodiNumericiPerSistemiLineari_MetodiIterativi}
+\begin{Theorem}
+  \label{th_MetodiIterativiPerSistemiLineari}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $C \in \mathbb{C}^n$;
+    \item $A, B \in \mathbb{C}^{n \times n}$ tali che
+      \begin{itemize}
+        \item $A$ \`e invertibile;
+        \item $\Matrix = A - B$;
+      \end{itemize}
+    \item $X_0 \in \mathbb{C}$.
+  \end{itemize}
+  Poniamo
+  \begin{itemize}
+    \item $\IterationMatrix = A^{-1}B$;
+    \item $V = A^{-1} C$.
+  \end{itemize}
+  La successione $(X_k)_{k \in \mathbb{N}}$ definita, per $k > 0$, da
+  $X_k = \IterationMatrix X_{k - 1} + V$, quando convergente,
+  converge a $\tilde{X}$ soluzione di $\Matrix X = C$.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+  X_k
+  &= \IterationMatrix X_{k - 1} + V,\\
+  &= A^{-1}B X_{k - 1} + A^{-1} C,
+\end{align*}
+equivalente a
+\[
+  A X_k = B X_{k - 1} + C,
+\]
+e dunque a
+\[
+  A X_k - B X_{k - 1} = C.
+\]
+\par Al limite abbiamo
+\[
+  A \tilde{X} - B \tilde{X} = C,
+\]
+equivalente a
+\[
+  \Matrix \tilde{X} = C.\text{ \EndProof}
+\]
+\begin{Definition}
+  Con le notazioni del teorema precedente, definiamo
+  \Define{metodo iterativo stazionario}[iterativo stazionario per sistemi lineari][metodo]
+  un algoritmo di risoluzione del sistema $\Matrix X = C$ che consiste
+  nel calcolare ricorsivamente un numero finito di  elementi della
+  successione $(X_k)_{k \in \mathbb{N}}$ sino all'elemento di indice $N$ e
+  restituisce $X_N$ come approssimazione di una soluzione.
+  Inoltre, il metodo si dice
+  \Define{convergente}[di un metodo iterativo stazionario][convergenza]
+  a $\tilde{X}$
+  se \`e convergente a $\tilde{X}$ la successione
+  $(X_k)_{k \in \mathbb{N}}$.
+  Infine, chiamiamo
+  \Define{matrice di iterazione}[di iterazione][matrice]
+  la matrice $\IterationMatrix$.
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni del teorema \ref{th_MetodiIterativiPersistemiLineari},
+  fissata una norma di matrice $\Norm{\cdot}$ su
+  $\mathbb{C}^{n \times n}$, $\Norm{\IterationMatrix} < 1$ se e solo
+  se
+  \begin{itemize}
+    \item il sistema $\Matrix X = C$ ammette un'unica soluzione $\tilde{X}$;
+    \item il metodo iterativo converge a $\tilde{X}$.
+  \end{itemize}
+\end{Theorem}
+\input{Metodi_numerici_per_sistemi_lineari/MetodoDiRichardson.tex}
+\input{Metodi_numerici_per_sistemi_lineari/MetodoDiJacobi.tex}
+\input{Metodi_numerici_per_sistemi_lineari/MetodoDiGaussSeidel.tex}

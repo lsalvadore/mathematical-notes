@@ -1,0 +1,75 @@
+\section{Tensori.}\label{Tensori}
+\begin{Theorem}
+	Siano $(\LinearSpace_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Field$-spazi vettoriali e, per ogni $i \in n$, sia $(\LinearBase_{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$ una base di $\LinearSpace_i$.
+	Sia $\otimes: \bigtimes_{i \in n} \LinearSpace_i \rightarrow \MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}}$ l'applicazione che a $(\Vector_i)_{i \in n} \in \bigoplus_{i \in n} \LinearSpace_i$ associa $\bigotimes_{i \in n} \Vector_i \in \MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}}$ che a $(\Functional_i)_{i \in n} \in \bigoplus_{i \in n} \Dual{\LinearSpace_i}$ associa $\prod_{i \in n} \Functional_i(\Vector_i)$.
+ Gli elementi $\left (\bigotimes_{i \in n} \LinearBase_{i,j_i} \right )_{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}}$, fissato un ordinamento totale, costituiscono una base di $\MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}}$.
+\end{Theorem}
+\Proof Siano $(\Scalar_{(j_i)_{i \in n}})_{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}}$ scalari tali che
+$\sum_{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}} \Scalar_{(j_i)_{i \in n}} \bigotimes_{i \in n} \LinearBase_{i,j_i} = 0$.
+\par Per ogni $i \in n$, denotiamo $(\LinearBase^{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$ la base duale di $(\LinearBase_{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$. Abbiamo, fissato $(J_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}$:
+$\left (\sum_{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}} \Scalar_{(j_i)_{i \in n}} \bigotimes_{i \in n} \LinearBase_{i,j_i} \right ) ( (\LinearBase^{i,J_i})_{i \in n} ) =
+\sum_{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}} \Scalar_{(j_i)_{i \in n}} \bigotimes_{i \in n} \LinearBase_{i,j_i}( (\LinearBase^{i,J_i})_{i \in n} ) =
+\sum_{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}} \Scalar_{(j_i)_{i \in n}} \bigotimes_{i \in n} \prod_{i \in n} \LinearBase^{i,J_i})(\LinearBase_{i,j_i}) =
+\Scalar_{(J_i)_{i \in n}} = 0$.
+\par Dunque $\left ( \bigotimes_{i \in n} \LinearBase_{i,j_i} \right )_{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}}$ \`e effettivamente una famiglia indipendente. Inoltre essa \`e costituita da $\prod_{i \in n} \Dimension{\LinearSpace_i}$ elementi, che \`e esattamente la dimensione di $\MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}}$, e dunque essa \`e una base. \EndProof
+\begin{Corollary}
+	Siano $(\LinearSpace_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Field$-spazi vettoriali.
+	Sia $\otimes: \bigtimes_{i \in n} \LinearSpace_i \rightarrow \MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}}$ l'applicazione che a $(\Vector_i)_{i \in n} \in \bigtimes_{i \in n} \LinearSpace_i$ associa $\bigotimes_{i \in n} \Vector_i \in \MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}}$ che a $(\Functional_i)_{i \in n} \in \bigtimes_{i \in n} \Dual{\LinearSpace_i}$ associa $\prod_{i \in n} \Functional_i(\Vector_i)$.
+	$(\MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}}, \otimes)$ \`e il prodotto tensoriale $\bigotimes_{i \in n} \LinearSpace_i$.
+\end{Corollary}
+\Proof Siano $\VarLinearSpace$ un $\Field$-spazio vettoriale e $\Multilinear \in \Multilinears{(\LinearSpace_i)_{i \in n}}{\VarLinearSpace}$: occorre provare che esiste una e una sola applicazione lineare $\Linear: \MultilinearForms{(\Dual{\LinearSpace_i})_{i \in n}} \rightarrow \VarLinearSpace$ tale che $\Multilinear = \Linear \circ \otimes$.
+\par Siano, per ogni $i \in n$, $(\LinearBase_{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$ una base di $\LinearSpace_i$ e $(\VarLinearBase_j)_{j \in \Dimension{\VarLinearSpace}}$ una base di $\VarLinearSpace$. Definiamo $\Linear: \bigotimes_{i \in n} \LinearSpace_i \rightarrow \VarLinearSpace$ come l'unica applicazione lineare tale che $\ForAll{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}}{\Linear(\bigotimes_{i \in n} \LinearBase_{i,j_i}) = \Multilinear((\LinearBase_{i,j_i})_{i \in n})}$. Si verifica immediatamente che $\Multilinear = \Linear \circ \otimes$.
+\par L'unicit\`a di $\Linear$ segue dalla necessit\`a della condizione $\ForAll{(j_i)_{i \in n} \in \prod_{i \in n} \Dimension{\LinearSpace_i}}{\Linear(\bigotimes_{i \in n} \LinearBase_{i,j_i}) = \Multilinear((\LinearBase_{i,j_i})_{i \in n})}$ perch\'e possa essere $\Multilinear = \Linear \circ \otimes$. \EndProof
+\begin{Theorem}
+	Siano $\LinearSpace$ e $\VarLinearSpace$ $\Field$-spazi vettoriali e sia $\Multilinear: \LinearSpace \times \VarLinearSpace \rightarrow \LinearSpace \otimes \VarLinearSpace$ l'applicazione che a $(\Vector,\VarVector) \in \LinearSpace \times \VarLinearSpace$ associa $\Vector \otimes \VarVector \in \LinearSpace \otimes \VarLinearSpace$. $\Multilinear$ \`e un'applicazione bilineare e $\ForAll{(\Vector,\VarVector) \in \LinearSpace \times \VarLinearSpace}{\Coimplies{\Vector \otimes \VarVector = 0}{\Or{\Vector = 0}{\VarVector = 0}}}$.
+\end{Theorem}
+\Proof Siano
+\begin{itemize}
+	\item $\Vector_0, \Vector_1 \in \LinearSpace$;
+	\item $\VarVector \in \VarLinearSpace$;
+	\item $\Scalar \in \Field$.
+\end{itemize}
+Abbiamo, per ogni $(\Functional,\VarFunctional) \in \Dual{\LinearSpace} \times \Dual{\VarLinearSpace}$,
+\begin{itemize}
+	\item $((\Vector_0 + \Vector_1) \otimes \VarVector)(\Functional,\VarFunctional) = \Functional(\Vector_0 + \Vector_1)\VarFunctional(\VarVector) = \Functional(\Vector_0)\VarFunctional(\VarVector) + \Functional(\Vector_1)\VarFunctional(\VarVector) = (\Vector_0 \otimes \VarVector)(\Functional,\VarFunctional) + (\Vector_1 \otimes \VarVector)(\Functional,\VarFunctional)$;
+	\item $((\Scalar\Vector_0) \otimes \VarVector)(\Functional,\VarFunctional) = \Functional(\Scalar\Vector_0)\VarFunctional(\VarVector) = \Scalar\Functional(\Vector_0)\VarFunctional(\VarVector) = \Scalar(\Vector_0 \otimes \VarVector)(\Functional,\VarFunctional)$.
+\end{itemize}
+Dunque la prima applicazione parziale di $\Multilinear$ \`e lineare. Analogamente si dimostra lineare la seconda applicazione parziale di $\Multilinear$. Ne consegue che $\Multilinear$ \`e un'applicazione bilineare.
+\par Infine $\Vector \otimes \VarVector = 0$ se e solo se $\ForAll{(\Functional,\VarFunctional) \in \Dual{\LinearSpace} \times \Dual{\VarLinearSpace}}{(\Vector \otimes \VarVector)(\Functional,\VarFunctional) = 0}$. Ma abbiamo $(\Vector \otimes \VarVector)(\Functional,\VarFunctional) = \Functional(\Vector)\VarFunctional(\VarVector) = 0$ se e solo se $\Functional(\Vector) = 0$ o $\VarFunctional(\VarVector) = 0$ e dunque se e solo se $\Vector = 0$ o $\VarVector = 0$. \EndProof
+\begin{Corollary}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito. Sia $\Linear: \LinearSpace \rightarrow \LinearSpace \otimes \Field$ l'applicazione che a $\Vector \in \LinearSpace$ associa $\Vector \otimes 1$. $\Linear$ \`e un isomorfismo.
+\end{Corollary}
+\Proof Il teorema precedente dimostra che $\Linear$ \`e lineare e iniettiva. Inoltre $\LinearSpace$ e $\LinearSpace \otimes \Field$ sono equidimensionali. \EndProof
+\begin{Definition}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale e sia $(h,k) \in \mathbb{N}$. Definiamo \Define{tensore di tipo $(h,k)$}[di tipo $(h,k)$][tensore] su $\LinearSpace$
+	\begin{itemize}
+		\item un qualsiasi scalare se $h = k = 0$;
+		\item un elemento $\Tensor \in \left ( \bigotimes_{i \in h} \LinearSpace \right ) \otimes \left ( \bigotimes_{i \in k} \Dual{\LinearSpace} \right )$ altrimenti. 
+	\end{itemize}
+	Denoteremo nel seguito $\TensorsSpace{\LinearSpace}{h}{k} = \left ( \bigotimes_{i \in h} \LinearSpace \right ) \otimes \left ( \bigotimes_{i \in k} \Dual{\LinearSpace} \right )$ lo spazio di tutti i tensori di tipo $(h,k)$ su $\LinearSpace$.
+	\par Inoltre, fissata una base $(\LinearBase_i)_{i \in \Dimension{\LinearSpace}}$ di $\LinearSpace$, denotiamo le cordinate di un tensore $\Tensor \in \TensorsSpace{\LinearSpace}{h}{k}$ rispetto alla base fissata con $\Tensor^{i_1,...,i_h}_{j_1,...,j_k}$ (nel campo degli scalari assumiamo la base costituita solo dall'unit\`a).
+\end{Definition}
+\begin{Example}
+	Dato un $\Field$-spazio vettoriale $\LinearSpace$, abbiamo
+	\begin{itemize}
+		\item $\TensorsSpace{\LinearSpace}{0}{0} = \Field$;
+		\item $\TensorsSpace{\LinearSpace}{1}{0} = \LinearSpace$;
+		\item $\TensorsSpace{\LinearSpace}{0}{1} = \Dual{\LinearSpace}$;
+		\item fissato $n \in \mathbb{N}$, $\TensorsSpace{\LinearSpace}{0}{n} = \MultilinearForms{(\LinearSpace)_{i \in n}}$.
+	\end{itemize}
+\end{Example}
+\begin{Lemma}
+	Siano $\LinearSpace$ e $\VarLinearSpace$ $\Field$-spazi vettoriali. Abbiamo $\Homomorphisms{\LinearSpace}{\VarLinearSpace} = \Dual{\LinearSpace} \otimes \VarLinearSpace$
+\end{Lemma}
+\Proof Abbiamo $\Dual{\LinearSpace} \otimes \VarLinearSpace = \MultilinearForms{\LinearSpace,\Dual{\VarLinearSpace}} = \Multilinears{\LinearSpace}{\VarLinearSpace} = \Homomorphisms{\LinearSpace}{\VarLinearSpace}$. \EndProof
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale. Abbiamo $\TensorsSpace{\LinearSpace}{1}{1} = \Endomorphisms{\LinearSpace}$.
+\end{Theorem}
+\Proof Abbiamo $\TensorsSpace{\LinearSpace}{1}{1} = \LinearSpace \otimes \Dual{\LinearSpace} = \Dual{\LinearSpace} \otimes \LinearSpace = \Homomorphisms{\LinearSpace}{\LinearSpace} = \Endomorphisms{\LinearSpace}$. \EndProof
+\begin{Definition}
+	Dato un $\Field$-spazio vettoriale $\LinearSpace$, definiamo \Define{$\delta$ di Kronecker}[di Kronecker][$\delta$] il tensore di tipo $(1,1)$ denotato $\KroneckerDelta{i}{j}$ definito da $\KroneckerDelta{i}{j} = \begin{cases}0\text{ quando }i \neq j,\\1\text{ quando}i = j.\end{cases}$
+\end{Definition}
+\begin{Definition}
+	Quando in un termine un indice appare due volte la \Define{notazione di Einstein}[di Einstein][notazione] prevede che si sottointenda davanti al termine un simbolo di sommatoria riferito proprio a quell'indice, il quale assume tutti i valori che hanno senso, salvo avvisi contrari.
+\end{Definition}
+\par In presenza di tensori, assumeremo sempre la notazione di Einstein, salvo avvisi contrari.

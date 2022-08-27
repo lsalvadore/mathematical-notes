@@ -1,0 +1,34 @@
+\ProvidesPackage{topology}
+
+\DeclareDocumentCommand \Neighborhoods{m o}{\IfNoValueTF{#2}{\mathcal{N} \left ( #1 \right )}{\mathcal{N} \left ( #1, #2 \right )}}
+\DeclareMathOperator{\Exterior}{Ext}
+\newcommand{\AccumulationPoint}{p}
+\newcommand{\Boundary}{\partial}
+\newcommand{\Closed}{C}
+\newcommand{\ClosedBall}[2]{\mathcal{C}\left (#1,#2 \right)}
+\newcommand{\CompactSpace}{\mathbf{C}}
+\newcommand{\ConnectedComponent}{\mathcal{C}}
+\newcommand{\ConnectedSpace}{\mathcal{C}}
+\newcommand{\Continuous}{c}
+\newcommand{\Distance}{\delta}
+\newcommand{\Open}{U}
+\newcommand{\OpenConnected}{\Open}
+\newcommand{\OpenBall}[2]{\mathcal{B}\left (#1,#2 \right)}
+\newcommand{\Interior}[1]{\mathring{#1}}
+\newcommand{\Limit}{L}
+\newcommand{\LocalBase}{\mathcal{L}}
+\newcommand{\MetricSpace}{\mathcal{M}}
+\newcommand{\NOpenBall}[1]{\mathcal{B}_{#1}}
+\newcommand{\NCloasedBall}[1]{\mathcal{C}_{#1}}
+\newcommand{\NSphere}[1]{\mathcal{S}_{#1}}
+\newcommand{\Neighborhood}{\mathcal{N}}
+\newcommand{\Path}{\alpha}
+\newcommand{\Sphere}[2]{\mathcal{S}\left (#1,#2 \right)}
+\newcommand{\TopologicalSpace}{X}
+\newcommand{\VarTopologicalSpace}{Y}
+\newcommand{\TopologicalBase}{\mathcal{B}}
+\newcommand{\Topology}{\tau}
+\newcommand{\VarLocalBase}{\mathcal{M}}
+\newcommand{\VarOpen}{V}
+\newcommand{\VarTopology}{\sigma}
+\newcommand{\VarMetricSpace}{\mathcal{M}'}

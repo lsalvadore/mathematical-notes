@@ -1,0 +1,123 @@
+\subsection{Campi di Galois.}\label{CampiDiGalois}
+\begin{Theorem}
+	Se $\Field$ \`e un campo finito,
+	allora $\Characteristic{\Field} > 0$.
+\end{Theorem}
+\Proof Immediata per definizione di caratteristica. \EndProof
+\begin{Theorem}
+	Per ogni $a \in \AlgebraicClosure{\GaloisField{\Prime^n}}$,
+	con $\Prime \in \mathbb{Z}$ primo e $n \in \mathbb{N}$,
+	e per ogni $k \in \mathbb{Z}$, $a$ \`e l'unica radice
+	$\Prime^k$-esima di $a^{\Prime^k}$.
+\end{Theorem}
+\Proof $\GaloisField{\Prime^n} \subseteq
+\AlgebraicClosure{\GaloisField{\Prime^n}}$, dunque
+$\Characteristic{\AlgebraicClosure{\GaloisField{\Prime^n}}} =
+\Characteristic{\GaloisField{\Prime^n}} = \Prime$.
+Per definizione una radice $\Prime^k$-esima di $a$ \`e una soluzione
+dell'equazione $x^{\Prime^k} - a^{\Prime^k} = 0$, la quale equivale a
+$(x - a)^{\Prime^k} = 0$. \EndProof
+\begin{Theorem}
+	Se $\Field$ \`e un campo,
+	e $\Group$ un sottogruppo finito del
+	gruppo moltiplicativo $\Invertible{\Field}$,
+	allora $\Group$ \`e ciclico.
+\end{Theorem}
+\Proof
+Sia $D$ l'insieme dei divisori di $\GroupOrder{\Group}$ e,
+per ogni $d \in D$, sia $\psi(d)$ il numero di elementi di ordine $d$ in
+$\Group$.
+Fissiamo $d \in D$ e supponiamo $\psi(d) \neq 0$: scegliamo
+$a \in \Group$ tale che $\Order{a} = d$.
+Il sottogruppo $\SpanGroup{a}$ ha ordine $d$,
+dunque tutti i suoi elementi sono radici del polinomio
+$\Polynomial(x) = x^d - 1 \in \FieldAdjunction{\Field}{x}$;
+non solo: $\Polynomial$ ammette al pi\`u $d$ radici distinte,
+dunque $\SpanGroup{a}$ \`e l'insieme di tutte e sole le radici di
+$\Polynomial$.
+\par
+Pertanto, per ogni $d \in D$,
+o $\psi(d) = 0$,
+o $\psi(d)$ \`e uguale al numero di generatori di
+$\Isomorphic{\SpanGroup{a}}{\Quotient{\mathbb{Z}}{\SpanIdeal{d}}}$,
+che \`e $\EulerFunction(d)$, dove $\EulerFunction$ \`e la funzione di
+Eulero.
+Ora, abbiamo sia $\sum_{d \in D} \psi(d) = \GroupOrder{\Group}$ che
+$\sum_{d \in D} \EulerFunction(d) = \GroupOrder{\Group}$, dunque,
+per ogni $d \in D$, deve essere $\psi(d) = \EulerFunction(d)$:
+ne consegue che
+$\Group$ \`e ciclico.
+\EndProof
+\begin{Corollary}
+	Sia $\Field$ un campo finito.
+	Il gruppo moltiplicativo $\Invertible{\Field}$ \`e
+	un grupp ciclico.
+\end{Corollary}
+\Proof
+Immediata dal teorema precedente.
+\EndProof
+\begin{Corollary}
+	Fissati un campo $\Field$, $\Prime \in \mathbb{Z}$ primo e
+	$n \in \NotZero{\mathbb{N}}$,
+	l'insieme $\Roots_n$ di tutte le radici del polinomio
+	$\Polynomial(x) = x^n - 1$ costituisce un sottogruppo
+	moltiplicativo ciclico di $\Invertible{\Field}$.
+\end{Corollary}
+\Proof
+$\Roots_n$ \`e un sottogruppo moltiplicativo di $\Invertible{\Field}$
+perch\'e se $a, b \in \Field$ sono tali che $a^n = b^n = 1$, allora
+$(ab^{-1})^n = a^nb^{-n} = 1$. La ciclicit\`a segue dalla finitezza di
+$\Roots_n$ e dal teorema precedente.
+\EndProof
+\begin{Definition}\label{radici_primitive_def}
+	Con le notazioni del corollario precedente,
+	chiamiamo
+	\Define{radici primitive $n$-esime dell'unit\`a}[primitiva dell'unit\`a][radice]
+	i generatori di $\Roots_n$.
+	Chiamiamo inoltre
+	\Define{$n$-esimo polinomio ciclotomico}[ciclotomico][polinomio]
+	il polinomio
+	$\CyclotomicPolynomial{n}(x) =
+	\prod_{\PrimitiveRoot \in \PrimitiveRoots[n]}
+	(x - \PrimitiveRoot)$.
+\end{Definition}
+\begin{Theorem}
+	Se $\Field$ \`e un campo finito,
+	allora la sua cardinalit\`a \`e potenza di un primo
+	$\Prime \in \mathbb{Z}$.
+\end{Theorem}
+\Proof
+Supponiamo che $\Field$ sia un campo di caratteristica
+$\Prime \in \mathbb{Z}$ prima.
+Allora $\Field$ \`e un'estensione di
+$\Quotient{\mathbb{Z}}{\SpanIdeal{\Prime}}$ e dunque uno spazio vettoriale
+finito su $\Quotient{\mathbb{Z}}{\SpanIdeal{\Prime}}$: la cardinalit\`a di
+$\Field$ \`e dunque necessarimamente una potenza di $P$.
+\EndProof
+\begin{Theorem}
+	Se $\Prime \in \mathbb{Z}$ \`e primo e $n \in \NotZero{\mathbb{N}}$, allora esiste uno e un solo campo di cardinalit\`a $\Prime^n$.
+\end{Theorem}
+\Proof Consideriamo il polinomio $\Polynomial = x^{\Prime^n} - x \in \RingAdjunction{\Quotient{\mathbb{Z}}{\SpanIdeal{p}}}{x}$. La derivata formale di $\Polynomial$ \`e $\Polynomial' = \Prime^nx^{\Prime^n - 1} - 1 = -1$ dunque, per il criterio della derivata, $\Polynomial$ ha tutte le $\Prime^n$ radici distinte in $\Closure{\RingAdjunction{\Quotient{\mathbb{Z}}{\SpanIdeal{p}}}{x}}$: sia $\mathcal{R}$ l'insieme di tutte queste radici.
+\par Siano $\alpha, \beta \in \mathcal{R}$: abbiamo $\Polynomial(\alpha + \beta) = (\alpha + \beta)^{\Prime^n} - \alpha - \beta = \alpha^{\Prime^n} + \beta^{\Prime^n} - \alpha - \beta = 0$, $\Polynomial(\alpha\beta) = (\alpha\beta)^{\Prime^n} - \alpha\beta = \alpha^{\Prime^n}\beta^{\Prime^n} - \alpha\beta = \alpha\beta - \alpha\beta = 0$ e $\Polynomial(\alpha^{-1}) = (\alpha^{-1})^{\Prime^n} - \alpha^{-1} = (\alpha^{\Prime^n})^{-1} - \alpha^{-1} = \alpha^{-1} - \alpha^{-1} = 0$. Ne deduciamo che $\mathcal{R}$ \`e un campo, di esattamente $\Prime^n$ elementi.
+\par Assumiamo ora che $\Field$ sia una campo di cardinalit\`a $\Prime^n$. Poich\'e il gruppo moltiplicativo $\Invertible{\Field}$ \`e ciclico, ogni $\alpha \in \Invertible{\Field}$ \`e radice dell'equazione $x^{\Prime^n - 1} = 1$ e quindi ogni $\alpha \in \Field$ \`e radice del polinomio $\Polynomial = x^{\Prime^n} - x$: ma allora $\Field$ \`e necessariamente la pi\`u piccola estensione di $\Quotient{\mathbb{Z}}{\SpanIdeal{\Prime}}$ che contiene tutte le radici di $\Polynomial$, vale a dire il campo di spezzamento di $\Polynomial$. L'unicit\`a del campo finito segue dunque dal teorema di unicit\`a del campo di spezzamento. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{campo di Galois}[di Galois][campo] un campo finito: denotiamo $\GaloisField{n}$ dove $n \in \mathbb{N}$ \`e la cardinalit\`a del campo, l'unico campo di Galois di cardinalit\`a $n$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Prime \in \mathbb{Z}$ primo.
+	L'insieme $\bigcup_{n \in \NotZero{\mathbb{N}}}
+	\GaloisField{\Prime^n}$
+	\begin{itemize}
+		\item \`e dotato di una ed una sola struttura di campo
+		compatibile con le strutture di campo dei singoli
+		$(\GaloisField{\Prime^n})_{n \in \NotZero{\mathbb{N}}}$;
+		\item \`e chiusura algebrica di $\GaloisField{\Prime^n}$
+		per ogni $n \in \mathbb{N}$;
+		\item per ogni $n \in \mathbb{N}$, abbiamo
+		$\FieldDegree{\AlgebraicClosure{\GaloisField{\Prime^n}}}
+		{\GaloisField{\Prime^n}} = \infty$.
+	\end{itemize}
+\end{Theorem}
+\Proof Per il primo punto, \`e sufficiente osservare che $\bigcup_{n \in \NotZero{\mathbb{N}}} \GaloisField{\Prime^n} = \FieldAdjunction{\GaloisField{\Prime}}{S}$, dove $S$ \`e l'insieme di tutte le radici primitive $\Prime^n$-esime dell'unit\`a al variare di $n \in \NotZero{\mathbb{N}}$: si tratta dunque di un'estensione di $\GaloisField{\Prime^n}$ per ogni $n \in \NotZero{\mathbb{N}}$.
+\par $\bigcup_{n \in \NotZero{\mathbb{N}}} \GaloisField{\Prime^n}$ \`e un'estensione algebrica di qualunque $\GaloisField{\Prime^n}$ con $n \in \mathbb{N}$ perch\'e algebricamente generata. Proviamo che \`e anche algebricamente chiusa: sia $\Polynomial = \sum_{k \in \mathbb{N}} a_kx^k \in \RingAdjunction{\bigcup_{n \in \NotZero{\mathbb{N}}} \GaloisField{\Prime^n}}{x}$. Poich\'e la famiglia $(a_k)_{k \in \mathbb{N}}$ ha supporto finito, esiste $K \in \mathbb{N}$ tale che $\Polynomial \in \RingAdjunction{\GaloisField{\Prime^K}}{x}$ (per esempio si pu\`o prendere $K$ uguale al prodotto di una famiglia di elementi $n_k$ tali che per ogni $k \in \mathbb{N}$ si abbia $a_k \in \GaloisField{\Prime^{n_k}}$). Esiste allora, nella chiusura algebrica di $\RingAdjunction{\GaloisField{\Prime^K}}{x}$ una radice $\alpha$ di $\Polynomial$: ma allora $\FieldAdjunction{\GaloisField{\Prime^K}}{\alpha}$ \`e un campo finito e dunque $\alpha \in \bigcup_{n \in \NotZero{\mathbb{N}}} \GaloisField{\Prime^n}$.
+\par Per quanto riguarda il grado di $\FieldExtension{\AlgebraicClosure{\GaloisField{\Prime^n}}}{\GaloisField{\Prime^n}}$, qualunque sia $n \in \NotZero{\mathbb{N}}$, per il teorema di moltiplicativit\`a dei gradi basta provare che $\AlgebraicClosure{\GaloisField{\Prime^n}}$ \`e un campo infinito, ma ci\`o segue subito dal fatto che se fosse finito, allora esisterebbe un campo di Galois di cardinalit\`a maggiore e stessa caratteristica di $\AlgebraicClosure{\GaloisField{\Prime^n}}$, in contraddizione col fatto che il sostegno di $\AlgebraicClosure{\GaloisField{\Prime^n}}$ \`e l'insieme di tutti i campi di Galois di caratteristica $\Prime$. \EndProof

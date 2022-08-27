@@ -1,0 +1,322 @@
+\section{Gruppi simmetrici e alternanti.}\label{GruppiSimmetrici}
+\begin{Definition}
+	Sia $\Class$ una classe.
+	Si chiama \Define{gruppo simmetrico}[simmetrico][gruppo]
+	di $Class$ il gruppo $\Automorphisms{\Class}$.
+	Quando $\Class$ \`e l'insieme di tutt i numeri naturali
+	da $1$ a $n \in \mathbb{N}$, allora denotiamo
+	$\SymmetricGroup{n}$ il gruppo simmetrico di $\Class$.
+	\par
+	Gli elementi di $\Automorphisms{\Class}$ si chiamano
+	\Define{permutazioni}[permutazione].
+	Sia $\Permutation \in \Automorphisms{Class}$ tale che la classe
+	$\Class \SetMin \Fixed{\Class}{\Permutation}$ sia finita:
+	diciamo che $\Permutation$ \`e \Define{finita}[finita][permutazione]
+	si usa indicare $\Permutation$ con la notazione
+	$\Permutation[x_1 & ... & x_k][y_1 & ... & y_k]$
+	dove $(x_i)_{i = 1}^k$ \`e una famiglia di elementi
+	di $\Class$ che comprende
+	$\Class \SetMin \Fixed{\Class}{\Permutation}$ e
+	$(y_k)_{i = 1}^k = (\Permutation(x_k))_{i = 1}^k$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Class_1$ e $\Class_2$ due classi.
+	Se $\Class_1$ e $\Class_2$ sono equicardinali,
+	allora $\Automorphisms{\Class_1}$ e $\Automorphisms{\Class_2}$
+	sono gruppi isomorfi.
+\end{Theorem}
+\Proof
+Sia $Map: \Class_1 \rightarrow \Class_2$
+un'applicazione biettiva.
+Sia $\Isomorphism:
+\Automorphisms{\Class_1} \rightarrow
+\Automorphisms{\Class_2}$
+l'applicazione che a $\Automorphism \in \Automorphisms{\Class_1}$
+associa $\Map\Automorphism\Map^{-1} \in \Automorphisms{\Class_2}$.
+Segue direttamente dalle definizioni che $\Isomorphism$
+\`e un isomorfismo.
+\EndProof
+\begin{Corollary}
+	Sia $\Class$ un insieme finito: $\Isomorphic{\Automorphisms{\Class}}
+	\Isomorphic{\SymmetricGroup{\Cardinality{\Class}}}$.
+\end{Corollary}
+\Proof
+Segue immediatamente dal teorema precedente.
+\EndProof
+\begin{Theorem}
+	Per ogni $n \in \mathbb{N}$, abbiamo
+	$\GroupOrder{\SymmetricGroup{n}} = \Factorial{n}$.
+\end{Theorem}
+\Proof
+\`E immediato notare che
+$\GroupOrder{\SymmetricGroup{0}} = 1$ e
+$\GroupOrder{\SymmetricGroup{1}} = 1$.
+\par
+Supponiamo il teorema provato per $\SymmetricGroup{n}$
+e proviamolo per $\SymmetricGroup{n + 1}$.
+Consideriamo l'applicazione
+$\Map: \SymmetricGroup{n} \times \lbrace 1, ..., n + 1 \rbrace \rightarrow
+\SymmetricGroup{n + 1}$
+che a $(\Permutation,m) \ in \SymmetricGroup{n} \times \lbrace 1, ..., n + 1 \rbrace$
+associa $\Map(\Permutation,m)$ definita da
+$\Map(\Permutation,m) =
+\begin{cases}
+(\Cycle{m & n + 1}\Permutation)(x)\text{ se }x \leq n;\\
+m\text{ se }x = n + 1.
+\end{cases}$
+\`E immediato verificare che l'applicazione \`e biettiva.
+Dunque $\GroupOrder{\SymmetricGroup{n + 1}} =
+\GroupOrder{\SymmetricGroup{n}} \Cardinality{\lbrace 1, ..., n + 1 \rbrace} =
+\Factorial{n}(n + 1) = \Factorial{n + 1}$.
+\EndProof
+\begin{Theorem}
+\TheoremName{Teorema di Cayley}[di Cayley][teorema]
+	Sia $\Group$ un gruppo. Esiste
+	$\Subgroup \IsSubgroup \Automorphisms{\Group}$,
+	dove $\Automorphisms{Group}$ \`e il gruppo delle
+	permutazioni del sostegno di $\Group$ (e non il gruppo
+	degli automorfismi del gruppo $\Group$),
+	tale che $\Isomorphic{\Group}{\Subgroup}$.
+\end{Theorem}
+\Proof
+\`E sufficiente prendere come $\Subgroup$
+l'immagine dell'azione di traslazione a sinistra di
+$\Group$ su se stesso: l'azione \`e fedele, da cui l'isomorfismo.
+\EndProof
+\begin{Definition}
+	Siano $\Class$ una classe e $\Permutation \in \Automorphisms{\Class}$.
+	Diciamo che $\Permutation$ \`e un \Define{ciclo} quando l'azione di
+	$\SpanGroup{\Permutation}$ su $\Class$ prevede un'unica orbita di
+	cardinalit\`a maggiore o uguale di $2$.
+	Se tale orbita \`e finita, cio\`e se
+	$\Permutation =
+	\Permutation[x_1 & ... & x_{k - 1} & x_k][x_2 & ... & x_k & x_1]$,
+	allora $\Permutation$ si chiama \Define{ciclo finito}[finito][ciclo] o
+	\Define{$k$-ciclo}{$k$-ciclo}[ciclo] e si
+	denota in maniera pi\`u compatta
+	$\Cycle{x_1 & ... & x_k}$.
+	Un $2$-ciclo si chiama pi\`u comunemente
+	\Define{trasposizione}.
+	La \Define{lunghezza}[di un ciclo][lunghezza] di un ciclo \`e la cardinalit\`a
+	della sua unica orbita.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Permutation$ un ciclo finito.
+	$\Permutation$ \`e prodotto di trasposizioni.
+\end{Theorem}
+\Proof
+Sia $\Permutation = \Cycle{x_1 & ... & x_k}$.
+Abbiamo
+$\Permutation = \prod_{i = 1}^{k - 1} \Cycle{x_i & x_{i + 1}}$.
+\EndProof
+\begin{Definition}
+	Siano $\Permutation_1$ e $\Permutation_2$
+	due cicli di $\Automorphisms{\Class}$.
+	Se $\Class \SetMin \Fixed{\Class}{\Permutation_1} \cap
+	\Class \SetMin \Fixed{\Class}{\Permutation_2}$ si dice
+	che $\Permutation_1$ e $\Permutation_2$ sono
+	\Define{cicli disgiunti}[disgiunti cicli].
+\end{Definition}
+\begin{Theorem}
+	Ogni famiglia di cicli disgiunti commuta.
+\end{Theorem}
+\Proof
+Segue immediatamente dalle definizioni.
+\EndProof
+\begin{Theorem}
+	Siano $\Class$ una classe e $\Permutation \in \Automorphisms{\Class}$.
+	$\Permutation$ pu\\`o essere scritto come prodotto\footnote{Eventualmente infinito, nel qual caso il prodotto `e l'unica permutazione che prolunga tutti i fattori.} di cicli disgiunti
+	in modo unico a meno dell'ordine dei fattori e di moltiplicazione per $1$-cicli;
+	pi\`u precisamente, ogni gruppo simmetrico \`e generato dai suoi cicli.
+\end{Theorem}
+\Proof
+Consideriamo l'azione di $\SpanGroup{\Permutation}$ su $\Class$.
+Costruiamo la famiglia di permutazioni
+$(\Permutation_i)_{i \in \Quotient{\Class}{\SpanGroup{\Permutation}}}$
+tale che $\Permutation_i(x) =
+\begin{cases}
+\Permutation(x)\text{, se }x \in i,\\
+x\text{, altrimenti}.
+\end{cases}$
+\`E immediato verificare che
+$\prod_{i \in \Quotient{\Class}{\SpanGroup{\Permutation}}} \Permutation_i =
+\Permutation$ e che tutti i $\Permutation_i$ sono cicli disgiunti.
+D'altra parte, sia
+$(\Permutation_i)_{i \in I}$ una famiglia di permutazioni disgiunte
+tali che $\prod_{i \in I} \Permutation_i = \Permutation$.
+Sia $x \in \Class$. Per ipotesi, $x$ \`e un punto fisso.
+di $\Permutation$ o esiste un'unica permutazione $\Permutation_i$,
+con $i \in I$,
+che trasforma $x$ in un altro punto $\Permutation_i(x) = \Permutation(x)$.
+Inoltre, poich\'e $\Permutation_i$ \`e un ciclo, abbiamo
+$\ForAll{n \in \mathbb{N}}{\Permutation_i^n(x) = \Permutation^n(x)}$.
+Ma questo equivale a dire che $\Permutation_i$ \`e una delle
+permutazioni della scomposizione precedentemente costruita.
+Poich\'e quanto appena affermato vale per tutti gli $x \in \Class$,
+tutte le permutazioni della scomposizione $\prod_{i \in I} \Permutation_i$
+sono presenti nella scomposizione precedentemente costruita; e poich\'e
+nessun prodotto di una sottofamiglia dei fattori della scomposizione precedente
+ha $\Permutation$ per prodotto, le due scomposizioni coincidono necessariamente.
+\EndProof
+\begin{Corollary}
+	Siano $\Class$ una classe finita e $\Permutation \in \Automorphisms{\Class}$.
+	$\Permutation$ pu\`o essere scritto come prodotto di trasposizioni;
+	pi\`u precisamente, ogni gruppo simmetrico finito \`e generato dalle sue
+	trasposizioni.
+\end{Corollary}
+\Proof
+Segue direttamente dal teorema precedente e dal fatto
+che ogni ciclo pu\`o essere scritto come prodotto di
+trasposizioni.
+\EndProof
+\begin{Theorem}
+	Siano $\Class$ una classe e
+	$\Permutation, \Permutation_1 \in \Automorphisms{Class}$.
+	Se $\Permutation$ \`e un ciclo, allora il suo coniugato
+	$\Permutation_1\Permutation\Permutation_1^{-1}$ \`e un ciclo
+	di medesima lunghezza.
+\end{Theorem}
+\Proof
+Sia $x \in \Class$.
+Si verifica direttamente che
+$x \in \Fixed{\Class}{\SpanGroup{\Permutation_1\Permutation\Permutation_1^{-1}}}$
+se e solo se
+$\Permutation_1^{-1}(x) \in \Fixed{\Class}{\SpanGroup{\Permutation}}$.
+\par
+Proviamo che
+$\Class \SetMin
+\Fixed{\Class}{\SpanGroup{\Permutation_1\Permutation\Permutation_1^{-1}}}$ costituisce
+un'unica orbita per l'azione di
+$\SpanGroup{\Permutation_1\Permutation\Permutation_1^{-1}}$.
+Siano $x, y \in
+\Class \SetMin
+\Fixed{\Class}{\SpanGroup{\Permutation_1\Permutation\Permutation_1^{-1}}}$.
+Poich\'e $\Permutation$ \`e un ciclo e per quanto appena provato riguardo ai punti fissi
+di $\Permutation_1\Permutation\Permutation_1^{-1}$, esiste $n \in \mathbb{Z}$ tale che
+$\Permutation_1^{-1}(y) = \Permutation^n\Permutation_1^{-1}(x)$, da cui
+$y = \Permutation_1\Permutation^n\Permutation_1^{-1}(x)$ e quindi
+$\Class \SetMin
+\Fixed{\Class}{\SpanGroup{\Permutation_1\Permutation\Permutation_1^{-1}}}$ costituisce
+l'unica orbita per l'azione di
+$\SpanGroup{\Permutation_1\Permutation\Permutation_1^{-1}}$.
+\par
+L'uguaglianza della lunghezza dei due cicli segue dall'equicardinalit\`a
+delle classi dei punti fissi.
+\EndProof
+\begin{Corollary}
+	Sia $\Class$ una classe e sia
+	$\Permutation \in \Automorphisms{\Class}$.
+	Tutte le permutazioni coniugate a $\Permutation$
+	si scompogono in cicli di ugual numero e uguali lunghezze.
+\end{Corollary}
+\Proof
+Segue immediatamente dal teorema precedente,
+considerando che la permutazione coniugata a $\Permutation$ tramite
+una qualsiasi permutazione $\Permutation_1$ \`e il prodotto dei
+coniugati dei fattori della scomposizione in cicli disgiunti di $\Permutation$
+per mezzo della stessa permutazione $\Permutation_1$.
+\EndProof
+\begin{Definition}
+	Sia $\Class$ un ordinamento totale
+	e sia $\Permutation \in \Automorphisms{\Class}$.
+	Definiamo \Define{inversione} una qualsiasi coppia
+	$(x,y) \in \Class^2$ tale che
+	$x < y$ e $\Permutation(x) > \Permutation(y)$.
+\end{Definition}
+\begin{Definition}
+	Sia $\Class$ un ordinamento totale finito.
+	Definiamo \Define{segno}[di una permutazione][segno] o
+	\Define{segnatura}[di una permutazione][segnatura] o
+	\Define{parit\`a}[di una permutationze][parit\`a]
+	l'applicazione $\PermutationSign: \Automorphisms{\Class} \rightarrow
+	\Invertible{\Quotient{\mathbb{Z}}{\SpanIdeal{3}}}$ che a
+	$\Permutation \in \Automorphisms{\Class}$
+	associa $\PermutationSign(\Permutation) =
+	\begin{cases}
+		1\text{, se il numero di inversioni di }\Permutation\text{ \`e pari};\\
+		-1\text{, se il numero di inversioni di }\Permutation\text{ \`e dispari}.
+	\end{cases}$
+	Inoltre diciamo che una permutazione $\Permutation$ \`e
+	\Define{pari}[pari][permutazione]
+	quando $\PermutationSign{\Permutation} = 1$ e
+	\Define{dispari}[dispari][permutazione]
+	quando $\PermutationSign{\Permutation} = -1$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Class$ un ordinamento totale finito
+	e siano $\Permutation, \Transposition \in \Automorphisms{\Class}$.
+	Se $\Transposition$ \`e una trasposizione, allora
+	$\PermutationSign{\Transposition\Permutation} =
+	- \PermutationSign{\Permutation}$.
+\end{Theorem}
+\Proof
+Sia $\Transposition = \Cycle{i & j}$.
+Tutte le inversioni di $\Permutation$ che non coinvolgono n\'e $i$ n\'e $j$
+sussistono in $\Transposition\Permutation$.
+Inoltre sussitono tutte le inversioni che coinvolgono $i$ e un elemento maggiore di $j$
+e tutte le inversioni che coinvolgono $j$ e un elemento minore di $i$.
+Restono solo da valutare tutte le inversioni che coinvolgono $i$ o $j$ con un elemento
+$x \in [i,j]$.
+\par
+Supponiamo che le inversioni di $i$ con elementi di $[i,j]$ nella permutazione
+$\Permutation$ siano $n_i$: nella permutazione $\Transposition\Permutation$
+gli elementi di $[i,j]$ che costituiscono inversione con $i$ sono tutti e soli quelli
+che non la costituiscono in $\Permutation$ e sono diversi da $i$; sono dunque in numero
+$j - i - n_i$.
+Analogamente, se $n_j$ \`e il numero di inversioni di $j$ con elementi di $[i,j]$,
+allora le inversioni di $\Transposition\Permutation$ che coinvolgono $j$ e un elemento
+di $[i,j]$ sono $j - i - n_j$.
+La differenza tra il numero di inversioni di $\Permutation$ e quello di $\Transposition\Permutation$
+\`e dunque $n_i + n_j - (j - i - n_i) - (j - i - n_j) \pm 1 =
+2n_i + 2n_j - 2j + 2i \pm 1$ (il pi\`u o il meno dipende da se la coppia $(i,j)$
+sia o meno un'inversione in $Permutation$), che \`e un numero dispari, da cui la tesi.
+\EndProof
+\begin{Corollary}
+	Sia $\Class$ un ordinamento totale finito
+	e sia $\Permutation \in \Automorphisms{\Class}$.
+	$\Permutation$ \`e
+	\begin{itemize}
+		\item
+		pari se e solo se si scrive come prodotto di un numero pari di trasposizioni;
+		\item
+		dispari se e solo se si scrive come prodotto di un numero dispari di trasposizioni.
+	\end{itemize}
+	In particolare, la parit\`a del numero di fattori in ogni scrittura di $\Permutation$
+	come prodotto di trasposizione \`e la stessa.
+\end{Corollary}
+\Proof
+Segue dal fatto che $\Permutation$ si scrive come prodotto di trasposizioni
+e che ogni trasposizione \`e dispari.
+\EndProof
+\begin{Corollary}
+	Sia $\Class$ un ordinamento totale finito.
+	L'applicazione $\PermutationSign: \Automorphisms{\Class} \rightarrow
+	\Invertible{\Quotient{\mathbb{Z}}{\SpanIdeal{3}}}$ \`e un omomorfismo.
+\end{Corollary}
+\Proof
+Segue direttamente dal corollario precedente considerando
+le permutazioni come prodotti di trasposizioni.
+\EndProof
+\begin{Definition}
+	Chiamiamo $n$-esimo
+	\Define{gruppo alternante}[alternante][gruppo]
+	il nucleo dell'applicazione
+	$\PermutationSign: \SymmetricGroup{n} \rightarrow
+	\Invertible{\Quotient{\mathbb{Z}}{\SpanIdeal{3}}}$.
+\end{Definition}
+\begin{Theorem}
+	Per ogni $n \in \mathbb{N}$,
+	il gruppo alternante $\AlternatingGroup{n}$ \`e un
+	sottogruppo normale di $\SymmetricGroup{n}$ di indice $2$.
+\end{Theorem}
+\Proof
+La normalit\`a di $\AlternatingGroup{n}$ segue dal
+fatto che il nucleo di un omomorfismo \`e sempre un sottogruppo
+normale del suo dominio.
+\par
+Siano $\Permutation_1, \Permutation_2 \in \SymmetricGroup{n} \SetMin \AlternatingGroup{n}$.
+$\Permutation_1$ e $\Permutation_2$ sono permutazioni dispari,
+pertanto $\Permutation_1\Permutation_2^{-1} \in \AlternatingGroup{n}$, da cui
+$\SymmetricGroup{n} \SetMin \AlternatingGroup{n}$ \`e l'unica classe laterale di
+$\AlternatingGroup{n}$ oltre a $\AlternatingGroup{n}$ stesso.
+\EndProof

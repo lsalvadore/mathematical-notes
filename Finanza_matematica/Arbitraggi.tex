@@ -1,0 +1,29 @@
+\subsection{Arbitraggi.}\label{Arbitraggi}
+\begin{Definition}
+	Un \Define{arbitraggio} \`e un portafoglio $\phi$ tale che
+	\begin{itemize}
+		\item $V_0(\phi) = 0$;
+		\item $\Probability{V_N(\phi) > 0} > 0$.
+	\end{itemize}
+\end{Definition}
+\par Si vede subito che la precedente definizione \`e in accordo con la definizione \ref{ArbitraggioIntuitivo}. Inoltre, notiamo che se sostituiamo nel modello alla probabilit\`a $\Probability$ un'altra probabilit\`a equivalente, l'insieme dei portafogli che sono arbitraggi non cambia.
+\begin{Definition}
+	Se in un mercato finanziario non esistono arbitraggi, si dice che vale l'\Define{ipotesi N.A.}.
+\end{Definition}
+\begin{Theorem}
+	L'ipotesi N.A. \`e equivalente alla validit\`a dell'equazione $\ReplicantWallet \cap \RandomVariable{0}{+} = \lbrace 0 \rbrace$.
+\end{Theorem}
+\Proof \`E chiaro che un portafoglio a costo $0$ che non esegue nessuna operazione finanziaria nel corso del tempo \`e un arbitraggio che porta come valore finale attualizzato $0$.
+\par D'altra parte, sia $\phi$ \`e un portafoglio a costo $0$ il cui valore finale attualizzato del portafoglio $\phi$ \`e una variabile aleatoria non negativa. Allora, se il valore finale \`e necessariamente nullo, $\phi$ non pu\`o essere un arbitraggio; se vale l'ipotesi N.A, allora il valore finale \`e necessariamente identicamente nullo. \EndProof
+\begin{Definition}
+	Una probabilit\`a martingala equivalente $\Probability_2$ \`e una probablit\`a equivalente a $\Probability$ per la quale gli attivi attualizzati sono martingale.
+\end{Definition}
+\par Esaminiamo cosa significa dire che gli attivi attualizzati sono martingale. Per definizione di martingala, se un attivo attualizzato \`e una martingala allora, fissato $t \in T$, la miglior stima del valore (attuale) dell'attivo al tempo $t + 1$, effettuata con le informazioni note al tempo $t$, \`e il valore (attuale) dell'attivo al tempo $t$; in altri termini, lo scenario pi\`u probabile \`e che il valore dell'attivo resti lo stesso a meno di tassi di interesse.
+\begin{Theorem}
+	\TheoremName{Primo teorema fondamentale della valutazione degli attivi: Dalang-Morton-Willinger} L'ipotesi N.A. \`e equivalente all'esistenza di una probabilit\`a martingala equivalente. Inoltre, questa probabilit\`a martingale equivalente pu\`o essere scelta tale che $\DensityVersion{\Probability_2}{\Probability} \in \DerivClass{\infty}$.
+\end{Theorem}
+\Proof Supponiamo prima che esista una probabilit\`a martingala equivalente $\Probability_2$. Supponiamo $\phi = (\phi_t)_{t \in T}$ sia un portafoglio ammissibile di valore iniziale nullo. Abbiamo per ogni $t \in T$, in virt\`u del lemma \ref{LemmaAutofinanziato}, $\Actualized{V}_t(\phi) = \Actualized{V}_0(\phi) + \sum_{j = 1}^t \phi_j \cdot \Delta \Actualized{S}_j$. Poich\'e il processo stocastico $\left ( \Actualized{V}_t(\phi) \right )_{t \in T}$ \`e il trasformato della martingala $(\Actualized{S}_t)_{t \in T}$ per il processo prevedibile $\phi$, allora anch'esso \`e una martingala. Pertanto, per ogni $t \in T$, il valore atteso di $\Actualized{V}_t(\phi)$ rispetto alla probabilit\`a $\Probability_2$ \`e sempre nullo.
+\par Ora, per l'ammissibilit\`a di $\phi$, ogni $\Actualized{V}_t(\phi)$ \`e positivo o nullo. Poich\'e, per le ipotesi generali sul modello, la probabilit\`a dei di qualsiasi evento non vuoto \`e strettamente positiva, $\Actualized{V}_t(\phi)$ non pu\`o essere positivo o lo sarebbe anche il suo valore atteso: dunque $\Actualized{V}_t(\phi) = 0$ e $\phi$ non pu\`o essere un arbitraggio.
+\par Vediamo l'implicazione inversa. Si verifica immediatamente che i valori attualizzati finali sono funzioni lineari dei portafogli, dunque $\ReplicantWallet$ \`e un sottospazio vettoriale dello spazio vettoriale $\mathbb{R}^\SamplesSpace$. Consideriamo poi l'insieme $K = \lbrace X \in \RandomVariable{0}{+} | \sum_{\omega \in \SamplesSpace} X(\omega) = 1 \rbrace$: esso 
+
+\footnote{Il teorema di Hahn-Banach (o, meglio, di un corollario) stabilisce che dati, in uno spazio vettoriale normato $X$, due chiusi $A$ e $B$, non vuoti, disgiunti, di cui almeno uno \`e compatto, allora esiste un iperpiano $H = c$ che separa $A$ e $B$ in senso stretto.}

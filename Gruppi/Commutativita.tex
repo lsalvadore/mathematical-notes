@@ -1,0 +1,154 @@
+\section{Commutativit\`a.}\label{Commutativita}
+\begin{Definition}
+	Siano $\Group$ un gruppo e
+	$\Class \subseteq \Group$. Chiamiamo
+	\Define{centralizzatore}
+	di $\Class$, denotato
+	$\Centralizer{\Class}$ \`e l'insieme
+	$\lbrace x \in \Group |
+	\ForAll{a \in \Class}{xa = ax} \rbrace$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Group$ un gruppo e $\Class \subseteq \Group$.
+	Abbiamo $\Centralizer{\Class} \IsNormalSubgroup
+	\Normalizer{Class}$.
+\end{Theorem}
+\Proof
+Siano $x, y \in Centralizer{\Class}$ e
+sia $a \in \Class$.
+Abbiamo
+$xy^{-1}a =
+xy^{-1}ayy^{-1} =
+xy^{-1}yay^{-1} =
+xay^{-1} =
+axy^{-1}$.
+Dunque $xy^{-1} \in \Centralizer{\Class}$ e
+$\Centralizer{\Class} \IsSubgroup \Group$.
+Inoltre segue direttamente dalle definizioni
+che $\Centralizer{\Class} \subseteq \Normalizer{\Class}$ e
+dunque $\Centralizer{\Class} \IsSubgroup \Normalizer{\Class}$.
+\par
+Sia $g \in \Normalizer{\Class}$. Abbiamo,
+per opportuno $b \in \Class$,
+$gxg^{-1}a =
+gxbg^{-1} =
+gbxg^{-1} =
+gbg^{-1}gxg^{-1} =
+gg^{-1}agxg^{-1} =
+agxg^{-1}$.
+Quindi $\Centralizer{\Class} \IsNormalSubgroup
+\Normalizer{\Class}$.
+\EndProof
+\begin{Theorem}
+	Sia $\Group$ un gruppo e consideriamo
+	la sua azione interna.
+	Sia $x \in \Group$.
+	Abbiamo $\Centralizer{x} =
+	\Stabilizer{x}$.
+\end{Theorem}
+\Proof
+Segue direttamente dalle definizioni.
+\EndProof
+\begin{Definition}
+	Sia $\Group$ un gruppo.
+	Definiamo
+	\Define{centro}[di un gruppo][centro]
+	il centralizzatore $\Centralizer{\Group}$
+	dell'intero gruppo.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Group$ un gruppo.
+	Abbiamo $\GroupCenter{\Group} \IsNormalSubgroup \Group$.
+\end{Theorem}
+\Proof
+Siano $x, y \in \GroupCenter{\Group}$ e sia
+$a \in \Group$.
+\`E immediato verificare che
+$(xy^{-1})a = a(xy^{-1})$.
+\par
+Altrettanto immediato \`e verificare che
+$axa^{-1} = x \in \GroupCenter{\Group}$.
+\EndProof
+\begin{Theorem}
+\TheoremName{Equazione delle classi}[delle classi][equazione]
+	Sia $\Group$ un gruppo finito e
+	sia $R \subseteq \Group$ tale da
+	contenere uno e un solo rappresentate di
+	ogni classe di coniugio di $\Group$.
+	Abbiamo
+	$\GroupOrder{\Group} =
+	\GroupOrder{\GroupCenter{\Group}} +
+	\sum_{x \in R \SetMin \GroupCenter{\Group}}
+	\frac{\GroupOrder{\Group}}
+	{\GroupOrder{\Centralizer{x}}}$.
+\end{Theorem}
+\Proof
+Consideriamo l'azione interna di $\Group$.
+Osserviamo che un elemento costituisce da solo
+la propria classe di coniugio se e solo se appartiene
+al centro.
+Abbiamo
+$\Cardinality{\Group} =
+\sum_{x \in R} \Cardinality{\Orbit{x}} =
+\sum_{x \in R} \frac{\GroupOrder{\Group}}
+{\GroupOrder{\Stabilizer{x}}} =
+\sum_{x \in R} \frac{\GroupOrder{\Group}}
+{\GroupOrder{\Centralizer{x}}} =
+\GroupOrder{\GroupCenter{\Group}} +
+\sum_{x \in R \SetMin \GroupCenter{\Group}} \frac{\GroupOrder{\Group}}
+{\GroupOrder{\Centralizer{x}}}$.
+\EndProof
+\begin{Definition}
+	Sia $\Group$ un gruppo e siano
+	$x, y \in \Group$. Definiamo
+	\Define{commutatore} di $x$ e $y$,
+	denotato $\Commutator{x}{y}$,
+	l'elemento $x^{-1}y^{-1}xy$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Group$ un gruppo e siano
+	$x, y \in \Group$. $x$ e $y$ commutano
+	se e solo se $\Commutator{x}{y} = 1$.
+\end{Theorem}
+\Proof
+Segue direttamente dalle definizioni.
+\EndProof
+\begin{Definition}
+	Sia $\Group$ un gruppo. Definiamo
+	\Define{sottogruppo derivato}{derivato}[sottogruppo]
+	di $G$, denotato $\DerivedSubgroup{\Group}$,
+	il gruppo generato da tutti i commutatori di
+	$\Group$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Group$ un gruppo.
+	Abbiamo $\DerivedSubgroup{\Group} \IsNormalSubgroup
+	\Group$.
+\end{Theorem}
+\Proof
+Consideriamo un generico elemento di $\Group$,
+vale a dire un prodotto finito di commutatori
+di $\Group$: $\prod_{i = 1}^n \Commutator{x_i}{y_i}$,
+con $n \in \mathbb{N}$, $(x_i,y_i)_{i = 1}^n \in
+\DirectProduct_{i = 1}^n (\Group \times \Group)$.
+Sia inoltre $g \in \Group$.
+\par
+Abbiamo $g\left ( \prod_{i = 1}^n \Commutator{x_i}{y_i} \right )g^{-1} =
+\prod_{i = 1}^n g\Commutator{x_i}{y_i}g^{-1} =
+\prod_{i = 1}^n \Commutator{gx_ig^{-1}}{gy_ig^{-1}} \in
+\DerivedSubgroup{\Group}$.
+\EndProof
+\begin{Definition}
+	Sia $\Group$ un gruppo. Definiamo
+	\Define{abelianizzato}[abelianizzato][gruppo]
+	di $\Group$, denotato $\Abelianization{\Group}$,
+	il quoziente $\Quotient{\Group}{\DerivedSubgroup{\Group}}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Group$ un gruppo.
+	$\Abelianization{\Group}$ \`e un gruppo abeliano.
+\end{Theorem}
+\Proof
+Immediata osservando che $\DerivedSubgroup{\Abelianization{\Group}} =
+\lbrace 1 \rbrace$.
+\EndProof

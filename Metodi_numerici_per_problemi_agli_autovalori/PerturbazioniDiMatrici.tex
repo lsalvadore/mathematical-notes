@@ -1,0 +1,317 @@
+\section{Perturbazioni di matrici.}
+\label{CalcoloScientifico_PerturbazioniDiMatrici}
+\begin{Theorem}
+  Sia $n \in \NotZero{\mathbb{N}}$.
+  Per ogni $k \in n$, l'applicazione
+  $\Eigenvalue_k: \mathbb{C}^{n \times n} \rightarrow \mathbb{C}$
+  che a $\Matrix \in \mathbb{C}^{n \times n}$ associa il $k$-esimo
+  elemento della successione crescente degli $n$ autovalori di $\Matrix$
+  (contati con molteplicit\`a algebrica) \`e continua.
+\end{Theorem}
+\begin{Theorem}
+  Con le notazioni del teorema precedente, fissato $k \in n$,
+  il numero di condizionamento $\ConditionNumber$ di $\Eigenvalue_k$ in
+  $\Matrix \in \mathbb{N}$ verifica, al primo ordine, la relazione
+  \[
+    \ConditionNumber \leq
+    \frac{\Norm{\VarEigenvector}\Norm{\Eigenvector}}{
+      \AbsoluteValue{\HermitianTransposed{\VarEigenvector}\Eigenvector}},
+  \]
+  dove $\Eigenvector$ e $\VarEigenvector$ sono autovettori destro e sinistro
+  rispettivamente relativi a $\Eigenvalue = \Eigenvalue_k(\Matrix)$.
+\end{Theorem}
+\Proof Abbiamo $\Matrix \Eigenvector = \Eigenvalue \Eigenvector$.
+Supponendo $\Matrix$ perturbata da $\Perturbation{\Matrix}$, anche
+$\Eigenvector$ e $\Eigenvalue$ risultano perturbati da
+$\Perturbation{\Eigenvector}$ e
+$\Perturbation{\Eigenvalue}$ rispettivamente. Abbiamo
+\[
+  (\Matrix + \Perturbation{\Matrix})(\Eigenvector + \Perturbation{\Eigenvector})
+  = (\Eigenvalue + \Perturbation{\Eigenvalue})
+    (\Eigenvector + \Perturbation{\Eigenvector}).
+\]
+Sviluppando e conservando solo i termini al primo ordine,
+\[
+  \Matrix\Eigenvector
+  + \Matrix \Perturbation{\Eigenvector}
+  + \Perturbation{\Matrix}\Eigenvector
+  = \Eigenvalue\Eigenvector
+  + \Eigenvalue\Perturbation{\Eigenvector}
+  + \Perturbation{\Eigenvalue}\Eigenvector,
+\]
+equivalente a
+\[
+  \Matrix \Perturbation{\Eigenvector}
+  + \Perturbation{\Matrix}\Eigenvector
+  = \Eigenvalue\Perturbation{\Eigenvector}
+  + \Perturbation{\Eigenvalue}\Eigenvector.
+\]
+\par Moltiplichiamo a sinistra per $\HermitianTransposed{\VarEigenvector}$:
+\[
+  \HermitianTransposed{\VarEigenvector} \Matrix \Perturbation{\Eigenvector}
+  + \HermitianTransposed{\VarEigenvector} \Perturbation{\Matrix}\Eigenvector
+  = \HermitianTransposed{\VarEigenvector} \Eigenvalue\Perturbation{\Eigenvector}
+  +\HermitianTransposed{\VarEigenvector} \Perturbation{\Eigenvalue}\Eigenvector.
+\]
+equivalente a 
+\[
+  \HermitianTransposed{\VarEigenvector} \Perturbation{\Matrix}\Eigenvector
+  =\HermitianTransposed{\VarEigenvector} \Perturbation{\Eigenvalue}\Eigenvector.
+\]
+Utilizzando la disuguaglianza di Cauchy-Schwarz abbiamo
+\begin{align*}
+  \AbsoluteValue{\Perturbation{\Eigenvalue}}
+    \AbsoluteValue{\HermitianTransposed{\VarEigenvector}\Vector}
+  &= \AbsoluteValue{\HermitianTransposed{\VarEigenvector}
+      \Perturbation{\Eigenvalue}\Eigenvector},\\
+  &= \AbsoluteValue{\HermitianTransposed{\VarEigenvector}
+      \Perturbation{\Matrix}\Eigenvector},\\
+  &\leq \Norm{\VarEigenvector}
+      \Norm{\Perturbation{\Matrix}\Eigenvector},\\
+  &\leq \Norm{\VarEigenvector}
+      \Norm{\Perturbation{\Matrix}}\Norm{\Eigenvector},
+\end{align*}
+equivalente a
+$\frac{\AbsoluteValue{\Perturbation{\Eigenvalue}}}{
+  \Norm{\Perturbation{\Matrix}}}
+\leq \frac{\Norm{\VarEigenvector}\Norm{\Eigenvector}}{
+  \AbsoluteValue{\HermitianTransposed{\VarEigenvector}{\Eigenvector}}}$,
+da cui la tesi. \EndProof
+\begin{Corollary}
+  Con le notazioni del teorema precedente, se $\Matrix$ \`e normale, allora
+$\ConditionNumber \leq 1$.
+\end{Corollary}
+\Proof Se $\Matrix$ \`e normale, allora autovettori sinistri e destri
+coincidono. Scegliendo un autovettore $\Eigenvector$ relativo a $\Eigenvalue$.
+$\ConditionNumber \leq
+\frac{\Norm{\Eigenvector}\Norm{\Eigenvector}}{
+  \AbsoluteValue{\HermitianTransposed{\Eigenvector}\Eigenvector}} = 1$.
+\EndProof
+\begin{Theorem}
+  \TheoremName{Teorema di Hirsch}[di Hirsch][teorema]
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Norm{\cdot}$ una norma su $\mathbb{C}^n$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\Eigenvalue \in \Spectrum{\Matrix}$.
+  \end{itemize}
+  Abbiamo $\AbsoluteValue{\Eigenvalue} \leq \Norm{\Matrix}$.
+\end{Theorem}
+\Proof Sia $\Eigenvector$ autovettore relativo a $\Eigenvalue$.
+$\Norm{\Matrix}
+= \max_{\Vector \neq 0} \frac{\Matrix \Vector}{\Norm{\Vector}} 
+\geq \frac{\Matrix\Eigenvector}{\Eigenvector}
+\geq \frac{\Eigenvalue\Eigenvector}{\Eigenvector}
+= \AbsoluteValue{\Eigenvalue}$. \EndProof
+\begin{Definition}
+  Fissato $n \in \NotZero{\mathbb{N}}$, una norma su $\mathbb{C}^n$ si dice
+  \Define{assoluta}[assoluta][norma]
+  quando
+  \[
+    \ForAll{(z_k)_{k \in n} \in \mathbb{C}}{
+      \Norm{(z_k)_{k \in n}} = \Norm{(\AbsoluteValue{(z_k)})_{k \in n}}}.
+  \]
+\end{Definition}
+\begin{Theorem}
+  Tutte le $p$-norme sono assolute.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Lemma}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\DiagonalMatrix \in \mathbb{C}^{n \times n}$ diagonale;
+    \item $\Norm{\cdot}[p]$ una $p$-norma su $\mathbb{C}^n$.
+  \end{itemize}
+  Abbiamo
+  $\Norm{\DiagonalMatrix}[p]
+  = \max_{k \in n} \AbsoluteValue{\DiagonalMatrix_k^k}$.
+\end{Lemma}
+\Proof Denotata con $(\CanonicalBase_k)_{k \in n}$ la base canonica
+di $\mathbb{C}^n$, abbiamo, per ogni $k \in n$,
+$\DiagonalMatrix \CanonicalBase_k =
+\DiagonalMatrix_k^k \CanonicalBase_k$.
+\par Abbiamo, per ogni $k \in n$,
+\begin{align*}
+  \Norm{\DiagonalMatrix}[p]
+  &= \max_{\Vector \in \NotZero{\mathbb{C}}}
+      \frac{\Norm{\DiagonalMatrix \Vector}[p]}{\Norm{\Vector}[p]},\\
+  &\geq \frac{\Norm{\DiagonalMatrix \CanonicalBase_k}[p]}
+          {\Norm{\CanonicalBase_k}[p]},\\
+  &= \AbsoluteValue{\DiagonalMatrix_k^k}.
+\end{align*}
+Dunque
+$\Norm{\DiagonalMatrix}[p]
+\geq \max_{k \in n} \AbsoluteValue{\DiagonalMatrix_k^k}$.
+\par D'altra parte, per un qualunque vettore unitario $\Vector$, abbiamo
+\begin{align*}
+  \Norm{\DiagonalMatrix \Vector}[p]
+  &= \left ( \sum_{k \in n}
+    \AbsoluteValue{\DiagonalMatrix_k^k \Vector_k}^p \right )^{\frac{1}{p}},\\
+  &\leq \max_{k \in n} \DiagonalMatrix_k^k \left ( \sum_{k \in n}
+    \AbsoluteValue{\Vector_k}^p \right )^{\frac{1}{p}},\\
+  &= \max_{k \in n} \DiagonalMatrix_k^k \Norm{\Vector}[p],\\
+  &= \max_{k \in n} \DiagonalMatrix_k^k.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  \TheoremName{Teorema di Bauer-Fike}[di Bauer-Fike][teorema]
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Norm{\cdot}[p]$ una $p$-norma su $\mathbb{C}^{n \times n}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ diagonalizzabile;
+    \item $V, \DiagonalMatrix \in \mathbb{C}^{n \times n}$ tali che
+      $V^{-1} \Matrix V = \DiagonalMatrix$;
+    \item $\Perturbation{\Matrix} \in \mathbb{C}^{n \times n}$;
+    \item $\VarEigenvalue \in \Spectrum(\Matrix + \Perturbation{\Matrix})$.
+  \end{itemize}
+  Abbiamo
+  \[
+    \min_{\Eigenvalue \in \Spectrum{\Matrix}}
+    \AbsoluteValue{\VarEigenvalue - \Eigenvalue}
+    \leq \VarMatrixConditionNumber \Norm{\Perturbation{\Matrix}}[p],
+  \]
+  dove $\VarMatrixConditionNumber$ \`e il numero di condizionamento della matrice
+  $V$.
+\end{Theorem}
+\Proof Se $\VarEigenvalue \in \Spectrum{\Matrix}$, allora 
+$\min_{\Eigenvalue \in \Spectrum{\Matrix}}
+\AbsoluteValue{\VarEigenvalue - \Eigenvalue} = 0$ e la tesi \`e immediata.
+Supponiamo dunque nel seguito, $\VarEigenvalue \notin \Spectrum{\Matrix}$.
+\par Sia $\VarEigenvector$ autovettore di $\Matrix + \Perturbation{\Matrix}$
+relativo a $\VarEigenvalue$:
+\[
+  (\Matrix + \Perturbation{\Matrix} - \VarEigenvalue\Identity) \VarEigenvector
+  = 0.
+\]
+\par Effettuando un cambio di base tramite la matrice $V$,
+\[
+  (V^{-1}\Matrix V
+  + V^{-1} \Perturbation{\Matrix} V
+  - \VarEigenvalue V^{-1} \Identity V) V \VarEigenvector = 0,
+\]
+equivalente a
+\[
+  (\DiagonalMatrix
+  + V^{-1} \Perturbation{\Matrix} V
+  - \VarEigenvalue \Identity) V \VarEigenvector = 0.
+\]
+Poich\'e
+$\VarEigenvalue \notin \Spectrum{\Matrix} = \Spectrum{\DiagonalMatrix}$,
+$\DiagonalMatrix - \VarEigenvalue\Identity$ \`e invertibile. Moltiplichiamo a
+sinistra l'equazione precedente per
+$(\DiagonalMatrix - \VarEigenvalue\Identity)^{-1}$:
+\[
+  (\Identity
+  + (\DiagonalMatrix - \VarEigenvalue\Identity)^{-1}
+    V^{-1} \Perturbation{\Matrix} V) V \VarEigenvector = 0.
+\]
+Dunque
+$-1 \in \Spectrum{
+(\DiagonalMatrix - \VarEigenvalue\Identity)^{-1} V^{-1}
+\Perturbation{\Matrix} V}$.
+\par Per il teorema di Hirsch,
+\begin{align*}
+  1
+  &\leq \Norm{\DiagonalMatrix - \VarEigenvalue\Identity)^{-1} V^{-1}
+  \Perturbation{\Matrix} V}[p],\\
+  &\leq \Norm{(\DiagonalMatrix - \VarEigenvalue\Identity)^{-1}}[p]
+  \Norm{V^{-1}}[p] \Norm{\Perturbation{\Matrix}}[p] \Norm{V}[p],\\
+  &\leq \Norm{(\DiagonalMatrix - \VarEigenvalue\Identity)^{-1}}[p]
+  \VarMatrixConditionNumber \Norm{\Perturbation{\Matrix}}[p].
+\end{align*}
+\par D'altra parte, $(\DiagonalMatrix - \VarEigenvalue \Identity)^{-1}$ \`e
+diagonale, dunque, per il lemma precedente,
+$\Norm{(\DiagonalMatrix - \VarEigenvalue\Identity)^{-1}}[p]
+= \max_{\Eigenvalue \in \Spectrum{\Matrix}} \frac{1}{
+  \AbsoluteValue{\VarEigenvalue - \Eigenvalue}}
+= \frac{1}{\min_{\Eigenvalue \in \Spectrum{\Matrix}}
+  \AbsoluteValue{\VarEigenvalue - \Eigenvalue}}$.
+E dunque infine
+\[
+  \min_{\Eigenvalue \in \Spectrum{\Matrix}} 
+  \AbsoluteValue{\VarEigenvalue - \Eigenvalue}
+  \leq \VarMatrixConditionNumber \Norm{\Perturbation{\Matrix}}[p].\text{ \EndProof}
+\]
+\begin{Corollary}
+  Con le notazioni del teorema precedente, se $\Matrix$ \`e normale, allora
+  \[
+    \min_{\Eigenvalue \in \Spectrum{\Matrix}}
+    \AbsoluteValue{\VarEigenvalue - \Eigenvalue}
+    \leq \Norm{\Perturbation{\Matrix}}[2].
+  \]
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente e dal fatto che $\Matrix$ \`e
+diagonalizzabile per mezzo di matrici unitarie. \EndProof
+\begin{Theorem}
+  L'errore all'indietro $\BackwardError$ rispetto alla norma $\Norm{\cdot}[2]$
+  di un'applicazione che a una matrice
+  $\Matrix \in \mathbb{C}^{n \times n}$ ($n \in \mathbb{N}$) associa una coppia
+  $(\Eigenvalue,\Eigenvector) \in \mathbb{C} \times (\NotZero{\mathbb{C}^n})$
+  approssimazione di una coppia
+  $(\VarEigenvalue,\VarEigenvector) \in
+    \mathbb{C} \times (\NotZero{\mathbb{C}^n})$
+  tale che $\Matrix\VarEigenvector = \VarEigenvalue\VarEigenvector$
+  \`e
+  \[
+    \BackwardError
+    = \frac{\Norm{\Matrix\Eigenvector - \Eigenvalue\Eigenvector}[2]}
+      {\Norm{\Eigenvector}[2]}
+  \]
+\end{Theorem}
+\Proof Sia $\Perturbation{\Matrix} \in \mathbb{C}^{n \times n}$.
+Supponiamo
+\[
+  (\Matrix + \Perturbation{\Matrix})\Eigenvector = \Eigenvalue\Eigenvector;
+\]
+ci\`o \`e equivalente a
+\[
+  \Perturbation{\Matrix}\Eigenvector
+  = \Eigenvalue\Eigenvector - \Matrix\Eigenvector.
+\]
+Passando alle norme, abbiamo
+\[
+  \Norm{\Perturbation{\Matrix}\Eigenvector}[2]
+  = \Norm{\Eigenvalue\Eigenvector - \Matrix\Eigenvector}[2],
+\]
+da cui
+\begin{align*}
+  \frac{\Norm{\Matrix\Eigenvector - \Eigenvalue\Eigenvector}[2]}
+    {\Norm{\Eigenvector}[2]}
+  &= \frac{\Norm{\Perturbation{\Matrix}\Eigenvector}[2]}
+    {\Norm{\Eigenvector}[2]},
+  \leq \Norm{\Perturbation{\Matrix}}[2].
+\end{align*}
+Dunque
+$\BackwardError
+\geq \frac{\Norm{\Matrix\Eigenvector - \Eigenvalue\Eigenvector}[2]}
+{\Norm{\Eigenvector}[2]}$.
+\par D'altra parte, poniamo
+\begin{itemize}
+  \item $\Vector = \Matrix\Eigenvector - \Eigenvalue\Eigenvector$;
+  \item $\Perturbation{\Matrix}
+    = - \frac{\Vector\HermitianTransposed{\Eigenvector}}
+        {\Norm{\Eigenvector}[2]^2}$.
+\end{itemize}
+\par Abbiamo
+\begin{align*}
+  (\Matrix + \Perturbation{\Matrix})\Eigenvector
+  &= \Matrix\Eigenvector
+    - \frac{\Vector\HermitianTransposed{\Eigenvector}}
+      {\Norm{\Eigenvector}[2]^2} \Eigenvector,\\
+  &= \Matrix\Eigenvector - \Vector,\\
+  &= \Matrix\Eigenvector - \Matrix\Eigenvector + \Eigenvalue\Eigenvector,\\
+  &= \Eigenvalue\Eigenvector.
+\end{align*}
+Per il lemma
+\ref{MetodiNumericiPerLaRisoluzioneDiSistemiLineari_LemmaRango1},
+abbiamo inoltre
+\begin{align*}
+  \Norm{\Perturbation{\Matrix}}[2]
+  &= \Norm{- \frac{\Vector}{\Norm{\Eigenvector}[2]^2}}[2] \Norm{\Eigenvector}[2],\\
+  &= \frac{\Norm{\Vector}[2]}{\Norm{\Eigenvector}[2]^2} \Norm{\Eigenvector}[2],\\
+  &= \frac{\Norm{\Vector}[2]}{\Norm{\Eigenvector}[2]},\\
+  &= \frac{\Norm{\Matrix\Eigenvector - \Eigenvalue\Eigenvector}[2]}
+    {\Norm{\Eigenvector}[2]}.\text{ \EndProof}
+\end{align*}

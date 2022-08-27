@@ -1,0 +1,103 @@
+\subsection{Classificazione affine e metrica.}
+
+\begin{Definition}\label{def39}
+	Una \Define{quadrica affine}[affine][quadrica] (o anche pi\`u brevemente \NIDefine{quadrica}) in uno spazio affine $\mathbb{K}^n$ \`e il luogo degli zeri di un polinomio di secondo grado. Nel caso in cui $n = 2$ la quadrica affine viene anche detta \Define{conica affine}[affine][conica].
+\end{Definition}
+\begin{Theorem}\label{th46}
+	Se $\mathbb{K}$ \`e il campo $\mathbb{R}$ o $\mathbb{C}$ munito della topologia euclidea, allora una quadrica \`e un sottospazio chiuso di $\mathbb{K}^n$.
+\end{Theorem}
+\Proof Segue direttamente dal fatto che i polinomi sono continui e che $0$ \`e chiuso in $\mathbb{K}$. \EndProof
+\par Osserviamo inoltre che tutte le quadriche sono chiuse per definizione in $\mathbb{K}^n$ munito della topologia di Zariski.
+\begin{Definition}\label{def40}
+	Due quadriche affini $\mathcal{Q}$ e $\mathcal{Q}'$ di $\mathbb{K}^n$ si dicono \Define{affinemente equivalenti}[affinemente equivalenti][quadriche] quando esiste un'affinit\`a $f: \mathbb{K}^n \rightarrow \mathbb{K}^n$ tale che $f(\mathcal{Q}) = \mathcal{Q}'$.
+\end{Definition}
+\begin{Definition}\label{def41}
+	Due quadriche $\mathcal{Q}$ e $\mathcal{Q}'$ di $\mathbb{K}^n$ si dicono \Define{metricamente equivalenti}[metricamente equivalenti][quadriche] quando esiste un'isometria $f: \mathbb{K}^n \rightarrow \mathbb{K}^n$ tale che $f(\mathcal{Q}) = \mathcal{Q}'$.
+\end{Definition}
+	\par Nel seguito, supponiamo dato un polinomio di secondo grado $p \in \mathbb{K}[x_1, ..., x_n]$. Scriveremo $p$ nella forma $p = X^tAX + 2 B^t X + C$, dove $X = \begin{pmatrix} x_1 \cdots x_n \end{pmatrix}^t$, $A$ \`e una matrice simmetrica di dimensione $n \times n$\footnote{$A$ \`e la matrice tale che il suo elemento di posto $(i,j)$, con $i, j = 1, ..., n$, sia \begin{itemize} \item la met\`a del coefficiente di $x_ix_j$ se $i \neq j$; \item il coefficiente di $x_i^2$ se $i = j$. \end{itemize}}, $B$ una matrice di dimensione $n \times 1$ e $C \in \mathbb{K}$. La quadrica associata a $p$ sar\`a denotata $\mathcal{Q}$.
+\begin{Definition}\label{def42}
+	Data la quadrica $\mathcal{Q}$, se esiste un punto $N$ tale che, detta $f$ la simmetria centrale di centro $N$, $\mathcal{Q}$ \`e invariante rispetto ad $f$, allora $\mathcal{Q}$ si dice una \Define{quadrica a centro}[a centro][quadrica]. Il punto $N$ viene detto \Define{centro di simmetria}[di simmetria di una quadrica affine][centro] per $\mathcal{Q}$.
+\end{Definition}
+\begin{Theorem}\label{th47}
+	Sia $\mathcal{Q}$ una quadrica. L'origine $O$ \`e un centro di simmetria per $\mathcal{Q}$ se e solo se $B = 0$.
+\end{Theorem}
+\Proof Se $B = 0$, allora \`e immediato che $\mathcal{Q}$ \`e invariante per la simmetria centrale di centro $O$ - i.e. l'applicazione che a $X \in \mathbb{K}^n$ associa $-X$.
+	\par Viceversa, se $O$ \`e un centro di simmetria per $\mathcal{Q}$, allora, per ogni $X \in \mathbb{K}^n$, $X^tAX + 2 B^t X + C = 0$ se e solo se $(-X)^tA(-X) + 2 B^t (-X) + C = 0$, la qual cosa implica, sottraendo membro a membro la seconda equazione dalla prima, $4 B^t X = 0$, da cui $B = 0$ (esiste necessariamente un $X \neq 0$ che verifica $X^tAX + 2B^tX + C = 0$: il primo membro è un polinomio di secondo grado in $x_1$ dunque, fissato il valore delle altre incognite, esiste sempre almeno un valore assegnabile a $x_1$ affinch\'e $X$ verifichi l'equazione). \EndProof
+\begin{Theorem}\label{th48}
+	Il punto $N$ \`e un centro per la quadrica $\mathcal{Q}$ se e sole se $AN = -B$. In particolare, $\mathcal{Q}$ \`e a centro se e solo se $A$ e $C = \left ( \begin{array}{c|c} B & A \end{array} \right )$ hanno lo stesso rango.
+\end{Theorem}
+\Proof La quadrica $\mathcal{Q}$ ha il punto $N$ per centro di simmetria se e solo se la quadrica $\mathcal{Q}'$ luogo degli zeri di $p' = (X + N)^tA(X + N) + 2 B^t(X + N) + C$ (ottenuta da $\mathcal{Q}$ tramite la traslazione che trasforma $N$ in $0$) ha per centro di simmetria l'origine $O$.
+	\par Abbiamo $p' = X^tAX + N^tAX + X^tAN + N^tAN + 2B^tX + 2B^tN + C$. Per il teorema \ref{th47}, $N$ \`e dunque centro di simmetria per $\mathcal{Q}$ se e solo se $2B^t + 2N^tA = 0$, equivalente a $AN = -B$. La tesi segue dunque dal teorema di Rouch\'e-Capelli. \EndProof
+\begin{Corollary}\label{cor5}
+	La propriet\`a di una quadrica di essere a centro o meno \`e invariante rispetto al gruppo delle isometrie o delle affinit\`a.
+\end{Corollary}
+\Proof Basta provare il corollario nel caso delle affinit\`a. Sia dunque $f(X) = MX + T$ un'affinit\`a. Allora $f(\mathcal{Q})$ sar\`a la quadrica associata al polinomio $p' = (X - T)^tM^{-1, t}AM^{-1}(X - T) + 2B^tM^{-1}(X - T) + C = X^tM^{-1,t}AM^{-1}X - 2 T^tM^{-1,t}AM^{-1}X + 2B^tM^{-1}X + T^tM^{-1}AM^{-1}T - 2B^tM^{-1}T + C$. Ora, per il teorema \ref{th48}, $\mathcal{Q}$ \`e a centro se e solo se $\left ( \begin{array}{c|c} B & A \end{array} \right )$ ha lo stesso rango di $A$ e $\mathcal{Q}'$ \`e a centro se e solo se $\left ( \begin{array}{c|c} 2M^{-1,t}B - M^{-1,t}AM^{-1}T & M^{-1,t}AM^{-1} \end{array} \right )$ ha lo stesso rango di $M^{-1,t}AM^{-1}$.
+	\par Assumiamo vera la prima condizione sul rango. Essa equivale all'esistenza di $Y \in \mathbb{K}^n$ tale che $B = AY$ e quindi, posto $Z = MY$, avendo allora $2M^{-1,t}B - M^{-1,t}AM^{-1}T = 2M^{-1,t}AM^{-1}Z - M^{-1,t}AM^{-1}T = M^{-1,t}AM^{-1}(2Z - T)$ essa implica la seconda condizione sul rango.
+	\par Assumiamo infine vera la seconda condizione sul rango. Analogamente, essa equivale all'esistenza d'un $Y \in \mathbb{K}^n$ tale che $2M^{-1,t}B - M^{-1,t}AM^{-1}T = M^{-1,t}AM^{-1}Y$. Abbiamo allora $B = 2^{-1}M^t \cdot M^{-1,t}AM^{-1}(Y + T) = A(2^{-1}M^{-1}(Y + T))$ e questo conclude la dimostrazione. \EndProof
+\begin{Theorem}\label{th49}
+	Abbiamo $\mathbb{K}^n \cong \Kernel A \oplus \Image A$.
+\end{Theorem}
+\Proof Si considera la successione esatta $0 \rightarrow \Kernel A \rightarrow \mathbb{K}^n \rightarrow \Image A \rightarrow 0$. Considerando una base del nucleo di $A$ e completandola a base di $\mathbb{K}^n$ si costruisce facilmente una retrazione lineare dell'inclusione, da cui la tesi. \EndProof
+\begin{Corollary}\label{cor6}
+	Esiste una matrice non singolare $M$ tale che $M^{-1}AM = \left ( \begin{array}{c|c} \bar{A} & 0\\ \hline 0 & 0 \end{array} \right )$, dove $\bar{A}$ \`e una matrice di dimensione $k \times k$, con $k$ uguale al rango di $A$.
+\end{Corollary}
+\Proof \`E sufficiente scegliere per $M$ la matrice di cambio di base dalla base canonica ad una base i cui primi $k$ elementi siano una base di $\Image A$ e i restanti elementi una base di $\Kernel A$. \EndProof
+	\par Nel seguito $M$ e $\bar{A}$ denoteranno sempre matrici con le propriet\`a del corollario precedente. Inoltre, per il resto di questa sottosezione supporremo $\mathbb{K} = \mathbb{R}$.
+\begin{Definition}\label{def43}
+	Due matrici $M^{(1)}$ e $M^{(2)}$ di dimensione $n \times n$ si dicono
+		\begin{itemize}
+			\item \Define{congruenti}[congruenti][matrici] se esiste una matrice non singolare $S$ tale che $M^{(1)} = S^tM^{(2)}S$;
+			\item \Define{simili}[simili][matrici] se esiste una matrice non singolare $S$ tale che $M^{(1)} = S^{-1}M^{(2)}S$.
+		\end{itemize}
+\end{Definition}
+\begin{Theorem}\label{th50}
+	(\TheoremName{Teorema di Sylvester.}) Ogni matrice simmetrica \`e congruente a una matrice diagonale i cui elementi non nulli sono solo $-1$ e $1$ e ogni matrice diagonale che verifica tale propriet\`a ha lo stesso numero di elementi uguali a $1$ e lo stesso numero di elementi uguali a $-1$.
+\end{Theorem}
+\Proof Omessa. \EndProof
+\begin{Definition}\label{def44}
+	Sia $M^{(0)}$ una matrice simmetrica e sia $D$ una matrice a cui $M^{(0)}$ \`e congruente e del tipo descritto dal teorema precedente. Il numero di elementi uguali a $1$, a $-1$, a $0$ sulla diagonale di $D$ si chiama, rispettivamente, \Define{indice di positivit\`a}[di positivit\`a di una matrice simmetrica][indice], \Define{indice di negativit\`a}[di negativit\`a di una matrice simmetrica][indice] e \Define{indice di nullit\`a}[di nullit\`a di una matrice simmetrica][indice] di $M^{(0)}$. La terna $(i_+, i_-, i_0)$, le cui componenti sono i tre indici appena definiti, \`e detta \Define{segnatura}[di una matrice simmetrica][segnatura].
+\end{Definition}
+	\par Nel seguito, $i_+$, $i_-$, $i_0$ denoteranno gli indici di positivit\`a, negativit\`a e nullit\`a di $A$; $D$ sar\`a la matrice diagonale i cui elementi sulla diagonale, nell'ordine, sono $i_+$ volte $1$, $i_-$ volte $-1$ e $i_0$ volte $0$; $S$ sar\`a la matrice non singolare tale che $S^{t}AS = D$.
+\begin{Theorem}\label{th51}
+	Abbiamo $i_0 = \dim \Kernel A$ e $i_+ + i_- = \dim \Image A$.
+\end{Theorem}
+\Proof Omessa. \EndProof
+\begin{Theorem}\label{th51bis}
+	$i_+$, $i_-$ e $i_0$ sono rispettivamente uguali al numero di autovalori positivi, negativi e nulli di $A$.
+\end{Theorem}
+\Proof Omessa.\EndProof
+\begin{Theorem}\label{th51tris}
+	(\TheoremName{Criterio di Cartesio per polinomi con tutte le radici reali.}) Il numero di variazioni di segno nei termini di un polinomio ordinato \`e uguale al numero delle sue radici positive.
+\end{Theorem}
+\Proof Omessa.\EndProof
+\begin{Definition}\label{def45}
+	Una matrice $U$ si dice \Define{ortogonale}[ortogonale][matrice] quando $U^t = U^{-1}$.
+\end{Definition}
+	\par Notiamo che la matrice $M$ gi\`a definita pu\`o essere scelta ortogonale (basta scegliere nella dimostrazione del teorema che garantisce l'esistenza di $M$ e $\bar{A}$ una base di arrivo ortonormale, cosa possibile in quanto $\Kernel A$ e $\Image A$ sono spazi ortogonali): assumeremo di aver compiuto questa scelta.
+\begin{Theorem}\label{th52}
+	(\TheoremName{Teorema spettrale in dimensione finita}.) Ogni matrice simmetrica \`e simile a una matrice diagonale per mezzo di matrici ortogonali. Pi\`u precisamente, se $M^{(0)}$ \`e una matrice simmetrica esistono una matrice ortogonale $U$ e una matrice diagonale $D^{(0)}$ tali che $M^{(0)} = U^{-1}D^{(0)}U$.
+\end{Theorem}
+\Proof Omessa. \EndProof
+\begin{Theorem}\label{th55}
+	(\TheoremName{Classificazione affine delle quadriche reali.}) $\mathcal{Q}$ \`e affinemente equivalente ad una e una sola delle seguenti quadriche:
+	\begin{itemize}
+		\item $\sum_{i = 1}^{i_+} x_i^2 - \sum_{i = i_+ + 1}^{i_+ + i_-} x_i^2 + c = 0$, dove $c \in \lbrace 0, 1 \rbrace$ (quadriche a centro);
+		\item $\sum_{i = 1}^{i_+} x_i^2 - \sum_{i = i_+ + 1}^{i_+ + i_-} x_i^2 + \sum_{i = i_+ + i_- + 1}^n x_i = 0$ (quadriche non a centro).
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\mathcal{Q}$ una quadrica a centro e sia $N$ un suo centro. Considerando la traslazione che porta $N$ in $O$, il trasformato $\mathcal{Q}'$ di $\mathcal{Q}$ \`e il luogo degli zeri di $p' = X^tAX + (2B^t + 2N^tA)X + 2B^tN + C + N^tAN = X^tAX + 2B^tN + C + N^tAN$. Poniamo $C' = 2B^tN + C + N^tAN = B^tN + C$, cosicch\'e $p' = X^tAX + C'$. Eseguiamo l'ulteriore trasformazione $X \mapsto S^{-1}X$, cosicch\'e $\mathcal{Q}'$ viene trasformata in $\mathcal{Q}''$ definita dall'equazione $X^tS^tASX + C = 0$. Se $C' = 0$ abbiamo finito, altrimenti possiamo assumere $C' > 0$. Un'omotetia $X \mapsto \sqrt{C'^{-1}}X$ e una moltiplicazione di ambi i membri per $C'^{-1}$ trasforma $\mathcal{Q}''$ in $\mathcal{Q}'''$ definita da $X^tDX + 1 = 0$.
+	\par Sia ora $\mathcal{Q}$ non a centro. Effettuiamo la trasformazione $X \mapsto M^{-1}X$: $\mathcal{Q}$ viene trasformata in $\mathcal{Q}'$ definita da $X^tM^tAMX + 2 B^tMX + C = 0$. Definiamo $B_1$ come il vettore delle prime $k$ coordinate di $B^tM$, dove $k$ \`e il rango di $A$, e $B_2$ quello delle restanti; definiamo allo stesso modo $X_1$ e $X_2$ a partire da $X$. Allora l'equazione di $\mathcal{Q}'$ diventa $X_1^t\bar{A}X_1 + 2B_1^tX_1 + 2B_2^tX_2 + C = 0$.
+	\par Osserviamo che $\left ( \begin{array}{c|c} B_1 & \bar{A} \end{array} \right )$ e $\bar{A}$ hanno lo stesso rango perch\'e $\bar{A}$ \`e invertibile. Dunque $\mathcal{Q}_0'$ di equazione $X_1^t\bar{A}X_1 + 2B_1^tX_1 = 0$ \`e una quadrica che ha per unico centro il punto $N_1 = - \bar{A}^{-1}B_1$. Applicando quanto gi\`a dimostrato a quest'ultima, troviamo che un'opportuna isometria $X \rightarrow U^{-1}X$ che lascia fisso puntualmente tutto il sottospazio generato dagli ultimi $n - k$ vettori della base canonica trasforma $\mathcal{Q}'$ in $\mathcal{Q}''$ definita da $X_1^t\bar{U}^t \left ( \begin{array}{c|c} I_{i_+} & 0\\ \hline 0 & I_{i_-} \end{array} \right )\bar{U}X_1 + 2B_2^tX_2 - B_1^t \bar{A}^{-1} B_1 + C = 0$, dove $\bar{U}$ \`e il minore principale di $U$ di ordine $k$. La trasformazione lineare $X \mapsto T^{-1}X$, dove $T = \left ( \begin{array}{c|c} I_{k} & 0\\ \hline 0 & \tilde{T}\end{array} \right )$, con $\tilde{T}$ tale che $\tilde{T}^t B_2 = ( \cdots 1 \cdots)^t$, porta $\mathcal{Q}''$ in $\mathcal{Q}'''$ di equazione $X_1^t\bar{U}^t \left ( \begin{array}{c|c} I_{i_+} & 0\\ \hline 0 & I_{i_-} \end{array} \right ) \bar{U}X_1 + (\cdots 1 \cdots) - B_1^t \bar{A}^{-1} B_1 + C = 0$. Infine, una traslazione $X \mapsto X + v$, dove le prime $k$ coordinate di $v$ sono nulle e le restanti sono tutte uguali a $(n - k)^{-1}(B_1^t \bar{A}^{-1} B_1 - C)$ trasforma $\mathcal{Q}'''$ in $\mathcal{Q}^{(IV)}$ descritta da un'equazione del secondo tipo dell'enunciato.
+	\par L'unicit\`a della forma canonica segue dall'invarianza della segnatura di $A$ rispetto al gruppo delle affinit\`a.\EndProof
+\begin{Corollary}\label{cor7}
+	Ogni quadrica a centro ammette un solo centro.
+\end{Corollary}
+\Proof Immediato per il teorema appena dimostrato e per il corollario \ref{cor6}. \EndProof
+\begin{Theorem}\label{th55}
+	(\TheoremName{Classificazione metrica delle quadriche reali.}) $\mathcal{Q}$ \`e metricamente equivalente ad una delle seguenti quadriche (identificate con una delle equazioni che le descrivono):
+	\begin{itemize}
+		\item $\sum_{i = 1}^n a_ix_i^2 + c = 0$, dove gli $a_i$ sono numeri reali e $c \in \lbrace 0, 1 \rbrace$ (quadriche a centro);
+		\item $\sum_{i = 1}^{r} a_ix_i^2 + \sum_{i = r}^n b_ix_i = 0$, dove $r$ \`e il rango di $A$ e gli $a_i$ e i $b_i$ sono numeri reali (quadriche non a centro).
+	\end{itemize}
+\end{Theorem}
+\Proof Analoga alla dimostrazione della classificazione affine, salvo che non si fa uso delle trasformazioni che non sono isometrie e al posto del teorema di Sylvester si usa il teorema spettrale (per cui gli $a_i$ sono tutti gli autovalori non nulli di $A$). L'unicit\`a segue stavolta dall'invarianza degli autovalori di $A$ rispetto al gruppo ortogonale. \EndProof

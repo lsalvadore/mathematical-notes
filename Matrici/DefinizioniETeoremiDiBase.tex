@@ -1,0 +1,85 @@
+\section{Definizioni e teoremi di base.}
+\label{Matrici_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Sia $\Ring$ un anello. Fissati interi $m, n \in \mathbb{N}$ una
+	famiglia di elementi di $\Ring$ doppiamente indicizzata
+	$\Matrix = (\MatrixElement_{i,j})_{(i,j) \in m \times n}$ si chiama \Define{matrice}. Inoltre
+	\begin{itemize}
+		\item gli elementi $(\MatrixElement_{i,j})_{(i,j) \in m \times n}$ si chiamano
+		\Define{coefficienti}[di una matrice][coefficiente]: li denoteremo anche $(\Matrix_{i,j})_{(i,j)\in m \times n}$;
+		\item la \Define{dimensione}[di una matrice][dimensione]
+		di $\Matrix$ \`e $m \times n$;
+		\item fissato $i \in m$, la famiglia
+		$(\MatrixElement_{i,j})_{j \in n}$ si chiama $i$-esima
+		\Define{riga}[di una matrice][riga] di $\Matrix$, denotata $\Matrix_i$;
+		\item fissato $j \in m$, la famiglia
+		$(\MatrixElement_{i,j})_{i \in m}$ si chiama $j$-esima
+		\Define{colonna}[di una matrice][colonna] di $\Matrix$, denotata $\Matrix^j$.
+	\end{itemize}
+	Denotiamo $\Ring^{m \times n}$ la classe di tutte le matrici di dimensione $m \times n$. Denoteremo la matrice $\Matrix$ anche disponendone gli elementi in una tabella, le cui righe e colonne corrispondono alle righe e colonne della matrice come sopra definito, racchiusa da parentesi tonde o quadre:
+$$\left (
+\begin{array}{ccc}
+	\MatrixElement_{0,0}	&	\cdots	&	\MatrixElement_{0,n} \\
+	\vdots	&	\ddots	&	\vdots \\
+	\MatrixElement_{m,0}	&	\cdots	&	\MatrixElement_{m,n}
+\end{array}
+\right )$$
+o
+$$\left [
+\begin{array}{ccc}
+	\MatrixElement_{0,0}	&	\cdots	&	\MatrixElement_{0,n} \\
+	\vdots	&	\ddots	&	\vdots \\
+	\MatrixElement_{m,0}	&	\cdots	&	\MatrixElement_{m,n}
+\end{array}
+\right ].$$
+	Identificheremo spesso $\Ring^{m \times n}$ con $(\Ring^m)^n$.
+\end{Definition}
+\begin{Definition}
+	Sia una matrice $\Matrix = (\MatrixElement_{i,j})_{(i,j) \in m \times n}$ ($(m,n) \in \mathbb{N}^2$) a coefficienti in un anello $\Ring$. Definiamo $\Matrix$
+	\begin{itemize}
+		\item \Define{matrice riga}[riga][matrice] se $m = 0$, e in tal caso denotiamo pi\`u brevemente $\Matrix$ come la famiglia singolarmente indicizzata $(\MatrixElement_j)_{j \in n}$, con $\ForAll{j \in n}{\MatrixElement_j = \MatrixElement_{0,j}}$ e identifichiamo $\Ring^{0 \times n}$ con $\Ring^n$;
+		\item \Define{matrice colonna}[colonna][matrice] se $n = 0$, e in tal caso denotiamo pi\`u brevemente $\Matrix$ come la famiglia singolarmente indicizzata $(\MatrixElement_i)_{i \in m}$, con $\ForAll{i \in m}{\MatrixElement_i = \MatrixElement_{i,0}}$ e identifichiamo $\Ring^{m \times 0}$ con $\Ring^m$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia una matrice $\Matrix = (\MatrixElement_{i,j})_{(i,j) \in m \times n}$ ($(m,n) \in \mathbb{N}^2$) a coefficienti in un anello $\Ring$. Definiamo $\VarMatrix = (\MatrixElement_{i,j})_{(i,j) \in A \times B}$, con $A \subseteq m$ e $B \subseteq n$, \Define{sottomatrice} di $\Matrix$.
+\end{Definition}
+\begin{Definition}
+	Siano un anello $\Ring$, interi $m, n, p \in \mathbb{N}$ e siano
+	\begin{itemize}
+		\item $A, B \in \Ring^{m \times n}$ con $A = (A_{i,j})_{(i,j) \in m \times n}$ e $B = (B_{i,j})_{(i,j) \in m \times n}$;
+		\item sia $C \in \Ring^{n \times p}$ con $C = (C_{j,k})_{(j,k) \in n \times p}$;
+		\item $\Scalar \in \Ring$.
+	\end{itemize}
+	Definiamo
+	\begin{itemize}
+		\item la \Define{somma}[di matrice][somma] come
+		$A + B = (A_{i,j} + B_{i,j})_{(i,j) \in m \times n}$;
+		\item il \Define{prodotto}[di matrice][prodotto] come
+		$AC = (\sum_{j = 1}^n A_{i,j}C_{j,k})_{i,k}$;
+		\item il
+		\Define{prodotto per scalare}[di matrice per scalare][prodotto] come
+		$\Scalar A = (\Scalar A_{i,j}))_{(i,j) \in m \times n}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Siano $(m,n) \in \mathbb{N}^2$ e $\Ring$ un anello. $\Ring^{m \times n}$ munito delle operazioni di somma e prodotto per scalare \`e un $\Ring$-modulo.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Corollary}
+	Siano $\Ring$ un anello e $n \in \mathbb{N}$. $\Ring^n$ \`e un $\Ring$-modulo.
+\end{Corollary}
+\Proof $\Ring^n = \Ring^{n \times 0}$. \EndProof
+\begin{Definition}
+	Siano $\Ring$ un anello e $(n,m) \in \mathbb{N}^2$. Introduciamo $n$ incognite $(x_i)_{i \in n}$ e poniamo $X = (x_i)_{i \in n}$. Siano inoltre $A \in \Ring^{m \times n}$ e $B \in \Ring^n$. L'equazione $AX = B$ si chiama \Define{sistema lineare di equazione}[lineare di equazioni][sistema]. Inoltre, chiamiamo
+	\begin{itemize}
+		\item $A$ \Define{matrice del sistema}[di un sistema lineare][matrice] e i suoi coefficienti \Define{coefficienti del sistema}[di un sistema lineare][coefficienti];
+		\item $B$ \Define{vettore dei termini noti}[dei termini noti][vettore] e le sue componenti \Define{termini noti}[noto][termine];
+		\item $C \in \Ring^n$ tale che $AC = B$ \Define{soluzione del sistema}[di un sistema lineare][soluzione].
+	\end{itemize}
+	Se su $\Ring$ \`e definito un ordinamento $\leq$, allora introduciamo anche le notazioni $AX \leq B$ e $AX \geq B$, che chiamiamo \Define{sistema lineare di disequazioni}[lineare di disequazioni][sistema]. Definiamo per i sistemi di disequazioni gli stessi termini appena introdotti per i sistemi di equazioni, modificiano la definizione di soluzione come segue: $C \in \Ring^n$ \`e soluzione di $AX \leq B$ quando $\ForAll{i \in m}{(AC)_i \leq B_i}$ (e analogamente per il caso $AX \geq B$).
+\end{Definition}
+\begin{Theorem}
+	Siano $(m,n) \in \mathbb{N}^2$ e $\Ring$ un anello. Sia $M \in \Ring^{m \times n}$. L'applicazione $\Linear: \Ring^n \rightarrow \Ring^m$ \`e un'applicazione lineare.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof

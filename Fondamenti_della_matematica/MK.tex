@@ -1,0 +1,118 @@
+\subsection{Teoria di Morse e Kelley (MK).}\label{MK}
+\par Descriviamo la teoria degli insiemi di Morse e Kelley come una teoria del primo ordine con eguaglianza e un simbolo di relazione binaria $\in$ che verifica gli assiomi elencati di seguito. Salvo specificazioni contrarie, questa teoria sar\`a la nostra teoria degli insiemi di riferimento.
+\begin{Definition}
+	Ogni termine della teoria si chiama \Define{classe}. Quando vale la relazione $\Class_1 \in \Class_2$ diciamo che la classe $\Class_1$ \Define{appartiene}[appartenenza] alla classe $\Class_2$, che $\Class_1$ \`e \Define{elemento} di $\Class_2$ e che $\Class_2$ \Define{contiene}[contenimento] $\Class_1$. Denotiamo la relazione $\Not{\Class_1 \in \Class_2}$ col simbolo $\notin$. Se $\Set$ \`e una classe tale che sia verificata la relazione $(\exists \Class)(\Set \in \Class)$, allora $\Set$ \`e un \Define{insieme}, in caso contrario \`e una \Define{classe propria}[propria][classe].
+\end{Definition}
+\begin{Definition}
+	Quando $(\Class_1 \in \Class_2) \Rightarrow (\Class_1 \in \Class_3)$ diciamo che $\Class_2$ \`e una \Define{sottoclasse} di $\Class_3$, denotato $\Class_2 \subseteq \Class_3$ e che $\Class_3$ \`e una \Define{sopraclasse} di $\Class_2$, denotato $\Class_3 \supseteq \Class_2$; se $\Class_2 \neq \Class_3$, allora le notazioni diventano rispettivamente $\Class_2 \subset \Class_3$ e $\Class_3 \supset \Class_2$. Inoltre
+	\begin{itemize}
+		\item se $\Class_2$ \`e un insieme, allora diciamo anche che $\Class_2$ \`e un \Define{sottoinsieme} di $\Class_3$;
+		\item se $\Class_3$ \`e un insieme, allora diciamo anche che $\Class_3$ \`e un \Define{soprainsieme} di $\Class_2$.
+	\end{itemize}
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma di estensionalit\`a}[di estensionalit\`a][assioma] Abbiamo $\Class_1 = \Class_2$ se e solo se $\Class_1 \subseteq \Class_2$ e $\Class_2 \subseteq \Class_1$.
+\end{Axiom}
+\par Per l'assioma di estensionalit\`a, dato un numero finito di classi, se esiste una classe che le contiene tutte senza contenere nient'altro, allora essa \`e unica: la denoteremo elencandone gli elementi tra parentesi graffe.
+\begin{Axiom}
+	\TheoremName{Schema di comprensione delle classi}[di comprensione delle classi][schema] Se $\phi(x)$ \`e una formula del primo ordine, allora esiste una classe $\Class$ tale che $\Set \in \Class \Leftrightarrow \And{(\exists \Class)(\Set \in \Class)}{\phi(\Set)}$.
+\end{Axiom}
+\par Data una formula $\phi(x)$ della forma descritta nell'assioma precedente, denotiamo la classe definita da $\phi(x)$ con $\lbrace x | \phi(x) \rbrace$.
+\begin{Definition}
+	Se la classe $\Class$ verifica la relazione $(\forall x)(x \notin \Class)$ allora diciamo che $\Class$ \`e \Define{vuota}[vuota][classe].
+\end{Definition}
+\begin{Theorem}
+	La classe $\emptyset = \lbrace x | x \neq x \rbrace$ \`e vuota.
+\end{Theorem}
+\Proof Segue direttamente dallo schema di comprensione. \EndProof
+\begin{Theorem}
+	Sia $\Class_1$ una classe vuota e $\Class_2$ una classe qualsiasi: abbiamo $\Class_1 \subseteq \Class_2$.
+\end{Theorem}
+\Proof Sia $x \in \Class_1$: poich\'e, per definizione di classe vuota, $x \notin \Class_1$, ne deduciamo $x \in \Class_2$. \EndProof
+\begin{Corollary}
+	$\emptyset$ \`e l'unica classe vuota.
+\end{Corollary}
+\Proof Se $\Class$ \`e un'altra classe vuota, allora $\emptyset \subseteq \Class$ e $\Class \subseteq \emptyset$, da cui la tesi tramite l'assioma di estensionalit\`a. \EndProof
+\par D'ora in poi denoteremo sempre con $\emptyset$ la classe vuota.
+\begin{Theorem}
+	Esiste la classe $\VonNeumannUniverse$, detta \Define{Universo di von Neumann}[di von Neumann][universo], i cui elementi sono tutti e soli gli insiemi.
+\end{Theorem}
+\Proof $\VonNeumannUniverse = \lbrace x | x \notin \emptyset \rbrace$. \EndProof
+\begin{Definition}
+	Se $\Class_1$ e $\Class_2$ sono due classi tali che non esista $x$ per cui $x \in \Class_1$ e $x \in \Class_2$, allora si dice che $\Class_1$ e $\Class_2$ sono \Define{disgiunte}[disgiunte][classi].
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma di regolarit\`a (o di fondazione)}[di regolarit\`a (o di fondazione)][assioma] Per ogni insieme $\Set_0$ esiste un elemento $\Set_1 \in \Set_0$ tale che $\Set_0$ e $\Set_1$ sono disgiunti.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma dell'accoppiamento}[della coppia][assioma] Dati due insiemi $\Set_1$ e $\Set_2$ esiste l'insieme $\lbrace \Set_1, \Set_2 \rbrace$.
+\end{Axiom}
+\begin{Theorem}
+	Se $\Set$ \`e un insieme, esiste l'insieme $\lbrace \Set \rbrace$.
+\end{Theorem}
+\Proof $\lbrace \Set \rbrace$ si ottiene dall'assioma di accoppiamento prendendo $\Set_1 = \Set_2 = \Set$. \EndProof
+\begin{Definition}
+	Dati due insiemi $\Set_1$, $\Set_2$, la \Define{coppia} $(\Set_1,\Set_2)$ \`e l'insieme $\lbrace \lbrace \Set_1 \rbrace, \lbrace \Set_1, \Set_2 \rbrace \rbrace$. Per qualsiasi numero naturale\footnote{Non abbiamo ancora definito formalmente il concetto di numero naturale: ci affidiamo qui al concetto intuitivo metamatematico di ``numero usato per contare''.} $n$ maggiore\footnote{Non avendo definito l'insieme dei numeri naturali, non abbiamo definito neanche un loro ordinamento, n\'e l'operazione di sottrazione di $1$ utilizzata poco pi\`u avanti: persistiamo nell'appellarci all'intuizione metamatematica.} di $2$, la \Define{$n$-upla} $(\Set_1, ..., \Set_{n - 1}, \Set_n)$ \`e definita come la coppia $((\Set_1, ..., \Set_{n - 1}), \Set_n)$. Una \Define{terna} \`e una $3$-upla, una \Define{quadrupla} una $4$-upla, una \Define{quintupla} una $5$-upla e cos\`i via. Gli elementi che appaiono in una $n$-upla si chiamano \Define{componenti}[componente].
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{classe funzionale}[funzionale][classe] una classe $\Function$ costituita da sole coppie tale che $\Implies{\And{(x,y) \in \Function}{(x,z) \in \Function}}{y = z}$.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{applicazione} o \Define{funzione} o ancora \Define{operatore}\footnote{Preferiremo il termine ``funzione'' in ambito numerico e il termine ``operatore'' quando gli argomenti sono altre funzioni.} il dato dei seguenti elementi:
+	\begin{itemize}
+		\item una classe funzionale $\Function$, detta \Define{grafo} dell'applicazione;
+		\item una classe costituita esattamente da tutte le prime componenti delle coppie in $\Function$, detti \Define{argomenti}[argomento];
+		\item una classe contenente tutte le seconde componenti delle coppie in funzione, dette \Define{immagini}[immagine].
+	\end{itemize}
+	Inoltre, dato un argomento $x$ di $\Function$, l'unica immagine $y$ tale che $(x,y) \in \Function$ si chiama \NIDefine{immagine} di $x$ tramite $\Function$ e si denota $\Function(x)$ o anche $\Function x$. Diciamo ancora che $\Function$ \Define{associa}[associazione] $y$ ad $x$. Per quei casi in cui non \`e tanto l'applicazione ad essere oggetto di interesse quanto l'associazione tra agormenti e immagini, definiamo il concetto di \Define{famiglia}, la quale \`e un'applicazione denotata $(m_i)_{i \in A}$, dove $A$ \`e l'insieme degli argomenti e $m_i$ \`e un termine, variabile a seconda del valore di $i$, che \`e l'immagine associata ad $i$ dalla famiglia stessa.
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma del limite della dimensione}[del limite della dimensione][assioma] $\Class$ \`e una classe propria se e solo se esiste una classe funzionale $\Function$ tale che per ogni $\Set_2 \in \VonNeumannUniverse$, esista uno e un solo $\Set_1 \in \Class$ con $(\Set_1,\Set_2) \in \Function$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma dell'insieme delle parti}[dell'insieme delle parti][assioma] Dato un insieme $\Set$, esiste l'insieme $\lbrace x | x \subseteq \Set \rbrace$, d'ora in poi denotato $\PowerSet{\Set}$.
+\end{Axiom}
+\begin{Definition}
+	Una classe $\Class$ si dice \Define{induttiva}[induttiva][classe] quando
+	\begin{itemize}
+		\item $\emptyset \in \Class$;
+		\item $x \in \Class \Rightarrow x \cup \lbrace x \rbrace \in \Class$.
+	\end{itemize}
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma dell'infinito}[dell'infinito][assioma] Esiste un insieme induttivo.
+\end{Axiom}
+\begin{Theorem}
+	La classe vuota $\emptyset$ \`e un insieme, che chiameremo infatti d'ora in poi \Define{insieme vuoto}[vuoto][insieme].
+\end{Theorem}
+\Proof Dato che per l'assioma dell'infinito esiste almeno un insieme l'universo di von Neummann $\VonNeumannUniverse$ \`e non vuoto. Non pu\`o dunque esistere una classe funzionale $\Function$ tale che per ogni $\Set_2 \in \VonNeumannUniverse$, esista uno e un solo $\Set_1 \in \emptyset$ con $(\Set_1,\Set_2) \in \Function$. Dunque, per l'assioma di limite della dimensione, $\emptyset$ \`e un insieme. \EndProof
+\par L'assioma dell'infinito \`e l'ultimo degli assiomi necessari a descrivere la teoria di Morse e Kelley. Gli assiomi che seguiranno devono essere considerati solo teoremi, che possono dunque essere aggiunti al sistema di assiomi senza danno. Essi rivestono comunque lo \textit{status} di assioma perch\'`e, come vedremo, possono a volte sostituire alcuni degli assiomi che abbiamo elencato o anche essere necessari in altre teorie degli insiemi.
+\begin{Axiom}
+	\TheoremName{Assioma dell'unione}[dell'unione][assioma] Dato un insieme $\Set$, esiste l'insieme $\lbrace x | (\exists y)(\And{y \in \Set}{x \in y}) \rbrace$, d'ora in poi denotato $\bigcup \Set$. Se $\Set$ ammette solo un numero finito di elementi $\Set_1, ..., \Set_n$ , allora denotiamo $\bigcup \Set$ anche con $\Set_1 \cup ... \cup \Set_n$.
+\end{Axiom}
+\begin{Theorem}
+	L'assioma dell'unione \`e vero in MK.
+\end{Theorem}
+\begin{Axiom}
+	\TheoremName{Schema di comprensione degli insiemi}[di comprensione degli insiemi][schema] Se $\phi(x)$ \`e una formula del primo ordine, allora per ogni insieme $\Set_0$ esiste un insieme $\Set$ tale che $x \in \Set \Leftrightarrow \And{x \in \Set_0}{\phi(x)}$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma di rimpiazzamento} Se $\Function$ \`e una classe funzionale e un insieme e gli argomenti di $\Function$ costituiscono un insieme, allora le immagini di $\Function$ costituiscono un insieme, chiamato \Define{immagine}[immagine][insieme] di $\Function$ e denotato $\Image{\Function}$.
+\end{Axiom}
+\begin{Definition}
+	Data una classe $\Class$, definiamo \Define{applicazione di scelta}[di scelta][applicazione] per $\Class$ un'applicazione $\Function$ avente le seguenti propriet\`a:
+	\begin{itemize}
+		\item gli argomenti di $\Function$ costituiscono la classe $\Class$;
+		\item se $(x,y) \in \Function$, allora $y \in x$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precedente, se $\emptyset \in \Class$, allora non esistono applicazioni di scelta per $\Class$.
+\end{Theorem}
+\Proof Per definizione d'insieme vuoto, non esiste $y$ tale che $y \in \emptyset$. \EndProof
+\begin{Axiom}
+	\TheoremName{Assioma della scelta globale}[della scelta globale][assioma] Data una classe $\Class$ tale che $\emptyset \notin \Class$, esiste un'applicazione di scelta per $\Class$.
+\end{Axiom}
+\begin{Theorem}
+	L'assioma di limite della dimensione \`e equivalente alla congiunzione dello schema di comprensione degli insiemei, degli assiomi di rimpiazzamento e della scelta globale.
+\end{Theorem}

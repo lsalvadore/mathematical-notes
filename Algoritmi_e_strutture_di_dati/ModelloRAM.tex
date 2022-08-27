@@ -1,0 +1,28 @@
+\subsection{Modello RAM.}
+\label{AlgoritmiEStruttureDiDati_ModelloRAM}
+\begin{Definition}
+	Chiamiamo \Define{modello RAM}[RAM][modello] (\textit{Random access memory}) un modello computazionale costituito da
+	\begin{itemize}
+		\item registri;
+		\item memoria;
+		\item operazioni logiche, aritmetiche, booleane, di confronto, di trasferimento tra registri e memoria, di controllo.
+	\end{itemize}
+	Si suppone che tutte queste operazioni abbiano costo $\BigO{1}$.
+\end{Definition}
+\begin{Theorem}
+	Il costo di un costrutto \mintinline{c}{if} con guardia non banale \`e, secondo il modello RAM, $G + \max\lbrace A,B \rbrace$, dove
+	\begin{itemize}
+		\item $G$ \`e il costo della guardia;
+		\item $A$ \`e il costo del blocco di istruzioni corrispondenti alla guardia vera;
+		\item $B$ il costo del blocco di istruzioni corrispondenti alla guardia falsa.
+	\end{itemize}
+\end{Theorem}
+\Proof Il costo del costrutto \`e $G + A$ o $G + B$, a seconda dei dati effettivamente passati in ingresso. Al caso pessimo \`e $\max \lbrace G + A, G + B \rbrace = G + \max \lbrace A, B \rbrace$. \EndProof
+\begin{Theorem}
+	Il costo di un costrutto \mintinline{c}{for(int i = 0; i < n; i++)} \`e, secondo il modello RAM, $\sum_{i = 0}^{n - 1} t_i$, dove $t_i$ \`e il costo dell'$i$-esima iterazione del ciclo, comprensiva delle istruzioni di inizializzazione delle variabili di controllo (per la prima iterazione), di aggiornamento della variabile di controllo e dell'istruzione di valutazione della guardia.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Il costo di un costrutto \mintinline{c}{while} o \mintinline{c}{do}-\mintinline{c}{while} \`e, secondo il modello RAM, $\sum_{i = 0}^m g_i + \sum_{i = 1}^m t_i$, dove $g_i$ ($i \in m + 1$) \`e il costo di esecuzione della guardia all'$i$-esima itereazione del ciclo e $t_i$ ($i \in \NaturalShift{m}$) \`e il costo dell'esecuzione del corpo del ciclo all'$i$-esima iterazione.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni osservando che all'ultima iterazione del ciclo viene eseguita la guardia, ma non il corpo. \EndProof

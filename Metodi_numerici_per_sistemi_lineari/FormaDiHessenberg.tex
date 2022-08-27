@@ -1,0 +1,151 @@
+\section{Forma di Hessenberg.}
+\label{MetodiNumericiPerSistemiLineari_FormaDiHessenberg}
+\begin{Definition}
+	Siano $\Ring$ un anello, $n, m \in \mathbb{N}$ e $\Matrix \in \Ring^{n \times m}$.
+  Diciamo che $\Matrix$ \`e
+	\begin{itemize}
+		\item \Define{matrice di Hessenberg superiore}[di Hessenberg superiore][matrice] quando
+      $\ForAll{(i,j) \in n \times m}{\Implies{i > j + 1}{\Matrix_i^j = 0}}$:
+      nel caso quadrato abbiamo
+\[
+\lmatrix
+\begin{array}{cccc}
+\Matrix_0^0 & \cdots & \cdots & \Matrix_{n - 1}^{n - 1}\\
+\Matrix_1^0 & \Matrix_1^1 & \ddots & \Matrix_{n - 1}^{n - 1}\\
+& \ddots & \ddots & \vdots\\
+& & \Matrix_{n - 1}^{n - 2} & \Matrix_{n - 1}^{n - 1}
+\end{array}
+\rmatrix;
+\]
+		\item \Define{matrice di Hessenberg inferiore}[di Hessenberg inferiore][matrice] quando
+      $\ForAll{(i,j) \in n \times m}{\Implies{i < j - 1}{\Matrix_i^j = 0}}$:
+      nel caso quadrato abbiamo
+\[
+\lmatrix
+\begin{array}{cccc}
+\Matrix_0^0 & \Matrix_0^1 &\\
+\vdots & \ddots & \ddots &\\
+\vdots & \ddots & \Matrix_{n - 2}^{n - 2} & \Matrix_{n - 2}^{n - 1}\\
+\Matrix_{n - 1}^0 & \cdots & \Matrix_{n - 1}^{n - 2} & \Matrix_{n - 1}^{n - 1}\\
+\end{array}
+\rmatrix.
+\]
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\UnitaryMatrix \in \mathbb{C}^{n \times n}$ unitaria;
+    \item $\HessenbergForm \in \mathbb{C}^{n \times n}$ matrice di Hessenberg
+      superiore;
+  \end{itemize}
+  tali che $\HermitianTransposed{\UnitaryMatrix} \Matrix \UnitaryMatrix = \HessenbergForm$.
+  Si dice che $\HessenbergForm$ \`e una
+  \Define{forma di Hessenberg}[di Hessenberg][forma] di $\Matrix$.
+\end{Definition}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$.
+  \end{itemize}
+  Il seguente algoritmo costruisce una fattorizzazione
+  $\Matrix = A \HessenbergForm$ dove $A$ \`e prodotto di matrici
+  elementari e $\HessenbergForm$ \`e triangolare superiore:
+  \begin{enumerate}
+    \item\label{FormaDiHessenberg_1} si ponga $l = 0$;
+    \item\label{FormaDiHessenberg_2} si definisca
+      $\VarMatrix = (\Matrix_k^j)_{\substack{k = l\\j= l}}^{\substack{k = n - 1}{j = m - 1}}$;
+    \item\label{FormaDiHessenberg_3} si fissi una matrice
+      elementare di Householder $\HouseholderElementaryMatrix_{(l,0)}$ tale che
+      $\HouseholderElementaryMatrix_{(l,0)}\VarMatrix = \CanonicalBase_1^{(l + 1)}$, dove
+      $\CanonicalBase_1^{(l + 1)}$ \`e il $(l + 1)$-esimo vettore della base
+      canonica di $\mathbb{C}^{m - l - 1}$;
+    \item\label{FormaDiHessenberg_4} si ponga
+      $(\HouseholderElementaryMatrix_{(l)})_k^j =
+      \begin{cases}
+        1&\text{ se }k = j < l,\\
+        (\HouseholderElementaryMatrix_{(l,0)})_{k - l}^{j - l}&\text{ se }\And{k \geq l}{j \geq l},\\
+        0&\text{ altrimenti},
+      \end{cases}$
+      vale a dire
+      \[
+        \HouseholderElementaryMatrix_{(l)} =
+        \lmatrix
+        \begin{array}{c|c}
+          \Identity &\\
+          \hline
+          & \HouseholderElementaryMatrix_{(l,0)}
+        \end{array}
+        \rmatrix;
+      \]
+    \item\label{FormaDiHessenberg_5} si ridefinisca
+      $\Matrix = \HouseholderElementaryMatrix_{(l)}\Matrix\HouseholderElementaryMatrix_{(l)}$;
+    \item\label{FormaDiHessenberg_6} si incrementi
+      $l$ di $1$;
+    \item\label{FormaDiHessenberg_7} se $l < m - 1$, si torni al
+      punto \ref{FormaDiHessenberg_2};
+    \item\label{FormaDiHessenberg_8} si ponga
+      $A = \HouseholderElementaryMatrix_{(m - 2)}^{-1}\HouseholderElementaryMatrix_{(m - 3)}^{-1}
+      \cdots
+      \HouseholderElementaryMatrix_{(1)}^{-1}\HouseholderElementaryMatrix_{(0)}^{-1}$;
+    \item\label{FormaDiHessenberg_9} si ponga
+      $\HessenbergForm = \Matrix$;
+    \item\label{FormaDiHessenberg_10} l'algoritmo termina restituendo
+      $A$ e $\HessenbergForm$.
+  \end{enumerate}
+\end{Theorem}
+\Proof 
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/HessenbergViaHouseholder.m"}
+	\caption{Implementazione di un algoritmo in \LanguageName{octave} per il calcolo di una
+  forma di Hessenberg tramite matrici elementari di Householder.}
+\end{listing}
+\begin{Definition}
+  Chiamiamo
+  \Define{rotazione di Givens}[di Givens][rotazione]
+  una matrice unitaria
+  $\GivensRotation \in \mathbb{C}^{n \times n}$
+  ($n \in \NotZero{\mathbb{N}}$) tale che, per opportuni
+  \begin{itemize}
+    \item $p \in \NotZero{n}$;
+    \item $c, s \in \mathbb{C}$;
+  \end{itemize}
+  \[
+    \GivensRotation_k^j =
+    \begin{cases}
+      1&\text{ se }\And{k = j}{\And{k \neq p}{k \neq p + 1}},\\
+      c&\text{ se }k = j = p,\\
+      s&\text{ se }\And{k = p}{j = p + 1},\\
+      - \Conjugate{s}&\text{ se }\And{k = p + 1}{j = p},\\
+      \Conjugate{c}&\text{ se }k = j = p + 1,\\
+      0&\text{ altrimenti},
+    \end{cases}
+  \]
+  vale a dire
+  \[
+    \GivensRotation =
+    \lmatrix
+    \begin{array}{cccccccccc}
+      1 &&&&&&&\\
+      & \ddots &&&&&&\\
+      && 1 &&&&&\\
+      &&& c & s &&&\\
+      &&& - \Conjugate{s} & \Conjugate{c} &&&\\
+      &&&&& 1 &&\\
+      &&&&&& \ddots &\\
+      &&&&&&& 1
+    \end{array}
+    \rmatrix.
+  \]
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/HessenbergViaGivens.m"}
+	\caption{Implementazione di un algoritmo in \LanguageName{octave} per il calcolo di una
+  forma di Hessenberg tramite rotazioni di Givens.}
+\end{listing}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/BulgeChasing.m"}
+	\caption{Implementazione del \English{bulge chasing} in \LanguageName{octave}.}
+\end{listing}

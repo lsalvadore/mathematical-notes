@@ -1,0 +1,87 @@
+\section{Prodotto e somma di Kronecker}
+\label{Matrici_ProdottoESommaDiKronecker}
+\begin{Definition}
+  Fissato un anello $\Ring$, siano
+  \begin{itemize}
+    \item siano $m, n, p, q \in \NotZero{\mathbb{N}}$;
+    \item $A \in \Ring^{m \times n}$;
+    \item $B \in \Ring^{p \times q}$.
+  \end{itemize}
+  Chiamiamo
+  \Define{prodotto di Kronecker}[di Kronecker][prodotto]
+  la matrice $A \KroneckerProduct B \in \Ring^{mp \times nq}$ definita da
+  $(A \KroneckerProduct B)_k^j = A_{q_1}^{q_2} B_{r_1}^{r_2}$
+  al variare di $(k,j) \in mp \times nq$, dove
+  \begin{itemize}
+    \item $q_1$ \`e il quoziente della divisione euclidea di $k$ per $p$;
+    \item $r_1$ \`e il resto della divisione euclidea di $k$ per $p$;
+    \item $q_2$ \`e il quoziente della divisione euclidea di $j$ per $q$;
+    \item $r_2$ \`e il resto della divisione euclidea di $j$ per $q$;
+  \end{itemize}
+  vale a dire
+  \[
+    A \KroneckerProduct B =
+    \lmatrix
+    \begin{array}{ccc}
+      A_0^0 B & \cdots & A_0^{n - 1} B,\\
+      \vdots & \ddots \vdots,\\
+      A_{m - 1}^0 B & \cdots & A_{m - 1}^{n - 1} B,\\
+    \end{array}
+    \rmatrix.
+  \]
+  Se $\Ring$ \`e un anello unitario, chiamiamo inoltre
+  \Define{somma di Kronecker}[di Kronecker][somma]
+  la matrice
+  $A \KroneckerSum B
+  = \Identity \KroneckerProduct A + B \KroneckerProduct \Identity$.
+\end{Definition}
+\begin{Theorem}
+  Fissato un anello $\Ring$, siano
+  \begin{itemize}
+    \item siano $m, n, p, q, s, t \in \NotZero{\mathbb{N}}$;
+    \item $A \in \Ring^{m \times n}$;
+    \item $B \in \Ring^{p \times q}$;
+    \item $C \in \Ring^{n \times s}$;
+    \item $D \in \Ring^{q \times t}$.
+  \end{itemize}
+  Abbiamo
+  \[
+    (A \KroneckerProduct B)(C \KroneckerProduct D)
+    = AC \KroneckerProduct BD.
+  \]
+\end{Theorem}
+\Proof Abbiamo, per $(k,j) \in mq \times pt$,
+posto
+\begin{itemize}
+    \item $q_1$ \`e il quoziente della divisione euclidea di $k$ per $p$;
+    \item $r_1$ \`e il resto della divisione euclidea di $k$ per $p$;
+    \item $q_2$ \`e il quoziente della divisione euclidea di $j$ per $q$;
+    \item $r_2$ \`e il resto della divisione euclidea di $j$ per $q$;
+    \item $q_3$ \`e il quoziente della divisione euclidea di $l$ per $q$;
+    \item $r_3$ \`e il resto della divisione euclidea di $l$ per $q$;
+\end{itemize}
+\begin{align*}
+  ((A \KroneckerProduct B)(C \KroneckerProduct D))_k^j
+  &= (A \KroneckerProduct B)_k^l (C \KroneckerProduct D)_l^j,\\
+  &= A_{q_1}^{q_3} B_{r_1}^{r_3} C_{q_3}^{q_4} D_{r_3}^{r_4},\\
+  &= A_{q_1}^{q_3} C_{q_3}^{q_4} B_{r_1}^{r_3} D_{r_3}^{r_4},\\
+  &= AC \KroneckerProduct BD.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+  Fissato un anello $\Ring$, siano
+  \begin{itemize}
+    \item siano $n, p \in \NotZero{\mathbb{N}}$;
+    \item $A \in \Ring^{n \times n}$ invertibile;
+    \item $B \in \Ring^{p \times p}$ invertibile.
+  \end{itemize}
+  Abbiamo $(A \KroneckerProduct B)^{-1} = A^{-1} \KroneckerProduct B^{-1}$.
+\end{Corollary}
+\Proof Abbiamo
+\begin{align*}
+  (A \KroneckerProduct B)(A^{-1} \KroneckerProduct B^{-1})
+  &= AA^{-1} \KroneckerProduct BB^{-1},\\
+  &= \Identity_n \KroneckerProduct \Identity_p,\\
+  &= \Identity_{np},\\
+  &= A^{-1}A \KroneckerProduct B^{-1}B,\\
+  &= (A^{-1} \KroneckerProduct B^{-1})(A \KroneckerProduct B).\text{ \EndProof}
+\end{align*}

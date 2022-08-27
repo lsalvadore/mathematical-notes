@@ -1,0 +1,78 @@
+\section{Definizioni e teoremi di base.}\label{DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Si chiama \Define{gruppo} un monoide $\Group$ in cui tutti gli elementi sono invertibili. Un \Define{omomorfismo di gruppi}[di gruppi][omomorfismo] \`e un omomorfismo di monoidi dove dominio e codominio sono entrambi gruppi. L'\Define{ordine}[di un gruppo][ordine] di $\Group$, denotato $\GroupOrder{\Group}$, \`e la cardinalit\`a del suo sostegno. Se $\Subgroup$ \`e un sottogruppo di $\Group$, denotiamo tale relazione con $\Subgroup \IsSubgroup \Group$.
+\end{Definition}
+\begin{Theorem}
+	Gli omomorfismi di gruppi costituiscono una categoria.
+\end{Theorem}
+\Proof Segue direttamente dall'esistenza della categoria $\CatMonoid$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{gruppo abeliano}[abeliano][gruppo] o \Define{commutativo}[commutativo][gruppo] un gruppo la cui operazione \`e commutativa.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo
+	\begin{itemize}
+		\item \Define{categoria dei gruppi}[dei gruppi][categoria] la categoria le cui frecce sono tutti gli omomorfismi di gruppi, d'ora in poi denotata $\CatGroup$;
+		\item \Define{categoria dei gruppi abeliani}[dei gruppi abeliani][categoria] la categoria $\CatGroup \cap \CatMagmaComm$, d'ora in poi denotata $\CatAbelian$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Esistono i seguenti gruppi:
+	\begin{itemize}
+		\item dati un gruppo $\Group$ e una relazione d'equivalenza $\Equivalence$ compatibile con la struttura di gruppo di $\Group$, il gruppo quoziente $\Quotient{\Group}{\Equivalence}$;
+		\item data una famiglia di gruppi $(\Group_i)_{i \in I}$, i gruppi $\DirectProduct_{i \in I} \Group_i$ e $\DirectSum_{i \in I} \Group_i$.
+	\end{itemize}
+\end{Theorem}
+\Proof Occorre verificare che i monoidi $\Quotient{\Group}{\Equivalence}$, $\DirectProduct_{i \in I} \Group_i$ e $\DirectSum_{i \in I}$ sono gruppi, vale a dire che ogni loro elemento \`e invertibile:
+	\begin{itemize}
+		\item se $\EquivalenceClass{x} \in \Quotient{\Group}{\Equivalence}$, osserviamo che $\EquivalenceClass{x}\EquivalenceClass{x^-1} = \EquivalenceClass{xx^-1} = \EquivalenceClass{1} = 1$;
+		\item se $(x_i)_{i \in I} \in \DirectProduct_{i \in I} \Group_i$, allora $(x_i)_{i \in I} (x_i^{-1})_{i \in I} = (x_ix_i^{-1})_{i \in I} = (1)_{i \in I} = 1$;
+		\item se $(x_i)_{i \in I} \in \DirectProduct_{i \in I}$ ha supporto finito, allora ha supporto finito anche $(x_i^{-1})_{i \in I}$. \EndProof
+	\end{itemize}
+\begin{Theorem}
+	Sia $\Group$ un gruppo. Dato $\Subgroup \subseteq \Group$, $\Subgroup$ \`e un sottogruppo di $\Group$ se e solo se $\Subgroup \neq \emptyset$ e, per ogni $a,b \in \Subgroup$, abbiamo $ab^{-1} \in \Subgroup$.
+\end{Theorem}
+\Proof Occorre verificare i seguenti fatti:
+\begin{itemize}
+	\item $1 \in \Subgroup$: sia $a \in \Subgroup$, allora $aa^{-1} = 1 \in \Subgroup$;
+	\item se $a \in \Subgroup$, allora $a^{-1} \in \Subgroup$: $a^{-1} = 1 \cdot a^{-1} \in \Subgroup$;
+	\item se $a, b \in \Subgroup$, allora $ab \in \Subgroup$: per il punto precedente, $b^{-1} \in \Subgroup$, dunque $ab = a(b^{-1})^{-1} \in \Subgroup$. \EndProof
+\end{itemize}
+\par D'ora in poi, per indicare che $\Subgroup$ \`e un sottogruppo di $\Group$ useremo la notazione $\Subgroup \IsSubgroup \Group$.
+\begin{Theorem}
+	Siano $\Magma$ un magma, $\Group$ un gruppo e $\Homomorphism: \Group \rightarrow \Magma$ un omomorfismo di magma. $\Image{\Homomorphism}$ \`e un gruppo.
+\end{Theorem}
+\Proof Segue dal fatto che l'immagine di un monoide \`e un monoide e che l'immagine di un elemento invertibile \`e invertibile. \EndProof
+\begin{Corollary}
+	Siano $\Group_1, \Group_2$ gruppi e $\Homomorphism: \Group_1 \rightarrow \Group_2$ un omomorfismo. Abbiamo $\Image{\Homomorphism} \IsSubgroup \Group_2$.
+\end{Corollary}
+\Proof Un omomorfismo di gruppi \`e un omomorfismo di magma. \EndProof
+\begin{Theorem}
+	Siano $\Group_1, \Group_2$ gruppi e $\Homomorphism: \Group_1 \rightarrow \Group_2$ un omomorfismo. Abbiamo $\Kernel{\Homomorphism} \IsSubgroup \Group_1$.
+\end{Theorem}
+\Proof Un omomorfismo di gruppi \`e un omomorfismo di monoidi, quindi $\Kernel{\Homomorphism}$ \`e un sottomonoide di $\Group_1$. Inoltre, se $x \in \Kernel{\Homomorphism}$, allora $\Homomorphism(x^{-1}) = \Homomorphism(x)^{-1} = 1^{-1} = 1$. \EndProof
+\begin{Theorem}
+	Siano $\Group_1, \Group_2$ gruppi e
+	$\Homomorphism: \Group_1 \rightarrow \Group_2$ un omomorfismo.
+	$\Homomorphism$ \`e iniettivo se e solo se
+	$\Kernel{\Homomorphism} = 1$.
+\end{Theorem}
+\Proof
+Segue direttamente dalle definizioni di iniettit\`a e di omomorfismo che
+se $\Homomorphism$ \`e iniettivo, allora
+$\Kernel{\Homomorphism} = 1$.
+\par
+Assumiamo $\Kernel{\Homomorphism} = 1$ e siano $x, y \in \Group_1$ tali che
+$\Homomorphism{x} = \Homomorphism{y}$.
+Ne consegue $\Homomorphism{x}\Homomorphism{y}^{-1} = 1$.
+Ma abbiamo anche $\Homomorphism{x}\Homomorphism{y}^{-1} =
+\Homomorphism{xy^{-1}}$.
+Quindi $xy^{-1} = 1$, da cui la tesi.
+\EndProof
+\begin{Theorem}
+	Dato un oggetto $\Object$ in una categoria $\Category$ qualsiasi, la classe di tutti i suoi automorfismi costituisce un gruppo.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Dato un oggetto $\Object$ in una categoria $\Category$ qualsiasi, il gruppo di tutti i suoi automorfismi viene chiamato \Define{gruppo degli automorfismi di $\Object$}[degli automorfismi][gruppo] e denotato $\Automorphisms{\Object}$.
+\end{Definition}

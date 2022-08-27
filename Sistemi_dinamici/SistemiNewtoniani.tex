@@ -1,0 +1,88 @@
+\subsection{Sistemi newtoniani.}
+\label{SistemiDinamici_SistemiNewtoniani}
+\begin{Definition}
+	Chiamiamo \Define{sistema newtoniano}[newtoniano][sistema] o \Define{sistema undimensionale}[dinamico unidimensionale][sistema] un sistema dinamico della forma
+	$$\begin{cases}
+		\dot{x} = v,\\
+		\dot{v} = \frac{\VectorField(x)}{\Mass}\\
+		x(0) = x_0,\\
+		v(0) = v_0,
+	\end{cases}$$
+	dove $\Mass = 1$. 
+\end{Definition}
+\par Questo tipo di sistema si chiama newtoniano in quanto descrive il moto di un punto materiale di massa $\Mass$ in un campo di forze date da $\VectorField$. Lo studio di un sistema dinamico newtoniano avviene normalmente, come indicato anche dalla nostra definizione, ponedo $\Mass = 1$, ma preferiamo mantenere la variabile $\Mass$ generica in modo da poter applicare direttamente tutte le definizioni e tutti i teoremi riguardo ai sistemi newtoniani a contesti fisici.
+\par Nel seguito di questa sottosezione assumeremo sempre dato un sistema newtoniano descritto con le notazioni della definizione precedente.
+\begin{Definition}
+	Chiamiamo \Define{energia del sistema newtoniano}[di un sistema newtoniano][energia] la funzione $\Energy(x,\dot{x}) = \frac{1}{2}m\dot{x}^2 + m\Potential(x)$.
+\end{Definition}
+\begin{Theorem}
+	$\Energy(x,\dot{x})$ \`e un integrale primo del moto.
+\end{Theorem}
+\Proof Abbiamo $\TotalDerivative{\Energy}{t}(x,\dot{x}) = \frac{1}{2}2m\dot{x}\ddot{x} + m\Derivative{\Potential}{x}\dot{x} = \dot{x} \left ( m\ddot{x} + m\Derivative{\Potential}{x} \right ) = \dot{x} (\VectorField(x) - m\Potential(x)) = 0$. \EndProof
+\begin{Theorem}
+	Il moto \`e possibile solo nei punti $x$ tali che $\Energy - \PotentialEnergy(x) \geq 0$.
+\end{Theorem}
+\Proof Abbiamo $\Energy - \PotentialEnergy(x) = \frac{1}{2}m\dot{x}^2 \geq 0$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{punto di arresto del moto}[di arresto del moto][punto] o \Define{punto di inversione del moto}[di inversione del moto][punto] i punti $x$ di un sistema newtoniano tali che $\Potential(x) = \Energy$.
+\end{Definition}
+\begin{Theorem}
+	Sia un sistema newtoniano $\ddot{x} = - \Potential(x)$ per qualche potenziale $\Potential \in \CClass{2}$ e sia $\Energy$ l'energia del sistema per una qualche condizione iniziale fissata $x(0) = x_0$, $\dot{x}(0) = v_0$. Abbiamo, se $v_0 \neq 0$, $t(x) = \Sign{v_0} \sqrt{\frac{\Mass}{2}} \int_{x_0}^x \frac{d\tilde{x}}{\sqrt{\Energy - \Potential(\tilde{x})}}$, dove $\Sign{v_0}$ \`e il segno di $v_0$, considerando il sistema su un intervallo di tempo sufficientemente piccolo perch\'e $\dot{x}$ non cambi segno.
+\end{Theorem}
+\Proof Dalla definizione dell'energia $\Energy = \frac{1}{2} \Mass \dot{x}^2 + \Potential(x)$ deduciamo $\ddot{x} = \pm \sqrt{\frac{2}{m} ( \Energy - \Potential(x) )}$. Tra i due segni, quello corretto \`e quello di $v_0$ per la continuit\`a di $\dot{x}$. Integrando per parti abbiamo allora la tesi. \EndProof
+\begin{Theorem}
+	Sia un sistema newtoniano con potenziale $\PotentialEnergy \in \CClass{2}$: $\Mass \ddot{x} = - \PotentialEnergy'(x)$. Supponiamo $\Energy$ sia l'energia del sistema e che $x_1, x_2$ siano due punti tali che
+	\begin{itemize}
+		\item $\PotentialEnergy(x_1) = \PotentialEnergy(x_2) = \Energy$;
+		\item $\ForAll{x \in (x_1,x_2)}{\PotentialEnergy{x} < \Energy}$;
+		\item $\PotentialEnergy'(x_1) \neq 0$;
+		\item $\PotentialEnergy'(x_2) \neq 0$.
+	\end{itemize}
+	Se $x(0) \in (x_1,x_2)$, allora il moto \`e periodico con periodo $\Period = \sqrt{2\Mass} \int_{x_1}^{x_2} \frac{dx}{\Energy - \PotentialEnergy(x)}$.
+\end{Theorem}
+\begin{Definition}
+	Sia un sistema newtoniano $\ddot{x} = - \PotentialEnergy'(x)$, per qualche potenziale $\PotentialEnergy \in \CClass{2}$ e qualche condizione iniziale $x(0) = x_0$. Se esiste $\bar{x}$ tale che $\lim_{x \rightarrow \bar{x}} t(x) = + \infty$, allora la soluzione \`e un \Define{moto a meta asintotica}[a meta asintotica][moto], con \Define{meta asintotica}[asintotica][meta] $\bar{x}$
+\end{Definition}
+\begin{Theorem}
+	Sia un sistema newtoniano con potenziale $\PotentialEnergy \in \CClass{2}$: $\ddot{x} = - \PotentialEnergy'(x)$. Supponiamo $\Energy$ sia l'energia del sistema e che $\bar{x}$ sia un punto tale che
+	\begin{itemize}
+		\item $\PotentialEnergy(\bar{x}) = \Energy$;
+		\item $\ForAll{x \in [x(0),\bar{x})}{\PotentialEnergy{x} < \Energy}$;
+		\item $\PotentialEnergy'(\bar{x}) = 0$.
+	\end{itemize}
+	Il moto \`e a meta asintotica con meta asintotica $\bar{x}$.
+\end{Theorem}
+\begin{Definition}
+	Dati un sistema dinamico $\dot{X} = \VectorField(X)$ e un punto di equilibrio instabile $\UnstableEquilibrium$, chiamiamo \Define{sepratrice} la curva di livello della funzione energia $\Energy(x,t)$ corrispondente al valore $\Energy(\UnstableEquilibrium,0)$.
+\end{Definition}
+\begin{Theorem}
+	Sia un sistema newtoniano con potenziale $\PotentialEnergy \in \CClass{2}$: $\ddot{x} = - \PotentialEnergy'(x)$. Se $\StableEquilibrium$ \`e un minimo isolato di $\PotentialEnergy$, allora \`e un punto di equilibrio stabile.
+\end{Theorem}
+\begin{Theorem}
+	Sia un sistema newtoniano con potenziale $\PotentialEnergy \in \CClass{2}$: $\ddot{x} = - \PotentialEnergy'(x)$: non esistono equilibri asintoticamente stabili.
+\end{Theorem}
+\Proof Assumiamo esista un equilibrio asintoticamente stabile $\AsymptoticallyStableEquilibrium$. Sia $X$ orbita del sistema dinamico tale che $\lim_{t \rightarrow + \infty} \AsymptoticallyStableEquilibrium$. Allora $\lim_{t \rightarrow + \infty} \Energy(X(t),t) = \PotentialEnergy(\AsymptoticallyStableEquilibrium$. Ma l'energia \`e un integrale primo, quindi deve essere $\ForAll{t \in \RealNonNegative}{X(t) = \AsymptoticallyStableEquilibrium}$. \EndProof
+\begin{Theorem}
+	Un'orbita di un sistema newtoniano giace interamente su una curva di livello della funzione energia.
+\end{Theorem}
+\Proof Segue direttamente dal fatto che l'energia \`e un integrale primo. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{piano delle fasi}[delle fasi][piano] di un sistema newtoniano il piano $x\dot{x}$.
+\end{Definition}
+\begin{Theorem}
+	Le curve di livello della funzione energia di un sistema newtoniano nel piano delle fasi sono simmetriche rispetto all'asse $x$.
+\end{Theorem}
+\Proof Segue direttamente da $\Energy(x,\dot{x}) = \Energy(x,-\dot{x})$. \EndProof
+\begin{Theorem}
+	Le curve di livello della funzione energia di un sistema newtonianosono regolari ovunque tranne che nei punti di equilibrio del sistema.
+\end{Theorem}
+\Proof Consideriamo una curva di livello della funzione energia corrispondente al valore $\Energy$.  La funzione $G(x,\dot{x}) = \frac{1}{2}m\dot{x}^2 + \PotentialEnergy(x) - \Energy$ si annulla in tutti e soli i punti della curva di livello. I punti singolari sono tutti e soli i punti tali che $\frac{\partial G}{\partial \dot{x}} = 0$, equivalenti $\dot{x} = 0$, e $\frac{\partial{G}}{\partial{x}}$, equivalente a $\PotentialEnergy'(x) = 0$. Quindi i punti singolari sono punti di equilibrio. \EndProof
+\begin{Theorem}
+	Le orbite di un sistema newtoniano vengono percorse
+	\begin{itemize}
+		\item da sinistra verso destra nel semipiano $\dot{x} > 0$; 
+		\item da destra verso sinistra nel semipiano $\dot{x} < 0$;
+		\item in senso orario se sono orbite chiuse.
+	\end{itemize}
+\end{Theorem}
+\Proof Se $\dot{x} > 0$ allora $x$ cresce, se $\dot{x} < 0$ allora $x$ decresce. Se l'orbita \`e chiusa, allora \`e simmetrica rispetto all'asse $x$ e le considerazioni precedenti implicano che essa viene percorsa in senso orario. \EndProof

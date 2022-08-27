@@ -1,0 +1,16 @@
+\section{Metodi del punto fisso.}
+\label{MetodiNumericiPerLaRisoluzioneDiEquazioni_MetodiDelPuntoFisso}
+\begin{Definition}
+	Sia $f: I \rightarrow \mathbb{C}$ ($I \subseteq \mathbb{C}$) una funzione. Chiamiamo \Define{metodo del punto fisso}[del punto fisso][metodo] il dato di
+	\begin{itemize}
+		\item una funzione $g: J \rightarrow J$ ($J\subseteq \mathbb{C}$) tale che $f(x) = 0$ se e solo se $x = g(x)$;
+		\item un punto $x_0 \in J$, detto \Define{punto iniziale}[iniziale di un metodo del punto fisso][punto].
+	\end{itemize}
+	Diciamo che il metodo \Define{converge}[di un metodo del punto fisso][convergenza] a un punto $\xi \in \mathbb{C}$ quando converge a $\xi$ la successione $(x_n)_{n \in \mathbb{N}}$, definita dalla relazione $\ForAll{k \in \mathbb{N}}{x_{n + 1} = g(x_n)}$.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precedente, se $g$ \`e continua e il metodo converge a $\xi$, allora $f(\xi) = 0$.
+\end{Theorem}
+\Proof Abbiamo $\xi = \lim_{n \rightarrow \infty} x_{n + 1} = \lim_{n \rightarrow \infty} g(x_n) = g \left ( \lim_{n \rightarrow \infty} x_n \right ) = g(\xi)$, che \`e equivalente a $f(\xi) = 0$. \EndProof
+\input{Metodi_numerici_per_equazioni/MetodoDelleSecanti.tex}
+\input{Metodi_numerici_per_equazioni/MetodoDiNewton.tex}

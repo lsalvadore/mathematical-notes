@@ -1,0 +1,42 @@
+\subsection{Problema di ordinamento.}
+\label{AlgoritmiEStruttureDiDati_ProblemaDiOrdinamento}
+\begin{Definition}
+	Chiamiamo \Define{problema di ordinamento}[di ordinamento][problema] il problema che consiste nel riordinare una successione finita rispetto ad un ordine totale dato.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{\English{comparison model}}[\English{comparison}][\English{model}] un modello computazionale per il problema di ordinamento tale che
+	\begin{itemize}
+		\item misuri la complessit\`a di un algoritmo in numero di confronti;
+		\item ammetta come unica operazione tra due elementi dell'insieme da ordinare il confronto.
+	\end{itemize}
+\end{Definition}
+\par Nel seguito denoteremo $(e_i)_{i \in n}$ ($n \in \mathbb{N}$) la
+successione dei dati di ingresso del problema di ordinamento e $\leq$ l'ordine
+totale rispetto al quale si desidera riordinare la successione. Inoltre
+analizzeremo la complessit\`a degli algoritmi per il problema di ordinamento
+secondo il \English{comparison model}.
+\begin{Theorem}
+	Il problema di ordinamento ha complessit\`a $\BigOmega{n \log n}$.
+\end{Theorem}
+\Proof Gli elementi dell'insieme da ordinare possono essere disposti in $n!$.
+\par Effettuando $1$ confronto, l'algoritmo pu\`o discriminare tra al pi\`u $3$
+configurazioni: denotati con $a$ e $b$ i due elementi confrontati, pu\`o
+rilevare se $a < b$, se $a = b$ o infine se $a > b$. Assumiamo che con $k$
+confronti l'algoritmo possa discriminare tra $3^k$ configurazioni: allora, con
+$1$ confronto aggiuntivo, esso pu\`o discrimare tra $3^k \cdot 3 = 3^{k + 1}$
+configurazioni. Dunque, segue per induzione che con $k$ confronti si pu\`o
+discrimare tra $3^k$ configurazioni.
+\par Perch\'e l'algoritmo possa fornire la risposta corretta al problema, \`e
+dunque necessario che il numero $k$ di confronti da esso effettuato verifichi la
+condizione $3^k \geq n!$, equivalente a $k \geq \log_3 n!$. La tesi segue dal
+fatto che $\IsBigOmega{\log_3 n!}{n \log n}$.
+\par Osserviamo che la base del logaritmo nell'enunciato non ha importanza
+poich\'e il cambio di base si effettua moltiplicando per una costante. Inoltre,
+se assumiamo tutti gli elementi dell'insieme da ordinare distinti, nella
+dimostrazione possiamo sostituire ogni occorrenza del numero $3$ col numero $2$,
+ma il limite inferiore dimostrato \`e lo stesso. \EndProof
+\input{Algoritmi_e_strutture_di_dati/SelectionSort.tex}
+\input{Algoritmi_e_strutture_di_dati/InsertionSort.tex}
+\input{Algoritmi_e_strutture_di_dati/MergeSort.tex}
+\input{Algoritmi_e_strutture_di_dati/QuickSort.tex}
+\input{Algoritmi_e_strutture_di_dati/QuickSelect.tex}

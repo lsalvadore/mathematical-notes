@@ -1,0 +1,76 @@
+\section{Distribuzione binomiale.}
+\label{VariabiliAleatorieNotevoli_DistribuzioneBinomiale}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $(\SamplesSpace,\Events,\Probability)$ uno spazio di probabilit\`a;
+    \item $\BernoulliProbability \in [0,1]$;
+    \item $\BernoulliCoprobability = 1 - \BernoulliProbability$;
+    \item $\BernoulliTrials \in \mathbb{N}$;
+    \item $\RandomVariable: \SamplesSpace \rightarrow \mathbb{R}$
+      una variabile aleatoria.
+  \end{itemize}
+  Diciamo che $\RandomVariable$ ha distribuzione di probabilit\`a
+  \Define{binomiale}[di probabilit\`a binomiale][distribuzione]
+  di parametri $\BernoulliTrials$ e $\BernoulliProbability$
+  quando la sua distribuzione \`e
+  \[
+    \Probability(X = k) =
+    \begin{cases}
+      \binom{n}{k}
+      \BernoulliProbability^k \BernoulliCoprobability^{n - k}\text{ se }
+      k \in n + 1,\\
+      0\text{ altrimenti}.
+    \end{cases}
+  \]
+  Una variabile aleatoria con distribuzione di probabilit\`a binomiale si chiama
+  \Define{variabile aleatoria binomiale}[aleatoria binomiale][variabile].
+  \par Inoltre, se $n = 1$, allora chiamiamo la distribuzione
+  \Define{bernoulliana}[di probabilit\`a bernoulliana][distribuzione]
+  di parametro $\BernoulliProbability$ e analogamente la variabile aleatoria
+  \Define{bernoulliana}[aleatoria bernoulliana][variabile].
+\end{Definition}
+\begin{Theorem}
+  Sia $\RandomVariable$ una variabile aleatoria bernoulliana di parametro
+  $\BernoulliProbability$. Abbiamo
+  \[
+    \ExpectedValue{\RandomVariable} = \BernoulliProbability.
+  \]
+\end{Theorem}
+\Proof Denotate
+\begin{itemize}
+  \item $\ProbabilityDistribution{\RandomVariable}$ la distribuzione di
+probabilit\`a di $\RandomVariable$;
+  \item $\BernoulliCoprobability = 1 - \BernoulliProbability$;
+\end{itemize}
+abbiamo
+\begin{align*}
+  \ExpectedValue{\RandomVariable}
+  &= \int \RandomVariable d\ProbabilityDistribution{\RandomVariable},\\
+  &= 0 \cdot \BernoulliProbability^0 \BernoulliCoprobability^{1 - 0}
+    + 1 \cdot \BernoulliProbability^1 \BernoulliCoprobability^{1 - 1},\\
+  &= \BernoulliProbability.\text{ \EndProof}
+\end{align*} 
+\begin{Theorem}
+  Una variabile aleatoria $\RandomVariable$ ha distribuzione di probabilit\`a
+  binomiale di parametri
+  $\BernoulliTrials$ e
+  $\BernoulliProbability$
+  se e solo se esistono variabili aleatorie bernoulliane indipendenti
+  $(\RandomVariable_i)_{i \in \BernoulliTrials}$
+  di parametro
+  $\BernoulliProbability$
+  definite sullo stesso spazio di probabilit\`a tali che
+  $\RandomVariable = \sum_{i \in BernoulliTrials} \RandomVariable_i$
+\end{Theorem}
+\begin{Corollary}
+  Sia $\RandomVariable$ una variabile aleatoria binomiale di parametri
+  $\BernoulliTrials$ e $\BernoulliProbability$. Abbiamo
+  \[
+    \ExpectedValue{\RandomVariable} = \BernoulliTrials\BernoulliProbability.
+  \]
+\end{Corollary}
+\Proof Con le notazioni del teorema precedente, abbiamo
+$\ExpectedValue{\RandomVariable}
+= \sum_{i \in \BernoulliTrials} \ExpectedValue{\RandomVariable_i}
+= \BernoulliTrials\BernoulliProbability$. \EndProof

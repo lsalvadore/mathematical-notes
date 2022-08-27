@@ -1,0 +1,42 @@
+\section{Compattezza.}\label{Compattezza}
+\begin{Definition}
+	Sia $(\CompactSpace,\Topology)$ uno spazio topologico.
+	$\CompactSpace$ si dice \Define{compatto}[compatto][spazio]
+	quando ogni ricoprimento aperto di $\TopologicalSpace$ ammette un
+	sottoricoprimento finito.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico e sia $\CompactSpace \subseteq \TopologicalSpace$ un sottospazio topologico. $\CompactSpace$ \`e compatto se e solo se ogni ricoprimento aperto di $\CompactSpace$ in $\TopologicalSpace$ ammette un sottoricoprimento finito.
+\end{Theorem}
+\Proof Sia $\CompactSpace$ compatto e sia $(\Open_i)_{i \in I}$ un ricoprimento aperto di $\CompactSpace$ in $\TopologicalSpace$. Allora $(\Open_i \cap \CompactSpace)_{i \in I}$ \`e un ricoprimento aperto di $\CompactSpace$ in $\CompactSpace$ e ammette dunque un sottoricoprimento finito $(\Open_i \cap \CompactSpace)_{i \in J}$ ($J \subseteq I$). Quindi $(\Open_i)_{i \in J}$ \`e un sottoricoprimento di $(\Open_i)_{i \in I}$ di $\CompactSpace$.
+\par Supponiamo adesso che ogni ricoprimento aperto di $\CompactSpace$ ammetta un sottoricoprimento finito. Sia $(\Open_i)_{i \in I}$ un ricoprimento aperto di $\CompactSpace$ in $\CompactSpace$. Esistono aperti $(\Open_i')_{i \in I}$ in $\TopologicalSpace$ tali che $\ForAll{i \in I}{\Open_i = \Open_i' \cap \CompactSpace}$. $(\Open_i')_{i \in I}$ \`e un ricoprimento aperto di $\CompactSpace$ ed ammette dunque un sottoricoprimento finito $(\Open_i')_{i \in J}$ ($J \subseteq I$). Allora $(\Open_i)_{i \in J}$ \`e un sottoricoprimento finito di $(\Open_i)_{i \in I}$ per $\CompactSpace$. Quindi $\CompactSpace$ \`e compatto. \EndProof
+\begin{Theorem}
+	Sia $\Continuous: \CompactSpace \rightarrow \VarTopologicalSpace$ un'applicazione continua tra gli spazi topologici $\CompactSpace$ e $\VarTopologicalSpace$. Se $\CompactSpace$ \`e compatto, allora \`e compatto anche $\Image{\Continuous}$.
+\end{Theorem}
+\Proof Sia $(\Open_i)_{i \in I}$ un ricoprimento aperto di $\Image{\Continuous}$ in $\VarTopologicalSpace$. Allora $(\Continuous^{-1}(\Open_i))_{i \in I}$ \`e un ricoprimento aperto di $\CompactSpace$: per la compattezza di $\CompactSpace$, ne esiste un sottoricoprimento finito $(\Continuous^{-1}(\Open_i))_{i \in J}$ ($J \subseteq I$) di $\CompactSpace$. $(\Open_i)_{i \in J}$ \`e allora un sottoricoprimento finito di $(\Open_i)_{i \in I}$ per $\Image{\Continuous}$. \EndProof
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico compatto e sia $\Closed$ chiuso in $\TopologicalSpace$. $\Closed$ \`e compatto.
+\end{Theorem}
+\Proof Sia $(\Open_i)_{i \in I}$ un ricoprimento aperto di $\Closed$. $\Complement{\Closed}$ \`e aperto, quindi la famiglia di aperti $(\Open_i)_{i \in I}$ allargata con $\Complement{\Closed}$ \`e un ricoprimento aperto di $\TopologicalSpace$. Esiste dunque una sottofamiglia finita $(\Open_i)_{i \in J}$ ($J \subseteq I$) tale che $\Complement{\Closed} \cup \bigcup_{i \in J} \Open_i = \TopologicalSpace$. Ne deduciamo che $(\Open_i)_{i \in J}$ \`e un sottoricoprimento finito di $(\Open_i)_{i \in I}$ per $\Closed$. \EndProof
+\begin{Theorem}
+	Sia $(\MetricSpace,\Distance)$ uno spazio metrico e sia $\CompactSpace \subseteq \MetricSpace$ compatto: $\CompactSpace$ \`e chiuso e limitato.
+\end{Theorem}
+\Proof Fissato $O \in \MetricSpace$, consideriamo il ricoprimento aperto $(\OpenBall{O}{n})_{n \in \mathbb{N}}$ di $\CompactSpace$. Per la compattezza di $\CompactSpace$, esiste un sottoricoprimento finito di $(\OpenBall{O}{n})_{n \in N}$ ($N \subseteq \mathbb{N}$) per $\CompactSpace$ e dunque $\CompactSpace \subseteq \OpenBall{O}{\max N}$. Ne deduciamo che $\CompactSpace$ \`e limitato.
+\par Proviamo ora che $\Complement{\CompactSpace}$ \`e aperto. Sia $P \in \Complement{\CompactSpace}$. La famiglia di aperti $(\OpenBall{x}{r})_{(x,r) \in \CompactSpace \times [0,\Distance(x,P)[}$ \`e un ricoprimento aperto di $\CompactSpace$, ne esiste dunque un sottoricoprimento finito $(\OpenBall{x}{r})_{(x,r) \in A \times B)}$ ($A \subseteq \CompactSpace$, $B \subseteq [0, \Distance(x,P)[$).
+\par Consideriamo $\OpenBall{P}{R}$, con $0 < R < \min_{(x,r) \in A \times B} (\Distance(P,x) - r)$. Sia $Q \in \OpenBall{P}{R}$: per ogni $(x,r) \in A \times B$ abbiamo, per la disuguaglianza triangolare, $\Distance(Q,x) \geq \Distance(P,x) - \Distance(Q,P)$. Ora, abbiamo $\Distance(Q,P) < R < \min_{(x,r) \in A \times B} (\Distance(P,x) - r) \leq \Distance(P,x) - \max B$, da cui $\Distance(Q,x) > \max B > r$. Quindi $\ForAll{(x,r) \in A \times B}{Q \notin \OpenBall{x}{r}}$ e dunque $Q \notin \CompactSpace$. Allora $\Complement{\CompactSpace}$ \`e aperto. \EndProof
+\begin{Theorem}
+	$[0,1]$ \`e compatto per la topologia euclidea.
+\end{Theorem}
+\Proof Sia $(\Open_i)_{i \in I}$ un ricoprimento aperto di $[0,1]$ e sia $X = \lbrace x \in \RealNonNegative | \Exists{J \subseteq I}{\And{\Cardinality{J} < \aleph_0}{[0,t] \subseteq \bigcup_{i \in J} \Open_i}} \rbrace$.
+\par Sicuramente $0 \in X$, quindi $X \neq \emptyset$. Consideriamo $\sup X$.
+\par Supponiamo $\sup X \leq 1$. Allora, per oppurtuno $j \in I$ abbiamo $\sup X \in \Open_j$. Sia $\delta > 0$ tale che $\sup X \in ]\sup X - \delta, \sup X + \delta[ \subseteq \Open_j$. Sia $y \in ]\sup X - \delta, \sup X$. Esiste un sottoricoprimento finito $(\Open_i)_{i \in J}$ ($J \subseteq I$) di $(\Open_i)_{i \in I}$ per $[0,y]$. Ma $(\Open_i)_{i \in J \cup \lbrace j \rbrace}$ \`e allora un sottoricoprimento finito per $[0,\sup X + t]$ per ogni $t \in \mathbb{R}$ tale che $0 \leq t < \delta$, e dunque $\sup X + t \in X$, ma questo \`e assurdo.
+\par Dunque $\sup X > 1$ e sia $s \in X$ tale che $1 \leq s \leq \sup X$. Allora esiste $J \subseteq I$ finito tale che $[0,1] \subseteq [0,s] \subseteq \bigcup_{i \in J} \Open_i$. \EndProof
+\begin{Corollary}
+	Un sottospazio topologico $\CompactSpace \subseteq \mathbb{R}$ della retta euclidea \`e compatto se e solo se \`e chiuso e limitato.
+\end{Corollary}
+\Proof Abbiamo gi\`a provato che in uno spazio metrico i compatti sono chiusi e limitati.
+\par Supponiamo $\CompactSpace \subseteq \mathbb{R}$ chiuso e limitato. Poich\'e $\CompactSpace$ \`e limitato, per opportuno $R > 0$ abbiamo $\CompactSpace \subseteq [-R,R]$: $\CompactSpace$ \`e allora un chiuso in un compatto, pe pertanto compatto. \EndProof
+\begin{Corollary}
+	\TheoremName{Teorema di Weierstrass} Sia $\Continuous: \CompactSpace \rightarrow \mathbb{R}$ un'applicazione continua, con $\CompactSpace$ compatto. $\Continuous$ ammette massimo e minimo.
+\end{Corollary}
+\Proof L'immagine di $\Continuous$ \`e compatta e dunque chiusa e limitata. Pertanto ammette massimo e minimo. \EndProof

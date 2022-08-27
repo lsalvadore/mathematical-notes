@@ -1,0 +1,65 @@
+\subsection{Definizioni e teoremi di base.}\label{SeriePotenzeEAnelliDiPolinomiDefinizioniETeoremiDiBase}
+\begin{Theorem}\label{ThSeriePotenze}
+	Siano dati un anello $\Ring$ e un simbolo nuovo $x$. Sia $\PowerSeriesRing$ una struttura algebrica definita come segue:
+	\begin{itemize}
+		\item gli elementi di $\PowerSeriesRing$ sono tutte le scritture del tipo $\sum_{i \in \mathbb{N}} a_ix^i$, dove $(a_i)_{i \in \mathbb{N}} \in \DirectProduct_{i \in \mathbb{N}} \Ring$;
+		\item \`e definita un'operazione $+$ tale che $\sum_{i \in \mathbb{N}} a_ix^i + \sum_{i \in \mathbb{N}} b_ix^i = \sum_{i \in \mathbb{N}} (a_i + b_i) x^i$;
+		\item \`e definita un'operazione $\cdot$ tale che $\left ( \sum_{i \in \mathbb{N}} a_ix^i \right ) \left ( \sum_{i \in \mathbb{N}} b_ix^i \right ) = \sum_{i \in \mathbb{N}} c_i x^i$, dove per ogni $i \in \mathbb{N}$ poniamo $c_i.= \sum_{(j,k) \in \mathbb{N}^2 | j + k = i} a_jb_k$.
+	\end{itemize}
+	$\PowerSeriesRing$ \`e un anello.
+\end{Theorem}
+\Proof \`E sufficiente verificare che $\PowerSeriesRing$ verifica tutti gli assiomi di anello. \EndProof
+\begin{Definition}
+	Siano dati un anello $\Ring$ e un simbolo nuovo $x$. Definiamo
+	\begin{itemize}
+		\item \Define{anello delle serie di potenze}[delle serie di potenze][anello] in $x$ a coefficienti in $\Ring$, denotato $\PowerSeriesRing$, l'anello definito dal teorema \ref{ThSeriePotenze};
+		\item \Define{serie di potenze} ogni elemento di $\PowerSeriesRing$;
+		\item fissata una serie di potenza $p = \sum_{i \in \mathbb{N}} a_ix^i$, chiamiamo \Define{coefficienti}[coefficiente] gli elementi della successione $(a_i)_{i \in \mathbb{N}}$, \Define{termini}[termine] gli elementi della successione $(a_ix^i)_{i \in \mathbb{N}}$ e \Define{termine noto}[noto][termine] il coefficiente $a_0$.
+	\end{itemize}
+	Il nuovo simbolo $x$ viene spesso chiamato \Define{incognita}.
+\end{Definition}
+\par Data una serie di potenze $p = \sum_{i \in \mathbb{N}} a_i x^i$, \`e usuale semplificarne la notazione\footnote{Soprattutto nel caso di polinomi, \Cfr pi\`u avanti.} ponendo$x^0 = 1$, $(\forall i \in \mathbb{N})(0 \cdot x^i = 0)$ e omettendo dalla serie i termini nulli. Ci atterremo sempre a questa convenzione.
+\begin{Definition}
+	Sia un anello di serie di potenze $\PowerSeriesRing$. Definiamo la \Define{derivata formale} di una serie di potenze $p = \sum_{i \in \mathbb{N}} a_i x^i$ la serie di potenze $p = \sum_{i \in \mathbb{N}} (i + 1)a_{i + 1} x^i$.
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Regola di Leibniz}[di Leibniz][regola] Sia un anello di serie di potenze $\PowerSeriesRing$ e siano $p,a,b \in \PowerSeriesRing$ tali che $p = ab$. Se $p',a',b'$ sono le derivate formali di $p, a, b$ rispettivamente, allora vale $p' = a'b + ab'$.
+\end{Theorem}
+\Proof Si verifica immediatamente per calcolo diretto dei coefficienti. \EndProof
+\begin{Definition}
+	Sia un anello di serie di potenze $\PowerSeriesRing$. Definiamo l'applicazione $\Deg: \PowerSeriesRing \rightarrow \Ext{\mathbb{N}}$ che ad ogni $p = \sum_{i \in \mathbb{N}} a_ix^i$ associa l'estremo superiore dell'insieme dei numeri naturali tali che $a_i \neq 0$: chiamiamo $\Deg p$ \Define{grado}[di una serie di potenze][grado] di $p$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\IntegralDomain$ un dominio di integrit\`a e $p, q \in \PowerSeries{\IntegralDomain}{x}$. Se $\Deg p$ e $\Deg q$ sono entrambi finiti, abbiamo $\Deg pq = \Deg p + \Deg q$.
+\end{Theorem}
+\Proof Siano $p = \sum_{i \in \mathbb{N}} a_ix^i$ e $q = \sum_{i \in \mathbb{N}} b_ix^i$. Il prodotto \`e per definizione $pq = \sum_{i \in \mathbb{N}} c_ix^i$ on $c_i = \sum_{(j,k) \in \mathbb{N}^2 | j + k = i} a_jb_k$. Ora, se $i = \Deg p + \Deg q$ abbiamo $c_i = a_{\Deg p}b_{\Deg q} \neq 0$ e, per ogni $l \geq i$, $c_l = 0$.\EndProof
+\begin{Theorem}\label{ThAnelloPolinomi}
+	Il sottoinsieme $\PolynomialsRing$ di $\PowerSeriesRing$ di tutti gli elementi $\sum_{i \in \mathbb{N}} a_ix^i$ tali che $(a_i)_{i \in \mathbb{N}}$ \`e una successione a supporto finito \`e un anello.
+\end{Theorem}
+\Proof \`E immediato che $\PolynomialsRing$ \`e chiuso per la somma e che l'opposto di ogni suo elemento appartiene ancora ad $\PolynomialsRing$. La chiusura di $\PolynomialsRing$ rispetto al prodotto segue dal teorema precedente. \EndProof
+\begin{Definition}
+	Siano dati un anello $\Ring$ e un simbolo nuovo $x$. Definiamo \Define{anello dei polinomi}[di polinomi][anello] in $x$ a coefficienti in $\Ring$, denotato $\PolynomialsRing$, l'anello definito dal teorema \ref{ThAnelloPolinomi}.
+\end{Definition}
+\par Spesso, sia nel caso delle serie di potenze che di quello dei polinomi, si desidera reiterare l'aggiunta di simboli nuovi un numero finito di volte: in tal caso si semplifica la notazione e il linguaggio scrivendo tutte insieme le nuove incognite (per esempio $\RingAdjunction{\PolynomialsRing}{x_1,x_2,x_3}$) e si parla di serie di potenze o polinomi \Define{multivariati}[multivariato][serie di potenze o polinomio] a coefficienti in $\Ring$, in opposizione alle serie di potenze e ai polinomi \Define{univariati}[univariato][serie di potenze o polinomio] definiti in precedenza.
+\begin{Definition}
+	Sia dato un anello di polinomi $\MultivariatePolynomialsRing$. Chiamiamo \Define{monomio} $\Monomial{x}$ ogni elemento dell'insieme di tutti i polinomi tali che tutti i suoi coefficienti siano nulli tranne uno il quale \`e uguale ad $1$, insieme che denoteremo con $\MonomialialsSet{\MultivariatePolynomialsRing}$.
+\end{Definition}
+\begin{Definition}
+	Sia dato un anello di polinomi $\MultivariatePolynomialsRing$. Sono definite
+	\begin{itemize}
+		\item l'applicazione $\log: \MonomialialsSet{\MultivariatePolynomialsRing} \rightarrow \mathbb{N}^n$, che chiamiamo \Define{logaritmo monomiale}, che a $\prod_{i = 1, ..., n} x_i^{e_i}$ associa la $n$-upla $(e_1, ..., e_n)$;
+		\item l'applicazione $\exp: \mathbb{N}^n \rightarrow \MonomialialsSet{\MultivariatePolynomialsRing}$, che chiamiamo \Define{esponenziale monomiale}, inversa del logaritmo monomiale;
+		\item il \Define{grado}[di un monomio][grado] di ogni monomio $\prod_{i = 1, ..., n} x_i^{e_i}$ come $\Transposed{ \left ( \log \left ( \prod_{i = 1, ..., n} x_i^{e_i} \right ) \right )} (1, ..., 1)$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia dato un anello di polinomi $\MultivariatePolynomialsRing$. Per ogni $\Monomial{x_1}, \Monomial{x_2} \in \MonomialialsSet{\MultivariatePolynomialsRing}$ abbiamo $\log{\Monomial{x_1} + \Monomial{x_2}} = \log{\Monomial{x_1}\Monomial{x_2}}$.
+\end{Theorem}
+\Proof Segue direttamente dalla definizione del logaritmo monomiale. \EndProof
+\begin{Theorem}
+	Sia dato un anello di polinomi $\PolynomialsRing$ e sia $v \in \Ring$. L'applicazione $\phi_a: \PolynomialsRing \rightarrow \Ring$ che a $p = \sum_{i \in \mathbb{N}} a_ix^i \in \PolynomialsRing$ associa $\sum_{i \in \mathbb{N}} a_iv^i$ \`e un omomorfismo.
+\end{Theorem}
+\Proof La verifica \`e immediata. \EndProof
+\begin{Definition}
+	Chiamiamo l'omomorfismo definito nel teorema precedente \Define{omomorfismo di valutazione}[di valutazione][omomorfismo] o \Define{omomorfismo di sostituzione}[di sostituzione][omomorfismo]. Con le notazioni del teorema precedente, denotiamo l'elemento $\phi_a(p)$ di $\Ring$ col simbolo $p(a)$. Inoltre, se $p(a) = 0$, diciamo che $a$ \`e \Define{radice}[radice di un polinomio] o \Define{zero}[zero di un polinomio] di $p$.
+\end{Definition}

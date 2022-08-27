@@ -1,0 +1,24 @@
+\subsection{Trasferimenti di propriet\`a.}\label{TrasferimentiDiProprieta}
+\begin{Definition}\label{defEstensioniTrasferimentoTorre}
+	Data una torre d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \Field_3$, se la validit\`a della propriet\`a $\Proposition$ per le estensioni $\FieldExtension{\Field_2}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_2}$ implica la validit\`a di $\Proposition$ per l'estensione $\FieldExtension{\Field_3}{\Field_1}$, allora si dice che $\Proposition$ \Define{si trasferisce lungo le torri}[lungo le torri][trasferimento di propriet\`a].
+\end{Definition}
+\begin{Definition}\label{defEstensioniTrasferimentoTraslazione}
+	Date le torri d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \FieldComposition{\Field_2}{\Field_3}$ e $\Field_1 \subseteq \Field_3 \subseteq \FieldComposition{\Field_2}{\Field_3}$, se la validit\`a della propriet\`a $\Proposition$ per l'estensione $\FieldExtension{\Field_2}{\Field_1}$ implica la validit\`a di $\Proposition$ per l'estensione $\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}{\Field_3}$, allora si dice che $\Proposition$ \Define{si trasferisce per traslazione}[per traslazione][trasferimento di propriet\`a].
+\end{Definition}
+\begin{Definition}\label{defEstensioniTrasferimentoComposizione}
+	Date le torri d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \FieldComposition{\Field_2}{\Field_3}$ e $\Field_1 \subseteq \Field_3 \subseteq \FieldComposition{\Field_2}{\Field_3}$, se la validit\`a della propriet\`a $\Proposition$ per le estensioni $\FieldExtension{\Field_2}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_1}$ implica la validit\`a di $\Proposition$ per l'estensione $\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}{\Field_1}$, allora si dice che $\Proposition$ \Define{si trasferisce per composizione}[per composizione][trasferimento di propriet\`a].
+\end{Definition}
+\begin{Theorem}
+	Se la propriet\`a $\Proposition$  si trasferisce lungo le torri e per traslazione allora si trasferisce anche per composizione.
+\end{Theorem}
+\Proof Riprendiamo le notazioni della definizione \ref{defEstensioniTrasferimentoComposizione} e supponiamo $\Proposition$ verificata per $\FieldExtension{\Field_2}{\Field_1}$. Trasferiamo la propriet\`a $\Proposition$ per traslazione da $\FieldExtension{\Field_2}{\Field_1}$ a $\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}{\Field_3}$. La tesi segue trasferendo $\Proposition$ lungo la torre $\Field_1 \subseteq \Field_3 \subseteq \FieldComposition{\Field_2}{\Field_3}$. \EndProof
+\begin{Theorem}
+	La propriet\`a di finitezza delle estensioni si trasferisce lungo le torri, per traslazione e per composizione.
+\end{Theorem}
+\Proof \`E sufficiente provare il trasferimento lungo le torri e per traslazione.
+\par Il trasferimento lungo le torri \`e gi\`a stato dimostrato dal teorema \ref{thEstensioniTorri}. Per il traferimento per traslazione osserviamo che una famiglia finita di generatori del $\Field_1$-spazio vettoriale $\Field_2$ genera anche il $\Field_3$-spazio vettoriale $\FieldComposition{\Field_2}{\Field_3}$ e dunque $\FieldDegree{\FieldComposition{\Field_2}{\Field_3}}{\Field_3} \leq \FieldDegree{\Field_2}{\Field_1}$. \EndProof
+\begin{Theorem}
+	La propriet\`a di algebricit\`a delle estensioni si trasferisce lungo le torri, per traslazione e per composizione.
+\end{Theorem}
+\Proof \`E sufficiente provare il trasferimento lungo le torri e per traslazione.
+\par Il trasferimento lungo le torri \`e gi\`a stato dimostrato dal teorema \ref{thEstensioniTorri}. Per il trasferimento per traslazione, riprendendo le notazioni della definizione \ref{defEstensioniTrasferimentoTraslazione}, supponiamo che $\FieldExtension{\Field_2}{\Field_1}$ sia algebrica. Abbiamo $\FieldComposition{\Field_2}{\Field_3} = \FieldAdjunction{\Field_3}{\Field_2}$; ora, tutti gli elementi di $\Field_2$ sono algebrici su $\Field_1$ e dunque a maggior ragione su $\Field_3$, quindi $\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}{\Field_3}$ \`e un'estensione algebrica. \EndProof

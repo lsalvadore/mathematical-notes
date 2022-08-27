@@ -1,0 +1,150 @@
+\subsection{Campi di spezzamento ed estensioni normali.}\label{CampiDiSpezzamento}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $\Field$ un campo;
+		\item $I$ un insieme qualsiasi;
+		\item $(p_i)_{i \in I} \in \RingAdjunction{\Field}{x}^I$.
+	\end{itemize}
+	Si definisce \Define{campo di spezzamento}[di spezzamento][campo] di $(p_i)_{i \in I}$ su $\Field$ un campo $\SplittingField$ tale che
+	\begin{itemize}
+		\item $\SplittingField$ estende $\Field$;
+		\item ogni $p_i$ ($i \in I$) si spezza in fattori lineari in $\SplittingField$;
+		\item l'insieme di tutte le radici di tutti i $p_i$ al variare di $i \in I$ genera $\FieldAdjunction{\SplittingField}{\Field}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\Field_1$ un campo;
+		\item $I$ un insieme qualsiasi;
+		\item $(p_i)_{i \in I} \in \RingAdjunction{\Field_1}{x}^I$;
+		\item $\Field_2$ un campo in cui tutti i $p_i$ ($i \in I$) si spezzano in fattori lineari;
+	\end{itemize}
+	Esiste un unico campo di spezzamento $\FieldSpezzamento$ di $(p_i)_{i \in I}$ tale che $\FieldSpezzamento \subseteq \Field_2$.
+\end{Theorem}
+\Proof Sia $A$ l'insieme di tutte le radici di tutti i polinomi $(p_i)_{i \in I}$ nella chiusura algebrica $\Field_2$. Necessariamente $\FieldSpezzamento = \FieldAdjunction{\Field}{A}$. \EndProof
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\Field$ un campo;
+		\item $I$ un insieme qualsiasi;
+		\item $(p_i)_{i \in I} \in \RingAdjunction{\Field_1}{x}^I$;
+		\item $\FieldSpezzamento$ un campo di spezzamento di $(p_i)_{i \in I}$ su $\Field$;
+		\item $\FieldSpezzamento_S$ il campo di spezzamento di $(p_i)_{i \in S}$ su $\Field$ contenuto in $\FieldSpezzamento$.
+	\end{itemize}
+	Abbiamo,
+	\begin{itemize}
+		\item $\FieldSpezzamento = \bigcup_{S \subseteq I | \Cardinality{S} \in \mathbb{N}} \FieldSpezzamento_S = \prod_{S \subseteq I | \Cardinality{S} \in \mathbb{N}} \FieldSpezzamento_S$;
+		\item $\FieldSpezzamento = \bigcup_{S \subseteq I | \Cardinality{S} = 1} \FieldSpezzamento_S = \prod_{S \subseteq I | \Cardinality{S} = 1} \FieldSpezzamento_S$;
+	\end{itemize}
+\end{Theorem}
+\Proof Immediata dalle definizioni. \EndProof
+\begin{Theorem}\label{th_pre_unicitacampospezzamento}
+	Siano
+	\begin{itemize}
+		\item $\Field$ un campo;
+		\item $I$ un insieme qualsiasi;
+		\item $(p_i)_{i \in I} \in \RingAdjunction{\Field_1}{x}^I$;
+		\item $\FieldSpezzamento_1$ e $\FieldSpezzamento_2$ campi di spezzamento di $(p_i)_{i \in I}$ su $\Field$;
+		\item $\RelativeHomomorphism: \FieldSpezzamento_1 \rightarrow \AlgebraicClosure{\FieldSpezzamento_2}$ un omommorfismo relativo.
+	\end{itemize}
+	Abbiamo $\Image \RelativeHomomorphism = \FieldSpezzamento_2$.
+\end{Theorem}
+\Proof \`E sufficiente provare il teorema nel caso in cui $I$ \`e un singoletto: infatti il teorema precedente permette di concludere considerando, con le notazioni del teorema precedente, che $\RelativeHomomorphism \left ( \bigcup_{S \subseteq I | \Cardinality{S} = 1} \FieldSpezzamento_S \right ) = \bigcup_{S \subseteq I | \Cardinality{S} = 1} \RelativeHomomorphism(\FieldSpezzamento_S)$.
+\par Denotiamo con $p$ l'unico polinomio della famiglia $(p_i)_{i \in I}$. In $\FieldSpezzamento_1$ abbiamo $p = c \prod_{i = 1}^{\Deg{p}} (x - \alpha_i)$, dove $c \in \Field$ e $(\alpha)_{i = 1}^{\Deg{p}}$ sono tutte le radici di $p$ (con molteplicit\`a); tramite $\RelativeHomomorphism$ abbiamo poi $\ImagePolynomial{\RelativeHomomorphism}{p} = p = c \prod_{i = 1}^{\Deg{p}} (x - \RelativeHomomorphism(\alpha_i)$: vediamo dunque che $p$ si spezza in fattori lineari in $\Image \RelativeHomomorphism$, da cui $\FieldSpezzamento_2 = \FieldAdjunction{\Field}{(\RelativeHomomorphism(\alpha_i))_{i = 1}^{\Deg{p}}} \subseteq \Image \RelativeHomomorphism$. L'inclusione inversa si prova osservando che \`e sufficiente specifiare le immagini $(\RelativeHomomorphism(\alpha_i))_{i = 1}^{\Deg{p}}$ per definire completamente l'omomorfismo $\RelativeHomomorphism$. \EndProof
+\begin{Corollary}
+	Siano
+	\begin{itemize}
+		\item $\Field$ un campo;
+		\item $I$ un insieme qualsiasi;
+		\item $(p_i)_{i \in I} \in \RingAdjunction{\Field_1}{x}^I$;
+		\item $\FieldSpezzamento_1$ e $\FieldSpezzamento_2$ campi di spezzamento di $(p_i)_{i \in I}$ su $\Field$.
+	\end{itemize}
+	$\FieldSpezzamento_1$ e $\FieldSpezzamento_2$ sono isomorfi.
+\end{Corollary}
+\Proof Basta prendere un omomorfismo relativo $\RelativeHomomorphism: \FieldSpezzamento_1 \rightarrow \AlgebraicClosure{\FieldSpezzamento_2}$: per il teorema precedente, cambiandone il codominio in $\FieldSpezzamento_2$ otteniamo un isomorfismo. \EndProof
+\begin{Definition}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campi algebrica. Se per ogni omomorfismo relativo $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_2}$ abbiamo $\Image \RelativeHomomorphism = \Field_2$, allora chiamiamo \Define{normale}[normale][estensione] l'estensione $\FieldExtension{\Field_2}{\Field_1}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campi algebrica e sia $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_2}$ un omomorifsmo relativo. Se $\Image \RelativeHomomorphism \subseteq \Field_2$, allora l'estensione $\FieldExtension{\Field_2}{\Field_1}$ \`e normale.
+\end{Theorem}
+\Proof Sia $\alpha \in \Field_2$. $\RelativeHomomorphism$ \`e un omomorfismo relativo dunque trasforma radici del polinomio minimo $\MinimalPolynomial{\alpha} \in \RingAdjunction{\Field_1}{x}$ in $\Field_2$ in altre radici del medesimo polinomio, stavolta in $\AlgebraicClosure{\Field_2}$, ma poich\'e $\Image \RelativeHomomorphism \subseteq \Field_2$, anche quest'ultime devono appartenere a $\Field_2$. Dato inoltre che l'insieme di radici di $\MinimalPolynomial{\alpha}$ contenute in $\Field_2$ \`e finito e che $\RelativeHomomorphism$ \`e iniettiva, $\RelativeHomomorphism$ deve essere biettiva e dunque esiste $\beta \in \Field_2$ tale che $\RelativeHomomorphism(\beta) = \alpha$. \EndProof
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione algebrica. Sono fatti equivalenti:
+	\begin{itemize}
+		\item $\FieldExtension{\Field_2}{\Field_1}$ \`e normale;
+		\item se $\Polynomial \in \RingAdjunction{\Field_1}{x}$ \`e irriducibile e ammette una radice in $\Field_2$, allora $\Polynomial$ si spezza in fattori lineari in $\RingAdjunction{\Field_2}{x}$;
+		\item $\Field_2$ \`e il campo di spezzamento di una famiglia di polinomi $(\Polynomial_i)_{i \in I} \in \RingAdjunction{\Field_1}{x}^I$, dove $I$ \`e un insieme opportuno, su $\Field_1$.
+	\end{itemize}
+\end{Theorem}
+\Proof Supponiamo che $\FieldExtension{\Field_2}{\Field_1}$ sia normale e sia $\Polynomial \in \RingAdjunction{\Field_1}{x}$ irriducibile. Sia $\alpha \in \Field_2$ una radice di $\Polynomial$: abbiamo $\MinimalPolynomial{\alpha} = \LC{\Polynomial}^{-1} p$. Fissata una radice $\beta \in \AlgebraicClosure{\Field_2}$ di $\MinimalPolynomial{\alpha}$, consideriamo l'omomorfismo relativo $\RelativeHomomorphism_1: \FieldAdjunction{\Field_1}{\alpha} \rightarrow \AlgebraicClosure{\Field_2}$ tale che $\RelativeHomomorphism_1(\alpha) = \beta$ e dunque un ulteriore omomorfismo $\RelativeHomomorphism_2: \Field_2 \rightarrow \AlgebraicClosure{\Field_2}$, stavolta relativo a $\RelativeHomomorphism_1$: per la normalit\`a di $\FieldExtension{\Field_2}{\Field_1}$, abbiamo $\Image \RelativeHomomorphism_2 = \Field_2$, da cui $\beta \in \Field_2$. Dunque $p$ si spezza in fattori lineari in $\Field_2$.
+\par Supponiamo ora che ogni polinomio $\Polynomial \in \RingAdjunction{\Field_1}{x}$ irriducibile che ammetta una radice in $\Field_2$ si spezzi in fattori lineari in $\RingAdjunction{\Field_2}{x}$. Consideriamo la famiglia di polinomi $(\MinimalPolynomial{\alpha})_{\alpha \in \Field_2}$, dove per ogni $\alpha \in \Field_2$, $\MinimalPolynomial{\alpha}$ \`e il polinomio minimo di $\alpha$ su $\Field_1$: per le nostre ipotesi, il campo di spezzamento $\FieldSpezzamento$ di $(\MinimalPolynomial{\alpha})_{\alpha \in \Field_2}$ \`e sottoinsieme di $\Field_2$, mentre l'inclusione inversa \`e immediata per costruzione della famiglia $(\MinimalPolynomial{\alpha})_{\alpha \in \Field_2}$.
+\par Supponiamo infine che $\Field_2$ sia il campo di spezzamento di una famiglia di polinomi $(\Polynomial_i)_{i \in I} \in \RingAdjunction{\Field_1}{x}^I$, dove $I$ \`e un insieme opportuno. Per il teorema \ref{th_pre_unicitacampospezzamento}, dove prendiamo entrambi i campi di spezzamento uguali a $\Field_2$, $\FieldExtension{\Field_2}{\Field_1}$. \EndProof
+\begin{Corollary}
+	Sia $\Field$ un campo. L'estensione $\FieldExtension{\AlgebraicClosure{\Field}}{\Field}$ \`e normale.
+\end{Corollary}
+\Proof Ogni polinomio $\Polynomial \in \RingAdjunction{\Field}{x}$ si spezza in fattori lineari in $\AlgebraicClosure{\Field}$. \EndProof
+\begin{Theorem}
+	Tutte le estensioni algebriche di grado $2$ sono normali.
+\end{Theorem}
+\Proof Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di grado $2$. Sia $\alpha \in \Field_2 \SetMin \Field_1$: necessariamente il polinomio minimo di $\alpha$ \`e di grado $2$ e dunque ammette in $\AlgebraicClosure{\Field_1}$ al pi\`u due radici distinte. Ora, se $c \in \Field_1$ \`e il termine noto di $\MinimalPolynomial{\alpha}$, allora si verifica immediatamente considerando il campo di spezzamento di $\MinimalPolynomial{\alpha}$ su $\Field_1$ che $\frac{c}{\alpha}$ \`e l'altra radice di $\MinimalPolynomial{\alpha}$ oltre ad $\alpha$. Se ne deduce che $\Field_2$ \`e il campo di spezzamento del polinomio $\MinimalPolynomial{\alpha}$ su $\Field_1$. \EndProof
+\begin{Theorem}
+	La normalit\`a non si trasferisce lungo le torri.
+\end{Theorem}
+\Proof Consideriamo la torre d'estensioni $\mathbb{Q} \subseteq \FieldAdjunction{\mathbb{Q}}{\sqrt{2}} \subseteq \FieldAdjunction{\mathbb{Q}}{\sqrt[4]{2}}$. $\FieldExtension{\FieldAdjunction{\mathbb{Q}}{\sqrt{2}}}{\mathbb{Q}}$ \`e normale perch\'e $\FieldAdjunction{\mathbb{Q}}{\sqrt{2}}$ \`e il campo di spezzamento di $x^2 - 2$ su $\mathbb{Q}$ e $\FieldExtension{\FieldAdjunction{\mathbb{Q}}{\sqrt[4]{2}}}{\FieldAdjunction{\mathbb{Q}}{\sqrt{2}}}$ \`e normale perch\'e $\FieldAdjunction{\mathbb{Q}}{\sqrt[4]{2}}$ \`e campo di spezzamento di $x^2 - \sqrt{2}$ su $\FieldAdjunction{\mathbb{Q}}{\sqrt{2}}$.
+\par Ma $\FieldExtension{\FieldAdjunction{\mathbb{Q}}{\sqrt[4]{2}}}{\mathbb{Q}}$ non \`e normale perch\'e in $\mathbb{C}$, estensione algebricamente chiusa di $\FieldAdjunction{\mathbb{Q}}{\sqrt[4]{2}}$, il polinomio minimo di $\sqrt[4]{2}$ su $\mathbb{Q}$ \`e $x^4 - 2$ (irriducibile per il criterio di Eisenstein) ha la radice $i\sqrt[4]{2}$ che non appartiene a $\FieldAdjunction{\mathbb{Q}}{\sqrt[4]{2}}$. \EndProof
+\begin{Theorem}
+	Consideriamo la torre d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \Field_3$. Se $\FieldExtension{\Field_3}{\Field_1}$ \`e normale, allora
+	\begin{itemize}
+		\item $\FieldExtension{\Field_3}{\Field_2}$ \`e normale;
+		\item non necessariamente $\FieldExtension{\Field_2}{\Field_1}$ \`e normale.
+	\end{itemize}
+\end{Theorem}
+\Proof Per la prima parte, osserviamo che la normalit\`a dell'estensione $\FieldExtension{\Field_3}{\Field_1}$ implica che $\Field_3$ sia il campo di spezzamento di una famiglia di polinomi a coefficienti in $\Field_1$, i quali appartengono a maggior ragione a $\Field_2$, e dunque $\FieldExtension{\Field_3}{\Field_2}$ \`e normale.
+\par Per la seconda parte considerimano la torre d'estensioni $\mathbb{Q} \subseteq \FieldAdjunction{\mathbb{Q}}{\sqrt[3]{2}} \subseteq \FieldAdjunction{\mathbb{Q}}{\sqrt[3]{2},\zeta_3}$, dove $\zeta_3 = \frac{- 1 + i\sqrt{3}}{2}$ \`e una radice cubica non reale dell'unit\`a\footnote{Stiamo anticipando la notazione delle radici primitive dell'unit\`a, \Cfr\ \ref{radici_primitive_def}.}.
+\par Essa verifica le ipotesi dell'enunciato: infatti $\pm \zeta_3 \sqrt[3]{2}$ e $- \sqrt[3]{2}$ sono tutte e sole le radici del polinomio $x^3 - 2$ e dunque $\FieldAdjunction{\mathbb{Q}}{\sqrt[3]{2}}$ contiene il campo di spezzamento di $x^3 - 2$ su $\mathbb{Q}$ ed \`e addirittura uguale ad esso perch\'e $\zeta_3 = \frac{- \sqrt[3]{2}}{- \zeta_3 \sqrt[3]{2}}$.
+\par D'altra parte, $x^3 - 2$ \`e un polinomio irriducibile per il criterio di Eisenstein e questo prova che $\FieldExtension{\FieldAdjunction{\mathbb{Q}}{\sqrt[3]{2}}}{\mathbb{Q}}$ non \`e normale. \EndProof
+\begin{Theorem}
+	La normalit\`a si trasferisce per traslazione.
+\end{Theorem}
+\Proof Siano date le torri d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \FieldComposition{\Field_2}{\Field_3}$ e $\Field_1 \subseteq \Field_3 \subseteq \FieldComposition{\Field_2}{\Field_3}$. Consideriamo un omomorifsmo relativo $\RelativeHomomorphism: \FieldComposition{\Field_2}{\Field_3} \rightarrow \AlgebraicClosure{\FieldComposition{\Field_2}{\Field_3}}$ su $\Field_3$. Osservato che $\RelativeHomomorphism$ ristretto a $\Field_2$ \`e un omomorfismo relativo su $\Field_1$, abbiamo $\RelativeHomomorphism(\FieldComposition{\Field_2}{\Field_3}) = \FieldComposition{\RelativeHomomorphism(\Field_2)}{\RelativeHomomorphism{\Field_3}} = \FieldComposition{\Field_2}{\Field_3}$, da cui $\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}{\Field_3}$ \`e normale. \EndProof
+\begin{Theorem}
+	La normalit\`a si trasferisce per composizione.
+\end{Theorem}
+\Proof Siano date le torri d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \FieldComposition{\Field_2}{\Field_3}$ e $\Field_1 \subseteq \Field_3 \subseteq \FieldComposition{\Field_2}{\Field_3}$. Sia $\RelativeHomomorphism: \FieldComposition{\Field_2}{\Field_3} \rightarrow \AlgebraicClosure{\Field_2}$ un omomorfismo relativo su $\Field_1$. Abbiamo $\RelativeHomomorphism(\FieldComposition{\Field_2}{\Field_3}) = \FieldComposition{\RelativeHomomorphism(\Field_2)}{\RelativeHomomorphism(\Field_3)} = \FieldComposition{\Field_2}{\Field_3}$. \EndProof
+\begin{Theorem}
+	Siano dati i campi $\Field_1, \Field_2, \Field_3$ tali che $\Field_2$ e $\Field_3$ estendano $\Field_1$ e che entrambe le estensioni siano normali. $\FieldExtension{\Field_2 \cap \Field_3}{\Field_1}$ \`e normale.
+\end{Theorem}
+\Proof Siano date le torri d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \FieldComposition{\Field_2}{\Field_3}$ e $\Field_1 \subseteq \Field_3 \subseteq \FieldComposition{\Field_2}{\Field_3}$. Sia $\RelativeHomomorphism: \Field_2 \cap \Field_3 \rightarrow \AlgebraicClosure{\Field_2}$ un omomorfismo relativo su $\Field_1$. Abbiamo, ricordano che $\RelativeHomomorphism$ \`e un'applicazione iniettiva, $\RelativeHomomorphism(\Field_2 \cap \Field_3) = \RelativeHomomorphism(\Field_2) \cap \RelativeHomomorphism(\Field_3) = \Field_2 \cap \Field_3$. \EndProof
+\begin{Definition}
+	Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$. Si chiama \Define{chiusura normale}[normale][chiusura] di $\Field_1$ rispetto a $\Field_2$ la pi\`u piccola estensione\footnote{L'unicit\`a, a meno di isomorfismo, segue direttamente dal teorema di unicit\`a dei campi di spezzamento.} $\Field_3$ di $\Field_2$ tale che $\FieldExtension{\Field_3}{\Field_1}$ \`e normale: la denoteremo $\NormalClosure{\Field_1}[\Field_2]$, omettendo il campo $\Field_2$ quando esso \`e chiaro dal contesto.
+\end{Definition}
+\begin{Theorem}
+	Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$. La chiusura normale di $\Field_2$ rispetto a $\Field_1$ \`e il campo $\Field_3 = \BigComposition{\phi \in I}{\phi(\Field_2)}$, dove $I$ \`e l'insieme di tutte le immersioni $\phi: \Field_2 \rightarrow \AlgebraicClosure{\Field_2}$ (non necessariamente omomorfismi relativi).
+\end{Theorem}
+\Proof Segue immediatamente dalla costruzione di $\Field_3$ che $\Field_2 \subseteq \Field_3$.
+\par Proviamo che $\Field_3$ \`e normale. In effetti, se $\RelativeHomomorphism: \Field_3 \rightarrow \AlgebraicClosure{\Field_1}$ \`e un omomorfismo relativo a $\Field_1$ abbiamo $\RelativeHomomorphism(\Field_3) = \BigComposition{\phi \in I}{(\RelativeHomomorphism \circ \phi)(\Field_2)} \subseteq \Field_3$, poich\'e la composizione di immersioni \`e un'immersione.
+\par Proviamo ora che $\Field_3 \subseteq \NormalClosure{\Field_2}$. Fissata $\phi \in I$, sia $\RelativeHomomorphism: \NormalClosure{\Field_2} \rightarrow \AlgebraicClosure{\Field_1}$ un omomorfismo relativo a $\phi$: abbiamo $\phi(\Field_2) \subseteq \RelativeHomomorphism(\NormalClosure{\Field_2}) = \NormalClosure{\Field_2}$. Per l'arbitrariet\`a di $\phi \in I$, abbiamo $\Field_3 \subseteq \NormalClosure{\Field_2}$. \EndProof
+\begin{Theorem}	
+	Se l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$ \`e finita, allora \`e finita anche $\FieldExtension{\NormalClosure{\Field_2}}{\Field_1}$.
+\end{Theorem}
+\Proof Se $\FieldExtension{\Field_2}{\Field_1}$ \`e finita allora \`e algebrica e generata da una famiglia di elementi algebrici $(\alpha_i)_{i = 1}^n$, $n \in \mathbb{N}$. Quindi $\NormalClosure{\Field_2}$ deve essere il campo di spezzamento dei polinomi minimi $(\MinimalPolynomial{\alpha_i})_{i =1}^n$ ed \`e finitamente generata e quindi finita. \EndProof
+\begin{Definition}
+	Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$. Si chiama \Define{nucleo normale} di $\Field_2$ rispetto a $\Field_1$ la pi\`u grande sottoestensione\footnote{L'unicit\`a, a meno di isomorfismo, segue direttamente dal teorema di unicit\`a dei campi di spezzamento.} $\Field_3$ di $\Field_2$ tale che $\FieldExtension{\Field_3}{\Field_1}$ \`e normale: la denoteremo $\NormalClosure{\Field_2}$.
+\end{Definition}
+\begin{Theorem}
+	Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$. Il nucleo normale di $\Field_2$ rispetto a $\Field_1$ \`e il campo $\Field_3 = \bigcap_{\phi \in I}{\phi(\Field_2)}$, dove $I$ \`e l'insieme di tutte le immersioni $\phi: \Field_2 \rightarrow \AlgebraicClosure{\Field_2}$ (non necessariamente omomorfismi relativi).
+\end{Theorem}
+\Proof Segue immediatamente dalla costruzione di $\Field_3$ che $\Field_2 \subseteq \Field_3$.
+\par Proviamo che $\Field_3$ \`e normale. In effetti, se $\RelativeHomomorphism: \Field_3 \rightarrow \AlgebraicClosure{\Field_2}$ \`e un omomorfismo relativo a $\Field_2$ abbiamo $\RelativeHomomorphism(\Field_3) = \bigcap_{\phi \in I}{(\RelativeHomomorphism \circ \phi)(\Field_2)} \subseteq \Field_3$, poich\'e la composizione di immersioni \`e un'immersione.
+\begin{Exercice}
+	Sia l'estensione normale $\FieldExtension{\Field_2}{\Field_1}$ e sia $p \in \RingAdjunction{\Field_1}{x}$ tale che
+	\begin{itemize}
+		\item $p$ sia monico e irriducibile su $\Field_1$;
+		\item $p = \prod_{i = 1}^n p_i$, con $n \in \mathbb{N}$, sia la fattorizzazione in irriducili di $p$ in $\RingAdjunction{\Field_2}{x}$.
+	\end{itemize}
+	Per ogni coppia $(i,j) \in [1,n]^2 \cap \mathbb{N}^2$, esiste un omomorfismo relativo $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_2}$ tale che $\ImagePolynomial{\RelativeHomomorphism}{p_i} = p_j$.
+\end{Exercice}
+\Solution Siano, in $\AlgebraicClosure{\Field_2}$, $\alpha_i$ radice di $p_i$ e $\alpha_j$ radice di $p_j$. $\alpha_i$ e $\alpha_j$ sono radici coniugate del polinomio $p \in \RingAdjunction{\Field_1}{x}$, dunque esiste un omomorfismo relativo $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_1}$ tale che $\RelativeHomomorphism(\alpha_i) = \alpha_j$. D'altra parte, poich\'e l'estensione $\FieldExtension{\Field_2}{\Field_1}$ \`e normale, $\RelativeHomomorphism$ \`e un isomorfismo sull'immagine $\Field_2$, cio\`e un automorfismo: $\ImagePolynomial{\RelativeHomomorphism}{p_i}$ \`e dunque un polinomio irriducibile che ha per radice $\alpha_j$; poich\'e inoltre $p_i$ \`e necessariamente monico, deve esserlo anche $\ImagePolynomial{\RelativeHomomorphism}{p_i}$, che coincide dunque con $p_j$. \EndProof

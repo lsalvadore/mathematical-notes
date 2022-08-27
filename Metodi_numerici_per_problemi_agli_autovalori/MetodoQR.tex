@@ -1,0 +1,718 @@
+\section{Metodo $QR$.}
+\label{CalcoloScientifico_MetodoQR}
+\begin{Definition}
+  Fissato $n \in \NotZero{\mathbb{N}}$, siano
+  \begin{itemize}
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\VarVector \in \mathbb{C}^n$.
+  \end{itemize}
+  Si fissi inoltre una condizione di arresto $\ArrestCondition$.
+  Si chiama
+  \Define{metodo delle potenze}[delle potenze][metodo]
+  l'algoritmo seguente, avente $\Matrix$ e $\VarVector$
+  come dati di ingresso:
+  \begin{enumerate}
+    \item\label{MetodoDellePotenze_1} si ponga $j = 0$,
+      $\VarVector_0 = \VarVector$ e
+      $\Eigenvalue_0^{(0)} =
+        \HermitianTransposed{\VarVector_0}\Matrix\VarVector_{0}$;
+    \item\label{MetodoDellePotenze_2} si ponga
+      $\tilde{\VarVector}_{j + 1} = \Matrix \VarVector_j$;
+    \item\label{MetodoDellePotenze_3} si ponga
+      $\VarVector_{j + 1}
+      = \frac{\tilde{\VarVector}_{j + 1}}{\Norm{\tilde{\VarVector}_{j + 1}}}$;
+    \item\label{MetodoDellePotenze_4} si ponga $\Eigenvalue_0^{(j + 1)}
+      = \HermitianTransposed{\VarVector_{j + 1}}\Matrix\VarVector_{j + 1}$;
+    \item\label{MetodoDellePotenze_5} se
+      $\ArrestCondition$ \`e falsa
+      si incrementi $j$ di $1$ e si torni al punto
+      \ref{MetodoDellePotenze_2}, altrimenti l'algoritmo termina
+      restituendo la coppia $(\Eigenvalue_0^{(j + 1)},\VarVector_{j + 1})$.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_problemi_agli_autovalori/MetodoDellePotenze.m"}
+	\caption{Implementazione del metodo delle potenze in \LanguageName{octave}.}
+\end{listing}
+\par Il passo \ref{MetodoDellePotenze_3} dell'algoritmo sopradescritto ha
+lo scopo di evitare il traboccamento dei moduli dei vettori
+$(\VarVector_j)_{j \in \mathbb{N}}$.
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \mathbb{N}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ diagonalizzabile;
+    \item $(\Eigenvalue_k)_{k \in n}$ gli autovalori di $\Matrix$ ordinati in ordine
+      decrescente di modulo e arbitrariamente a parit\`a di modulo;
+    \item $(\SpectralBase_k)_{k \in n}$ una base spettrale di $\Matrix$ tale
+      che $\ForAll{k \in n}{\Matrix \SpectralBase_k = \Eigenvalue_k \SpectralBase_k}$;
+    \item $\VarVector \in \mathbb{C}^n$;
+    \item $(\Scalar_k)_{k \in n} \in \mathbb{C}$ le coordinate di $\VarVector$
+      rispetto alla base $(\SpectralBase_k)_{k \in n}$.
+  \end{itemize}
+  Supponiamo inoltre
+  \begin{itemize}
+    \item $\Eigenvalue_0$ autovalore semplice non nullo;
+    \item $\VarVector$ non ortogonale a $\Eigenvector_0$.
+  \end{itemize}
+  Allora il metodo delle potenze applicato a $\Matrix$ e a $\VarVector$
+  converge a $(\Eigenvalue_0,\SpectralBase_0)$.
+  Abbiamo inoltre
+  $\AbsoluteValue{\Eigenvalue_0^{(j + 1)} - \Eigenvalue_0}
+  = \BigO{\AbsoluteValue{\frac{\Eigenvalue_1}{\Eigenvalue_0}}}$.
+\end{Theorem}
+\Proof Abbiamo, per ogni $j \in \mathbb{N}$
+\begin{align*}
+  \Matrix^j \VarVector
+  &= \sum_{k \in n} \Scalar_k \Matrix^j \SpectralBase_k,\\
+  &= \sum_{k \in n} \Scalar_k \Eigenvalue_k^j \SpectralBase_k,\\
+  &= \Eigenvalue_0^j \left ( \Scalar_0 \SpectralBase_0
+    +  \sum_{k \in n} \Scalar_k
+                      \left ( \frac{\Eigenvalue_k}{\Eigenvalue_0} \right )^j
+                      \SpectralBase_k \right ).
+\end{align*}
+\par Per $j \rightarrow \infty$ abbiamo allora
+\[
+  \Eigenvalue^{-j}\Matrix^j \VarVector \rightarrow \Scalar_0 \SpectralBase_0,
+\]
+e dunque
+$\frac{\Matrix^j \VarVector}{\Norm{\Matrix^j \VarVector}}$ converge a un vettore
+unitario $\VarSpectralBase_0$ multiplo del vettore, anch'esso unitario,
+$\SpectralBase_0$.
+\par Abbiamo inoltre, sempre per $j \rightarrow \infty$,
+\[
+  \Eigenvalue_0^{(j)}
+  \rightarrow \HermitianTransposed{\VarSpectralBase_0}\Matrix\VarSpectralBase_0
+  = \Eigenvalue_0.
+\]
+MANCA LA DIMOSTRAZIONE RIGUARDO ALLA VELOCITA DI CONVERGENZA \EndProof
+\par Numericamente, la condizione di non ortogonalit\`a ha scarsa importanza
+poich\'e gli algoritmi vengono generalmente implementati in aritmetica in
+virgola mobile, che introduce errori che perturbano rapidamente un eventuale
+sfortunana ortogonalit\`a.
+\begin{Definition}
+  Fissato $n \in \NotZero{\mathbb{N}}$, siano
+  \begin{itemize}
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\VarVector \in \mathbb{C}^n$;
+    \item $\VarEigenvalue \in \mathbb{C}$.
+  \end{itemize}
+  Si fissi inoltre una condizione di arresto $\ArrestCondition$.
+  Si chiama
+  \Define{iterazione inversa}[inversa][iterazione]
+  o anche
+  \Define{metodo di Willandt}[di Willandt][metodo]
+  l'algoritmo seguente, avente $\Matrix$, $\VarVector$ e $\VarEigenvalue$
+  come dati di ingresso:
+  \begin{enumerate}
+    \item\label{IterazioneInversa_1} si ponga $j = 0$,
+      $\VarVector_0 = \VarVector$ e
+      $\Eigenvalue_0^{(0)} =
+        \HermitianTransposed{\VarVector_0}\Matrix\VarVector_{0}$;
+    \item\label{IterazioneInversa_2} si ponga
+      $\tilde{\VarVector}_{j + 1}
+      = (\Matrix - \VarEigenvalue\Identity)^{-1} \VarVector_j$;
+    \item\label{IterazioneInversa_3} si ponga
+      $\VarVector_{j + 1}
+      = \frac{\tilde{\VarVector}_{j + 1}}{\Norm{\VarVector_{j + 1}}}$;
+    \item\label{IterazioneInversa_4} si ponga $\Eigenvalue_0^{(j + 1)}
+      = \HermitianTransposed{\VarVector_{j + 1}}\Matrix\VarVector_{j + 1}$;
+    \item\label{IterazioneInversa_5} se
+      $\ArrestCondition$ \`e falsa
+      si incrementi $j$ di $1$ e si torni al punto
+      \ref{MetodoDellePotenze_2}, altrimenti l'algoritmo termina
+      restituendo la coppia $(\Eigenvalue_0^{(j + 1)},\VarVector_{j + 1})$.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_problemi_agli_autovalori/MetodoDiIterazioneInversa.m"}
+	\caption{Implementazione dell'iterazione inversa in \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \mathbb{N}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ diagonalizzabile;
+    \item $(\Eigenvalue_k)_{k \in n}$ gli autovalori di $\Matrix$ ordinati in ordine
+      decrescente di modulo e arbitrariamente a parit\`a di modulo;
+    \item $(\SpectralBase_k)_{k \in n}$ una base spettrale di $\Matrix$ tale
+      che $\ForAll{k \in n}{\Matrix \SpectralBase_k = \Eigenvalue_k \SpectralBase_k}$;
+    \item $\VarVector \in \mathbb{C}^n$;
+    \item $\VarEigenvalue \in \mathbb{C}$;
+    \item $(\Scalar_k)_{k \in n} \in \mathbb{C}$ le coordinate di $\VarVector$
+      rispetto alla base $(\SpectralBase_k)_{k \in n}$.
+  \end{itemize}
+  Supponiamo inoltre
+  \begin{itemize}
+    \item $q \in n$ tale che
+    \begin{itemize}
+      \item $\AbsoluteValue{\Eigenvalue_q - \VarEigenvalue}
+            = \min_{k \in n} \AbsoluteValue{\Eigenvalue_k - \VarEigenvalue}$;
+      \item $\ForAll{k \in n \SetMin \lbrace q \rbrace}{
+              \AbsoluteValue{\Eigenvalue_k - \VarEigenvalue} >
+              \AbsoluteValue{\Eigenvalue_q - \VarEigenvalue}}$;
+    \end{itemize}
+    \item $\VarVector$ non ortogonale a $\Eigenvector_q$.
+  \end{itemize}
+  Allora l'iterazione inversa applicata a
+  $\Matrix$, $\VarVector$, $\VarEigenvalue$
+  converge a $(\Eigenvalue_q,\SpectralBase_q)$.
+  Abbiamo inoltre
+  $\AbsoluteValue{\Eigenvalue_q^{(j + 1)} - \Eigenvalue_q}
+  = \BigO{\AbsoluteValue{\frac{\Eigenvalue_r}{\Eigenvalue_q}}}$,
+  dove $\Eigenvalue_q$ \`e uno dei secondi autovalori pi\`u vicini
+  a $\VarEigenvalue$.
+\end{Theorem}
+\Proof Osserviamo che, se $\SpectralBaseChange$ diagonalizza
+$\Matrix$, allora $\SpectralBaseChange$ diagonalizza anche
+$(\Matrix - \VarEigenvalue\Identity)^{-1}$:
+\begin{align*}
+  \SpectralBaseChange
+  (\Matrix - \VarEigenvalue\Identity)^{-1}
+  \SpectralBaseChange^{-1}
+  &= (\SpectralBaseChange
+  (\Matrix - \VarEigenvalue\Identity)
+  \SpectralBaseChange^{-1})^{-1},\\
+  = (\SpectralBaseChange\Matrix\SpectralBaseChange^{-1}
+  - \VarEigenvalue\Identity)^{-1}.
+\end{align*}
+\par $\Eigenvalue$ \`e autovalore di $\Matrix$ se e solo se
+$(\Eigenvalue - \VarEigenvalue)^{-1}$ \`e autovalore di
+$(\Matrix - \VarEigenvalue\Identity)^{-1}$.
+\par Applicare l'iterazione inversa a $\Matrix$ equivale, per quanto riguarda il
+vettore restituito, ad applicare il metodo delle potenze a
+$(\Matrix - \VarEigenvalue\Identity)^{-1}$: pi\`u precisamente, entrambi gli
+algoritmi restituiscono lo stesso autovettore normale $\Eigenvector_q$, per
+opportuno $q \in n$.
+\par $\Eigenvector_q$ \`e l'autovettore corrispondente all'autovalore
+$\Eigenvalue_q$ di $\Matrix$. Inoltre
+$\AbsoluteValue{\Eigenvalue_q - \VarEigenvalue)}^{-1}
+= \max_{k \in n} \AbsoluteValue{\Eigenvalue_k - \VarEigenvalue)}^{-1}$,
+equivalente a
+$\AbsoluteValue{\Eigenvalue_q - \VarEigenvalue)}
+= \min_{k \in n} \AbsoluteValue{\Eigenvalue_k - \VarEigenvalue)}$.
+\par Segue per verifica diretta che il passo \label{IterazioneInversa_4} calcola
+effettivamente $\Eigenvalue_q$.
+\par Abbiamo infine, riguardo alla velocit\`a di convergenza,
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_problemi_agli_autovalori/MetodoDelQuozienteDiRayleigh.m"}
+	\caption{Implementazione del quoziente di Rayleigh in \LanguageName{octave}.}
+\end{listing}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Metodi_numerici_per_problemi_agli_autovalori/Immagine_ConfrontoInversaRayleigh.png}
+	\centering
+	\caption[Confronto tra le velocit\`a di convergenza del metodo di iterazione inversa e del
+  metodo di Rayleigh per una matrice simmetrica $10 \times 10$.]
+	{Confronto tra le velocit\`a di convergenza del metodo di iterazione inversa e del
+  metodo di Rayleigh per la matrice simmetrica riportata nel codice
+  \ref{Mtr_ConfrontoInversaRayleigh}.}
+  \label{Imm_ConfrontoInversaRayleigh}
+\end{figure}
+\begin{listing}
+	\inputminted[fontsize=\small]{octave}{Metodi_numerici_per_problemi_agli_autovalori/tests/Hermitiana_UnicoAutovaloreDiModuloMassimo}
+	\caption[Matrice usata per effettuare il confronto del grafico di figura
+  \ref{Imm_ConfrontoInversaRayleigh}.]
+	{Matrice usata per effettuare il confronto del grafico di figura
+  \ref{Imm_ConfrontoInversaRayleigh} (formato di memorizzazione di \LanguageName{octave}).}
+  \label{Mtr_ConfrontoInversaRayleigh}
+\end{listing}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \mathbb{N}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ diagonalizzabile;
+    \item $(\Eigenvalue_k)_{k \in n}$ gli autovalori di $\Matrix$ ordinati in ordine
+      decrescente di modulo e arbitrariamente a parit\`a di modulo;
+    \item $(\SpectralBase_k)_{k \in n}$ una base spettrale di $\Matrix$ tale
+      che $\ForAll{k \in n}{\Matrix \SpectralBase_k = \Eigenvalue_k \SpectralBase_k}$;
+    \item $\VarVector \in \mathbb{C}^n$;
+    \item $(\Scalar_k)_{k \in n} \in \mathbb{C}$ le coordinate di $\VarVector$
+      rispetto alla base $(\SpectralBase_k)_{k \in n}$;
+    \item $\Analytical: \mathbb{C} \rightarrow \mathbb{C}$ analitica.
+  \end{itemize}
+  Supponiamo inoltre
+  \begin{itemize}
+    \item $q \in n$ tale che
+    \begin{itemize}
+      \item $\AbsoluteValue{\Analytical(\Eigenvalue_q)}
+            = \min_{\Eigenvalue \in \Spectrum{\Matrix}}
+                \AbsoluteValue{\Analytical(\Eigenvalue)}$;
+      \item $\ForAll{\Eigenvalue \in \Spectrum{\Matrix} \SetMin
+                                \lbrace \Eigenvalue_q \rbrace}{
+              \AbsoluteValue{\Analytical(\Eigenvalue_k)} >
+              \AbsoluteValue{\Analytical(\Eigenvalue_q)}}$;
+    \end{itemize}
+    \item $\VarVector$ non ortogonale a $\Eigenvector_q$.
+  \end{itemize}
+  Allora il metodo delle potenze applicato a
+  $\Analytical{\Matrix}$ e $\VarVector$, modificato sostituendo i passi
+  \ref{MetodoDellePotenze_4} e \ref{MetodoDellePotenze_5} con
+  i passi analoghi dell'algoritmo applicato a $\Matrix$ e $\VarVector_0$,
+  converge a $(\Eigenvalue_q,\SpectralBase_q)$.
+  Abbiamo inoltre
+  $\AbsoluteValue{\Eigenvalue_q^{(j + 1)} - \Eigenvalue_q}
+  = \BigO{\AbsoluteValue{\frac{\Eigenvalue_r}{\Eigenvalue_q}}}$,
+  dove $\Eigenvalue_q$ \`e uno dei secondi autovalori pi\`u vicini
+  a $\VarEigenvalue$.
+\end{Theorem}
+\Proof Analoga a quella del teorema precedente. \EndProof
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$ una matrice con colonne
+      ortogonali.
+  \end{itemize}
+  Allora $\Matrix\HermitianTransposed{\Matrix}$ \`e una proiezione ortogonale.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+  (\Matrix\HermitianTransposed{\Matrix})^2
+  &= \Matrix\HermitianTransposed{\Matrix}\Matrix\HermitianTransposed{\Matrix},\\
+  &= \Matrix\HermitianTransposed{\Matrix}.
+\end{align*}
+Dunque $\Matrix\HermitianTransposed{\Matrix}$ \`e una proiezione.
+\par Sia $X \in \mathbb{C}^{n \times m}$. Abbiamo
+\begin{align*}
+  \HermitianTransposed(\Matrix\HermitianTransposed{\Matrix} X)
+    (X - \Matrix\HermitianTransposed{\Matrix} X)
+  &= \HermitianTransposed{X} \Matrix\HermitianTransposed{\Matrix} X
+    - \HermitianTransposed{X} \Matrix\HermitianTransposed{\Matrix}
+      \Matrix\HermitianTransposed{\Matrix} X,\\
+  &= \HermitianTransposed{X} \Matrix\HermitianTransposed{\Matrix} X
+    - \HermitianTransposed{X} \Matrix\HermitianTransposed{\Matrix}  X,\\
+  &= 0.
+\end{align*}
+Dunque $\Matrix\HermitianTransposed{\Matrix}$ \`e una proiezione ortogonale. \EndProof
+\begin{Definition}
+  Fissato $n \in \NotZero{\mathbb{N}}$, siano
+  \begin{itemize}
+    \item $p \in \NotZero{n}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\VarMatrix \in \mathbb{C}^{n \times p}$.
+  \end{itemize}
+  Si fissi inoltre una condizione di arresto $\ArrestCondition$.
+  Si chiama
+  \Define{metodo di iterazioni di sottospazi}[di iterazioni di sottospazi][metodo]
+  l'algoritmo seguente, avente $\Matrix$, $\VarMatrix$
+  come dati di ingresso:
+  \begin{enumerate}
+    \item\label{MetodoDiIterazioneDiSottospazi_1} si ponga
+      \begin{itemize}
+        \item $Q_0$ uguale alla matrice unitaria di una qualche
+              decomposizione $QR$ di $\VarMatrix$;
+        \item $\Lambda_0^{(0)} =
+                \HermitianTransposed{Q_0}\Matrix Q_{0}$;
+        \item $j = 1$;
+      \end{itemize}
+    \item\label{MetodoDiIterazioneDiSottospazi_2} si ponga
+      $Q_j$ uguale alla matrice unitaria di una qualche
+      decomposizione $QR$ di $\Matrix Q_{j - 1}$ corrispondente
+      a una matrice triangolare superiore quadrata $R_j$;
+    \item\label{MetodoDiIterazioneDiSottospazi_3} si costruisca
+      $\Lambda^{(j)} \in \mathbb{C}^p$ tale che per ogni $k \in p$
+      $\Lambda^{(j)}_k$ \`e il $k$-esimo autovalore di
+      $\HermitianTransposed{Q_j}\Matrix Q_{j}$, dove
+      gli autovalori sono ordinati in ordine decrescente di modulo e arbitrariamente
+      a parit\`a di modulo;
+    \item\label{MetodoDiIterazioneDiSottospazi_5} se
+      $\ArrestCondition$ \`e falsa
+      si incrementi $j$ di $1$ e si torni al punto
+      \ref{MetodoDiIterazioneDiSottospazi_2}, altrimenti l'algoritmo termina
+      restituendo $\Lambda^{(j)}$.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_problemi_agli_autovalori/MetodoDiIterazioneDiSottospazi.m"}
+	\caption{Implementazione del metodo di iterazioni di sottospazi in
+    \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $p \in \NotZero{n}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ diagonalizzabile;
+    \item $(\Eigenvalue_k)_{k \in n}$ gli autovalori di $\Matrix$ ordinati in ordine
+      decrescente di modulo e arbitrariamente a parit\`a di modulo;
+    \item $\SpectralBaseChange \in \mathbb{C}^{n \times n}$ una matrice spettrale
+      per $\Matrix$ i cui autovettori sono ordinati in modo tale che
+      $\ForAll{j \in n}{\Matrix \SpectralBaseChange^j = \Eigenvalue_j \SpectralBaseChange^j}$;
+    \item $\VarMatrix \in \mathbb{C}^{n \times p}$;
+    \item $A \in \mathbb{C}^{p \times p}$ e $B \in \mathbb{C}^{{n - p} \times p}$
+      tali che
+      $\SpectralBaseChange^{-1} \VarMatrix =
+        \lmatrix
+        \begin{array}{c}
+          A\\
+          \hline
+          B
+        \end{array}
+        \rmatrix$.
+  \end{itemize}
+  Supponiamo inoltre
+  \begin{itemize}
+    \item $A$ \`e invertibile;
+    \item $\AbsoluteValue{\Eigenvalue_{p - 1}} > \AbsoluteValue{\Eigenvalue_p}$.
+  \end{itemize}
+  Allora
+  \begin{itemize}
+    \item $(\Image{Q_j})$ converge a $\Image{(\SpectralBaseChange^j)_{j \in p}}$:
+      pi\`u precisamente abbiamo
+      \[
+        \ForAll{\Vector \in \Image{(\SpectralBaseChange^j)_{j \in p}}}{
+        \Norm{\Vector - Q_j\HermitianTransposed{Q_j} \Vector}[2]
+        = \BigO{\AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j}};
+      \]
+    \item il metodo di iterazioni di sottospazi applicato a
+      $\Matrix$ e a $\VarMatrix$
+      converge al vettore
+      $\Lambda \in \mathbb{C}^p$ tale che, per ogni $k \in p$,
+      $\Lambda_k = \Eigenvalue_k$;
+    \item $\Norm{\Lambda^{(j)} - \Lambda}
+        = \BigO{\AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j}$.
+  \end{itemize}
+\end{Theorem}
+\Proof Fissiamo $j \in \mathbb{N}$:
+abbiamo, per il teorema \ref{th_OrtonormalizzazioneQR},
+$\Image{Q_{j + 1}} = \Image{\Matrix \VarMatrix_j}$.
+Ne deduciamo per induzione, per ogni $j \in \mathbb{N}$,
+$\Image{Q_j} = \Image{\Matrix^j \VarMatrix}$.
+\par Fissiamo di nuovo $j \in \mathbb{N}$: abbiamo, posto
+\begin{itemize}
+  \item $\DiagonalMatrix = \SpectralBaseChange^{-1} \Matrix \SpectralBaseChange$;
+  \item $\DiagonalMatrix_0 =
+    ((\SpectralBaseChange^{-1} \Matrix \SpectralBaseChange)_k^j)_{
+    \substack{k \in p\\j \in p}}$;
+  \item $\DiagonalMatrix_1 =
+    ((\SpectralBaseChange^{-1} \Matrix \SpectralBaseChange)_k^j)_{
+    \substack{k \in n \SetMin p\\j \in p}}$;
+\end{itemize}
+\begin{align*}
+  \Matrix^j \VarMatrix
+  &= \SpectralBaseChange \DiagonalMatrix^j \SpectralBaseChange^{-1} \VarMatrix,\\
+  &= \SpectralBaseChange \DiagonalMatrix^j
+    \lmatrix
+    \begin{array}{c}
+      A\\
+      \hline
+      B
+    \end{array}
+    \rmatrix,\\
+  &= \SpectralBaseChange
+    \lmatrix
+    \begin{array}{c}
+      \DiagonalMatrix_0^j A\\
+      \hline
+      \DiagonalMatrix_1^j B
+    \end{array}
+    \rmatrix.
+\end{align*}
+\par Ora, $\SpectralBaseChange$ e $\DiagonalMatrix_0^j A$ sono invertibili,
+dunque $\Rank{Q_j} = p$.
+\par Sia ora $\Vector$ combinazione lineare dei primi $p$ autovettori:
+per ogni $j \in \mathbb{N}$ abbiamo
+\begin{align*}
+  \Vector
+  &\in \Image{
+  \SpectralBaseChange
+  \lmatrix
+  \begin{array}{c}
+    \Identity[p]\\
+    \hline
+    0
+  \end{array}
+  \rmatrix},\\
+  &= \Image{
+  \SpectralBaseChange
+  \lmatrix
+  \begin{array}{c}
+    \Identity[p]\\
+    \hline
+    0
+  \end{array}
+  \rmatrix
+  \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_0^j A},\\
+  &= \Image{
+  \SpectralBaseChange
+  \lmatrix
+  \begin{array}{c}
+    \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_0^j A\\
+    \hline
+    0
+  \end{array}
+  \rmatrix}.
+\end{align*}
+\par Siano ora
+\begin{itemize}
+  \item $X \in \mathbb{C}^p$ tale che
+  $\Vector = 
+    \SpectralBaseChange
+    \lmatrix
+    \begin{array}{c}
+      \Identity[p]\\
+      \hline
+        0
+      \end{array}
+    \rmatrix X$;
+  \item per ogni $j \in \mathbb{N}$, $X_j \in \mathbb{C}^p$ tale che
+  $\Vector = 
+    \SpectralBaseChange
+    \lmatrix
+    \begin{array}{c}
+      \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_0^j A\\
+      \hline
+        0
+      \end{array}
+    \rmatrix X_j$.
+\end{itemize}
+Per ogni $j \in \mathbb{N}$, $X_j$ e $X$ sono collegati dalla relazione
+$\lmatrix
+\begin{array}{c}
+  \Identity[p]\\
+  \hline
+  0
+\end{array}
+\rmatrix X
+=
+\lmatrix
+\begin{array}{c}
+  \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_0^j A\\
+  \hline
+    0
+  \end{array}
+\rmatrix X_j$,
+da cui
+$X = \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_0^j A X_j$
+e quindi
+\[
+  X_j = \Eigenvalue_{p - 1}^j A^{-1} \DiagonalMatrix_0^{-j}.
+\]
+Guardando le norme $2$, otteniamo
+\begin{align*}
+  \Norm{X_j}[2]
+  &\leq \AbsoluteValue{\Eigenvalue_p}^j \Norm{A^{-1}} \AbsoluteValue{\Eigenvalue_0}^{-j},\\
+  &= \AbsoluteValue{\frac{\Eigenvalue_{p - 1}}{\Eigenvalue_0}}^j \Norm{A^{-1}},\\
+  &\leq \Norm{A^{-1}}.
+\end{align*}
+\par Ora,
+\[
+  \Vector = 
+  \SpectralBaseChange
+  \lmatrix
+  \begin{array}{c}
+    \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_0^j A\\
+    \hline
+    \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_1^j A
+  \end{array}
+  \rmatrix
+  X_j
+  - \SpectralBaseChange
+  \lmatrix
+  \begin{array}{c}
+    0\\
+    \hline
+    \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_1^j A
+  \end{array}
+  \rmatrix
+  X_j.
+\]
+Il primo termine appartiene a $\Image{Q_j}$, il secondo dunque appartiene a un qualche
+complemento di $\Image{Q_j}$ in $\mathbb{C}^{n}$: poich\'e la proiezione ortogonale
+si $\Image{Q_j}$ \`e la proiezione per cui il vettore che giace nel complementare ha
+norma minima deve essere
+\begin{align*}
+  \Norm{\Vector - Q_j\HermitianTransposed{Q_j} \Vector}[2]
+  &\leq \Norm{\SpectralBaseChange
+    \lmatrix
+    \begin{array}{c}
+      0\\
+      \hline
+      \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_1^j A
+    \end{array}
+    \rmatrix
+    X_j}[2],\\
+  &\leq \Norm{\SpectralBaseChange}[2]
+    \Norm{\lmatrix
+    \begin{array}{c}
+      0\\
+      \hline
+      \Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_1^j A
+    \end{array}
+    \rmatrix}[2]
+    \Norm{X_j}[2],\\
+  &= \Norm{\SpectralBaseChange}[2]
+    \Norm{\Eigenvalue_{p - 1}^{-j} \DiagonalMatrix_1^j A}[2]
+    \Norm{X_j}[2],\\
+  &\leq \Norm{\SpectralBaseChange}[2]
+    \AbsoluteValue{\Eigenvalue_{p - 1}^{-j}} \AbsoluteValue{\Eigenvalue_p}^j
+    \Norm{A}[2]
+    \Norm{X_j}[2],\\
+  &\leq \Norm{\SpectralBaseChange}[2]
+    \AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j
+    \Norm{A}[2]
+    \Norm{A^{-1}}[2].
+\end{align*}
+Dunque
+$\Norm{\Vector - Q_j\HermitianTransposed{Q_j} \Vector}[2]
+= \BigO{\AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j}$.
+\par Ora, poniamo
+\begin{itemize}
+  \item $k \in p$;
+  \item $\Eigenvector \in \mathbb{C}^n$ autovettore di $\Matrix$ relativo a $\Eigenvalue_k$;
+  \item $\VarEigenvector_j = \HermitianTransposed{Q_j} \Eigenvector$;
+  \item $\Vector_j = \Eigenvector
+          - Q_j\HermitianTransposed{Q_j} \Eigenvector$.
+\end{itemize}
+Abbiamo
+\begin{align*}
+  \Norm{
+    \HermitianTransposed{Q_j} \Matrix Q_j \VarEigenvector_j
+    - \Eigenvalue_k \VarEigenvector_j
+    }[2]
+  &= \Norm{
+    \HermitianTransposed{Q_j} \Matrix Q_j
+    \HermitianTransposed{Q_j} \Eigenvector
+    - \Eigenvalue_k \HermitianTransposed{Q_j} \Eigenvector
+    }[2],\\
+  &= \Norm{
+    \HermitianTransposed{Q_j} \Matrix (\Eigenvector + \Vector_j)
+    - \Eigenvalue_k \HermitianTransposed{Q_j} \Eigenvector
+    }[2],\\
+  &= \Norm{
+    \HermitianTransposed{Q_j} (\Matrix \Eigenvector
+    - \Eigenvalue_k \Eigenvector)
+    + \HermitianTransposed{Q_j} \Matrix \Vector_j
+    }[2],\\
+  &= \Norm{\HermitianTransposed{Q_j} \Matrix \Vector_j}[2],\\
+  &\leq \Norm{Q_j}[2]
+   \Norm{\Matrix}[2]
+   \Norm{\Vector_j}[2].
+\end{align*}
+\par Ora $\ForAll{j \in \mathbb{N}}{\Norm{Q_j} = 1}$ e
+$\Norm{\Vector_j}
+= \BigO{\AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j}$,
+dunque
+\[
+  \Norm{
+  \HermitianTransposed{Q_j} \Matrix Q_j \VarEigenvector_j
+  - \Eigenvalue_k \VarEigenvector_j
+  }[2]
+  = \BigO{\AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j}.
+\]
+\par Ne consegue che, fissato $j \in \mathbb{N}$ e posto
+$Q_j = \HermitianTransposed{Q_j} \Matrix Q_j$,
+l'errore all'indietro dell'applicazione che a
+$Q_j$ associa la coppia autovettore-autovalore
+$(\VarEigenvector_j,\Eigenvalue_k)$ approssimata \`e anch'esso
+$\BigO{\AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j}$ e dunque esiste
+una perturbazione $\Perturbation{\Matrix_j}$ tale che, per opportuna costante $C \in \mathbb{C}$, abbiamo
+\begin{itemize}
+  \item $\Norm{\Perturbation{\Matrix_j}}
+    \leq C \AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j$;
+  \item $(\VarEigenvector_j,\Eigenvalue_k)$ \`e una coppia autovettore-autovalore esatta
+    per la matrice $\Matrix_j + \Perturbation{\Matrix_j}$.
+\end{itemize}
+\par Per il teorema di Bauer-Fike, la matrice $\Matrix_j$ ha un autovalore
+$\VarEigenvalue_k$ tale che
+\begin{align*}
+  \AbsoluteValue{\VarEigenvalue_k - \Eigenvalue_k}
+  &\leq \Norm{\Perturbation{\Matrix_j}},\\
+  &\leq C \AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j.
+\end{align*}
+\par Dunque accanto alla successione $(\Matrix_j)_{j \in \mathbb{N}}$, abbiamo
+un'altra succesione $(\VarEigenvalue_k^{(j)})_{j \in \mathbb{N}}$ tale che
+$\AbsoluteValue{\VarEigenvalue_k^{(j)} - \Eigenvalue_k}
+= \BigO{\AbsoluteValue{\frac{\Eigenvalue_p}{\Eigenvalue_{p - 1}}}^j}$.
+\par Ne segue la tesi. \EndProof
+\begin{Corollary}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ diagonalizzabile;
+    \item $(\Eigenvalue_k)_{k \in n}$ gli autovalori di $\Matrix$ ordinati in ordine
+      decrescente di modulo;
+    \item $\SpectralBaseChange \in \mathbb{C}^{n \times n}$ una matrice spettrale
+      per $\Matrix$ i cui autovettori sono ordinati in modo tale che
+      $\ForAll{j \in n}{\Matrix \SpectralBaseChange^j = \Eigenvalue_j \SpectralBaseChange^j}$.
+  \end{itemize}
+  Supponiamo inoltre che tutti i minori di testa di
+  $\SpectralBaseChange^{-1}$
+  siano invertibili.
+  Il metodo di iterazione di sottospazi converge a una matrice
+  $\SchurNormalForm$ 
+  a gradini tale che, per ogni $p \in \NotZero{n}$, se
+  $\AbsoluteValue{\Eigenvalue_{p - 1}} \neq \AbsoluteValue{\Eigenvalue_p}$,
+  allora per ogni $(k,j) \in n \times p \SetMin p \times p$,
+  $\SchurNormalForm_k^j = 0$.
+  In particolare, se tutti gli autovalori di $\Matrix$ hanno moduli distinti,
+  $\SchurNormalForm$ \`e una forma normale di Schur di $\Matrix$.
+\end{Corollary}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_problemi_agli_autovalori/MetodoDiIterazioneDiSottospaziPerFormaDiSchur.m"}
+	\caption{Implementazione del metodo di iterazioni di sottospazi 
+    per il calcolo di una forma normale di Schur in \LanguageName{octave}.}
+\end{listing}
+\Proof Applichiamo il metodo di iterazione di sottospazi a $\Matrix$ e
+$\VarMatrix = \Identity$ (manteniamo le stesse notazioni del teorema
+precedente): otteniamo una successione di matrici
+$(Q_j)_{j \in \mathbb{N}}$
+le cui immagini convergono al sottospazio invariante
+$\Image{\SpectralBaseChange} = \mathbb{C}^n$.
+\par Osserviamo che per definizione dell'algoritmo e
+per il teorema \ref{th_FattorizzazioneQRParziale}, per ogni
+$p \in n$ la successione
+$(Q^{(p)}_j)_{j \in \mathbb{N}}$
+generata dal metodo di iterazione di sottospazi a partire da $\Matrix$ e
+$Q^{(p)} = (\Identity^J)_{J \in p}$, coincide con la successione
+$((Q^J_j)_{J \in p})_{j \in \mathbb{N}}$ ottenuta da
+$(Q_j)_{j \in \mathbb{N}}$ estraendo da ogni termine
+la sottomatrice delle prime $p$ colonne.
+\par Ne deduciamo che, per ogni $p \in n$ tale che
+$\AbsoluteValue{\Eigenvalue_{p - 1}} \neq \AbsoluteValue{\Eigenvalue_p}$,
+le immagini delle matrici
+$(Q^{(p)}_j)_{j \in \mathbb{N}}$
+convergono al sottospazio invariante
+$\Image{(\SpectralBaseChange^J)_{J \in p}}$.
+\par Ne segue la tesi. \EndProof
+\begin{Lemma}
+  Con le notazioni della definizione del metodo di iterazione di sottospazi,
+  per ogni $j \in \mathbb{N}$ e posto
+  \begin{itemize}
+    \item $\VarMatrix_0 = \Identity$;
+    \item $\Matrix_j = \HermitianTransposed{Q_j} \Matrix Q_j$'
+  \end{itemize}
+  abbiamo
+  $\Matrix_{j + 1} = R_j Q_j$
+  a meno di coniugio per matrici di fase.
+\end{Lemma}
+\Proof Per ogni $j \in \mathbb{N}$ abbiamo, ricordando che
+$Q_j \HermitianTransposed{Q_j}$ \`e una proiezione ortogonale
+\begin{align*}
+  \Matrix_{j + 1}
+  &= \HermitianTransposed{Q_{j + 1}} \Matrix Q_{j + 1},\\
+\end{align*}
+\begin{Theorem}
+  Fissato $n \in \NotZero{\mathbb{N}}$, sia
+  $\Matrix \in \mathbb{C}^{n \times n}$.
+  Si fissi inoltre una condizione di arresto $\ArrestCondition$.
+  L'algoritmo seguente, avente $\Matrix$
+  come dato di ingresso, fornisce una forma normale di Schur di $\Matrix$:
+  \begin{enumerate}
+    \item\label{ProtometodoQR_1} si pongano $Q, R \in \mathbb{C}^{n \times n}$
+      tali che $\Matrix = QR$ sia una fattorizzazione $QR$ di $\Matrix$;
+    \item\label{ProtometodoQR_2} si ridefinisca
+      $\Matrix = RQ$;
+    \item\label{ProtometodoQR_3} se
+      $\ArrestCondition$ \`e falsa
+      si torni al punto
+      \ref{ProtometodoQR_1}, altrimenti l'algoritmo termina
+      restituendo $\Matrix$.
+  \end{enumerate}
+\end{Theorem}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_problemi_agli_autovalori/ProtometodoQR.m"}
+	\caption{Implementazione del metodo di iterazioni di sottospazi 
+    per il calcolo di una forma normale di Schur in \LanguageName{octave}.}
+\end{listing}
+\Proof 

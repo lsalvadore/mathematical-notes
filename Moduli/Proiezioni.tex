@@ -1,0 +1,13 @@
+\section{Proiezioni.}\label{Proiezioni}
+\begin{Definition}
+	Si chiama \Define{proiezione} o \Define{proiettore} un endomorfismo
+  lineare idempotente.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Projection$ una proiezione sul $\Ring$-modulo $\Module$. $\Module$ \`e isomorfo a $\Kernel{\Projection} \oplus \Image{\Projection}$.
+\end{Theorem}
+\Proof Sia $\ModuleElement \in \Module$. Abbiamo $\ModuleElement = (\ModuleElement - \Projection(\ModuleElement)) + \Projection(\ModuleElement))$. Inoltre $\Projection(\ModuleElement - \Projection(\ModuleElement)) = \Projection(\ModuleElement) - \Projection^2(\ModuleElement) = \Projection(\ModuleElement) - \Projection(\ModuleElement) = 0$. Quindi $\ModuleElement$ si scrive come somma di un elemento di $\Kernel{\Projection}$ e di uno di $\Image{\Projection}$.
+\par Sia ora $\ModuleElement \in \Kernel{\Projection} \cap \Image{\ModuleElement}$. Abbiamo $\Projection(\ModuleElement) = 0$ e, per opportuno $\ModuleElement_0 \in \Module$, $\Projection(\ModuleElement_0) = \ModuleElement$. Quindi $\ModuleElement = \Projection(\ModuleElement_0) = \Projection^2(\ModuleElement_0) = \Projection(\ModuleElement) = 0$. \EndProof
+\begin{Definition}
+	Sia $\Projection$ una proiezione. Diciamo che $\Projection$ \`e una \Define{proiezione}[su un sottomodulo lungo un altro sottomodulo][proiezione] sul sottospazio $\Image{\Projection}$ lungo $\Kernel{\Projection}$.
+\end{Definition}

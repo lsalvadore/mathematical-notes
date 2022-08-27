@@ -1,0 +1,425 @@
+\section{Metodi numerici a un passo.}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_MetodiNumericiAUnPasso}
+\begin{Definition}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_DefinizioneMetodoNumerico}
+	Dati un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ e
+  $N$ nodi, chiamiamo
+  \Define{metodo a un passo}[a un passo][metodo] un metodo numerico che associa
+  al problema di Cauchy e alla una discretizzazione uniforme un vettore
+  $(y_j)_{j \in N}$ definito da
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi_\Step(t_j,y_j)\text{ per }j \geq 0,
+	\end{cases}
+	\]
+	dove $\phi_\Step(t,y): \Dom{f} \rightarrow \Cod{f}$. Diciamo che il metodo \`e
+	\begin{itemize}
+		\item \Define{esplicito}[a un passo esplicito][metodo]
+          quando $\phi_\Step(t,y)$ \`e data in forma esplicita;
+	 	\item \Define{implicito}[a un passo implicito][metodo]
+          quando $\phi_\Step(t,y)$ \`e data in forma implicita.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Con le notazioni della definizione
+\ref{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_DefinizioneMetodoNumerico},
+	definiamo il metodo numerico
+	\begin{itemize}
+		\item \Define{convergente}[di un metodo numerico per un problema di Cauchy][convergenza]
+          quando $\lim_{\Step \rightarrow 0} \max_{j \in N} \Norm{y(t_j) - y_j} = 0$;
+		\item \Define{convergente di ordine $p$}[di ordine $p$ di un metodo numerico per un problema di Cauchy][convergenza]
+          quando \`e convergente e inoltre
+          $\IsBigO{\max_{j \in N} \Norm{y_j - y(t_j)}}{h^p}$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_DefinizioneConsistenza}
+	Con le notazioni della definizione
+\ref{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_DefinizioneMetodoNumerico},
+	definiamo gli \Define{errori locali di troncamento}[locale di troncamento][errore] $(\LocalTruncationError_j)_{j \in \NotZero{N}}$ come le quantit\`a che, al variare di $j \in N - 1$, verificano $y(t_{j + 1}) = y(t_j) + \Step \phi_\Step(t_j,y(t_j)) + \Step \LocalTruncationError_{j + 1}$.
+	Definiamo il metodo numerico
+	\begin{itemize}
+		\item \Define{consistente}[di un metodo numerico per un problema di Cauchy][consistenza] quando $\ForAll{j \in N}{\lim_{\Step \rightarrow 0} \LocalTruncationError_j = 0}$;
+		\item \Define{consistente d'ordine $p$}[di ordine $p$ di un metodo numerico per un problema di Cauchy][consistenza] quando \`e consistente e inoltre $\ForAll{j \in N}{\IsBigO{\Norm{\LocalTruncationError_j}}{\Step^p}}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni del teorema \ref{MetodiNumericiPerEquazioniOrdinarie_DefinizioneConsistenza}, il metodo numerico \`e consistente di ordine $p$ se e solo se
+\[
+	\ForAll{j \in \NotZero{N}}{\IsBigO{y(t_{j + 1}) - y(t_j) - \Step \phi_\Step(t_j,y(t_j)))}{\Step^{p + 1}}}.
+\]
+\end{Theorem}
+\Proof Il metodo numerico \`e consistente di ordine $p$ se e solo se, per ogni $j \in \NotZero{N}$, abbiamo 
+$\lim_{\Step \rightarrow 0} \frac{\Norm{\LocalTruncationError_j}}{\Step^p} = 0$, che equivale a
+$\lim_{\Step \rightarrow 0} \frac{\Norm{y(t_{j + 1}) - y(t_j) - \Step \phi_\Step(t_j,y(t_j))}}{\Step^{p + 1}} = 0$. \EndProof
+\begin{Theorem}
+	Con le notazioni del teorema \ref{MetodiNumericiPerEquazioniOrdinarie_DefinizioneConsistenza}, se
+\[
+	\ForAll{z_0 \in \Image{f} \cup \lbrace y_0 \rbrace}{\IsBigO{y(t_1) - z_0 - \Step\phi_\Step(t_0,z_0)}{h^{\ConsistencyOrder + 1}}}.
+\]
+	allora il metodo numerico \`e consistente di ordine $p$.
+\end{Theorem}
+\Proof Fissiamo $j \in N$. Definiamo un nuovo problema di Cauchy a partire da quello vecchio modificando solamente la condizione iniziale:
+\[
+\begin{cases}
+	z' = f(t,z),\\
+	z(t_0) = y(t_j).
+\end{cases}
+\]
+Applichiamo al problema nuovo lo stesso metodo numerico ottenendo la successione
+\[
+\begin{cases}
+	z_0 = y(t_j),\\
+	z_{j + 1} = z_j + \Step\phi_\Step(t_j,z_j)\text{ per }j \geq 0,
+\end{cases}
+\]
+Abbiamo allora $y(t_{j + 1}) - y(t_j) - \Step \phi_\Step(t_j,y(t_j)) = z(t_1) - z_0 - \Step \phi_\Step(t_0,z_0) = \BigO{\Step^{\ConsistencyOrder + 1}}$. \EndProof
+\begin{Definition}
+	Siano un problema di Cauchy sull'intervallo $I$ definito da
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ e $N$ nodi e il metodo numerico a un passo
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi_\Step(t_j,y_j)\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	Chiamiamo il metodo numerico
+	\[
+	\begin{cases}
+		z_0 = z_0 + \delta_0,\\
+		z_{j + 1} = z_j + \Step(\phi_\Step(t_j,z_j) + \delta_j)\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	con $(\Perturbation_j)_{j \in N}$. Chiamiamo $(\Perturbation_j)_{j \in N}$ \Define{perturbazione}[di un metodo numerico per un problema di Cauchy][perturbazione] o \Define{errore}[di un metodo numerico per un problema di Cauchy][errore] e il secondo metodo numerico \Define{metodo numerico perturbato}[numerico perturbato per un problema di Cauchy][metodo] del primo.
+\end{Definition}
+\begin{Definition}
+	Dati un problema di Cauchy su un intervallo $I$ definito da
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ e $N$ nodi, il metodo numerico a un passo
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi_\Step(t_j,y_j)\text{ per }j \geq 0,
+	\end{cases}
+	\]
+	e il metodo numerico perturbato
+	\[
+	\begin{cases}
+		z_0 = z_0 + \delta_0,\\
+		z_{j + 1} = z_j + \Step(\phi_\Step(t_j,z_j) + \delta_j)\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	Il metodo numerico originale si definisce \Define{zero-stabile}[numerico zero-stabile][metodo] quando, per $\Step$ sufficicentemente piccolo, esistono $\epsilon > 0$ e $C \geq 0$ tali che, per ogni $j \in N$ abbiamo
+	\begin{itemize}
+		\item $\Norm{\Perturbation_j} \leq \epsilon$,
+		\item $\Norm{z_j - y_j} \leq C \epsilon$.
+	\end{itemize}
+\end{Definition}
+\begin{Lemma}
+	\TheoremName{Lemma di Gronwall discreto} Siano
+	\begin{itemize}
+		\item $N \in \NaturalExtended$;
+		\item $(f_j)_{j \in N}, (g_j)_{j \in N}, (h_j)_{j \in N} \in \mathbb{R}^n$;
+		\item $\ForAll{j \in N}{\And{g_j \geq 0}{h_j \geq 0}}$;
+		\item $(g_j)_{j \in N}$ non decrescente;
+	\end{itemize}
+	Se $\begin{cases} f_0 \leq g_0,\\f_{j + 1} \leq f_j \leq g_j + \sum_{j = 0}^i h_j f_j\text{ per }j \in N,\end{cases}$ allora abbiamo anche $f_j \leq g_j \Exponential{\int_{j = 0}^ih_j}$.
+\end{Lemma}
+\begin{Theorem}
+	Siano dati un problema di Cauchy su un intervallo $I$ definito da
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ e $N$ nodi e il metodo numerico a un passo
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi_\Step(t_j,y_j)\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	Se $I$ \`e limitato e $\phi_\Step(t,y)$ \`e $L$-lipschitizana ($L \in \RealPositive$) in $y$, allora il metodo numerico \`e zero-stabile.
+\end{Theorem}
+\Proof Sia il metodo numerico perturbato
+\[
+\begin{cases}
+	z_0 = z_0 + \delta_0,\\
+	z_{j + 1} = z_j + \Step(\phi_\Step(t_j,z_j) + \delta_j)\text{ per }i > 0.
+\end{cases}
+\]
+\par Supponiamo le perturbazioni limitate da $\epsilon > 0$: $\ForAll{t \in N}{\Perturbation_j \leq \epsilon}$
+\par Definiamo la funzione $w(t) = z(t) - y(t)$. Abbiamo
+\[
+w_0  = z_0 - y_0 = \Perturbation_0.
+w_{j + 1} = z_{j + 1} - y_{j + 1}\text{ per }j \geq 0.\\
+\]
+\par Abbiamo, per ogni $j \in N$, $w_{j + 1} = w_j + \Step (\Perturbation_j \phi_\Step(t_j,z_j) - \phi_\Step(t_j,y_j)) = w_0 \Step \sum_{i = 0}^j(\phi(t_j,z_j) - \phi(t_j,y_j)) + \Step \sum_{i = 0}^j \Perturbation_j$, da cui
+$\Norm{w_{j + 1}} \leq \Norm{w_0} + \Step L \sum_{i = 0}^j \Norm{w_j} + \Step \sum_{i = 0}^j \Perturbation_j \leq \epsilon(j + 1)\Step + \Step L \sum_{i = 0}^j \Norm{w_j}$.
+\par Per il lemma di Gronwall discreto, abbiamo inoltre $\Norm{w_{j + 1}} \leq \epsilon(j + 1)\Step \Exponential{(j + 1)\Step L} \leq \epsilon(\max{I} + 1) \Step \Exponential{(\max{I} + 1)\Step L}$, da cui deduciamo la zero-stabilit\`a del metodo numerico. \EndProof
+\begin{Theorem}
+	\TheoremName{Teorema di Lax-Richtmyer, o di equivalenza (semplificato)}[di Lax-Richtmyer][teorema]
+	Siano dati un problema di Cauchy su un intervallo $I$ definito da
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	una discretizzazione uniforme di $I$ limitato di passo $\Step \in \RealPositive$ e $N$ nodi e il metodo numerico a un passo
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi_\Step(t_j,y_j)\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	Se $\phi$ \`e lipschitziana e il metodo numerico \`e consistente di ordine $p$ e zero-stabile, allora esso \`e anche convergente di ordine\footnote{Vale anche il viceversa, ma qui non lo dimostriamo. Inoltre anche l'implicazione enunciata \`e valida sotto ipotesi pi\`u generali.} $p$.
+\end{Theorem}
+\Proof Per la consistenza di ordine $p$, abbiamo
+\[
+\begin{cases}
+	y(t_0) = y_0,\\
+	y(t_{j + 1}) = y(t_j) + \Step\phi_\Step(t_j,y(t_j)) + \Step\LocalTruncationError_{j + 1}\text{ per }j \geq 0,
+\end{cases}
+\]
+dove $\IsBigO{(\Norm{\LocalTruncationError_j})_{j \in N}}{\Norm{h}^p}$. Esiste dunque $C \in \RealPositive$ tale che, per $\Norm{h}$ sufficientemente piccolo, $\Norm{\LocalTruncationError_j} \leq C \Norm{h}^p$.
+\par Interpretiamo la successione $(\tau_{j + 1})_{j \in N}$ come una perturbazione del metodo numerico in esame. Allora, per la zero-stabilit\`a, per $h$ sufficientemente piccolo, abbiamo, per opportuna costante $D \in \RealPositive$, $\Norm{y(t_j) - y_j} \leq D C \Norm{h}^p$: il metodo numerico converge con ordine $p$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{problema test di Dahlquist}[test di Dalquist][problema] di parametro $\lambda$ il problema di Cauchy definito su $\RealPositive$ dalle equazioni
+	\[
+	\begin{cases}
+		y' = \DahlquistParameter y,\\
+		y(0) = 1,
+	\end{cases}
+	\]
+	per qualche $\DahlquistParameter \in \mathbb{C}$.
+\end{Definition}
+\begin{Theorem}
+	Sia dato un metodo numerico a un passo $\Step$:
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi_\Step(t_j,y_j)\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	Siano $(\Step_1,\DahlquistParameter_1), (\Step_2,\DahlquistParameter_2) \in \RealPositive \times \mathbb{C}$ tali che $\Step_1\DahlquistParameter_1 = \Step_2\DahlquistParameter_2$. Il metodo numerico genera una successione $(y_j^{(1)})_{j \in \mathbb{N}}$ infinitesima quando applicato con passo $\Step = \Step_1$ al problema test di Dahlquist con parametro $\DahlquistParameter = \DahlquistParameter_1$ se e solo se lo stesso metodo numerico genera una successione $(y_j^{(2)})_{j \in \mathbb{N}}$ infinitesima quando applicato con passo $\Step = \Step_2$ al problema test di Dahlquist con parametro $\DahlquistParameter = \DahlquistParameter_2$.
+\end{Theorem}
+\Proof Supponiamo il metodo generi $(y_j^{(1)})_{j \in \mathbb{N}}$ infinitesima per $\Step = \Step_1$ e $\DahlquistParameter = \DahlquistParameter_1$. Abbiamo $\DahlquistParameter_2 = \frac{\Step_1}{\Step_2} \DahlquistParameter_1$. OMESSA
+\begin{Definition}
+	Dato un metodo numerico per un problema di Cauchy, se esiste $\StabilityFunction: \mathbb{C} \rightarrow \Cod{y}$ la successione generata per il problema test di Dalhquist di parametro $\DahlquistParameter$ \`e della forma $y_j = \StabilityFunction(z)^j$, per ogni $j \in \mathbb{N}$, allora $\StabilityFunction$ si chiama \Define{funzione di stabilit\`a}[di stabilit\`a][funzione].
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{regione di stabilit\`a di un metodo numerico per un problema di Cauchy}[di stabilit\`a di un metodo numerico per un problema di Cauchy][regione] l'insieme $\StabilityRegion$ di tutti i $z \in \mathbb{C}$ della forma $z = \Step \DahlquistParameter$ ($(\Step,\DahlquistParameter) \in \RealPositive \times \mathbb{C}$) tale che il metodo numerico con passo $\Step$ generi una successione infinitesima\footnote{\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_Nota_RegioneDiStabilita}Alcuni autori si accontentano di richiedere una successione limitata.} per il problema test di Dahlquist di parametro $\DahlquistParameter$.
+\end{Definition}
+\begin{Theorem}
+	Se un metodo numerico per un problema di Cauchy ammette funzione di stabilit\`a $\StabilityFunction(z)$, allora $\StabilityRegion = \lbrace z \in \mathbb{C} | \AbsoluteValue{\StabilityFunction(z)} < 1 \rbrace$ \`e la sua regione di stabilit\`a\footnote{Nel caso si modifichi la definizione di regione di stabilit\`a secondo quanto riportato dalla nota \ref{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_Nota_RegioneDiStabilita} avremo invece $\StabilityRegion = \lbrace z \in \mathbb{C} | \AbsoluteValue{\StabilityFunction(z)} \leq 1 \rbrace$. Numericamente, la definizione che abbiamo scelto per la regione di stabilit\`a \`e generalmente preferibile, dato che i punti di frontiera della regione di stabilit\`a possono dar luogo a successioni che escono dalla regione (e dunque non sono pi\`u limitate) a causa di errori numerici.}.
+\end{Theorem}
+\Proof Segue dal fatto che una serie geometrica converge se e solo se il modulo della sua ragione \`e minore di $1$. \EndProof
+\begin{Definition}
+	Un metodo numerico che ammette una regione di stabilit\`a $\StabilityRegion$ tale che
+\[
+	\ForAll{z \in \mathbb{C}}{\Implies{\RealPart{z} < 0}{z \in \StabilityRegion}}
+\]
+si dice \Define{$A$-stabile}[numerico $A$-stabile per un problema di Cauchy][metodo].
+\end{Definition}
+\begin{Definition}
+	Un metodo numerico che ammette una funzione di stabilit\`a $\StabilityFunction(z)$ tale che $\lim_{z \rightarrow - \infty} \StabilityFunction(z) = 0$ si dice \Define{$L$-stabile}[numerico $L$-stabile per un problema di Cauchy][metodo].
+\end{Definition}
+\begin{Definition}
+	Dato $\alpha \in \left [ 0,\frac{\pi}{4} \right ]$, un metodo numerico con regione di stabilit\`a $\StabilityRegion$ si dice \Define{$A(\alpha)$-stabile}[numerico $A(\alpha)$-stabile per un problema di Cauchy][metodo] ($\alpha \in (-\pi;+\pi]$) quando $\lbrace z \in \mathbb{C} | \Argument{-z} \in (-\alpha,\alpha) \rbrace \subseteq \StabilityRegion$.
+\end{Definition}
+\begin{Lemma}
+	Sia un'equazione differenziale $y' = f(t,y)$ definita su un intervallo $I$.
+	Definiamo $\bar{y}: I \times \Cod{y}$ che associa a $(t,y_0) \in I \times \Cod{y}$ il valore $y(t)$ dove $y$ \`e la soluzione del problema di Cauchy
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0.
+	\end{cases}
+	\]
+	Supponiamo che l'applicazione parziale $\bar{y}_t(y_0)$ sia di classe $\CClass{2}$ e fissiamo una perturbazione $\Perturbation \in \mathbb{R}$.
+	Abbiamo, per $\AbsoluteValue{t - t_0}$ sufficientemente piccolo, $\bar{y}(t,y_0 + \Perturbation) = y(t,y_0) + \left ( 1 + (t - t_0) \PartialDerivative{f}{y}(t_0,y_0) \right ) \Perturbation + \BigO{\AbsoluteValue{t - t_0}^2 + \Perturbation^2}$.
+\end{Lemma}
+\Proof Abbiamo
+\[
+	\bar{y}(t,y_0) = y_0 + \int_{t_0}^t f(\tau,y(\tau,y_0)) d\tau,	
+\]
+da cui, derivando rispetto a $y_0$,
+\begin{align*}
+	\PartialDerivative{\bar{y}}{y_0}(t,y_0)
+	&= 1 + \int_{t_0}^t \PartialDerivative{f}{y_0} (\tau,\bar{y}(\tau,y_0)) d\tau,\\
+	&= 1 + \int_{t_0}^t \PartialDerivative{f}{\bar{y}} (\tau,\bar{y}(\tau,y_0)) \PartialDerivative{\bar{y}}{y}(\tau,y_0) d\tau,\\
+	&= 1 + \int_{t_0}^t \left (\PartialDerivative{f}{\bar{y}} (t_0,\bar{y}(t_0,y_0)) \PartialDerivative{\bar{y}}{y_0}(t_0,y_0) + \Littleo{\tau - t_0} \right ) d\tau,\\
+	&= 1 + (t - t_0)\PartialDerivative{f}{\bar{y}} (t_0,\bar{y}(t_0,y_0)) \PartialDerivative{\bar{y}}{y_0}(t_0,y_0) + \Littleo{\AbsoluteValue{t - t_0}^2}.
+\end{align*}
+\par Ne deduciamo, supponendo $\AbsoluteValue{t - t_0}$ sufficientemente piccolo affinch\'e la serie $\sum_{k \in \mathbb{N}}(t - t_0)\PartialDerivative{f}{y}(t_0,y_0)$ converga,
+\begin{align*}
+	\PartialDerivative{\bar{y}}{y_0}(t,y_0)
+	&= \left (1 - (t - t_0)\PartialDerivative{f}{\bar{y}}(t_0,y_0) \right )^{-1} \left ( 1 + \Littleo{\AbsoluteValue{t - t_0}^2} \right ),\\
+	&= \left ( \sum_{k \in \mathbb{N}}\left ( (t - t_0)\PartialDerivative{f}{y}(t_0,y_0) \right )^k \right ) \left (1 + \Littleo{\AbsoluteValue{t - t_0}^2} \right ),\\
+	&= \left ( 1 + (t - t_0)\PartialDerivative{f}{\bar{y}}(t_0,y_0) + \Littleo{\left ( (t - t_0)\PartialDerivative{f}{\bar{y}}(t_0,y_0) \right )^2} \right ) \left ( 1 + \Littleo{\AbsoluteValue{t - t_0}^2} \right ),\\
+	&= (1 + (t - t_0)\PartialDerivative{f}{\bar{y}}(t_0,y_0) + \Littleo{(t - t_0)^2})(1 + \Littleo{\AbsoluteValue{t - t_0}^2}),\\
+	&= 1 + (t - t_0)\PartialDerivative{f}{\bar{y}}(t_0,y_0) + \Littleo{(t - t_0)^2}).\\
+\end{align*}
+\par Sostituendo l'espressione appena trovata per $\PartialDerivative{\bar{y}}{y}(t,y_0)$ nello sviluppo di Taylor al primo ordine
+\[
+	\bar{y}(t,y_0 + \Perturbation) = \bar{y}(t,y_0) + \PartialDerivative{\bar{y}}{y_0}(t,y_0) \Perturbation + \BigO{\Perturbation^2},
+\]
+e osservando che $\IsLittleo{\delta\Littleo{\AbsoluteValue{t - t_0}^2}}{\AbsoluteValue{t - t_0}^2 + \Perturbation^2}$ concludiamo la dimostrazione. \EndProof
+\begin{Lemma}
+	Sia il metodo numerico a un passo $\Step$
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi(t_j,y_j)\text{ per }j \geq 0,
+	\end{cases}
+	\]
+	per il problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	con $\phi_\Step(t,y): \Dom{f} \rightarrow \Cod{f}$ e ordine di consistenza $\ConsistencyOrder$. Esiste $\xi \in [t_0,t_0 + \Step]$ tale che $y(t_0 + \Step) = y_1 + C y^{(\ConsistencyOrder + 1)}(\xi) \Step^{\ConsistencyOrder + 1} + \BigO{\Step^{\ConsistencyOrder + 2}}$, dove $C$ \`e una costante dipendente esclusivamente dal metodo numerico. %Probabilmente l'intervallo di xi puo essere ridotto alla sua parte interna
+\end{Lemma}
+\begin{Corollary}
+	Sia il metodo numerico a un passo $\Step$
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi(t_j,y_j)\text{ per }j \geq 0,
+	\end{cases}
+	\]
+	per il problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	con $\phi_\Step(t,y): \Dom{f} \rightarrow \Cod{f}$ e ordine di consistenza $\ConsistencyOrder$. Abbiamo $y(t_0 + \Step) = y_1 + C y^{(\ConsistencyOrder + 1)}(t_0) \Step^{\ConsistencyOrder + 1} + \BigO{\Step^{\ConsistencyOrder + 2}}$, dove $C$ \`e una costante dipendente esclusivamente dal metodo numerico.
+\end{Corollary}
+\Proof Segue direttamente dal lemma precedente osservando che $y^{(\ConsistencyOrder + 1)}(\xi) - y^{(\ConsistencyOrder + 1)}(t_0) = \BigO{\Step}$. \EndProof
+\begin{Theorem}
+	\TheoremName{Estrapolazione di Richardson}
+	Sia il metodo numerico a un passo $\Step$
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi(t_j,y_j)\text{ per }j \geq 0,
+	\end{cases}
+	\]
+	per il problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	con $\phi_\Step(t,y): \Dom{f} \rightarrow \Cod{f}$ e ordine di consistenza $\ConsistencyOrder$. Sia inoltre $w_2 = y_0 + 2 \Step\phi(t_0,y_0)$. Abbiamo
+	\[
+		y(t_0 + 2 \Step) - y_2 = \frac{y_2 - w_2}{2^\ConsistencyOrder - 1} + \BigO{\Step^{p + 2}}.
+	\]
+\end{Theorem}
+\Proof Abbiamo, per i risultati precedenti e per opportuna costante $C$,
+\[
+	y(t_0 + \Step) - y_1 = Cy^{(\ConsistencyOrder + 1)}(t_0) \Step^{\ConsistencyOrder + 1} + \BigO{\Step^{\ConsistencyOrder + 2}}.
+\]
+\par Definiamo il problema di Cauchy
+\[
+\begin{cases}
+	\tilde{y}' = f(t,\tilde{y}),\\
+	\tilde{y}(t_0 + \Step) = y_1.
+\end{cases}
+\]
+Considerando il metodo numerico
+\[
+\begin{cases}
+	\tilde{y}_1 = y_1,\\
+	\tilde{y}_{j + 1} = \tilde{y}_j + \Step\phi(t_j,\tilde{y}_j)\text{ per }j > 0
+\end{cases}
+\]
+e posto $t_1 = t_0 + \Step$, deduciamo, per $\Step$ sufficientemente piccolo e trascurando tutto ci\`o che \`e $\BigO{\Step^{\ConsistencyOrder + 2}}$,
+\begin{align*}
+	y(t_0 + 2\Step) - y_2
+	&= y(t_0 + 2\Step) - \tilde{y}(t_0 + 2\Step) + \tilde{y}(t_0 + 2\Step) - y_2,\\
+	&= \left ( 1 + \Step \PartialDerivative{f}{y}(t_1,y(t_1)) \right ) (Cy^{(\ConsistencyOrder + 1)}(t_0) \Step^{p + 1}) + C y^{(\ConsistencyOrder + 1)}(t_1) \Step^{\ConsistencyOrder + 1},\\
+	&= C (y^{(\ConsistencyOrder + 1)}(t_0) + y^{(\ConsistencyOrder + 1)}(t_1))\Step^{\ConsistencyOrder + 1},\\
+	&= C (2 y^{(\ConsistencyOrder + 1)}(t_0) + \BigO{\Step}) \Step^{\ConsistencyOrder + 1},\\
+	&= 2 C y^{(\ConsistencyOrder + 1)}(t_0) \Step^{\ConsistencyOrder + 1}.
+\end{align*}
+E dunque
+\[
+	y(t_0 + 2\Step) - y_2 = 2 C y^{(\ConsistencyOrder + 1)}(t_0) \Step^{\ConsistencyOrder + 1} + \BigO{\Step^{\ConsistencyOrder + 2}}.
+\]
+Abbiamo inoltre
+\[
+	y(t_0 + 2\Step) - w_2 = Cy^{(\ConsistencyOrder + 1)}(t_0) (2\Step)^{\ConsistencyOrder + 1} + \BigO{\Step^{\ConsistencyOrder + 2}}.
+\]
+Ora
+\begin{align*}
+	y_2 - w_2
+	&= y(t_0 + 2\Step) - w_2 - (y(t_0 + 2\Step) - y_2),\\
+	&= Cy^{(\ConsistencyOrder + 1)}(t_0) (2\Step)^{\ConsistencyOrder + 1} + \BigO{\Step^{\ConsistencyOrder + 2}} - 2 C y^{(\ConsistencyOrder + 1)}(t_0) \Step^{\ConsistencyOrder + 1} - \BigO{\Step^{\ConsistencyOrder + 2}},\\
+	&= 2Cy^{(\ConsistencyOrder + 1)}(t_0)\Step^{\ConsistencyOrder + 1}(2^\ConsistencyOrder - 1) + \BigO{\Step^{\ConsistencyOrder + 2}}.
+\end{align*}
+\par Ne segue la tesi. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema precedente, consideriamo i metodi numerici di passo $2 \Step$
+	\[
+	\begin{cases}
+		w_0 = y_0,\\
+		w_{2j} = w_{2j - 2} + 2 \Step\phi(t_{2j - 2},w_{2j - 2})\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	e
+	\[
+	\begin{cases}
+		z_0 = y_0,\\
+		z_{2j} = y_{2j} + \frac{y_{2j} - w_{2j}}{2^\ConsistencyOrder - 1}\text{ per }j \geq 0.
+	\end{cases}
+	\]
+	$(z_j)_{j \in \left \lfloor \frac{N}{2} \right \rfloor}$ \`e un metodo numerico di ordine di consistenza $p + 1$.
+\end{Corollary}
+\Proof Segue direttamente dall'estrapolazione di Richardson osservando che il risultato non dipende dallo specifico punto iniziale $y_0$. \EndProof
+\begin{Definition}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_DefinizioneMetodoNumericoAUnPassoAdattivo}
+	Dati un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$, chiamiamo \Define{metodo a un passo adattivo}[a un passo adattivo][metodo] un metodo numerico che segue lo schema seguente:
+	\begin{itemize}
+		\item si fissa una tolleranza $\epsilon > 0$;
+		\item si fissa un passo iniziale $\Step$;
+		\item si fissa un metodo numerico a un passo $\Step$;
+		\item si effettuano due passi del metodo fissato e si stima l'errore usando l'estrapolazione di Richardson;
+		\item se l'errore \`e minore della tolleranza $\epsilon$, raddoppio il passo $\Step$ finch\'e la stima dell'errore rimane sotto la tollerenza; se invece \`e maggiore di $\epsilon$ dimezzo $\Step$ sino a quando la stima dell'errore scende sotto $\epsilon$;
+		\item si applica il metodo numerico col nuovo passo $\Step$, ripetendo ogni tanto la stima dell'errore secondo l'estrapolazione di Richardson e aggiustando il passo $\Step$ secondo le istruzioni del punto precedente.
+	\end{itemize}
+\end{Definition}
+\input{Metodi_numerici_per_equazioni_differenziali_ordinarie/MetodiDiRungeKutta.tex}

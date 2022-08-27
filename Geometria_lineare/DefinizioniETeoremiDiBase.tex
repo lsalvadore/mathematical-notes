@@ -1,0 +1,160 @@
+\section{Definizioni e teoremi di base.}
+\label{GeometriaLineare_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo. La cardinalit\`a comune di tutte
+	le basi di $\Module$, denotata $\Dimension{\Module}$, si chiama
+	\Define{dimensione}[di un modulo][dimensione] di $\Module$.
+\end{Definition}
+\begin{Definition}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale di dimensione finita e sia $\LinearSpace_0 \subseteq \LinearSpace$ sottospazio vettoriale. Si definisce \Define{codimensione}[di un sottospazio vettoriale in uno spazio vettoriale finito][codimensione], denotata $\Codimension{\LinearSpace_0}$, la differenza $\Dimension{\LinearSpace} - \Dimension{\LinearSpace_0}$.
+\end{Definition}
+\begin{Definition}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito. Un sottospazio vettoriale $\Hyperplane$ di $\LinearSpace$ di codimensione $1$ si chiama \Define{iperpiano lineare}[lineare][iperpiano] di $\LinearSpace$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale di dimensione finita e sia $\LinearSpace_0 \subseteq \LinearSpace$ sottospazio vettoriale tale che $\Dimension{\LinearSpace_0} = \Dimension{\LinearSpace}$. Allora $\LinearSpace_0 = \LinearSpace$.
+\end{Theorem}
+\Proof Supponiamo $(\LinearBase_i)_{i \in I}$ sia una base di $\LinearSpace_0$ e sia $\Vector \in \LinearSpace$. $\Vector$ non \`e linearmente indipendente da $(\LinearBase_i)_{i \in I}$ poich\'e se lo fosse $\LinearSpace$ avrebbe dimensione maggiore di $\Dimension{\LinearSpace_0}$, contro le ipotesi. Dunque $\Vector$ \`e combinazione lineare dei $(\LinearBase_i)_{i \in I}$, da cui $\Vector \in \LinearSpace_0$. \EndProof
+\begin{Theorem}
+	Sia $\Linear: \LinearSpace \rightarrow \LinearSpace'$ un'applicazione lineare tra i $\Field$-spazi vettoriali $\LinearSpace$ e $\LinearSpace'$ di dimensione finita. Abbiamo $\Dimension{\LinearSpace} = \Dimension{\Kernel{\Linear}} + \Dimension{\Image{\Linear}}$.
+\end{Theorem}
+\Proof Sia $(\LinearBase_i)_{i \in \Dimension{\Image{\Linear}}}$ una base di $\Image{\Linear}$. Allora $(\Linear^{-1}(\LinearBase_i))_{i \in \Dimension{\Image{\Linear}}}$ \`e una famiglia indiependente di vettori di $\LinearSpace$:  completiamola a base aggiungendo gli elementi $(\LinearBase_i)_{i \in \Dimension{\LinearSpace} \SetMin \Dimension{\Image{\Linear}}}$. Necessariamente, per ogni $i \in \Dimension{\LinearSpace} \SetMin \Dimension{\Image{\Linear}}$, abbiamo $\Linear(\LinearBase_i) = 0$. Dunque $(\LinearBase_i)_{i \in \Dimension{\LinearSpace} \SetMin \Dimension{\Image{\Linear}}}$ \`e una base di $\Kernel{\Linear}$. \EndProof
+\begin{Corollary}
+	Sia $\Linear: \LinearSpace \rightarrow \LinearSpace'$ un'applicazione lineare tra i $\Field$-spazi vettoriali $\LinearSpace$ e $\LinearSpace'$ di dimensione finita e uguale.
+	Sono equivalenti
+	\begin{itemize}
+		\item $\Linear$ \`e iniettiva;
+		\item $\Linear$ \`e suriettiva;
+		\item $\Linear$ \`e un isomorfismo.
+	\end{itemize}
+\end{Corollary}
+\Proof Provata l'equivalenza tra iniettivit\`a e suriettivit\`a, l'equivalenza con la biettivit\`a discende direttamente dalle definizioni.
+\par Affermare che $\Linear$ \`e iniettiva equivale ad affermare che $\Dimension{\Kernel{\Linear}} = \lbrace 0 \rbrace$, da cui $\Dimension{\Image{\Linear}} = \Dimension{\LinearSpace}$ e dunque $\Image{\Linear} = \LinearSpace'$.
+\par Affermare che $\Linear$ \`e suriettiva equivale ad affermare che $\Dimension{\Image{\Linear}} = \Dimension{\LinearSpace'}$, da cui $\Dimension{\Kernel{\Linear}} = 0$ e dunque $\Kernel{\Linear} = \lbrace 0 \rbrace$. \EndProof
+\begin{Theorem}
+	\TheoremName{Formula di Grassmann}[di Grassmann][formula] Siano
+	\begin{itemize}
+		\item $\LinearSpace$ un $\Field$-spazio vettoriale finito;
+		\item $\VarLinearSpace_1$ e $\VarLinearSpace_2$ sottospazi vettoriali di $\LinearSpace$.
+	\end{itemize}
+	Abbiamo
+	\[
+		\LinearDimension{(\VarLinearSpace_1 + \VarLinearSpace_2)} + \LinearDimension{(\VarLinearSpace_1 \cap \VarLinearSpace_2)} = \LinearDimension{\VarLinearSpace_1} + \LinearDimension{\VarLinearSpace_2}.
+	\]
+\end{Theorem}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $\LinearSpace$ un $\Field$-spazio vettoriale finito;
+    \item $\LinearSubspace, \VarLinearSubspace \subseteq \LinearSpace$
+      sottospazi vettoriali di $\LinearSpace$;
+    \item $a = \LinearDimension{\LinearSubspace}$;
+    \item $b = \LinearDimension{\LinearSpace}
+              - \LinearDimension{\VarLinearSubspace} < a$;
+    \item $n = \LinearDimension{\LinearSpace}$;
+    \item $(\LinearBase_j)_{j \in a - 1}$ una
+      famiglia di vettori di $\LinearSpace$ tale che
+      \begin{itemize}
+        \item $(\LinearBase_j)_{j = 0}^{a - 1}$ una
+          base di $\LinearSubspace$;
+        \item $(\LinearBase_j)_{j = b}^{n - 1}$
+          una base di $\VarLinearSubspace$;
+        \item $(\LinearBase_j)_{j = b}^{a - 1}$ una
+          base di $\LinearSubspace \cap \VarLinearSubspace$.
+      \end{itemize}
+  \end{itemize}
+  $(\LinearBase_j)_{j \in n}$ \`e una base di
+  $\LinearSpace$.
+\end{Theorem}
+\Proof Sia
+$(\Scalar_j)_{j \in n} \in \Field^n$ tale che
+$\sum_{j \in n} \Scalar_j\LinearBase_j = 0$.
+\par Abbiamo
+$\sum_{j = b}^{a - 1} \Scalar_j\LinearBase_j =
+- \sum_{j = 0}^{b - 1} \Scalar_j\LinearBase_j
+- \sum_{j = a}^{n - 1} \Scalar_j\LinearBase_j$.
+\par A primo membro abbiamo una combinazione lineare di vettori di
+$\LinearSubspace \cap \VarLinearSubspace$, dunque deve essere
+$\sum_{j = 0}^{b - 1} \Scalar_j\LinearBase_j
++ \sum_{j = a}^{n - 1} \Scalar_j\LinearBase_j = 0$ e
+$\ForAll{j \in a \SetMin b}{\Scalar_j = 0}$.
+\par Poniamo
+$\Vector = \sum_{j = 0}^{b - 1} \Scalar_j\LinearBase_j
+= - \sum_{j = a}^{n - 1} \Scalar_j\LinearBase_j$,
+ma il primo membro \`e una combinazione lineare di vettori
+$\LinearSubspace$ e il secondo una combinazione lineare di vettori di
+$\VarLinearSubspace$ e pertanto
+$\Vector \in \LinearSubspace \cap \VarLinearSubspace$.
+Poich\'e per\`o tale vettore deve essere linearmente indipendente da
+$(\LinearBase_j)_{j = b}^{a - 1}$, deve essere $v = 0$ e infine
+$\ForAll{j \in n}{\Scalar_j = 0}$. \EndProof
+\begin{Corollary}
+  Siano
+  \begin{itemize}
+    \item $\LinearSpace$ un $\Field$-spazio vettoriale finito;
+    \item $\LinearSubspace, \VarLinearSubspace \subseteq \LinearSpace$
+      sottospazi vettoriali di $\LinearSpace$ tali che
+      \begin{itemize}
+        \item $\LinearSubspace \cap \VarLinearSubspace = \lbrace 0 \rbrace$;
+        \item $\LinearDimension{\LinearSubspace}
+                + \LinearDimension{\VarLinearSubspace}
+                = \LinearDimension{\LinearSpace}$.
+      \end{itemize}
+  \end{itemize}
+  Abbiamo
+  \[
+    \LinearSubspace \DirectSum \VarLinearSubspace = \LinearSpace.
+  \]
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente dopo aver costruito una base
+$(\LinearBase_j)_{j \in \LinearDimension{\LinearSpace}}$ tale che
+\begin{itemize}
+  \item $(\LinearBase_j)_{j \in \LinearDimension{\LinearSubspace}}$ una
+    base di $\LinearSubspace$;
+  \item $(\LinearBase_j)_{j \in
+    \LinearDimension{\LinearSpace} \SetMin \LinearDimension{\LinearSubspace}}$
+    una base di $\VarLinearSubspace$. \EndProof
+\end{itemize}
+\begin{Theorem}
+	Siano $\LinearSpace$ un $\Field$-spazio vettoriale di dimensione $n$ e sia $\LinearBase = (\LinearBase_i)_{i \in n}$ una base di $\LinearSpace$. Siano
+	\begin{itemize}
+		\item $f: \LinearBase \rightarrow \Field^n$ l'applicazione che a $\Vector \in \LinearBase$ associa le sue coordinate in $\Field^n$. $f$ \`e un isomorfismo;
+		\item $g: \Field^n \rightarrow \LinearBase$ l'applicazione che a $(\Scalar_i)_{i \in n}$ associa il vettore $\sum_{i \in n} \Scalar_i \LinearBase_i$.
+	\end{itemize}
+	$f$ e $g$ sono isomorfismi lineari tra i $\Field$-spazi vettoriali $\LinearSpace$ e $\Field^n$, l'uno l'inverso dell'altro.
+\end{Theorem}
+\Proof Immediata per verifica diretta. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, l'isomorfismo $f$ si chiama \Define{isomorfismo di coordinate}[di coordinate][isomorfismo] del $\Field$-spazio vettoriale $\LinearSpace$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\LinearSpace_1$ e $\LinearSpace_2$ $\Field$-spazi vettoriali di dimensione $n_1$ e $n_2$ rispettivamente. Siano $(\LinearBase_i)_{i \in n_1}$ e $(\VarLinearBase_j)_{j \in n_2}$ basi di di $\LinearSpace_1$ e $\LinearSpace_2$ rispettivamente. Denotiamo con $f_1$ e $f_2$ gli isomorfismi di coordinate di $\LinearSpace_1$ e $\LinearSpace_2$ rispettivamente. Siano
+	\begin{itemize}
+		\item $\Linear: \LinearSpace_1 \rightarrow \LinearSpace_2$ un'applicazione lineare;
+		\item $A$ la matrice tale che $\ForAll{i \in n_1}{A^i = f_2(\Linear(\LinearBase_i))}$. Abbiamo $\ForAll{\Vector \in \LinearSpace_1}{A f_1(\Vector) = f_2(\Linear(\Vector))}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\Vector \in \LinearSpace_1$ e siano $(\Scalar_i)_{i \in n_1}$ le coordinate di $\Vector$ rispetto a $(\LinearBase_i)_{i \in n_1}$. Abbiamo $A f_1(\Vector) = A f_1(\sum_{i \in n_1} \Scalar_i \LinearBase_i) = \sum_{i \in n_1} \Scalar_i A^i = \sum_{i \in n_1} \Scalar_i f_2(\Linear(\LinearBase_i)) = f_2(\Linear(\Vector))$. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, diciamo che la matrice $A$ \Define{rappresenta}[che rappresenta un'applicazione lineare][matrice] l'applicazione lineare $\Linear$ rispetto alle basi $(\LinearBase_i)_{i \in n_1}$ e $(\VarLinearBase_j)_{j \in n_2}$ o ancora che $A$ \`e la \Define{matrice associata}[associata a un'applicazione lineare][matrice] all'applicazione lineare $\Linear$ rispetto alle basi $(\LinearBase_i)_{i \in n_1}$ e $(\VarLinearBase_j)_{j \in n_2}$.
+\end{Definition}
+\begin{Definition}
+	Sia $\LinearSpace$ uno spazio vettoriale di dimensione $n \in \mathbb{R}$ e siano $(\LinearBase_i)_{i \in n}$ e $(\VarLinearBase_j)_{j \in n}$ due sue basi distinte. La matrice associata all'identit\`a di $\LinearSpace$ rispetto alle basi $(\LinearBase_i)_{i \in n}$ e $(\VarLinearBase_j)_{j \in n}$ si chiama \Define{matrice di cambiamento di base}[di cambiamento di base][matrice] dalla base $(\LinearBase_i)_{i \in n}$ alla base $(\VarLinearBase_j)_{j \in n}$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\LinearSpace_0$ e $\LinearSpace_1$ due $\Field$-spazi vettoriali di dimensione $n_0$ e $n_1$ rispettivamente. Siano $(\LinearBase_i)_{i \in n_0}$ e $(\VarLinearBase_j)_{j \in n_2}$ basi di $\LinearSpace_0$ e $\LinearSpace_1$ rispettivamente. L'applicazione $f: \Homomorphisms{\LinearSpace_0}{\LinearSpace_1} \rightarrow \Field^{n_1 \times n_0}$ che a $\Linear \in \Homomorphisms{\LinearSpace_0}{\LinearSpace_1}$ associa la matrice che rappresenta $\Linear$ rispetto a $(\LinearBase_i)_{i \in n_0}$ e $(\LinearBase_j)_{j \in n_1}$ \`e un isomorfismo lineare. 
+\end{Theorem}
+\Proof
+\begin{Definition}
+	Siano $(\LinearSpace_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di $\Field$-spazi vettoriali e $\VarLinearSpace$ un ulteriore $\Field$-spazio vettoriale. Sia, per ogni $i \in n$,, $(\LinearBase_{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$ una base di $\LinearSpace_i$ e sia $(\VarLinearBase_j)_{j \in \Dimension{\LinearSpace}}$ una base di $\LinearSpace$. Siano $\Multilinear \in \Multilinears{(\LinearSpace_i)_{i \in n}}{\VarLinearSpace}$ e $(\Scalar_{j_1,...,j_n}^j)_{(j_1,...,j_n,j) \in \bigtimes_{i \in n} \Dimension{\LinearSpace_i} \times \Dimension{\VarLinearSpace}}$ una famiglia di scalari tale che $\Multilinear((\LinearBase_{i,j_i})_{i \in n})) = \sum_{j \in \Dimension{\LinearSpace}} \Scalar_{j_1,...,j_n}^j \VarLinearBase_j$. Chiamiamo $(\Scalar_{j_1,...,j_n}^j)$ \Define{coordinate}[di un'applicazione multilineare][coordinate] di $\Multilinear$ rispetto alle basi fissate.
+\end{Definition}
+\begin{Theorem}
+	Siano $(\LinearSpace_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di $\Field$-spazi vettoriali e $\VarLinearSpace$ un ulteriore $\Field$-spazio vettoriale. Sia, per ogni $i \in n$,, $(\LinearBase_{i,l})_{l \in \Dimension{\LinearSpace_i}}$ una base di $\LinearSpace_i$ e sia $(\VarLinearBase_j)_{j \in \Dimension{\LinearSpace}}$ una base di $\VarLinearSpace$. Una famiglia di scalari $(\Scalar_{j_1,...,j_n}^j)_{(j_1,...,j_n,j) \in \bigtimes_{i \in n} \Dimension{\LinearSpace_i} \times \Dimension{\LinearSpace}}$ costituisce le coordinate di una e una sola applicazione multilineare rispetto alle basi fissate e l'applicazione che associa a $(\Scalar_{j_1,...,j_n}^j)_{(j_1,...,j_n} \in \bigtimes_{i \in n} \Dimension{\LinearSpace_i} \times \Dimension{\LinearSpace}$ l'applicazione multilineare corrispondente \`e un isomorfismo di $\Field^{\Dimension{\LinearSpace} \prod_{i \in n}\Dimension{\LinearSpace_i}}$ su $\Multilinears{(\LinearSpace_i)_{i \in n}}{\VarLinearSpace}$.
+\end{Theorem} 
+\Proof Sia $(\Vector_i)_{i \in n}$ un generico elemento di $\bigtimes_{i \in n} \LinearSpace_i$. Per ogni $i \in n$, siano $(a_{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$ le coordinate di $\Vector_i$ rispetto a $(\LinearBase_{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$. Abbiamo $\Multilinear((\Vector_i)_{i \in n}) = \Multilinear \left ( \left (\sum_{j_i \in \Dimension{\LinearSpace_i}} a_{i,j_i} \LinearBase_{i,j_i} \right )_{i \in n} \right ) = \sum_{(j_1, ..., j_n) \in \bigtimes_{i \in n} \Dimension{\LinearSpace_i}} \prod_{i \in n} a_{i,j_i} \Multilinear((\LinearBase_i,j_i)_{i \in n}) = \sum_{(j_1,...,j_n) \in \bigtimes_{i \in n} \Dimension{\LinearSpace_i}} \prod_{i \in n} a_{i,j_i} \left ( \sum_{j \in \Dimension{\LinearSpace}} \Scalar_{j_1,...,j_n}^j \VarLinearBase_j \right )$.
+\par D'altra parte, dati $(\Scalar_{j_1,...,j_n}^j)_{(j_1,...,j_n) \in \bigtimes_{i \in n} \Dimension{\LinearSpace_i} \times \Dimension{\LinearSpace}}$, si verifica facilmente essere lineare l'applicazione che a $(\Vector_i)_{i \in n} \in \bigtimes \LinearSpace_i$ associa $\sum_{(j_1,...,j_n) \in \bigtimes_{i \in n} \Dimension{\LinearSpace_i}} \prod_{i \in n} a_{i,j_i} \left ( \sum_{j \in \Dimension{\LinearSpace}} \Scalar_{j_1,...,j_n}^j \VarLinearBase_j \right )$, dove per per ogni $i \in n$ il vettore $(a_{i,j_i})_{j_i \in \Dimension{\LinearSpace_i}}$ \`e il vettore delle coordinate di $\Vector_i$ rispetto a $(\LinearBase_i)_{i \in \Dimension{\LinearSpace_i}}$.
+\par Si verifica facilmente che la corrispondenza del teorema \`e lineare e che la corrispondenza che ad un'applicazione multilineare ne associa le coordinate ne \`e l'inversa. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema precedente, abbiamo $\Dimension{\Multilinears{(\LinearSpace_i)_{i \in n}}{\LinearSpace}} = \Dimension{\LinearSpace} \prod_{i \in n} \Dimension{\LinearSpace_i}$.
+\end{Corollary}
+\Proof Segue direttamente dall'isomorfismo del teorema precedente. \EndProof

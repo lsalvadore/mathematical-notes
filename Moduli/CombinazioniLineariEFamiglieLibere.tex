@@ -1,0 +1,280 @@
+\section{Combinazioni lineare e famiglie libere}\label{CombinazioniLineariEFamiglieLibere}
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo. Date una famiglia finita
+	$(\ModuleElement_i)_{i \in I}$ di elementi di $\Module$ e una
+	famiglia di scalari $(\Scalar_i)_{i \in I}$ l'espressione
+	$\sum_{i \in I} \Scalar_i \ModuleElement_i$ si chiama
+	\Define{combinazione lineare}[lineare][combinazione]. In questo
+	caso, gli scalari $\Scalar_i$ si chiamano
+	\Define{coefficienti}[di una combinazione lineare][coefficiente].
+\end{Definition}
+\begin{Definition}
+	Siano $\Module$ un $\Ring$-modulo, $(\ModuleElement_i)_{i \in I}$ una famiglia di elementi di $\Module$ e $(\Scalar_i)_{i \in I}$ una famiglia di scalari. La combinazione lineare $\sum_{i \in I} \Scalar_i \ModuleElement_i$ si chiama
+	\begin{itemize}
+		\item \Define{combinazione conica}[conica][combinazione] quando $\ForAll{i \in I}{\Scalar_i \geq 0}$ (si presume che $\Ring$ sia un anello su cui \`e definito un ordinamento);
+		\item \Define{combinazione convessa}[convessa][combinazione] quando \`e conica e $\sum_{i \in I} = 1$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo e sia $\Class \subseteq \Module$. $\Class$ si dice \Define{convesso}[convessa][classe] quando contiene ogni combinazione convessa di qualsiasi insieme finito non vuoto dei suoi punti.
+\end{Definition}
+\begin{Definition}
+	Sia $\Class$ una parte convessa di un $\Ring$-modulo $\Module$. Si chiama \Define{punto estremo}[estremo][punto] un punto $\ExtremePoint \in \Class$ che non risulta essere combinazione convessa di due punti distinti di $\Class$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Module$ un $\Ring$-modulo e sia $\Class \subseteq \Module$. $\Class$ \`e convesso se e solo se contiene ogni combinazione convessa di qualsiasi insieme di due suoi punti.
+\end{Theorem}
+\Proof Basta provare che se qualsiasi combinazione convessa di qualsiasi insieme di due punti di $\Class$ appartiene ancora a $\Class$, allora qualsiasi combinazione convessa di qualsiasi insieme finito non vuoto di punti di $\Class$ appartiene a $\Class$.
+\par Sia $(\ModuleElement_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di elementi di $\Class$. Se $n \leq 2$ non c'\`e nulla da dimostrare.
+\par Supponiamo il teorema dimostrato per $n = N$ e proviamolo per $n = N + 1$. Allora, data una famiglia di scalari $(\Scalar_i)_{i \in N + 1}$, abbiamo $\sum_{i \in N + 1} \Scalar_i \ModuleElement_i = \sum_{i \in N} \Scalar_i \ModuleElement_i + \Scalar_N \ModuleElement_N$.
+\par Se $\Scalar_N = 0$, allora la combinazione convessa appartiene a $\Class$ per ipotesi induttiva, altrimenti essa \`e uguale a $(1 - \Scalar_N) \sum_{i \in N} \frac{\Scalar_i}{1 - \Scalar_N} \ModuleElement_i + \Scalar_N \ModuleElement_N$, che \`e una combinazione lineare di due punti di $\Class$ (il primo per ipotesi induttiva, il secondo per ipotesi). \EndProof
+\begin{Theorem}
+	Sia $\Module$ un $\Ring$-modulo e sia
+	$\Class \subseteq \Module$. La classe di tutte le combinazioni
+	lineari di elementi di $\Class$ \`e un sottomodulo di $\Module$.
+\end{Theorem}
+\Proof \`E sufficiente verificare direttamente che tale classe verifica
+gli assiomi di modulo. \EndProof
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo e sia
+	$\Class \subseteq \Module$. La classe
+	\begin{itemize}
+		\item di tutte le combinazioni lineari di elementi di $\Class$ si chiama
+	\Define{modulo generato}[generato][modulo] da $\Class$, denotato
+	$\SpanModule{\Class}$; se inoltre $\Class$ \`e un insieme finito, allora si dice che $\SpanModule{\Class}$ \`e \Define{finitamente generato}[finitamente generato][modulo];
+		\item di tutte le combinazioni convesse di elementi di $\Class$ si chiama \Define{inviluppo convesso}[convesso][inviluppo] di $\Class$, denotato $\ConvexHull{\Class}$;
+		\item di tutte le combinazioni coniche di elementi di $\Class$ si chiama \Define{inviluppo conico}[conico][inviluppo] da $\Class$, denotato $\ConicalHull{\Class}$;
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo. $\Class \subseteq \Module$ si
+	dice \Define{linearmente indipendente}[lineare][indipendenza] o
+	\Define{libera}[libera][famiglia]
+	quando, per ogni famiglia finita $(\ModuleElement_i)_{i \in I}$
+	di elementi di $\Class$, dati scalari $(\Scalar_i)_{i \in I}$,
+	abbiamo
+	$\Implies{\sum_{i \in I} \Scalar_i \ModuleElement_i = 0}{\ForAll{
+	i \in I}{\Scalar_i = 0}}$. Se $\Class$ non \`e linearmente
+	indipendente, allora si dice che \`e
+	\Define{linearmente dipendente}[lineare][dipendenza].
+\end{Definition}
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo. Una famiglia
+	$(\ModuleBase_i)_{i \in I}$ di elementi di $\Module$ si dice
+	\Define{base}[di un modulo][base] quando
+	\begin{itemize}
+		\item \`e linearmente indipendente;
+		\item genera $\Module$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $\Module$ un $\Ring$-modulo. Se 
+	$(\ModuleBase_i)_{i \in I} \in \Module^I$ \`e una base di
+	$\Module$ allora \`e anche una classe massimale linearmente
+	indipendente.
+\end{Theorem}
+\Proof Sia $(\ModuleBase_i)_{i \in I}$ una base e sia $\ModuleElement \in
+\Module$ qualsiasi. Esiste $(\Scalar_i)_{i \in I} \in \Module^I$ tale che
+$\ModuleElement = \sum_{i \in I} \Scalar_i \ModuleBase_i$, dunque
+$\sum_{i \in I} \Scalar_i \ModuleBase_i - \ModuleElement = 0$. \EndProof
+\begin{Corollary}
+	Sia $\Module$ un $\Ring$-modulo, con $\Ring$ corpo. Allora
+	$(\ModuleBase_i)_{i \in I} \in \Module^I$ \`e una base di
+	$\Module$ se e solo se \`e classe massimale di elementi
+	linearmente indipendenti.
+\end{Corollary}
+\Proof Supponiamo $(\ModuleBase_i)_{i \in I}$ sia una classe massimale
+linearmente indipendente. Allora, dato $\ModuleElement \in \Module$,
+esistono scalari $(\Scalar_i)_{i \in I} \in \Module^I$ e $\Scalar \in
+\Module$ non tutti nulli tali che $\sum_{i \in I} \Scalar_i \ModuleBase_i
++ \Scalar \ModuleElement = 0$. Necessariamente, $\Scalar \neq 0$, poich\'e
+in caso contrario per l'indipendenza lineare di
+$(\ModuleBase_i)_{i \in I}$, tutti gli $(\Scalar_i)_{i \in I}$ sarebbero
+anch'essi nulli. Abbiamo dunque
+$\ModuleElement = - \sum_{i \in I} \Scalar_i\Scalar^{-1} \ModuleBase_i$.
+\EndProof
+\begin{Theorem}
+	Sia $\Module$ un $\Ring$-modulo, con $\Ring$ corpo. Se \`e vero
+	l'assioma della scelta, allora $\Module$ ammette una base.
+\end{Theorem}
+\Proof Consideriamo la classe di tutte le parti di $\Module$ linearmente
+indipendenti, ordinata per inclusione. Poich\'e l'unione di una catena di
+parti linearmente indipendenti \`e ancora linearmente indipendente, ogni
+catena ha un maggiorante e dunque, per il lemma di Zorn, esiste una parte
+massimale $\ModuleBase$.
+\par Dunque $\ModuleBase$ \`e una base. \EndProof
+\begin{Corollary}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale. Se \`e vero
+	l'assioma della scelta, $\LinearSpace$ ammette una base.
+\end{Corollary}
+\Proof $\Field$ \`e un corpo. \EndProof
+\begin{Lemma}
+	\TheoremName{Algoritmo di estrazione di base}
+	Sia $(\ModuleElement_i)_{i \in n}$, con $n \in
+	\NotZero{\mathbb{N}}$ una famiglia finita di generatori di un
+	$\Ring$-modulo $\Module$. Esiste una base $\ModuleBase$ di
+	$Module$ costituita esclusivamente da elementi di
+	$(\ModuleElement_i)_{i \in n}$.
+\end{Lemma}
+\Proof Per ogni $i \in n$, poniamo
+\[
+  \ModuleBase_i =
+  \begin{cases}
+	  \lbrace \ModuleElement_0 \rbrace&\text{ se }i = 0,\\
+  	\ModuleBase_{i - 1}&\text{ se }\And{i > 0}{\ModuleElement_i \in
+	  	\SpanModule{\ModuleBase_{i - 1}}},\\
+  	\ModuleBase_{i - 1} \cup \lbrace \ModuleElement_i \rbrace
+	  	&\text{ se }\And{i > 0}{\ModuleElement_i \notin
+  		\SpanModule{\ModuleBase_{i - 1}}}.
+  \end{cases}
+\]
+Infine, poniamo $\ModuleBase = \ModuleBase_{n - 1}$. Per costruzione,
+$\ModuleBase$ \`e costituito solo da elementi di
+$(\ModuleElement_i)_{i \in n}$, \`e lineramente indipendente e ogni
+generatore escluso \`e combinazione lineare dei generatori inclusi, per
+cui $\ModuleBase$ genera $\Module$. Quindi $\ModuleBase$ \`e una base.
+\EndProof
+\begin{listing}
+	\insertcode{octave}{"Moduli/EstraiBase.m"}
+	\caption{Implementazione dell'algoritmo di estrazione di base in \LanguageName{octave}
+    per uno spazio vettoriale reale o complesso.}
+\end{listing}
+\begin{Corollary}
+	Sia $\Module$ un $\Ring$-modulo finitamente generato. Allora
+	$\Module$ ammette una base finita.
+\end{Corollary}
+\Proof Segue immediatamente dal teorema precedente.
+\begin{Lemma}
+	\TheoremName{Algoritmo di completamento a base}
+	Sia $\Module$ un $\Ring$-modulo finitamente generato e siano
+	\begin{itemize}
+		\item $\Set_1 \subseteq \Module$ finito e linearmente
+		indipendente;
+		\item $\Set_2 \subseteq \Module$ finito e tale che
+		$\SpanModule{\Set_2} = \Module$.
+	\end{itemize}
+	Allora esiste una base $\ModuleBase$ di $\Module$ tale che
+	$\Set_1 \subseteq \ModuleBase \subseteq \Set_1 \cup \Set_2$.
+\end{Lemma}
+\Proof Siano $(\ModuleElement_i)_{i \in n}$ ($n \in \mathbb{N}$) gli
+elementi di $\Set_2$ e poniamo, per ogni $i \in \mathbb{N}$,
+\[
+  \ModuleBase_i =
+  \begin{cases}
+	  \Set_1&\text{ se }i = 0,\\
+  	\ModuleBase_{i - 1}&\text{ se }\And{i > 0}{\ModuleElement_i \in
+	  	\SpanModule{\ModuleBase_{i - 1}}},\\
+  	\ModuleBase_{i - 1} \cup \lbrace \ModuleElement_i \rbrace
+	  	&\text{ se }\And{i > 0}{\ModuleElement_i \notin
+		  \SpanModule{\ModuleBase_{i - 1}}}.
+  \end{cases}
+\]
+Infine, poniamo $\ModuleBase = \ModuleBase_{n - 1}$. Per costruzione,
+$\ModuleBase$ \`e costituito solo da elementi di
+$\Set_1 \cup \Set_2$, contiene tutti gli elementi di $\Set_1$, \`e
+lineramente indipendente e ogni generatore escluso \`e combinazione
+lineare dei generatori inclusi e degli elementi di $\Set_1$, per
+cui $\ModuleBase$ genera $\Module$. Quindi $\ModuleBase$ \`e una base.
+\EndProof
+\begin{Lemma}
+	\TheoremName{Lemma di Steinitz} Sia $\Module$ un $\Ring$-modulo,
+	con $\Ring$ corpo, e siano $(\ModuleBase_i)_{i \in n}$ e
+	$(\ModuleElement_j)_{j \in m}$, con $n, m \in \mathbb{N}$, tali
+	che
+	\begin{itemize}
+		\item $(\ModuleBase_i)_{i \in n}$ sia linearmente
+		indipendente;
+		\item $\ModuleElement_j)_{j \in m}$ generi $\Module$.
+	\end{itemize}
+	Allora
+	\begin{itemize}
+		\item $n \leq m$;
+		\item esiste un insieme $\Set$ tale che
+		\begin{itemize}
+			\item
+		$\bigcup_{i \in n} \lbrace \ModuleBase_i \rbrace \subseteq
+		\Set \subseteq
+		\bigcup_{i \in n} \lbrace \ModuleBase_i \rbrace \cup
+		\bigcup_{j \in m} \lbrace \ModuleElement_j \rbrace$
+			\item $\Cardinality{\Set} = m$;
+			\item $\SpanModule{\Set} = \Module$.
+		\end{itemize}
+	\end{itemize}
+\end{Lemma}
+\Proof Consideriamo $\Class = \bigcup_{j \in m} \lbrace \ModuleElement_j
+\rbrace \cup \lbrace \ModuleBase_0 \rbrace$. Poich\'e $(\ModuleElement_j)_{j \in m}$
+genera $\Module$, esistono scalari $(\Scalar_j)_{j \in m} \in \Ring^m$ non
+tutti nulli tali che
+$\sum_{j \in m} \Scalar_j \ModuleElement_j + \ModuleBase_0 = 0$. Sia
+$k \in m$ tale che $\Scalar_k \neq 0$, abbiamo allora
+$\ModuleElement_k =
+- sum_{\And{j \in m}{j \neq k}} \Scalar_j\Scalar_k^{-1} \ModuleElement_j -
+\Scalar_k^{-1} \ModuleBase_0$.
+Dunque anche
+$\bigcup_{\And{j \in m}{j \neq k}} \lbrace \ModuleElement_j \rbrace \cup
+\lbrace \ModuleBase_0 \rbrace$ genera $\Module$: abbiamo sostituito un
+elemento di $(\ModuleElement_j)_{j \in m}$ con uno di
+$(\ModuleBase_i)_{i \in n}$. Buttiamo via l'elemento originale
+$\ModuleElement_k$ e rinominiamo $\ModuleElement_k$ l'elemento
+originale $\ModuleBase_0$. Rinomiano inoltre $\ModuleBase_{i - 1}$ ogni
+$\ModuleBase_i$ con $i \in \NotZero{n}$.
+\par Il processo \`e a questo punto ripetibile per ogni
+elemento di $(\ModuleBase_i)_{i \in \NotZero{n}}$. Inoltre, l'indipendenza
+lineare dei $(\ModuleBase_i)_{i \ n}$ originale garantisce
+la possibilit\`a di scegliere $k$ in ogni passaggio in modo tale che
+$\ModuleElement_k$ sia membro della famiglia
+$(\ModuleElement_j)_{j \in m}$ originale. Avvalendoci di questa
+possibilit\`a, riusciamo, per ogni $i \in n$, a sostituire un elemento
+della famiglia $(\ModuleElement_j)_{j \in m}$ originale con
+$\ModuleBase_i$ in modo tale che la nuova famiglia
+$(\ModuleElement_j)_{j \in m}$
+\begin{itemize}
+	\item contenga tutti gli elementi della famiglia
+	$(\ModuleBase_i)_{i \in n}$ originale;
+	\item sia composta esattamente da $m$ elementi (e dunque
+	$n \leq m$);
+	\item abbia i restanti $m - n$ elementi apparteneti alla famiglia
+	$(\ModuleElement_j)_{j \in m}$ originale;
+	\item generi $\Module$. \EndProof
+\end{itemize}
+\begin{Corollary}
+	Sia $\Module$ un $\Ring$-modulo, con $\Ring$ corpo,
+	finitamente generato. Tutte le basi sono equicardinali.
+\end{Corollary}
+\Proof Siano $(\ModuleBase_i)_{i \in n}$ e $(\ModuleElement_j)_{j \in m}$
+due basi di $\Module$. Per il lemma di Steinitz, abbiamo sia $n \leq m$
+che $m \leq n$, da cui $n = m$. \EndProof
+\begin{Theorem}
+	Sia $\Module$ un $\Ring$-modulo. Se $\Module$ ammette una base,
+	allora esso \`e libero e generato, come modulo libero, dalla base
+	stessa.
+\end{Theorem}
+\Proof Sia $(\ModuleBase_i)_{i \in I}$ una base di $\Module$. Per ogni
+applicazione lineare $\Linear: \Module \rightarrow \Module'$, dove
+$\Module'$ \`e un modulo qualsiasi, e per ogni
+$\ModuleElement \in \Module$, fissati scalari $(\Scalar_i)_{i \in I}$ tali
+che $\ModuleElement = \sum_{i \in I} \Scalar_i\ModuleBase_i$, abbiamo
+$\Linear(\ModuleElement) =
+\Linear(\sum_{i \in I} \Scalar_i\ModuleBase_i) =
+\sum_{i \in I} \Scalar_i \Linear(\ModuleBase_i)$. \EndProof
+\begin{Theorem}
+	Sia $\Module$ un $\Ring$-modulo che ammette una base
+	$(\ModuleBase_i)_{i \in I}$. Per ogni $\ModuleElement \in
+	\Module$, esistono unici scalari $(\Scalar_i)_{i \in I}$ tali che
+	$\ModuleElement = \sum_{i \in I} \Scalar_i \ModuleBase_i$.
+\end{Theorem}
+\Proof Supponiamo esistano due famiglie di scalari $(\Scalar_i)_{i \in I}$
+e $(\Scalar'_i)_{i \in I}$ tali che $\ModuleElement =
+\sum_{i \in I} \Scalar_i \ModuleBase_i =
+\sum_{i \in I} \Scalar'_i \ModuleBase_i$. Allora abbiamo
+$\sum_{i \in I} (\Scalar_i - \Scalar'_i) \ModuleBase_i = 0$ e, per
+l'indipendenza lineare di $(\ModuleBase_i)_{i \in I}$, necessiamente
+$(\ForAll{i \in I}{\Scalar_i = \Scalar'_i}$. \EndProof
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo che ammette una base
+	$(\ModuleBase_i)_{i \in I}$. Dato $\ModuleElement \in \Module$,
+	gli unici scalari $(\Scalar_i)_{i \in I}$ tali che
+	$\ModuleElement = \sum_{i \in I} \Scalar_i \ModuleBase_i$ si
+	chiamano \Define{coordinate} di $\ModuleElement$ rispetto a
+	$(\ModuleBase_i)_{i \in I}$.
+\end{Definition}

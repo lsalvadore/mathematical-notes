@@ -1,0 +1,386 @@
+\section{Prodotti interni.}
+\label{GeometriaLineare_ProdottiInterni}
+\begin{Definition}
+	Una forma sesquilineare coniugata simmetrica definita positiva si chiama
+  \Define{prodotto hermitiano}[hermitiano][prodotto] o
+  \Define{forma hermitiana}[hermiatiana][forma].
+  Si chiama
+  \Define{prodotto scalare}[scalare][prodotto]
+  una forma bilineare simmetrica definita positiva su uno spazio vettoriale
+  reale.
+  Chiamiamo inoltre
+  \Define{prodotto interno}[interno][prodotto]
+  un prodotto hermitiano o scalare.
+\end{Definition}
+\begin{Definition}
+  Si chiama
+  \Define{spazio prehilbertiano}[prehilbertiano][spazio]
+  un $\Field$-spazio vettoriale $\PrehilbertSpace$
+  ($\Field \in \lbrace \mathbb{R}, \mathbb{C} \rbrace$)
+  munito di prodotto interno $\InnerProduct{\cdot}{\cdot}$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\PrehilbertSpace$ un $\Field$-spazio vettoriale con prodotto interno
+  $\InnerProduct{\cdot}{\cdot}$
+  di dimensione
+  $n \in \mathbb{N}$ e sia
+  $\VarHyperplane \subseteq \PrehilbertSpace$.
+  $\VarHyperplane$ \`e un iperpiano di $\PrehilbertSpace$ se e solo se
+  esiste $\NormalVector \in \PrehilbertSpace$ tale che
+  $\NormalVector \cdot \LinearSpace = 0$.
+\end{Theorem}
+\begin{Theorem}
+	Fissato $n \in \mathbb{N}$, l'applicazione
+  $\HermitianProduct{\cdot}{\cdot}:
+  \mathbb{C}^n \times \mathbb{C}^n \rightarrow \mathbb{C}$
+  che a
+  $(Z,W) \in \mathbb{C}^n \times \mathbb{C}^n$
+  associa
+  $\sum_{i \in n} Z_i \Conjugate{W_i}$
+  \`e un prodotto hermitiano su $\mathbb{C}^n$.
+\end{Theorem}
+\Proof Siano $X \in \mathbb{C}^n$ e $\Scalar \in \Field$. Abbiamo
+\begin{itemize}
+	\item $\sum_{i \in n} (Z_i + X_i) \Conjugate{W_i}
+          = \sum_{i \in n} Z_i \Conjugate{W_i}
+          + \sum_{i \in n} X_i \Conjugate{W_i}$;
+	\item $\sum_{i \in n} Z_i \Conjugate{(W_i + X_i)}
+          = \sum_{i \in n} Z_i \Conjugate{W_i}
+          + \sum_{i \in n} Z_i \Conjugate{X_i}$;
+	\item $\sum_{i \in n} (\Scalar Z_i) \Conjugate{W_i}
+          = \Scalar \sum_{i \in n} Z_i \Conjugate{W_i}$;
+	\item $\sum_{i \in n} Z_i \Conjugate{\Scalar W_i}
+          = \Conjugate{\Scalar} \sum_{i \in n} Z_i \Conjugate{W_i}$;
+	\item $\Conjugate{\sum_{i \in n} Z_i \Conjugate{W_i}}
+          = \sum_{i \in n} \Conjugate{Z_i} W_i$. \EndProof
+\end{itemize}
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\HermitianProduct{\cdot}{\cdot}$ si
+  chiama
+  \Define{prodotto hermitiano standard}[hermitiano strandard][prodotto]
+  su $\mathbb{C}^n$ ($n \in \mathbb{N}$).
+\end{Definition}
+\begin{Theorem}
+	Fissato $n \in \mathbb{N}$, l'applicazione
+  $\ScalarProduct{\cdot}{\cdot}:
+    \mathbb{R}^n \times \mathbb{R}^n \rightarrow \mathbb{R}$ che a
+  $(X,Y) \in \mathbb{R}^n \times \mathbb{R}^n$ associa
+  $\sum_{i \in n} X_i Y_i$ \`e un prodotto hermitiano su $\mathbb{R}^n$.
+\end{Theorem}
+\Proof Siano $Z \in \mathbb{R}^n$ e $\Scalar \in \Field$. Abbiamo
+\begin{itemize}
+	\item $\sum_{i \in n} (X_i + Z_i) Y_i
+          = \sum_{i \in n} X_i Y_i + \sum_{i \in n} Z_i Y_i$;
+	\item $\sum_{i \in n} X_i (Y_i + Z_i)
+          = \sum_{i \in n} X_i Y_i + \sum_{i \in n} X_i Z_i$;
+	\item $\sum_{i \in n} (\Scalar X_i) Y_i
+          = \Scalar \sum_{i \in n} X_i Y_i$;
+	\item $\sum_{i \in n} X_i (\Scalar Y_i)
+          = \Scalar \sum_{i \in n} X_i Y_i$. \EndProof
+\end{itemize}
+\begin{Definition}
+	Con le notazioni del teorema precedente,
+  $\HermitianProduct{\cdot}{\cdot}$ si chiama
+  \Define{prodotto hermitiano standard}[hermitiano strandard][prodotto]
+  su $\mathbb{C}^n$ ($n \in \mathbb{N}$).
+\end{Definition}
+\begin{Definition}
+	Sia $\NormedSpace$ un $\Field$-spazio vettoriale
+  ($\Field \in \lbrace \mathbb{R}, \mathbb{C} \rbrace$) e sia
+  $\Norm{\cdot}: \NormedSpace \rightarrow \RealNonNegative$
+  un'applicazione tale che
+	\begin{itemize}
+		\item $\ForAll{(\Scalar,\Vector) \in \Field \times \NormedSpace}
+            {\Norm{\Scalar \Vector}
+              = \AbsoluteValue{\Scalar}\Vector}$
+          (\Define{omogeneit\`a}[di una seminorma][omogeneit\`a]);
+		\item $\ForAll{(\Vector,\VarVector) \in \NormedSpace^2}
+            {\Norm{\Vector + \VarVector}
+              \leq \Norm{\Vector} + \Norm{\VarVector}}$
+          (\Define{disuguaglianza triangolare}[triangolare per una seminorma][disuguaglianza]).
+	\end{itemize}
+	$\Norm{\cdot}$ si chiama \Define{seminorma} su $\NormedSpace$ e
+  $(\NormedSpace,\Norm{\cdot})$ si chiama
+  \Define{spazio seminormato}[seminormato][spazio].
+  Se inoltre $\Implies{\Norm{\Vector} = 0}{\Vector = 0}$,
+  allora $\Norm{\cdot}$ si chiama \Define{norma} su $\NormedSpace$ e
+  $(\NormedSpace,\Norm{\cdot})$ si chiama
+  \Define{$\Field$-spazio normato}[normato][spazio].
+  Definiamo inoltre \Define{unitario}[unitario][vettore] un vettore
+  $\Vector \in \NormedSpace$ tale che $\Norm{\Vector} = 1$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\InnerProduct{\cdot}{\cdot}$ un prodotto interno definito su un
+  $\Field$-spazio vettoriale $\NormedSpace$
+  ($\Field \in \lbrace \mathbb{R}, \mathbb{C}$).
+  $\Norm{\cdot}: \NormedSpace \rightarrow [0,\infty]$ definita come
+  l'applicazione che a $\Vector \in \NormedSpace$ associa
+  $\Norm{\Vector} = \sqrt{\InnerProduct{\Vector}{\Vector}}$ \`e una norma.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\Norm{\cdot}$ si chiama
+  \Define{norma indotta}[indotta da prodotto interno][norma]
+  dal prodotto interno $\InnerProduct{\cdot}{\cdot}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\NormedSpace$ un $\Field$-spazio normato.
+  L'applicazione
+  $\Distance: \NormedSpace^2 \rightarrow \RealNonNegative$ che a
+  $(\Vector,\VarVector) \in \NormedSpace^2$ associa
+  $\Norm{\Vector - \VarVector}$.
+  $\Distance$ \`e una distanza.
+\end{Theorem}
+\Proof Siano $\Vector_0, \Vector_1, \Vector_2 \in \NormedSpace$. Abbiamo
+\begin{itemize}
+	\item $\Norm{\Vector_0 - \Vector_0}
+          = \Norm{0} = \Norm{0 \cdot 0} = 0\Norm{0} = 0$;
+	\item $\Norm{\Vector_0 - \Vector_1}
+          = \Norm{(-1)(\Vector_1 - \Vector_0)} = \Norm{\Vector_1 - \Vector_0}$;
+	\item $\Norm{\Vector_0 - \Vector_1}
+          = \Norm{\Vector_0 - \Vector_2 + \Vector_2 - \Vector_1}
+          \leq \Norm{\Vector_0 - \Vector_2} + \Norm{\Vector_2 - \Vector_1}$.
+\EndProof
+\end{itemize}
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\Distance$ si chiama
+  \Define{distanza indotta}[indotta da una norma][distanza] da $\Norm{\cdot}$.
+  Se $\Norm{\cdot}$ \`e indotta da un prodotto interno
+  $\InnerProduct{\cdot}{\cdot}$, allora diciamo anche che $\Distance$ \`e
+  \Define{indotta}[indotta da un prodotto interno][distanza].
+\end{Definition}
+\begin{Definition}
+  Si chiama
+  \Define{spazio di Hilbert}[di Hilbert][spazio] o
+  \Define{hilbertiano}[hilbertiano][spazio]
+  un $\Field$-spazio vettoriale $\HilbertSpace$
+  ($\Field \in \lbrace \mathbb{R}, \mathbb{C} \rbrace$)
+  tale che
+  \begin{itemize}
+    \item $\HilbertSpace$ \`e prehilbertiano con prodotto interno
+          $\InnerProduct{\cdot}{\cdot}$;
+    \item $\HilbertSpace$ completo rispetto alla distanza indotta da
+          $\InnerProduct{\cdot}{\cdot}$.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Disuguaglianza di Bessel}[di Bessel][disuguaglianza]
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale su cui \`e definito un
+  prodotto interno $\InnerProduct{\cdot}{\cdot}$.
+  Sia $(\OrthonormalBase_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di
+  vettori ortonormali. Per ogni $\Vector \in \LinearSpace$, abbiamo
+  \[
+    \sum_{i \in n}
+      \AbsoluteValue{\InnerProduct{\Vector}{\OrthonormalBase_i}}
+      \leq \Norm{\Vector}^2.
+  \]
+  Inoltre,
+  $\VarVector =
+    \Vector
+    -\sum_{i \in n}\InnerProduct{\Vector}{\OrthonormalBase_i} \OrthonormalBase_i
+    \in \OrthogonalComplement{
+      \LinearSpan{\bigcup_{i \in n} \lbrace \OrthonormalBase_i \rbrace}}$.
+\end{Theorem}
+\Proof Abbiamo $0 \leq \Norm{\VarVector}^2 = \InnerProduct{\VarVector}{\VarVector} = \InnerProduct{\Vector}{\Vector} - 2 \sum_{i \in n} \AbsoluteValue{\InnerProduct{\Vector}{\OrthonormalBase_i}} + \sum_{i \in n} \AbsoluteValue{\InnerProduct{\Vector}{\OrthonormalBase_i}} = \Norm{\Vector} - \sum_{i \in n} \AbsoluteValue{\InnerProduct{\Vector}{\OrthonormalBase_i}}$.
+\par Abbiamo inoltre $\InnerProduct{\VarVector}{\OrthonormalBase_i} = \InnerProduct{\Vector}{\OrthonormalBase_i} - \sum_{j \in n}\InnerProduct{\Vector}{\OrthonormalBase_j}\InnerProduct{\OrthonormalBase_i}{\OrthonormalBase_j} = \InnerProduct{\Vector}{\OrthonormalBase_i} - \Scalar{\Vector}{\OrthonormalBase_i} = 0$. \EndProof
+\begin{Corollary}
+	\TheoremName{Disuguaglianza di Cauchy-Schwarz}[di Cauchy-Schwarz][disuguaglianza]
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale su cui \`e definito un
+  prodotto interno. Abbiamo
+  \[
+    \ForAll{(\Vector,\VarVector) \in \LinearSpace^2}
+      {\AbsoluteValue{\InnerProduct{\Vector}{\VarVector}}
+      \leq \Norm{\Vector}\Norm{\VarVector}}.
+  \]
+\end{Corollary}
+\Proof Siano $\Vector, \VarVector \in \LinearSpace$. Se $\VarVector = 0$, allora
+\`e immediato verficare che
+$\AbsoluteValue{\InnerProduct{\Vector}{\VarVector}}
+\leq \Norm{\Vector}\Norm{\VarVector}$. Se invece $\VarVector \neq 0$, allora il
+singoletto $\left \lbrace \frac{\VarVector}{\Norm{\VarVector}} \right \rbrace$
+\`e ortonormale e la tesi segue direttamente dalla disuguaglianza di Bessel.
+\EndProof
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale su cui \`e definito un
+  prodotto interno $\InnerProduct{\cdot}{\cdot}$. Sia
+  $(\OrthonormalBase_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di vettori
+  ortonormali. Sono equivalenti le seguenti affermazioni:
+	\begin{itemize}
+		\item $(\OrthonormalBase_i)_{i \in n}$ \`e una famiglia ortonormale completa;
+		\item $\Implies{\ForAll{i \in n}{\InnerProduct{\Vector}{\OrthonormalBase_i} = 0}}{\Vector = 0}$;
+		\item $\LinearSpan{\bigcup_{i \in n} \lbrace \OrthonormalBase_i \rbrace} = \LinearSpace$;
+		\item $\ForAll{\Vector \in \LinearSpace}{\Vector = \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i}\OrthonormalBase_i}$;
+		\item \TheoremName{Identit\`a di Parseval}[di Parseval][identit\`a] $\ForAll{(\Vector,\VarVector) \in \LinearSpace^2}{\InnerProduct{\Vector}{\VarVector} = \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i}\InnerProduct{\OrthonormalBase_i}{\VarVector}}$;
+		\item $\ForAll{\Vector \in \LinearSpace}{\Norm{\Vector}^2 = \sum_{i \in n}\AbsoluteValue{\InnerProduct{\Vector}{\OrthonormalBase_i}}^2}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Assumiamo $(\OrthonormalBase_i)_{i \in n}$ sia una famiglia ortonormale completa e sia $\Vector \in \LinearSpace$ tale che $\ForAll{i \in n}{\InnerProduct{\Vector}{\OrthonormalBase_i} = 0}$. Se $\Vector \neq 0$, allora, ponendo $\OrthonormalBase_n = \frac{\Vector}{\Norm{\Vector}}$, $(\OrthonormalBase_i)_{i \in n + 1}$ \`e una famiglia ortonormale, in contraddizione con la completezza di $(\OrthonormalBase_i)_{i \in n}$. Dunque $\Vector = 0$.
+\par Assumiamo $\Implies{\ForAll{i \in n}{\InnerProduct{\Vector}{\OrthonormalBase_i} = 0}}{\Vector = 0}$. Sia $\Vector \in \LinearSpace$. Se $\Vector \notin \LinearSpan{(\OrthonormalBase_i)_{i \in n}}$, allora $\Vector - \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i} \neq 0$. Ma dalla disuguaglianza di Bessel deduciamo anche $\ForAll{j \in n}{\InnerProduct{\Vector - \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i}}{\OrthonormalBase_j} = 0}$, da cui $\Vector - \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i} = 0$. Dunque deve essere $\Vector \in \LinearSpan{(\OrthonormalBase_i)_{i \in n}}$.
+\par Assumiamo che $\LinearSpan{\bigcup_{i \in n} \lbrace \OrthonormalBase_i \rbrace} = \LinearSpace$. Sia $\Vector \in \LinearSpace$ e siano $(\Scalar_i)_{i \in n} \in \Field^n$ tali che $\Vector = \sum_{i \in n} \Scalar_i \OrthonormalBase_i$. Per ogni $j \in n$, abbiamo $\InnerProduct{\Vector}{\OrthonormalBase_j} = \sum_{i \in n} \Scalar_i \InnerProduct{\OrthonormalBase_i}{\OrthonormalBase_j} = \Scalar_j$.
+\par Assumiamo $\ForAll{\Vector \in \LinearSpace}{\Vector = \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i}\OrthonormalBase_i}$.Siano $\Vector, \VarVector \in \LinearSpace$. Abbiamo $\InnerProduct{\Vector}{\VarVector} = \InnerProduct{\sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i}\OrthonormalBase_i}{\sum_{i \in n} \InnerProduct{\VarVector}{\OrthonormalBase_i}\OrthonormalBase_i} = \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i}\InnerProduct{\OrthonormalBase_i}{\VarVector}$.
+\par Assumiamo $\ForAll{(\Vector,\VarVector) \in \LinearSpace^2}{\InnerProduct{\Vector}{\VarVector} = \sum_{i \in n} \InnerProduct{\Vector}{\OrthonormalBase_i}\InnerProduct{\OrthonormalBase_i}{\VarVector}}$. Ponendo $\Vector = \VarVector$, otteniamo direttamente $\ForAll{\Vector \in \LinearSpace}{\Norm{\Vector}^2 = \sum_{i \in n}{\AbsoluteValue{\InnerProduct{\Vector}{\OrthonormalBase_i}}}^2}$.
+\par Assumiamo infine $\ForAll{\Vector \in \LinearSpace}{\Norm{\Vector}^2 = \sum_{i \in n}\AbsoluteValue{\InnerProduct{\Vector}{\OrthonormalBase_i}}^2}$. Supponiamo $\OrthonormalBase_n \in \LinearSpace$ tale che $(\OrthonormalBase_i)_{i \in n + 1}$ sia ortonormale. Allora $\Norm{\OrthonormalBase_n}^2 = \sum_{i \in n} \AbsoluteValue{\InnerProduct{\OrthonormalBase_n}{\OrthonormalBase_i}}^2 = 0 \neq 1$. Quindi $(\OrthonormalBase_i)_{i \in n + 1}$ non pu\`o essere ortonormale e $(\OrthonormalBase_i)_{i \in n}$ deve essere completo. \EndProof
+\begin{Theorem}
+	\TheoremName{Ortogonalizzazione di Gram-Schmidt}[di Gram-Schmidt][ortogonalizzazione]
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione
+  $n = \Dimension{\LinearSpace}$ su cui \`e definito un prodotto interno
+  $\InnerProduct{\cdot}{\cdot}$. Sia $(\LinearBase_i)_{i \in n}$ una base di
+  $\LinearSpace$. Poniamo
+	\begin{itemize}
+		\item $\OrthogonalBase_0 = \LinearBase_0$;
+		\item per ogni $i \in n$ con $i > 0$,
+      $\OrthogonalBase_i
+        = \LinearBase_i - \sum_{j \in i}
+          \InnerProduct{\LinearBase_i}{\OrthogonalBase_j}\OrthogonalBase_j$;
+		\item per ogni $i \in n$,
+      $\OrthonormalBase_i = \frac{\OrthogonalBase_i}{\Norm{\OrthogonalBase_i}}$.
+	\end{itemize}
+	Per ogni $m \in n$, $(\OrthogonalBase_i)_{i \in m}$ \`e una base ortogonale di
+  $\LinearSpan{\bigcup_{i \in m} \lbrace \LinearBase_i \rbrace}$
+  e
+  $(\OrthonormalBase_i)_{i \in n}$ una base ortonormale di
+  $\LinearSpan{\bigcup_{i \in m} \lbrace \LinearBase_i \rbrace}$.
+\end{Theorem}
+\Proof Proviamo per induzione su $m$ che $(\OrthogonalBase_i)_{i \in m}$ \`e una base di $\LinearSpace{\bigcup_{i \in m} \lbrace \LinearBase_i \rbrace}$.
+\par Se $m = 1$, la tesi \`e immediata. Assumiamola dimostrata per $m = N$ e proviamola per $m = N + 1$.
+\par Abbiamo $\LinearBase_N = \OrthogonalBase_N + \sum_{j \in N} \InnerProduct{\LinearBase_{N + 1}}{\OrthogonalBase_i}\OrthogonalBase_j$, dunque $\LinearSpan{\bigcup_{i \in N + 1} \lbrace \LinearBase_i \rbrace} \subseteq \LinearSpan{\bigcup_{i \in N + 1} \lbrace \OrthogonalBase_i \rbrace}$. Considerando le dimensioni degli spazi generati e il numero dei loro generatori, vediamo che deve essere addrittura $\LinearSpan{\bigcup_{i \in N + 1} \lbrace \LinearBase_i \rbrace} = \LinearSpan{\bigcup_{i \in N + 1} \lbrace \OrthogonalBase_i \rbrace}$ e che $(\OrthogonalBase_i)_{i \in N + 1}$ deve essere una base di $\LinearSpan{\bigcup_{i \in N + 1} \lbrace \OrthogonalBase_i \rbrace}$.
+\par Si verifica immediatamente che, per ogni $m \in n$, $(\OrthonormalBase_i)_{i \in n}$ \`e una base ortonormale di $\LinearSpan{\bigcup_{i \in n} \lbrace \LinearSpace_i \rbrace}$. \EndProof
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione
+  $n = \Dimension{\LinearSpace}$ su cui \`e definito un prodotto interno
+  $\InnerProduct{\cdot}{\cdot}$ e sia $\VarLinearSpace \subseteq \LinearSpace$
+  un sottospazio vettoriale di $\LinearSpace$ di dimensione
+  $m = \Dimension{\VarLinearSpace}$. Abbiamo
+  $\LinearSpace
+    = \VarLinearSpace \oplus \OrthogonalComplement{\VarLinearSpace}$.
+\end{Theorem}
+\Proof Sia $(\OrthonormalBase_i)_{i \in n}$ una base ortonormale di $\LinearSpace$ tale che $(\OrthonormalBase_i)_{i \in m}$ sia una base ortonormale di $\VarLinearSpace$. Definiamo $\Projection: \LinearSpace \rightarrow \LinearSpace$ che a $\Vector \in \LinearSpace$ associa $\Vector - \sum_{i \in m} \InnerProduct{\Vector}{\OrthonormalBase_i}\OrthonormalBase_i$. \`E immediato verificate che $\Projection$ \`e una proiezione e dunque $\LinearSpace = \Kernel{\Projection} \oplus \Image{\Projection}$. Ma abbiamo appunto $\Kernel{\Projection} = \VarLinearSpace$ e $\Image{\Projection} = \OrthogonalComplement{\VarLinearSpace}$. \EndProof
+\begin{Corollary}
+	Nelle ipotesi del teorema precedente, $\VarLinearSpace = \OrthogonalComplement{\OrthogonalComplement{\VarLinearSpace}}$.
+\end{Corollary}
+\Proof Abbiamo gi\`a provato che $\VarLinearSpace \subseteq \OrthogonalComplement{\OrthogonalComplement{\VarLinearSpace}}$. Ma per il teorema precedente, i due spazi sono equidimensionali, e dunque devono coincidere. \EndProof
+\begin{Theorem}
+	\TheoremName{Teorema di rappresentazione di Riesz}[di rappresentazione di Riesz][teorema]
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito su cui \`e definito un
+  prodotto interno e sia $\Dual{y} \in \Dual{\LinearSpace}$.
+  Esiste uno e un solo vettore $y \in \LinearSpace$ tale che
+  $\ForAll{x \in \LinearSpace}{\InnerProduct{x}{y} = \Dual{y}(x)}$.
+\end{Theorem}
+\Proof Proviamo prima l'esistenza. Se $\Dual{y} = 0$, allora $y = 0$ verifica la propriet\`a richiesta. Supponiamo dunque $\Dual{y} \neq 0$.
+\par Sia $\VarLinearSpace = \Kernel{\Dual{y}}$. Poich\'e $\Dual{y} \neq 0$, esiste $y^\perp \in \OrthogonalComplement{\VarLinearSpace}$ unitario. Poniamo $y = \Conjugate{\Dual{y}(y^\perp)}y^\perp$.
+\par Sia $x \in \LinearSpace$ e poniamo $x_0 = x - \frac{\Dual{y}(x)}{\Dual{y}(y^\perp)}y^\perp$. Abbiamo allora
+\begin{itemize}
+	\item $\Dual{y}(x_0) = \Dual{y}(x) - \frac{\Dual{y}(x)}{\Dual{y}(y^\perp)}\Dual{y}(y^\perp) = 0$ e quindi $\InnerProduct{x_0}{y^\perp} = 0$;
+	\item $\InnerProduct{x}{y} = \InnerProduct{x_0 + \frac{\Dual{y}(x)}{\Dual{y}(y^\perp)}y^\perp}{\Conjugate{\Dual{y}(y^\perp)}y^\perp} = \Dual{y}(y^\perp)\InnerProduct{x_0}{y^\perp} + \Dual{y}(x) = \Dual{y}{x}$.
+\end{itemize}
+\par Siano $y_0$ e $y_1$ tali che, per ogni $x \in \LinearSpace$, $\InnerProduct{x}{y_0} = \InnerProduct{x}{y_1} = \Dual{y}(x)$. Allora, ponendo $x = y_0 - y_1$, abbiamo $\Norm{y_0 - y_1}^2 = 0$, da cui $y_0 = y_1$. \EndProof
+\begin{Corollary}
+	Con le ipotesi del teorema precedente, l'applicazione $\Linear: \Dual{\LinearSpace} \rightarrow \LinearSpace$ che a $\Dual{y} \in \Dual{\Linear}$ associa l'unico vettore $y \in \LinearSpace$ tale che $\ForAll{x \in \LinearSpace}{\Dual{y}(x) = \InnerProduct{x}{y}}$. $\Linear$ \`e un (anti)isomorfismo.
+\end{Corollary}
+\Proof Siano $\Dual{y}, \Dual{z} \in \Dual{\LinearSpace}$, $y, z \in \LinearSpace$ tali che $y = \Linear(\Dual{y})$ e $z = \Linear(\Dual{z})$ e $\Scalar \in \Field$. Abbiamo, per ogni $x \in \LinearSpace$,
+\begin{itemize}
+	\item $(\Dual{y} + \Dual{z})(x) = \Dual{y}(x) + \Dual{z}(x) = \InnerProduct{x}{y} + \InnerProduct{x}{z} = \InnerProduct{x}{y + z}$;
+	\item $(\Scalar \Dual{y})(x) = \Scalar \Dual{y}(x) = \InnerProduct{x}{\Conjugate{\Scalar}y}$.
+\end{itemize}
+\par Quindi $\Linear$ \`e un'applicazione (anti)lineare. \`E anche invertibile: la sua inversa \`e l'applicazione che a $y \in \LinearSpace$ associa $\Dual{y} \in \Dual{\LinearSpace}$ tale che $\ForAll{x \in \LinearSpace}{\Dual{y}(x) = \InnerProduct{x}{y}}$. \EndProof
+\begin{Corollary}
+	Con le notazioni del corollario precedente, per ogni $\Part \subseteq \LinearSpace$, abbiamo $\Dual{y} \in \Annihilator{\Part}$ se e solo se $y = \Linear(\Dual{y}) \in \OrthogonalComplement{\Part}$.
+\end{Corollary}
+\Proof Segue direttamente dalle definizioni e dal teorema di rappresentazione. \EndProof
+\begin{Definition}
+  Siano $\PrehilbertSpace$ e $\VarPrehilbertSpace$ spazi prehilbertiani con
+  prodotto interni entrambi denotati
+  $\InnerProduct{\cdot}{\cdot}$.
+  Sia inoltre
+  $\Linear: \PrehilbertSpace \rightarrow \VarPrehilbertSpace$
+  un'applicazione lineare.
+  Definiamo
+  \Define{applicazione aggiunta}[aggiunta][applicazione]
+  \footnote{Il concetto di applicazione aggiunta \`e molto frequente in tema di
+  operatori, motivo per cui tratteremo pi\`u spesso di
+  \Define{operatori aggiunti}[aggiunto][operatore] pi\`u che di
+  applicazioni aggiunte.}
+  di $\Linear$, denotata $\Adjoint{\Linear}$, l'applicazione
+  $\Adjoint{\Linear}: \VarPrehilbertSpace \rightarrow \PrehilbertSpace$
+  che a $\VarVector \in \VarPrehilbertSpace$ associa il vettore
+  $\Adjoint{\Linear}\VarVector$ che rappresenta il funzionale di
+  $\Dual{\PrehilbertSpace}$ che a $\Vector \in \PrehilbertSpace$ associa
+  $\InnerProduct{\Linear\Vector}{\VarVector}$.
+  \par Nel caso in cui $\Linear = \Adjoint{\Linear}$ diciamo che $\Linear$ \`e
+  un'\Define{applicazione autoaggiunta}[autoggiunta][applicazione]
+  \footnote{Per lo stesso motivo illustrato nella nota precedente, tratteremo
+  frequentemente di
+  \Define{operatori autoaggiunti}[autoaggiunti][operatori].}
+\end{Definition}
+\begin{Theorem}
+  Siano $\PrehilbertSpace$ e $\VarPrehilbertSpace$ spazi prehilbertiani con
+  prodotto interni entrambi denotati
+  $\InnerProduct{\cdot}{\cdot}$.
+  Sia inoltre
+  $\Linear: \PrehilbertSpace \rightarrow \VarPrehilbertSpace$
+  un'applicazione lineare.
+  Abbiamo, per ogni $\Vector, \VarVector \in \PrehilbertSpace$,
+  \[
+    \InnerProduct{\Linear\Vector}{\VarVector}
+      = \InnerProduct{\Vector}{\Adjoint{\Linear}\VarVector}.
+  \]
+\end{Theorem}
+\Proof Segue direttamente dalla definizione. \EndProof
+\begin{Corollary}
+  Siano $\PrehilbertSpace_0$, $\PrehilbertSpace_1$ e $\PrehilbertSpace_2$
+  $\Field-$spazi prehilbertiani con prodotto interni tutti denotati
+  $\InnerProduct{\cdot}{\cdot}$.
+  Siano inoltre
+  \begin{itemize}
+    \item $\Linear_0: \PrehilbertSpace_0 \rightarrow \PrehilbertSpace_1$,
+      $\VarLinear_0: \PrehilbertSpace_0 \rightarrow \PrehilbertSpace_1$,
+      e $\Linear_1: \PrehilbertSpace_1 \rightarrow \VarPrehilbertSpace_2$
+      applicazioni lineari;
+    \item $\Scalar \in \Field$.
+  \end{itemize}
+  Abbiamo
+  \begin{itemize}
+    \item $\Adjoint{\Adjoint{\Linear_0}} = \Linear_0$;
+    \item $\Adjoint{(\Linear_0 + \VarLinear_0)}
+            = \Adjoint{\Linear_0} + \Adjoint{\VarLinear_0}$;
+    \item $\Adjoint{(\Scalar\Linear_0)} = \Conjugate{\Scalar}\Adjoint{\Linear_0}$;
+    \item $\Adjoint{(\Linear_1\Linear_0)}
+            = \Adjoint{\Linear_0}\Adjoint{\Linear_1}$.
+  \end{itemize}
+\end{Corollary}
+\Proof Siano $\Vector_0 \in \PrehilbertSpace_0$,
+$\Vector_1 \in \PrehilbertSpace_1$ e $\Vector_2 \in \PrehilbertSpace_2$.
+\par Abbiamo
+\begin{itemize}
+  \item $\InnerProduct{\Linear\Vector_0}{\Vector_1}
+    = \InnerProduct{\Vector_0}{\Adjoint{\Linear}\Vector_1}
+    = \Conjugate{\InnerProduct{\Adjoint{\Linear}\Vector_1}{\Vector_0}}
+    = \Conjugate{\InnerProduct{\Vector_1}{\Adjoint{\Adjoint{\Linear}}\Vector_0}}
+    = \InnerProduct{\Adjoint{\Adjoint{\Linear}}\Vector_0}{\Vector_1}$,
+    dunque, per l'arbitrariet\`a di $\Vector_0$ e $\Vector_1$, deve essere
+    $\Linear = \Adjoint{\Adjoint{\Linear}}$;
+  \item $\InnerProduct{\Vector_0}{\Adjoint{(\Linear_0 + \VarLinear_0)}\Vector_1}
+    = \InnerProduct{(\Linear_0 + \VarLinear_0)\Vector_0}{\Vector_1}
+    = \InnerProduct{\Linear_0\Vector_0}{\Vector_1}
+      + \InnerProduct{\VarLinear_0\Vector_0}{\Vector_1}
+    = \InnerProduct{\Vector_0}{\Adjoint{\Linear_0}\Vector_1}
+      + \InnerProduct{\Vector_0}{\Adjoint{\VarLinear_0}\Vector_1}
+    = \InnerProduct{\Vector_0}
+      {\Adjoint{\Linear_0}\Vector_1 + \Adjoint{\VarLinear_0}\Vector_1}$,
+    dunque, per l'arbitrariet\`a di $\Vector_0$ e $\Vector_1$, deve essere
+    $\Adjoint{(\Linear_0 + \VarLinear_0)}
+      = \Adjoint{\Linear_0} + \Adjoint{\VarLinear_0}$;
+  \item $\InnerProduct{\Vector_0}{\Adjoint{(\Scalar\Linear_0)\Vector_1}}
+    = \InnerProduct{\Scalar\Linear_0\Vector_0}{\Vector_1}
+    = \InnerProduct{\Linear_0\Vector_0}{\Conjugate{\Scalar}\Vector_1}
+   =\InnerProduct{\Vector_0}{\Conjugate{\Scalar}\Adjoint{\Linear_0}\Vector_1}$,
+    dunque, per l'arbitrariet\`a di $\Vector_0$ e $\Vector_1$, deve essere
+    $\Adjoint{(\Scalar\Linear_0)} = \Conjugate{\Scalar}\Adjoint{\Linear_0}$;
+  \item $\InnerProduct{\Vector_0}{\Adjoint{(\Linear_1\Linear_0)}\Vector_2}
+    = \InnerProduct{\Linear_1\Linear_0\Vector_0}{\Vector_2}
+    = \InnerProduct{\Linear_0\Vector_0}{\Adjoint{\Linear_1}\Vector_2}
+    =\InnerProduct{\Vector_0}{\Adjoint{\Linear_0}\Adjoint{\Linear_1}\Vector_2}$,
+    dunque, per l'arbitrariet\`a di $\Vector_0$ e $\Vector_2$, deve essere
+    $\Adjoint{(\Linear_1\Linear_0)} = \Adjoint{\Linear_0}\Adjoint{\Linear_1}$.
+    \EndProof
+\end{itemize}

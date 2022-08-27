@@ -1,0 +1,122 @@
+\subsection{Problema di ricerca.}
+\label{AlgoritmiEStruttureDiDati_ProblemaDiRicerca}
+\begin{Definition}
+	Chiamiamo \Define{problema di ricerca}[di ricerca][problema] il problema che
+  consiste nel ricercare un elemento in una successione finita e, nel caso esso
+  sia effettivamente presente, restituire la posizione esatta di un elemento
+  nella successione uguale all'elemento cercato.
+\end{Definition}
+\par Nel seguito denoteremo
+\begin{itemize}
+  \item $e$ l'elemento cercato;
+  \item $(e_i)_{i \in n}$ ($n \in \mathbb{N}$) la
+    successione nella quale avviene la ricerca.
+\end{itemize}
+\begin{Theorem}
+	Il problema di ricerca in una successione ordinata ha complessit\`a
+  $\BigOmega{\log n}$.
+\end{Theorem}
+\Proof L'elemento cercato pu\`o coincidere con uno degli $n$ elementi della
+successione o essere assente.
+\par Effettuando $1$ confronto, l'algoritmo pu\`o discriminare tra al pi\`u $2$
+configurazioni: denotati con $a$ e $b$ i due elementi confrontati, pu\`o
+rilevare se $a = b$ o se $a \neq b$. Assumiamo che con $k$
+confronti l'algoritmo possa discriminare tra $2^k$ confronti: allora, con $1$
+confronto aggiuntivo, esso pu\`o discrimare tra $2^k \cdot 2 = 2^{k + 1}$
+configurazioni. Dunque, segue per induzione che con $k$ confronti si pu\`o
+discrimare tra $2^k$ configurazioni.
+\par Perch\'e l'algoritmo possa fornire la risposta corretta al problema, \`e
+dunque necessario che il numero $k$ di confronti da esso effettuato verifichi la
+condizione $2^k \geq n + 1$, equivalente a $k \geq \log_2 (n + 1)$. La tesi
+segue dal fatto che $\IsBigOmega{\log_2 (n + 1)}{\log n}$. \EndProof
+\begin{Definition}
+  Supponiamo la successione $(e_i)_{i \in n}$ ordinata secondo un ordinamento
+dato $\leq$. Si chiama \Define{ricerca binaria}[binaria][ricerca] l'algoritmo
+seguente:
+  \begin{enumerate}
+    \item\label{RicercaBinaria_1} se $n = 1$ e $e_0 \neq e$, allora restituire
+      $-1$ (o un qualunque altro valore convenzionale per indicare l'assenza
+      dell'elemento cercato nella successione);
+    \item\label{RicercaBinaria_2} se $n = 1$ e $e_0 = e$, restituire $0$;
+    \item\label{RicercaBinaria_3} si ponga
+      $M = \left \lfloor \frac{n - 1}{2} \right \rfloor$;
+    \item\label{RicercaBinaria_4} se $e \leq e_M$, allora si restituisca quanto
+      restituito dall'esecuzione dell'intero algoritmo cercando $e$ nella
+      successione $(e_i)_{i = 0}^M$;
+    \item\label{RicercaBinaria_5} denotato $I$ il valore
+      restituito dall'esecuzione dell'intero algoritmo cercando $e$ nella
+      successione
+      $(f_i)_{i \in n - M - 1}$,
+      dove per ogni $i \in n - M - 1$ poniamo
+      $f_i = e_{i + M + 1}$,
+      si restituisca $M + 1 + I$.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/RicercaBinaria.cpp"}
+	\caption{Ricerca binaria implementata in \LanguageName{C++}.}
+\end{listing}
+\begin{Theorem}
+  La ricerca binaria risolve il problema della ricerca per una successione
+  ordinata.
+\end{Theorem}
+\Proof Supponiamo $e$ non faccia parte della successione $(e_i)_{i \in n}$.
+Allora i passi \ref{RicercaBinaria_4} e \ref{RicercaBinaria_5} accorceranno
+la successione ove avviene la ricerca fino a ridurla ad un solo elemento:
+per il passo \ref{RicercaBinaria_1} verr\`a resituito $-1$.
+\par Supponiamo ora $e$ appaia in $(e_i)_{i \in n}$.
+Se $n = 1$ la tesi \`e immediata, altrimenti procediamo
+per induzione su $n$ assumendo la tesi vera per ogni $n < N$
+($N \in \mathbb{N} \SetMin 2$) e proviamola per $N$.
+\par Se $e \leq e_M$, allora la successione
+$(e_i)_{i = 0}^M$
+contiene $e$ e per ipotesi induttiva il passo \ref{RicercaBinaria_4}
+trova l'elemento $e$; altrimenti \`e la successione
+$(e_i)_{i = M + 1}^{n - 1}$ a contenere $e$, e per ipotesi induttiva
+il passo \ref{RicercaBinaria_5} trova l'elemento $e$. \EndProof
+\begin{Theorem}
+  La ricerca binaria ha costo $\BigO{\log n}$, secondo il \English{comparison
+  model}.
+\end{Theorem}
+\Proof Denotiamo $T(n)$ il costo della ricerca binaria in una successione di
+dimensione $n$. Abbiamo evidentemente $T(1) = 1$ (i confronti dei passi
+\ref{RicercaBinaria_1} e \ref{RicercaBinaria_2} sono lo stesso confronto: non
+serve verificare due volte se $e_0 = e$; il confronto viene ripetuto nella
+descrizione dell'algoritmo solo per chiarezza di esposizione).
+\par Contiamo i confronti, assumendo $n > 1$; dato che siamo interessati ad una
+stima asintotica, possiamo assumere $n$ pari senza perdita di generalit\`a:
+\begin{itemize}
+  \item non contiamo il confronto dei passi \ref{RicercaBinaria_1} e
+    \ref{RicercaBinaria_2} perch\'e superfluo dopo aver gi\`a osservato
+    che $n = 1$ (potremmo comunque anche contarlo ottenendo lo stesso risultato
+    asintotico);
+  \item abbiamo il confronto $e \leq e_M$ al passo \ref{RicercaBinaria_4};
+  \item se effettivamente $e \leq e_M$, allora abbiamo
+    $T(M + 1) = T \left ( \left \lfloor \frac{n + 1}{2} \right \rfloor \right )
+      = T \left ( \frac{n}{2} \right )$
+    ulteriori confronti;
+  \item se invece $e > e_M$, allora abbiamo
+    $T(n - 1 - (M + 1) + 1) = T \left ( n - \frac{n}{2} \right )
+      = T \left ( \frac{n}{2} \right )$
+    ulteriori confronti.
+\end{itemize}
+\par Dunque, per opportune costanti $C_0, C > 0$, abbiamo
+\[
+	T(n) \leq
+	\begin{cases}
+		1\text{ se }n = 1,\\
+		T(\frac{n}{2}) + 1\text{ per } n > 1.
+	\end{cases}
+\]
+\par Per il teorema fondamentale delle ricorrenze, abbiamo
+$T(n) = \BigO{\log n}$. \EndProof
+\begin{Corollary}
+	Il problema di ricerca in una successione ordinata ha complessit\`a
+  $\BigTheta{n \log n}$ e la ricerca binaria \`e asintoticamente ottima.
+\end{Corollary}
+\Proof Abbiamo gi\`a dimostrato che il problema di ricerca in una successione
+ordinata  ha complessit\`a
+$\BigOmega{\log n}$.
+Il teorema precedente ha provato che il problema ha complessit\`a
+$\BigO{\log n}$.
+Ne deduciamo infine che esso ha complessit\`a $\BigTheta{\log n}$. \EndProof

@@ -1,0 +1,99 @@
+\section{Definizioni e teoremi di base.}
+\label{AnalisiComplessa_DefinizioniETeoremiDiBase}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $\Open \subseteq \mathbb{C}$ aperto;
+    \item $z_0 \in \Open$;
+    \item $\Holomorphic: \Open \rightarrow \mathbb{C}$.
+  \end{itemize}
+  $f$ si dice
+  \begin{itemize}
+    \item \Define{olomorfa}[olomorfa][funzione]
+      quando \`e derivabile in ogni punto di $\Open$;
+    \item \Define{olomorfa in $z_0$}[olomorfa in un punto][funzione]
+      quando \`e olomorfa in un intorno di $z_0$.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $\Open \subseteq \mathbb{C}$ aperto;
+    \item $\Singularity \in \Open$;
+    \item $\Holomorphic: \Open \SetMin \lbrace \Singularity \rbrace
+            \rightarrow \mathbb{C}$ olomorfa.
+  \end{itemize}
+  $\Singularity$ \`e una
+  \Define{singolarit\`a isolata}[isolata][singolarit\`a]
+  di $\Holomorphic$.
+  $\Singularity$ \`e
+  \begin{itemize}
+    \item una \Define{singolarit\`a eliminabile}[elimibabile][singolarit\`a] se
+      $\Holomorphic(z)$ converge per $z \rightarrow \Singularity$;
+    \item un \Define{polo}[di una funzione olomorfa][polo]
+      se
+      $\lim_{z \rightarrow \Singularity}
+        \AbsoluteValue{\Holomorphic(z)} = + \infty$;
+    \item una \Define{singolarit\`a essenziale}[essenziale][singolarit\`a]
+      se non esiste il limite di $\AbsoluteValue{\Holomorphic(z)}$ per
+      $z \rightarrow \Singularity$.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $\Open \subseteq \mathbb{C}$ aperto;
+    \item $\Part \subseteq \Open$ costituito da punti isolati;
+    \item $\Meromorphic: \Open \SetMin \Part \rightarrow \mathbb{C}$;
+    \item $z_0 \in \Open$.
+  \end{itemize}
+  $f$ si dice
+  \begin{itemize}
+    \item \Define{meromorfa}[meromorfa][funzione]
+      quando \`e olomorfa in ogni punto di $\Open$ tranne che nei
+      punti di $\Part$ che sono tutti poli;
+    \item \Define{meromorfa in $z_0$}[meromorfa in un punto][funzione]
+      quando \`e meromorfa in un intorno di $z_0$.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $\Open \subseteq \mathbb{C}$ aperto;
+    \item $\Holomorphic: \Open \rightarrow \mathbb{C}$.
+  \end{itemize}
+  $\Holomorphic$ \`e olomorfa se e solo se \`e analitica.
+\end{Theorem}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ diagonalizzabile;
+    \item $\Analytical: \mathbb{C} \rightarrow \mathbb{C}$ analitica.
+  \end{itemize}
+  $\Eigenvalue \in \Spectrum{\Matrix}$ se e solo se
+  $\Analytical(\Eigenvalue) \in \Spectrum{\Analytical(\Matrix)}$.
+\end{Theorem}
+\Proof Sia $\SpectralBaseChange$ una matrice che diagonalizza $\Matrix$.
+$\SpectralBaseChange$ diagonalizza anche $\Analytical{\Matrix}$:
+\begin{align*}
+  \SpectralBaseChange\Analytical(\Matrix)\SpectralBaseChange^{-1}
+  &=\SpectralBaseChange
+  \left (
+    \sum_{k \in \mathbb{N}} \frac{\Analytical^{(k)}(\Matrix)\Matrix^k}{k!}
+  \right )
+  \SpectralBaseChange^{-1},\\
+  &=
+  \left (
+    \sum_{k \in \mathbb{N}} \frac{\Analytical^{(k)}(
+    (\SpectralBaseChange\Matrix\SpectralBaseChange^{-1})^k)}
+    {k!}
+  \right ),\\
+  &= \Analytical(\SpectralBaseChange\Matrix\SpectralBaseChange^{-1}).
+\end{align*}
+\par Ne consegue che gli elementi diagonali di
+$\SpectralBaseChange\Analytical(\Matrix)\SpectralBaseChange^{-1}$,
+vale a dire gli autovalori di $\Analytical(\Matrix)$, sono esattamente le
+immagini degli elementi diagonali di
+$\SpectralBaseChange\Matrix\SpectralBaseChange^{-1}$.
+vale a dire degli autovalori di $\Matrix$. \EndProof

@@ -1,0 +1,152 @@
+\subsection{Esempi di programmazione lineare.}\label{EsempiDiProgrammazioneLineare}
+\begin{Example}
+	\TheoremName{Il problema dello zaino (\textit{Knapsack Problem})} Siano
+	\begin{itemize}
+		\item $I$ un insieme finito, detti \NIDefine{oggetti};
+		\item $(a_i)_{i \in I} \in \mathbb{N}^I$ una famiglia di elementi, detti \NIDefine{pesi};
+		\item $(c_i)_{i \in I} \in \mathbb{N}^I$ una famiglia di elementi, detti \NIDefine{costi};
+		\item $b \in \mathbb{N}$ una costante, detta \NIDefine{massimo peso dello zaino}.
+	\end{itemize}
+	Lo scopo del problema \`e individuare un sottoinsieme $Z \subseteq I$ di oggetti (lo \NIDefine{zaino}) il cui peso non supera il peso $b$ e di massimo costo possibile.
+	\par Il problema pu\`o dunque essere formulato come segue:
+	$$(\KnapsackProblem)\ \max \lbrace \sum_{i \in Z} c_i: Z \in \AdmissibleSet \rbrace,$$
+	dove $\AdmissibleSet = \lbrace X \subseteq I: \sum_{i \in X} a_i \leq b \rbrace$.
+	\par Questo problema pu\`o essere riformulato come problema di programmazione lineare intero definendo, per ogni soluzione ammissible $Z$, la famiglia di variabili booleane $(x_i)_{i \in Z}$, coincidente con la funzione caratteristica di $Z$: allora la funzione obiettivo pu\`o essere scritta come $\CostsVector \cdot x$, dove $\CostsVector = (c_i)_{i \in I}$ e $x = (x_i)_{i \in Z}$, e l'insieme ammissibile pu\`o essere descritto come quel sottoinsieme di $\mathbb{Z}^{\Cardinality{I}}$ tale che $a \cdot x \leq b$, dove $a = (a_i)_{i \in I}$.
+\end{Example}
+\begin{Example}
+	\TheoremName{Problema dell'albero di copertura di costo minimo (\textit{Minimal Spanning Tree})} Sia $\Graph = (\Nodes, \Edges)$ un grafo di nodi $\Nodes$ e archi $\Edges \subseteq \Nodes^2$; sia $(c_{i,j})_{(i,j) \in \Edges}$ una famiglia di numeri reali positivi che chiameremo \NIDefine{costo} dell'arco $(i,j)$. Vogliamo determinare un grafo parziale di $\Graph$ connesso e di costo minimo, definendo il costo del grafo come la somma dei costi dei suoi archi: si dimostra facilmente che un grafo con queste caratteristiche \`e un albero di copertura di $\Graph$, i.e. un grafo connesso e privo di cicli.
+	\par Possiamo dunque definire il problema con
+	$$(\MinimalSpanningTree)\ \min \lbrace \sum_{(i,j) \in \Edges'} c_{i,j} : (\Nodes,\Edges')\text{ \`e un albero di copertura di }\Graph \rbrace.$$
+	\par Determinare un sottoinsieme $\Edges' \subseteq \Edges$ equivale a definire una famiglia $(x_{(i,j)})_{(i,j) \in \Edges}$ coincidente con la funzione caratteristica di $\Edges'$. A questo punto l'insieme ammissibile del problema pu`\o essere ridefinito come l'insieme di tutte le possibile famiglie $(x_{(i,j)})_{(i,j) \in \Edges}$ e la condizione di connessione come l'insieme (finito) di condizioni $\sum_{i \in S\\j \in \Nodes \SetMin S} x_{(i,j)} \geq 1$ per ogni sottoinsieme proprio $S$ non vuoto di $\Nodes$. Il problema diventa cos\`i un problema di programmazione lineare intera.
+\end{Example}
+\begin{Example}
+	\TheoremName{Il problema del commesso viaggiatore (\textit{Travelling Salesman Problem})}
+	Dato un grafo completo $\Graph = (\Nodes, \Nodes^2)$ e una famiglia di numeri reali positivi $(c_{i,j})_{(i,j) \in \Nodes^2}$, detti \NIDefine{costi}, si ricerca un ciclo hamiltoniano di costo minimo. Ci\`o pu\`o essere modellizzato introducendo le stesse variabili $(x_{(i,j)})_{(i,j) \in \Nodes^2}$ utilizzate nell'esempio del problema dell'albero di copertura di costo minimo, imponendo la stessa restrizione $\sum_{i \in S\\j \in \Nodes \SetMin S} x_{(i,j)} \geq 1$ per garantire la connessione del ciclo hamiltoniano e aggiungendo, per ogni nodo $i \in \Nodes$, la condizione $\sum_{j \in \Nodes} x_{i,j} = 2$ per garantire che ogni nodo sia estremo di due e solo due archi; per funzione obiettivo si pu`\o usare la stessa usata per il problema dell'albero di copertura di costo minimo.
+	\par Osserviamo che con le formulazioni fornite il problema dell'albero di copertura di costo minimo costituisce un rilassamento del problema del commesso viaggiatore.
+\end{Example}
+\par Alcuni problemi, per essere espressi in termini di programmazione lineare, richiedono di combinare valori booleani diversi secondo le classiche regole della logica booleana. A tal fine \`e utile tenere a mente le relazioni seguenti:
+\begin{itemize}
+	\item se $a$ \`e una variabile booleana, $\Not{a}$ \`e rappresentata da $1 - a$;
+	\item se $a$ e $b$ sono variabili booleane, $a \rightarrow b$ equivale alla relazione $a \leq b$;
+	\item se $a$ e $b$ sono variaibli booleane, $c = \Or{a}{b}$ equivale alle relazioni
+	\begin{itemize}
+		\item $a \leq c$;
+		\item $b \leq c$;
+		\item $c \leq a + b$ (si rammenta che $c \in \lbrace 0, 1 \rbrace$, per cui non \`e possibile $c = 2$ nel caso $a = b = 1$);
+	\end{itemize}
+	\item se $a$ e $b$ sono variaibli booleane, $c = \Xor{a}{b}$ equivale alle relazioni
+	\begin{itemize}
+		\item $a - b \leq c$;
+		\item $b - a \leq c$;
+		\item $c \leq a + b$;
+		\item $c \leq 2 - a - b$;
+	\end{itemize}
+	\item se $a$ e $b$ sono variaibli booleane, $c = \And{a}{b}$ equivale alle relazioni
+	\begin{itemize}
+		\item $c \leq a$;
+		\item $c \leq b$;
+		\item $c \geq a + b - 1$.
+	\end{itemize}
+\end{itemize}
+\begin{Example}
+	\TheoremName{Il problema della soddisfattibilit\`a proposizione (\textit{Satisfatibility problem})} Sia $(\Litteral_j)_{j \in n}$ ($n \in \mathbb{N}$) una famiglie di letterali. Sia $(C_i)_{i \in m}$ ($m \in \mathbb{N}$) una famiglia di proposizioni che sono la disgiunzione di letterali di $(\Litteral_j)_{j \in n}$ o di loro negazioni. Sia infine $\Formula$ la congiunzione dei $(C_i)_{i \in m}$. Il problema richiede di determinare se esistono valori dei letterali $\Litteral_j$ tali da rendere vera $\Formula$: la sua importanza risiede nella possibilit\`a di mettere qualsiasi formula del calcolo proposizionale in forma normale congiuntiva.
+	\par Introduciamo la matrice $\Matrix = (\Matrix_{i,j})_{(i,j) \in m \times n}$: $\Matrix_{i,j} = \begin{cases} 1 \text{ se }\Litteral_j\text{ \`e presente in } C_i; -1 \text{ se }\Litteral_j\text{ \`e presente negato in } C_i;0 \text{altrimenti}.\end{cases}$
+	\par Ora, se $X \in \mathbb{R}^n$ \`e un vettore booleano le cui componenti sono i valori di verit\`a dei letterali $\Litteral_j$, $C_i$ equivale a $\Transposed{\Matrix_i} X \geq 1 - n(i)$, dove $n(i)$ \`e il numero di letterali negati in $C_i$.
+	\par Il problema di programmazione lineare pu`\o dunque essere definito usando come insieme ammissibile l'insieme di tutti gli $X$ che soddisfano la disugualgianza $\Transposed{\Matrix_i} X \geq 1 - n(i)$, per ogni $i \in n$. Per funzione obiettivo si pu\`o scegliere una qualsiasi funzione costante (in effetti qui siamo di fronte ad un problema di decisione pi\`u che di ottimizzazione).
+\end{Example}
+\begin{Definition}
+	Siano $A$ e $B$ due insiemi finiti e sia $(x_{i,j})_{(i,j) \in A \times B}$ una famiglia di variabili booleane. Chiamiamo
+	\begin{itemize}
+	\item $\Define{vincoli di semiassegnamento}[di semiassegnamento][vincoli]$ le equazioni $\sum_{j \in B} x_{i,j} = 1$ al variare di $i \in A$;
+	\item $\Define{vincoli di assegnamento}[di assegnamento][vincoli]$ le equazioni $\sum_{j \in B} x_{i,j} = 1$ al variare di $i \in A$ e $\sum_{i \in A} x^{i,j} = 1$ al variare di $j \in B$: $(x_{i,j})_{(i,j) \in A \times B}$ risulta cos\`i essere una matrice di permutazione.
+	\end{itemize}
+\end{Definition}
+\begin{Example}
+	\TheoremName{Il problema di minimizzazione del numero delle macchine (\textit{Minimal Cardinality Machine Scheduling})} Siano
+	\begin{itemize}
+		\item $N$ un insieme finito di lavori;
+		\item $(d_i)_{i \in N}$ la durata del lavoro $i \in N$;
+		\item $(t_i)_{i \in N}$ il momento in cui deve iniziare il lavoro $i \in N$.
+	\end{itemize}
+	Sapendo che ogni lavoro deve essere svolto da una macchina e che ogni macchina pu\`o svolgere al massimo un lavoro per volta, si chiede quale sia il numero minimo di macchine necessario per compiere i lavori previsti nei termini previsti.
+	\par Osserviamo per prima cosa che se mettiamo a disposizione tante macchine quanti sono i lavori possiamo senz'altro eseguire tutti i lavori: introduciamo dunque un insieme di macchine $M$ equicardinale ad $N$ e consideriamo il problema equivalente di determinare quale sia il numero minimo di macchine di $M$ necessario per compiere tutti i lavori. Introduciamo le variabili booleane $(x_{i,j})_{(i,j) \in N \times M}$: $x_{i,j} = \begin{cases} 1\text{ se il lavoro }i\text{ \`e assegnato alla macchina }j;\\0\text{ altrimenti.}\end{cases}$
+	\par Il fatto che un lavoro venga eseguito una sola volta, e dunque da una sola macchina, si esprime coi vincoli di semiassegnamento $\sum_{j \in M}x_{i,j} = 1$ per ogni $i \in N$.
+	\par Per ogni lavoro $i \in N$ definiamo l'insieme $S_i$ dei lavori che non possono essere eseguiti dalla stessa macchina che esegue $i$: $S_i = \lbrace h \in N: [t_i;t_i + d_i] \cap [t_h;t_h + d_h] \neq \emptyset \rbrace$. Poniamo allora ulteriori vincoli per garantire che ogni macchina esegua solo un lavoro per volta: per ogni $(i,j) \in N \times M$ e per ogni $h \in S_i$ poniamo $x_{i,j} + x_{h,j} \leq 1$. Osserviamo che per ogni coppia di lavori $(i,h) \in N^2$ abbiamo introdotto lo stesso vincolo due volte (la cosa sarebbe facilmente evitabile ordinando $N$ e introducendo il vincolo solo quando $i < h$).
+	\par L'insieme ammissible $\AdmissibleSet$ \`e dunque il sottoinsieme di tutte le applicazioni $x_{i,j}: N \times M \rightarrow \lbrace 0, 1\rbrace$ che rispetta tutti i vincoli dati.
+	\par Introduciamo ora ulteriori variabili booleane $(y_j)_{j \in M}$, vere se la macchina $j \in M$ risulta usata. Possiamo dunque esprimere la funzione obiettivo come $\ObjectiveFunction = \sum_{j \in M} y_j$.
+	\par Per esprimere che la macchina $j \in M$ \`e usata, imponiamo $ny_j \geq \sum_{i \in N} x_{i,j}$: non si tratta di ulteriori vincoli per definire l'insieme ammissibile, ma solo di una disequazione che determina i valori $(y_j)_{j \in M}$ in maniera univoca. Le variabili $(y_j)_{j \in M}$ sono variabili ausiliari, in opposizione alle variabili $(x_{i,j})_{(i,j) \in N \times M}$ invece strutturali.
+	Il problema si definisce dunque come
+	$$(\MinimalCardinalityMachineScheduling)\ \min \lbrace \sum_{j \in M} y_j: (x_{i,j})_{(i,j) \in N \times M} \in \AdmissibleSet \rbrace.$$
+\end{Example}
+\begin{Example}
+	\TheoremName{Il problema della colorazione di grafo (\textit{Graph Coloring})} Sia $\Graph = (\Nodes,\Edges)$ un grafo con $n = \Cardinality{\Nodes} \in \NotZero{\mathbb{N}}$ nodi: vogliamo associare ad ogni nodo un elemento di un insieme $C$, per esempio un insieme di colori (da qui il nome del problema) in modo tale che a due nodi adiacenti non sia associato lo stesso elemento e usando il minor numero di elementi di $C$ possibile.
+	\par Come per il problema $\MinimalCardinalityMachineScheduling$, possiamo assumere $\Cardinality{C} = \Cardinality{\Nodes}$. Inoltre, introduciamo le variabili booleane $(x_{i,c})_{(i,c) \in \Nodes \times C}$ tali che $x_{i,j} = \begin{cases} 1\text{ se }j\text{ \`e associato a }i,\\0\text{ altrimenti.}\end{cases}$.
+	\par Ad ogni nodo deve essere associato un solo elemento di $C$, per cui imponiamo i vincoli di semiassegnamento $\ForAll{i \in \Nodes}{\sum_{c \in C} x_{i,c} = 1}$.
+	\par Inoltre a due nodi adiacenti non deve essere associato lo stesso elemento di $C$: imponiamo dunque i vincoli $\ForAll{(i,j) \in \Nodes^2}{\ForAll{c \in C}{x_{i,c} + x_{j,c} \leq 1}}$.
+	\par Scegliamo dunque come insieme ammissibile $\AdmissibleSet$ l'insieme $\lbrace 0, 1\rbrace^{\Nodes \times C}$ con i vincoli sopraindicati.
+	\par Di nuovo in analogia col problema $\MinimalCardinalityMachineScheduling$, introduciamo le variabili booleane $(y_c)_{c \in C}$: vogliamo che esse risultino vere quando $c \in C$ \`e associato a qualche $i \in \Nodes$; otteniamo ci\`o imponendo $\ForAll{c \in C}{\ForAll{i \in \Nodes}{y_c \geq x_{i,c}}}$.
+	\par Il problema si definisce dunque come
+	$$(\GraphColoring)\ \min \lbrace \sum_{j \in M} y_j: (x_{i,j})_{(i,j) \in \Nodes \times C} \in \AdmissibleSet \rbrace.$$
+\end{Example}
+\begin{Definition}
+	Siano $\Omega$ un insieme finito e $P \subseteq \PowerSet{\Omega}$. Siano le variabili booleane $(x_p)_{p \in P}$. Chiamiamo
+	\begin{itemize}
+		\item \Define{vincoli di copertura}[di copertura][vincoli]: $\ForAll{\omega \in \Omega}{\sum_{p \in P\\\omega \in p} x_p \geq 1}$;
+		\item \Define{vincoli di partizione}[di partizione][vincoli]: $\ForAll{\omega \in \Omega}{\sum_{p \in P\\\omega \in p} x_p = 1}$;
+		\item \Define{vincoli di riempimento}[di riempimento][vincoli]: $\ForAll{\omega \in \Omega}{\sum_{p \in P\\\omega \in p} x_p \leq 1}$.
+	\end{itemize}
+\end{Definition}
+\begin{Example}
+	\TheoremName{Problemi di copertura, partizione e riempimento} Siano $\Omega$ un insieme finito e $P \subseteq \PowerSet{\Omega}$. Siano inoltre definiti i numeri $(c_p)_{p \in \Omega}$, detti \emph{costi}. Vogliamo trovare, se esiste, $S \subseteq P$ tale che $\bigcup{s \in S}s = \Omega$ e tale che il suo costo, definito come $\sum_{s \in S} c_s$ sia minimo: \`e il problema di copertura.
+	\par Introduciamo le variabili booleane $(x_p)_{p \in P}$, da considerarsi vere se e solo se selezioniamo $p \in P$ per entrare in $S$. Possiamo allora definire il problema come
+$$(\CoveringProblem)\ \min \lbrace \sum_{p \in P} c_p x_p: (x_p)_{p \in P} \in \AdmissibleSet \rbrace,$$
+	dove $\AdmissibleSet$ \`e l'insieme di tutte le famiglie $(x_p)_{p \in P}$ che rispettano i vincoli di copertura.
+	\par Aggiungendo alla definizione del problema di copertura l'ulteriore condizione che elementi distinti di $S$ siano disgiunti otteniamo il problema di partizione $\PartitioningProblem$, che risolviamo allo stesso modo sostituendo ai vincoli di copertura quelli di partizionamento.
+	\par Infine, se trasformiamo il problema di partizione togliendo la condizione $\bigcup{s \in S}s = \Omega$, otteniamo il problema di riempimento $\FillingProblem$, che risolviamo sostituendo ai vincoli di partizionamento quelli di di riempimento.
+\end{Example}
+\begin{Definition}
+	Data una famiglia di variabili quantitative $(x_i)_{i \in I}$ e un'ulteriore variabile $V$, chiamiamo \Define{vincoli soglia}[di soglia][vincoli] disuguaglianze del tipo $V \leq x_i$ o $x_i \leq V$, con $i \in I$
+\end{Definition}
+\begin{Example}
+	\TheoremName{Il problema del minor tempo di produzione su macchine (\textit{Minimal Makespan Machine Scheduling})} Siano dati un insieme di lavori $N$ e un insieme di macchine $M$: ogni macchina pu\`o eseguire un solo lavoro per volta. Ad ogni lavoro \`e associata una durata $(d_i)_{i \in N}$. A differenza di quanto supporto per il problema $\MinimalCardinalityMachineScheduling$, in questo caso supponiamo che tutti i lavori possano essere svolti in qualsiasi momento. Si chiede di distribuire i lavori in maniera tale da vederli tutti completati il prima possibile.
+	\par Introduciamo le variabili booleane $(x_{i,j})_{(i,j) \in N \times M}$: $x_{i,j}$ \`e vera se e solo se il lavoro $i$ \`e associato alla macchina $j$. Come insieme ammissibile $\AdmissibleSet$ scegliamo l'insieme di tutte le famiglia $(x_{i,j})_{(i,j) \in N \times M}$ che rispettano i vincoli di semiassegnamento $\ForAll{i \in N}{\sum_{j \in M} x_{i,j} = 1}$ (ogni lavoro deve essere svolto da una sola macchina).
+	\par Introduciamo la variabile ausiliaria $t$ e i vincoli di soglia $\ForAll{j \in M}{\sum_{i \in N} d_ix_{i,j} \leq t}$: imponiamo cio\`e che $t$ sia grande almeno quanto la durata di svolgimento di tutti i lavori. Minimizzando $t$, minimizziamo dunque anche la durata dei lavori:
+$$(\MinimalMakespanMachineScheduling)
+\begin{array}{ll}
+	\min &t,\\
+	&\ForAll{i \in N}{\sum_{j \in M} x_{i,j} = 1},\\
+	&\ForAll{j \in M}{\sum_{i \in N} d_ix_{i,j} \leq t},\\
+	&\ForAll{(i,j) \in N \times M}{x_{i,j} \in \lbrace 0, 1 \rbrace}.
+\end{array}$$
+\end{Example}
+\begin{Example}
+	In alcuni problemi pu\`o capitare di trovarsi di fronte ad una funzione lineare a tratti
+	$$f(x) = \begin{cases}
+	b_0 + c_0x\text{ se }x \in [a_0,a_1],\\
+	b_1 + c_1x\text{ se }x \in (a_1,a_2],\\
+	...\\
+	b_{n - 1} + c_{n - 1}x\text{ se }x \in [a_{n - 1},a_n],
+	\end{cases}$$
+	con $\ForAll{i \in n}{a_i \leq a_{i + 1}}$.
+	\`E possibile trasformare $f(x)$ in una funzione lineare. Introduciamo le variabili booleane $(y_i)_{i \in n}$ e le variabili quantitative $(z_i)_{i \in n}$ e imponiamo i seguenti vincoli:
+	\begin{itemize}
+		\item $\Implies{x = a_0}{y_0 = 1}$ e $\ForAll{i \in n}{\Implies{x \in (a_i,a_{i + 1}]}{y_i = 1}}$: questi vincoli garantiscono che $y_i$ sia vero se e solo se $x$ appartiene all'$i$-esimo intervallo di definizione;
+		\item $\ForAll{i \in n}{0 \leq z_i \leq (a_{i + 1} - a_i)y_i}$: gli $z_i$ sono dunuqe grandezze reali positive grandi al pi\`u quando la lunghezza dell'$i$-esimo intervallo e certamente nulle se $x$ non appartiene all'$i$-esimo intervallo.
+	\end{itemize}
+	\par Abbiamo dunque $x = \sum_{i \in n}{a_iy_i + z_i} = \sum_{i \in n}{a_iy_i} + \sum_{i \in n} z_i$: $x$ \`e funzione lineare degli $(y_i)_{i \in n}$ e dei $(z_i)_{i \in n}$.
+	\par Inoltre $f(x) = g(z_0,...,z_n,y_0,...,y_n) = \sum_{i \in n}b_iy_i + c_i(a_iy_i + z_i) = \sum_{i \in n}(b_i + c_ia_i)y_i + \sum_{i \in n}{c_iz_i}$: come si vede, il secondo membro \`e una funzione lineare dei $(y_i)_{i \in n}$ e dei $(z_i)_{i \in n}$.
+	\par Nel calcolare massimi o minimi di $f(x)$ occorre essere particolarmente prudenti nei punti di discontinuit\`a: ciascuno di essi pu\`o essere rappresentato attravero due diversi assegnazioni degli argomenti di $g$, ma solo una di queste assegnazioni corrisponde ad un effettivo valore di $f(x)$.
+\end{Example}
+\begin{Example}
+	Riprendiamo la funzione $f$ dell'esempio precedente e supponiamo stavolta che essa sia continua e che la successione dei $(c_i)_{i \in n}$ sia non decresente.
+	\par Allora \`e possibile sostituire $f$ con una funzione lineare $g$ introducendo stavolta solo una famiglia di variabili $(z_i)_{i \in n}$. In tal caso, i vincoli sono dati da $\ForAll{i \in n}{0 \leq z_i \leq a_{i + 1} - a_i}$ e poniamo $g(z_0,...,z_{n - 1}) = b_0 + \sum_{i \in n}c_iz_i$: se $g$ ha minimo in $(z_i)_{i \in n}$, allora abbiamo
+	\begin{itemize}
+		\item per opportuno $h \in n$, $z_i = \begin{cases}a_{i + 1} - a_i\text{ se }i < h,\\0\text{ se }i > h;\end{cases}$
+		\item $f$ ha minimo in $x = a_0 + \sum_{i \in n} z_i$.
+	\end{itemize}
+	\par La prima affermazione discende dal fatto che, per la crescenza della successione $c_i$, se sostituiamo in $g$ una successione $(z_i)_{i \in n}$ arbitraria con $(z_i')_{i \in n}$ nella forma descritta della prima affermazione e tale che $\sum_{i \in n} z_i = \sum_{i \in n} = z_i'$, allora il valore di $g$ cala.
+	\par La seconda affermazione
+\end{Example}
+\begin{Definition}
+	Fissato $n \in \mathbb{N}$, siano dati numeri reali $(A_i)_{i \in n}$ e $(b_i)_{i \in n}$ e supponiamo che un problema sia sottoposto ai vincoli $\ForAll{i \in n}{A_ix \leq b}$
+\end{Definition}

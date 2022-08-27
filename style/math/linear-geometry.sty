@@ -1,0 +1,111 @@
+\ProvidesPackage{linear-geometry}
+
+\DeclareDocumentCommand \GershgorinDisk{m o}{\IfNoValueTF{#2}{\text{Gershgorin} \left ( #1 \right )}{\text{Gershgorin}_{#2} \left ( #1 \right )}}
+%\DeclareDocumentCommand \Vector{o}{\IfNoValueTF{#1}{\mathbf{v}}{\underline{#1}}}
+%\DeclareDocumentCommand \GeneralMatrix{m o o}{\IfNoValueTF{#2}{#1}{#1}_{#2}^{#3}}
+\DeclareDocumentCommand \GeneralVector{m o}{\IfNoValueTF{#2}{\mathbf{#1}}{\mathbf{#1}_{#2}}}
+\DeclareDocumentCommand \Norm{m o}{\IfNoValueTF{#2}{\left \Vert #1 \right \Vert}{\left \Vert #1 \right \Vert_{#2}}}
+\DeclareMathOperator{\Annihilator}{Ann}
+\DeclareMathOperator{\Codimension}{Codim}
+\DeclareMathOperator{\ConvexHull}{Conv}
+\DeclareMathOperator{\ConicalHull}{Coni}
+\DeclareMathOperator{\Determinant}{det}
+\DeclareMathOperator{\Dimension}{\LinearDimension}
+\DeclareMathOperator{\LinearDimension}{Dim}
+\DeclareMathOperator{\MatrixRank}{Rk}
+\DeclareMathOperator{\Rank}{Rk}
+\DeclareMathOperator{\SpanModule}{Span}
+\DeclareMathOperator{\Spectrum}{Spect}
+\DeclareMathOperator{\LinearSpan}{\SpanModule}
+\newcommand{\Adjoint}[1]{{#1}^*}
+\newcommand{\Antilinear}{A}
+\newcommand{\BilinearForm}{\mathcal{B}}
+\newcommand{\BilinearOrSesquilinearForm}{\BilinearForm}
+\newcommand{\CharacteristicPolynomial}{P}
+\newcommand{\Cone}{\mathcal{C}}
+\newcommand{\ConvexCone}{{\Cone_C}}
+%\newcommand{\DiagonalMatrix}{\GeneralMatrix{D}}
+\newcommand{\Eigenspace}{\Lambda}
+\newcommand{\Eigenvalue}{\lambda}
+\newcommand{\Eigenvector}{\GeneralVector{x}}
+\newcommand{\EqSolution}{X}
+\newcommand{\ExtremePoint}{\chi}
+\newcommand{\FinitelyGeneratedCone}{{\Cone_F}}
+\newcommand{\Functional}{\phi}
+\newcommand{\GeneralizedEigenvector}{\GeneralVector{g}}
+\newcommand{\HermitianOperator}{H}
+\newcommand{\HermitianProduct}[2]{\left \langle #1 , #2 \right \rangle}
+\newcommand{\HermitianTransposed}[1]{{#1}^*}
+\newcommand{\HilbertSpace}{\mathcal{H}}
+\newcommand{\HomogeneousSolution}{{\EqSolution_h}}
+\newcommand{\Hyperplane}{\mathcal{H}}
+\newcommand{\InnerProduct}[2]{\ScalarProduct{#1}{#2}}
+\newcommand{\KnownTerms}{\mathbf{B}}
+\newcommand{\KroneckerDelta}[2]{\delta^{#1}_{#2}}
+\newcommand{\LeftOrthogonalComplement}[1]{{#1}^\perp}
+\newcommand{\Length}[1]{\overline{#1}}
+\newcommand{\Linear}{L}
+\newcommand{\LinearBase}{\Vector}
+\newcommand{\LinearCone}{{\Cone_L}}
+\newcommand{\LinearGroup}{\mathbf{GL}}
+\newcommand{\LinearMinimalPolynomial}{M}
+\newcommand{\LinearOperator}{A}
+\newcommand{\LinearSpace}{\mathbb{V}}
+\newcommand{\LinearSubspace}{\mathbb{S}}
+\newcommand{\LinearTransformation}{A}
+\newcommand{\MatricesSpace}[3]{#1^{#2 \times #3}}
+\newcommand{\Matrix}{\mathit{M}}
+\newcommand{\MatrixElement}{\mathit{m}}
+\newcommand{\NormalOperator}{N}
+\newcommand{\NormalVector}{\vec{N}}
+\newcommand{\NormedSpace}{\mathcal{N}}
+\newcommand{\Ones}[2]{1_{#1 \times #2}}
+\newcommand{\OrthogonalBase}{\Vector}
+\newcommand{\OrthonormalBase}{\hat{\Vector}}
+\newcommand{\OrthogonalComplement}[1]{{#1}^\perp}
+\newcommand{\ParticularSolution}{{\EqSolution_p}}
+%\newcommand{\PermutationMatrix}{\GeneralMatrix{P}}
+\newcommand{\PolyhedricCone}{\Cone_P}
+\newcommand{\Polyhedron}{\mathcal{P}}
+\newcommand{\PrehilbertSpace}{\mathcal{H}}
+\newcommand{\QuadraticForm}{\mathcal{Q}}
+\newcommand{\RightOrthogonalComplement}[1]{{}^\perp #1}
+\newcommand{\Scalar}{\alpha}
+\newcommand{\ScalarProduct}[2]{\left ( #1 , #2 \right )}
+\newcommand{\ScalarOrHermitianProduct}[2]{\ScalarProduct{#1}{#2}}
+\newcommand{\SesquilinearForm}{\mathcal{S}}
+\newcommand{\SpectralBase}{\sigma}
+\newcommand{\SpectralBaseChange}{\Sigma}
+\newcommand{\SpectralRadius}[1]{\rho \left ( #1 \right )}
+\newcommand{\StandardScalarProduct}[2]{#1 \cdot #2}
+\newcommand{\Transposed}[1]{{#1}^t}
+\newcommand{\Tensor}{\mathcal{T}}
+\newcommand{\TensorsSpace}[3]{\mathcal{T}^{#2}_{#3} \left ( #1 \right )}
+\newcommand{\Vector}{\mathbf{v}}
+\newcommand{\VectorProduct}[2]{#1 \times #2}
+\newcommand{\VectorialSpace}{\LinearSpace}
+\newcommand{\Zeros}[2]{0_{#1 \times #2}}
+\newcommand{\VarEigenvalue}{\mu}
+\newcommand{\VarEigenvector}{\GeneralVector{y}}
+\newcommand{\VarLinearBase}{\VarVector}
+\newcommand{\VarMatrix}{\mathit{N}}
+\newcommand{\VarFunctional}{\psi}
+\newcommand{\VarHyperplane}{\mathcal{K}}
+\newcommand{\VarLinear}{M}
+\newcommand{\VarLinearOperator}{B}
+\newcommand{\VarLinearSpace}{\mathbb{W}}
+\newcommand{\VarLinearSubspace}{\mathbb{R}}
+\newcommand{\VarLinearTransformation}{B}
+\newcommand{\VarNormedSpace}{\mathcal{M}}
+\newcommand{\VarPrehilbertSpace}{\mathcal{K}}
+\newcommand{\VarScalar}{\beta}
+\newcommand{\VarScalarProduct}[2]{\left \langle #1 , #2 \right \rangle}
+\newcommand{\VarSpectralBase}{\tau}
+\newcommand{\VarVector}{\mathbf{w}}
+\newcommand{\VarVarVector}{\mathbf{a}}
+\newcommand{\VarVarVarVector}{\mathbf{b}}
+
+\newcommand{\lmatrix}{\left (}
+\newcommand{\rmatrix}{\right )}
+\renewcommand{\vec}[1]{\underline{#1}}
+\newcommand{\ver}[1]{\widehat{#1}}

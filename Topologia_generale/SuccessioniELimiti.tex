@@ -1,0 +1,104 @@
+\section{Successioni e limiti.}
+\label{Topologia_SuccessioniELimiti}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	La successione $(a_n)_{n \in \mathbb{N}}$
+	\Define{converge}[convergente][successione] a un punto
+	$p \in \TopologicalSpace$
+	quando per ogni intorno $\Neighborhood_p \in \Neighborhoods{p}$ esiste
+	$N \in \mathbb{N}$ tale che $\Implies{n \geq N}{
+	a_n \in \Neighborhood_p}$.
+	Se $(a_n)_{n \in \mathbb{N}}$ converge a un punto, allora $(a_n)_{n \in \mathbb{N}}$ si dice \Define{convergente}[convergente][successione].
+\end{Definition}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico
+	e sia $(a_n)_{n \in \mathbb{N}}$ una successione
+	convergente a un unico punto $p \in \TopologicalSpace$. Diciamo
+	che $p$ \`e il
+	\Define{limite}[di una successione][limite] della successione,
+	denotato $\lim_{n \rightarrow \infty} a_n = p$.
+	Diciamo anche che $(a_n)_{n \in \mathbb{N}}$ tende a $p$, in simboli
+	$a_n \rightarrow p$, per $n$ che tende a infinito,
+	in simboli $n \rightarrow \infty$.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico e
+  $(a_n)_{n \in \mathbb{N}} \in \TopologicalSpace^\mathbb{N}$ una succesione
+  che converge a un punto $p$. Ogni sottosuccessione
+  $(a_{f(n)})_{n \in \mathbb{N}}$,
+  con $f: \mathbb{N} \rightarrow \mathbb{N}$ applicazione crescente,
+  converge anch'essa a $p$.
+\end{Theorem}
+\Proof Sia $\Neighborhood_p \in \Neighborhoods{p}$. Esiste $N \in \mathbb{N}$ tale che $\Implies{n > N}{a_n \in \Neighborhood_p}$. A maggior ragione, $\Implies{n > N}{a_{f(n)} \in \Neighborhood_p}$ e dunque $(a_{f(n)})_{n \in \mathbb{N}}$ converge a $p$. \EndProof
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico di
+	Hausdorff e sia $(\SequenceElement_i)_{i \in \mathbb{N}}$ una
+	successione convergente a due punti $p_1, p_2 \in
+	\TopologicalSpace$. Abbiamo $p_1 = p_2$.
+\end{Theorem}
+\Proof Supponiamo $p_1 \neq p_2$. Allora esistono due intorni aperti
+disgiunti $\Open_1, \Open_2 \in \Topology$ tali che $p_1 \in \Open_1$ e
+$p_2 \in \Open_2$. Ma allora, per $n \in \mathbb{N}$ grande a sufficienza,
+abbiamo $\Implies{m \geq n}{a_m \in \Open_1 \cap \Open_2}$, ma questo \`e
+assurdo. Dunque deve essere $p_1 = p_2$. \EndProof
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Siano $\Part \subseteq \TopologicalSpace$ e $(a_n)_{n \in \mathbb{N}} \in \TopologicalSpace^\mathbb{N}$.
+	$\AccumulationPoint \in \TopologicalSpace$ \`e
+	\begin{itemize}
+		\item \Define{punto di accumulazione}[di accumulazione per una parte][punto] di $\Part$ quando $\ForAll{\Neighborhood \in \Neighborhoods{p}}{\Neighborhood \cap \Part \neq \emptyset}$.
+		\item \Define{punto di accumulazione}[di accumulazione per una successione][punto] di $(a_n)_{n \in \mathbb{N}}$ quando $\ForAll{(\Neighborhood,n) \in \Neighborhoods{p} \times\mathbb{N}}{\Exists{m \geq n}{a_m \in \Neighborhood}}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Se $\AccumulationPoint$ \`e punto di accumulazione per $(a_n)_{n \in \mathbb{N}} \in \TopologicalSpace^\mathbb{N}$, allora \`e punto di accumulazione anche per $\bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Se $(a_n)_{n \in \mathbb{N}} \in \TopologicalSpace^\mathbb{N}$ converge a $\AccumulationPoint \in \TopologicalSpace$, allora \`e punto di accumulazione per $(a_n)_{n \in \mathbb{N}}$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico e sia $\Part \subseteq \TopologicalSpace$. $\Closure{\Part}$ contiene tutti e soli i suoi punti di accumulazioni.
+\end{Theorem}
+\par Supponiamo $x \in \Closure{\Part}$. Allora $\Or{x \in \Part}{x \in \Boundary{\Part}}$: se $x \in \Part$, allora ogni intorno di $x$ contiene $x \in \Part$ ed \`e dunque non disgiunto da $\Part$; se invece $x \in \Boundary{\Part}$, allora per definizione di bordo ogni intorno di $x$ interseca $\Part$.
+\par Supponiamo $\AccumulationPoint \in \TopologicalSpace$ di accumulazione per $\Part$. Allora $\ForAll{\Neighborhood \in \Neighborhoods{x}}{\Neighborhood \cap \Part \neq \emptyset}$. e dunque $x \in \Compl{\Exterior{\Part}} = \Part \cup \Boundary{\Part} = \Closure{\Part}$.  \EndProof
+\begin{Theorem}
+	Siano $(\TopologicalSpace,\Topology)$ uno spazio topologico che soddisfa il primo assioma di numerabilit\`a e $\Part \subseteq \TopologicalSpace$. Se \`e vero l'assioma della scelta, allora $\AccumulationPoint \in \TopologicalSpace$ \`e di accumulazione per $\Part$ se e solo se esiste $(a_n)_{n \in \mathbb{N}} \in \Part^\mathbb{N}$ convergente a $\AccumulationPoint$.
+\end{Theorem}
+\Proof Sia $\AccumulationPoint \in \TopologicalSpace$ di accumulazione per $\Part$ e sia $(\LocalBase_n)_{n \in \mathbb{N}}$ una base locale decrescente di $\AccumulationPoint$. Per ogni $n \in \mathbb{N}$, sia $a_n \in \LocalBase_n$: $(a_n)_{n \in \mathbb{N}}$ converge a $\AccumulationPoint$.
+\par Segue immediatamente dalle definizioni che se $\AccumulationPoint$ \`e tale che $(a_n)_{n \in \mathbb{N}} \in \Part^\mathbb{N}$ converga a $\AccumulationPoint$, allora $\AccumulationPoint$ \`e di accumulazione per $(a_n)_{n \in \mathbb{N}}$ e a maggior ragione per $\Part$. \EndProof
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ e $(\VarTopologicalSpace,\VarTopology)$ spazi topologici;
+		\item $\Part \subseteq \TopologicalSpace$;
+		\item $f: \Part \rightarrow \VarTopologicalSpace$;
+		\item $\AccumulationPoint$ punto di accumulazione per $\Part$;
+		\item $\Limit \in \VarTopologicalSpace$.
+	\end{itemize}
+	Se $\ForAll{\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology}{\Exists{\Neighborhood_\AccumulationPoint \in \Neighborhoods{\AccumulationPoint} \cap \Topology}{f(\Neighborhood_\AccumulationPoint \cap \Part) \subseteq \Neighborhood_\Limit}}$, allora diciamo che $f(x)$ \Define{converge}[di una funzione in un punto][convergenza] a $\Limit$, in simboli $f(x) \rightarrow \Limit$, per $x$ che tende a $\AccumulationPoint$, in simboli $x \rightarrow \AccumulationPoint$. Se $L$ \`e l'unico punto a cui converge $f(x)$ per $x \rightarrow \AccumulationPoint$, allora chiamiamo $\Limit$ \Define{limite}[di una funzione in un punto][limite] di $f(x)$ per $x \rightarrow \AccumulationPoint$, denotato $\lim_{x \rightarrow \AccumulationPoint} f(x) = \Limit$.
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ spazio topologico che verifica il primo assioma di numerabilit\`a;
+		\item $(\VarTopologicalSpace,\VarTopology)$ spazio topologico;
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \TopologicalSpace^\mathbb{N}$ convergente a $\AccumulationPoint \in \TopologicalSpace$;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \VarTopologicalSpace$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ converge a $\Limit$ se e solo se $f(x)$ converge a $\Limit$ per $x \rightarrow \AccumulationPoint$.
+\end{Theorem}
+\Proof Per prima cosa osserviamo che $\AccumulationPoint$ \`e di accumulazione per il dominio di $f$.
+\par Supponiamo $f(x) \rightarrow \Limit$ per $x \rightarrow \AccumulationPoint$. Sia $\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology$: per opportuno $\Neighborhood_\AccumulationPoint \in \Neighborhoods{\AccumulationPoint} \cap \Topology$, abbiamo $f \left (\Neighborhood_\AccumulationPoint \cap \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \right ) \subseteq \Neighborhood_\Limit$. Ma $a_n \rightarrow \AccumulationPoint$ per $n \rightarrow \infty$ e quindi esiste $N \in \mathbb{N}$ tale che $\Implies{n > N}{a_n \in \Neighborhood_\AccumulationPoint}$, da cui $\Implies{n > N}{f(a_n) \in \Neighborhood_\Limit}$. Ne deduciamo $f(a_n) \rightarrow \Limit$ per $n \rightarrow \infty$.
+\par Supponiamo ora $\lim_{n \rightarrow \infty} f(a_n) = \Limit$. Supponiamo inoltre che $f(x)$ non converga a $\Limit$ per $x \rightarrow \AccumulationPoint$. Allora esiste $\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology$ tale che $\ForAll{\Neighborhood_\AccumulationPoint \in \Neighborhoods{\AccumulationPoint} \cap \Topology}{f \left ( \Neighborhood_\AccumulationPoint \cap \bigcup_{m \in \mathbb{N}} \lbrace a_m \rbrace \right ) \cap \Compl{\Neighborhood_\Limit} \neq \emptyset}$. Sia $(\LocalBase_n)_{n \in \mathbb{N}}$ un sistema fondamentale di intorni aperti di $\AccumulationPoint$. Per ogni $n \in \mathbb{N}$, abbiamo dunque
+$f\left (\LocalBase_n \cap \bigcup_{m \in \mathbb{N}} \lbrace a_m \rbrace \right ) \cap \Compl{\Neighborhood_\Limit} \neq \emptyset$, da cui $\LocalBase_n \cap \bigcup_{m \in \mathbb{N}} \lbrace a_m \rbrace \cap f^{-1}(\Compl{\Neighborhood_\Limit}) \neq \emptyset$.
+\par Quindi $\ForAll{n \in \mathbb{N}}{\Exists{m \in \mathbb{N}}{a_m \in \LocalBase_n \cap f^{-1}(\Compl{\Neighborhood_\Limit})}}$. D'altra parte, lo stesso ragionamento pu\`o essere ripetuto per ogni sottosuccesione di $(a_n)_{n \in \mathbb{N}}$ del tipo $(a_{n + k})_{n \in \mathbb{N}}$ per qualsiasi $k \in \mathbb{N}$ e sempre con lo stesso intorno $\Neighborhood_\Limit$ di $\Limit$ e quindi $\ForAll{n \in \mathbb{N}}{\ForAll{N \in \mathbb{N}}{\Exists{m \in \mathbb{N} \SetMin N}{a_m \in \LocalBase_n \cap f^{-1}(\Compl{\Neighborhood_\Limit})}}}$.
+\par Possiamo quindi definire la sottosuccessione $(a_{g(n)})_{n \in \mathbb{N}} \in \TopologicalSpace^{\mathbb{N}}$, con $g: \mathbb{N} \rightarrow \mathbb{N}$ applicazione strettamente crescente, tale che $\ForAll{n \in \mathbb{N}}{a_{g(n)} \in \LocalBase_n \cap f^{-1}(\Compl{\Neighborhood_\Limit})}$. Allora
+\begin{itemize}
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ converge a $\Limit$ in quanto sottosuccessione di $(f(a_n))_{n \in \mathbb{N}}$;
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ non converge a $\Limit$ perch\'e $\ForAll{n \in \mathbb{N}}{f(a_{g(n)}) \notin \Neighborhood_\Limit}$.
+\end{itemize}
+Ma questo \`e assurdo, dunque $f(x)$ deve converge a $\Limit$ per $x \rightarrow \AccumulationPoint$. \EndProof

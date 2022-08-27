@@ -1,0 +1,175 @@
+\section{Funzioni trigonometriche.}
+\label{FunzioniNotevoli_FunzioniTrigonometriche}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\cos(X)
+          = \sum_{n \in \mathbb{N}} (-1)^n \frac{X^{2n}}{(2n)!}
+          \in \PowerSeries{\mathbb{C}}{X}$;
+		\item $\sin(X)
+          = \sum_{n \in \mathbb{N}} (-1)^n \frac{X^{2n + 1}}{(2n + 1)!}
+          \in \PowerSeries{\mathbb{C}}{X}$.
+	\end{itemize}
+	Abbiamo
+	\begin{itemize}
+		\item $\cos(X)$ converge ovunque in $\mathbb{C}$;
+		\item $\sin(X)$ converge ovunque in $\mathbb{C}$.
+	\end{itemize}
+\end{Theorem}
+\begin{Definition}
+	Le funzioni $\cos$ e $\sin$ del teorema precedente si chiamano
+  \Define{coseno} e \Define{seno} rispettivamente: le denoteremo sempre
+  $\cos$ e $\sin$.
+\end{Definition}
+\par \`E molto comune l'abuso di notazione secondo cui, per
+$z, \alpha \in \mathbb{C}$, denotiamo $\cos^\alpha{z}$ e
+$\sin^\alpha{z}$ le quantit\`a $(\cos{z})^\alpha$ e $(\sin{z})^\alpha$
+rispettivamente. Analoghe considerazioni varranno per le ulteriori
+funzioni trigonometriche che introdurremo.
+\par Noi adotteremo sempre questo abuso di linguaggio, salvo esplicite
+indicazioni contrarie.
+\begin{Theorem}
+	Sia $z \in \mathbb{C}$. Abbiamo
+  $e^z
+  = e^\RealPart{z} (\cos \ImaginaryPart{z} + i \sin \ImaginaryPart{z})$.
+\end{Theorem}
+\Proof Abbiamo
+$e^z
+= e^{\RealPart{z} + i \ImaginaryPart{z}}
+= e^{\RealPart{z}} e^{i \ImaginaryPart{z}}$.
+\par Esaminiamo il fattore $e^{i \ImaginaryPart{z}}$: abbiamo
+\begin{align*}
+	e^{i \ImaginaryPart{z}}
+	&= \sum_{n \in \mathbb{N}} \frac{i^n \ImaginaryPart{z}^n}{n!},\\
+	&= \sum_{n \in \mathbb{N}}
+	\left ( \frac{i^{4n} \ImaginaryPart{z}^{4n}}{(4n)!}
+	+ \frac{i^{4n + 1} \ImaginaryPart{z}^{4n + 1}}{(4n + 1)!}
+	+ \frac{i^{4n + 2} \ImaginaryPart{z}^{4n + 2}}{(4n + 2)!}
+	+ \frac{i^{4n + 3} \ImaginaryPart{z}^{4n + 3}}{(4n + 3)!} \right ),\\
+	&= \sum_{n \in \mathbb{N}}
+	\left ( \frac{\ImaginaryPart{z}^{4n}}{(4n)!}
+	+ \frac{i \ImaginaryPart{z}^{4n + 1}}{(4n + 1)!}
+	+ \frac{- \ImaginaryPart{z}^{4n + 2}}{(4n + 2)!}
+	+ \frac{- i \ImaginaryPart{z}^{4n + 3}}{(4n + 3)!} \right ),\\
+	&= \left (
+      \sum_{n \in \mathbb{N}} (-1)^n \frac{\ImaginaryPart{z}^{2n}}{(2n)!}
+      \right )
+      + i
+      \left (
+      \sum_{n \in \mathbb{N}}
+        (-1)^n \frac{\ImaginaryPart{z}^{2n + 1}}{(2n + 1)!}
+      \right ),\\
+	&= \cos{\ImaginaryPart{z}} + i \sin{\ImaginaryPart{z}}.
+  \text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+	Sia $z \in \mathbb{C}$. Abbiamo $\cos^2{z} + \sin^2{z} = 1$.
+\end{Corollary}
+\Proof Abbiamo $e^0 = 1$, ma anche
+\begin{align*}
+	e^0
+	&= e^{z - z},\\
+	&= e^z e^{-z},\\
+	&= e^{\RealPart{z}}(\cos \ImaginaryPart{z} + i \sin \ImaginaryPart{z})
+	  e^{- \RealPart{z}}(\cos \ImaginaryPart{z} - i \sin \ImaginaryPart{z})
+	&= \cos^2{x} - i^2 \sin^2{x},\\
+	&= \cos^2{x} + \sin^2{x}.
+\end{align*}
+\par Ne consegue $\cos^2{x} + \sin^2{x} = 1$. \EndProof
+\begin{Definition}
+  Definiamo \Define{tangente} la funzione
+  $\tan: \mathbb{C}
+    \SetMin \bigcup_{k \in \mathbb{Z}} \lbrace k\pi \rbrace
+    \rightarrow \mathbb{C}$
+  tale che $\tan{z} = \frac{\sin{z}}{\cos{z}}$.
+CONTROLLARE DOMINIO: gli zeri di cos sono tutti reali?
+\end{Definition}
+\begin{Theorem}
+  Siano $x, y \in \mathbb{R}$. Abbiamo
+  \begin{itemize}
+    \item $\cos{x + y} = \cos{x}\cos{y} - \sin{x}\sin{y}$;
+    \item $\sin{x + y} = \sin{x}\cos{y} + \cos{x}\sin{y}$;
+    \item $\tan{x + y} = \frac{\tan{x} + \tan{y}}{1 - \tan{x}\tan{y}}$.
+  \end{itemize}
+\end{Theorem}
+\begin{Corollary}
+  \TheoremName{Formule di duplicazione}[di duplicazione][formule]
+  Sia $x \in \mathbb{R}$. Abbiamo
+  \begin{itemize}
+    \item $\cos{2x}
+            = \cos^2{x} - \sin^2{x}
+            = 1 - 2 \sin^2{x}
+            = \cos^2{x} - 1$;
+    \item $\sin{2x} = 2 \sin{x} \cos{x}$;
+    \item $\tan{2x} = \frac{2 \tan{x}}{1 - \tan^2{x}}$.
+  \end{itemize}
+\end{Corollary}
+\begin{Corollary}
+  \TheoremName{Formule di bisezione}[di bisezione][formule]
+  \begin{itemize}
+    \item $\cos{\frac{x}{2}}
+            = \pm \sqrt{\frac{1 + \cos{x}}{2}}$;
+    \item $\sin{\frac{x}{2}}
+            = \pm \sqrt{\frac{1 - \cos{x}}{2}}$;
+    \item $\tan{\frac{x}{2}}
+            = \pm \sqrt
+                {\frac{1 - \cos{x}}{1 + \cos{x}}}
+            = \frac{\sin{x}}{1 + \cos{x}}
+            = \frac{1 - \cos{x}}{\sin{x}}$.
+  \end{itemize}
+\end{Corollary}
+\begin{Theorem}
+  \TheoremName{Formule di prostaferesi}[di prostaferesi][formule]
+  Siano $x, y \in \mathbb{R}$, abbiamo
+  \begin{itemize}
+    \item $\sin x + \sin y
+            = 2 \sin \frac{x + y}{2} \cos \frac{x - y}{2}$;
+    \item $\sin x - \sin y
+            = 2 \sin \frac{x - y}{2} \cos \frac{x + y}{2}$;
+    \item $\cos x + \cos y
+            = 2 \cos \frac{x + y}{2} \cos \frac{x - y}{2}$;
+    \item $\cos x - \cos y
+            = - 2 \sin \frac{x + y}{2} \sin \frac{x - y}{2}$;
+  \end{itemize}
+\end{Theorem}
+\begin{Theorem}
+  \TheoremName{Formule di Werner}[di Werner][formule]
+  Siano $x, y \in \mathbb{R}$, abbiamo
+  \begin{itemize}
+    \item $\sin{x}\cos{y} = \frac{\sin(x + y) + \sin(x - y)}{2}$;
+    \item $\cos{x}\cos{y} = \frac{\cos(x + y) + \cos(x - y)}{2}$;
+    \item $\sin{x}\sin{y} = \frac{\cos(x - y) - \cos(x + y)}{2}$.
+  \end{itemize}
+\end{Theorem}
+\begin{Theorem}
+  Abbiamo
+  \begin{itemize}
+    \item $\frac{d\cos}{dz}(z) = - \sin z$;
+    \item $\frac{d\sin}{dz}(z) = \cos z$;
+    \item $\frac{d\tan}{dz}(z) = 1 - \tan^2 z = \frac{1}{\cos^2 z}$.
+  \end{itemize}
+\end{Theorem}
+\Proof Derivando le serie formali che definiscono coseno e
+seno otteniamo
+\begin{align*}
+  \frac{d\cos}{dz}(z)
+    &= \sum_{n \in \NotZero{\mathbb{N}}} (-1)^n 2n \frac{z^{2n - 1}}{(2n)!},\\
+    &= \sum_{n \in \NotZero{\mathbb{N}}} (-1)^n \frac{z^{2n - 1}}{(2n - 1)!},\\
+    &= \sum_{n \in \mathbb{N}} (-1)^{n + 1} \frac{z^{2n + 1}}{(2n + 1)!},\\
+    &= - \sum_{n \in \mathbb{N}} (-1)^n \frac{z^{2n + 1}}{(2n + 1)!},\\
+    &= - \sin z.
+\end{align*}
+e
+\begin{align*}
+  \frac{d\sin}{dz}(z)
+    &= \sum_{n \in \mathbb{N}} (-1)^n (2n + 1)\frac{z^{2n}}{(2n + 1)!},\\
+    &= \sum_{n \in \mathbb{N}} (-1)^n \frac{z^{2n}}{(2n)!},\\
+    &= \cos z.
+\end{align*}
+\par Usando infine la formula della derivata di un rapporto di funzioni,
+\begin{align*}
+  \frac{d\tan}{dz}(z)
+    &= \frac{\cos z \cos z + \sin z \sin z}{\cosh^2 z},\\
+    &= 1 - \tan z,\\
+    &= \frac{1}{\cos^2 z}.\text{ \EndProof}
+\end{align*}

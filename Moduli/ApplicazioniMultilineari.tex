@@ -1,0 +1,35 @@
+\section{Applicazioni multilineari.}\label{ApplicazioniMultilineari}
+\begin{Definition}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di $\Ring$-moduli e
+	$\Module$ un ulteriore $\Ring$-modulo. L'applicazione
+	$\Multilinear: \bigtimes_{i \in n} \Module_i \rightarrow \Module$ si si dice \Define{antisimmetrica}[multilineare antisimmetrica][forma] quando, per ogni coppia $(j,k) \in n^2$ tale che $j \neq k$ e ogni $(x_i)_{i \in \mathbb{N}}, (y_i)_{i \in \mathbb{N}} \in \bigtimes_{i \in n} \Module_i$  tali che $x_i = \begin{cases} y_j\text{, se } i = k,\\ y_k\text{, se } i = j,\\ y_i\text{ altrimenti,}\end{cases}$ abbiamo $\Multilinear((x_i)_{i \in n}) = - \Multilinear((y_i)_{i \in n})$.
+\end{Definition}
+\begin{Definition}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Ring$-moduli.
+	Sia $\AlternatingForm \in \MultilinearForms{(\Module_i)_{i \in n}}$ ($n \in \mathbb{N}$) una forma multilineare sui $\Ring$-moduli $(\Module_i)_{i \in n}$. $\AlternatingForm$ si dice \Define{alternante}[multilineare alternante][forma] quando per ogni $(x_i)_{i \in n} \in \bigtimes_{i \in n} \Module_i$ tale che $\Exists{(j,k) \in n^2}{\And{j \neq k}{x_j = x_k}}$ abbiamo $\MultilinearForm((x_i)_{i \in n}) = 0$. Denotiamo $\AlternatingForms{(\Module)_{i \in n}}$ la classe di tutte le forme multilineari alternanti sui $\Ring$-moduli $(\Module_i)_{i \in n}$.
+\end{Definition}
+\begin{Theorem}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Ring$-moduli. Per ogni $k \in \NotZero{\mathbb{N}}$ le forme multilineari alternanti su $(\Module_i)_{i \in k}$ costituiscono un sottomodulo di $\MultilinearForms{(\Module_i)_{i \in k}}$.
+\end{Theorem}
+\Proof Siano $\AlternatingForm, \VarAlternatingForm \in \AlternatingForms{(\Module_i)_{i \in n}}$. Sia inoltre $\Scalar \in \Field$. Si verifica immediatamente che $\AlternatingForm - \VarAlternatingForm, \Scalar\AlternatingForm \in \AlternatingForms{(\Module_i)_{i \in n}}$. \EndProof
+\begin{Theorem}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Ring$-moduli.
+	Sia $\AlternatingForm \in \MultilinearForms{(\Module_i)_{i \in n}}$ ($n \in \mathbb{N}$) una forma multilineare alternante sui $\Ring$-moduli $(\Module_i)_{i \in n}$. $\AlternatingForm$ \`e antisimmetrica.
+\end{Theorem}
+\Proof Siano $(x_i)_{i \in \mathbb{N}}, (y_i)_{i \in \mathbb{N}} \in \bigtimes_{i \in n} \Module_i$  tali che $x_i = \begin{cases} y_j\text{, se } i = k,\\ y_k\text{, se } i = j,\\ y_i\text{ altrimenti,}\end{cases}$ per opportuni $j,k \in n^2$ distinti.
+\par Poniamo, per ogni $i \in n$, $z_i = \begin{cases} x_j + x_k\text{, se } i \in \lbrace j, k,\\ x_i\text{ altrimenti.}\end{cases}$ Abbiamo $\AlternatingForm((z_i)_{i \in n}) = 0$, ma anche $\AlternatingForm((z_i)_{i \in n}) = \AlternatingForm((x_i)_{i \in n}) + \AlternatingForm((y_i)_{i \in n})$, da cui $\AlternatingForm((x_i)_{i \in n}) = - \AlternatingForm((y_i)_{i \in n})$. \EndProof
+\begin{Theorem}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Ring$-moduli.
+	Sia $\AlternatingForm \in \MultilinearForms{(\Module_i)_{i \in n}}$ ($n \in \mathbb{N}$) una forma multilineare antisimmetrica sui $\Ring$-moduli $(\Module_i)_{i \in n}$. Se $\Characteristic{\Ring} \neq 2$, allora $\AlternatingForm$ \`e alternante.
+\end{Theorem}
+\Proof Sia $(x_i)_{i \in n} \in \bigtimes_{i \in n} \Module_i$ tale che $\Exists{(j,k) \in n^2}{\And{j \neq k}{x_j = x_k}}$. Abbiamo $\AlternatingForm((x_i)_{i \in n}) = - \AlternatingForm((x_i)_{i \in n})$ e quindi $2 \AlternatingForm((x_i)_{i \in n}) = 0$ e dunque $\AlternatingForm((x_i)_{i \in n}) = 0$. \EndProof
+\begin{Theorem}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Ring$-moduli.
+	Sia $\AlternatingForm \in \AlternatingForms{(\Module_i)_{i \in n}}$. Sia $(\ModuleElement_i)_{i \in n} \in \bigtimes_{i \in n} \Module_i$. Ora
+	\begin{itemize}
+		\item se $(\ModuleElement_i)_{i \in n}$ \`e una famiglia di vettori dipendenti, allora $\AlternatingForm((\ModuleElement_i)_{i \in n}) = 0$;
+		\item se $\Module$ \`e un $\Ring$-modulo tale che $\ForAll{i \in n}{\Module = \Module_i}$ e $(\ModuleElement_i)_{i \in n}$ \`e una base, allora $\AlternatingForm((\ModuleElement_i)_{i \in n}) = 0$ se e solo se $\AlternatingForm = 0$.
+	\end{itemize}
+\end{Theorem}
+\Proof Supponiamo $(\ModuleElement_i)_{i \in n}$ sia una famiglia di vettori dipendenti. Sia $j \in n$ tale che per opportuni scalari $(\Scalar_i)_{\substack{i \in n\\i \neq j}} \in \Field^{n - \lbrace j \rbrace}$, $\ModuleElement_j = \sum_{\substack{i \in n,\\ i \neq j}} \Scalar_i \ModuleElement_i$. Abbiamo $\AlternatingForm(\ModuleElement_0, ..., \ModuleElement_j, ..., \ModuleElement_{n - 1}) = \sum_{\substack{i \in n\\i \neq j}} \Scalar_i \AlternatingForm(\ModuleElement_0, ..., \ModuleElement_i, ..., \ModuleElement_{n - 1}) = 0$.
+\par Supponiamo ora invece che i $(\Module_i)_{i \in n}$ siano tutti uguali a un unico $\Ring$-modulo $\Ring$ di cui $(\ModuleElement_i)_{i \in n}$ sia una base. Allora, per ogni famiglia di elementi $(\VarModuleElement_i)_{i \in n}$, $\AlternatingForm((\VarModuleElement_i)_{i \in n})$ \`e combinazione lineare di termini della forma $\AlternatingForm((\ModuleElement_{\Permutation(i)})_{i \in n})$ con $\Permutation \in \SymmetricGroup{n}$, i quali sono per ipotesi tutti nulli. Dunque $\AlternatingForm = 0$. \EndProof

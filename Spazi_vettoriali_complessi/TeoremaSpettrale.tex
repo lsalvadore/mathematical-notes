@@ -1,0 +1,189 @@
+\section{Teorema spettrale}
+\label{SpaziVettorialiComplessi_TeoremaSpettrale}
+\begin{Theorem}
+  Sia $\LinearOperator$ un operatore lineare su uno spazio prehilbertiano
+  complesso $\PrehilbertSpace$ con prodotto hermitiano
+  $\HermitianProduct{\cdot}{\cdot}$.
+  Abbiamo
+  \[
+    \Coimplies{\Eigenvalue \in \Spectrum{\LinearOperator}}
+    {\Conjugate{\Eigenvalue} \in \Spectrum{\Adjoint{\LinearOperator}}}.
+  \]
+\end{Theorem}
+\Proof $\Eigenvalue \in \mathbb{C}$ non \`e un autovalore di $\LinearOperator$
+se e solo se $\LinearOperator - \Eigenvalue\Identity$ \`e invertibile,
+vale a dire
+se e solo se esiste un altro operatore $\VarLinearOperator$ tale che
+\[
+  \VarLinearOperator(\LinearOperator - \Eigenvalue\Identity) =
+  (\LinearOperator - \Eigenvalue\Identity)\VarLinearOperator =
+  \Identity;
+\]
+ci\`o equivale a
+\[
+  (\Adjoint{\LinearOperator} - \Conjugate{\Eigenvalue}\Identity)
+    \Adjoint{\VarLinearOperator} =
+  \Adjoint{\VarLinearOperator}
+    (\Adjoint{\LinearOperator} - \Conjugate{\Eigenvalue}\Identity) =
+  \Identity;
+\]
+e dunque a
+$\Conjugate{\Eigenvalue} \notin \Spectrum{\Adjoint{\LinearOperator}}$.
+\EndProof
+\begin{Theorem}
+  Sia $\NormalOperator$ un operatore normale su uno spazio prehilbertiano
+  complesso $\PrehilbertSpace$ con prodotto hermitiano
+  $\HermitianProduct{\cdot}{\cdot}$.
+  Sia inoltre $\Eigenvalue \in \mathbb{C}$ un autovalore di $\NormalOperator$
+  relativo all'autovettore $\Eigenvector \in \PrehilbertSpace$.
+  Allora $\Adjoint{\NormalOperator} \Eigenvector
+  = \Conjugate{\Eigenvalue} \Eigenvector$.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+\Norm{\Adjoint{\NormalOperator}\Eigenvector-\Conjugate{\Eigenvalue}\Eigenvector}
+  &= \HermitianProduct{\Adjoint{\NormalOperator}\Eigenvector}
+        {\Adjoint{\NormalOperator}\Eigenvector}
+    - \HermitianProduct{\Adjoint{\NormalOperator}\Eigenvector}
+        {\Conjugate{\Eigenvalue}\Eigenvector}
+    - \HermitianProduct{\Conjugate{\Eigenvalue}\Eigenvector}
+        {\Adjoint{\NormalOperator}\Eigenvector}
+    + \HermitianProduct{\Conjugate{\Eigenvalue}\Eigenvector}
+        {\Conjugate{\Eigenvalue}\Eigenvector},\\
+  &= \HermitianProduct{\NormalOperator\Adjoint{\NormalOperator}\Eigenvector}
+        {\Eigenvector}
+    - \HermitianProduct{\Adjoint{\NormalOperator}\NormalOperator\Eigenvector}
+        {\Eigenvector}
+    - \HermitianProduct{\Eigenvalue\Eigenvector}
+        {\Eigenvalue\Eigenvector}
+    + \HermitianProduct{\Eigenvalue\Eigenvector}
+        {\Eigenvalue\Eigenvector},\\
+  &= \HermitianProduct{\NormalOperator\Adjoint{\NormalOperator}\Eigenvector
+        - \Adjoint{\NormalOperator}\NormalOperator\Eigenvector}
+        {\Eigenvector},\\
+  &= 0.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+  Sia $\LinearOperator$ un operatore lineare su uno spazio prehilbertiano
+  complesso $\PrehilbertSpace$ con prodotto hermitiano
+  $\HermitianProduct{\cdot}{\cdot}$. Tutti gli autovalori di
+  $\HermitianOperator$ sono reali.
+\end{Corollary}
+\Proof $\HermitianOperator$ \`e hermitiano dunque normale.
+\par Quindi un autovettore ha per autovalore sia $\Eigenvalue$ che
+$\Conjugate{\Eigenvalue}$ e per l'unicit\`a dell'autovettore deve essere
+$\Eigenvalue = \Conjugate{\Eigenvalue} \in \mathbb{R}$. \EndProof
+\begin{Corollary}
+  Sia $\NormalOperator$ un operatore normale su uno spazio prehilbertiano
+  complesso $\PrehilbertSpace$ con prodotto hermitiano
+  $\HermitianProduct{\cdot}{\cdot}$.
+  Gli autospazi di $\NormalOperator$ sono fra loro ortogonali.
+\end{Corollary}
+\Proof Siano $\Eigenvalue, \VarEigenvalue \in \Spectrum{\NormalOperator}$,
+con $\Eigenvalue \neq \VarEigenvalue$.
+Siano inoltre $\Eigenvector$ e $\VarEigenvector$ autovettori di
+$\NormalOperator$ relativi a $\Eigenvalue$ e $\VarEigenvalue$
+rispettivamente.
+\par Supponiamo, senza perdita di generalit\`a, che il prodotto interno sia
+un prodotto hermitiano.
+\par Abbiamo
+\begin{align*}
+  \Eigenvalue \HermitianProduct{\Eigenvector}{\VarEigenvector}
+  &= \HermitianProduct{\Eigenvalue\Eigenvector}{\VarEigenvector},\\
+  &= \HermitianProduct{\NormalOperator\Eigenvector}{\VarEigenvector},\\
+  &= \HermitianProduct{\Eigenvector}{\Adjoint{\NormalOperator}\VarEigenvector},\\
+  &= \HermitianProduct{\Eigenvector}{\Conjugate{\VarEigenvalue}\VarEigenvector},\\
+  &= \VarEigenvalue\HermitianProduct{\Eigenvector}{\VarEigenvector}.
+\end{align*}
+\par Da cui necessariamente
+$\HermitianProduct{\Eigenvector}{\VarEigenvector}$. \EndProof
+\begin{Theorem}
+  Sia $\NormalOperator$ un operatore normale su uno spazio prehilbertiano
+  complesso $\PrehilbertSpace$ con prodotto hermitiano
+  $\HermitianProduct{\cdot}{\cdot}$.
+  Gli autospazi di $\NormalOperator$ sono tra loro ortogonali.
+\end{Theorem}
+\Proof Siano $\Eigenvalue, \VarEigenvalue \in \Spectrum{\NormalOperator}$ e
+$\Eigenvector, \VarEigenvector \in \PrehilbertSpace$ tali che
+$\NormalOperator\Eigenvector = \Eigenvalue\Eigenvector$
+e
+$\NormalOperator\VarEigenvector = \VarEigenvalue\VarEigenvector$.
+\par Abbiamo
+\begin{align*}
+  \Eigenvalue\HermitianProduct{\Eigenvector}{\VarEigenvector}
+  &= \HermitianProduct{\Eigenvalue\Eigenvector}{\VarEigenvector},\\
+  &= \HermitianProduct{\NormalOperator\Eigenvector}{\VarEigenvector},\\
+  &=\HermitianProduct{\Eigenvector}{\Adjoint{\NormalOperator}\VarEigenvector},\\
+ &=\HermitianProduct{\Eigenvector}{\Conjugate{\VarEigenvalue}\VarEigenvector},\\
+  &= \VarEigenvalue\HermitianProduct{\Eigenvector}{\VarEigenvector}.
+\end{align*}
+\par Dunque
+$\Or{\Eigenvalue = \VarEigenvalue}
+{\HermitianProduct{\Eigenvector}{\VarEigenvector}}$. \EndProof
+\begin{Theorem}
+  Sia $\NormalOperator$ un operatore normale su uno spazio prehilbertiano
+  complesso $\PrehilbertSpace$ con prodotto hermitiano
+  $\HermitianProduct{\cdot}{\cdot}$.
+  Sia inoltre $\Eigenvector$ autovettore di $\NormalOperator$:
+  lo spazio $\OrthogonalComplement{\LinearSpan{\Eigenvector}}$ \`e 
+  invariante rispetto a $\NormalOperator$.
+\end{Theorem}
+\Proof Sia $\Vector \in \OrthogonalComplement{\LinearSpan{\Eigenvector}}$ e
+sia $\Eigenvalue \in \Spectrum{\NormalOperator}$ l'autovalore associato a
+$\Eigenvector$.
+Abbiamo
+\begin{align*}
+  \HermitianProduct{\NormalOperator\Vector}{\Eigenvector}
+  &= \HermitianProduct{\NormalOperator\Vector}{\Eigenvector},\\
+  &= \HermitianProduct{\Vector}{\Adjoint{\NormalOperator}\Eigenvector},\\
+  &= \HermitianProduct{\Vector}{\Conjugate{\Eigenvalue}\Eigenvector},\\
+  &= \HermitianProduct{\Eigenvalue\Vector}{\Eigenvector},\\
+  &= \Eigenvalue\HermitianProduct{\Vector}{\Eigenvector},\\
+  &= 0.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+  \TheoremName{Teorema spettrale}[spettrale][teorema] Sia $\NormalOperator$ un
+  operatore normale su uno spazio prehilbertiano complesso $\PrehilbertSpace$
+  con prodotto hermitiano $\HermitianProduct{\cdot}{\cdot}$.
+  Esiste una base $(\Eigenvector_k)_{k \in n}$ di $\PrehilbertSpace$ costituita
+  da autovettori ortonormali di $\NormalOperator$.
+  Inoltre,
+  \begin{itemize}
+    \item la matrice che rappresenta $\NormalOperator$ \`e diagonale, con tutti
+      gli autovalori di $\NormalOperator$ sulla diagonale presenti tante volte
+      quanta \`e la molteplicit\`a geometrica di ciascuno di essi;
+    \item per ogni autovalore di $\NormalOperator$, la molteplicit\`a algebrica
+      e la molteplicit\`a geometrica coincidono.
+  \end{itemize}
+\end{Corollary}
+\Proof Procediamo per induzione sulla dimensione di $\PrehilbertSpace$.
+Se $\LinearDimension{\PrehilbertSpace} = 1$ il teorema \`e immediatamente
+dimostrato.
+\par Supponiamo il teorema dimostrato per
+$\LinearDimension{\PrehilbertSpace} = N$
+e proviamolo per
+$\LinearDimension{\PrehilbertSpace} = N + 1$.
+\par Sia $\Eigenvalue \in \Spectrum{\NormalOperator}$ e
+$\Eigenvector \in \PrehilbertSpace$
+autovettore associato a $\Eigenvalue$. Per il teorema precedente,
+$\NormalOperator$ si riduce su $\LinearSpan{\Eigenvector}$ e
+$\OrthogonalComplement{\LinearSpan{\Eigenvector}}$.
+Ma per ipotesi induttiva,
+$\OrthogonalComplement{\LinearSpan{\Eigenvector}}$
+ammette una base di autovettori ortonormali di
+$\Restricted{\NormalOperator}{\OrthogonalComplement{\LinearSpan{\Eigenvector}}}$
+e dunque di $\NormalOperator$. Estendiamo tale base col vettore
+$\frac{\Eigenvector}{\Norm{\Eigenvector}}$ e, se necessario, ortogonalizziamo
+l'insieme dei vettori della base che sono autovettori di $\NormalOperator$
+con autovalore $\Eigenvalue$: la base cos\`i ottenuta \`e ortonormale.
+\par Ne segue immediatamente la diagonalit\`a della matrice che rappresenta
+$\NormalOperator$ rispetto ad una base s\`i costituita con gli autovalori
+presenti sulla diagonale tante volte quanta \`e la loro molteplicit\`a
+geometrica. Infine, l'uguaglianza delle molteplicit\`a geometriche e algebriche
+segue dal calcolo diretto del polinomio caratteristico a partire dalla suddetta
+matrice diagonale. \EndProof
+\begin{Definition}
+  Con le notazioni del teorema precedente diciamo che
+  $(\Eigenvector_k)_{k \in n}$ \`e una
+  \Define{base spettrale}[spettrale][base].
+\end{Definition}

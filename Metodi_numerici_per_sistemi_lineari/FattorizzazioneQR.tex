@@ -1,0 +1,413 @@
+\section{Fattorizzazione QR.}
+\label{MetodiNumericiPerLaRisoluzioneDiSistemiLineari_FattorizzazioneQR}
+\begin{Definition}
+  Chiamiamo
+  \Define{matrice elementare di Householder}[elementare di Householder][matrice]
+  o anche
+  \Define{riflettore di Householder}[di Householder][riflettore]
+  una matrice elementare $\HouseholderElementaryMatrix$ hermitiana e unitaria.
+\end{Definition}
+\begin{Theorem}
+  Una matrice elementare di Householder $\HouseholderElementaryMatrix$ \`e
+  l'inversa di s\'e stessa.
+\end{Theorem}
+\Proof Abbiamo
+$\HouseholderElementaryMatrix^{-1}
+= \HermitianTransposed{\HouseholderElementaryMatrix}$
+per unitariet\`a e
+$\HermitianTransposed{\HouseholderElementaryMatrix}
+= \HouseholderElementaryMatrix$
+per hermitianit\`a. \EndProof
+\begin{Theorem}
+  Una matrice $\HouseholderElementaryMatrix$ di dimensione
+  $n \in \NotZero{\mathbb{N}}$ e diversa dall'identit\`a \`e una matrice elementare di
+  Householder se e solo se
+  \[
+    \HouseholderElementaryMatrix
+    = \Identity
+    - \frac{2}{\HermitianTransposed{\Vector}\Vector}
+    \Vector\HermitianTransposed{\Vector},
+  \]
+  per $\Vector \in \mathbb{C}^n$ opportuno.
+\end{Theorem}
+\Proof Supponiamo $\HouseholderElementaryMatrix$ sia una matrice elementare di Householder.
+\par Abbiamo, per opportuni $\Vector, \VarVector \in \mathbb{C}^n$ e $\Scalar \in \mathbb{C}$,
+$\HouseholderElementaryMatrix = \Identity - \Scalar\Vector\HermitianTransposed{\VarVector}$.
+Per l'hermitianit\`a di $\HouseholderElementaryMatrix$ e di $\Identity$, deve essere
+hermitiana anche $\Scalar\Vector\HermitianTransposed{\VarVector}$:
+\[
+  \Scalar\Vector\HermitianTransposed{\VarVector}
+  = \Conjugate{\Scalar}\VarVector\HermitianTransposed{\Vector}.
+\]
+Moltiplicando a destra per $\VarVector$, otteniamo
+\[
+  \Scalar\Norm{\VarVector}_2^2\Vector
+  = \Conjugate{\Scalar}\VarVector\HermitianTransposed{\Vector}\VarVector;
+\]
+quindi $\VarVector$ \`e un multiplo di $\Vector$: a meno di modificare la costante
+$\Scalar$ possiamo assumere senza perdita di generalit\`a $\Vector = \VarVector$.
+\par Per l'unitariet\`a di $\HouseholderElementaryMatrix$, abbiamo
+\begin{align*}
+  \Identity
+  &= \HouseholderElementaryMatrix\HouseholderElementaryMatrix^{-1},\\
+  &= \HouseholderElementaryMatrix\HouseholderElementaryMatrix,\\
+  &= (\Identity - \Scalar\Vector\HermitianTransposed{\Vector})
+      (\Identity - \Scalar\Vector\HermitianTransposed{\Vector}),\\
+  &= \Identity
+      - 2 \Scalar\Vector\HermitianTransposed{\Vector}
+      + \Scalar^2\Vector\HermitianTransposed{\Vector}\Vector\HermitianTransposed{\Vector}.
+\end{align*}
+Ci\`o \`e equivalente a
+\[
+  \Scalar(\Scalar\HermitianTransposed{\Vector}\Vector - 2)\Vector\HermitianTransposed{\Vector})
+  = 0.
+\]
+\par Ora, se $\HouseholderElementaryMatrix \neq \Identity$, allora necessariamente
+$\Scalar \neq 0$ e $\HermitianTransposed{\Vector}{\Vector} \neq 0$. Quindi infine
+\[
+  \Scalar = \frac{2}{\HermitianTransposed{\Vector}\Vector}.
+\]
+\par Assumiamo ora invece che $\HouseholderElementaryMatrix$ sia della forma
+\[
+  \HouseholderElementaryMatrix
+  = \Identity
+  - \frac{2}{\HermitianTransposed{\Vector}\Vector}
+  \Vector\HermitianTransposed{\Vector},
+\]
+per $\Vector \in \mathbb{C}^n$ opportuno.
+Segue per calcolo diretto che $\HouseholderElementaryMatrix$ \`e hermitiana e unitaria. \EndProof
+\begin{Theorem}
+  \label{th_Householder}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\VarVarVector \in \NotZero{\mathbb{C}^n}$.
+  \end{itemize}
+  Sia
+  $\HouseholderElementaryMatrix
+  = \Identity - \Scalar \Vector\HermitianTransposed{\Vector}$,
+  con
+  \[
+    \Scalar = (\Norm{\VarVarVector}[2]^2
+      + \AbsoluteValue{\VarVarVector_0} \Norm{\VarVarVector}[2])^{-1}
+  \]
+  e
+  \[
+    \Vector_k =
+    \begin{cases}
+      \left ( 1 + \frac{\Norm{\VarVarVector}[2]}{\AbsoluteValue{\VarVarVector_0}} \right )
+        \VarVarVector_0&\text{ se }k = 0\text{ e }\VarVarVector_0 \neq 0,\\
+      \Norm{\VarVarVector}[2]&\text{ se }k = 0\text{ e }\VarVarVector_0 = 0,\\
+      \VarVarVector_k&\text{ se }k \neq 0.
+    \end{cases}
+  \]
+  $\HouseholderElementaryMatrix$ \`e una matrice elementare di Householder tale che
+  \begin{itemize}
+    \item $\HouseholderElementaryMatrix\VarVarVector_0 \neq 0$;
+    \item $\ForAll{k \in \NotZero{n}}{(\HouseholderElementaryMatrix\VarVarVector)_k = 0}$.
+  \end{itemize}
+  Inoltre $\HouseholderElementaryMatrix$ \`e calcolabile con
+  $2n + 6 = \BigO{n}$ operazioni aritmetiche e estrazioni di radici, al caso pessimo.
+\end{Theorem}
+\Proof Dimostriamo che $\HouseholderElementaryMatrix$ \`e una matrice di Householder.
+Abbiamo, se $\VarVarVector_0 \neq 0$
+\begin{align*}
+  \frac{2}{\HermitianTransposed{\Vector}\Vector}
+  &= 2 \left ( \Norm{\VarVarVector}[2]^2
+    + 2 \Norm{\VarVarVector}[2]\AbsoluteValue{\VarVarVector_0}
+    + \Norm{\VarVarVector}[2]^2 \right )^{-1},\\
+  &= \Scalar.
+\end{align*}
+\par Se invece $\VarVarVector_0 \neq 0$,
+\begin{align*}
+  \frac{2}{\HermitianTransposed{\Vector}\Vector}
+  &= 2 \left ( \Norm{\VarVarVector}[2]^2
+    + \Norm{\VarVarVector}[2]^2 \right )^{-1},\\
+  &= \Scalar.
+\end{align*}
+\par Quindi $\HouseholderElementaryMatrix$ \`e una matrice elementare di Householder.
+\par Sia ora $k \in n$. Abbiamo
+\begin{align*}
+  (\HouseholderElementaryMatrix\VarVarVector)_k 
+  &= \sum_{j \in n} \HouseholderElementaryMatrix_k^j \VarVarVector_j,\\
+  &= \VarVarVector_k - \Scalar \Vector_k \sum_{j \in n}
+    \Conjugate{\Vector_j}
+    \VarVarVector_j.
+\end{align*}
+\par Assumiamo in un primo momento $\VarVarVector_0 \neq 0$.
+\par Supponiamo $k \neq 0$: abbiamo
+\begin{align*}
+  (\HouseholderElementaryMatrix\VarVarVector)_k
+  &= \VarVarVector_k - \Scalar \VarVarVector_k \left (
+    \Conjugate{
+      \left ( 1 + \frac{\Norm{\VarVarVector}[2]}{\AbsoluteValue{\VarVarVector_0}} \right )
+        \VarVarVector_0}
+    \VarVarVector_0
+    + \sum_{j = 1}^{n - 1}
+    \Conjugate{\VarVarVector_j}
+    \VarVarVector_j \right ),\\
+  &= \VarVarVector_k - \Scalar \VarVarVector_k \left (
+      \Norm{\VarVarVector}[2] \AbsoluteValue{\VarVarVector_0}
+    + \Norm{\VarVarVector}[2]^2 \right ),\\
+  &= 0.
+\end{align*}
+\par Se invece $k = 0$,
+\begin{align*}
+  (\HouseholderElementaryMatrix\VarVarVector)_0
+  &= \VarVarVector_0 - \Scalar
+    \left ( 1 + \frac{\Norm{\VarVarVector}[2]}{\AbsoluteValue{\VarVarVector_0}} \right )
+    \VarVarVector_0 \left (
+    \Conjugate{
+      \left ( 1 + \frac{\Norm{\VarVarVector}[2]}{\AbsoluteValue{\VarVarVector_0}} \right )
+        \VarVarVector_0}
+    \VarVarVector_0
+    + \sum_{j = 1}^{n - 1}
+    \Conjugate{\VarVarVector_j}
+    \VarVarVector_j \right ),\\
+  &= \VarVarVector_0 - \Scalar
+    \left( 1 + \frac{\Norm{\VarVarVector}[2]}{\AbsoluteValue{\VarVarVector_0}} \right )
+      \VarVarVector_0 \left (
+      \Norm{\VarVarVector}[2] \AbsoluteValue{\VarVarVector_0}
+    + \Norm{\VarVarVector}[2]^2 \right ),\\
+  &= - \frac{\Norm{\VarVarVector}[2]}{\AbsoluteValue{\VarVarVector_0}} \VarVarVector_0.
+\end{align*}
+\par Assumiamo ora invece $\VarVarVector_0 = 0$.
+\par Supponiamo $k \neq 0$, abbiamo
+\begin{align*}
+  (\HouseholderElementaryMatrix\VarVarVector)_k
+  &= \VarVarVector_k - \Scalar \VarVarVector_k
+    \sum_{j \in n}
+    \Conjugate{\VarVarVector_j}
+    \VarVarVector_j,\\
+  &= \VarVarVector_k - \Scalar \VarVarVector_k
+    \Norm{\VarVarVector}[2]^2,\\
+  &= 0.
+\end{align*}
+\par Se invece $k = 0$,
+\begin{align*}
+  (\HouseholderElementaryMatrix\VarVarVector)_0
+  &= - \Scalar \Norm{\VarVarVector}[2]
+    \sum_{j \in n}
+    \Conjugate{\VarVarVector_j}
+    \VarVarVector_j,\\
+  &= - \Scalar \Norm{\VarVarVector}[2]^3,\\
+  &= - \Norm{\VarVarVector}[2].
+\end{align*}
+\par Possiamo calcolare $\HouseholderElementaryMatrix$ con le seguenti operazioni:
+\begin{itemize}
+  \item calcolo di $\Norm{\VarVarVector}[2]^2$, che costa $2n - 1$
+  \item calcolo di $\Norm{\VarVarVector}[2]$, ottenibile dal dato precedente con un'estrazione
+    di radice quadrata;
+  \item calcolo di $\Scalar$ a partire dai dati precedenti effettuando una moltiplicazione,
+    una somma e un'inversione;
+  \item calcolo di $\Vector$ che, al caso pessimo ($\VarVector \neq 0$), \`e calcolabile
+    utilizzando i dati precedenti tramite una divisione, una somma e una moltiplicazione.
+\end{itemize}
+Abbiamo in totale, al caso pessimo,
+$2n - 1 + 1 + 3 + 3 = 2n + 6 = \BigO{n}$. \EndProof
+\begin{Definition}
+  Sia $\Matrix \in \mathbb{C}^{n \times n}$ ($n \in \mathbb{N}$). Chiamiamo
+  \Define{fattorizzazione $QR$}[$QR$][fattorizzazione]
+  o
+  \Define{decomposizione $QR$}[$QR$][decomposizione]
+  di $\Matrix$ una coppia di matrici
+  $(Q,R) \in \mathbb{C}^{n \times n} \times \mathbb{C}^{n \times n}$
+  tali che
+  \begin{itemize}
+    \item $\Matrix = QR$;
+    \item $Q$ \`e unitaria;
+    \item $R$ \`e triangolare superiore.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Con le notazioni del teorema \ref{th_FattorizzazioneMatriciElementari},
+  l'algoritmo ottenuto dall'algoritmo del teorema \ref{th_FattorizzazioneMatriciElementari}
+  scegliendo come matrici $(\ElementaryMatrix_{(l,0)})_{l \in m}$ matrici elementari di Householder
+  si chiama
+  \Define{metodo di Householder}[di Householder][metodo].
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/FattorizzazioneQR.m"}
+	\caption{Implementazione del metodo di Householder in \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Con le notazioni della definizione precedente, il metodo di Householder restituisce
+  una fattorizzazione $QR$ di $\Matrix$. Il costo del metodo \`e $\BigO{n^3}$.
+\end{Theorem}
+\Proof $Q$ \`e prodotto di matrici diagonali a blocchi del tipo
+$\lmatrix
+\begin{array}{c|c}
+  \Identity &\\
+  \hline
+  &\HouseholderElementaryMatrix
+\end{array}
+\rmatrix$, dove l'identit\`a $\Identity$ pu\`o anche mancare (pi\`u precisamente manca per la
+prima matrice elementare calcolata dal metodo) e $\HouseholderElementaryMatrix$ \`e una matrice
+elementare di Householder. $Q$ \`e quindi prodotto di matrici unitarie, dunque unitaria.
+$R$ \`e triangolare superiore per il teorema \ref{th_FattorizzazioneMatriciElementari}.
+\par Il metodo prevede il calcolo di $n$ matrici a blocchi $B$ del tipo sopra specificato,
+col blocco di Householder di dimensione decrescente $q \in \NotZero{(n + 1)}$,
+ciascuna di esse moltiplicate per
+una matrice $M \in \mathbb{C}^{n \times n}$. Tali prodotti $P \in \mathbb{C}^{n \times n}$ sono
+calcolabili nel modo seguente:
+\[
+    P_k^j =
+    \begin{cases}
+      M_k^j&\text{ se }k < n - q,\\
+      0&\text{ se }\And{k > n - q}{j = n - q},\\
+      M_k^j - \Scalar \Vector_k \sum_{r = k}^n \Conjugate{\Vector_r} \Matrix_r^j&\text{ se }
+        \And{k > n - q}{j > n - q},\\
+      - \Norm{\VarVarVector}[2]&\text{ se }\And{k = j = n - q}{M_k^j = 0},\\
+      - \frac{\Norm{\VarVarVector}[2]}{\AbsoluteValue{M_k^j}}M_k^j&\text{ se }\And{k = j = n - q}{M_k^j \neq 0},
+    \end{cases}
+\]
+dove $\Scalar$ e $\Vector$ sono rispettivamente lo scalare e il vettore che intervengono
+nella costruzione della matrice di Householder, mentre
+$\VarVector = (M_k^{n - q})_{k = n - q}^n$.
+\begin{Corollary}
+  Qualsiasi $\Matrix \in \mathbb{C}^{n \times n}$ ($n \in \NotZero{\mathbb{N}}$) ammette una
+  fattorizzazione $QR$.
+\end{Corollary}
+\Proof Per il teorema \ref{th_Householder}, per ogni $l \in m$ \`e sempre possibile scegliere
+$\ElementaryMatrix_{(l,0)}$ di Householder al passo \ref{FattorizzazioneMatriciElementari_3}
+dell'algoritmo del teorema \ref{th_FattorizzazioneMatriciElementari}. \EndProof
+\begin{Theorem}
+  \label{th_OrtonormalizzazioneQR}
+  Siano
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$;
+    \item $Q \in \mathbb{C}^{n \times n}$ e $R \in \mathbb{C}^{n \times m}$
+      tali che $\Matrix = QR$ sia una fattorizzazione $QR$;
+    \item $p$ tale che $R_p$ sia una riga nulla;
+    \item $Q' = (Q_k^j)_{\substack{k \in n\\j \in p}}$;
+    \item $R' = (R_k^j)_{\substack{k \in p\\j \in m}}$.
+  \end{itemize}
+  Abbiamo,
+  \begin{itemize}
+    \item $\ForAll{(k,j) \in p \times m}{R_k^j = 0}$;
+    \item $\Matrix = Q'R'$.
+  \end{itemize}
+  Inoltre, se $p = m$,
+  \begin{itemize}
+    \item $R'$ \`e invertibile;
+    \item $\Image{\Matrix} = \Image{Q'}$.
+  \end{itemize}
+\end{Theorem}
+\Proof La prima relazione segue direttamente dalla definizione del metodo
+di Householder. Per la seconda relazione, abbiamo, per ogni
+$(k,j) \in n \times m$,
+\begin{align*}
+  \Matrix_k^j
+  &= \sum_{l \in n} Q_k^l R_l^j,\\
+  &= \sum_{l \in p} Q_k^l R_l^j,\\
+  &= \sum_{l \in p} {Q'}_k^l {R'}_l^j.
+\end{align*}
+\par Inoltre, se $p = m$,
+$R$ \`e invertibile perch\'e, essendo triangolare, i suoi
+autovalori sono gli elementi diagonali, nessundo dei quali \`e nullo
+per definizione del metodo di Householder.
+\par Ora, sia $Y \in \Image{\Matrix}$ e sia $X \in \mathbb{C}^n$ tale che
+$Y = \Matrix X$. Abbiamo
+\begin{align*}
+  Q' \cdot R'X
+  &= Q'R' \cdot X,\\
+  &= \Matrix X,\\
+  &= Y.
+\end{align*}
+\par Se invece $Y \in \Image{\Matrix}$ e $X \in \mathbb{C}^n$ \`e tale che
+$Y = Q'X$, abbiamo
+\begin{align*}
+  \Matrix \cdot R'^{-1}X
+  &= Q'R' \cdot R'^{-1}X,\\
+  &= QX,\\
+  &= Y.\text{ \EndProof}
+\end{align*}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/OrtonormalizzaColonne.m"}
+	\caption{Implementazione di un algoritmo in \LanguageName{octave} per ortonormalizzare
+  le colonne di una matrice.}
+\end{listing}
+\begin{Definition}
+  Con le notazioni del teorema precedente,
+  chiamiamo ancora
+  \Define{fattorizzazione $QR$}[$QR$][fattorizzazione]
+  o
+  \Define{decomposizione $QR$}[$QR$][decomposizione]
+  di $\Matrix$ la coppia di matrici $(Q',R')$.
+\end{Definition}
+\begin{Theorem}
+  \label{th_FattorizzazioneQRparziale}
+  Siano
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}}$;
+    \item $p \in \NotZero{n}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$;
+    \item $Q \in \mathbb{C}^{n \times n}$ e $R \in \mathbb{C}^{n \times m}$
+      tali che $\Matrix = QR$ sia una fattorizzazione $QR$;
+    \item $\Matrix' = (\Matrix_k^j)_{\substack{k \in n\\j \in p}}$;
+    \item $Q' = (Q_k^j)_{\substack{k \in n\\j \in p}}$;
+    \item $R' = (R_k^j)_{\substack{k \in p\\j \in p}}$.
+  \end{itemize}
+  Abbiamo, $\Matrix' = Q'R'$.
+\end{Theorem}
+\Proof Abbiamo, per ogni
+$(k,j) \in n \times p$,
+\begin{align*}
+  \Matrix_k^j
+  &= \sum_{l \in n} Q_k^l R_l^j,\\
+  &= \sum_{l \in p} Q_k^l R_l^j,\\
+  &= \sum_{l \in p} {Q'}_k^l {R'}_l^j.\text{ \EndProof}
+\end{align*}
+\begin{Definition}
+  Sia $\Ring$ un anello e sia
+  $\PhaseMatrix \in \Ring^{n \times n}$ ($n \in \NotZero{\mathbb{N}}$)
+  diagonale e unitaria: $\PhaseMatrix$ si dice
+  \Define{matrice di fase}[di fase][matrice].
+\end{Definition}
+\begin{Theorem}
+  Sia $\TriangularMatrix \in \mathbb{C}^{n \times n}$ ($n \in \NotZero{\mathbb{N}}$) una 
+  matrice triangolare superiore unitaria. $\TriangularMatrix$ \`e una matrice di fase.
+\end{Theorem}
+\Proof Procediamo per induzione su $n$. Se $n = 1$ la dimostrazione \`e
+immediata.
+\par Supponiamo il teorema provato per $n = N$ e proviamolo per $n = N + 1$.
+Abbiamo
+\begin{align*}
+  \HermitianTransposed{\TriangularMatrix^0} \TriangularMatrix^0
+  &= \sum_{l \in n} \Conjugate{\TriangularMatrix_l^0} \TriangularMatrix_l^0,\\
+  &= \Conjugate{\TriangularMatrix_0^0} \TriangularMatrix_0^0,\\
+  &= 1.
+\end{align*}
+Dunque $\TriangularMatrix_0^0 \neq 0$.
+\par Per ogni $j \in \NotZero{n}$, abbiamo
+\begin{align*}
+  \HermitianTransposed{\TriangularMatrix^0} \TriangularMatrix^j
+  &= \sum_{l \in n} \Conjugate{\TriangularMatrix_l^0} \TriangularMatrix_l^j,\\
+  &= \Conjugate{\TriangularMatrix_0^0} \TriangularMatrix_0^j,\\
+  &= 0.
+\end{align*}
+Dunque necessariamente $\TriangularMatrix_0^j = 0$.
+\par D'altra parte, la sottomatrice
+$(\TriangularMatrix_k^j)_{(k,j) \in (\NotZero{n}) \times (\NotZero{n})}$
+\`e ancora unitaria e triangolare superiore: per ipotesi induttiva \`e diagonale.
+\par Dunque \`e diagonale $\TriangularMatrix$. \EndProof
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$ invertibile;
+    \item $Q, R \in \mathbb{C}^{n \times n}$ una fattorizzazione $QR$ di $\Matrix = QR$;
+    \item $Q', R' \in \mathbb{C}^{n \times n}$ una fattorizzazione $QR$ di $\Matrix = Q'R'$.
+  \end{itemize}
+  Esiste una matrice di fase $\DiagonalMatrix$ tale che
+  $Q' = Q\PhaseMatrix$ e
+  $R' = \PhaseMatrix^{-1} R$.
+\end{Theorem}
+\Proof Poniamo $\PhaseMatrix = Q^{-1}Q'$: $\PhaseMatrix$ \`e unitaria.
+\par Inoltre, da $QR = Q'R'$, deduciamo $\PhaseMatrix = RR'^{-1}$, dunque
+$\PhaseMatrix$ \`e anche triangolare superiore.
+\par Quindi $\PhaseMatrix$ \`e unitaria e diagonale. Segue infine da
+verifica diretta che
+$Q' = Q\PhaseMatrix$ e
+$R' = \PhaseMatrix^{-1} R$. \EndProof

@@ -1,0 +1,10 @@
+# name: PuntiDiControllo_1
+# type: matrix
+# rows: 4
+# columns: 2
+ -2 -2
+ 0 1
+ 4 2
+ 5 1
+
+

@@ -1,0 +1,47 @@
+\subsection{Algoritmi aleatori.}
+\label{AlgoritmiEStruttureDiDati_AlgoritmiAleatori}
+\begin{Definition}
+  Un algoritmo si dice \Define{aleatorio}[aleatorio][algoritmo] se prevede
+  l'uso di qualche variabile aleatoria.
+\end{Definition}
+\begin{Definition}
+  Si chiama \Define{algoritmo di Fisher-Yates}[di Fisher-Yates][algoritmo]
+  l'algoritmo che agisce su una successione finita
+  $(e_i)_{i \in n}$ ($n \in \mathbb{N}$, $n \geq 2$)
+  data in ingresso nel modo seguente:
+  \begin{enumerate}
+    \item\label{FisherYates_1} si ponga $I = 0$;
+    \item\label{FisherYates_2} si ponga $J$ uguale a un numero naturale casuale
+      in $[I;n - 1]$ con probabilit\`a uniforme;
+    \item\label{FisherYates_3} si scambino $e_I$ e $e_J$;
+    \item\label{FisherYates_5} si incrementi $I$ di $1$;
+    \item\label{FisherYates_4} se $I < n - 1$ si
+      torni al punto \ref{FisherYates_2}, altrimenti l'algoritmo termina.
+  \end{enumerate}
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni della definizione precedente,
+  per ogni
+  $\Permutation \in \SymmetricGroup{n}$
+  l'algoritmo di Fisher-Yates permuta la successione
+  $(e_i)_{i \in n}$
+  nella successione
+  $(e_{\Permutation(i)})_{i \in n}$
+  con probabilit\`a
+  $n!$.
+\end{Theorem}
+\Proof Supponiamo $n = 2$. Allora la probabilit\`a che $e_0$ e $e_1$ vengano
+scambiati \`e uguale alla probabilit\`a che $J = 1$, cio\`e $\frac{1}{2}$.
+\par Fissiamo $N > 2$ e assumiamo il teorema dimostrato per $n = N - 1$.
+\par Al primo passaggio da \ref{FisherYates_2} ogni possibile valore di $J$
+viene scelto con probabilit\`a $\frac{1}{n}$; dunque, dopo lo scambio del punto
+\ref{FisherYates_3}, ogni elemento della successione pu\`o diventare $e_0$ con
+probabilit\`a $\frac{1}{n}$.
+\par Ora, osserviamo che nel seguito dell'algoritmo $e_0$ non verr\`a pi\`u
+toccato e che il resto delle operazione consiste esattamente nell'eseguire
+l'algoritmo di Fisher-Yates sull'\English{input} $(e_i)_{i \in \NotZero{n}}$.
+Per ipotesi induttiva, ogni permutazione degli elementi
+$(e_i)_{i \in \NotZero{n}}$ avviene con probabilit\`a $\frac{1}{(n - 1)!}$.
+Dunque ogni permutazione degli elementi della successione di partenza
+$(e_i)_{i \in n}$ avviene con probabilit\`a
+$\frac{1}{n} \cdot \frac{1}{(n - 1)!} = \frac{1}{n!}$. \EndProof

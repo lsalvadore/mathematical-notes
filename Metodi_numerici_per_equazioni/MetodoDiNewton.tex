@@ -1,0 +1,9 @@
+\subsection{Metodo di Newton o delle tangenti.}
+\label{MetodiNumericiPerEquazioni_MetodoDiNewton}
+\begin{Definition}
+	Sia $f: I \rightarrow \mathbb{C}$ ($I \subseteq \mathbb{R}^n$) una funzione differenziabile. Chiamiamo \Define{metodo di Newton}[di Newton][metodo] o \Define{metodo delle tangenti}[delle tangenti][metodo] un metodo del punto fisso definito da un punto iniziale qualsiasi e della funzione $g(x) = x - (\Jacobian(x))^{-1} f(x)$, dove $\Jacobian$ \`e lo Jacobiano di $f$.
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_equazioni/MetodoDiNewton.m"}
+	\caption{Implementazione del metodo di Newton in \LanguageName{octave}.}
+\end{listing}

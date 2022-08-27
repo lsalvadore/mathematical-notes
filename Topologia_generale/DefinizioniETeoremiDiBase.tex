@@ -1,0 +1,182 @@
+\section{Definizioni e teoremi di base.}\label{DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Sia $\TopologicalSpace$ una classe. Si dice che $\Topology$ \`e
+	una \Define{topologia} di $\TopologicalSpace$ quando
+	\begin{itemize}
+		\item $\ForAll{\Open \in \Topology}{\Open \subseteq
+		\TopologicalSpace}$;
+		\item $\ForAll{\Part \subseteq \Topology}{\bigcup_{\Open
+		\in \Part} \Open \in \Topology}$;
+		\item $\ForAll{\Part \subseteq \Topology}{\Implies{\Cardinality{\Part}
+		\leq \aleph_0}{{\bigcap_{\Open \in \Part} \Open \in
+		\Topology}}}$;
+	\end{itemize}
+	La coppia $(\TopologicalSpace,\Topology)$ si chiama
+	\Define{spazio topologico}[topologico][spazio] e ogni elemento di
+	$\Topology$ si chiama \Define{aperto}.
+\end{Definition}
+\begin{Definition}
+	Siano $(\TopologicalSpace_1,\Topology_1)$ e
+	 $(\TopologicalSpace_2, \Topology_2)$ spazi topologici.
+	 Un'applicazione
+	 $\Continuous:  \TopologicalSpace_1 \rightarrow
+	 \TopologicalSpace_2$ tale che
+	$\Implies{\Open \in \Topology_2}{\Continuous^{-1}(\Open) \in
+	 \Topology_1)}$ si dice \Define{continua}[continua][applicazione].
+\end{Definition}
+\begin{Theorem}
+	Le applicazioni continue costituiscono una categoria.
+\end{Theorem}
+\Proof \`E sufficiente provare che la composizione di applicazioni
+ continue \`e continua. Siano
+\begin{itemize}
+	\item $\Continuous_1: \TopologicalSpace_1 \rightarrow
+	\TopologicalSpace_2$;
+	\item $\Continuous_2: \TopologicalSpace_2 \rightarrow
+	\TopologicalSpace_3$;
+\end{itemize}
+applicazioni continue tra gli spazi topologici
+$(\TopologicalSpace_1,\Topology_1)$,
+$(\TopologicalSpace_2,\Topology_2)$ e
+$(\TopologicalSpace_3,\Topology_3)$.
+Sia $\Open \in \Topology_3$. Abbiamo
+$(\Continuous_2 \circ \Continuous_1)^{-1}(\Open) =
+\Continuous_1^{-1}(\Continuous_2^{-1}(\Open)) \in \Topology_1$.
+Dunque $\Continuous_2 \circ \Continuous_1$ \`e continua. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{categoria degli spazi topologici}[degli spazi topologici][categoria]
+	la categoria costituita da tutte le applicazioni continue, d'ora
+	in poi denotata $\CatTopologicalSpace$. \`E inoltre definito il
+	funtore dimenticante canonico $\Forgetful: \CatTopologicalSpace
+	\rightarrow \CatClass$ che ad ogni spazio topologico
+	$(\TopologicalSpace,\Topology)$ associa la classe
+	$\TopologicalSpace$. 
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{omeomorfismi} gli isomorfismi di
+	$\CatTopologicalSpace$.
+\end{Definition}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Definiamo \Define{chiuso} una classe $\Closed \subseteq
+	\TopologicalSpace$ tale che $\Compl{\Closed} \in \Topology$.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$, uno spazio topologico.
+	$\emptyset$ e $\TopologicalSpace$ sono aperti e chiusi.
+\end{Theorem}
+\Proof Basta provare che $\emptyset, \TopologicalSpace \in \Topology$.
+Abbiamo $\bigcup_{\Part \in \emptyset} \Part = \emptyset$ e
+$\bigcap_{\Part \in \emptyset} \Part = \TopologicalSpace$. \EndProof
+\begin{Definition}
+	Siano $(\TopologicalSpace_1,\Topology_1)$ e
+	$(\TopologicalSpace_2,\Topology_2)$ spazi topologici. Sia inoltre
+	$\Continuous: \TopologicalSpace_1 \rightarrow \TopologicalSpace_2$
+	un'applicazione qualsiasi.
+	Dato un punto $x \in \TopologicalSpace_1$ definiamo
+	\Define{intorno} di $x$ una classe $\Neighborhood$ tale che
+	\begin{itemize}
+		\item $\Neighborhood \subseteq \TopologicalSpace_1$;
+		\item $\Exists{\Open \in \Topology}{\And{x \in \Open}{\Open \subseteq
+		\Neighborhood}}$.
+	\end{itemize}
+	Denoteremo $\Neighborhoods{x}[\Topology_1]$ la classe di tutti gli intorni di $x$ rispetto alla topologia $\tau_1$, omettendo la spcifica della topologia ogni qual volta essa sia chiara dal contesto.
+	Inoltre, diciamo che $\Continuous$ \`e
+	\Define{continua}[continua in un punto][applicazione] quando
+	per ogni $\Neighborhood_{\Continuous(x)} \in \Neighborhoods{\Continuous(x)}$ intorno di
+	$\Continuous(x)$ esiste $\Neighborhood_x \in \Neighborhoods{x}$ intorno di $x$ tale che
+	$\Continuous(\Neighborhood_x) \subseteq \Neighborhood_{\Continuous{x}}$.
+\end{Definition}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ uno spazio
+		 topologico;
+		\item $\Part \subseteq \TopologicalSpace$;
+		\item $x \in \TopologicalSpace$.
+	\end{itemize}
+	Il punto $x$ si dice
+	\begin{itemize}
+		\item \Define{interno}[interno][punto] a $\Part$ quando
+		$\Part$ \`e un intorno di $x$;
+		\item \Define{esterno}[esterno][punto] a $\Part$ quando
+		$\Compl{\Part}$ \`e un intorno di $x$;
+		\item \Define{aderente}[aderente][punto] o
+		\Define{di frontiera}[di frontiera][punto] quando
+		per ogni intorno $\Neighborhood \in \Neighborhoods{x}$ si verificano
+		simultaneamente $\Neighborhood \cap \Part \neq \emptyset$
+		e $\Neighborhood \cap \Compl{\Part} \neq \emptyset$.
+	\end{itemize}
+	Inoltre definiamo
+	\begin{itemize}
+		\item l'\Define{interno} di $\Part$, denotato
+		 $\Interior{\Part}$, la classe di tutti i punti interni
+		 di $\Part$;
+		\item l'\Define{esterno} di $\Part$, denotato
+		 $\Exterior{\Part}$, la classe di tutti i punti esterni
+		 di $\Part$;
+		\item la \Define{frontiera} o \Define{bordo} o ancora
+		\Define{contorno} di $\Part$, denotato
+		$\Boundary{\Part}$, la classe di tutti i punti di
+		 frontiera di $\Part$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ uno spazio
+		 topologico;
+		\item $\Part \subseteq \TopologicalSpace$.
+	\end{itemize}
+	Le classi non vuote tra $\Interior{\Part}$, $\Exterior{\Part}$ e
+	$\Boundary{\Part}$ costituiscono una partizione.
+\end{Theorem}
+\Proof Sia $x \in \TopologicalSpace$.
+\begin{itemize}
+	\item se $x \in \Interior{\Part}$, allora $x \in \Part$ per cui
+	$\Compl{\Part}$ non pu\`o essere intorno di $x$. Inoltre
+	$\Interior{\Part}$ \`e un intorno di $x$ disgiunto da
+	$\Compl{\Part}$, dunque $x \notin \Boundary{\Part}$;
+	\item se $x \in \Exterior{\Part}$, allora
+	 $x \in \Compl{\Part}$ per cui
+	$\Part$ non pu\`o essere intorno di $x$. Inoltre
+	$\Exterior{\Part}$ \`e un intorno di $x$ disgiunto da
+	$\Part$, dunque $x \notin \Boundary{\Part}$;
+	\item se $x \in \Boundary{\Part}$, allora n\'e $\Part$ n\'e
+	 $\Compl{\Part}$ possono essere intorni di $x$. \EndProof
+\end{itemize}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ uno spazio
+		 topologico;
+		\item $\Part \subseteq \TopologicalSpace$.
+	\end{itemize}
+	$\Interior{\Part}$ \`e il pi\`u grande aperto sottoclasse di
+	$\Part$.	
+\end{Theorem}
+\Proof Sia $\Open \in \Topology$ tale che $\Open \subseteq \Part$. Sia
+$x \in \Open$. $\Part$ \`e intorno di $x$, dunque $x \in
+\Interior{\Part}$. \EndProof
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ uno spazio
+		 topologico;
+		\item $\Part \subseteq \TopologicalSpace$.
+	\end{itemize}
+	Si definisce \Define{chiusura}	di $\Part$, denotata
+	$\Closure{\Part}$, il pi\`u piccolo chiuso tale che
+	$\Part \subseteq \Closure{\Part}$.
+\end{Definition}
+\begin{Theorem}
+	Siano $(\TopologicalSpace,\Topology)$ uno spazio topologico e $\Part \subseteq \TopologicalSpace$.
+	Abbiamo $\Closure{\Part} = \Part \cup \Boundary{\Part}$;
+\end{Theorem}
+\Proof Abbiamo $\Compl{\Part \cup \Boundary{\Part}} = \Exterior{\Part} =
+\Interior{\Compl{\Part}}$, dunque $\Part \cup \Boundary{\Part}$ \`e un chiuso.
+\par Sia $\Closed$ un chiuso tale che $\Part \subseteq \Closed$. Dunque
+$\Compl{\Closed}$ \`e un aperto tale che $\Compl{\Closed}
+\subseteq \Compl{\Part}$, dunque $\Compl{\Closed} \subseteq
+\Interior{\Compl{\Part}} = \Compl{\Part \cup \Boundary{\Part}}$, da cui
+$\Part \cup \Boundary{\Part} \subseteq \Closed$. \EndProof

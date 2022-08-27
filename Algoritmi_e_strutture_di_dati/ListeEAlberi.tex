@@ -1,0 +1,84 @@
+\subsection{Liste e alberi.}
+\label{AlgoritmiEStruttureDiDati_ListeEAlberi}
+\begin{Definition}
+  Un \Define{albero} \`e una struttura di dati
+  \begin{itemize}
+    \item o vuota;
+    \item o costituita da un dato e da puntatori ad altri alberi; a seconda del
+    contesto, chiameremo \Define{nodo} o il dato in questione o lo stesso dato
+    insieme ai suddetti puntatori.
+  \end{itemize}
+  Se ogni albero che interviene nella costruzione ricorsiva di un albero ha lo
+  stesso numero $n \in \mathbb{N}$ di puntatori, allora l'albero di dice
+  \Define{$n$-ario}[$n$-ario][albero].
+  Inoltre,
+  \begin{itemize}
+    \item un albero unario si chiama \Define{lista};
+    \item gli alberi puntati da un albero binario non vuoto si chiamano
+      \Define{figlio sinistro}[sinistro][figlio]
+      e
+      \Define{figlio destro}[destro][figlio]; ne conseguono ulteriori metafore
+      parentali con ovvio significato.
+  \end{itemize}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Lista.h"}
+	\caption{Implementazione di una struttura di lista in \LanguageName{C++}.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/AlberoBinario.h"}
+	\caption{Implementazione di una struttura di albero binario in \LanguageName{C++}: dichiarazione della classe.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/AlberoBinario.cpp"}
+	\caption{Implementazione di una struttura di albero binario in \LanguageName{C++}: costruttore.}
+\end{listing}
+\begin{Theorem}
+  Una struttura di albero $n$-ario implementa il concetto di albero $n$-ario
+come sinonimo di arborescenza di $n$ figli.
+\end{Theorem}
+\par Grazie al teorema precedente, trasportiamo sugli alberi $n$-ari tutte le
+definizioni e tutti i teoremi dimostrati.
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Dimensione.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per il calcolo della dimensione di un albero.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Altezza.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per il calcolo dell'altezza di un albero.}
+\end{listing}
+\begin{Definition}
+		Consideriamo un albero $n$-ario e una qualche funzione
+    \mintinline{c}{Funzione} avente tra gli argomenti il dato di un nodo. Si
+    dice che un algoritmo che parte dalla radice dell'albero effettua
+\begin{itemize}
+	\item \Define{visite anticipate}[anticipata][visita] se prima viene chiamata
+    \mintinline{c}{Funzione} e poi viene applicato ricorsivamente l'algoritmo ai
+    figli;
+	\item \Define{visite posticipate}[posticipata][visita] se prima viene viene
+    applicato ricorsivamente l'algoritmo ai figli e poi viene chiamata
+    \mintinline{c}{Funzione};
+	\item \Define{visite per ampiezza}[per ampiezza][visita] se applica la
+    funzione \mintinline{c}{Funzione} a tutti i nodi in ordine di altezza
+    crescente.
+\end{itemize}
+  Se $n = 2$, diciamo anche che un algoritmo effettua
+  \begin{itemize}
+	  \item \Define{visite simmetriche}[simmetrica][visita] se prima viene applicato
+      l'algoritmo ricorsivamente al figlio sinistro, poi viene chiamata
+      \mintinline{c}{Funzione}, infine viene applicato ricorsivamente l'algoritmo
+      al figlio destro.
+  \end{itemize}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/VisitaAnticipata.cpp"}
+	\caption{Implementazione di un algoritmo che effettua visite anticipate in linguaggio \LanguageName{C++}.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/VisitaPosticipata.cpp"}
+	\caption{Implementazione di un algoritmo che effettua visite posticipate in linguaggio \LanguageName{C++}.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/VisitaSimmetrica.cpp"}
+	\caption{Implementazione di un algoritmo che effettua visite simmetriche in linguaggio \LanguageName{C++}.}
+\end{listing}

@@ -1,0 +1,128 @@
+\section{Definizioni e teoremi di base.}
+\label{AnalisiDegliErrori_DefinizioniETeoremiDiBase}
+\begin{Definition}
+  Sia $\Distance$ una distanza su uno spazio metrico $\MetricSpace$.
+	Sia $x \in \MetricSpace$ e supponiamo di voler approssimare $x$ con un altro
+  punto $\tilde{x} \in \MetricSpace$.
+  Chiamiamo la quantit\`a $\AbsoluteError = \Distance{\tilde{x}}{x}$
+  \Define{errore assoluto}[assoluto][errore]
+  o anche semplicemente
+  \Define{errore},
+  o ancora
+  \Define{perturbazione}.
+	\par Se la distanza $\Distance$ \`e indotta da una norma $\Norm{\cdot}$
+  e $\Norm{x} \neq 0$, allora definiamo
+  \Define{errore relativo}[relativo][errore]
+  o
+  \Define{perturbazione relativa}[relativa][perturbazione]
+  la quantit\`a
+  $\RelativeError = \frac{\Norm{\tilde{x} - x}}{\Norm{x}}$.
+  \par Nel caso particolare in cui
+  $\MetricSpace = \mathbb{R}$, si definiscono altres\`i
+  \NIDefine{errore assoluto} e \NIDefine{errore relativo} le quantit\`a
+  $\AbsoluteError = \tilde{x} - x$
+  e
+  $\RelativeError = \frac{\tilde{x} - x}{x}$
+  rispettivamente.
+\end{Definition}
+\begin{Definition}
+  Chiamiamo
+  \Define{errore al primo ordine}[al primo ordine][errore]
+  l'approssimazione di un errore $\Error$ ottenuta trascurando,
+  in un'espressione di $\Error$ in dipendenza di altri errori,
+  tutti gli errori di grado maggiore di $1$.
+\end{Definition}
+\par L'analisi al primo ordine \`e molto utile nella pratica perch\'e, nelle
+applicazioni, si suppongono sempre gli errori molto piccoli, e dunque i prodotti
+di errori sono ancora pi\`u piccoli, impercettibili dagli strumenti di
+approssimazione, siano essi strumenti di misura, di calcolo o altri.
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $n \in \mathbb{N}$;
+    \item $f: \mathbb{R}^n \rightarrow \mathbb{R}$;
+    \item $X \in \MetricSpace$;
+    \item $Y = f(X)$.
+  \end{itemize}
+  Fissata una perturbazione $\Perturbation{X} \in \mathbb{R}^n$ di $X$,
+  chiamiamo
+  \Define{errore in avanti}[in avanti][errore]
+  la perturbazione $\Perturbation{Y}$ di $Y$ unica soluzione dell'equazione
+  $f(X + \Perturbation{X}) = Y + \Perturbation{Y}$.
+  Fissata una perturbazione $\Perturbation{Y} \in \mathbb{R}$ di $Y$,
+  chiamiamo
+  \Define{errore all'indietro}[all'indietro][errore]
+  l'estremo inferiore della classe di tutte le perturbazioni
+  $\Perturbation{X}$ soluzioni dell'equazione
+  $f(X + \Perturbation{X}) = Y + \Perturbation{Y}$.
+\end{Definition}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $x, \tilde{x} \in \mathbb{R}^n$;
+    \item $f: \mathbb{R}^n \rightarrow \mathbb{R}$;
+    \item $\tilde{f}: \mathbb{R}^n \rightarrow \mathbb{R}$.
+  \end{itemize}
+  Supponiamo $f(x) \neq 0$.
+  Chiamiamo
+  \begin{itemize}
+    \item \Define{errore inerente}[inerente][errore]
+      l'errore relativo $\InherentError$ di $f(x)$ approssimato con
+      $f(\tilde{x})$:
+      \[
+        \InherentError = \frac{f(\tilde{x}) - f(x)}{f(x)};
+      \]
+    \item \Define{errore algoritmico}[algoritmico][errore]
+      l'errore relativo $\AlgorithmicError$ di $f(x)$ approssimato con
+      $\tilde{f(x)}$, restituito come dato in uscita da un algoritmo
+      fissato per il calcolo della funzione $f$ passando in ingresso $x$:
+      \[
+        \AlgorithmicError = \frac{\tilde{f(x)} - f(x)}{f(x)};
+      \]
+    \item \Define{errore analitico}[analitico][errore]
+      l'errore relativo $\AnalyticalError$ di $f(x)$ approssimato con
+      $\tilde{f}(x)$:
+      \[
+        \AnalyticalError = \frac{\tilde{f}(x) - f(x)}{f(x)};
+      \]
+    \item \Define{errore totale}[totale][errore]
+      l'errore relativo $\TotalError$ di $f(x)$ approssimato con
+      $\overline{\tilde{f}(\tilde{x})}$, restituito come dato in uscita da un
+      algoritmo fissato per il calcolo della funzione $\tilde{f}$ passando in 
+      ingresso $\tilde{x}$:
+      \[
+        \TotalError = \frac{\overline{\tilde{f}(\tilde{x})} - f(x)}{f(x)}.
+      \]
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Supponendo
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$
+    \item $x, \tilde{x} \in \mathbb{R}^n$;
+    \item $f: \mathbb{R}^n \rightarrow \mathbb{R}$;
+    \item $\tilde{f}: \mathbb{R}^n \rightarrow \mathbb{R}$.
+  \end{itemize}
+  abbiamo, al primo ordine,
+  \[
+    \TotalError = \InherentError + \AlgorithmicError + \AnalyticalError,
+  \]
+  dove
+  \begin{itemize}
+    \item $\TotalError$ 
+  \end{itemize}
+\end{Theorem}
+\Proof Abbiamo, al primo ordine,
+\begin{align*}
+  \TotalError
+  &= \frac{\overline{\tilde{f}(\tilde{x})} - f(x)}{f(x)},\\
+  &= \frac{\overline{\tilde{f}(\tilde{x})}}{f(x)} - 1,\\
+  &= \frac{\overline{\tilde{f}(\tilde{x})}}{\tilde{f}(\tilde{x})}
+      \frac{\tilde{f}(\tilde{x})}{f(\tilde{x})}
+      \frac{f(\tilde{x})}{f(x)} - 1,\\
+  &= (\AnalyticalError + 1)
+      (\AlgorithmicError + 1)
+      (\InherentError + 1) - 1,\\
+  &= \AnalyticalError + \AlgorithmicError + \InherentError.\text{ \EndProof}
+\end{align*}

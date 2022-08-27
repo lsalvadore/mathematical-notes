@@ -1,0 +1,250 @@
+\section{\English{Page rank}.}
+\label{CalcoloScientifico_PageRank}
+Il modello denominato
+\Define{\English{page rank}}
+\`e un modello nato per classificare l'importanza delle pagine
+\English{web}, da cui il nome, ma che pu\`o essere riproposto per ogni
+rete. Noi lo presenteremo nel suo contesto originale delle reti.
+\par Sia $\PagesNumber$ il numero totale di tutte le pagine di una rete data.
+Identificheremo ogni pagina con un numero naturale da $0$ a
+$\PagesNumber - 1$, dove $\PagesNumber$ \`e il numero delle pagine stesse.
+\par Esso viene costruito a partire da un grafo orientato
+$\Graph = (\PagesNumber,\Edges)$ dove
+$(\Node,\VarNode) \in \PagesNumber \times \PagesNumber$ appartiene a $\Edges$
+se e solo se la pagina $\Node$ contiene un collegamento ipertestuale
+alla pagina $\VarNode$.
+\par Denotiamo $\AdjacencyMatrix$ la matrice di adiacenza di $\Graph$.
+\par Lo scopo del modello di \English{page rank} \`e determinare un
+\Define{vettore di pesi}[dei pesi (\English{page rank})][vettore]
+$\Weights$: la componente $\Weights_k$ indica l'importanza della pagina $k$.
+\par Definiamo i vettori
+\begin{itemize}
+  \item $\AllOnes = \Transposed{(1 \cdots 1)}$;
+  \item $\PageDegree = \AdjacencyMatrix \AllOnes$;
+  \item $\MatrixPageDegree \in \mathbb{R}^{\PagesNumber \times \PagesNumber}$
+    tale che
+    \[
+      \ForAll{(j,k) \in \PagesNumber \times \PagesNumber}{
+        \MatrixPageDegree_j^k =
+        \begin{cases}
+          0&\text{ se } j \neq k,\\
+          \PageDegree_k&\text{ se } j = k;
+        \end{cases}}
+    \]
+  \item $\Matrix = \MatrixPageDegree^{-1}\AdjacencyMatrix$.
+\end{itemize}
+La componente $\PageDegree_k$ ($k \in \PagesNumber$) indica il grado uscente
+della pagina $k$.
+\par Vorremmo costruire un modello per cui ogni pagina trasmette equamente
+la sua importanza a tutte le pagine da esse puntata e l'importanza di una pagina
+\`e esattamente la somma delle importanze cos\`i trasmesse tramite i
+collegamenti.
+\par Come vedremo, \`e utile ipotizzare che non esistano pagine pendenti
+nella rete in esame; questa ipotesi \`e facilmente realizzabile con una delle due strategie seguenti, nessuna delle quali cambia sostanzialmente
+il senso del modello della rete:
+\begin{itemize}
+  \item aggiungiamo ad ogni pagina pendente un collegamento a tutte
+    le altre pagine;
+  \item intoduciamo una pagina aggiuntiva $\PagesNumber$ che punta a tutte 
+  le altre pagine ed \`e puntata da tutte le altre pagine:
+  \[
+    \ForAll{k > 0}{\AdjacencyMatrix_\PagesNumber^k
+    = \AdjacencyMatrix_k^\PagesNumber = 1}.
+  \]
+\end{itemize}
+\par Assumeremo dunque d'ora in poi il seguente assioma.
+\begin{Axiom}
+  La rete non contiene nodi pendenti.
+\end{Axiom}
+\begin{Theorem}
+  $\Weights$ \`e autovettore sinistro di $\Matrix$.
+\end{Theorem}
+\Proof Per ogni pagina $k \in \PagesNumber$, abbiamo
+\[
+  \Weights_k = \sum_{j \in \PagesNumber} \AdjacencyMatrix_j^k \frac{\Weights_j}{\PageDegree_j},
+\]
+equivalente a
+\[
+  \Weights = \MatrixPageDegree^{-1}\AdjacencyMatrix\Weights,
+\]
+vale a dire
+\[
+  \Transposed{\Weights} = \Transposed{\Weights}\Matrix.\text{ \EndProof}
+\]
+\begin{Theorem}
+  Abbiamo
+  \begin{itemize}
+    \item $1$ \`e autovalore di $\Matrix$ relvativo a $\AllOnes$;
+    \item $\SpectralRadius{\Matrix} = 1$.
+  \end{itemize}
+\end{Theorem}
+\Proof Abbiamo
+$\Matrix\AllOnes
+= \MatrixPageDegree^{-1}\AdjacencyMatrix\AllOnes
+= \MatrixPageDegree^{-1}\PageDegree
+= \AllOnes$.
+\par Inoltre,
+$\Norm{\Matrix}[\infty]
+= \max_{k \in \PagesNumber} \sum_{j \in \PagesNumber}
+  \AbsoluteValue{\Matrix_k^j}
+= \max_{k \in \PagesNumber} \sum_{j \in \PagesNumber}
+  \Matrix_k^j
+= \max_{k \in \PagesNumber} \sum_{j \in \PagesNumber}
+  \frac{\AdjacencyMatrix_k^j}{\PageDegree_k}
+= 1$,
+e quindi, se $\Eigenvector \in \mathbb{C}^\PagesNumber$ \`e autovettore
+di $\Matrix$ relativo a $\Eigenvalue$, allora
+$\AbsoluteValue{\Eigenvalue}\Norm{\Eigenvector}[\infty]
+= \Norm{\Eigenvalue\Eigenvector}[\infty]
+= \Norm{\Matrix\Eigenvector}[\infty]
+\leq \Norm{\Matrix}[\infty]\Norm{\Eigenvector}[\infty]$,
+da cui
+$\AbsoluteValue{\Eigenvalue}
+\leq \Norm{\Matrix}[\infty] = 1$. \EndProof
+\begin{Theorem}
+  Se $\Matrix$ ha un unico autovalore di modulo massimo, qualsiasi successione
+  $(\Weights^{(k)})_{k \in \mathbb{N}}$ tale che
+  \begin{itemize}
+    \item $\Weights^{(0)}$ non \`e ortogonale a $\AllOnes$;
+    \item per ogni $k > 0$,
+      $\Weights^{(k)} = \Transposed{\Matrix}\Eigenvector^{(k - 1)}$;
+    \item se $\Weights^{(0)}$ non ha componenti negative, allora
+      $\ForAll{k \in \mathbb{N}}{
+      \Norm{\Weights^{(k)}}[1] = \Norm{\Weights^{(0)}}[1]}$;
+  \end{itemize}
+  converge a un autovettore sinistro di $\Matrix$, cio\`e a $\Weights$
+  a meno di prodotto per scalare.
+\end{Theorem}
+\Proof Riscriviamo il metodo delle potenze applicandolo alla matrice
+$\Transposed{\Matrix}$ e al vettore $\Weights^{(0)}$ con una qualsiasi
+tolleranza $\Tollerance$:
+\begin{enumerate}
+  \item\label{PageRank_MetodoDellePotenze_1} si ponga $j = 0$,
+    $\Weights_0 = \Weights^{(0)}$,
+    $\Eigenvalue_0^{(0)} =
+    = \Transposed{\Weights_0}\Matrix\Weights_{0}$;
+  \item\label{PageRank_MetodoDellePotenze_2} si ponga
+    $\tilde{\Weights}_{j + 1} = \Matrix \Weights_j$;
+  \item\label{PageRank_MetodoDellePotenze_3} si ponga
+    $\Weights_{j + 1}
+    = \frac{\tilde{\Weights}_{j + 1}}{\Norm{\tilde{\Weights_{j + 1}}}}$;
+  \item\label{PageRank_MetodoDellePotenze_4} si ponga $\Eigenvalue_0^{(j + 1)}
+    = \Transposed{\Weights_{j + 1}}\Matrix\Weights_{j + 1}$;
+  \item\label{PageRank_MetodoDellePotenze_5} se
+    $\AbsoluteValue{\Eigenvalue_0^{(j + 1)} - \Eigenvalue_0^{(j)}}
+    > \Tollerance$
+    si incrementi $j$ di $1$ e si torni al punto
+    \ref{PageRank_MetodoDellePotenze_2}, altrimenti l'algoritmo termina
+    restituendo la coppia $(\Eigenvalue_0^{(j + 1)},\Weights_{j + 1})$.
+\end{enumerate}
+\par Per ogni $k \in \mathbb{N}$, abbiamo
+$\Weights_k = \Weights^{(k)}$ a meno di moltiplicazione per scalare.
+\par Supponiamo $\Weights^{(0)}$ non abbia nessuna componente negativa.
+Si dimostra immediatamente per induzione, utilizzando anche la non negativit\`a
+di $\Matrix$, che per ogni $k \in \mathbb{N}$,
+$\Norm{\Weights^{(k)}}[1]
+= \Transposed{\Weights^{(k)}}\AllOnes
+= \Transposed{\Weights^{(0)}}\AllOnes
+\Norm{\Weights^{(0)}}[1]$. \EndProof
+\par Con riferimento a quest'ultimo teorema, grazie alla costanza della
+norma dei vettori della successione
+$(\Weights^{(k)})_{k \in \mathbb{N}}$
+\`e possibile calcolare direttamente l'autovettore sinistro $\Weights$
+senza il passo di normalizzazione \ref{PageRank_MetodoDellePotenze_3}
+evitando qualsiasi rischio di traboccamento dei moduli.
+\par Definiamo adesso
+\begin{itemize}
+  \item $\gamma \in (0,1)$;
+  \item $\Vector \in \mathbb{R}^\PagesNumber$ tale che
+    $\ForAll{k \in \PagesNumber}{\Vector_k > 0}$ e
+    $\Norm{\Vector}[1] = 1$;
+  \item $A = \gamma\Matrix + (1 - \gamma)\AllOnes\Transposed{\Vector}$.
+\end{itemize}
+\begin{Theorem}
+  La matrice $A$ \`e positiva.
+\end{Theorem}
+\Proof Fissiamo $(k,j) \in \PagesNumber \times \PagesNumber$:
+$A_k^j$ \`e combinazione convessa di $\Matrix_k^j$ e
+$\sum_{k \in \PagesNumber} \Vector_k$ con coefficienti non nulli,
+dunque \`e strettamente positivo. \EndProof
+\begin{Theorem}
+  $\AllOnes$ \`e autovettore di $A$ relativo all'autovalore $1$.
+\end{Theorem}
+\Proof Abbiamo
+$A\AllOnes
+= \gamma\Matrix\AllOnes + (1 - \gamma)(\AllOnes\Transposed{\Vector})\AllOnes
+= \gamma\AllOnes
+  + (1 - \gamma)\AllOnes(\Transposed{\Vector}\AllOnes)
+= \gamma\AllOnes + (1 - \gamma)\AllOnes
+= \AllOnes$. \EndProof
+\begin{Theorem}
+  \TheoremName{Teorema di Brauer}[di Brauer][teorema]
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $J \in \mathbb{C}^{n \times n}$;
+    \item $\Eigenvector$ autovettore di $J$ relativo all'autovalore
+      $\Eigenvalue \in \Spectrum{J}$;
+    \item $\VarVector \in \mathbb{C}^n$;
+    \item $K = J + \Eigenvector\HermitianTransposed{\VarVector}$.
+  \end{itemize}
+  Abbiamo
+  \[
+    \Spectrum{K}
+    = \Spectrum{J}
+      \SetMin \lbrace \Eigenvalue \rbrace
+      \cup \lbrace \Eigenvalue + \HermitianTransposed{\VarVector}\Eigenvector \rbrace.
+  \]
+\end{Theorem}
+\Proof Sia $\UnitaryMatrix \in \mathbb{C}^n$ unitaria tale che
+$\SchurNormalForm = \HermitianTransposed{\UnitaryMatrix} J \UnitaryMatrix$
+sia una forma normale di Schur di $J$ tale che
+$\SchurNormalForm_0^0 = \Eigenvalue$.
+\par Denotando $\CanonicalBase^0$ il primo vettore della base canonica, abbiamo
+\begin{align}
+  \HermitianTransposed{\UnitaryMatrix} K \UnitaryMatrix
+  &= \HermitianTransposed{\UnitaryMatrix} J \UnitaryMatrix
+    + \HermitianTransposed{\UnitaryMatrix}
+      \Eigenvector\HermitianTransposed{\VarVector}
+      \UnitaryMatrix,\\
+  &= \SchurNormalForm
+    + \CanonicalBase^0\HermitianTransposed{\VarVector}
+      \UnitaryMatrix.
+\end{align}
+\par Sia ora $k \in n$. Supponiamo $k = 0$: abbiamo
+\[
+  (\CanonicalBase^0\HermitianTransposed{\VarVector}\UnitaryMatrix)_0
+  = \HermitianTransposed{\VarVector}\UnitaryMatrix.
+\]
+Se invece $k \neq 0$, allora, per ogni $j \in n$
+\[
+  (\CanonicalBase^0\HermitianTransposed{\VarVector}\UnitaryMatrix)_k
+  = 0.
+\]
+Dunque tutti gli elementi diagonali della matrice triangolare superiore
+$\HermitianTransposed{\UnitaryMatrix} K \UnitaryMatrix$,
+forma normale di Schur,
+coincidono con quelli di $\SchurNormalForm$ tranne
+$(\HermitianTransposed{\UnitaryMatrix} J \UnitaryMatrix)_0^0$
+che viene sostituito da
+\[
+  \Eigenvalue + \HermitianTransposed{\VarVector}\UnitaryMatrix\CanonicalBase^0
+  = \Eigenvalue + \HermitianTransposed{\VarVector}\Eigenvector.
+  \text{ \EndProof}
+\]
+\begin{Theorem}
+  $1$ \`e autovalore semplice e di modulo massimo di $A$.
+\end{Theorem}
+\Proof Ricordiamo che
+$A = \gamma\Matrix + (1 - \gamma)\AllOnes\Transposed{\Vector}$.
+$\AllOnes$ \`e autovettore relativo a $1$ di $\Matrix$ e $1$ \`e autovalore
+semplice e di modulo massimo di $\Matrix$ per il teorema di Perron-Frobenius.
+Ne deduciamo che
+$\AllOnes$ \`e autovettore relativo a $\gamma$ di $\gamma\Matrix$ e
+$\gamma$ \`e autovalore semplice e di modulo massimo di $\gamma\Matrix$
+per il teorema di Perron-Frobenius.
+\par Abbiamo
+$\gamma + (1 - \gamma)\Transposed{\AllOnes}\Vector
+= \gamma + (1 - \gamma)\Norm{\Vector}[1] = 1$.
+Dunque, per il teorema di Bauer, $1$ \`e autovalore semplice e di modulo
+massimo di $A$. \EndProof

@@ -1,0 +1,89 @@
+\subsection{Definizioni e teoremi di base.}\label{DefinizioniETeoremiDiBaseOrdini}
+\begin{Definition}
+	Una relazione binaria $\leq$ su una classe $\Class$ si chiama \Define{relazione d'ordine}[d'ordine][relazione] quando essa \`e
+	\begin{itemize}
+		\item riflessiva;
+		\item antisimmetrica;
+		\item transitiva.
+	\end{itemize}
+	Per ogni relazione d'ordine si usa introdurre un secondo simbolo ottenuto dal primo togliendovi il tratto pi\`u basso per significare oltre alla validit\`a della relazione anche la distinzione dei due elementi che la compongono: per esempio $x < y$ equivale a $\And{x \leq y}{x \neq y}$.
+\end{Definition}
+\begin{Definition}
+	Una classe $\Poset$ su cui \`e definita una relazione d'ordine $\leq$ si chiama \Define{ordine parziale}[parziale][ordine].
+\end{Definition}
+\begin{Definition}
+	Sia $\TotalOrder$ una classe su cui \`e definita una relazione d'ordine $\leq$ tale che $\ForAll{(x,y) \in \TotalOrder^2}{\Or{x \leq y}{y \leq x}}$. Diciamo che $\leq$ \`e una \Define{relazione d'ordine totale}[d'ordine totale][relazione] e che $\TotalOrder$ \`e un \Define{ordine totale}[totale][ordine].
+\end{Definition}
+\begin{Definition}
+	Sia $f$ un'applicazione e siano definite due relazioni d'ordine, entrambe denotate con $\leq$, su $\Dom{f}$ e $\Cod{f}$. $f$ si dice
+	\begin{itemize}
+		\item \Define{crescente}[crescente][applicazione] quando $\Implies{x \leq y}{f(x) \leq f(y)}$;
+		\item \Define{strettamente crescente}[strettamente crescente][applicazione] quando $\Implies{x < y}{f(x) < f(y)}$;
+		\item \Define{decrescente}[decrescente][applicazione] quando $\Implies{x \leq y}{f(x) \geq f(y)}$;
+		\item \Define{strettamente decrescente}[decrescente][applicazione] quando $\Implies{x < y}{f(x) > f(y)}$;
+		\item \Define{monotona}[monotona][applicazione] se $f$ \`e crescente o se \`e decrescente;
+		\item \Define{strettamente monotona}[strettamente monotona][applicazione] se $f$ \`e strettamente crescente o se \`e strettamente decrescente.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Un'applicazione $f$ decresente diventa crescente sostituendo una delle relazioni d'ordine con la relazione opposta.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	La composizione di applicazioni crescenti \`e crescente. 
+\end{Theorem}
+\Proof Siano $f$ e $g$ applicazioni crescenti e siano $x, y \in \Dom{f}$ tali che $x \leq y$. Abbiamo $f(x) \leq f(y)$ e quindi $(g \circ f)(x) = g(f(x)) \leq g(f(y)) = (g \circ f)(y)$. \EndProof
+\begin{Theorem}
+	Le applicazioni crescenti costituiscono una categoria.
+\end{Theorem}
+\Proof Basta verificare gli assiomi di categoria. Le identit\`a sono date dalle applicazioni identiche. \EndProof
+\begin{Definition}
+	Sia $\Poset$ un ordine parziale e sia $\Part \subseteq \Poset$. Definiamo
+	\begin{itemize}
+		\item \Define{maggiorante} di $\Part$ un elemento $\Majorant \in \Poset$ quando $\ForAll{x \in \Part}{x \leq \Majorant}$;
+		\item \Define{minorante} di $\Part$ un elemento $\Minorant \in \Poset$ quando $\ForAll{x \in \Part}{x \geq \Minorant}$;
+		\item \Define{elemento massimale}[massimale][elemento] di $\Part$ un elemento $\MaximalElement \in \Part$ tale che $\ForAll{x \in \Part}{\Implies{\MaximalElement \leq x}{\MaximalElement = x}}$;
+		\item \Define{elemento minimmale}[minimale][elemento] di $\Part$ un elemento $\MinimalElement \in \Part$ tale che $\ForAll{x \in \Part}{\Implies{\MinimalElement \geq x}{\MinimalElement = x}}$;
+		\item \Define{massimo} di $\Part$ un elemento $\Maximum \in \Part$ tale che $\ForAll{x \in \Part}{x \leq \Maximum}$;
+		\item \Define{minimo} di $\Part$ un elemento $\Minimum \in \Part$ tale che $\ForAll{x \in \Part}{x \geq \Minimum}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $\Poset$ un ordine parziale e sia $\Part \subseteq \Poset$. Se $\Part$ ammette massimo, allora esso \`e unico.
+\end{Theorem}
+\Proof Se $\Maximum_1, \Maximum_2 \in \Part$ sono entrambi massimi, allora $\Maximum_1 \leq \Maximum_2$ e $\Maximum_2 \leq \Maximum_1$, da cui $\Maximum_1 = \Maximum_2$. \EndProof
+\begin{Corollary}
+	Sia $\Poset$ un ordine parziale e sia $\Part \subseteq \Poset$. Se $\Part$ ammette minimo, allora esso \`e unico.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente applicato all'ordine opposto di $\leq$. \EndProof
+\begin{Theorem}
+	Sia $\Poset$ un ordine parziale e sia $\Part \subseteq \Poset$. La classe dei maggioranti di $\Part$ ha minimo.
+\end{Theorem}
+\Proof
+\begin{Corollary}
+	Sia $\Poset$ un ordine parziale e sia $\Part \subseteq \Poset$. La classe dei minoranti ha massimo.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente applicato all'ordine opposto di $\leq$. \EndProof
+\begin{Definition}
+	Sia $\Poset$ un ordine parziale e sia $\Part \subseteq \Poset$. Definiamo
+	\begin{itemize}
+		\item \Define{estremo superiore}[superiore][estremo] il minimo dei maggioranti di $\Part$;
+		\item \Define{estremo inferiore}[inferiore][estremo] il massimo dei minoranti di $\Part$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia $\Poset$ un ordine parziale e sia $\Part \subseteq \Poset$. $\Part$ \`e una \Define{parte diretta}[diretta][parte] se per ogni $x, y \in \Part$ l'insieme $\lbrace x, y \rbrace$ ammette un maggiorante in $\Part$.
+\end{Definition}
+\begin{Definition}
+	Sia $\Lattice$ un ordine parziale tale che per ogni $x, y \in \Lattice$ esistono gli estremi inferiori e superiori di $\lbrace x, y \rbrace$. $\Lattice$ si chiama \Define{reticolo}.
+\end{Definition}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $\Poset$ un ordine parziale;
+		\item $N \in \NaturalExtended$;
+		\item $(a_i)_{i \in N} \in \Poset^N$;
+		\item $(b_i)_{i \in N - 1} \in \Poset^{N - 1}$.
+	\end{itemize}
+	Si dice che $(b_i)_{i \in N}$ \Define{separa}[separante][successione] $(a_i)_{i \in N}$ quando $\ForAll{i \in N - 1}{a_i \leq b_i \leq a_{i + 1}}$.
+\end{Definition}

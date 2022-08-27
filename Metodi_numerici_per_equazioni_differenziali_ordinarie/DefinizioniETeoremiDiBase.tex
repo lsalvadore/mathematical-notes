@@ -1,0 +1,153 @@
+\section{Definizioni e teoremi di base}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Sia un problema di Cauchy
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0.
+	\end{cases}
+	\]
+	Chiamiamo il problema di Cauchy
+	\[
+	\begin{cases}
+		z' = f(t,z) + \Perturbation(t),\\
+		z(t_0) = y_0 + \Perturbation_0,
+	\end{cases}
+	\]
+	con $\Perturbation(t): \Dom{y} \rightarrow \Cod{y}$ e
+  $\Perturbation_0 \in \Cod{y}$,
+  \Define{problema perturbato}[di Cauchy perturbato][problema] del problema
+  originale.
+  Chiamiamo inoltre
+  le quantit\`a $\Perturbation_0$ e
+  $\Perturbation(t)$ al variare di $t \in \Cod{y}$
+  \Define{perturbazione}[di un problema di Cauchy][perturbazione] o
+  \Define{errore}[di un problema di Cauchy][errore]
+\end{Definition}
+\begin{Definition}
+	Siano il problema di Cauchy sull'intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e il problema di Cauchy perturbato
+	\[
+	\begin{cases}
+		z' = f(t,z) + \Perturbation(t),\\
+		z(t_0) = y_0 + \Perturbation_0.
+	\end{cases}
+	\]
+	Il problema di Cauchy originale si definisce
+  \Define{stabile}[di Cauchy stabile][problema]
+  quando esistono $\epsilon > 0$ e $C \geq 0$ tali che,
+  per ogni $t \in \Dom{y}$ abbiamo
+	\begin{itemize}
+    \item $\Norm{\Perturbation_0} \leq \epsilon$,
+		\item $\Norm{z'(t) - y'(t)} = \Norm{\Perturbation(t)} \leq \epsilon$,
+		\item $\Norm{z(t) - y(t)} \leq C \epsilon$.
+	\end{itemize}
+	\par Nel caso in cui $I$ sia illimitato, diciamo inoltre che il problema di Cauchy originale \`e \Define{asintoticamente stabile}[stabile][asintoticamente] quando esiste $\epsilon > 0$ tale che $\lim_{t \rightarrow + \infty} \Norm{z(t) - y(t)} = 0$.
+\end{Definition}
+\begin{Lemma}
+	\TheoremName{Lemma di Gronwall}[di Gronwall][lemma] Siano
+	\begin{itemize}
+		\item $I = [t_0,t_{\text{max}}) \subseteq \mathbb{R}$;
+		\item $f,g \in \CClass{0}$;
+		\item $h: I \rightarrow \RealPositive$ integrabile;
+		\item $g$ non decrescente;
+		\item $t \in I$.
+	\end{itemize}
+	Se $f(t) \leq g(t) + \int_{t_0}^t h(\tau)f(\tau)d\tau$, allora abbiamo anche $f(t) \leq g(t) \Exponential{\int_{t_0}^th(\tau)d\tau}$.
+\end{Lemma}
+\begin{Theorem}
+	Sia il problema di Cauchy sull'intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0.
+	\end{cases}
+	\]
+	Se $I$ \`e limitato e $f(t,y)$ \`e lipschitziana nella seconda variable
+  rispetto a distanze indotte da norme,
+  allora il problema di Cauchy \`e stabile.
+\end{Theorem}
+\Proof Sia il problema di Cauchy perturbato,
+\[
+\begin{cases}
+	z' = f(t,z) + \Perturbation(t),\\
+	z(t_0) = y_0 + \Perturbation_0.
+\end{cases}
+\]
+\par Supponiamo le perturbazioni $\delta_0$ e $\delta(t)$ limitate da
+$\epsilon > 0$: in simboli, $\delta_0 \leq \epsilon$ e
+$\ForAll{t \in I}{\Perturbation(t) \leq \epsilon}$. Supponiamo inoltre $f$ sia
+$L$-lipschitziana rispetto alle distanze indotte da norme fissate
+$\Norm{\cdot}$, dove la norma sul codominio di $f$ \`e il valore assoluto.
+\par Definiamo la funzione $w(t) = z(t) - y(t)$. Abbiamo un ulteriore problema di Cauchy:
+\[
+\begin{cases}
+  w'(t) = z'(t) - y'(t) = f(t,z) + \Perturbation(t) - f(t,y),\\
+  w(t_0) = z(t_0) - y(t_0) = \Perturbation_0.
+\end{cases}
+\]
+\par Abbiamo
+$w(t) =
+  w(t_0)
+  + \int_{t_0}^t \Perturbation(\tau)d\tau
+  + \int_{t_0}^t (f(\tau,z) - f(\tau,y))d\tau$,
+da cui
+$\Norm{w} \leq
+  \epsilon
+  + \AbsoluteValue{t - t_0}\epsilon
+  + \int_{t_0}^t L \Norm{z - y}
+  = (1 + \AbsoluteValue{t - t_0})\epsilon + \int_{t_0}^t L \Norm{w}d\tau$.
+\par Per il lemma di Gronwall, abbiamo inoltre
+$\Norm{w} \leq
+(1 + \AbsoluteValue{t - t_0})\epsilon \Exponential{(L\AbsoluteValue{t - t_0})}$,
+da cui deduciamo la stabilit\`a del problema di Cauchy. \EndProof
+\begin{Example}
+	Consideriamo il problema di Cauchy su $I = [0,10]$
+	\[
+	\begin{cases}
+		y' = -10y,\\
+		y_0 = 1.
+	\end{cases}
+	\]
+	L'equazione differenziale \`e lineare e dunque si calcola immediatamente che
+  l'unica soluzione \`e $y(t) = e^{-10t}$.
+	\par Ora, $-10y$ \`e $10$-lipschitziana. Se adottiamo la maggiorazione
+  dell'errore dovuto alla perturbazione del sistema ricavata al termine della
+  dimostrazione precedente, otteniamo che esso \`e minore o uguale a
+  $11 \epsilon e^{100}$, dove $\epsilon$ \`e una costante maggiorante
+  $\Perturbation_0$ e $\Perturbation(t)$ per ogni $t \in I$. Per ottenere una
+  maggiorazione dell'errore minore di $1$ occorre scegliere un $\epsilon$
+  nell'intervallo $(10^{-45},10^{-44})$.
+  \par Si consideri che la precisione di macchina delle macchine moderne comune
+  \`e circa $10^{-16}$.
+\end{Example}
+\begin{Definition}
+	Sia $I = [a,b]$ un intervallo della retta reale estesa $\RealExtended$.
+  Chiamiamo \Define{discretizzazione} una famiglia crescente di punti
+  $(t_j)_{j \in N}$ ($N \in \NaturalExtended$) tale che $t_0 = a$ e, se $N$ \`e
+  finito, $t_{N - 1} = b$. Chiamiamo i punti di $(t_j)_{j \in N}$
+  \Define{nodi della discretizzazione}[di una discretizzazione][nodo] della
+  discretizzazione. Se
+  $\Exists{h \in \RealPositive}{\ForAll{j \in \NotZero{N}}{t_j - t_{j - 1}=h}}$,
+  allora la discretizzazione si dice
+  \Define{uniforme}[uniforme][discretizzazione] e la costante
+  $\Step = t_1 - t_0$ si chiama
+  \Define{passo della discretizzazione}[della discretizzazione][passo].
+\end{Definition}
+\begin{Definition}
+	Dato un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	chiamiamo \Define{metodo numerico per un problema di Cauchy}[numerico per un problema di Cauchy][metodo] un algoritmo che associa al problema di Cauchy e a una discretizzazione dell'intervallo di definizione del problema di $N \in \NaturalExtended$ nodi un vettore $(y_j)_{i \in N}$ che approssima il vettore $(y(t_j))_{j \in N}$.
+\end{Definition}

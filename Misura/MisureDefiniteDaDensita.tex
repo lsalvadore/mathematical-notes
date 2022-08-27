@@ -1,0 +1,38 @@
+\section{Misure definite da densit\`a.}
+\label{Misura_MisureDefiniteDaDensita}
+\begin{Definition}
+	Siano dati uno spazio misurabile $(\MeasurableSpace,\SigmaAlgebra)$ munito
+  della misura $\Measure$ e un'applicazione misurabile
+  $\DensityFunction: \MeasurableSpace \rightarrow [0,+\infty]$. Chiamiamo
+  $\VarMeasure: \SigmaAlgebra \rightarrow [0, +\infty]$ tale che
+  $\VarMeasure(A) = \int_A f d\Measure$
+  \Define{misura definita dalla densit\`a $\DensityFunction$ rispetto a
+  $\Measure$}:
+  esprimiamo ci\`o anche con la notazione
+  $\VarMeasure = \DensityDefinedProbability{\DensityFunction}{\Measure}$
+\end{Definition}
+\begin{Theorem}
+	Una misura definita da densit\`a \`e effettivamente una misura.
+\end{Theorem}
+\begin{Theorem}
+	Siano $\VarMeasure$ e $\Measure$ due misure su
+  $(\MeasurableSpace,\SigmaAlgebra)$ e supponiamo esistano
+  $\DensityFunction$ e $\VarDensityFunction$
+  ($\DensityFunction, \VarDensityFunction:
+  \MeasurableSpace \rightarrow [0,+\infty]$) applicazioni misurabili tali che
+  $\VarMeasure
+    = \DensityDefinedProbability{\DensityFunction}{\Measure}
+    = \DensityDefinedProbability{\VarDensityFunction}{\VarMeasure}$, allora
+  $\DensityFunction$ e $\VarDensityFunction$ sono equivalenti.
+\end{Theorem}
+\begin{Definition}
+	Con le notazioni del teorema precedene, diciamo che $\DensityFunction$ \`e
+  \Define{una versione della densit\`a di $\VarMeasure$ rispetto a $\Measure$} e
+  denotiamo $\DensityFunction = \DensityVersion{\VarMeasure}{\Measure}$.
+\end{Definition}
+\par Osserviamo che la simbologia introdotta dalla definizione precedente \`e un
+abuso di notazione:
+$\DensityVersion{\VarMeasure}{\Measure}$ \`e in realt\`a una classe di
+equivalenza di funzioni e non una sola funzione e sarebbe dunque pi\`u giusto
+scrivere
+$\DensityFunction \in \DensityVersion{\VarMeasure}{\Measure}$.

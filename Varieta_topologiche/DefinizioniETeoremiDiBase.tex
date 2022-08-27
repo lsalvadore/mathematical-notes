@@ -1,0 +1,22 @@
+\section{Definizioni e teoremi di base.}
+\label{VarietaTopologiche_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Sia $(\TopologicalManifold,\Topology)$ uno spazio topologico che verifichi le seguenti condizioni:
+	\begin{itemize}
+		\item $\TopologicalManifold$ sia uno spazio di Hausdorff che verifica il secondo assioma di numerabilit\`a;
+		\item esiste $n \in \mathbb{N}$ tale che per ogni punto $p \in \TopologicalManifold$ esiste un omeomorfismo $\Chart: \Open \rightarrow \VarOpen$, detto \Define{carta}\footnote{La definizione di carta varia tra diversi autori: alcuni chiamiano carta $\Open$, altri $\VarOpen$, altri ancora la coppia $(\Open,\Chart)$. La nostra scelta di definizione di carta si giustifica col fatto che essa contiene tutte le informazioni che vanno sotto il nome di carta: in effetti abbiamo $\Open = \Dom{\Chart}$ e $\VarOpen = \Cod{\Chart}$.}, tale che $\Open \in \Neighborhoods{p} \cap \Topology$ e $\VarOpen$ sia un aperto di $\mathbb{R}^n$.
+	\end{itemize}
+	$\TopologicalManifold$ si chiama \Define{$n$-variet\`a topologica}[topologica][variet\`a].
+\end{Definition}
+\begin{Definition}
+	Sia $\TopologicalManifold$ una variet\`a topologica. Per ogni $p \in \TopologicalManifold$ sia $\Chart_p$ una carta. Chiamiamo $\bigcup_{p \in \TopologicalManifold} \lbrace \Chart_p \rbrace$ \Define{atlante}.
+\end{Definition}
+\begin{Definition}
+	Sia $\TopologicalManifold$ una variet\`a topologica e siano $\Chart$ e $\VarChart$ due carte. Chiamiamo \Define{funzione di transizione}[di transizione][funzione] la funzione $\TransitionFunction: \Chart(\Dom{\Chart} \cap \Dom{\VarChart}) \rightarrow \VarChart(\Dom{\Chart} \cap \Dom{\VarChart})$ che a $x \in \Chart(\Dom{\Chart} \cap \Dom{\VarChart}$ associa $(\VarChart \circ \Chart^{-1})(x) \in \VarChart(\Dom{\Chart} \cap \Dom{\VarChart})$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\TopologicalManifold$ una $n$-variet\`a ed un $m$-variet\`a ($n, m \in \mathbb{N}$). Abbiamo $n = m$.
+\end{Theorem}
+\begin{Definition}
+	Con le notazioni del teorema precedente, chiamiamo $n$ \Define{dimensione}[di una variet\`a][dimensione] di $\TopologicalManifold$.
+\end{Definition}

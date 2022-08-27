@@ -1,0 +1,151 @@
+\section{Notazione asintotica (o di Landau).}
+\label{TeoriaDelleSuccessioniEDelleSerie_NotazioneAsintotica}
+\begin{Definition}
+	\TheoremName{Notazione asintotica (o di Landau)} Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \mathbb{\NormedSpace}^\mathbb{N}$, dove $\NormedSpace$ \`e un $\Field$-spazio vettoriale normato. Diciamo che
+	\begin{itemize}
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{O-grande} di $(b_n)_{n \in \mathbb{N}}$, denotato $\IsBigO{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$, quando $$\Exists{C \in \RealPositive}{\Exists{N \in \mathbb{N}}{\Implies{n > N}{\Norm{a_n} \leq C \Norm{b_n}}}};$$
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{$\Omega$-grande} di $(b_n)_{n \in \mathbb{N}}$, denotato $\IsBigOmega{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$, quando $$\Exists{C \in \RealPositive}{\Exists{N \in \mathbb{N}}{\Implies{n > N}{\Norm{a_n} \geq C \Norm{b_n}}}};$$
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{$\Theta$-grande} di $(b_n)_{n \in \mathbb{N}}$, denotato $\IsBigTheta{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$, quando $\IsBigO{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$ e $\IsBigOmega{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$;
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{o-piccolo} di $(b_n)_{n \in \mathbb{N}}$, denotato $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$, quando $$\ForAll{C \in \RealPositive}{\Exists{N \in \mathbb{N}}{\Implies{n > N}{\Norm{a_n} \leq C \Norm{b_n}}}}.$$
+	\end{itemize}
+	\par Siano ora
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ uno spazio topologico;
+		\item $\NormedSpace$ un $\Field$-spazio vettoriale normato;
+		\item $\Part \subseteq \TopologicalSpace$;
+		\item $f: \Part \rightarrow \NormedSpace$ e $g: \Part \rightarrow \NormedSpace$;
+		\item $\AccumulationPoint$ punto di accumulazione per $\Part$.
+	\end{itemize}
+	Diciamo che
+	\begin{itemize}
+		\item $f(x)$ \`e un \Define{O-grande} di $g(x)$, denotato $\IsBigO{f(x)}{g(x)}$, per $x \rightarrow p$ quando $$\Exists{C \in \RealPositive}{\Exists{\Neighborhood \in \Neighborhoods{\AccumulationPoint}}{\Implies{x \in \Neighborhood}{\Norm{f(x)} \leq C \Norm{g(x)}}}};$$
+		\item $f(x)$ \`e un \Define{$\Omega$-grande} di $g(x)$, denotato $\IsBigOmega{f(x)}{g(x)}$, per $x \rightarrow p$ quando $$\Exists{C \in \RealPositive}{\Exists{\Neighborhood \in \Neighborhoods{\AccumulationPoint}}{\Implies{x \in \Neighborhood}{\Norm{f(x)} \geq C \Norm{g(x)}}}};$$
+		\item $f(x)$ \`e un \Define{$\Theta$-grande} di $g(x)$, denotato $\IsBigTheta{f(x)}{g(x)}$, per $x \rightarrow p$ quando, sempre per $x \rightarrow p$, $\BigO{f(x)}{g(x)}$ e $\BigOmega{f(x)}{g(x)}$;
+		\item $f(x)$ \`e un \Define{o-piccolo} di $g(x)$, denotato $\IsLittleo{f(x)}{g(x)}$, per $x \rightarrow p$ quando $$\ForAll{C \in \RealPositive}{\Exists{\Neighborhood \in \Neighborhoods{\AccumulationPoint}}{\Implies{x \in \Neighborhood}{\Norm{f(x)} \leq C \Norm{g(x)}}}}.$$
+	\end{itemize}
+	\par Siano ora
+	\begin{itemize}
+		\item $\NormedSpace$ un $\Field$-spazio vettoriale normato;
+		\item $\Part \subseteq \mathbb{R}$ tale che $\sup{\Part} = + \infty$;
+		\item $f: \Part \rightarrow \NormedSpace$ e $g: \Part \rightarrow \NormedSpace$.
+	\end{itemize}
+	Diciamo che
+	\begin{itemize}
+		\item $f(x)$ \`e un \Define{O-grande} di $g(x)$, denotato $\IsBigO{f(x)}{g(x)}$, per $x \rightarrow + \infty$ quando $$\Exists{C \in \RealPositive}{\Exists{M \in \RealPositive}{\Implies{x > M}{\Norm{f(x)} \leq C \Norm{g(x)}}}};$$
+		\item $f(x)$ \`e un \Define{$\Omega$-grande} di $g(x)$, denotato $\IsBigOmega{f(x)}{g(x)}$, per $x \rightarrow + \infty$ quando $$\Exists{C \in \RealPositive}{\Exists{\Neighborhood \in \Neighborhoods{\AccumulationPoint}}{\Implies{x \in \Neighborhood}{\Norm{f(x)} \geq C \Norm{g(x)}}}};$$
+		\item $f(x)$ \`e un \Define{$\Theta$-grande} di $g(x)$, denotato $\IsBigTheta{f(x)}{g(x)}$, per $x \rightarrow + \infty$ quando, sempre per $x \rightarrow p$, $\BigO{f(x)}{g(x)}$ e $\BigOmega{f(x)}{g(x)}$;
+		\item $f(x)$ \`e un \Define{o-piccolo} di $g(x)$, denotato $\IsLittleo{f(x)}{g(x)}$, per $x \rightarrow + \infty$ quando $$\ForAll{C \in \RealPositive}{\Exists{M \in \RealPositive}{\Implies{x > M}{\Norm{f(x)} \leq C \Norm{g(x)}}}}.$$
+	\end{itemize}
+	\par Siano ora
+	\begin{itemize}
+		\item $\NormedSpace$ un $\Field$-spazio vettoriale normato;
+		\item $\Part \subseteq \mathbb{R}$ tale che $\inf{\Part} = - \infty$;
+		\item $f: \Part \rightarrow \NormedSpace$ e $g: \Part \rightarrow \NormedSpace$.
+	\end{itemize}
+	Diciamo che
+	\begin{itemize}
+		\item $f(x)$ \`e un \Define{O-grande} di $g(x)$, denotato $\IsBigO{f(x)}{g(x)}$, per $x \rightarrow - \infty$ quando $$\Exists{C \in \RealPositive}{\Exists{M \in \RealPositive}{\Implies{x < - M}{\Norm{f(x)} \leq C \Norm{g(x)}}}};$$
+		\item $f(x)$ \`e un \Define{$\Omega$-grande} di $g(x)$, denotato $\IsBigOmega{f(x)}{g(x)}$, per $x \rightarrow - \infty$ quando $$\Exists{C \in \RealPositive}{\Exists{\Neighborhood \in \Neighborhoods{\AccumulationPoint}}{\Implies{x \in \Neighborhood}{\Norm{f(x)} \geq C \Norm{g(x)}}}};$$
+		\item $f(x)$ \`e un \Define{$\Theta$-grande} di $g(x)$, denotato $\IsBigTheta{f(x)}{g(x)}$, per $x \rightarrow - \infty$ quando, sempre per $x \rightarrow p$, $\BigO{f(x)}{g(x)}$ e $\BigOmega{f(x)}{g(x)}$;
+		\item $f(x)$ \`e un \Define{o-piccolo} di $g(x)$, denotato $\IsLittleo{f(x)}{g(x)}$, per $x \rightarrow - \infty$ quando $$\ForAll{C \in \RealPositive}{\Exists{M \in \RealPositive}{\Implies{x - M}{\Norm{f(x)} \leq C \Norm{g(x)}}}}.$$
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{\NormedSpace}^\mathbb{N}$, dove $\NormedSpace$ \`e un $\Field$-spazio vettoriale normato. Allota $\IsBigO{(a_n)_{n \in \mathbb{N}}}{1}$ se e solo se $(a_n)_{n \in \mathbb{N}}$ \`e limitata.
+\end{Theorem}
+\Proof Se $(a_n)_{n \in \mathbb{N}}$ \`e limitata, allora abbiamo $\ForAll{n \in \mathbb{N}}{\Norm{a_n} \leq \sup_{n \in \mathbb{N}} \Norm{a_n} \cdot 1}$.
+\par Se invece esiste $C$ tale che per qualche $N \in \mathbb{N}$ abbiamo $\Implies{n > N}{\Norm{a_n} \leq C \cdot 1}$, allora $\ForAll{n \in \mathbb{N}}{a_n \leq \max \lbrace (a_n)_{n \leq N}, C \rbrace}$. \EndProof
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^{\mathbb{N}}$, dove $\NormedSpace$ \`e un $\Field$-spazio vettoriale normato e $\ForAll{n \in \mathbb{N}}{b_n \neq 0}$. $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$ se e solo se $\lim_{n \rightarrow \infty} \frac{\Norm{a_n}}{\Norm{b_n}} = 0$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Corollary}
+	\par Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ uno spazio topologico che verifica il primo assioma di numerabilit\`a;
+		\item $\NormedSpace$ un $\Field$-spazio vettoriale normato;
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \TopologicalSpace^\mathbb{N}$ convergente a $\AccumulationPoint \in \TopologicalSpace$;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \NormedSpace$ e $g: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \NormedSpace$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $\IsLittleo{(f(a_n))_{n \in mathbb{N}}}{(g(b_n))_{n \in \mathbb{N}}}$ se e solo se $\IsLittleo{f(x)}{g(x)}$.
+\end{Corollary}
+\Proof Abbiamo $\lim_{n \rightarrow \infty} \frac{\Norm{f(a_n)}}{\Norm{(b_n)}} = 0$ se e solo se $\lim_{x \rightarrow \AccumulationPoint} \frac{\Norm{f(x)}}{g(x)} = 0$. \EndProof
+\begin{Corollary}
+	\par Siano
+	\begin{itemize}
+		\item $\NormedSpace$ un $\Field$-spazio vettoriale normato;
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente negativamente o positivamente;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \NormedSpace$ e $g: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \NormedSpace$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $\IsLittleo{(f(a_n))_{n \in mathbb{N}}}{(g(b_n))_{n \in \mathbb{N}}}$ se e solo se $\IsLittleo{f(x)}{g(x)}$.
+\end{Corollary}
+\Proof Abbiamo $\lim_{n \rightarrow \infty} \frac{\Norm{f(a_n)}}{\Norm{(b_n)}} = 0$ se e solo se $\lim_{x \rightarrow \pm \infty} \frac{\Norm{f(x)}}{g(x)} = 0$, dove il pi\`o o il meno dipende dal tipo di divergenza di $(a_n)_{n \in \mathbb{N}}$. \EndProof
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}}, (c_n)_{n \in \mathbb{N}} \in \mathbb{\NormedSpace}^\mathbb{N}$, dove $\NormedSpace$ \`e un $\Field$-spazio vettoriale normato. Se $\IsLittleo{(b_n)_{n \in \mathbb{N}}}{(a_n)_{n \in \mathbb{N}}}$ e $\IsLittleo{(c_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$, allora $\IsLittleo{(c_n){n \in \mathbb{N}}}{(a_n)_{n \in \mathbb{N}}}$.
+\end{Theorem}
+\Proof Fissiamo $C \in \RealPositive$ e sia $N \in \mathbb{N}$ tale che $n > N$ implichi
+\begin{itemize}
+	\item $\Norm{b_n} \leq \sqrt{C} \Norm{a_n}$;
+	\item $\Norm{c_n} \leq \sqrt{C} \Norm{b_n}$.
+\end{itemize}
+\par Abbiamo, per $n > N$, $\Norm{c_n} \leq \sqrt{C} \Norm{b_n} \leq \sqrt{C} \sqrt{C} \Norm{a_n} = C \Norm{a_n}$. \EndProof
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}}, (c_n)_{n \in \mathbb{N}} \in \mathbb{\NormedSpace}^\mathbb{N}$, dove $\NormedSpace$ \`e un $\Field$-spazio vettoriale normato. Se $\IsLittleo{(c_n)_{n \in \mathbb{N}}}{(a_n + b_n)_{n \in \mathbb{N}}}$, allora $\IsLittleo{(c_n){n \in \mathbb{N}}}{(a_n)_{n \in \mathbb{N}}}$.
+\end{Theorem}
+\Proof Fissiamo $C \in \RealPositive$ e sia $N \in \mathbb{N}$ tale che $n > N$ implichi $\Norm{c_n} \leq C \Norm{a_n + b_n}$.
+\par Abbiamo, per $n > N$, $\Norm{c_n} \leq C \Norm{a_n + b_n} \leq C ( \Norm{a_n} + \Norm{b_n} ) \leq C \Norm{a_n}$. \EndProof
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \mathbb{\NormedSpace}^\mathbb{N}$ e $f: \NormedSpace \rightarrow \VarNormedSpace$ un'applicazione continua tale che $\ForAll{(\Scalar,\Vector) \in \Field \times \NormedSpace}{f(\Scalar \Vector) = \Scalar f(\Vector)}$, dove $\NormedSpace$ e $\VarNormedSpace$ sono $\Field$-spazi vettoriali normati. Se $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$, allora $\IsLittleo{(f(a_n))_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$.
+\end{Theorem}
+\Proof Se $(b_n)_{n \in \mathbb{N}}$ \`e definitivamente nulla, allora necessariamente \`e definitivamente nulla anche $(a_n)_{n \in \mathbb{N}}$ e quindi $(f(a_n))_{n \in \mathbb{N}}$, da cui certamente $\IsLittleo{(f(a_n))_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$.
+\par Assumiamo dunque che $(b_n)_{n \in \mathbb{N}}$ non sia definitivamente nulla. Troncando eventualmente le successioni $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$, possiamo assumere senza perdita di generalit\`a $\ForAll{n \in \mathbb{N}}{b_n \neq 0}$.
+\par Abbiamo $\frac{\Norm{f(a_n)}}{\Norm{b_n}} = \Norm{f \left ( \frac{a_n}{\Norm{b_n}} \right )}$. Poich\'e $\Norm{\frac{a_n}{\Norm{b_n}}} = \frac{\Norm{a_n}}{\Norm{b_n}}$, abbiamo $\lim_{n \rightarrow \infty} \Norm{\frac{a_n}{\Norm{b_n}}} = 0$ e dunque $\lim_{n \rightarrow \infty} \frac{a_n}{\Norm{b_n}} = 0$, da cui $\lim_{n \rightarrow \infty} \frac{\Norm{f(a_n)}}{\Norm{b_n}} = 0$ e quindi $\IsLittleo{(f(a_n))_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$. \EndProof
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato. Se $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$, allora $\IsBigO{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato. Chiamiamo $(a_n)_{n \in \mathbb{N}}$
+	\begin{itemize}
+		\item \Define{successione infinita}[infinita][successione] o \Define{infinito}[infinito (successione)] se diverge;
+		\item \Define{successione infinitesima}[infinitesima][successione] o \Define{infinitesimo} se converge e $\lim_{n \rightarrow \infty} a_n = 0$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato, due successioni infinite. Assumiamo, senza perdita di generalit\`a $\ForAll{n \in \mathbb{N}}{b_n \neq 0}$: in caso contrario possiamo troncare le successioni $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$ in modo che tale condizione sia verificata. Diciamo che 
+	\begin{itemize}
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{infinito di ordine inferiore}[di ordine inferiore][infinito] rispetto a $(b_n)_{n \in \mathbb{N}}$ quando $\left ( \frac{a_n}{b_n} \right )$ converge e $\lim_{n \rightarrow \infty} \frac{a_n}{b_n} = 0$;
+		\item $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$ sono \Define{infiniti dello stesso ordine}[dello stesso ordine][infinito] quando $\left ( \frac{a_n}{b_n} \right )$ converge e $\lim_{n \rightarrow \infty} \frac{a_n}{b_n} \neq 0$;
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{infinito di ordine superiore}[di ordine superiore][infinito] rispetto a $(b_n)_{n \in \mathbb{N}}$ quando $\left ( \frac{a_n}{b_n} \right )$ diverge;
+		\item $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$ sono \Define{infiniti non confrontabili}[non confrontabile][infinito] quando $\left ( \frac{a_n}{b_n} \right )$ \`e indeterminata.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato, due successioni infinitesime non definitivamente nulle. Assumiamo, senza perdita di generalit\`a $\ForAll{n \in \mathbb{N}}{b_n \neq 0}$: in caso contrario possiamo troncare le successioni $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$ in modo che tale condizione sia verificata. Diciamo che 
+	\begin{itemize}
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{infinitesimo di ordine inferiore}[di ordine inferiore][infinitesimo] rispetto a $(b_n)_{n \in \mathbb{N}}$ quando $\left ( \frac{a_n}{b_n} \right )$ diverge;
+		\item $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$ sono \Define{infinitesimi dello stesso ordine}[dello stesso ordine][infinitesimo] quando $\left ( \frac{a_n}{b_n} \right )$ converge e $\lim_{n \rightarrow \infty} \frac{a_n}{b_n} \neq 0$;
+		\item $(a_n)_{n \in \mathbb{N}}$ \`e un \Define{infinitesimo di ordine superiore}[di ordine superiore][infinitesimo] rispetto a $(b_n)_{n \in \mathbb{N}}$ quando $\left ( \frac{a_n}{b_n} \right )$ converge e $\lim_{n \rightarrow \infty} \frac{a_n}{b_n} = 0$;
+		\item $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$ sono \Define{infinitesimi non confrontabili}[non confrontabili][infinitesimi] quando $\left ( \frac{a_n}{b_n} \right )$ \`e indeterminata.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato, infiniti. $(a_n)_{n \in \mathbb{N}}$ \`e un infinito di ordine inferiore rispetto a $(b_n)_{n \in \mathbb{N}}$ se e solo se $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$.
+\end{Theorem}
+\Proof Il fatto che $(a_n)_{n \in \mathbb{N}}$ sia un infinito di ordine inferiore rispetto a $(b_n)_{n \in \mathbb{N}}$ equivale a $\lim_{n \rightarrow \infty} \frac{a_n}{b_n} = 0$, che per definizione significa che per ogni $\epsilon > 0$, esiste $N \in \mathbb{N}$ tale che per ogni $n > N$ abbiamo $\Norm{\frac{a_n}{b_n}} = \frac{\Norm{a_n}}{\Norm{b_n}} < \epsilon$, o equivalentemente $\Norm{a_n} < \epsilon \Norm{b_n}$. Il teorema segue dal fatto che $\Norm{a_n} < \epsilon \Norm{b_n}$ implica $\Norm{a_n} \leq \epsilon \Norm{b_n}$ e che $\Norm{a_n} \leq \epsilon{b_n}$ implica $\ForAll{\epsilon' > \epsilon}{\Norm{a_n} < \epsilon \Norm{b_n}}$. \EndProof
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato, infinitesimi. $(a_n)_{n \in \mathbb{N}}$ \`e un infinitesimo di ordine superiore rispetto a $(b_n)_{n \in \mathbb{N}}$ se e solo se $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(b_n)_{n \in \mathbb{N}}}$.
+\end{Theorem}
+\Proof Il fatto che $(a_n)_{n \in \mathbb{N}}$ sia un infinitesimo di ordine superiore rispetto a $(b_n)_{n \in \mathbb{N}}$ equivale a $\lim_{n \rightarrow \infty} \frac{a_n}{b_n} = 0$, che per definizione significa che per ogni $\epsilon > 0$, esiste $N \in \mathbb{N}$ tale che per ogni $n > N$ abbiamo $\Norm{\frac{a_n}{b_n}} = \frac{\Norm{a_n}}{\Norm{b_n}} < \epsilon$, o equivalentemente $\Norm{a_n} < \epsilon \Norm{b_n}$.  Il teorema segue dal fatto che $\Norm{a_n} < \epsilon \Norm{b_n}$ implica $\Norm{a_n} \leq \epsilon \Norm{b_n}$ e che $\Norm{a_n} \leq \epsilon{b_n}$ implica $\ForAll{\epsilon' > \epsilon}{\Norm{a_n} < \epsilon \Norm{b_n}}$. \EndProof
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato, infiniti. $(a_n)_{n \in \mathbb{N}}$ \`e un infinito di ordine superiore rispetto a $(b_n)_{n \in \mathbb{N}}$ se e solo se $(a_n^{-1})_{n \in \mathbb{N}}$ \`e un infinitesimo di ordine superiore a $(b_n^{-1})_{n \in \mathbb{N}}$.
+\end{Theorem}
+\Proof Segue dal fatto che per ogni $\epsilon > 0$ e $n \in \mathbb{N}$, $\Norm{\frac{a_n}{b_n}} < \epsilon$ equivale a $\Norm{\frac{b_n}{a_n}} > \epsilon^{-1}$. \EndProof
+\begin{Theorem}
+	\TheoremName{Principio di sostituzione degli infiniti} Siano $(A_n)_{n \in \mathbb{N}}, (B_n)_{n \in \mathbb{N}}, (a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato, infiniti. Se $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(A_n)_{n \in \mathbb{N}}}$ e $\IsLittleo{(b_n)_{n \in \mathbb{N}}}{(B_n)_{n \in \mathbb{N}}}$ e se $\left ( \frac{A_n}{B_n} \right )_{n \in \mathbb{N}}$ converge allora $\left ( \frac{A_n + a_n}{B_n + b_n} \right )$ converge a $\lim_{n \rightarrow \infty} \frac{A_n}{B_n}$.
+\end{Theorem}
+\Proof Basta osservare che perr ogni $n \in \mathbb{N}$, $\frac{A_n + a_n}{B_n + b_n} = \frac{A_n \left ( 1 + \frac{a_n}{A_n} \right )}{B_n \left ( 1 + \frac{b_n}{B_n} \right )}$. \EndProof
+\begin{Theorem}
+	\TheoremName{Principio di sostituzione degli infinitesimi} Siano $(A_n)_{n \in \mathbb{N}}, (B_n)_{n \in \mathbb{N}}, (a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$, dove $\NormedSpace$ \`e uno spazio vettoriale normato, infinitesimi. Se $\IsLittleo{(a_n)_{n \in \mathbb{N}}}{(A_n)_{n \in \mathbb{N}}}$ e $\IsLittleo{(b_n)_{n \in \mathbb{N}}}{(B_n)_{n \in \mathbb{N}}}$ e se $\left ( \frac{A_n}{B_n} \right )_{n \in \mathbb{N}}$ converge allora $\left ( \frac{A_n + a_n}{B_n + b_n} \right )$ converge a $\lim_{n \rightarrow \infty} \frac{A_n}{B_n}$.
+\end{Theorem}
+\Proof Basta osservare che perr ogni $n \in \mathbb{N}$, $\frac{A_n + a_n}{B_n + b_n} = \frac{A_n \left ( 1 + \frac{a_n}{A_n} \right )}{B_n \left ( 1 + \frac{b_n}{B_n} \right )}$. \EndProof

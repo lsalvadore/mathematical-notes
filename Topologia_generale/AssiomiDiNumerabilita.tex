@@ -1,0 +1,30 @@
+\section{Assiomi di numerabilita.}\label{AssiomiDiNumerabilita}
+\begin{Axiom}
+	\TheoremName{Primo assioma di numerabilit\`a}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	$\TopologicalSpace$ verifica il primo assioma di numerabilit\`a
+	se ogni punto di $\TopologicalSpace$ ammette una base locale
+	numerabile.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Secondo assioma di numerabilit\`a}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	$\TopologicalSpace$ verifica il secondo assioma di numerabilit\`a
+	se ammette una base numerabile.
+\end{Axiom}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	$\Class \subseteq \TopologicalSpace$ si dice
+	\Define{denso}[densa][classe] quando interseca ogni aperto non
+	vuoto.
+\end{Definition}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	$\TopologicalSpace$ si dice
+	\Define{separabile}[separabile][spazio] se esiste
+	$\Class \subseteq \TopologicalBase$ denso e numerabile.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico e sia $x \in \TopologicalSpace$. Se $x$ ammette una base locale numerabile $(\LocalBase_n)_{n \in \mathbb{N}}$, allora $x$ ammette anche una base locale numerabile non crescente.
+\end{Theorem}
+\Proof Una base locale non crescente \`e data da $(\VarLocalBase_n)_{n \in \mathbb{N}}$, con $\VarLocalBase_n = \bigcap_{i \in n} \LocalBase_i$. \EndProof

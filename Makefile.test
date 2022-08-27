@@ -1,0 +1,13 @@
+all: ${TESTS:=.out}
+	for x in $^; do \
+	echo "Testing `echo $$x | sed s/\.out$$//g`..."; \
+	diff $$x `echo $$x | sed s/out$$/in/g`; \
+	done
+
+clean:
+	rm -f *.test *.out
+
+.SUFFIXES: .cpp .o .out .test
+
+.test.out:
+	./$< > $@

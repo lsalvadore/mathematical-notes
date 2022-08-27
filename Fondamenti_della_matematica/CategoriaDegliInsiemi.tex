@@ -1,0 +1,188 @@
+\subsection{Categorie $\CatClass$ delle classi e $\CatSet$ degli insiemi.}\label{CategoriaDegliInsiemi}
+\par Procediamo ad applicare quanto sin'ora costruito sulle categorie alle classi e agli insiemi.
+\begin{Definition}
+	Sulla classe di tutte le applicazioni definiamo l'operazione $\circ$, detta composizione, tale che, se $\Function_1$ e $\Function_2$ sono applicazioni, allora
+	\begin{itemize}
+		\item il grafo di $\Function_1 \circ \Function_2$ \`e costuito da tutte quelle coppie $(x,y)$ tali che
+		\begin{itemize}
+			\item $x$ \`e un argomento di $\Function_2$;
+			\item $\Function_2(x)$ \`e argomento di $\Function_1$;
+			\item $y$ \`e immagine di $\Function_2(x)$;
+		\end{itemize}
+		\item la classe degli argomenti di $\Function_1 \circ \Function_2$ \`e, come implicato dalla definizione del grafo di $\Function_1 \circ \Function_2$, la stessa di quella di $\Function_2$;
+		\item la classe delle immagini di $\Function_1 \circ \Function_2$ \`e la stessa di quella di $\Function_1$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	La classe di tutte le applicazioni, munita dell'operazione di composizione, costituisce una categoria.
+\end{Theorem}
+\Proof Le identit\`a sono tutte quelle applicazioni in cui la classe degli argomenti e la classe delle immagini coincidono e l'immagine di ogni argomento \`e uguale all'argomento. Il resto si verifica immediatamente. \EndProof
+\begin{Definition}
+	Si chiama categoria delle classi, denotata $\CatClass$, la classe di tutte le applicazioni, munita dell'operazione di composizione.
+\end{Definition}
+\par La definizione precedente giustifica l'uso del termine ``dominio'' per la classe degli argomenti e ``codominio'' per la classe delle immagini.
+\begin{Theorem}
+	La classe di tutte le applicazioni tali che dominio e codominio siano insiemi, munita dell'operazione di composizione, costituisce una sottocategoria di $\CatClass$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Si chiama categoria degli insiemi, denotata $\CatSet$, la classe di tutte le applicazioni tali che dominio e codominio siano insiemi, munita dell'operazione di composizione.
+\end{Definition}
+\par Salvo avvisi contrari, nel seguito faremo sempre riferimento alla categoria $\CatClass$.
+\begin{Theorem}
+	In $\CatClass$ e $\CatSet$,
+	\begin{itemize}
+		\item per ogni monomorfismo $\Monomorphism$ e $x, y \in
+		\Dom \Monomorphism$, $\Implies{\Monomorphism(x) =
+		\Monomorphism(y)}{x = y}$;
+		\item per ogni epimorfismo $\Epimorphism$ e
+		$\Image{\Epimorphism} = \Cod \Epimorphism$;
+		\item i monomorfismi sono tutte e sole le retrazioni;
+		\item gli epimorfismi sono tutte e sole le sezioni.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\Monomorphism$ un monomorfismo. Supponiamo $x, y \in
+\Dom \Monomorphism$ tali che $\Monomorphism(x) = \Monomorphism(y)$ e
+consideriamo le applicazioni $c_x: \Dom \Monomorphism \rightarrow
+\Dom \Monomorphism$ e $c_y: \Dom \Monomorphism \rightarrow
+\Dom \Monomorphism$ che a ogni punto di $\Dom \Monomorphism$ associano $x$
+ed $y$ rispettivamente. Abbiamo $\Monomorphism c_x = \Monomorphism c_y$,
+da cui $c_x = c_y$ e dunque necessariamente $x = y$.
+\par Sia $\Epimorphism$ un epimorfismo e supponiamo che esista $y \in
+\Cod \Epimorphism$ tale che non esista $x \in \Dom \Epimorphism$ per cui
+$\Epimorphism(x) = y$. $\Cod \Epimorphism$ contiene almeno un elemento
+$z \neq y$. Consideriamo le applicazioni $a: \Cod \Epimorphism \rightarrow
+\Cod \Epimorphism$ e $b: \Cod \Epimorphism \rightarrow \Cod \Epimorphism$
+tali che
+\begin{itemize}
+	\item $a$ associa $z$ ad ogni elemento di $\Cod \Epimorphism$;
+	\item $b$ associa $z$ ad ogni elemento di $\Cod \Epimorphism$
+	tranne che a $y$ a cui viene associato invece $y$ stesso.
+\end{itemize}
+Abbiamo $a \Epimorphism = b \Epimorphism$, da cui $a = b$, che \`e
+assurdo. Dunque deve essere $\Image{\Epimorphism} = \Cod \Epimorphism$.
+\par Proviamo che un monomorfismo \`e una retrazione (che una retrazione
+\`e un monomorfismo segue direttamente dalle definizioni). Sia dunque
+$\Monomorphism$ un monomorfismo e $\Section: \Cod \Monomorphism
+\rightarrow \Dom \Monomorphism$ l'applicazione che ad ogni $y \in
+\Cod \Monomorphism$ associa l'unico $x \in \Dom \Monomorphism$ tale che
+$\Monomorphism(x) = y$: si verifica immediatamente che $\Section$ \`e
+un'inversa destra per $\Monomorphism$.
+\par Che gli epimorfismi coincidano con le sezioni segue immediatamente
+per dualit\`a. \EndProof
+\begin{Definition}
+	Diciamo che un'applicazione \`e
+	\begin{itemize}
+		\item \Define{iniettiva}[iniettiva][applicazione] quando \`e un monomorfismo;
+		\item \Define{suriettiva}[suriettiva][applicazione] quando \`e un epimorfismo;
+		\item \Define{biettiva}[biettiva][applicazione] quando \`e un isomorfismo.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Una classe si dice \Define{infinita}[infinita][classe] quando essa \`e isomorfa ad una sua sottoclasse.
+\end{Definition}
+\begin{Theorem}
+	Una classe induttiva \`e infinita.
+\end{Theorem}
+\Proof Sia $\Class$ una classe induttiva e consideriamo l'applicazione $\Function: \Class \rightarrow \Class$ che ad $x \in \Class$ associa $x \cup \lbrace x \rbrace$: \`e immediato verificare $\Function$ \`e iniettiva, dunque l'applicazione con lo stesso grafo e lo stesso dominio di $\Function$ ma avente per codominio $\Image{\Function}$ \`e invertibile. \EndProof 
+\begin{Definition}
+	Siano $\Class_1$ e $\Class_2$ due classi tali che $\Class_1 \subseteq \Class_2$. Un'applicazione $\Function: \Class_1 \rightarrow \Class_2$ inettiva si chiama \Define{inclusione}. Se inoltre $\Function$ asssocia ad ogni $x \in \Class_1$ lo stesso elemento $x$, allora chiamiamo $\Function$ \Define{inclusione canonica}[canonica][inclusione].
+\end{Definition}
+\begin{Definition}
+	Sia data una categoria $\Category$. Chiamiamo \Define{funtore dimenticante}[dimenticante][funtore] un qualsiasi funtore $\Forgetful: \Category \rightarrow \CatClass$ o $\Forgetful: \Category \rightarrow \CatSet$ tale che a oggetti diversi corrispondano classi diverse. Quando un tale funtore esiste, se $x$ \`e un oggetto di $\Category$ diciamo che $\Forgetful(x)$ \Define{soggicace}[soggiacente][classe] ad $x$ o che $\Forgetful(x)$ \`e il \Define{sostegno} di $x$. Diciamo inltre che $\Category$ \`e una \Define{categoria concreta}[concreta][categoria].
+\end{Definition}
+\par La nostra precedente definizione \`e in contraddizione con quanto costituisce la tradizione odierna. Solitamente, essa definisce prima concretamente la categoria $\Category$, come ad esempio la categoria dei gruppi, quindi il funtore dimenticante che ad ogni gruppo associa l'insieme (o la classe) dei suoi elementi e ad ogni omomorfismo la medesima applicazione: questa strada non \`e percorribile da noi, poich\'e desideriamo fornire ora definizioni generali indipendenti dalla categoria $\Category$ stessa.
+\par Quando sar\`a definito un funtore dimenticante, compieremo spesso l'abuso di linguaggio di confondere un oggetto con la sua immagine tramite il funtore.
+\begin{Theorem}
+	Il funtore $\Forgetful: \CatCateg \rightarrow \CatClass$ che ad ogni categoria associa la classe delle sue frecce \`e dimenticante.
+\end{Theorem}
+\Proof Segue immediatamente dalla definizione di funtore dimenticante. \EndProof
+\begin{Definition}
+	Sia data una categoria $\Category$ per cui \`e definibile un funtore dimenticante $\Forgetful$. Se $\Function$ \`e un monomorfismo universale da $\Class \in \CatClass$ in $\Forgetful$, allora si dice che $\Cod{\Function}$ \`e l'\Define{oggetto libero generato da $\Dom{Function}$}[libero][oggetto] da $\Class$ tramite $\Function$ e che $\Class$ \`e una classe di \Define{generatori}[generatori] tramite $\Function$ per $\Cod{\Function}$. Ometteremo la specifica di $\Function$ quando essa \`e l'inclusione canonica.
+\end{Definition}
+\begin{Definition}
+	Sia $\Equivalence$ una relazione d'equivalenza definita sugli elementi di una classe $\Class$. Dato $x \in \Class$ definiamo \Define{classe d'equivalenza}[d'equivalenza][classe] la classe $\lbrace y \in \Class | y \Equivalence x \rbrace$, denotata d'ora in poi $\EquivalenceClass{x}[\Equivalence]$. Denoteremo $\Quotient{\Class}{\Equivalence}$ la classe di tutte le classi d'equivalenza di $\Equivalence$ in $\Class$.
+\end{Definition}
+\begin{Definition}
+	Data una classe $\Class$, chiamiamo \Define{partizione} una famiglia di sottoclassi $(\Class_i)_{i \in I}$ tutte disgiunte e non vuote la cui unione costituisce $\Class$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Equivalence$ una relazione d'equivalenza definita sugli elementi di una classe $\Class$. Le classi d'equivalenza di $\Equivalence$ in $\Class$ costituiscono una partizione di $\Class$.
+\end{Theorem}
+\Proof Per ogni $x \in \Class$, abbiamo $x \Equivalence x$, da cui $x \in \EquivalenceClass{x}[\Equivalence]$.
+\par Se $y, z \in \Class$ e $x \in \EquivalenceClass{y}[\Equivalence] \cap \EquivalenceClass{z}[\Equivalence]$, allora $x \Equivalence y$ e $x \Equivalence z$, da cui $y \Equivalence z$. Ora, se $u \in \EquivalenceClass{y}[\Equivalence]$, allora $u \Equivalence y \Equivalence z$ e quindi $u \in \EquivalenceClass{z}[\Equivalence]$, cio\`e $\EquivalenceClass{y}[\Equivalence] \subseteq \EquivalenceClass{z}[\Equivalence]$. Analogamente si porva l'inclusione inversa. \EndProof
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\Category$ una categoria per cui \`e definito un funtore
+		dimenticante $\Forgetful$;
+		\item $\Morphism$ un morfismo;
+		\item $\Equivalence_1$ una relazione d'equivalenza definita su $\Dom \Forgetful(\Morphism$);
+		\item $\Equivalence_2$ una relazione d'equivalenza definita su $\Cod \Forgetful(\Morphism$);
+	\end{itemize}
+	$\Morphism$ si dice \Define{compatibile}[compatibile][morfismo] con $\Equivalence_1$ e $\Equivalence_2$ se per ogni $x, y \in \Forgetful(\Dom{\Morphism})$, $x \Equivalence_1 y$ implica $\Forgetful(\Morphism)(x) \Equivalence_2 \Forgetful(\Morphism)(y)$. Omettiamo la specifica della relazione d'equivalenza quando ogni elemento costituisce da solo la propria classe d'equivalenza.
+\end{Theorem}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\Category$ una categoria per cui \`e definito un funtore
+		dimenticante $\Forgetful$;
+		\item $\Object$ un oggetto di $\Category$;
+		\item $\Equivalence$ una relazione d'equivalenza definita sugli
+		elementi di $\Forgetful(\Object)$;
+		\item $\Projection$ un morfismo tale che
+		\begin{itemize}
+			\item $\Dom \Projection = \Object$;
+			\item $\Forgetful(\Cod \Projection) =
+			\Quotient{\Forgetful(\Object)}{\Equivalence}$;
+			\item $\ForAll{x \in \Forgetful(\Object)}{
+			\Forgetful{\Projection}(x) =
+			\EquivalenceClass{x}[\Equivalence]}$.
+		\end{itemize}
+	\end{itemize}
+	Se per ogni morfismo $\Morphism$ di $\Category$ tale che
+	$\Dom \Morphism = \Object$ e compatibile con
+	$\Equivalence$	esiste un morfismo $\Morphism_0$ tale che
+	$\Morphism = \Morphism_0 \circ \Projection$,
+	allora $(\Cod \Projection, \Projection)$ \`e universale da
+	$\Object$ a $\Identity$, dove $\Identity$ \`e il funtore
+	identit\`a della categoria $\Category$ da cui sono state rimosse
+	tutti i morfismi di dominio $\Object$ incompatibili con
+	$\Equivalence$\footnote{Dopo aver rimosso questi morfismi
+	otteniamo effettivamente una categoria: in effetti, si verifica
+	immediatamente che \`e impossibile in tali circostanze comporre
+	due morfismi per ottenere un morfismo di dominio $\Object$
+	incompatibile con $\Equivalence$.}.
+\end{Theorem}
+\Proof Fissato $\Morphism$, $\Morphism_0$ \`e l'unico morfismo $\Morphism'$ tale che $\Morphism = \Morphism' \circ \Projection$. Infatti $\Forgetful(\Morphism')$ deve necessariamente associare alla classe d'equivalenza di $x \in \Forgetful(\Object)$ lo stesso elemento associato ad $x$ da $\Morphism$. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, chiamiamo
+	\begin{itemize}
+		\item \Define{oggetto quoziente}[quoziente] l'oggetto
+		$\Cod \Projection$, che denotiamo
+		$\Quotient{\Object}{\Equivalence}$.
+		\item \Define{proiezione canonica}[canonica][proiezione] o
+		\Define{proiezione su quoziente}[sul quoziente][proiezione]
+		$\Quotient{\Class}{\Equivalence}$ il morfismo $\Projection$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $(\Class_j)_{j \in I}$ una famiglia di classi, $\Class$ la classe di tutte le applicazioni di scelta per $\bigcup_{j \in I} \lbrace \Class_j \rbrace$ e siano $\Projection_i: \Class \rightarrow \Class_i$ le applicazioni che a $(x_j)_{j \in I} \in \Class$ associano $x_i$. $\Class$ \`e il prodotto delle classi $\Class_i$ e ogni $\Projection_i$ \`e la proiezione sul fattore $i$.
+\end{Theorem}
+\Proof Sia $\bar{\Class}$ una classe qualsiasi e, per ogni $j \in I$, $\Function_j: \bar{\Class} \rightarrow \Class_j$ un'applicazione qualsiasi.
+\par Chiaramente, l'applicazione $\Function: \bar{\Class} \rightarrow \Class$ che a $x \in \bar{\Class}$ associa $(\Function_j(x))_{j \in I}$ \`e l'unica applicazione tale che, per ogni $i \in I$, $\Function_i = \Projection_i \circ \Function$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{prodotto cartesiano}[cartesiano][prodotto] di $\Class_1, \Class_2,  ..., \Class_n$ l'insieme di tutte le $n$-uple tali che la $i$-esima componente appartenga a $\Class_i$, denotato $\Class_1 \times \Class_2 \times ... \Class_n$ o anche $\times_{i = 1}^n \Class_i$.
+\end{Definition}
+\begin{Theorem}
+	Data una famiglia finita di classi $(\Class_i)_{i \in I}$, il prodotto $\DirectProduct_{i \in I} \Class_i$ e il prodotto $\times_{i = 1}^n \Class_i$ sono isomorfi.
+\end{Theorem}
+\Proof Basta scegliere un'applicazione biettiva $\Function: \lbrace 1, ..., n \rbrace \rightarrow I$ e considerare l'isomorfismo che ad $(x_i)_{i \in I} \in \DirectProduct_{i \in I} \Class_i$ associa $(x_{f(1)},x_{f(2)}, ..., x_{f(n)}) \in \times_{i = 1}^n$. \EndProof
+\begin{Definition}
+	Sia $\Category$ una categoria che ammette un funtore dimenticante $\Forgetful$. Se $\Object_1$ e $\Object_2$ sono due oggetti di $\Category$ tali che
+	\begin{itemize}
+		\item $\Forgetful(\Object_1) \subseteq \Forgetful(\Object_2)$;
+		\item per un opportuno morfismo $f: \Forgetful(\Object_1) \rightarrow \Forgetful(\Object_2)$ si ha che $\Forgetful(f)$ \`e l'inclusione canonica di $\Forgetful(\Object_1)$ in $\Forgetful(\Object_2)$;
+	\end{itemize}
+	allora diciamo che $\Object_1$ \`e un \Define{sottoggetto} di $\Object_2$ e che $\Object_2$ \Define{induce}[indotta][struttura] una struttura di $\Category$ su $\Forgetful(\Object_1)$. Chiamiamo l'omomorfismo $f$ ancora \Define{inclusione canonica}[canonica][inclusione].
+\end{Definition}

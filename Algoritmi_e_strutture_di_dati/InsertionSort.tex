@@ -1,0 +1,79 @@
+\subsubsection{\English{Insertion sort}.}
+\label{AlgoritmiEStruttureDiDati_InsertionSort}
+\begin{Definition}
+	Si chiama
+  \Define{\English{insertion sort}}[\English{insertion}][\English{sort}]
+  l'algoritmo seguente:
+	\begin{enumerate}
+		\item\label{InsertionSort_1} si ponga $I = 1$;
+		\item\label{InsertionSort_2} se $I = n$, l'algoritmo termina;
+		\item\label{InsertionSort_3} si ponga $J = I$;
+		\item\label{InsertionSort_4} se $e_I \geq e_J$, allora si incrementi $I$ di
+      $1$ e si torni al punto \ref{InsertionSort_2};
+		\item\label{InsertionSort_5} si scambino $e_I$ e $e_J$;
+		\item\label{InsertionSort_6} se $J = 0$, si incrementi $I$ di $1$ e si torni
+      al punto \ref{InsertionSort_2};
+		\item\label{InsertionSort_7} si decrementi $J$ di $1$;
+		\item\label{InsertionSort_8} si torni al punto \ref{InsertionSort_4}.
+	\end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/InsertionSort.cpp"}
+	\caption{\textit{Insertion sort} implementato in \LanguageName{C++}.}
+\end{listing}
+\begin{Theorem}
+	L'\English{insertion sort} risolve il problema dell'ordinamento.
+\end{Theorem}
+\Proof Osserviamo che la variabile $I$ assume al punto \ref{InsertionSort_2}
+valori sempre diverse, incrementati di $1$ ad ogni passaggio: procediamo per
+induzione su $I$, dimostrando che per ogni $I \in n$, $(e_i)_{i \in I + 1}$ sono
+ordinati al passaggio successivo dell'algoritmo dal punto \ref{InsertionSort_2}.
+Ne conseguir\`a il teorema nel caso $I = n$.
+\par Fissato $I \in n$, supponiamo vera l'affermazione per tutti gli $I - 1$ e
+dimostriamola per $I$. Per ipotesi induttiva, gli $(e_i)_{i \in I}$ sono
+ordinati. Ora
+\begin{itemize}
+	\item se il seguente passaggio dal punto \ref{InsertionSort_2} proviene dal
+    punto \ref{InsertionSort_4}, allora
+	\begin{itemize}
+		\item tutti gli elementi $(e_j)_{j \in J}$ sono rimasti inalterati rispetto
+      all'ultimo passaggio dal punto \ref{InsertionSort_2}, e dunque sono
+      ordinati;
+		\item $e_J$ \`e maggiore di tutti gli $(e_j)_{j \in J}$;
+		\item gli $(e_j)_{j \in I \SetMin J}$ sono uguali agli elementi
+      $(e_{j - 1})_{j \in I \SetMin J}$ secondo l'indicizzazione dell'ultimo
+      passaggio dal punto \ref{InsertionSort_2} e dunque sono ordinati; inoltre
+      sono tutti maggiori di $e_J$.
+	\end{itemize}
+	Dunque gli $(e_i)_{i \in I}$ sono ordinati;
+	\item se il seguente passaggio dal punto \ref{InsertionSort_2} proviene dal
+    punto \ref{InsertionSort_6}, allora gli $(e_j)_{j \in I \SetMin J}$ sono
+    uguali agli elementi $(e_{j - 1})_{j \in I \SetMin J}$ secondo
+    l'indicizzazione dell'ultimo passaggio dal punto \ref{InsertionSort_2} e
+    dunque sono ordinati; inoltre sono tutti maggiori di $e_0$. Dunque gli
+    $(e_i)_{i \in I}$ sono ordinati. \EndProof
+\end{itemize}
+\begin{Theorem}
+	L'\English{insertion sort} ha costo
+	\begin{itemize}
+		\item $\BigTheta{n}$ al caso ottimo;
+		\item $\BigTheta{n^2}$ al caso pessimo;
+		\item $\BigTheta{n^2}$ al caso medio.
+	\end{itemize}
+\end{Theorem}
+\Proof I confronti hanno luogo solo al punto \ref{InsertionSort_4}.
+\par Al caso ottimo, che si verifica quando la successione \`e gi\`a ordinata,
+si passa dal punto \ref{InsertionSort_4} solo una volta per ogni valore
+$I \in \NaturalShift{n - 1}$: abbiamo dunque un costo di $n - 1 = \BigTheta{n}$.
+\par Al caso pessimo, che si verifica quando la successione \`e ordinata secondo
+l'ordinamento opposto a quello voluto, si passa dal punto \ref{InsertionSort_4}
+$I$ volte per ogni valore $I \in \NaturalShift{n - 1}$: abbiamo dunque un costo
+di $\sum_{I = 0}^{n - 1} I = \frac{n(n - 1)}{2} = \BigTheta{n^2}$.
+\par Al caso medio, ad ogni passaggio di $I$, la probabilit\`a di eseguire
+$i \in I$ confronti \`e $\frac{1}{I}$: il numero medio di confronti \`e dunque
+$\sum_{i \in I} \frac{1}{I}
+= \frac{I\left (\frac{1}{I} + \frac{I - 1}{I} \right )}{2}
+= \frac{I}{2}$.
+Il costo medio \`e dunque
+$\sum_{I \in n} \frac{I}{2}
+= \frac{n(n - 1)}{4} = \BigTheta{n^2}$. \EndProof

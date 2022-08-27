@@ -1,0 +1,128 @@
+\section{Funzioni iperboliche.}
+\label{FunzioniNotevoli_FunzioniIperboliche}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\cosh(X)
+          = \sum_{n \in \mathbb{N}} \frac{X^{2n}}{(2n)!}
+          \in \PowerSeries{\mathbb{C}}{X}$;
+		\item $\sinh(X)
+          = \sum_{n \in \mathbb{N}} \frac{X^{2n + 1}}{(2n + 1)!}
+          \in \PowerSeries{\mathbb{C}}{X}$.
+	\end{itemize}
+	Abbiamo
+	\begin{itemize}
+		\item $\cosh(X)$ converge ovunque in $\mathbb{C}$;
+		\item $\sinh(X)$ converge ovunque in $\mathbb{C}$.
+	\end{itemize}
+\end{Theorem}
+\begin{Definition}
+	Le funzioni $\cosh$ e $\sinh$ del teorema precedente si chiamano
+  \Define{coseno iperbolico}[iperbolico][coseno] e
+  \Define{seno}[iperbolico][seno] rispettivamente: le denoteremo sempre
+  $\cosh$ e $\sinh$.
+\end{Definition}
+\par \`E molto comune l'abuso di notazione secondo cui, per
+$z, \alpha \in \mathbb{C}$, denotiamo $\cosh^\alpha{z}$ e
+$\sinh^\alpha{z}$ le quantit\`a $(\cosh{z})^\alpha$ e $(\sinh z)^\alpha$
+rispettivamente. Analoghe considerazioni varranno per le ulteriori
+funzioni iperboliche che introdurremo.
+\par Noi adotteremo sempre questo abuso di linguaggio, salvo esplicite
+indicazioni contrarie.
+\begin{Theorem}
+  Sia $z \in \mathbb{C}$. Abbiamo
+  \begin{itemize}
+    \item $\cosh z
+            = \cos iz
+            = \frac{e^z + e^{-z}}{2}$;
+    \item $\sinh z
+            = - i \sin iz
+            = \frac{e^z - e^{-z}}{2}$.
+  \end{itemize}
+\end{Theorem}
+\Proof Per il coseno iperbolico abbiamo
+\begin{align*}
+  \cosh z
+  &= \sum_{n \in \mathbb{N}} \frac{z^{2n}}{(2n)!},\\
+  &= \sum_{n \in \mathbb{N}} (-1)^{n} \frac{(iz)^{2n}}{(2n)!},\\
+  &= \cos iz.
+\end{align*}
+\par Inoltre
+\begin{align*}
+  \frac{e^z + e^{-z}}{2}
+  &= \frac{1}{2}
+      \sum_{n \in \mathbb{N}} \frac{z^n + (-z)^n}{n!},\\
+  &= \frac{1}{2}
+      \sum_{n \in \mathbb{N}} \frac{2z^{2n}}{(2n)!},\\
+  &= \sum_{n \in \mathbb{N}} \frac{z^{2n}}{(2n)!},\\
+  &= \cosh z.
+\end{align*}
+\par Per il seno iperbolico abbiamo
+\begin{align*}
+  \sinh z
+  &= \sum_{n \in \mathbb{N}} \frac{z^{2n + 1}}{(2n + 1)!},\\
+  &= \sum_{n \in \mathbb{N}} (-1)^{n} i \frac{(iz)^{2n + 1}}{(2n + 1)!},\\
+  &= - i \sin iz.
+\end{align*}
+\par Inoltre
+\begin{align*}
+  \frac{e^z - e^{-z}}{2}
+  &= \frac{1}{2}
+      \sum_{n \in \mathbb{N}} \frac{z^n - (-z)^n}{n!},\\
+  &= \frac{1}{2}
+      \sum_{n \in \mathbb{N}} \frac{2z^{2n + 1}}{(2n + 1)!},\\
+  &= \sum_{n \in \mathbb{N}} \frac{z^{2n + 1}}{(2n + 1)!},\\
+  &= \sinh z.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+	Sia $z \in \mathbb{C}$. Abbiamo $\cosh^2 z - \sinh^2 z = 1$.
+\end{Corollary}
+\Proof Abbiamo
+\begin{align*}
+\cosh^2 z - \sinh^2 z
+&= \left ( \frac{e^z + e^{-z}}{2} \right)^2
+  - \left ( \frac{e^z - e^{-z}}{2} \right)^2,\\
+&= \frac{e^{2z} + 2 e^{z-z} + e^{-2z} - e^{2z} + 2 e^{z-z} - e^{-2z}}
+    {4}
+&= e^0,\\
+&= 1.
+\end{align*}
+\begin{Definition}
+  Definiamo \Define{tangente iperbolica}[iperbolica][tangente] la
+  funzione
+  $\tanh: \mathbb{C}
+    \rightarrow \mathbb{C}$
+  tale che $\tanh{z} = \frac{\sinh{z}}{\cosh{z}}$.
+CONTROLLARE DOMINIO: quali sono gli zeri di cosh?
+\end{Definition}
+\begin{Theorem}
+  Abbiamo
+  \begin{itemize}
+    \item $\frac{d\cosh}{dz}(z) = \sinh z$;
+    \item $\frac{d\sinh}{dz}(z) = \cosh z$;
+    \item $\frac{d\tanh}{dz}(z) = 1 - \tanh^2 z = \frac{1}{\cosh^2 z}$.
+  \end{itemize}
+\end{Theorem}
+\Proof Derivando le serie formali che definiscono coseno iperbolico e
+seno iperbolico, otteniamo
+\begin{align*}
+  \frac{d\cosh}{dz}(z)
+    &= \sum_{n \in \NotZero{\mathbb{N}}} 2n \frac{z^{2n - 1}}{(2n)!},\\
+    &= \sum_{n \in \NotZero{\mathbb{N}}} \frac{z^{2n - 1}}{(2n - 1)!},\\
+    &= \sum_{n \in \mathbb{N}} \frac{z^{2n + 1}}{(2n + 1)!},\\
+    &= \sinh z.
+\end{align*}
+e
+\begin{align*}
+  \frac{d\sinh}{dz}(z)
+    &= \sum_{n \in \mathbb{N}} (2n + 1)\frac{z^{2n}}{(2n + 1)!},\\
+    &= \sum_{n \in \mathbb{N}} \frac{z^{2n}}{(2n)!},\\
+    &= \cosh z.
+\end{align*}
+\par Usando infine la formula della derivata di un rapporto di funzioni,
+\begin{align*}
+  \frac{d\tanh}{dz}(z)
+    &= \frac{\cosh z \cosh z - \sinh z \sinh z}{\cosh^2 z},\\
+    &= 1 - \tanh z,\\
+    &= \frac{1}{\cosh^2 z}.\text{ \EndProof}
+\end{align*}

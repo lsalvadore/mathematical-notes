@@ -1,0 +1,55 @@
+\section{Sistemi Triangolari.}
+\label{MetodiNumericiPerSistemiLineari_SistemiTriangolari}
+\begin{Definition}
+  Sia il sistema
+  $\Matrix X = B$ con
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}^2}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$ a gradini;
+    \item $X \in \mathbb{C}^m$ incognito;
+    \item $B \in \mathbb{C}^n$ noto.
+  \end{itemize}
+  Si chiama
+  \Define{sostituzione all'indietro}[all'indietro][sostituzione]
+  l'algoritmo seguente:
+  \begin{enumerate}
+    \item\label{GradiniSuperiore_0} fissiamo arbitrariamente
+      $X \in \mathbb{C}^m$;
+    \item\label{GradiniSuperiore_1} poniamo $k = n - 1$;
+    \item\label{GradiniSuperiore_2} poniamo $q$ uguale al minimo indice
+      $r$ tale che $\Matrix_k^r \neq 0$ e
+      $X_q = (T_k^q)^{-1}B_k - \sum_{r = q + 1}^{n - 1} T_k^r X_r$;
+    \item\label{GradiniSuperiore_3} decrementiamo $k$ di $1$;
+    \item\label{GradiniSuperiore_4} se $k \geq 0$ torniamo al punto
+      \ref{GradiniSuperiore_1}, altrimenti l'algoritmo termina.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/SostituzioneAllIndietro.m"}
+	\caption{Implementazione della sostituzione all'indietro in \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Con le notazioni della definizione precedente, la sostituzione
+  all'indietro risolve il sistema $\Matrix X = B$
+  L'algoritmo costa $\BigO{n^2}$ operazioni aritmetiche.
+\end{Theorem}
+\Proof Verifichiamo la correttezza dell'algoritmo per induzione. Il caso $n = 1$
+\`e immediato. Per $n > 1$, basta osservare che i primi $n - 1$ cicli
+dell'algoritmo sono gli stessi che risolvono il sistema proiettato sulle ultime
+$n - 1$ componenti e che l'ultimo ciclo risolve con successo l'equazione
+definita dalla prima riga del sistema.
+\par Abbiamo, ad ogni ciclo,
+\begin{itemize}
+  \item $n - 1 - (q + 1) + 1 + 1 = n - q$ somme;
+  \item $n - 1 - (q + 1) + 1 = n - q - 1$ moltiplicazioni;
+  \item $1$ divisione.
+\end{itemize}
+\par Ad ogni ciclo, $q$ \`e al pi\`u $k$; quindi in totale le operazioni
+sono al pi\`u
+\begin{align*}
+  \sum_{k = 0}^{n - 1} 2n - 2k
+  &= 2n^2 - 2 \frac{(n - 1)n}{2},\\
+  &= 2n^2 - n^2 + n,\\
+  &= n^2 + n,\\
+  &= \BigO{n^2}.\text{ \EndProof}
+\end{align*}

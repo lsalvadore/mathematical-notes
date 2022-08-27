@@ -1,0 +1,49 @@
+\section{Complessit\`a computazionle.}
+\label{AlgoritmiEStruttureDiDati_ComplessitaComputazionale}
+\begin{Definition}
+	A seconda dei contesti, definiamo il \Define{costo}[di un algoritmo][costo] o \Define{complessit\`a}[di un algoritmo][complessit\`a] di un algoritmo in uno dei modi seguenti, ordinati dalla definizione pi\`u frequentemente usata alla meno frequente:
+	\begin{itemize}
+		\item il costo computazionale \`e il tempo di esecuzione dell'algoritmo;
+		\item il costo computazionale \`e lo spazio di lavoro dell'algoritmo, cio\`e il numero di celle di memoria utilizzate (talvolta si escludono le celle usate per il passaggio dei parametri di ingresso);
+		\item il costo computazionale \`e l'energia consumata dall'algoritmo.
+	\end{itemize}
+	Salvo avvisi contrari, utilizzeremo sempre la prima definizione.
+\end{Definition}
+\begin{Definition}
+	Diciamo che un algoritmo ha costo $C$
+	\begin{itemize}
+		\item al \Define{caso pessimo}[pessimo][caso] quando esiste un insieme di
+dati in ingresso per cui l'algoritmo ha costo computazionale $C$ e nessun altro
+insieme di dati in ingresso genera un costo maggiore;
+		\item al \Define{caso pessimo}[pessimo][caso] quando esiste un insieme di
+dati in ingresso per cui l'algoritmo ha costo computazionale $C$ e nessun altro
+insieme di dati in ingresso genera un costo minore;
+		\item al \Define{caso medio}[medio][caso] quando $C$ \`e la media dei costi
+generati da tutti i possibili insiemi di dati in ingresso.
+	\end{itemize}
+\end{Definition}
+\par Salvo ove espressamente indicato il contrario, analizzaremo sempre i costi
+degli algoritmi al caso pessimo.
+\begin{Definition}
+	Data una funzione $f$ della dimensione $n$ dei dati di ingresso di un problema, diciamo che $f$ ha \Define{complessit\`a}[di un problema][complessit\`a]
+	\begin{itemize}
+		\item $\BigO{f(n)}$ se ammette un algoritmo di complessit\`a $\BigO{f(n)}$: diciamo anche che il problema ha \Define{limite superiore}[superiore di un problema][limite];
+		\item $\BigOmega{f(n)}$ se ammette un algoritmo di complessit\`a $\BigOmega{f(n)}$: diciamo anche che il problema ha \Define{limite inferiore}[inferiore di un problema][limite];
+		\item $\BigTheta{f(n)}$ se ha simultaneamente complessit\`a $\BigO{f(n)}$ e $\BigOmega{f(n)}$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Data una funzione $f$ della dimensione $n$ dei dati di ingresso di un problema, diciamo che un algoritmo di complessit\`a $\BigO{f(n)}$ per un problema \`e di complessit\`a $\BigTheta{f(n)}$ \`e \Define{asintoticamente ottimo}[asintoticamente ottimo][algoritmo].
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{analisi di complessit\`a}[di complessit\`a][analisi] la ricerca dei migliori algoritmi che risolvono un problema dato tra un insieme di algoritmi proposto, condotta attraverso i tre passi seguenti:
+	\begin{itemize}
+		\item definizione di un modello computazionale che definisca i costi delle varie operazioni elementari;
+		\item valutare il costo degli algoritmi risolutivi individuati;
+		\item implementare le soluzioni che hanno un costo minore e sperimentarle su dati reali.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{analisi asintotica}[asintotica][analisi] di un algoritmo lo studio della sua complessit\`a al tendere ad infinito della dimensione dei dati in ingresso.
+\end{Definition}
+

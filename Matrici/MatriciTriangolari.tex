@@ -1,0 +1,114 @@
+\section{Matrici triangolari.}
+\label{Matrici_MatriciTriangolari}
+\begin{Definition}
+	Siano $\Ring$ un anello, $n, m \in \mathbb{N}$ e $\Matrix \in \Ring^{n \times m}$.
+  Diciamo che $\Matrix$ \`e
+	\begin{itemize}
+		\item \Define{triangolare superiore}[triangolare superiore][matrice] quando
+      $\ForAll{(i,j) \in n \times m}{\Implies{i > j}{\Matrix_i^j = 0}}$:
+      nel caso quadrato abbiamo
+\[
+\lmatrix
+\begin{array}{ccc}
+\Matrix_0^0 & \cdots & \Matrix_{n - 1}^{n - 1}\\
+& \ddots & \vdots\\
+& & \Matrix_{n - 1}^{n - 1}
+\end{array}
+\rmatrix;
+\]
+		\item \Define{triangolare strettamente superiore}[triangolare strettamente superiore][matrice] quando
+      $\ForAll{(i,j) \in n \times m}{\Implies{i \geq j}{\Matrix_i^j = 0}}$:
+      nel caso quadrato abbiamo
+\[
+\lmatrix
+\begin{array}{cccc}
+0 & \Matrix_0^1 & \cdots & \Matrix_0^{n - 1}\\
+& 0 & \ddots & \vdots\\
+& & 0 & \Matrix_{n - 2}^{n - 1}\\
+& & & 0
+\end{array}
+\rmatrix;
+\]
+		\item \Define{triangolare inferiore}[triangolare inferiore][matrice] quando
+      $\ForAll{(i,j) \in n \times m}{\Implies{i < j}{\Matrix_i^j = 0}}$:
+      nel caso quadrato abbiamo
+\[
+\lmatrix
+\begin{array}{ccc}
+\Matrix_0^0 & &\\
+\vdots & \ddots &\\
+\Matrix_{n - 1}^0 & \cdots & \Matrix_{n - 1}^{n - 1}\\
+\end{array}
+\rmatrix;
+\]
+		\item \Define{triangolare strettamente inferiore}[triangolare strettamente inferiore][matrice] quando
+    $\ForAll{(i,j) \in n \times m}{\Implies{i \leq j}{\Matrix_i^j = 0}}$:
+      nel caso quadrato abbiamo
+\[
+\lmatrix
+\begin{array}{cccc}
+0 & & &\\
+\Matrix_1^0 & \ddots & &\\
+\vdots & \ddots & \ddots &\\
+\Matrix_{n - 1}^0 & \cdots & \Matrix_{n - 1}^{n - 2} & 0\\
+\end{array}
+\rmatrix;
+\]
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $m, n, p \in \NotZero{\mathbb{N}}$;
+    \item $\Ring$ un anello;
+    \item $\TriangularMatrix \in \Ring^{m \times n}$;
+    \item $\VarTriangularMatrix \in \Ring^{n \times p}$;
+    \item $\Matrix = \TriangularMatrix\VarTriangularMatrix$.
+  \end{itemize}
+  Allora
+  \begin{itemize}
+    \item se $\TriangularMatrix$ e $\VarTriangularMatrix$ sono triangolari
+      inferiori, $\Matrix$ \`e triangolare inferiore;
+    \item se $\TriangularMatrix$ e $\VarTriangularMatrix$ sono triangolari
+      strettamente inferiori, $\Matrix$ \`e triangolare strettamente inferiore.
+  \end{itemize}
+\end{Theorem}
+\Proof Sia $(k,j) \in m \times p$. Abbiamo
+$\Matrix_k^j
+= \sum_{l \in n} \TriangularMatrix_k^l \VarTriangularMatrix_l^j$.
+\par Ora,
+\begin{itemize}
+  \item se $\TriangularMatrix$ e $\VarTriangularMatrix$ sono triangolari
+    inferiori,
+    $\ForAll{(k,l) \in m \times n}{
+      \Implies{k < l}{\TriangularMatrix_k^l = 0}}$;
+  \item se $\TriangularMatrix$ e $\VarTriangularMatrix$ sono triangolari
+    strettamente inferiori,
+    $\ForAll{(k,l) \in m \times n}{
+      \Implies{k \leq l}{\TriangularMatrix_k^l = 0}}$.
+\end{itemize}
+\par Ne segue immediatamente la tesi. \EndProof
+\begin{Definition}
+	Siano $\Ring$ un anello, $n, m \in \mathbb{N}$ e $\Matrix \in \Ring^{n \times m}$.
+  Sia $(\tau_k)_{k \in n}$ una successione tale che, per ogni $k \in n$,
+  \begin{itemize}
+    \item $\Implies{j < \tau_k}{\Matrix_k^j = 0}$;
+    \item $\Matrix_k^{\tau_k} \neq 0$.
+  \end{itemize}
+  Diciamo che $\Matrix$ \`e una
+  \Define{matrice a gradini}[a gradini][matrice]
+  quando la successione $(\tau_k)_{k \in n}$ \`e strettamente crescente.
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni della definizione precedente, $\Matrix$ \`e una matrice
+  triangolare superiore.
+\end{Theorem}
+\Proof Procediamo per induzione su $n$. Il teorema \`e immediato se $n = 1$.
+\par Supponiamo il teorema dimostrato per $n = N \in \mathbb{N}$ e proviamolo
+per $n = N + 1$. La sottomatrice $\Matrix'$ ottenuta da $\Matrix$
+eliminando la prima riga e la prima colonna \`e ancora una matrice a gradini
+e dunque vi si pu\`o applicare l'ipotesi induttiva: $\Matrix'$ \`e
+triangolare superiore.
+\par Poich\'e $\Matrix$ \`e a gradini, tutti gli elementi
+$(\Matrix_k^0)_{k = 1}^{n - 1}$ devono essere nulli. Ne consegue che
+$\Matrix$ \`e triangolare superiore. \EndProof

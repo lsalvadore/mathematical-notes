@@ -1,0 +1,42 @@
+\subsection{Ordinamenti monomiali e ideali polinomiali.}\label{OrdinamentiMonomialiEIdealiPolinomiali}
+\begin{Definition}
+	Sia dato un anello di polinomi $\MultivariatePolynomialsRing$. Chiamiamo \Define{ordinamento monomiale} di $\MultivariatePolynomialsRing$ qualsiasi ordinamento di $\MonomialialsSet{\MultivariatePolynomialsRing}$ ottenuto trasportando un buon ordinamento invariante per traslazione dell'insieme $\mathbb{N}^n$.
+\end{Definition}
+\par Salvo indicazioni contrarie per anelli di polinomi univariati considereremo sempre l'ordinamento monomiale indotto dall'ordinamento classico di $\mathbb{N}$.
+\begin{Theorem}\label{ordmonom_compatibilitaprodotto}
+	Siano dati un anello di polinomi $\MultivariatePolynomialsRing$ e un suo ordinamento monomiale. Se $\Monomial{x_1}, \Monomial{x_2}, \Monomial{x_3} \in \MonomialialsSet{\MultivariatePolynomialsRing}$ e $\Monomial{x_1} \leq \Monomial{x_2}$, allora $\Monomial{x_3} \Monomial{x_1} \leq \Monomial{x_3} \Monomial{x_2}$.
+\end{Theorem}
+\Proof Abbiamo $\Monomial{x_1} \leq \Monomial{x_2}$ se e solo se $\log{\Monomial{x_1}} \leq \log{\Monomial{x_2}}$, che per l'invarianza per traslazione di $\mathbb{N}^n$ dell'ordinamento che induce l'ordinamento monomiale equivale a $\log{\Monomial{x_3}} + \log{\Monomial{x_1}} \leq \log{\Monomial{x_3}} + \log{\Monomial{x_2}}$ e dunque a $\log{\Monomial{x_3}\Monomial{x_1}} \leq \log{\Monomial{x_3}\Monomial{x_2}}$, vale a dire a $\Monomial{x_3}\Monomial{x_1} \leq \Monomial{x_3}\Monomial{x_2}$. \EndProof
+\begin{Theorem}\label{ordmonom_min}
+	Dato un qualsiasi ordinamento monomiale per $\MultivariatePolynomialsRing$, abbiamo $1 = \min \MonomialialsSet{\MultivariatePolynomialsRing}$.
+\end{Theorem}
+\Proof Supponiamo $\Monomial{x} \in \MonomialialsSet{\MultivariatePolynomialsRing}$ tale che $\Monomial{x} \leq 1$. Allora \`e immediato dimostrare per induzione che per ogni $i \in \mathbb{N}$, $\Monomial{x}^{i + 1} < \Monomial{x}^i$, da cui la famiglia $(\Monomial{x}^i)_{i \in \mathbb{N}}$  non ha minimo, in contraddizione col fatto che un ordinamento monomiale \`e un buon ordinamento. \EndProof
+\begin{Definition}\label{polinomi_definizionitesta}
+	Siano dati un anello di polinomi $\MultivariatePolynomialsRing$ e un suo ordinamento monomiale. Sia $p = \sum_{\Monomial{x} \in \MonomialialsSet{\MultivariatePolynomialsRing}} a_\Monomial{x} \Monomial{x} \in \MultivariatePolynomialsRing$. Definiamo
+	\begin{itemize}
+		\item \Define{supporto}[supporto di un polinomio] di $p$, denotato $\Supp{p}$, l'insieme di tutti i monomi $\Monomial{x}$ per cui $a_\Monomial{x} \neq 0$;
+		\item \Define{monomio di testa}[di testa][monomio] di $p$, denotato $\LM{p}$, il massimo del supporto di $p$;
+		\item \Define{coefficiente di testa}[di testa][coefficiente] di $p$, denotato $\LC{p}$, il coefficiente $a_{\LM{p}}$;
+		\item \Define{termine di testa}[di testa][termine] di $p$, denotato $\LT{p}$, il termine $\LC{p}\LM{p}$;
+		\item \Define{grado}[di un polinomio][grado] di $p$, denotato $\Deg{p}$ il grado di $\LM{p}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}\label{teorema_divisione_polinomi}
+	Siano $p \in \MultivariatePolynomialsRing$ e $(q_i)_{i \in I} \in \MultivariatePolynomialsRing^I$, dove $I$ \`e un insieme totalmente ordinato e finito, e supponiamo dato un ordinamento monomiale per $\MultivariatePolynomialsRing$. Consideriamo l'algoritmo seguente, dove inizialmente $r = 0$:
+	\begin{enumerate}
+		\item se $p \neq 0$, poniamo $t = \LT{p}$; altrimenti l'algoritmo termina;\label{divisione_estrazione}
+		\item poniamo $j = \min \lbrace i: i \in I \rbrace \wedge \LT{q_i}|t \rbrace$ se l'insieme di cui si calcola il minimo \`e non vuoto, altrimenti si pone $r = r + t$ e si torna al passo \ref{divisione_estrazione};\label{divisione_ricerca}
+		\item poniamo $p = p - \frac{t}{\LT{q_j}} q_j$ e torniamo al passo \ref{divisione_estrazione}.\label{divisione_somma}
+	\end{enumerate}
+	L'algoritmo termina per qualsiasi scelta di $p$ e di $(q_i)_{i \in I}$. Inoltre, nessun monomio in $\Supp{r}$ divide un qualche monomio della famiglia $(\LM{q_i})_{i \in I}$.
+\end{Theorem}
+\Proof Al passo \ref{divisione_somma} $\LC{p}$ viene azzerrato e pertanto il monomio di testa cambia. Per il teorema \ref{ordmonom_compatibilitaprodotto}, tutti i monomi del supporto del nuovo polinomio $p$, incluso il monomio di testa, sono minori del monomio di testa del vecchio polinomio. Poich\'e un ordinamento monomiale \`e un buon ordinamento, l'algoritmo deve terminare.
+\par Il resto del teorema segue immediatamente dalla descrizione dell'algoritmo. \EndProof
+\begin{Definition}
+	In riferimento al teorema precedente, l'algoritmo descritto si chiama \Define{divisione}[tra polinomi][divisione] di $p$ rispetto a $(q_i)_{i \in I}$. Il polinomio $r$ ottenuto al termine dell'algoritmo si chiama \Define{resto}[resto di una divisione] della divisione.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Field$ un campo. L'anello $\FieldPolynomialsRing$ \`e un dominio euclideo, dove si pu\`o scegliere come funzione grado la funzione che associa ad ogni polinomio il suo grado nel senso della definizione \ref{polinomi_definizionitesta}.
+\end{Theorem}
+\Proof Siano $\Monomial{x_1}, \Monomial{x_2} \in \MonomialialsSet{\FieldPolynomialsRing}$. Per il teorema \ref{ordmonom_min}, abbiamo $1 \leq \Monomial{x_1}$, da cui, per il teorema \ref{ordmonom_compatibilitaprodotto}, $\Monomial{x_2} \leq \Monomial{x_1}\Monomial{x_2}$ e quindi $\Deg{\Monomial{x_2}} \leq \Deg{\Monomial{x_1}\Monomial{x_2}}$.
+\par La possibilit\`a di effetturare una divisione euclidea segue direttamente dal teorema \ref{teorema_divisione_polinomi}. \EndProof

@@ -1,0 +1,97 @@
+\subsubsection{\English{Quick select}.}
+\label{AlgoritmiEStruttureDiDati_QuickSelect}
+\par Simile al \English{quick sort} \`e l'algoritmo seguente, che non risolve
+per\`o il problema di ordinamento, bens\`i individua quale sarebbe il $k$-esimo
+elemento della successione $(e_i)_{i \in n}$ dopo ordinamento.
+\begin{Definition}
+	Si chiama
+  \Define{\English{quick select}}
+  l'algoritmo seguente:
+  \begin{enumerate}
+    \item\label{QuickSelect_1} se $n = 1$, allora si restituisca $e_0$;
+    \item\label{QuickSelect_2} si fissi un $P \in n$: chiamiamo
+      \Define{\Francais{pivot}}[nel \English{quick select}][\Francais{pivot}]
+      l'elemento $e_P$;
+    \item\label{QuickSelect_3} scambiamo $e_P$ con $e_{n - 1}$;
+    \item\label{QuickSelect_4} si ponga $I = 0$ e $J = n - 2$;
+    \item\label{QuickSelect_5} se
+      $I \leq J$ e $e_I < e_{n - 1}$
+      si incrementi $I$ di $1$ e si torni al punto
+      \ref{QuickSelect_5}
+    \item\label{QuickSelect_6} se
+      $I \leq J$ e $e_J > e_{n - 1}$
+      si decrementi $J$ di $1$ e si torni al punto
+      \ref{QuickSelect_6}
+    \item\label{QuickSelect_7} se $I < J$ si scambino
+      $e_I$ e $e_J$;
+    \item\label{QuickSelect_8} se $I \leq J$, allora vai al punto
+      \ref{QuickSelect_5};
+    \item\label{QuickSelect_9} si scambino
+      $e_I$ e $e_{n - 1}$;
+    \item\label{QuickSelect_10} se $k < I + 1$, si resituisca quanto restituito
+      dall'esecuzione dell'intero algoritmo sulla $(e_i)_{i = 0}^{I - 1}$;
+    \item\label{QuickSelect_11} se $k > I + 1$, si resituisca quanto restituito
+      dall'esecuzione dell'intero algoritmo sulla $(e_i)_{i = I + 1}^{n - 1}$;
+    \item\label{QuickSelect_12} si resituisca $e_I$.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/QuickSelect.cpp"}
+	\caption{\textit{Quick select} implementato in \LanguageName{C++}.}
+\end{listing}
+\begin{Theorem}
+  Il \English{quick select} risolve il problema dell'individuazione di quello
+  che sarebbe il $k$-esimo elemento della successione $(e_i)_{i \in n}$ dopo
+  ordinamento.
+\end{Theorem}
+\Proof Se $n = 1$ la tesi \`e immediata, altrimenti procediamo
+per induzione su $n$ assumendo la tesi vera per ogni $n < N$
+($N \in \mathbb{N} \SetMin 2$) e proviamola per $N$.
+\par Per induzione, \`e sufficiente provare che, dopo il passo
+\ref{QuickSelect_9} tutti gli elementi della successione
+$(e_i)_{i = 0}^{I - 1}$
+sono minori o uguali di $e_I$ e che tutti gli elementi della successione
+$(e_i)_{I + 1}^{N - 1}$
+sono maggiori o uguali di $e_I$.
+\par Ma questo \`e esattamente quanto abbiamo gi\`a dimostrato per provare
+la correttezza del \English{quick sort}. \EndProof
+\begin{Theorem}
+  Il \English{quick select} ha costo
+  \begin{itemize}
+    \item $\BigO{n^2}$ tempo al caso pessimo;
+    \item $\BigO{n}$ tempo al caso ottimo.
+  \end{itemize}
+\end{Theorem}
+\Proof Se $n = 0$ o $n = 1$ il costo \`e esattamente $0$.
+\par Supponiamo $n \geq 2$ senza perdita di generalit\`a dato che
+siamo interessati ad un'analisi asintotica.
+\par Contiamo i confronti propri di ciascuna singola esecuzione dell'algoritmo:
+\begin{itemize}
+  \item nella chiamata iniziale abbiamo $n - 1$ confronti;
+  \item nella chiamata successiva abbiamo
+      \begin{itemize}
+        \item se $k < I$, $I - 1$ confronti se $I \geq 2$, altrimenti $0$;
+        \item se $k > I$, $n - 1 - I - 1 = n - I - 2$ confronti se
+          $n - 1 - I \geq 2$, cio\`e $I \leq n - 3$, altrimenti $0$;
+      \end{itemize}
+      dunque in ogni caso abbiamo $\BigO{n}$ confronti.
+\end{itemize}
+\par Ad ogni chiamata corrisponde la scelta di un \Francais{pivot},
+tutti i \Francais{pivot} sono necessariamente distinti e
+non possono essere scelti pi\`u di $n - 1$ \Francais{pivot}, dunque
+l'altezza dell'albero di ricorsione \`e al pi\`u $n - 1$, e quindi il costo
+\`e al pi\`u $(n - 1) \BigO{n} = \BigO{n^2}$.
+\par Supponiamo ora invece che il primo \Francais{pivot} corrisponda proprio
+alla posizione $k$: in tal caso il costo \`e esattamente $n - 1$, e poich\'e non
+pu\`o essere minore, \`e necessariamente il caso ottimo.
+\par Dunque il costo al caso ottimo\`e $\BigO{n}$. \EndProof
+\begin{Definition}
+  Chiamiamo
+  \Define{\English{quick select} aleatorio}[aleatorio][\English{quick select}]
+  l'algoritmo di \English{quick select} ottenuto scegliendo $P \in n$
+  al passo \ref{QuickSelect_2} con probabilit\`a uniforme.
+\end{Definition}
+\begin{Theorem}
+  Il valore atteso del costo del \English{quick select} aleatorio \`e
+  $\BigO{n}$.
+\end{Theorem}

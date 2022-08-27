@@ -1,0 +1,20 @@
+\section{Definizioni e teoremi di base.}
+\label{VarietaAlgebriche_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Sia $\PolynomialIdeal$ un ideale polinomiale di $\RingAdjunction{\Field}{(x_i)_{i \in n}}$ ($n \in \mathbb{N}$), con $\Field$ campo algebricamente chiuso. Chiamiamo $\AlgebraicManifold{\PolynomialIdeal} = \lbrace (X_i)_{i \in n} \in \Field^n | \ForAll{\Polynomial \in \PolynomialIdeal}{\Polynomial((X_i)_{i \in n})} \rbrace$ \Define{variet\`a algebrica}[algebrica][variet\`a].
+\end{Definition}
+\begin{Theorem}
+	Sia $(\PolynomialIdeal_j)_{j \in m}$ ($m \in \NotZero{\mathbb{N}}$) una famiglia di ideali polinomiali di $\RingAdjunction{\Field}{(x_i)_{i \in n}}$ ($n \in \NotZero{\mathbb{N}}$). Abbiamo
+	\begin{itemize}
+		\item $\AlgebraicManifold{\sum_{j \in m} \PolynomialIdeal_j} = \bigcap_{j \in m} \AlgebraicManifold{\PolynomialIdeal_J}$;
+		\item $\AlgebraicManifold{\prod_{j \in m} \PolynomialIdeal_j} = \bigcup_{j \in m} \AlgebraicManifold{\PolynomialIdeal_j}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $(X_i)_{i \in n} \in \AlgebraicManifold{\sum_{j \in m} \PolynomialIdeal_j}$. Poich\'e $\ForAll{J \in m}{\PolynomialIdeal_J \subseteq \sum_{j \in m} \PolynomialIdeal_j}$, $(X_i)_{i \in n} \in \bigcap_{j \in m} \AlgebraicManifold{\PolynomialIdeal_j}$.
+\par Supponiamo ora $(X_i)_{i \in n} \in \bigcap_{j \in m} \AlgebraicManifold{\PolynomialIdeal_j}$. Ogni elemento di $\sum_{j \in m} \PolynomialIdeal_j$ \`e della forma $\sum_{j \in m} \Polynomial_j$, con $\ForAll{j \in m}{\Polynomial_j \in \PolynomialIdeal_j}$: per un elemento di tale forma, abbiamo $\left ( \sum_{j \in m} \PolynomialIdeal_j \right )((X_i)_{i \in n}) = \sum_{j \in m} \PolynomialIdeal_j((X_i)_{i \in n}) = 0$.
+\par Dunque $\AlgebraicManifold{\sum_{j \in m} \PolynomialIdeal_j} = \bigcap_{j \in m} \AlgebraicManifold{\PolynomialIdeal_j}$.
+\par Supponiamo ora $(X_i)_{i \in n} \in \bigcup_{j \in m} \AlgebraicManifold{\PolynomialIdeal_j}$. Ogni elemento di $\prod_{j \in m} \PolynomialIdeal_j$ \`e della forma $\sum_{k \in l} \prod_{j \in m} \Polynomial_{k,j}$, con $l \in \NotZero{\mathbb{N}}$ e $\ForAll{(k,j) \in l \times m}{\Polynomial_{k,j} \in \PolynomialIdeal_j}$: per un elemento di tale forma, abbiamo
+$\left ( \sum_{k \in l} \prod_{j \in m} \Polynomial_{k,j} \right )((X_i)_{i \in n}) =
+\sum_{k \in l} \prod_{j \in m} \Polynomial_{k,j}((X_i)_{i \in n}) = 0$.
+\par Supponiamo ora invece $(X_i)_{i \in n} \notin \bigcup_{j \in m} \AlgebraicManifold{\PolynomialIdeal_j}$. Allora, data una qualsiasi famiglia $(\Polynomial_j)_{j \in m}$, con, per ogni $j \in m$, $\Polynomial_j \in \PolynomialIdeal_j$, abbiamo $\prod_{j \in m} \Polynomial_j \in \prod_{j \in m} \PolynomialIdeal_j$, ma anche $\left ( \prod_{j \in m} \Polynomial_j \right ) ((X_i)_{i \in n}) = \prod_{j \in m} \Polynomial_j((X_i)_{i \in n}) \neq 0$. Dunque $(X_i)_{i \in n} \notin \AlgebraicManifold{\prod_{j \in m} \PolynomialIdeal_j}$.
+\par Abbiamo quindi $\AlgebraicManifold{\prod_{j \in m} \PolynomialIdeal_j} = \bigcup_{j \in m} \AlgebraicManifold{\PolynomialIdeal_j}$. \EndProof

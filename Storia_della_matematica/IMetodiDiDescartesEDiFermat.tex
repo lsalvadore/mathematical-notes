@@ -1,0 +1,50 @@
+\subsection{Il problema delle tangenti: i metodi di Descartes e di Fermat.}\label{IMetodiDiDescartesEDiFermat}
+\par Uno dei problemi pi\`u antichi \`e quello delle tangenti\footnote{\CFR\ sottosezione \ref{LaGeometriaDiPosizione}.}: nel corso del Seicento molti matematici trovano nuovi metodi per calcolare tangenti, ma i due principali, dai quali prendono le mosse quelli successivi sono quelli di Descartes e di Fermat.
+\paragraph{Il metodo di Descartes.} Il metodo di Descartes consiste nel trovare una circonferenza tangente alla curva nel punto dato, cio\`e che abbia con la curva un'intersezione doppia; di solito la circonferenza viene cercata col centro sull'asse delle ascisse. Trovata la circonferenza, la tangente sar\`a la retta perpendicolare al raggio passante per il punto voluto.
+\par Supponiamo di voler cercare la tangente nel punto $(x_0,y_0)$ alla curva $P(x,y) = 0$. La circonferenza ha equazione $(x - v)^2 + y^2 = r^2$, con $v$ e $r$ da determinare. Si mettono a sistema le due equazioni eliminando la $y$; se $P(x,y)$ \`e di grado $n$, allora l'equazione $Q(x) = 0$ che ne risulta \`e di grado $2n$ (e questo gi\`a suggerisce la complessit\`a dei calcoli previsti dal metodo). Si impone allora che $Q(x)$ sia della forma $(x - x_0)^2 R(x)$, con $R(x)$ polinomio di grado $2n - 2$ e eguagliando i coefficienti delle potenze di $x$ si trovano $v$ ed $r$.
+\par Diamo un esempio di applicazione nel caso della parabola $y = mx^2$, mostrando quanto complicati possano essere i calcoli anche nei casi pi\`u semplici. Il sistema tra la parabola e la circonferenza ci conduce all'equazione $x^2 - 2vx + v^2 + m^2x^4 - r^2 = 0$. Il primo membro deve essere uguale a $(x - x_0)^2(ax^2 + bx + c)$, che \`e uguale a $ax^4 + bx^3 + cx^2 - 2x_0ax^3 - 2x_0bx^2 -2x_0cx + x_0^2ax^2 + x_0^2bx + x_0^2c = ax^4 + (b - 2x_0a)x^3 + (c - 2x_0b + x_0^2a)x^2 + (x_0^2b - 2x_0c)x + x_0^2c$.
+\par Eguagliamo i coefficienti e risolviamo il sistema (per sostituzione ovviamente: Descartes non conosceva certo le matrici; in questo caso comunque il sistema \`e abbastanza facile).
+\begin{align}
+	&\begin{cases}
+		a = m^2,\\
+		b - 2 x_0a = 0,\\
+		c - 2 x_0b + x_0^2a = 1,\\
+		x_0^2b - 2 x_0c = - 2v,\\
+		x_0^2c = v^2 - r^2,
+	\end{cases}\nonumber\\
+	&\begin{cases}
+		a = m^2,\\
+		b = 2x_0m^2,\\
+		c = 1 + 3x_0^2m^2,\\
+		v = - \frac{x_0^2b - 2 x_0c}{2} = - \frac{2x_0^3m^2 - 2x_0 - 6x_0^3m^2}{2} = x_0 + 2x_0^3m^2,\\
+		r^2 = v^2 - x_0^2c = x_0^2 + 4x_0^4m^2 + 4x_0^6m^2 - x_0^2 - 3 x_0^4m^2 = x_0^4m^2 + 4x_0^6m^2.
+	\end{cases}\nonumber
+\end{align}
+\par Il problema a questo punto pu\`o considerarsi risolto (il calcolo della perpendicolare al raggio \`e banale), ma con un po' di geometria (\Cfr\ figura \ref{Tangenti_Descartes}) possiamo ricavare il risultato classico, secondo cui per costruire la tangente \`e sufficiente riportare l'ordinata del punto di tangenza sull'asse, dalla parte opposta rispetto al vertice, e tracciare la retta che unisce il punto cos\`i individuato col punto di tangenza.
+\begin{wrapfigure}{R}{0.5\textwidth}
+	\includegraphics[width=0.48\textwidth]{Storia_della_matematica/Immagine_Tangenti_Descartes.png}
+	\caption{Dimostrazione della propriet\`a classica della tangente ad una parabola secondo Descartes.}
+	\label{Tangenti_Descartes}
+\end{wrapfigure}
+\par I triangoli $ABT$ e $TBC$ sono entrambi rettangoli e gli angoli $ATB$ e $TCB$ sono entrambi complementari dell'angolo $BTC$ e dunque uguali: i triangoli $ABT$ e $TBC$ sono dunque simili. Per similitudine, $BT:BC=AB:BT$, da cui $AB = \frac{BT^2}{BC} = \frac{y_0^2}{v - x_0} = \frac{m^2x_0^4}{2x_0^3m^2} = \frac{x_0}{2}$; quindi $A$ \`e il punto medio di $OB$. Ne consegue che i triangoli rettangoli $ODA$ e $ABT$, i cui angoli $OAD$ e $TAB$ sono uguali, sono congruenti. Quindi $OD = BT$, che \`e il risultato classico.
+\paragraph{Il metodo di Fermat.} Fermat concepisce un proprio metodo per il calcolo delle tangenti, indipendentemente da Descartes, basandosi sul proprio metodo per il calcolo dei massimi e dei minimi di una grandezza variabile\footnote{Il concetto di funzione non \`e ancora stato inventato: siamo ancora nell'ambito dell'algebra simbolica di Fran\c{c}ois Vi\`ete, \Cfr\ sottosezione \ref{FrancoisVieteELInvenzioneDellAlgebraSimbolica} e, come Vi\`ete e Fermat, useremo vocali per denotare quantit\`a ignote e consonanti per quantit\`a note}: cominciamo proprio da quest'ultimo.
+\par Sia $F$ una una grandezza variabile e cerchiamone il massimo $M$; Fermat sottointende di cercare un massimo locale, che $F$ sia continua e di lavorare in un intorno in cui il massimo locale \`e unico. Per considerazioni che risalgono a Pappo, scelto $Z < M$ a destra e a sinistra del massimo esistono due punti $A$ ed $E$ per cui $F(A) = F(E) = Z$; inoltre, avvicinando $Z$ a $M$, i punti $A$ ed $E$ si avvicineranno sempre di pi\`u, pertanto, l'equazione $\frac{F(A) - F(E)}{A - E} = 0$ che vale per $Z < M$ fonir\`a una nuova equazione, valida quando $Z = M$, ponendo $E = A$ dopo aver effettuato le dovute semplificazioni (altrimenti avremmo una divisione per zero): risolvendo l'equazione in $A$, si trover\`a il punto in cui $F$ assume il suo massimo $M$.
+\par Fermat osserva per\`o che l'operazione di divisione per il binomio $A - E$ risulta nei casi pratici piuttosto complicata, egli modifica dunque il proprio metodo prescrivendo di sostituire alla variabile $E$ il binomio $A + E$. L'equazione $\frac{F(A) - F(E)}{A - E} = 0$ diventa dunque $\frac{F(A) - F(A + E)}{E} = 0$ e la divisione per $E$ \`e molto pi\`u facile: a questo punto si pone $A + E = A$, cio\`e $E = 0$. Tuttavia il passaggio non \`e un semplice cambio di notazioni come pu\`o sembrare a prima vista, vi sono anche importanti differenze concettuali implicite: nel metodo originale $A$ ed $E$ erano entrambe grandezze indipendenti, ora invece $A$ \`e una grandezza indipendente ed $E$ \`e una variazione della grandezza $A$; nel metodo originale $A$ aveva inizialmente un valore a cui non corrispondeva il massimo di $F$ e poi il valore corrispondente al massimo, ora invece $A$ ha da subito il valore corrispondente al massimo ed $A + E$ viene a coincidere con $A$ azzerando $E$, cio\`e spostando il solo punto $A + E$; nel metodo originale, prima del ``passaggio al limite'', l'equazione $\frac{F(A) - F(E)}{A - E}$ era vera, ora invece la relazione $\frac{F(A) - F(A + E)}{E} = 0$ \`e vera solo ``al limite'' e in effetti Fermat si riferisce ad essa chiamandola non \textit{\'egalit\'e} o \textit{\'equation}, bens\'i \textit{ad\'egalit\'e}.
+\par Alcuni storici hanno visto nel metodo di Fermat un'anticipazione dell'invenzione della derivata, ma ci\`o \`e vero solo sino ad un certo punto: la forza del concetto di derivata risiede nelle regole generali che consentono di ottenere la derivata di una funzione combinando opportunamente derivate di funzioni pi\`u semplici; Fermat invece intuisce solo il concetto di derivata in un punto come limite del rapporto incrementale e cos\`i, per cercare un massimo, si vede costretto ad eguagliare a $0$ un complicato limite anzich\'e una semplice derivata.
+\par Tornando al problema delle tangenti, Fermat sostiene che le adeguaglianze possano essere applicate con successo anche in questo caso. Vediamo come con un esempio: il calcolo della tangente ad una parabola (\Cfr\ figura \ref{Tangenti_Fermat}).
+\begin{wrapfigure}{R}{0.5\textwidth}
+	\includegraphics[width=0.48\textwidth]{Storia_della_matematica/Immagine_Tangenti_Fermat.png}
+	\caption{Dimostrazione della propriet\`a classica della tangente ad una parabola secondo Fermat.}
+	\label{Tangenti_Fermat}
+\end{wrapfigure}
+\par Calcolare la tangente in un punto $T$ in questo caso significa calcolare la lunghezza del segmento $VP$. Per le propriet\`a della parabola, $VB:VC=RB^2:TC^2$. Ora, sostituiamo nella proporzione $SB$ a $RB$, ottenendo $VB:VC < SB^2:TC^2$. Per la similitudine tra triangoli, abbiamo $SB:TC=PB:PC$ e dunque $VB:VC < PB^2:PC^2$. Ora, Fermat vede che spostando il punto $B$ verso $C$ la disuguaglianza appena trovata diventa un'uguaglianza, dunque pone l'\textit{ad\'egalit\'e} $VB:VC = PB^2:PC^2$.
+\par Poniamo l'\textit{ad\'egalit\'e} in termini algebrici: poniamo $PV = A$, $CB = E$, $CV = K$. Abbiamo allora
+\begin{align}
+	&(K - E):K=(A + K - E)^2:(A + K)^2,\nonumber\\
+	&(K - E)(A + K)^2=(A + K - E)^2 K,\nonumber\\
+	&(K - E)(A^2 + 2AK + K^2)=A^2K + K^3 - E^2K + 2AK^2 - 2 AEK - 2EK^2,\nonumber\\
+	&A^2K + 2AK^2 + K^3 - A^2E - 2AEK - EK^2=A^2K + K^3 - E^2K + 2AK^2 - 2 AEK - 2EK^2,\nonumber\\
+	&- A^2E = - E^2K - EK^2,\nonumber\\
+\end{align}
+\par Dividiamo per $E$ e otteniamo $A^2 = EK + K^2$; poniamo $E = 0$ ed arriviamo a $A^2 = K^2$ e dunque $A = K$, che il risultato classico ben noto.
+\par Naturalmente, se lo si desidera, \`e possibile risolvere il problema tramite il metodo di massimi e minimi vero e proprio (la grandezza $\frac{VB}{SB^2}$ ha un massimo per $B = C$), ma Fermat non compie questo passaggio: esso appesantirebbe solamente la dimostrazione e probabilmente egli non lo concepisce nemmeno ma pensa direttamente ad applicare in ambito geometrico il concetto di adeguaglianza.

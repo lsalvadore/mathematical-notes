@@ -1,0 +1,50 @@
+\section{Introduzione.}
+\label{ElementiDiMeccanicaCeleste_CenniDiAstronomia}
+\begin{Definition}
+	La \Define{meccanica celeste}[celeste][meccanica] \`e lo studio del moto dei corpi celesti, i quali comprendono, nel sistema solare,
+	\begin{itemize}
+		\item i \Define{pianeti}[pianeta] (in ordine crescente di distanza dal Sole: Mercurio, Venere, Terra, Marte, Giove, Saturno, Urano, Nettuno), che
+		\begin{itemize}
+			\item orbitano intorno al Sole;
+			\item sono in equilibrio idrostatico (e quindi sono approssimativamente sferici);
+			\item hanno attratto tutti i corpuscoli che li circondano entro un certo raggio;
+		\end{itemize}
+		\item i \Define{pianeti nani}[nano][pianeta] (tra cui Plutone), che
+		\begin{itemize}
+			\item orbitano intorno al Sole;
+			\item sono in equilibrio idrostatico (e quindi sono approssimativamente sferici);
+			\item non hanno attratto tutti i corpuscoli che li circondano entro un certo raggio;
+		\end{itemize}
+		\item i \Define{piccoli corpi}[piccolo][corpo], altri corpi intorno al Sole come asteroidi o comete.
+	\end{itemize}
+	La meccanica celeste studia anche il moto dei corpi in sistemi diversi dal sistema solare, ad esempio nei \Define{sistemi planetari}[planetario][sistema], dati da un pianeta e i suoi satelliti.
+\end{Definition}
+\begin{Definition}
+	La meccanica celeste applicata all'invio di razzi e navicelle nello spazio prende il nome di \Define{astrodinamica}.
+\end{Definition}
+\par La meccanica celeste nasce ufficialmente nel 1687 con la pubblicazione dell'opera \textit{Philosophiae naturalis principia mathematica} di Sir Isaac Newton (1642 - 1726). Precursori di Newton sono stati
+\begin{itemize}
+	\item Nicola Copernico (1473 - 1543), per aver smontato la concezione secondo cui la Terra fosse al centro dell'universo;
+	\item Tycho Brahe (1546-1601), per aver compiuto osservazioni di Marte che permisero a Johannes Kepler (1571 - 1630) di formulare le sue famose leggi;
+	\item Galileo Galilei (1584 - 1642), per i suoi studi sulla caduta di gravi, i quali diedero a Newton l'intuizione che gli permise di formulare la sua teoria della gravitazione universale, intuizione consistente nell'osservare che la gittata di una palla di cannone dipende solo dalla velocit\`a iniziale con cui essa viene sperata e dunque nell'immaginare che la stessa palla, sparata con una velocit\`a iniziale elevatissima, avrebbe cominciato a ruotare attorno alla Terra senza atterrare mai;
+	\item Robert Hooke (1635 - 1703), per aver contribuito in maniera determinante alla nascita della teoria della gravitazione universale, in forte rivalit\`a con Newton;
+	\item Edmond Halley (1656 - 1742), il cui intervento permise la pubblicazione dei \text{Principia} di Newton.
+\end{itemize}
+\par Newton risove il problema dei $2$ corpi, ma non riusce a risolvere il problema dei $3$ corpi, che Henri Poincar\'e (1854 - 1912) e Heinrich Bruns (1848 - 1919) dimostrano essere non integrabile nella sua forma generale. Poincar\'e scopre anche il primo sistema dinamico caotico deterministico, cio\`e il primo sistema tale che piccole perturbazioni delle condizioni iniziali determinano grandi differenze della soluzione corrispondente; tali sistemi sono numericamente imprevedibili: superato un certo tempo, detto tempo di Lyapounov, gli errori diventono troppo elevati perch\'e le approssimazioni mantengano un senso. Dopo il primo incontro di Poincar\'e col caos, questo fenomeno viene riscoperto e studiato da Edward Norton Lorenz (1917 - 2008).
+\par I sistemi lineari non sono caotici, ma i sistemi non lineari di solito lo sono. Esempi di sistemi caotici sono il doppio pendolo e lo stesso sistema solare.
+\par Il caos pu\`o essere amplificato da alcuni fenomeni quali
+\begin{itemize}
+	\item le collisioni, per le quali non conosciamo generalmente la costituzione dei corpi coinvolti;
+	\item gli incontri ravvicinati, cio\`e corpi che passano molto vicini ad altri corpi, turbandone il moto pur non urtandoli;
+	\item le risonanze, cio\`e il ripetersi di certe configurazioni;
+	\item gli effetti non gravitazionali, per esempio termini o elettromagnetici.
+\end{itemize}
+\par La ricerca in meccanica celeste si divide tra
+\begin{itemize}
+	\item ricerca pura, che studia i sistemi dinamici, il caos, le perturbazioni, metodi analitici e geometrici;
+	\item ricerca applicata, che studia le determinazioni orbitali, i disegni delle orbite e progetta le missioni spaziali.
+\end{itemize}
+\par Collegati ad entrambi i tipi di ricerca sono i metodi numerici.
+\begin{Definition}
+	Chiamiamo \Define{problema degli $n$ corpi}[degli $n$ corpi][problema] ($n \in \mathbb{N}$) il problema che studia il moto di $n$ punti materiali $(\PointMass_i)_{i \in \NaturalShift{n}}$ di massa $(\Mass_i)_{i \in \NaturalShift{n}}$ rispettivamente soggetti solamente alle forze date dall'attrazione gravitazionale.
+\end{Definition}

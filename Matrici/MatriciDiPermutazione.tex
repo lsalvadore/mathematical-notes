@@ -1,0 +1,65 @@
+\section{Matrici di permutazione.}
+\label{Matrici_MatriciDiPermutazione}
+\begin{Definition}
+	Dato una anello con identit\`a $\RingWithIdentity$, chiamiamo \Define{matrice di permutazione}[di permutazione][matrice] una matrice quadrata $\PermutationMatrix = (\PermutationMatrixElement_{i,j})_{(i,j) \in n \times n} \in \RingWithIdentity^{n \times n}$ ($n \in \NotZero{\mathbb{N}}$) tale che
+\begin{itemize}
+	\item $\ForAll{(i,j) \in n \times n}{\PermutationMatrixElement_{i,j} \in \lbrace 0, 1 \rbrace}$;
+	\item $\ForAll{i \in n}{\ForAll{(j,j') \in n \times n}{\Implies{\And{\PermutationMatrixElement_{i,j} = 1}{\PermutationMatrixElement_{i,j'} = 1}}{j = j'}}}$;
+	\item $\ForAll{j \in n}{\ForAll{(i,i') \in n \times n}{\Implies{\And{\PermutationMatrixElement_{i,j} = 1}{\PermutationMatrixElement_{i',j} = 1}}{i = i'}}}$.
+\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Se $\PermutationMatrix$ \`e una matrice di permutazione, lo \`e anche $\Transposed{\PermutationMatrix}$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $\PermutationMatrix$ una matrice quadrata di ordine $n$. $\PermutationMatrix$ \`e di permutazione se e solo se esistono uniche permutazioni $\Permutation, \VarPermutation \in \SymmetricGroup{n}$ tali che
+	\begin{itemize}
+		\item $\ForAll{i \in n}{\PermutationMatrix_{\Permutation(i)} = \Identity_i}$;
+		\item $\ForAll{j \in n}{\PermutationMatrix^{\VarPermutation(j)} = \Identity^j}$.
+	\end{itemize}
+\end{Theorem}
+\Proof $\Identity$ \`e una matrice di permutazione e modificandone l'ordine delle righe mantiene la propriet\`a di avere un solo $1$ per ogni riga e per ogni colonna. Dunque, se $\ForAll{i \in n}{\PermutationMatrix_i = \Identity_{\Permutation{i}}}$, allora $\PermutationMatrix$ \`e di permutazione.
+\par Supponiamo $\PermutationMatrix$ di permutazione e definiamo la permutazione $\Permutation \in \SymmetricGroup{n}$ che a $i \in n$ associa l'indice dell'unica riga di $\PermutationMatrix$ che contiene un $1$ in posizione $i$. Abbiamo allora $\PermutationMatrix_{\Permutation(i)} = \Identity_i$.
+\par L'unicit\`a segue dal fatto che tutte le righe di $\PermutationMatrix$
+da una parte e di $\Identity$ dall'altra sono distinte.
+\par Il resto del teorema segue direttamente per trasposizione. \EndProof
+\begin{Definition}
+  Con le notazioni del teorema precedente, chiamiamo
+  \begin{itemize}
+    \item $\Permutation^{-1}$
+      \Define{permutazione associata alle righe}[associata alle righe di una matrice di permutazione][permutazione];
+    \item $\VarPermutation^{-1}$
+      \Define{permutazione associata alle colonne}[associata alle colonne di una matrice di permutazione][permutazione].
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\RingWithIdentity$ un anello con identit\`a;
+		\item $m, n \in \mathbb{N}$;
+		\item $\Matrix \in \RingWithIdentity^{m \times n}$;
+		\item $\PermutationMatrix \in \RingWithIdentity^{m \times m}$ matrice di
+      permutazione;
+		\item $\VarPermutationMatrix \in \RingWithIdentity^{n \times n}$ matrice di
+      permutazione;
+    \item $\Permutation \in \SymmetricGroup{m}$ permutazione associata alle
+      righe di $\PermutationMatrix$;
+    \item $\VarPermutation \in \SymmetricGroup{n}$ permutazione associata alle
+      colonne di $\VarPermutationMatrix$.
+	\end{itemize}
+	Abbiamo
+	\begin{itemize}
+		\item $\ForAll{i \in m}{(\PermutationMatrix\Matrix)_i = \Matrix_{\Permutation(i)}}$;
+		\item $\ForAll{j \in n}{(\Matrix\VarPermutationMatrix)^{j} = \Matrix^{\VarPermutation(j)}}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo
+\begin{itemize}
+	\item per ogni $j \in n$, $(\PermutationMatrix\Matrix)_{\Permutation^{-1}(i)}^j = \sum_{k \in m} \PermutationMatrix_{\Permutation^{-1}(i)}^k \Matrix_k^j = \sum_{k \in m} \Identity_i^k \Matrix_k^j = \Matrix_i^j$ e quindi $\ForAll{i \in m}{(\PermutationMatrix\Matrix)_{\Permutation^{-1}(i)} = \Matrix_i}$;
+	\item per ogni $i \in m$, $(\Matrix\VarPermutationMatrix)_i^{\VarPermutation^{-1}(j)} = \sum_{k \in n} \Matrix_i^k\VarPermutationMatrix_k^{\VarPermutation^{-1}(j)} = \sum_{k \in n} \Matrix_i^k \Identity_k^j = \Matrix_i^j$ e quindi $\ForAll{j \in n}{(\Matrix\VarPermutationMatrix)^{\VarPermutation^{-1}(j)} = \Matrix^j}$. \EndProof
+\end{itemize}
+\begin{Theorem}
+	Siano $\RingWithIdentity$ un anello con identit\`a, $n \in \mathbb{N}$ e $\PermutationMatrix \in \RingWithIdentity^{n \times n}$ una matrice di permutazione. $\PermutationMatrix$ \`e una matrice ortogonale (unitaria nel caso $\RingWithIdentity = \mathbb{C}$).
+\end{Theorem}
+\Proof Segue per calcolo diretto. \EndProof

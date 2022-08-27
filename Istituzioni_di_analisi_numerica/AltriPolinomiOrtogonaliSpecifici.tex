@@ -1,0 +1,45 @@
+\subsection{Altri polinomi ortogonali specifici.}
+\label{IstituzioniDiAnalisiNumerici_AltriPolinomiOrtogonalSpecifici}
+\begin{Definition}
+	Chiamiamo \Define{polinomi di Legendre}[di Legendre][polinomi] gli unici polinomi $(\LegendrePolynomial_i)_{i \in \mathbb{N}}$ tali che
+	\begin{itemize}
+		\item essi siano ortogonali rispetto al prodotto scalare $\ScalarProduct{\Polynomial}{\VarPolynomial} = \int_{-1}^1 \Polynomial(x)\VarPolynomial(x)dx$;
+		\item $\LegendrePolynomial_0 = 1$;
+		\item $\LegendrePolynomial_1 = x$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Per i polinomi di Legendre $(\LegendrePolynomial_i)_{i \in \mathbb{N}}$ vale la relazione a tre termini
+	\[
+		\LegendrePolynomial_{i + 1}(x) = 
+		\begin{cases}
+			\LegendrePolynomial_0(x) = 1\text{ se }i = -1,\\
+			\LegendrePolynomial_1(x) = x\text{ se }i = 0,\\
+			\frac{2i + 1}{i + 1} x \LegendrePolynomial_i(x) - \frac{i}{i + 1}\LegendrePolynomial_{i - 1}(x)\text{ altrimenti}.
+		\end{cases}
+	\]
+\end{Theorem}
+\begin{Definition}
+	Chiamiamo \Define{polinomi di Laguerre}[di Laguerre][polinomi] gli unici polinomi $(\LaguerrePolynomial_i)_{i \in \mathbb{N}}$ tali che
+	\begin{itemize}
+		\item essi siano ortogonali rispetto al prodotto scalare $\ScalarProduct{\Polynomial}{\VarPolynomial} = \int_0^{+ \infty} e^{-x} \Polynomial(x)\VarPolynomial(x)dx$;
+		\item $\LaguerrePolynomial_0 = 1$;
+		\item $\LaguerrePolynomial_1 = - x + 1$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{polinomi di Hermite probabilistici}[di Hermite probabilistici][polinomi] gli unici polinomi $(\ProbabilistHermitePolynomial_i)_{i \in \mathbb{N}}$ tali che
+	\begin{itemize}
+		\item essi siano ortogonali rispetto al prodotto scalare $\ScalarProduct{\Polynomial}{\VarPolynomial} = \int_{-infty}^{+\infty} e^{-x^2} \Polynomial(x)\VarPolynomial(x)dx$;
+		\item $\ProbabilistHermitePolynomial_0 = 1$;
+		\item $\ProbabilistHermitePolynomial_1 = x$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{polinomi di Hermite fisici}[di Hermite fisici][polinomi] gli unici polinomi $(\PhysicistHermitePolynomial_i)_{i \in \mathbb{N}}$ tali che
+	\begin{itemize}
+		\item essi siano ortogonali rispetto al prodotto scalare $\ScalarProduct{\Polynomial}{\VarPolynomial} = \int_{-infty}^{+\infty} e^{-x^2} \Polynomial(x)\VarPolynomial(x)dx$;
+		\item $\PhysicistHermitePolynomial_0 = 1$;
+		\item $\PhysicistHermitePolynomial_1 = 2x$.
+	\end{itemize}
+\end{Definition}

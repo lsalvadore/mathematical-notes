@@ -1,0 +1,77 @@
+\section{Operatori lineari limitati.}
+\label{AnalisiFunzionale_OperatoriLineariLimitati}
+\begin{Definition}
+	Sia $\BoundedLinearOperator: \LinearTopologicalSpace \rightarrow \VarLinearTopologicalSpace$ un operatore lineare. $\BoundedLinearOperator$ si dice \Define{limitato}[lineare limitato][operatore] quando trasforma parti limitate in parti limitate. Denoteremo lo spazio di tutte gli operatori lineari da $\LinearTopologicalSpace$ in $\VarLinearTopologicalSpace$ con $\BoundedLinearOperators{\LinearTopologicalSpace}{\VarLinearTopologicalSpace}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\BoundedLinearOperator: \LinearTopologicalSpace \rightarrow \VarLinearTopologicalSpace$ un operatore lineare. Se $\LinearTopologicalSpace$ \`e finito, allora $\BoundedLinearOperator$ \`e limitato.
+\end{Theorem}
+\begin{Theorem}
+	Sia $\LinearOperator: \NormedSpace \rightarrow \VarNormedSpace$ un operatore lineare tra gli spazi vettoriali normati $\NormedSpace$ e $\VarNormedSpace$. $\LinearOperator$ \`e limitato se e solo se \`e continuo.
+\end{Theorem}
+\begin{Definition}
+	Fissato $n \in \mathbb{N}$, una \Define{norma di matrice}[di matrice][norma] \`e una norma $\Norm{\cdot}$ sullo spazio vettoriale $\mathbb{C}^n$ che \`e inoltre submoltiplicativa: $\ForAll{(\Matrix,\VarMatrix) \in \mathbb{C}^n \times \mathbb{C}^n}{\Norm{\Matrix\VarMatrix} \leq \Norm{\Matrix}\Norm{\VarMatrix}}$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\NormedSpace$ e $\VarNormedSpace$ spazi vettoriali normali. L'applicazione $\Norm{\cdot}: \BoundedLinearOperators{\NormedSpace}{\VarNormedSpace} \rightarrow \RealNonNegative$ che a $\BoundedLinearOperator \in \BoundedLinearOperators{\NormedSpace}{\VarNormedSpace}$ associa $\min \lbrace M \in \RealNonNegative | \ForAll{\Vector \in \NormedSpace}{\Norm{\LinearOperator} \leq M \Norm{\Vector}} \rbrace \in \RealNonNegative$ \`e una norma sullo spazio vettoriale $\BoundedLinearOperators{\NormedSpace}{\VarNormedSpace}$.
+\end{Theorem}
+\begin{Definition}
+	Con le notazioni del teorema precedente, definiamo $\Norm{\BoundedLinearOperator}$ \Define{norma operatore}[di un operatore lineare limitato][norma] di $\BoundedLinearOperator$.
+\end{Definition}
+\par Ogni volta che tratteremo uno spazio di operatori lineare limitati come uno spazio vettoriale normato, si tratter\`a sempre della norma appena definita, salvo avvisi contrari.
+\begin{Theorem}
+	Le norme operatore sono norme di matrici.
+\end{Theorem}
+\begin{Definition}
+	Una norma di matrice si dice \Define{indotta}[di matrice indotta][norma] quando \`e una norma operatore.
+\end{Definition}
+\begin{Theorem}
+	Siano $\NormedSpace$ e $\VarNormedSpace$ spazi vettoriali normati.
+  Sia
+  $\BoundedLinearOperator \in
+    \BoundedLinearOperators{\NormedSpace}{\VarNormedSpace}$.
+  Abbiamo
+	\begin{itemize}
+		\item $\Norm{\BoundedLinearOperator} = \sup_{\substack{\Vector \in \NormedSpace\\\Norm{\Vector} \leq 1}} \Norm{\BoundedLinearOperator \Vector}$;
+		\item $\Norm{\BoundedLinearOperator} = \sup_{\substack{\Vector \in \NormedSpace\\\Norm{\Vector} < 1}} \Norm{\BoundedLinearOperator \Vector}$;
+		\item $\Norm{\BoundedLinearOperator} = \sup_{\substack{\Vector \in \NormedSpace\\\Norm{\Vector} = 1}} \Norm{\BoundedLinearOperator \Vector}$;
+		\item $\Norm{\BoundedLinearOperator} = \sup_{\substack{\Vector \in \NormedSpace\\\Vector \neq 0}} \frac{\Norm{\BoundedLinearOperator \Vector}}{\Norm{\Vector}}$.
+	\end{itemize}
+\end{Theorem}
+\begin{Corollary}
+	Siano $\NormedSpace$ e $\VarNormedSpace$ spazi vettoriali normati.
+  Sia
+  $\BoundedLinearOperator \in
+    \BoundedLinearOperators{\NormedSpace}{\VarNormedSpace}$.
+  Abbiamo
+  \[
+    \ForAll{\Vector \in \NormedSpace}{
+      \Norm{\BoundedLinearOperator \Vector} \leq
+      \Norm{\BoundedLinearOperator} \Norm{\Vector}}.
+  \]
+\end{Corollary}
+\Proof Se $\Vector = 0$ la tesi \`e immediata. Assumiamo $\Vector \neq 0$.
+\par Abbiamo
+\begin{align*}
+  \Norm{\BoundedLinearOperator \Vector}
+  &= \Norm{\BoundedLinearOperator
+    \Norm{\Vector} \frac{\Vector}{\Norm{\Vector}}},\\
+  &= \Norm{\Vector}
+    \Norm{\BoundedLinearOperator \frac{\Vector}{\Norm{\Vector}}},\\
+  &\leq \Norm{\Vector} \Norm{\BoundedLinearOperator}.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  Fissato $n \in \NotZero{\mathbb{N}}$, abbiamo, per ogni
+  $\Matrix \in \mathbb{C}^{n \times n}$
+  \begin{itemize}
+    \item $\Norm{\Matrix}[1]
+      = \max_{j \in n} \sum_{k \in n} \AbsoluteValue{\Matrix_k^j}$;
+    \item $\Norm{\Matrix}[2]
+      = \sqrt{\SpectralRadius{\HermitianTransposed{\Matrix}\Matrix}}$;
+    \item $\Norm{\Matrix}[\infty]
+      = \max_{k \in n} \sum_{j \in n} \AbsoluteValue{\Matrix_k^j}$.
+  \end{itemize}
+\end{Theorem}
+\begin{Theorem}
+	Siano $\NormedSpace$ e $\VarNormedSpace$ spazi vettoriali normati finiti. Sia $\BoundedLinearOperator \in \BoundedLinearOperators{\NormedSpace}{\VarNormedSpace}$. Per ogni $\epsilon > 0$, esiste una norma indotta di $\BoundedLinearOperators{\NormedSpace}{\VarNormedSpace}$ tale che $\SpectralRadius{\BoundedLinearOperator} \leq \Norm{\BoundedLinearOperator} \leq \SpectralRadius{\BoundedLinearOperator} + \epsilon$.
+\end{Theorem}

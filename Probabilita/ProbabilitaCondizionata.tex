@@ -1,0 +1,62 @@
+\section{Probabilit\`a condizionata.}
+\label{Probabilita_ProbabilitaCondizionata}
+\begin{Theorem}
+  Sia $(\ProbabilitySpace,\Events,\Probability)$ uno spazio di probabilit\`a e
+  sia $\Event \in \Events$.
+  Denotiamo
+  L'applicazione $\VarProbability: \Events \rightarrow [0,1]$ che a
+  $\VarEvent \in \Events$ associa
+  $\frac{\Probability(\VarEvent \cap \Event)}{\Probability(\Event)}$ \`e una
+  probabilit\`a sullo spazio misurabile $(\ProbabilitySpace,\Events)$.
+\end{Theorem}
+\Proof Abbiamo
+$\VarProbability(\ProbabilitySpace)
+= \frac{\Probability(\ProbabilitySpace \cap \Event)}{\Probability(\Event)}
+= \frac{\Probability(\Event)}{\Probability(\Event)} = 1$.
+\par Sia $(\Event_n)_{n \in \mathbb{N}}$ una famiglia numerabile di eventi due
+a due disgiunti.
+Abbiamo
+\begin{align*}
+  \VarProbability \left ( \bigcup_{n \in \mathbb{N}} \Event_n \right )
+  &= \frac{\Probability
+    \left ( \left ( \bigcup_{n \in \mathbb{N}} \Event_n \right )
+      \cap \Event \right )}{
+    \Probability(\Event)},\\
+  &= \frac{\Probability
+    \left ( \bigcup_{n \in \mathbb{N}} (\Event_n \cap \Event ) \right )}{
+    \Probability(\Event)},\\
+  &= \frac{\sum_{n \in \mathbb{N}}\Probability(\Event_n \cap \Event)}{
+    \Probability(\Event)},\\
+  &= \sum_{n \in \mathbb{N}}\VarProbability(\Event_n).\text{ \EndProof}
+\end{align*}
+\begin{Definition}
+  Nelle ipotesi del teorema precedente, chiamiamo
+  \Define{probabilit\`a condizionata}[condizionata][probabilit\`a]
+  a $\Event$ la probabilit\`a $\VarProbability$.
+  Denoteremo
+  $\Probability(\VarEvent|\Event)$ la probabilit\`a condizionata a
+  $\Event$ di $\VarEvent \in \Events$.
+\end{Definition}
+\begin{Theorem}
+  \TheoremName{Teorema di Bayes}[di Bayes][teorema]
+  Sia $(\ProbabilitySpace,\Events,\Probability)$ uno spazio di probabilit\`a e
+  siano $\Event, \VarEvent \in \Events$ con
+  $\Probability(\VarEvent) \neq 0$.
+  Abbiamo
+  \[
+    \Probability(\Event|\VarEvent)
+    = \frac{\Probability(\VarEvent|\Event) \Probability(\Event)}
+      {\Probability(\VarEvent)}.
+  \]
+\end{Theorem}
+\Proof Supponiamo $\Probability(\Event) \neq 0$. Abbiamo
+\begin{align*}
+  \Probability(\Event|\VarEvent)
+  &= \frac{\Probability(\Event \cap \VarEvent)}{\Probability(\VarEvent)},\\
+  &= \frac{\Probability(\VarEvent|\Event)\Probability(\Event)}
+        {\Probability(\VarEvent)}.
+\end{align*}
+\par Supponiamo invece $\Probability(\Event) = 0$. Allora
+$\Probability(\Event|\VarEvent)
+= \frac{\Probability(\Event \cap \VarEvent)}{\Probability(\VarEvent)}
+= 0$. \EndProof

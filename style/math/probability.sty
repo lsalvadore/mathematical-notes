@@ -1,0 +1,26 @@
+\ProvidesPackage{probability}
+
+\newcommand{\ConditionalExpectationValue}[2]{\mathbf{E} \left [#1|#2 \right ]}
+\DeclareDocumentCommand \Probability {o}
+	{
+		\IfNoValueTF{#1}
+		{\mathbf{P}}
+		{\mathbf{P} \left ( #1 \right )}
+	}
+\newcommand{\BernoulliCoprobability}{q}
+\newcommand{\BernoulliProbability}{p}
+\newcommand{\BernoulliTrials}{n}
+\newcommand{\DensityDefinedProbability}[2]{#1.#2}
+\newcommand{\DensityVersion}[2]{\frac{d#1}{d#2}}
+\newcommand{\ExpectedValue}[1]{\mathbf{E} \left ( #1 \right )}
+\newcommand{\Event}{\MeasurablePart}
+\newcommand{\Events}{\Sigma}
+\newcommand{\ExpectationValue}[1]{\ExpectedValue{#1}}
+\newcommand{\Indicator}[1]{\mathbf{I}_{#1}}
+\newcommand{\ProbabilityDistribution}[1]{\Probability_{#1}}
+\newcommand{\ProbabilitySpace}{\Omega}
+\newcommand{\RandomVariable}{X}
+\newcommand{\SamplesSpace}{\Omega}
+\newcommand{\VarEvent}{\VarMeasurablePart}
+\newcommand{\VarProbability}{\mathbf{Q}}
+\newcommand{\VarRandomVariable}{Y}

@@ -1,0 +1,14 @@
+\section{Equilibri e stabilit\`a.}
+\label{SistemiDinamici_EquilibriEStabilita}
+\begin{Definition}
+	Dato un sistema dinamico $\dot{X} = \VectorField(X)$, chiamiamo \Define{punto di equilibrio}[di equilibrio][punto] o \Define{configurazione di equilibrio}[di equilibrio][configurazione] un punto $\Equilibrium$ tale che $\VectorField(\Equilibrium) = 0$.
+\end{Definition}
+\begin{Definition}
+	Dato un sistema dinamico $\dot{X} = \VectorField(X)$, un punto di equilibrio $\StableEquilibrium$ si dice \Define{stabile}[d'equilibrio stabile][punto] quando per ogni intorno $\Neighborhood_0$ di $\StableEquilibrium$ esiste un altro intorno $\Neighborhood_1$ di $\StableEquilibrium$ tale che $\Implies{X(0) \in \Neighborhood_0}{\ForAll{t \in \RealNonNegative}{X(t) \in \Neighborhood_1}}$. Se $\StableEquilibrium$ non \`e stabile, allo si dice \Define{instabile}[d'equilibrio instabile][punto].
+\end{Definition}
+\begin{Definition}
+	Dato un sistema dinamico $\dot{X} = \VectorField(X)$, un punto $\AttractivePoint$ si dice \Define{attrattivo}[attrattivo][punto] quando esiste un intorno $\Neighborhood$ di $\AttractivePoint$ tale che $\Implies{X(0) \in \Neighborhood}{\lim_{t \rightarrow + \infty} X(t) = \AttractivePoint}$. Chiamiamo inoltre \Define{bacino d'attrazione}[d'attrazione][bacino] l'insieme $\BasinOfAttraction$ di tutti i punti $X_0$ tali che $\Implies{X(0) \in \Neighborhood}{\lim_{t \rightarrow + \infty} X(t) = \AttractivePoint}$.
+\end{Definition}
+\begin{Definition}
+	Dato un sistema dinamico $\dot{X} = \VectorField(X)$, chiamiamo un punto di equilibrio $\AsymptoticallyStableEquilibrium$ \Define{asintoticamente stabile}[d'equilibrio asintoticamente stabile][punto] se\`e un punto di equilibrio stabile e se \`e attrattivo.
+\end{Definition}

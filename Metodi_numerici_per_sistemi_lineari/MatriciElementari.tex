@@ -1,0 +1,257 @@
+\section{Matrici elementari.}
+\label{MetodiNumericiPerLaRisoluzioneDiSistemiLineari_MatriciElementari}
+\begin{Definition}
+  Chiamiamo
+  \Define{matrice elementare}[elementare][matrice]
+  una matrice
+  $\ElementaryMatrix \in \mathbb{C}^{n \times n}$ ($n \in \NotZero{\mathbb{N}}$)
+  tale che
+  $\ElementaryMatrix
+  = \Identity - \Scalar\Vector\HermitianTransposed{\VarVector}$, con
+  \begin{itemize}
+    \item $\Scalar \in \mathbb{C}^{n \times n}$;
+    \item $\Vector, \VarVector \in \mathbb{C}^{n \times n}$.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni della definizione precedente, $\ElementaryMatrix$ \`e
+  invertibile se e solo se
+  $\Scalar\HermitianTransposed{\VarVector}\Vector \neq 1$.
+  Quando esistente, $\ElementaryMatrix^{-1}$ \`e una matrice elementare data da
+  $\ElementaryMatrix^{-1}
+  = \Identity - \VarScalar\Vector\HermitianTransposed{\VarVector}$, con
+  $\VarScalar
+  = - \frac{\sigma}{\sigma\HermitianTransposed{\VarVector}\Vector - 1}$.
+\end{Theorem}
+\Proof Supponiamo $\ElementaryMatrix$ invertibile. Abbiamo
+\begin{align*}
+  \MatrixElement\Vector
+  &= \Vector - \Scalar\Vector\HermitianTransposed{\VarVector}\Vector,\\
+  &= (1 - \Scalar\HermitianTransposed{\VarVector}\Vector)\Vector.
+\end{align*}
+Dunque deve essere $1 - \Scalar\HermitianTransposed{\VarVector}\Vector \neq 0$.
+\par Supponiamo ora invece al contrario $\ElementaryMatrix$ non invertibile.
+Allora esiste $x \in \NotZero{\mathbb{C}^n}$ tale che $\ElementaryMatrix x = 0$,
+vale a dire
+$x - \Scalar\Vector\HermitianTransposed{\VarVector} x
+(1 - \Scalar\Vector\HermitianTransposed{\VarVector}) x
+= 0$
+e dunque
+$\Scalar\Vector\HermitianTransposed{\VarVector} = 1$.
+\par La parte restante del teorema si dimostra facilmente per calcolo diretto.
+\EndProof
+\begin{Lemma}
+  \label{MetodiNumericiPerLaRisoluzioneDiSistemiLineari_LemmaRango1}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\Vector, \VarVector \in \mathbb{C}^n$.
+  \end{itemize}
+  Se
+  $\Matrix = \Vector\HermitianTransposed{\VarVector}$,
+  allora
+  \begin{itemize}
+    \item $\MatrixRank{\Matrix} = 1$;
+    \item $\Norm{\Matrix}[2] = \Norm{\Vector}[2] \Norm{\VarVector}[2]$.
+  \end{itemize}
+\end{Lemma}
+\Proof Poich\'e
+$\Matrix = \Vector\HermitianTransposed{\VarVector}$,
+per ogni $k \in \NotZero{n}$ abbiamo la seguente relazione sulle colonne di
+$\Matrix$:
+$\Matrix^k = \frac{\VarVector_k}{\VarVector_0} \Matrix^0$.
+Dunque $\MatrixRank{\Matrix} = 1$.
+\par Siano ora $\UnitaryMatrix$ e $\VarUnitaryMatrix$ matrici unitarie le cui
+prime colonne sono
+$\UnitaryMatrix^0 = \frac{\Vector}{\Norm{\Vector}}$
+e
+$\VarUnitaryMatrix^0 = \frac{\VarVector}{\Norm{\VarVector}}$
+rispettivamente.
+\par Abbiamo
+$\Norm{\UnitaryMatrix^{-1}\Matrix\VarUnitaryMatrix}[2]
+= \Norm{\Matrix}[2]$
+e
+$\UnitaryMatrix^{-1}\Matrix\VarUnitaryMatrix$ \`e una matrice interamente
+nulla tranne che nell'elemento della prima riga e della prima colonna
+che \`e uguale a
+$\Norm{\Vector}[2] \Norm{\VarVector}[2]$,
+da cui
+$\Norm{\Matrix} =
+\Norm{\Vector}[2] \Norm{\VarVector}[2]$. \EndProof
+\begin{Theorem}
+  La risoluzione del sistema
+  $\ElementaryMatrix X = B$ con
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\ElementaryMatrix \in \mathbb{C}^{n \times n}$ elementare;
+    \item $X \in \mathbb{C}^n$ incognito;
+    \item $B \in \mathbb{C}^n$ noto;
+  \end{itemize}
+  pu\`o essere effettuata con
+  \begin{itemize}
+    \item $3n$ addizioni;
+    \item $3n + 1$ moltiplicazioni;
+    \item $1$ divisione;
+  \end{itemize}
+  per un totale di $\BigO{n}$ operazioni aritmetiche.
+\end{Theorem}
+\begin{Corollary}
+  La risoluzione del sistema
+  $\Matrix X = B$ con
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\VarMatrix \in \mathbb{C}^{n \times n}$ prodotto di matrici
+      elementari invertibili;
+    \item $\TriangularMatrix \in \mathbb{C}^{n \times n}$ trriangolare
+      superiore.
+    \item $\Matrix = \VarMatrix\TriangularMatrix$;
+    \item $X \in \mathbb{C}^n$ incognito;
+    \item $B \in \mathbb{C}^n$ noto;
+  \end{itemize}
+  costa $\BigO{n^2}$ operazioni aritmetiche.
+\end{Corollary}
+\Proof Si risolve prima il sistema $\VarMatrix X = B$ ottenendo una soluzione
+$Y$ con $\BigO{n}$ operazioni aritmetiche; dunque si risolve il sistema
+$\TriangularMatrix X = Y$ con $\BigO{n^2}$ operazioni aritmetiche,
+ottenendo la soluzione del sistema originale con un totale di $\BigO{n^2}$
+operazioni aritmetiche. \EndProof
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\VarVarVector, \VarVarVarVector \in \NotZero{\mathbb{C}^n}$.
+  \end{itemize}
+  Esiste una matrice elementare non singolare $\ElementaryMatrix$ tale che
+  $\ElementaryMatrix\VarVarVector = \VarVarVarVector$.
+\end{Theorem}
+\Proof Siano
+\begin{itemize}
+  \item $\Vector = \VarVarVector - \VarVarVarVector$;
+  \item $\VarVector \in \mathbb{C}^n$ tale che esso non sia ortogonale n\'e a
+    $\VarVarVector$ n\'e a $\VarVarVarVector$
+    \footnote{Una tale scelta \`e sempre possibile:
+    \begin{itemize}
+      \item se $\HermitianTransposed{\VarVarVector}{\VarVarVarVector} = 0$,
+        allora si pu\`o scegliere
+        $\VarVector = \VarVarVector + \VarVarVarVector$;
+      \item se $\HermitianTransposed{\VarVarVector}{\VarVarVarVector} \neq 0$,
+        allora si pu\`o scegliere
+        $\VarVector = \VarVarVector$.
+    \end{itemize}};
+  \item $\Scalar = (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}$.
+\end{itemize}
+\par Poniamo
+$\ElementaryMatrix
+= \Identity - \Scalar\Vector\HermitianTransposed{\VarVector}$.
+\par Abbiamo
+\begin{align*}
+  \ElementaryMatrix \VarVarVector
+  &= \VarVarVector
+    - (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}
+    (\VarVarVector - \VarVarVarVector)
+    \HermitianTransposed{\VarVector}\VarVarVector,\\
+  &= \VarVarVector
+    - (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}
+    \VarVarVector
+    \HermitianTransposed{\VarVector}\VarVarVector
+    + (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}
+    \VarVarVarVector
+    \HermitianTransposed{\VarVector}\VarVarVector,\\
+  &= \VarVarVarVector.
+\end{align*}
+\par Inoltre,
+\begin{align*}
+  \Scalar\HermitianTransposed{\VarVector}\Vector
+  &= (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}
+    \HermitianTransposed{\VarVector}
+    (\VarVarVector - \VarVarVarVector),\\
+  &= (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}
+    \HermitianTransposed{\VarVector}
+    \VarVarVector
+    - (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}
+    \HermitianTransposed{\VarVector}
+    \VarVarVarVector,\\
+  &= 1
+    - (\HermitianTransposed{\VarVector}\VarVarVector)^{-1}
+    \HermitianTransposed{\VarVector}
+    \VarVarVarVector,\\
+  &\neq 1,
+\end{align*}
+da cui l'invertibilit\`a di $\ElementaryMatrix$. \EndProof
+\begin{Theorem}
+  \label{th_FattorizzazioneMatriciElementari}
+  Siano
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$.
+  \end{itemize}
+  Il seguente algoritmo costruisce una fattorizzazione
+  $\Matrix = A \TriangularMatrix$ dove $A$ \`e prodotto di matrici
+  elementari e $\TriangularMatrix$ \`e triangolare superiore:
+  \begin{enumerate}
+    \item\label{FattorizzazioneMatriciElementari_1} si ponga $l = 0$;
+    \item\label{FattorizzazioneMatriciElementari_2} si definisca
+      $\VarMatrix = (\Matrix_k^j)_{\substack{k = l\\j= l}}^{\substack{k = n - 1}{j = m - 1}}$;
+    \item\label{FattorizzazioneMatriciElementari_3} si fissi una matrice
+      elementare non singolare $\ElementaryMatrix_{(l,0)}$ tale che
+      $\ElementaryMatrix_{(l,0)}\VarMatrix = \CanonicalBase_1^{(l)}$, dove
+      $\CanonicalBase_1^{(l)}$ \`e il $l$-esimo vettore della base
+      canonica di $\mathbb{C}^{m - l}$;
+    \item\label{FattorizzazioneMatriciElementari_4} si ponga
+      $(\ElementaryMatrix_{(l)})_k^j =
+      \begin{cases}
+        1&\text{ se }k = j < l,\\
+        (\ElementaryMatrix_{(l,0)})_{k - l}^{j - l}&\text{ se }\And{k \geq l}{j \geq l},\\
+        0&\text{ altrimenti},
+      \end{cases}$
+      vale a dire
+      \[
+        \ElementaryMatrix_{(l)} =
+        \lmatrix
+        \begin{array}{c|c}
+          \Identity &\\
+          \hline
+          & \ElementaryMatrix_{(l,0)}
+        \end{array}
+        \rmatrix;
+      \]
+    \item\label{FattorizzazioneMatriciElementari_5} si ridefinisca
+      $\Matrix = \ElementaryMatrix_{(l)}\Matrix$;
+    \item\label{FattorizzazioneMatriciElementari_6} si incrementi
+      $l$ di $1$;
+    \item\label{FattorizzazioneMatriciElementari_7} se $l < m$, si torni al
+      punto \ref{FattorizzazioneMatriciElementari_2};
+    \item\label{FattorizzazioneMatriciElementari_8} si ponga
+      $A = \ElementaryMatrix_{(m - 1)}^{-1}\ElementaryMatrix_{(m - 2)}^{-1}
+      \cdots
+      \ElementaryMatrix_{(1)}^{-1}\ElementaryMatrix_{(0)}^{-1}$;
+    \item\label{FattorizzazioneMatriciElementari_9} si ponga
+      $\TriangularMatrix = \Matrix$;
+    \item\label{FattorizzazioneMatriciElementari_10} l'algoritmo termina restituendo
+      $A$ e $\TriangularMatrix$.
+  \end{enumerate}
+\end{Theorem}
+\Proof Si dimostra facilmente per induzione che $\TriangularMatrix$ \`e triangolare.
+\par Per dimstrare che $A$ \`e prodotto di matrici elementari \`e sufficiente notare che
+ogni $\ElementaryMatrix_{(l)}$ al variare di $l \in m$ \`e elementare. In effetti,
+$\ElementaryMatrix_{(l,0)}$ \`e elementare per costruzione: esistono dunque uno scalare
+$\Scalar \in \mathbb{C}$ e vettori $\Vector,\VarVector \in \mathbb{C}^{m - l}$  tali che
+$\ElementaryMatrix_{(l,0)} = \Identity - \Scalar\Vector\VarVector$.
+Per calcolo diretto si verifica che
+$\ElementaryMatrix_{(l,0)} = \Identity - \Scalar\tilde{\Vector}\tilde{\VarVector}$, dove
+\begin{itemize}
+  \item la matrice $\Identity$ \`e stavolta l'identit\`a di $\mathbb{C}^m$;
+  \item $\tilde{\Vector} \in \mathbb{C}^m$ \`e tale che
+    $\tilde{\Vector}_k =
+    \begin{cases}
+      0&\text{ se }k < l,\\
+      \Vector_{k - l}&\text{ altrimenti};
+    \end{cases}$
+  \item $\tilde{\VarVector} \in \mathbb{C}^m$ \`e tale che
+    $\tilde{\Vector}_k =
+    \begin{cases}
+      0&\text{ se }k < l,\\
+      \VarVector_{k - l}&\text{ altrimenti}.\text{ \EndProof}
+    \end{cases}$
+\end{itemize}

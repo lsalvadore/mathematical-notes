@@ -1,0 +1,203 @@
+\section{Problema di due corpi.}
+\label{ElementiDiMeccanicaCeleste_ProblemaDiDueCorpi}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_2Corpi.png}
+	\centering
+	\caption{Problema di due corpi.}
+\end{figure}
+\par Assumiamo nel seguito di aver fissato un sistema di riferimento inerziale.
+\begin{Definition}
+	Dato un sistema isolato di due punti materiali
+	\begin{itemize}
+		\item $\PointMass_1$ di $\Mass_1$ in posizione $\vec{\rho_1}$;
+		\item $\PointMass_2$ di $\Mass_2$ in posizione $\vec{\rho_2}$;
+	\end{itemize}
+	chiamiamo
+	\begin{itemize}
+		\item \Define{massa ridotta}[ridotta][massa], denotata $\ReducedMass$, la quantit\`a $\ReducedMass = \Mass_1^{-1} + \Mass_2^{-1} = \frac{\Mass_1\Mass_2}{\Mass_1 + \Mass_2}$;
+		\item \Define{problema ridotto}[ridotto][problema] o \Define{problema di Keplero}[di Keplero][problema] il problema del moto di un punto materiale di massa $\ReducedMass$ che si muove in un campo gravitazionale generato da una massa $\TotalMass = \Mass_1 + \Mass_2$ vincolata nell'origine.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Dato un sistema isolato di due punti materiali
+	\begin{itemize}
+		\item $\PointMass_1$ di $\Mass_1$ in posizione $\vec{\rho_1}$;
+		\item $\PointMass_2$ di $\Mass_2$ in posizione $\vec{\rho_2}$;
+	\end{itemize}
+	sono costanti 
+	\begin{itemize}
+		\item l'energia $\Energy$ del sistema;
+		\item le componenti del momento angolare $\vec{\AngularMoment}$;
+		\item le componenti della quantit\`a di moto $\vec{\Momentum}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo $\Energy = \frac{1}{2}\Mass_1\dot{\rho_1}^2 + \frac{1}{2}\Mass_2\dot{\rho_2}^2 - \NewtonConstant \frac{\Mass_1\Mass_2}{r}$, da cui
+\begin{align*}
+	\dot{\Energy}
+	&= \Mass_1\ddot{\rho_1}\dot{\rho_1} + \Mass_2\ddot{\rho_2}\dot{\rho_2} + \NewtonConstant \frac{\Mass_1\Mass_2}{r^2} \dot{r},\\
+	&= - \NewtonConstant \frac{\Mass_1\Mass_2}{r^2}\dot{r} + \NewtonConstant \frac{\Mass_1\Mass_2}{r^2} \dot{r} = 0.
+\end{align*}
+(La stessa cosa poteva essere dedotta direttamente dal primo principio della termodinamica.)
+\par Per il momento angolare, osserviamo che la forza gravitazionale \`e centrale, dunque il momento angolare dei singoli punti materiali \`e costante e quindi costante \`e anche il momento angolare $\vec{\AngularMoment}$ del sistema.
+\par Per la quantit\`a di moto, abbiamo, poich\'e il sistema \`e isolato, $(\Mass_1 + \Mass_2) \ddot{\vec{\CenterOfMass}} = 0$, dove $\CenterOfMass = \frac{\Mass_1\vec{\rho_1} + \Mass_2\vec{\rho_2}}{\Mass_1 + \Mass_2}$; quindi $\vec{\Momentum} = (\Mass_1 + \Mass_2) \dot{\vec{\CenterOfMass}}$ \`e costante. \EndProof
+\begin{Corollary}
+	Il problema di due corpi \`e integrabile.
+\end{Corollary}
+\Proof Il problema di due corpi \`e un problema con $6$ gradi di libert\`a e $6$ integrali primi indipendenti\footnote{Il momento angolare costituisce in realt\`a solo due integrali primi perch\'e non si tratta propriamente di un vettore, bens\'i di uno pseudovettore.}. \EndProof
+\begin{Theorem}
+	Dato un sistema isolato di due punti materiali
+	\begin{itemize}
+		\item $\PointMass_1$ di $\Mass_1$ in posizione $\vec{\rho_1}$;
+		\item $\PointMass_2$ di $\Mass_2$ in posizione $\vec{\rho_2}$;
+	\end{itemize}
+	il loro centro di massa $\vec{\CenterOfMass}$ si muove di moto rettilinero uniforme.
+\end{Theorem}
+\Proof La quantit\`a di moto del sistema $\vec{\Momentum}$ \`e costante. \`E dunque costante anche $\dot{\vec{\CenterOfMass}} = \frac{\vec{\Momentum}}{\Mass_1 + \Mass_2}$. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema precedente, il sistema di riferimento ottenuto per traslazione dell'origine nel centro di massa $\vec{\CenterOfMass}$ \`e anch'esso inerziale.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente.
+\begin{Theorem}
+	\label{ElementiDiMeccanicaCeleste_RiduzioneAlProblemaDiKeplero}
+	Consideriamo un sistema isolato di due punti materiali riferito ad un sistema inerziale centrato nel loro centro di massa
+	\begin{itemize}
+		\item $\PointMass_1$ di $\Mass_1$ in posizione $\vec{r_1}$;
+		\item $\PointMass_2$ di $\Mass_2$ in posizione $\vec{r_2}$;
+	\end{itemize}
+	il problema di due corpi
+	\[
+		\begin{cases}
+			\Mass_1 \ddot{\vec{r_1}} = \NewtonConstant \frac{\Mass_1\Mass_2}{r^3}\vec{r},\\
+			\Mass_2 \ddot{\vec{r_2}} = - \NewtonConstant \frac{\Mass_1\Mass_2}{r^3}\vec{r},
+		\end{cases}
+	\]
+	posto,
+	\begin{itemize}
+		\item $\ReducedMass = \Mass_1^{-1} + \Mass_2^{-1}$;
+		\item $\TotalMass = \Mass_1 + \Mass_2$;
+		\item $\vec{r} = \vec{r_2} - \vec{r_1}$.
+	\end{itemize}
+	equivale al problema ridotto
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	tramite la trasformazione lineare invertibile $\vec{x} \mapsto - \frac{\TotalMass}{\Mass_2} \vec{x}$ dallo spazio delle soluzioni di $\vec{r_1}$ nello spazio delle soluzioni di $\vec{r}$.
+\end{Theorem}
+\Proof Supponiamo $\vec{r_1}$ sia soluzione del problema a due corpi per il punto materiale $\PointMass_1$.
+\par Abbiamo, a seguito della trasformazione,
+\begin{align*}
+	\ReducedMass \ddot{\vec{r}}
+	&= - \frac{\TotalMass}{\Mass_1\Mass_2} \frac{\TotalMass}{\Mass_2} \NewtonConstant \frac{\Mass_2}{r^3}\vec{r},\\
+	&= - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}.
+\end{align*}
+\par D'altra parte, supponiamo $\vec{r}$ sia soluzione del problema di Keplero.
+\par Abbiamo, a seguito della trasformazione,
+\begin{align*}
+	\Mass_1 \ddot{\vec{r_1}}
+	&= \Mass_1 \frac{\Mass_2}{\TotalMass} \NewtonConstant \frac{\TotalMass}{r^3}\vec{r},\\
+	&= \NewtonConstant \frac{\Mass_1\Mass_2}{r^3}\vec{r};
+\end{align*}
+e inoltre
+\begin{align*}
+	\Mass_2 \ddot{\vec{r_2}}
+	&= \Mass_2 (\ddot{\vec{r}} + \ddot{\vec{r_1}}),\\
+	&= - \Mass_2 \NewtonConstant \frac{\TotalMass}{r^3}\vec{r} + \Mass_2 \NewtonConstant \frac{\Mass_2}{r^3}{r},\\
+	&= \NewtonConstant \frac{\Mass_2(\Mass_2 - \TotalMass)}{r^3}\vec{r},\\
+	&= - \NewtonConstant \frac{\Mass_1\Mass_2}{r^3}\vec{r}.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+	\TheoremName{Prima legge di Keplero}[prima di Keplero][legge] La Terra si muove attorno al Sole secondo un'orbita ellittica di cui il Sole occupa uno dei due fuochi.
+\end{Corollary}
+\Proof Per la grande disparit\`a di massa tra il Sole e la Terra, il centro di massa dei due corpi pu\`o essere posto con ottima approssimazione nel centro del Sole: ne risulta che il problema di due corpi composto da Sole e Terra \`e con ottima approssimazione identico al suo problema di Keplero equivalente. L'esperienza diretta dimostra che l'orbita \`e periodica e dunque ellittica (non circolare). \EndProof
+\begin{Theorem}
+	Consideriamo un sistema isolato di due punti materiali riferito ad un
+  sistema inerziale centrato nel loro centro di massa
+	\begin{itemize}
+		\item $\PointMass_1$ di $\Mass_1$ in posizione $\vec{r_1}$;
+		\item $\PointMass_2$ di $\Mass_2$ in posizione $\vec{r_2}$.
+	\end{itemize}
+	Consideriamo il problema di due corpi
+	\[
+		\begin{cases}
+			\Mass_1 \ddot{\vec{r_1}}
+        = \NewtonConstant \frac{\Mass_1\Mass_2}{r^3}\vec{r},\\
+			\Mass_2 \ddot{\vec{r_2}}
+        = - \NewtonConstant \frac{\Mass_1\Mass_2}{r^3}\vec{r},
+		\end{cases}
+	\]
+	equivalente al problema di Keplero
+	\[
+		\ReducedMass \ddot{r}
+      = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	con
+	\begin{itemize}
+		\item $\ReducedMass = \Mass_1^{-1} + \Mass_2^{-1}$;
+		\item $\TotalMass = \Mass_1 + \Mass_2$;
+		\item $\vec{r} = \vec{r_2} - \vec{r_1}$;
+	\end{itemize}
+	tramite la trasformazione lineare invertibile
+$\vec{x} \mapsto - \frac{\TotalMass}{\Mass_2} \vec{x}$ dallo spazio
+delle soluzioni di $\vec{r_1}$ nello spazio delle soluzioni di
+$\vec{r}$.
+	Le orbite del problema di due corpi sono coniche
+	\begin{itemize}
+		\item di eccentricit\`a $\LenzVector$, dove $\vec{\LenzVector}$ \`e
+      il vettore di Lenz del problema ridotto ;
+		\item semilati retti $\SemilatusRectum_1 =
+      \frac{\Mass_2}{\TotalMass} \SemilatusRectum$ e
+      $\SemilatusRectum_2 = \frac{\Mass_1}{\TotalMass} \SemilatusRectum$
+      per le orbite di $\PointMass_1$ e $\PointMass_2$ rispettivamente,
+      dove $\SemilatusRectum$ \`e il semilato dell'orbita del problema
+      ridotto;
+		\item i semilati retti $\SemilatusRectum_1$ e $\SemilatusRectum_2$
+      sono tali che $\SemilatusRectum_1 + \SemilatusRectum_2
+      = \SemilatusRectum$;
+		\item semiassi maggiori $\SemiMajorAxis_1$ e $\SemiMajorAxis_2$ tali
+      che $\SemiMajorAxis_1 + \SemiMajorAxis_2 = \SemiMajorAxis$, dove
+      $\SemiMajorAxis$ il semiassemaggiore dell'orbita del problema
+      ridotto;
+		\item $\PointMass_1$ e $\PointMass_2$ si trovano allineati col
+      centro di massa e situati da parti opposte rispetto ad esso;
+		\item le orbite di $\PointMass_1$ e $\PointMass_2$ vengono percorse
+      con velocit\`a allineate e opposte e tali che
+      $\dot{r_1} + \dot{r_2} = \dot{r}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+	\vec{r_1} = - \frac{\Mass_2}{\TotalMass} \vec{r},\\
+	\vec{r_2} = \frac{\Mass_1}{\TotalMass} \vec{r},
+\end{align*}
+da cui, passando ai moduli e utilizzando la soluzione del problema di Keplero,
+\begin{align*}
+	r_1(\TrueAnomaly) = \frac{\Mass_2}{\TotalMass} \frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}},\\
+	r_2(\TrueAnomaly) = \frac{\Mass_1}{\TotalMass} \frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}}.
+\end{align*}
+\par Abbiamo dunque
+\begin{align*}
+	\SemilatusRectum_1 = \frac{\Mass_2}{\TotalMass} \SemilatusRectum,\\
+	\SemilatusRectum_2 = \frac{\Mass_1}{\TotalMass} \SemilatusRectum,
+\end{align*}
+da cui,
+\begin{align*}
+	\SemiMajorAxis_1 = \frac{\SemilatusRectum_1}{1 - \LenzVector^2},\\
+	\SemiMajorAxis_2 = \frac{\SemilatusRectum_2}{1 - \LenzVector^2}.
+\end{align*}
+\par Abbiamo inoltre
+\begin{itemize}
+	\item $\SemilatusRectum_1 + \SemilatusRectum_2 = \frac{\Mass_2}{\TotalMass} \SemilatusRectum + \frac{\Mass_1}{\TotalMass} \SemilatusRectum = \SemilatusRectum$;
+	\item $\SemiMajorAxis_1 + \SemiMajorAxis_2 = \frac{\SemilatusRectum_1 + \SemilatusRectum_2}{1 - \LenzVector^2} = \frac{\SemilatusRectum}{1 -\LenzVector^2} = \SemiMajorAxis$.
+\end{itemize}
+\par $\PointMass_1$ e $\PointMass_2$ sono allineati con il loro centro di massa e situati da parti opposte rispetto ad essi per la definizione stessa di centro di massa.
+\par Infine, per valutare i versi di percorrenza, deriviamo $\vec{r_1}$ e $\vec{r_2}$:
+\begin{align*}
+	\dot{\vec{r_1}} = - \frac{\Mass_2}{\TotalMass} \dot{\vec{r}},\\
+	\dot{\vec{r_2}} = \frac{\Mass_1}{\TotalMass} \dot{\vec{r}}.
+\end{align*}
+Abbiamo in particolare $\dot{r_1} + \dot{r_2} = \frac{\Mass_2}{\TotalMass} \dot{r} + \frac{\Mass_1}{\TotalMass} \dot{r} = \dot{r}$. \EndProof
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_2Corpi_Orbite.png}
+	\centering
+	\caption{Orbite del problema dei due corpi.}
+\end{figure}

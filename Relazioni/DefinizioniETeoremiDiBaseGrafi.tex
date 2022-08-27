@@ -1,0 +1,162 @@
+\subsection{Definizioni e teoremi di base.}
+\label{DefinizioniETeoremiDiBaseGrafi}
+\begin{Definition}
+	Un \Define{grafo} \`e una coppia
+  $\Graph = (\Nodes,\Edges)$ dove $\Nodes$ \`e
+  una classe i cui elementi di chiamano
+  \Define{nodi}[di un grafo][nodo],
+  e $\Edges$ \`e una classe i cui elementi si dicono
+  \Define{archi}[di un grafo][arco] tali che
+	\begin{itemize}
+		\item o $\Edges \subseteq \Nodes^2$ \`e una relazione, e allora il
+      grafo si dice \Define{orientato}[orientato][grafo] o
+     \Define{diretto}[diretto][grafo];
+		\item o $\Edges$ \`e una classe i cui elementi sono tutti parti di
+      $\Nodes$ di $2$ elementi, allora il grafo si
+      dice \Define{non orientato}[non orientato][grafo] o
+      \Define{non diretto}[non diretto][grafo]
+	\end{itemize}
+  Se $\Nodes$ \`e un insieme finito, allora, $\Graph$ si dice
+  \Define{finito}[finito][grafo].
+\end{Definition}
+\begin{Definition}
+  Dato un grafo non orientato $\Graph = (\Nodes,\Edges)$, chiamiamo
+  \Define{grafo orientato associato}[orientato associato][grafo]
+  a $\Graph$ il grafo $\Graph' = (\Nodes,\Edges')$ tale che
+  $\lbrace \Node, \VarNode \rbrace \in \Edges$ se e solo se
+  $\And{(\Node,\VarNode) \in \Edges'}{(\VarNode,\Node) \in \Edges'}$.
+\end{Definition}
+\begin{Definition}
+	Sia $\Graph = (\Nodes,\Edges)$ un grafo. Se
+  $\Node, \VarNode \in \Nodes$ sono nodi e $(\Node,\VarNode) \in \Edges$
+  allora si dice che $\VarNode$ \`e \Define{collegato}[collegati][nodi]
+  o \Define{connesso}[connessi][nodi] a $\Node$. Ora,
+	\begin{itemize}
+		\item se $\Graph$ \`e non orientato,
+      \begin{itemize}
+        \item chiamiamo \Define{vicinato} la
+          parte di $\Nodes$ costituita dai nodi connessi a $\Node$, denotata
+          $\GraphNeighborhood{\Node}$;
+        \item \Define{vicino}[vicino][nodo] di $\Node$ un elemento di
+          $\GraphNeighborhood{\Node}$;
+        \item \Define{grado}[di un nodo in un grafo non orientato][grado] la
+          cardinalit\`a di $\GraphNeighborhood{\Node}$, denotata
+          $\GraphNodeDegree{\Node}$;
+      \end{itemize}
+		\item se $\Graph$ \`e orientato, chiamiamo
+		  \begin{itemize}
+			  \item \Define{vicinato uscente}[uscente][vicinato] la parte di
+          $\Nodes$ costituita dai nodi connessi a $\Nodes$, denotato
+        \item \Define{vicino uscente}[vicino uscente][nodo] di $\Node$ o
+          \Define{figlio}[figlio][nodo] un elemento di
+          $\GraphNeighborhoodOut{\Node}$;
+        \item \Define{grado uscente}[di un nodo in un grafo orientato][grado]
+          la cardinalit\`a di $\GraphNeighborhoodOut{\Node}$, denotata
+          $\GraphNodeDegreeOut{\Node}$;
+	  		\item \Define{vicinato entrante}[entrante][vicinato]
+          $\GraphNeighborhoodIn{\Node}$ la parte di $\Nodes$ costituita
+          da tutti i nodi a cui $\Node$ \`e connesso;
+        \item \Define{vicino entrante}[vicino entrante][nodo] di $\Node$ o
+          \Define{genitore}[genitore][nodo] un elemento di
+          $\GraphNeighborhoodIn{\Node}$;
+        \item \Define{grado entrante}[di un nodo in un grafo orientato][grado]
+          la cardinalit\`a di $\GraphNeighborhoodIn{\Node}$, denotata
+          $\GraphNodeDegreeOut{\Node}$.
+		  \end{itemize}
+	\end{itemize}
+  La metafora genitore-figlio viene spesso estesa ad altri gradi di parentela
+  con evidente significato.
+\end{Definition}
+\begin{Definition}
+  Un nodo avente grado uscente nullo si chiama
+  \Define{nodo pendente}[pendente][nodo]
+  (\Define{\English{dangling node}}[\English{dangling}][\English{node}]).
+\end{Definition}
+\begin{Lemma}
+ \TheoremName{Lemma della stretta di mano}[della stretta di mano][lemma]
+  \TheoremName{Handshaking lemma}[handshaking][lemma]
+  Sia $\Graph = (\Nodes,\Edges)$ un grafo finito:
+  \begin{itemize}
+    \item se $\Graph$ \`e orientato, allora
+      $\sum_{\Node \in \Nodes} \GraphNodeDegreeOut{\Node}
+      = \sum_{\Node \in \Nodes} \GraphNodeDegreeIn{\Node}
+      = \Cardinality{\Edges}$;
+    \item se $\Graph$ non \`e orientato, allora
+      \begin{itemize}
+        \item $\sum_{\Node \in \Nodes} \GraphNodeDegree{\Node}
+          = 2\Cardinality{\Edges}$;
+        \item la parte $\Nodes' \subseteq \Nodes$ di tutti i nodi
+          di grado dispari ha cardinalit\`a pari.
+      \end{itemize}
+  \end{itemize}
+\end{Lemma}
+\Proof Supponiamo $\Graph$ orientato. Siano
+$\Node, \VarNode \in \Nodes$ tali che
+$(\Node,\VarNode) \in \Edges$:
+$(\Node, \VarNode)$ \`e un arco entrante rispetto a
+$\Node$ e uscente rispetto a $\VarNode$. Pertanto
+$\sum_{\Node \in \Nodes} \GraphNodeDegreeOut{\Node}
+= \sum_{\Node \in \Nodes} \GraphNodeDegreeIn{\Node}
+= \Cardinality{\Edges}$.
+\par Supponiamo ora $\Graph$ non orientato.
+Considerando il grafo orientato associato a $\Graph$, abbiamo
+$\sum_{\Node \in \Nodes} \GraphNodeDegree{\Node}
+= 2 \Cardinality{\Edges}$.
+\par Per l'ultima parte del teorema, basta osservare
+che
+$\sum_{\Node \in \Nodes} \GraphNodeDegree{\Node}
+= \sum_{\Node \in \Nodes'} \GraphNodeDegree{\Node}
+  + \sum_{\Node \in \Nodes \SetMin \Nodes '} \GraphNodeDegree{\Node}$,
+\`e una quantit\`a pari, ma anche il termine
+$\sum_{\Node \in \Nodes \SetMin \Nodes '} \GraphNodeDegree{\Node}$
+\`e pari. \EndProof
+\begin{Definition}
+	Sia $\Graph = (\Nodes,\Edges)$ un grafo. Sia $(\Node_i)_{i \in n}$,
+  con $n \in \NaturalExtended$ una successione di nodi tali che
+  $\ForAll{i \in \NotZero{n}}
+    {\lbrace \Node_{i - 1},\Node_i \rbrace \in \Edges}$.
+  La successione di archi
+  $(\lbrace \Node_{i - 1}, \Node_i \rbrace)_{i \in n}$
+  si chiama
+  \Define{cammino}[in un grafo][cammino]. Si dice che un cammino
+  \Define{visita}[visitato][nodo] un nodo se il nodo appartiene ad uno
+  degli archi del cammino. Inoltre, un cammino si dice
+	\begin{itemize}
+		\item \Define{semplice}[semplice][cammino] se tutti i suoi nodi sono
+      distinti;
+		\item un \Define{ciclo} se $n$ \`e finito e
+      $\Node_0 = \Node_{n - 1}$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Un grafo $\Graph = (\Nodes,\Edges)$ si dice
+  \Define{connesso}[connesso][grafo] quando per ogni
+  $(\Node,\VarNode) \in \Nodes^2$ esiste un cammino di $\Graph$ avente
+  $\Node$ come nodo iniziale e $\VarNode$ come nodo finale.
+\end{Definition}
+\begin{Definition}
+	Dato un grafo $\Graph = (\Nodes,\Edges)$, i sottografi connessi
+  massimali di $\Graph$ si chiamano
+  \Define{componenti connesse}[connessa in un grafo][componente].
+\end{Definition}
+\begin{Definition}
+	Un grafo si dice
+	\begin{itemize}
+		\item \Define{ciclico}[ciclico][grafo] se contiene un ciclo;
+		\item \Define{aciclico}[aciclico][grafo] se non contiene nessun
+      ciclo.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Un cammino o un ciclo si dice
+  \begin{itemize}
+    \item \Define{cammino hamiltoniano}[hamiltoniano][cammino] o
+      \Define{ciclo hamiltoniano}[hamiltoniano][ciclo]
+      rispettivamente, se visita tutti i nodi di $\Graph$ una e sua sola
+      volta;
+    \item \Define{cammino euleriano}[euleriano][cammino] o
+      \Define{ciclo euleriano}[euleriano][ciclo]
+      rispettivamente, se comprende tutti gli archi di $\Graph$ una e
+      sua sola volta.
+  \end{itemize}
+\end{Definition}

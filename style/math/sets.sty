@@ -1,0 +1,29 @@
+\ProvidesPackage{sets}
+
+\DeclareDocumentCommand \Equivalence{o o}{\IfNoValueTF{#1}{\sim}{#1 \sim #2}}
+\DeclareDocumentCommand \EquivalenceClass{m o}{\IfNoValueTF{#2}{[{#1}]}{[{#1}]_{#2}}}
+\DeclareDocumentCommand \Identity{o}{\IfNoValueTF{#1}{\text{Id}}{\text{Id}_{#1}}}
+\DeclareDocumentCommand \Injection{o}{\IfNoValueTF{#1}{\jmath}{\jmath \left (#1 \right )}}
+\DeclareDocumentCommand \Projection{o}{\IfNoValueTF{#1}{\pi}{\pi \left (#1 \right )}}
+\DeclareMathOperator{\Cardinality}{Card}
+\DeclareMathOperator{\Id}{Id}	%obsolete, use \Identity instead
+\DeclareMathOperator{\Image}{Im}
+\newcommand{\BelongingRelation}{\mathcal{E}}
+\newcommand{\CharacteristicApplication}[1]{\chi_{#1}}
+\newcommand{\Class}{\mathcal{C}}
+\newcommand{\Compl}[1]{\mathbf{C} \left ( #1 \right )}
+\newcommand{\Complement}[1]{\mathbf{C} \left ( #1 \right )}
+\newcommand{\Function}{F}
+\newcommand{\LeftArguments}[1]{\Domain_\leftarrow}
+\newcommand{\Maps}[2]{{#2}^{#1}}
+\newcommand{\NaturalExtended}{\mathbb{N} \cup \lbrace \omega_0 \rbrace}
+\newcommand{\NaturalInterval}[2]{[#1,#2] \cap \mathbb{N}}
+\newcommand{\NaturalShift}[1]{{#1}_{|+ 1}}
+\newcommand{\Part}{\mathcal{P}}
+\newcommand{\PowerSet}[1]{\mathcal{P} \left (#1 \right )}
+\newcommand{\Restricted}[2]{{#1}_{|#2}}
+\newcommand{\RightArguments}[1]{\Domain_\rightarrow}
+\newcommand{\Set}{\mathcal{I}}
+\newcommand{\SetMin}{ \setminus }
+\newcommand{\Space}{\mathcal{S}}
+\newcommand{\VonNeumannUniverse}{\mathbb{V}}

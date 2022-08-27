@@ -1,0 +1,86 @@
+\subsection{Descrizione del modello generale.}\label{DescrizioneDelModelloGenerale}
+\par D'ora in poi supporremo sempre dato uno spazio di probabilit\`a filtrato $(\SamplesSpace,\SigmaAlgebra,\Probability{})$, dove $\SamplesSpace$ \`e lo spazio dei campioni, $\SigmaAlgebra$ la $\sigma$-algebra degli eventi, $\Probability{}$ la misura di probabilit\`a e la filtrazione \`e data dalla famiglia di $\sigma$-algebre $\SigmaAlgebra_t$: supporremo $T = \lbrace 0, 1, ..., N \rbrace$ ($N \in \mathbb{N}$; il nostro \`e un modello discreto a tempi finiti) e interpreteremo $\SigmaAlgebra_t$ come la $\sigma$-algebra degli eventi noti al tempo $t$. La costante $N$ viene a volte chiamata \Define{orizzonte} del modello.
+\par \`E inoltre usuale in ambito finanziario supporre $(\forall \omega)(\Probability{\omega} > 0)$, $\SigmaAlgebra_0 = \lbrace \emptyset, \SamplesSpace \rbrace$ e $\SigmaAlgebra_N = \SigmaAlgebra$. Definiamo $\SigmaAlgebra_{-1} = \SigmaAlgebra_0$.
+\begin{Definition}
+	Chiamiamo \Define{attivo finanziario} un processo stocastico adattato $(S_t)_{t \in T}$.
+\end{Definition} 
+\par Gli attivi cos\`i definiti sono l'analogo matematico degli strumenti finanziari definiti dalla definizione \ref{AttivoIntuitivo}. L'ipotesi di adattibilit\`a significa che il valore di un attivo $S_t$ in ogni istante $t$ dipende da l'informazione disponibile all'istante $t$.
+\par Fissiamo $d \in \mathbb{N}$ e $I = \lbrace 0, ..., d \rbrace$. Supponiamo dato, per ogni $i \in I$, un attivo $(S^i_t)_{t \in T}$.
+\par Supporremo che $S^0$ sia un attivo senza rischio -- corrispondente ad esempio all'aver prestato denaro con la ragionevole certezza di vederselo restituire al tasso d'interesse fissato, come nel caso di un titolo di Stato\footnote{Infatti alcuni autori chiamano \Define{bond} l'attivo senza rischio.} -- regolato dal regime dell'interesse composto discontinuo con un tasso d'interesse fisso pari a $r$. Fissiamo inoltre $S^0_0 = 1$ (\`e una semplice normalizzazione): avremo allora $S^0_t = (1 + r)^t$. L'interpretazione pi\`u naturale di $S^0$ \`e quella di liquidit\`a: il tasso $r$ \`e allora il tasso d'interesse esercitato dalla banca centrale che regola la valuta (la BCE per l'euro, la Fed per il dollaro americano). Naturalmente questa interpretazione, per quanto detto prima, presupppone che la valuta in questione sia stabile e in particolare che il tasso d'interesse applicato sia costante nel tempo per tutta la durata del modello; inoltre, per modelli di durata pi\`u corta (per esempio per lo studio di strumenti finanziari di scadenza di tre mesi o sei mesi, come i Buoni Ordinari del Tesoro) si pu\`o assumere $r = 0$.
+\par Salvo indicazioni contrari, interpreteremo $S^0$ come liquidit\`a e assumeremo $r > 0$.
+\begin{Definition}
+	Chiamiamo la grandezza $\beta_t = S^0_t$ \Define{coefficiente di attualizzazione al tempo $t$}.
+\end{Definition}
+\par Gli altri attivi sono con rischio, sono cio\`e processi stocastici veri e propri: corrispondono ad azioni, opzioni, qualsiasi strumento finanziario quotato in borsa\footnote{In questa categoria rientrano di nuovo anche i titoli di Stato, ma mentre nel caso degli attivi senza rischio si suppone che il titolo sia sicuro, in quest'altro caso si suppone invece che il titolo possa anche essere non rimborsato o che esso sia regolato da un tasso variabile che possa diventare sfavorevole.}. Supponiamo, per ogni $i \in I$ e $t \in T$, che $S^i_t > 0$: quest'ipotesi significa che tutti gli strumenti finanziari hanno sempre un valore strettamente positivo. Definiamo inoltre il vettore $S_t = (S^0_t, ..., S^d_t)$ dei prezzi al tempo $t$.
+\begin{Definition}\label{PortafoglioFormale}
+	Fissato $t \in T$, definiamo \Define{portafoglio} un processo stocastico prevedibile $\phi_t = (\phi^0,...,\phi^d)$\footnote{$\phi_t$ \`e dunque un processo stocastico prevedibile.}. Chiamiamo poi \Define{valore del portafoglio} al tempo $t$ la grandezza $V(\phi_t) = \phi_t \cdot S_t$.
+\end{Definition}
+\par Confrontiamo la definizione \ref{PortafoglioFormale} con la definizione \ref{PortafoglioIntuitivo}. Se le componenti di $\phi_t$ sono tutte numeri naturali non abbiamo difficolt\`a a ritrovare la definizione data nella sottosezione precedente: l'$i$-esima componente di $\phi_t$ rappresenta chiaramente la quantit\`a dell'$i$-esimo attivo nel portafoglio e le due definizioni di valore del portafoglio coincidono. Con un po' d'impegno si riesce a dare un senso al possesso di una quantit\`a reale di un attivo\footnote{Possedere $-1$ \Put significa aver venduto un \Put e esserne vincolato, acquistare $\sqrt{2}$ di un titolo di Stato che vale $100$ significa aver acquistato un titolo di Stato che vale $100\sqrt{2}$...} e automaticamente si estende il significato del valore del portafoglio cos\`i definito. Ma perch\'e fare delle componenti di $\phi_t$ (e dunque di $\phi_t$ e di $V(\phi_t)$) addirittura delle variabili aleatorie? E perch\'e con quei precisi requisiti di misurabilit\`a? Ci\`o viene chiarito dalla prossima definizione.
+\begin{Definition}
+	Chiamiamo \Define{strategia di portafoglio} un qualsiasi processo stocastico $\phi = (\phi_t)_{t \in T}$ dove ogni $\phi_t$ \`e un portafoglio al tempo $t$.
+\end{Definition}
+\par Una strategia di portafoglio \`e un processo stocastico prevedibile.
+\par Capiamo adesso che la necessit\`a di estendere la definizione di portafoglio al caso di componenti aleatorie risiede nel nostro desiderio di studiare l'evoluzione incerta del mercato e dunque le strategie incerte degli attori: al generico tempo $t \in T$ ogni investitore dispone solo dell'informazione data dagli eventi noti all'istante $t$, codificata nella $\sigma$-algebra $\SigmaAlgebra_t$, e dunque la quantit\`a $\phi^i_t$ dell'$i$-esimo attivo $S^i$ inizialmente disponibile nel periodo $[t,t + 1[$, essendo risultato delle scelte effettuate all'istante $t - 1$, deve essere una variabile aleatoria $\SigmaAlgebra_{t - 1}$-misurabile.
+\par Possiamo vedere una strategia di portafoglio come un portafoglio dipendente dal parametro tempo, cio\`e come un processo stocastico definito da portafogli, tanto che a volte i concetti di portafoglio e di strategia di portafoglio si confondono e vengono usati l'uno al posto dell'altro: praticheremo (consapevolmente) questo abuso di linguaggio. In questo senso va la definizione successiva.
+\begin{Definition}
+	Data una strategia di portafoglio $\phi$, costruiamo il processo stocastico $(V_t(\phi))_{t \in T}$ e definiamo \Define{valore del portafoglio $\phi$ al tempo $t$} il valore del portafoglio $\phi_t$.
+\end{Definition}
+\par Vediamo ora un concetto che ci permetter\`a di confrontare quantit\`a di denaro in momenti diversi. Il problema \`e il seguente: \`e chiaro che \`e preferibile disporre di $100$ euro oggi piuttosto che di $10$ euro il mese prossimo, ma sono preferibili $10$ euro oggi o $100$ euro il mese prossimo? Se davanti a questa scelta \`e ancora, forse, facile decidere, si provi a decidere tra $95$ euro oggi o $100$ euro il mese prossimo: nella vita quotidiana si risponder\`a valutando come \`e possibile spendere $95$ euro a partire oggi e come \`e possibile spenderne $100$ a partire dal prossimo mese (per esempio si valuter\`a la presenza di sconti utili al supermercato riservati a questo mese); in ambito finanziario vale lo stesso concetto, tenendo conto per\`o che in questo caso le spese sono investimenti.
+\par La definizione seguente propone un mezzo per compiere tali valutazioni.
+\begin{Definition}
+	Dato un attivo $S^i_t$ si chiama \Define{attivo attualizzato} rispetto al \Define{numererario} $S^0_t$ la grandezza $\Actualized{S}^i_t = \frac{S^i_t}{S^0_t} = \beta_t S^i_t$. Analogamente, dato un portafoglio $\phi$, definiamo il \Define{valore attualizzato} di $\phi$ come $\Actualized{V}_t(\phi) = \beta_t V_t(\phi)$.
+\end{Definition}
+\par Dati per esempio due attivi $S^i_{t_0}$ e $S^j_{t_1}$ (possiamo assumere anche $i = j$ o $t_0 = t_1$) possiamo adesso sempre confrontarli confrontando i rispettivi attivi attualizzati.
+\par Esaminiamo meglio il significato dell'attualizzazione di un attivo. Se $r = 0$, allora tutti gli attivi coincidono coi rispettivi attivi attualizzati e possiamo dunque confrontare tutti gli attivi in qualsiasi istante come se essi fossero in un certo senso ``contemporanei'': questo \`e coerente con la nostra idea di riservare il tasso nullo per modelli di breve durata. Se invece $r > 0$, allora si vede che l'attivo attualizzato $\Actualized{S}^i_{t_1}$ \`e la somma che \`e necessario tenere liquida (o investire nell'attivo senza rischio) al tempo $t_0 = 0$ per ottenere esattamente la liquidit\`a $S^i_{t_1}$ al tempo $t_1$ (o un investimento di valore equivalente nell'attivo senza rischio).
+\begin{Definition}
+	Un portafoglio $\phi$ si dice \Define{autofinanziato} quando per ogni istante $t > 0$ vale $V_{t - 1}(\phi) = \phi_t \cdot S_{t - 1}$.
+\end{Definition}
+\par Un portafoglio autofinanziato \`e dunque un portafoglio tale che, per ogni tempo $t > 0$,
+\begin{itemize}
+	\item se al tempo $t - 1$ \`e stato realizzato un guadagno (o \`e appena stato aperto il portafoglio nel caso $t = 1$), reinveste (cio\`e sceglie $\phi_t$) tutti i profitti nei $d + 1$ attivi disponibili (di valore $S_{t - 1}$) senza aggiungere nessun capitale\footnote{Se scegliamo di interpretare l'attivo senza rischio come liquidit\`a, questo significa che non aumenta la liquidit\`a \Define{dall'esterno}, ma non esclude che la liquidit\`a non aumenti a seguito della vendita di un attivo con rischio.};
+	\item se al tempo $t - 1$ \`e stata realizzata una perdita, non la compensa con un aumento di capitale.
+\end{itemize}
+\par Questo non significa che il valore del portafoglio si conservi nel tempo: \`e vero che non arriva mai nuovo capitale \Define{dall'esterno}, ma non esclude che gli attivi producano ricchezza\footnote{Cio\`e aumentino di valore. Il nostro modello non tiene conto di cedole o dividendi: eventuali cedole o dividendi possono per\`o essere tenute in conto nella quotazione degli attivi.}.
+\par Introduciamo la seguente notazione: se $(X_t)_{t \in T}$ \`e un processo stocastico, poniamo $\Delta X_t = X_t - X_{t - 1}$ per ogni $t > 0$ e $\Delta X_0 = 0$.
+\begin{Lemma}\label{LemmaAutofinanziato}
+	Sia $\phi$ un portafoglio. Sono equivalente le seguenti affermazioni:
+	\begin{itemize}
+		\item il portafoglio $\phi$ \`e autofinanziato;
+		\item per ogni $t > 0$, $\Delta V_t(\phi) = \phi_t \cdot \Delta S_t$;
+		\item per ogni $t > 0$, $\Delta \Actualized{V}_t(\phi) = \phi_t \cdot \Delta \Actualized{S}_t$;
+		\item per ogni $t \in T$, $V_t(\phi) = V_0(\phi) + \sum_{j = 1}^t \phi_j \cdot \Delta S_j$;
+		\item per ogni $t \in T$, $\Actualized{V}_t(\phi) = \Actualized{V}_0(\phi) + \sum_{j = 1}^t \phi_j \cdot \Delta \Actualized{S}_j$;
+	\end{itemize}
+\end{Lemma}
+\Proof Dimostriamo solo l'equivalenza della prima e della seconda proposizione: l'equivalenza della seconda e della terza e quella della quarta e della quinta sono evidenti moltiplicando entrambi i membri dell'equazione della seconda e della quarta per il coefficiente d'attualizzazione $\beta_t$; l'equivalenza della seconda e della quarta segue da un semplice risultato sulle serie telescopiche finite.
+\par Siano $\phi$ autofinanziato e $t > 0$. Allora $\Delta V_t(\phi) = \phi_t \cdot S_t - \phi_t \cdot S_{t -1} = \phi_t \cdot \Delta S_t$.
+\par D'altra parte assumendo, per ogni $t > 0$, $\Delta V_t(\phi) = \phi_t \cdot \Delta S_t$, abbiamo $V_{t - 1}(\phi) = V_t - \Delta V_t = \phi_t \cdot S_t - \phi_t \cdot S_t = \phi_t \cdot (S_t - \Delta S_t) = \phi_t \cdot S_{t - 1}$ e il portafoglio \`e dunque autofinanziato. \EndProof
+\begin{Theorem}\label{TeoremaEstensioneSenzaRischio}
+	Siano $x \in \mathbb{R}$ e $(\phi^1_t,...,\phi^d_t)_{t \in T}$ un processo stocastico prevedibile. Esiste un solo processo stocastico prevedibile $(\phi^0_t)_{t \in T}$ tale che $\phi = (\phi^0_t, \phi^1_t, ...., \phi^d_t)_{t \in T}$ sia un portafoglio autofinanziato per il quale $V_0(\phi) = x$.
+\end{Theorem}
+\par Intuitivamente, il teorema afferma che se \`e noto il capitale iniziale e se \`e nota la strategia secondo cui vengono comprati e acquistati gli attivi con rischio, allora \`e nota anche l'evoluzione della liquidit\`a, assumendo che non ne venga introdotta di nuova o rimossa \Define{dall'esterno}.
+\Proof Assumiamo vera l'affermazione del teorema. Per il lemma \ref{LemmaAutofinanziato}, per ogni $t > 0$, abbiamo
+\begin{align}
+	&\Actualized{V}_t(\phi) = \Actualized{V}_0(\phi) + \sum_{j = 1}^t \phi_j \cdot \Delta \Actualized{S}_j,\nonumber\\
+	&\phi^0_t = \Actualized{V}_0(\phi) + \sum_{j = 1}^t \phi_j \cdot \Delta \Actualized{S}_j - \sum_{i = 1}^d \phi^i_t \Actualized{S}_t,\nonumber\\
+	&\phi^0_t = \Actualized{V}_0(\phi) + \sum_{j = 1}^{t - 1} \phi_j \cdot \Delta \Actualized{S}_j - \sum_{i = 1}^d \phi_{t - 1} \cdot \Delta \Actualized{S}_{t - 1}.
+\end{align}
+\par Questo dimostra l'unicit\`a. Proseguiamo verificando che $(\phi^0)_{t \in T}$ verifichi tutte le condizioni desiderate: esso \`e prevedibile perch\'e tutte le variabili aleatorie coinvolte nella definizione di $\phi^0_t$ ($t \in T$) sono $\SigmaAlgebra_{t - 1}$-misurabili e combinate attraverso somme e prodotti e $\phi$ \`e dunque un portafoglio. L'autofinanziamanto di $\phi$ segue di nuovo dal lemma \ref{LemmaAutofinanziato}. \EndProof
+\begin{Definition}
+	Un portafoglio $\phi$ si dice \Define{ammissibile} quando \`e autofinanziato e, per ogni $t \in T$, si ha $V_t(\phi) \geq 0$.
+\end{Definition}
+\par Il significato intuitivo di questa definizione \`e che un portafoglio \`e ammissibile quando, se in qualche istante $t$ \`e composto da attivi dovuti (cio\`e $\phi^i_t < 0$ per qualche $i \in I$), questi sono tutti immediatamente saldabili (vendendo gli attivi detenuti, cio\`e gli attivi $S^i$ per cui $\phi^i_t > 0$).
+\par Salvo avvisi contrari, d'ora in poi considereremo solo portafogli ammissibili.
+\begin{Definition}
+	Sia $X$ una variabile aleatoria $\SigmaAlgebra_N$-misurabile. Diciamo che un portafoglio $\phi$ \`e
+	\begin{itemize}
+		\item un \Define{portafoglio replicante} quando $V_N(\phi) = X$;
+		\item un \Define{portafoglio di copertura} quando $V_N(\phi) \geq X$.
+	\end{itemize}
+	Denotiamo con $\ReplicantWallet$ l'insieme dei valori attualizzati dei portafogli autofinanziati replicanti a costo $0$ (cio\`e dei portafogli $\phi$ tali che $V_0(\phi) = 0$).
+\end{Definition}
+\begin{Corollary}
+	Abbiamo $\ReplicantWallet = \left \lbrace \sum_{t = 1}^N \sum_{i = 1}^d \phi^i_t \Actualized{S}^i_t | (\phi^1_t,...,\phi^d_t)_{t \in T}\text{ processo stocastico prevedibile} \right \rbrace$.
+\end{Corollary}
+\Proof Per il teorema \ref{TeoremaEstensioneSenzaRischio}, per ogni processo stocastico prevedibile $(\phi^1_t,....,\phi^d_t)_{t \in T}$ esiste un unico processo stocastico prevedibile $(\phi^0_t)_{t \in T}$ tale che $\phi = (\phi^0_t,\phi^1_t,...,\phi^d_t)_{t \in T}$ sia un portafoglio autofinanziato a costo $0$. Per il lemma \ref{LemmaAutofinanziato}, $\Actualized{V}_N(\phi) = \Actualized{V}_0(\phi) + \sum_{t = 1}^N \phi_t \cdot \Delta \Actualized{S}_t = \sum_{t = 1}^N \sum_{i = 1}^d \phi^i_t \Actualized{S}^i_t$. Questo prova $\left \lbrace \sum_{t = 1}^N \sum_{i = 1}^d \phi^i_t \Actualized{S}^i_t | (\phi^1_t,...,\phi^d_t)_{t \in T}\text{ processo stocastico prevedibile} \right \rbrace \subseteq \ReplicantWallet$. L'inclusione inversa \`e immediata. \EndProof
+\par Nel seguito $\RandomVariable^0 = L^0(\SamplesSpace,\SigmaAlgebra,\Probability{})$ \`e lo spazio di tutte le variabili aleatorie munito della convergenza in probabilit\`a e $\RandomVariable^0_+$ il sottospazio di tutte le variabili aleatorie non negative.

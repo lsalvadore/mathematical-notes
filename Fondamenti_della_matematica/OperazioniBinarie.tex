@@ -1,0 +1,110 @@
+\section{Operazioni binarie.}\label{OperazioniBinarie}
+\begin{Definition}
+	Siano $\Class_1$, $\Class_2$ e $\Class_3$ classi. Si definisce \Define{operazione binaria} da $\Class_1$ e $\Class_2$ in $\Class_3$ una classe funzionale $\Operation$ tale che
+	\begin{itemize}
+		\item le prime componenti di tutte le coppie in $\Operation$, le quali costituiscono la classe $\Domain$, sono coppie $(x,y)$ tali che $x \in \Class_1$ e $y \in \Class_2$;
+		\item le seconde componenti di tutte le coppie in $\Operation$ sono elementi di $\Class_3$.
+	\end{itemize}
+	\par Inoltre, $\Operation$ si dice
+	\begin{itemize}
+		\item \Define{interna}[interna][operazione binaria] se $\Class_1 = \Class_2 = \Class_3$ e diciamo in tal caso che $\Class_1$ \`e munita di un'operazione binaria interna\footnote{Sottolineamo il fatto che non necessariamente $\Domain = \Class_1 \times \Class_1$.};
+		\item \Define{esterna}[esterna][operazione binaria] se $\Class_1 = \Class_2$, $\Class_1 \neq \Class_3$ e $\Class_2 \neq \Class_3$;
+		\item \Define{commutativa}[commutativa][operazione binaria] quando $\Operation$ \`e interna o esterna e dati $a, b \in \Class_1$ qualsiasi, valgono le seguenti condizioni:
+		\begin{itemize}
+			\item $(a,b) \in \Domain$ se e solo se $(b,a) \in \Domain$;
+			\item \`e verificata l'equazione $\Operation(a,b) = \Operation(b,a)$;
+		\end{itemize}
+		\item \Define{associativa}[associativa][operazione binaria] quando $\Operation$ \`e interna e dati $a,b,c \in \Class_2$ qualsiasi, valgono le seguenti condizioni:
+		\begin{enumerate}
+			\item le seguenti proposizioni sono equivalenti
+			\begin{itemize}
+				\item $(a,b) \in \Domain$ e $((ab),c) \in \Domain$;
+				\item $(b,c) \in \Domain$ e $(a,(bc)) \in \Domain$;
+				\item $(a,b) \in \Domain$ e $(b,c) \in \Domain$;
+			\end{itemize}
+			\item se valgono le proposizioni precedenti, allora \`e verificata l'equazione $\Operation(\Operation(a,b),c) = \Operation(a,\Operation(b,c))$.
+		\end{enumerate}
+	\end{itemize}
+	Chiamiamo inoltre
+	\begin{itemize}
+		\item \Define{spazio degli argomenti sinistri}[sinistri][spazio degli argomenti], denotato $\LeftArguments{\Operation}$, la classe delle prime componenti delle coppie in $\Domain$;
+		\item \Define{spazio degli argomenti destri}[destri][spazio degli argomenti], denotato $\RightArguments{\Operation}$, la classe delle seconde componenti delle coppie in $\Domain$.
+	\end{itemize}
+\end{Definition}
+\par Solitamente, per semplificare la notazione, si sfrutta il fatto che l'operazione binaria comprenda due argomenti scrivendo $a \Operation b$ invece di $\Operation(a,b)$.
+\par Inoltre l'uso comune ha introdotto il simbolo $\cdot$ per denotare un'operazione binaria associativa (\Define{notazione moltiplicativa}[moltiplicativa][notazione]), che pu\`o anche essere sottointeso, e il simbolo $+$ per denotare un'operazione binaria associativa e commutativa (\Define{notazione additiva}[additiva][notazione]). Ci conformeremo a quest'uso, omettendo d'ora in poi la dichiarazione esplicita del simbolo d'operazione.
+\par Inoltre, quando si considera un'operazione associativa, non specificheremo solitamente le parentesi, dato che la loro posizione \`e ininfluente.
+\begin{Definition}
+	Siano $\Class_1$, $\Class_2$ e $\Class_3$ classi e sia l'operazione binaria $\Operation: \Domain_1 \rightarrow \Class_3$, dove $\Domain_1 \subseteq \Class_1 \times \Class_2$ un'operazione. Definiamo \Define{operazione binaria duale}[duale][operazione binaria] o \Define{opposta}[opposta][operazione binaria] di $\Operation$, denotata $\Dual{\Operation}$, l'operazione $\Dual{\Operation}: \Domain_2 \rightarrow \Class_3$, dove
+	\begin{itemize}
+		\item $\Domain_2 \subseteq \Class_2 \times \Class_1$;
+		\item $(a,b) \in \Domain_2 \Leftrightarrow (b,a) \in \Domain_1$;
+		\item per ogni $(a,b) \in \Domain_2$ abbiamo $a \Dual{\Operation} b = b \Operation a$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Data un'operazione $\Operation$, abbiamo $\Dual{\Dual{\Operation}} = \Operation$.
+\end{Theorem}
+\Proof Immediata. \EndProof
+\begin{Principle}
+	\TheoremName{Principio di dualit\`a}[di dualit\`a][principio] Ogni teorema che riguarda un insieme di operazioni diventa un teorema per l'insieme delle operazioni duali eseguendo sull'enunciato del teorema originale le seguenti operazioni:
+	\begin{itemize}
+		\item sostituere ogni occorrenza di ogni operazione con la sua operazione duale;
+		\item invertire l'ordine di tutti gli argomenti in tutte le operazioni;
+		\item scambiare ogni spazio degli argomenti sinistro col corrispondente spazio degli argomenti destri.
+	\end{itemize}
+\end{Principle}
+\Proof \`E sufficiente eseguire la procedura descritta dall'enunciato su ogni proposizione che interviene in una dimostrazione del teorema originale per ottenere una dimostrazione del nuovo teorema. \EndProof
+\begin{Definition}
+	Dato un teorema che riguarda un insieme di operazioni, il teorema ottenuto dal teorema originale tramite il principio di dualit\`a si chiama \Define{teorema duale}[duale][teorema] del teorema originale. Se il teorema originale e il suo duale coincidono\footnote{Per esempio perch\'e il teorema originale vale per un'operazione arbitraria qualsiasi.} si dice che il teorema \`e \Define{autoduale}[autoduale][teorema].
+\end{Definition}
+\begin{Definition}
+	Data una definizione che riguarda una o pi\`u operazioni, la definizione ottenuta sostituendo ogni occorrenza di ogni operazione e invertendo l'ordine di tutti gli argomenti in tutte le operazioni \`e chiamata \Define{definizione duale}[duale][definizione] e il definito, sia esso un ente, una propriet\`a o una condizione, \NIDefine{duale} del definito originale. Una definizione che coincide con la sua duale si dice \Define{autoduale}[autoduale][definizione], cos\`i come il definito.
+\end{Definition}
+\begin{Definition}
+	Siano $\Class_1$, $\Class_2$ e $\Class_3$ classi, $\Operation: \Domain \rightarrow \Class_3$, con $\Domain \subseteq \Class_1 \times \Class_2$, un'operazione. Un elemento $e \in \LeftArguments{\Operation}$ si dice \Define{elemento neutro sinistro}[elemento neutro] o \Define{identit\`a sinistra}[identit\`a] per $\Operation$ quando per ogni $a \in \RightArguments{\Operation}$ si ha $e \Operation a = a$. Il duale di un elemento neutro sinistro \`e un \NIDefine{elemento neutro destro} o un'\NIDefine{identit\`a destra}. Se $e \in \LeftArguments{\Operation} \cap \RightArguments{\Operation}$ \`e sia elemento neutro sinistro che elemento neutro destro, allora si dice che $e$ \`e \NIDefine{elemento neutro bilatero} o \NIDefine{identit\`a bilatera}.
+\end{Definition}
+\par D'ora in poi, ogni volta che definiremo un concetto ``sinistro'' saranno automaticamente definiti i concetti
+\begin{itemize}
+	\item ``destro'' come il duale di quello sinistro;
+	\item ``bilatero'' quando esso \`e simultaneamente sinistro e destro; il termine ``bilatero'' verr\`a spesso omesso quando non si rischieranno confusioni.
+\end{itemize}
+\begin{Theorem}
+	Se $\Operation$ ammette un elemento neutro sinistro $e_1$ e un elemento neutro destro $e_2$ e $e_1 \Operation e_2$ \`e definito, allora $e_1 = e_2$.
+\end{Theorem}
+\Proof Abbiamo $e_1 e_2 = e_1$, ma anche $e_1 e_2 = e_2$. Dunque $e_1 = e_2$. \EndProof
+\begin{Corollary}
+	Se $\Operation$ ammette un elemento neutro, esso \`e unico.
+\end{Corollary}
+\Proof Segue dal fatto che un elemento neutro \`e simultaneamente un elemento neutro sinistro e un elemento neutro destro. \EndProof
+\par Quando l'operazione si descrive con la notazione moltiplicativa il suo elemento neutro si indica usualmente con $1$, mentre per la notazione additiva si usa il simbolo $0$.
+\begin{Definition}
+	Data un'operazione $\Operation: \Domain \rightarrow \Class$, quando, per ogni $(a,b), (a,c) \in \Domain$, $a \Operation b = a \Operation$ implica $b = c$ diciamo che $a$ \`e semplificabile a sinistra.
+\end{Definition}
+\begin{Definition}
+	Siano $\Class_1$, $\Class_2$ e $\Class_3$ classi, $\Operation: \Domain \rightarrow \Class_3$, con $\Domain \subseteq \Class_1 \times \Class_2$, un'operazione e $1 \in \Class_1 \cap \Class_2$ l'elemento neutro di $\Operation$. Sia $a \in \RightArguments{\Operation}$: si chiama \Define{inverso sinistro}[inverso][elemento] di $a$ un qualsiasi elemento $b \in \LeftArguments{\Operation}$ tale che $b \Operation a = 1$ e in tal caso si dice che $a$ \`e \Define{invertibile a sinistra}[invertibile][elemento]. Se $a \in \LeftArguments{\Operation} \cap \RightArguments{\Operation}$ possiede un solo inverso, esso si indica con la notazione $a^{-1}$.
+\end{Definition}
+\par Se l'operazione viene descritta con la notazione additiva, si usano al posto del termine \emph{inverso} (sinistro, destro, bilatero) il termine \Define{opposto}[opposto][elemento] e la notazione $a^{-1}$ viene sostituita dalla nostazione $- a$.
+\begin{Theorem}
+	Siano $\Class_1$, $\Class_2$ e $\Class_3$ classi, $\Operation: \Domain \rightarrow \Class_3$, con $\Domain \subseteq \Class_1 \times \Class_2$, un'operazione e $1 \in \Class_1 \cap \Class_2$ l'elemento neutro di $\Operation$. Se $x \in \LeftArguments{\Operation}$ ammette inverso destro $y$, allora $x$ \`e inverso sinistro di $y$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Data un'operazione associativa $\Operation: \Domain \rightarrow \Class$, se $a \in \LeftArguments{\Operation}$ \`e invertibile a sinistra allora \`e anche semplificabile a sinistra.
+\end{Theorem}
+\Proof Siano $b, c \in \RightArguments{\Operation}$ tali che $(a,b), (a,c) \in \Domain$, $a \Operation b = a \Operation c$ e $d \in \LeftArguments{a}$ un inverso sinistro di $a$. Allora $d \Operation (a \Operation b) = (d \Operation a) \Operation b = b$ e analogamente $d \Operation (a \Operation c) = c$, da cui $b = c$. \EndProof
+\begin{Theorem}
+	Se $\Operation$ \`e un'operazione associativa e $a \in \LeftArguments{\Operation} \cap \RightArguments{\Operation}$ possiede sia un'inverso sinistro che un'inverso destro, essi sono unici e coincidono.
+\end{Theorem}
+\Proof Siano $b$ e $c$ un inverso sinistro e un inverso destro per $a$ rispettivamente. Abbiamo $b = b(ac) = (ba)c = c$. \EndProof
+\begin{Corollary}
+	Se $\Operation$ \`e un'operazione associativa, ogni elemento $a \in \LeftArguments{\Operation} \cap \RightArguments{\Operation}$ possiede al pi\`u un inverso.
+\end{Corollary}
+\Proof Immediata. \EndProof
+\begin{Theorem}
+	Siano $\Class_1$, $\Class_2$ e $\Class_3$ classi, $\Operation: \Domain \rightarrow \Class_3$, con $\Domain \subseteq \Class_1 \times \Class_2$, un'operazione e $1 \in \Class_1 \cap \Class_2$ l'elemento neutro di $\Operation$. Se $x \in \LeftArguments{\Operation}$ ammette un unico inverso destro $x^{-1} \in \RightArguments{\Operation}$, il quale ammette a sua volta un unico inverso sinistro, allora $\left ( x^{-1} \right )^{-1} = x$.
+\end{Theorem}
+\Proof $(x^{-1})^{-1}$ \`e l'unico inverso sinistro di $x^{-1}$, il quale ha per ipotesi l'inverso sinistro $x$. \EndProof
+\begin{Definition}
+	Data un'operazione $\cdot$, una relazione d'equivalenza $\Equivalence$ si dice \Define{compatibile}[compatibile][relazione d'equivalenza] con l'operazione $\cdot$ quando per ogni $x_1, x_2 \in \LeftArguments{\cdot}$ e $y_1, y_2 \in \RightArguments{\cdot}$, \`e verificata la relazione $\Implies{\And{x_1 \Equivalence x_2}{y_1 \Equivalence y_2}}{x_1y_1 \Equivalence x_2y_2}$.
+\end{Definition}

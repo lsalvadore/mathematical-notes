@@ -1,0 +1,46 @@
+\section{Definizioni e teoremi sparsi}
+\label{MeccanicaClassica_DefinizioniETeoremiSparsi}
+\begin{Definition}
+	Sia $\Vector \in \mathbb{R}^3$ un vettore applicato in un punto $P$. Chiamiamo \Define{momento}[di un vettore][momento] $\Moment$ di $\Vector$ rispetto a un punto $\Pole$ detto \Define{polo}[di un momento][polo] il prodotto vettoriale $\Moment = \VectorProduct{\vec{r}}{\Vector}$, dove $\vec{r} = P - \Pole$.
+\end{Definition}
+\begin{Definition}
+	Fissato un qualche polo, chiamiamo
+	\begin{itemize}
+		\item \Define{momento delle forze}[delle forze][momento] di un punto materiale il momento della forza risultante su quel punto;
+		\item \Define{momento angolare}[angolare][momento] di un punto materiale il momento della quantit\`a di moto in quel punto.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Dati un punto materiale e un qualche polo, il momento delle forze $\ForceMoment$ del punto materiale \`e la derivata del momento angolare $\AngularMoment$.
+\end{Theorem}
+\Proof Segue direttamente dal fatto che la forza risultante sul punto materiale sia la derivata della sua quantit\`a di moto. \EndProof
+\begin{Axiom}
+	\TheoremName{Legge di Newton}[di Newton][legge]\TheoremName{Secondo principio della dinamica}[secondo della dinamica][principio] Un punto materiale soggetto ad una forza $\vec{\Force}$ riceve un'accelerazione $\vec{\Acceleration}$ proporizionale alla forza stessa.
+\end{Axiom}
+\begin{Definition}
+	Dato un punto materiale $\PointMass$, chiamiamo \Define{massa inerziale}[inerziale][massa] il rapporto tra il modulo di una forza esercitata su $\PointMass$ e il modulo dell'accelerazione che ne consegue.
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Legge di grativazione universale}[di gravitazione universale][legge] Due punti materiali separati da una distanza $\vec{r}$ sono soggetti ciascuno ad una forza diretta lungo la retta congiungente i due punti, attrattiva e di modulo inversamente proporzionale al quadrato della distanza che le separa.
+\end{Axiom}
+\begin{Definition}
+	Chiamiamo \Define{gravitazionale}[gravitazionale][forza], la forza descritta nell'assioma precedente.
+\end{Definition}
+\begin{Definition}
+	Dato un punto materiale $\PointMass$,
+	\begin{itemize}
+		\item \Define{massa gravitazionale attiva}[gravitazionale attiva][massa] di $\PointMass$ la sua capacit\`a di attrarre altri punti materiali;
+		\item \Define{massa gravitazionale passiva}[gravitazionale passiva][massa] di $\PointMass$ la sua capacit\`a di essere attratti da altri punti materiali.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Massa gravitazionale attiva e passiva sono equivalenti.
+\end{Theorem}
+\begin{Axiom}
+	\TheoremName{Principio di equivalenza delle masse}[di equivalenza delle masse][principio] La massa inerziale e la massa gravitazionale di un corpo sono uguali.
+\end{Axiom}
+\begin{Theorem}
+	L'accelerazione di caduta libera su un corpo sferico non dipende da nessuna caratteristica del grave.
+\end{Theorem}
+\Proof Siano $\Mass$ e $\VarMass$ le masse del grave e del corpo su cui si studia la caduta libera rispettivamente. Sia $R$ il raggio del corpo sferico.
+\par Abbiamo, denotata $\GravityAcceleration$ l'accelerazione di gravit\`a e considerata l'altezza del grave trascurabile rispetto ad $R$, $\Mass \GravityAcceleration = \NewtonConstant \frac{\Mass\VarMass}{R}$, da cui, per il principio di equivalenza delle masse, $\GravityAcceleration = \NewtonConstant \frac{\Mass\VarMass}{R}$. \EndProof

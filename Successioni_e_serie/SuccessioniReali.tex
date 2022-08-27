@@ -1,0 +1,427 @@
+\section{Successioni reali.}\label{SuccessioniReali}
+\begin{Definition}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$.
+  $(a_n)_{n \in \mathbb{N}}$ si dice
+	\begin{itemize}
+		\item
+      \Define{a termini positivi}[a termini positivi][successione]
+      quando $\ForAll{n \in \mathbb{N}}{a_n \geq 0}$;
+		\item
+      \Define{a termini strettamente positivi}[a termini positivi][successione]
+      quando $\ForAll{n \in \mathbb{N}}{a_n > 0}$;
+		\item
+      \Define{a termini negativi}[a termini negativi][successione]
+      quando $\ForAll{n \in \mathbb{N}}{a_n \leq 0}$;
+		\item
+      \Define{a termini strettamente negativi}[a termini negativi][successione]
+      quando $\ForAll{n \in \mathbb{N}}{a_n < 0}$;
+		\item
+      \Define{divergente positivamente}[divergente positivamente][successione]
+      o anche
+      \Define{divergente a $+\infty$}[divergente a $+\infty$][successione] 
+      quando
+      \[
+        \ForAll{M \in \mathbb{R}}{
+          \Exists{N \in \mathbb{N}}{
+            \Implies{n > N}{a_n > M}}},
+      \]
+      e in tal caso scriviamo anche
+      $\lim_{n \rightarrow \infty} a_n = + \infty$;
+		\item
+      \Define{divergente negativamente}[divergente negativamente][successione]
+      o anche
+      \Define{divergente a $-\infty$}[divergente a $-\infty$][successione]
+      quando
+      \[
+        \ForAll{M \in \mathbb{R}}{
+          \Exists{N \in \mathbb{N}}{
+            \Implies{n > N}{
+              a_n < M}}},
+      \]
+      e in tal caso scriviamo anche
+      $\lim_{n \rightarrow \infty} a_n = - \infty$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$.
+  $(a_n)_{n \in \mathbb{N}}$ diverge positivamente se e solo se
+  $(- a_n)_{n \in \mathbb{N}}$ diverge negativamente.
+\end{Theorem}
+\Proof $(a_n)_{n \in \mathbb{N}}$ diverge positivamente se e solo se
+$\ForAll{M > 0}{\Exists{N > 0}{\Implies{n > N}{a_n > M}}}$,
+equivalente a
+$\ForAll{M > 0}{\Exists{N > 0}{\Implies{n > N}{- a_n < - M}}}$,
+cio\`e alla divergenza negativa di $(- a_n)_{n \in \mathbb{N}}$. \EndProof
+\begin{Theorem}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente
+  positivamente. Ogni sottosuccessione $(a_{f(n)})_{n \in \mathbb{N}}$,
+  con $f: \mathbb{N} \rightarrow \mathbb{N}$ applicazione crescente,
+  diverge anch'essa positivamente.
+\end{Theorem}
+\Proof Sia $M > 0$. Esiste $N \in \mathbb{N}$ tale che
+$\Implies{n > N}{a_n > M}$. A maggior ragione,
+$\Implies{n > N}{a_{f(n)} > M}$ e dunque $(a_{f(n)})_{n \in \mathbb{N}}$
+diverge positivamente. \EndProof
+\begin{Corollary}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente
+  negativamente. Ogni sottosuccessione $(a_{f(n)})_{n \in \mathbb{N}}$,
+  con $f: \mathbb{N} \rightarrow \mathbb{N}$ applicazione crescente,
+  diverge anch'essa negativamente.
+\end{Corollary}
+\Proof $(a_n)_{n \in \mathbb{N}}$ diverge negativamente se e solo se
+$(- a_n)_{n \in \mathbb{N}}$ diverge positivamente, che implica la divergenza
+positiva di $(- a_{f(n)})_{n \in \mathbb{N}}$, equivalente alla divergenza
+negativa di $(a_{f(n)})_{n \in \mathbb{N}}$. \EndProof
+\begin{Theorem}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ una successione
+  crescente.
+  Se $(a_n)_{n \in \\mathbb{N}}$ \`e limitata, allora \`e convergente;
+  altrimenti \`e divergente.
+\end{Theorem}
+\Proof Consideriamo $L = \sup_{n \in \mathbb{N}} a_n$: segue direttamente dalle
+definizioni che
+\begin{itemize}
+	\item se $L$ \`e finito, $(a_n)_{n \in \mathbb{N}}$ converge a $L$;
+	\item se $L$ \`e infinito, $(a_n)_{n \in \mathbb{N}}$ diverge. \EndProof
+\end{itemize}
+\begin{Theorem}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ una successione
+  decrescente.
+  $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ converge.
+\end{Theorem} 
+\Proof Consideriamo $L = \inf_{n \in \mathbb{N}} a_n$: segue direttamente dalle
+definizioni che
+\begin{itemize}
+	\item se $L$ \`e finito, $(a_n)_{n \in \mathbb{N}}$ converge a $L$;
+	\item se $L$ \`e infinito, $(a_n)_{n \in \mathbb{N}}$ diverge. \EndProof
+\end{itemize}
+\begin{Theorem}
+	Le progressioni geometriche $(a^n)_{n \in \mathbb{N}}$ tali che
+  $\AbsoluteValue{a} < 1$ convergono a $0$, mentre le progressioni geometriche
+  tali che $\AbsoluteValue{a} > 1$ divergono.
+\end{Theorem}
+\Proof Quando $\AbsoluteValue{a} < 1$,
+$(\AbsoluteValue{a}^n)_{n \in \mathbb{N}}$ \`e una successione decrescente;
+quando invece $\AbsoluteValue{a} > 1$,
+$(\AbsoluteValue{a}^n)_{n \in \mathbb{N}}$ \`e una successione crescente.
+\begin{Theorem}
+	\TheoremName{Teorema del confronto o dei carabinieri}[del confronto o dei carabinieri][teorema]
+	Siano
+  $(a_n)_{n \in \mathbb{N}},
+  (b_n)_{n \in \mathbb{N}},
+  (c_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$.
+  Se abbiamo
+	\begin{itemize}
+		\item $\ForAll{n \in \mathbb{N}}{a_n \leq b_n \leq c_n}$;
+		\item $\lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} c_n$;
+	\end{itemize}
+	allora
+  $\lim_{n \rightarrow \infty} a_n =
+  \lim_{n \rightarrow \infty} b_n =
+  \lim_{n \rightarrow \infty} c_n$.
+\end{Theorem}
+\Proof Fissiamo $\epsilon > 0$ e poniamo
+$L = \lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} c_n$.
+Per $N \in \mathbb{N}$ abbastanza grande, abbiamo che $n > N$ implica
+\begin{itemize}
+	\item $L - \epsilon < a_n < L + \epsilon$;
+	\item $L - \epsilon < c_n < L + \epsilon$.
+\end{itemize}
+Abbiamo altres\`i
+$L - \epsilon < a_n \leq b_n \leq c_n < L + \epsilon$.
+Dunque $\lim_{n \rightarrow \infty} b_n = L$.
+\begin{Definition}
+  Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$.
+  Definiamo
+  \begin{itemize}
+    \item \Define{limite superiore}[superiore][limite]
+      di $(a_n)_{n \in \mathbb{N}}$ il limite della successione
+      $(\sup_{k \geq n} a_k)_{n \in \mathbb{N}}$,
+      denotato $\limsup_{n \rightarrow \infty} a_n$;
+    \item \Define{limite inferiore}[inferiore][limite]
+      di $(a_n)_{n \in \mathbb{N}}$ il limite della successione
+      $(\inf_{k \geq n} a_k)_{n \in \mathbb{N}}$,
+      denotato $\liminf_{n \rightarrow \infty} a_n$.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$.
+  Abbiamo
+  \begin{align*}
+    \limsup_{n \rightarrow \infty} a_n
+    &= \inf_{n \in \mathbb{N}} \sup_{k \geq n} a_k,\\
+    \liminf_{n \rightarrow \infty} a_n
+    &= \sup_{n \in \mathbb{N}} \inf_{k \geq n} a_k,\\
+    \liminf_{n \rightarrow \infty} a_n
+    &\leq \limsup_{n \in \rightarrow \infty} a_n.
+  \end{align*}
+\end{Theorem}
+\Proof La prima relazione Segue direttamente dal fatto che la successione
+$(\sup_{k \in n} a_k)_{n \in \mathbb{N}}$
+\`e decrescente.
+\par La seconda relazione segue dal fatto che la successione
+$(\inf_{k \in n} a_k)_{n \in \mathbb{N}}$ \`e
+crescente.
+\par Dimostriamo la terza relazione. Per ogni $n \in \mathbb{N}$, abbiamo
+$\inf_{k \geq n} a_k \leq \sup_{k \in n} a_k$,
+da cui
+$\sup_{n \in \mathbb{N}} \inf_{k \geq n} a_k \leq \sup_{k \in n} a_k$
+e quindi
+$\sup_{n \in \mathbb{N}} \inf_{k \geq n} a_k
+\leq \inf_{n \in \mathbb{N}} \sup_{k \in n} a_k$,
+equivalente proprio a
+$\liminf_{n \rightarrow \infty} a_n
+\leq \limsup_{n \in \rightarrow \infty} a_n$. \EndProof
+\begin{Theorem}
+  Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$.
+  La successione $(a_n)_{n \in \mathbb{N}}$
+  \begin{itemize}
+    \item converge a limite finito $L \in \mathbb{R}$ se e solo se
+    $\liminf_{n \rightarrow \infty} a_n
+      = \limsup_{n \rightarrow \infty} a_n = L$;
+    \item diverge positivamente se e solo se
+    $\liminf_{n \rightarrow \infty} a_n
+      = \limsup_{n \rightarrow \infty} a_n = + \infty$;
+    \item diverge negativamente se e solo se
+    $\liminf_{n \rightarrow \infty} a_n
+      = \limsup_{n \rightarrow \infty} a_n = - \infty$.
+  \end{itemize}
+\end{Theorem}
+\Proof Supponiamo $(a_n)_{n \in \mathbb{N}}$ converga a $L \in \mathbb{R}$.
+Fissato $\epsilon > 0$, esiste $n \in \mathbb{N}$ tale che
+$\Implies{k \geq n}{L \leq a_k < L + \epsilon}$.
+Ne deduciamo
+$L \leq \sup_{k \geq n} a_k \leq L + \epsilon$.
+Per l'arbitrariet\`a di $\epsilon$, deve essere
+$\limsup_{n \rightarrow \infty} a_k = L$.
+Analogamente
+$\liminf_{n \rightarrow \infty} a_k = L$.
+\par Supponiamo
+$\liminf_{n \rightarrow \infty} a_n
+  = \limsup_{n \rightarrow \infty} a_n = L$.
+Poich\'e, per ogni $n \in \mathbb{N}$,
+$\inf_{k \geq n} a_k \leq a_n \leq \sup_{k \in n} a_k$,
+dal teorema del confronto segue
+$\lim_{n \rightarrow \infty} a_n = L$.
+\par Supponiamo $(a_n)_{n \in \mathbb{N}}$ diverga positivamente.
+Fissato $M > 0$, esiste $n \in \mathbb{N}$ tale che
+$\Implies{k \geq n}{a_k > M}$.
+Ne deduciamo
+$\inf_{k \geq n}  a_k > M$
+e
+$\sup_{k \geq n}  a_k > M$.
+Per l'arbitrariet\`a di $M$, deve essere
+$\liminf_{n \rightarrow \infty} a_n
+  = \limsup_{n \rightarrow \infty} a_n = + \infty$.
+\par Supponiamo
+$\liminf_{n \rightarrow \infty} a_n
+  = \limsup_{n \rightarrow \infty} a_n = + \infty$.
+Per ogni $n \in \mathbb{N}$, abbiamo
+$\inf_{k \geq n} a_k \leq a_n$, dunque
+$\liminf_{n \rightarrow \infty} a_n \leq \lim_{n \rightarrow \infty} a_n$
+e quindi
+$\lim_{n \rightarrow \infty} a_n = + \infty$.
+\par Supponiamo $(a_n)_{n \in \mathbb{N}}$ diverga negativamente.
+Fissato $M > 0$, esiste $n \in \mathbb{N}$ tale che
+$\Implies{k \geq n}{a_k < - M}$.
+Ne deduciamo
+$\inf_{k \geq n}  a_k < - M$
+e
+$\sup_{k \geq n}  a_k < - M$.
+Per l'arbitrariet\`a di $M$, deve essere
+$\liminf_{n \rightarrow \infty} a_n
+  = \limsup_{n \rightarrow \infty} a_n = - \infty$.
+\par Supponiamo
+$\liminf_{n \rightarrow \infty} a_n
+  = \limsup_{n \rightarrow \infty} a_n = - \infty$.
+Per ogni $n \in \mathbb{N}$, abbiamo
+$\sup_{k \geq n} a_k \geq a_n$, dunque
+$\limsup_{n \rightarrow \infty} a_n \geq \lim_{n \rightarrow \infty} a_n$
+e quindi
+$\lim_{n \rightarrow \infty} a_n = - \infty$. \EndProof
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $(\VarTopologicalSpace,\VarTopology)$ spazio topologico;
+		\item $\Part \subseteq \mathbb{R}$ tale che $\sup{\Part} = + \infty$;
+		\item $f: \Part \rightarrow \VarTopologicalSpace$;
+		\item $\Limit \in \VarTopologicalSpace$.
+	\end{itemize}
+	Se $\ForAll{\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology}{\Exists{N > 0}{\Implies{x > N}{f(x) \in \Neighborhood_\Limit}}}$, allora diciamo che $f(x)$ \Define{converge}[di una funzione a $+\infty$][convergenza] a $\Limit$, in simboli $f(x) \rightarrow \Limit$, per $x$ che tende a $+\infty$, in simboli $x \rightarrow +\infty$. Chiamiamo $\Limit$ \Define{limite}[di una funzione a $+\infty$][limite] di $f(x)$ per $x \rightarrow \infty$, denotato $\lim_{x \rightarrow +\infty} f(x) = \Limit$. In tal caso diciamo inoltre che la retta $y = \Limit$ \`e \Define{asintoto orizzontale positivo}[orizzontale positivo][asintoto] del grafico della funzione $y = f(x)$ nel piano $\OxyPlane$.
+\end{Definition}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $(\VarTopologicalSpace,\VarTopology)$ spazio topologico;
+		\item $\Part \subseteq \mathbb{R}$ tale che $\inf{\Part} = - \infty$;
+		\item $f: \Part \rightarrow \VarTopologicalSpace$;
+		\item $\Limit \in \VarTopologicalSpace$.
+	\end{itemize}
+	Se $\ForAll{\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology}{\Exists{N > 0}{\Implies{x < -N}{f(x) \in \Neighborhood_\Limit}}}$, allora diciamo che $f(x)$ \Define{converge}[di una funzione a $-\infty$][convergenza] a $\Limit$, in simboli $f(x) \rightarrow \Limit$, per $x$ che tende a $-\infty$, in simboli $x \rightarrow -\infty$. Chiamiamo $\Limit$ \Define{limite}[di una funzione a $-\infty$][limite] di $f(x)$ per $x \rightarrow \infty$, denotato $\lim_{x \rightarrow -\infty} f(x) = \Limit$. In tal caso diciamo inoltre che la retta $y = \Limit$ \`e \Define{asintoto orizzontale negativo}[orizzontale negativo][asintoto] del grafico della funzione $y = f(x)$ nel piano $\OxyPlane$.
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $(\VarTopologicalSpace,\VarTopology)$ spazio topologico;
+		\item $\Part \subseteq \mathbb{R}$ tale che $\sup{\Part} = - \infty$;
+		\item $f: \Part \rightarrow \VarTopologicalSpace$;
+		\item $\Limit \in \VarTopologicalSpace$.
+	\end{itemize}
+	Abbiamo $\lim_{x \rightarrow +\infty} f(x) = \Limit$ per qualche $\Limit \in \VarTopologicalSpace$ se e solo se $\lim_{x \rightarrow -\infty} f(-x) = \Limit$,
+\end{Theorem}
+\Proof $\lim_{x \rightarrow +infty} f(x) = \Limit$ equivale a $\ForAll{\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology}{\Exists{N > 0}{\Implies{x > N}{f(x) \in \Neighborhood_\Limit}}}$, a sua volta equivalente a $\ForAll{\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology}{\Exists{N > 0}{\Implies{x < - N}{f(-x) \in \Neighborhood_\Limit}}}$ e quindi a $\lim_{x \rightarrow -\infty} f(-x) = \Limit$. \EndProof
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $(\VarTopologicalSpace,\VarTopology)$ spazio topologico;
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente positivamente;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \VarTopologicalSpace$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ converge a $\Limit$ se e solo se $f(x)$ converge a $\Limit$ per $x \rightarrow +\infty$.
+\end{Theorem}
+\Proof Supponiamo $f(x) \rightarrow \Limit$ per $x \rightarrow +\infty$. Sia $\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology$: per opportuno $N > 0$, abbiamo $\Implies{x > N}{f(x) \in \Neighborhood_\Limit}$. Ma $a_n \rightarrow +\infty$ per $n \rightarrow \infty$ e quindi esiste $N_0 \in \mathbb{N}$ tale che $\Implies{n > N_0}{a_n > N}$, da cui $\Implies{n > N_0}{f(a_n) \in \Neighborhood_\Limit}$. Ne deduciamo $f(a_n) \rightarrow \Limit$ per $n \rightarrow \infty$.
+\par Supponiamo ora $\lim_{n \rightarrow \infty} f(a_n) = \Limit$. Supponiamo inoltre che $f(x)$ non converga a $\Limit$ per $x \rightarrow \infty$. Allora esiste $\Neighborhood_\Limit \in \Neighborhoods{\Limit} \cap \VarTopology$ tale che $\ForAll{N > 0}{\Exists{m \in \mathbb{N}}{\Implies{a_m > N}{f(a_m) \notin \Neighborhood_\Limit}}}$.
+\par Possiamo quindi definire la sottosuccessione $(a_{g(n)})_{n \in \mathbb{N}} \in \mathbb{R}^{\mathbb{N}}$, con $g: \mathbb{N} \rightarrow \mathbb{N}$ applicazione strettamente crescente, tale che $\ForAll{n \in \mathbb{N}}{f(a_{g(n)}) \notin \Neighborhood_\Limit}$. Allora
+\begin{itemize}
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ converge a $\Limit$ in quanto sottosuccessione di $(f(a_n))_{n \in \mathbb{N}}$;
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ non converge a $\Limit$ perch\'e $\ForAll{n \in \mathbb{N}}{f(a_{g(n)}) \notin \Neighborhood_\Limit}$.
+\end{itemize}
+Ma questo \`e assurdo, dunque $f(x)$ deve converge a $\Limit$ per $x \rightarrow +\infty$. \EndProof
+\begin{Corollary}
+	Siano
+	\begin{itemize}
+		\item $(\VarTopologicalSpace,\VarTopology)$ spazio topologico;
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente negativamente;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \VarTopologicalSpace$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ converge a $\Limit$ se e solo se $f(x)$ converge a $\Limit$ per $x \rightarrow -\infty$.
+\end{Corollary}
+\Proof Segue dal teorema precedente, moltiplicando per $(-1)$ la successione $a_n$ e sostituendo a $f(x)$ la funzione $f(-x)$. \EndProof
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $\Part \subseteq \mathbb{R}$ tale che $\sup{\Part} = + \infty$;
+		\item $f: \Part \rightarrow \mathbb{R}$.
+	\end{itemize}
+	Se $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x > N}{f(x) > M}}}$, allora diciamo che $f(x)$ \Define{diverge}[positia di una funzione a $+\infty$][divergenza] a $+\infty$, in simboli $f(x) \rightarrow +\infty$, per $x$ che tende a $+\infty$, in simboli $x \rightarrow +\infty$; diciamo anche che $+\infty$ \`e il \Define{limite}[infinito positivo di una funzione a $+\infty$][limite], denotato $\lim_{x \rightarrow +\infty} f(x) = +\infty$.
+	\par Se invece $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x > N}{f(x) < - M}}}$, allora diciamo che $f(x)$ \Define{diverge}[negativa di una funzione a $+\infty$][divergenza] a $-\infty$, in simboli $f(x) \rightarrow -\infty$, per $x$ che tende a $+\infty$, in simboli $x \rightarrow +\infty$; diciamo anche che $-\infty$ \`e il \Define{limite}[infinito negativo di una funzione a $+\infty$][limite], denotato $\lim_{x \rightarrow +\infty} f(x) = -\infty$.
+\end{Definition}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $\Part \subseteq \mathbb{R}$ tale che $\sup{\Part} = - \infty$;
+		\item $f: \Part \rightarrow \mathbb{R}$.
+	\end{itemize}
+	Se $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x < - N}{f(x) > M}}}$, allora diciamo che $f(x)$ \Define{diverge}[positiva di una funzione a $-\infty$][divergenza] a $+\infty$, in simboli $f(x) \rightarrow +\infty$, per $x$ che tende a $-\infty$, in simboli $x \rightarrow -\infty$; diciamo anche che $+\infty$ \`e il \Define{limite}[infinito positivo di una funzione a $-\infty$][limite], denotato $\lim_{x \rightarrow -\infty} f(x) = +\infty$.
+	\par Se invece $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x < - N}{f(x) < - M}}}$, allora diciamo che $f(x)$ \Define{diverge}[negativa di una funzione a $-\infty$][divergenza] a $-\infty$, in simboli $f(x) \rightarrow -\infty$, per $x$ che tende a $-\infty$, in simboli $x \rightarrow -\infty$; diciamo anche che $-\infty$ \`e il \Define{limite}[infinito negativo di una funzione a $-\infty$][limite], denotato $\lim_{x \rightarrow -\infty} f(x) = -\infty$.
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\Part \subseteq \mathbb{R}$ tale che $\sup{\Part} = - \infty$;
+		\item $f: \Part \rightarrow \mathbb{R}$.
+	\end{itemize}
+	Sono equivalenti
+	\begin{itemize}
+		\item $\lim_{x \rightarrow +\infty} f(x) = +\infty$;
+		\item $\lim_{x \rightarrow -\infty} f(-x) = +\infty$;
+		\item $\lim_{x \rightarrow +\infty} -f(x) = -\infty$;
+		\item $\lim_{x \rightarrow -\infty} f(-x) = -\infty$.
+	\end{itemize}
+\end{Theorem}
+\Proof $\lim_{x \rightarrow +infty} f(x) = +\infty$ equivale a $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x > N}{f(x) < M}}}$. Quest'ultima affermazione \`e equivalente a
+\begin{itemize}
+	\item $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x < - N}{f(-x) > M}}}$ e quindi a $\lim_{x \rightarrow -\infty} f(-x) = +\infty$;
+	\item $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x > N}{- f(x) < - M}}}$ e quindi a $\lim_{x \rightarrow +\infty} - f(x) = -\infty$;
+	\item $\ForAll{M > 0}{\Exists{N > 0}{\Implies{x > N}{- f(-x) < - M}}}$ e quindi a $\lim_{x \rightarrow -\infty} - f(x) = -\infty$. \EndProof
+\end{itemize}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente positivamente;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \mathbb{R}$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ diverge positivamente se e solo se $f(x)$ diverge positivamente per $x \rightarrow +\infty$.
+\end{Theorem}
+\Proof Supponiamo $f(x) \rightarrow +\infty$ per $x \rightarrow +\infty$. Sia $M > 0$: per opportuno $N > 0$, abbiamo $\Implies{x > N}{f(x) > M}$. Ma $a_n \rightarrow +\infty$ per $n \rightarrow \infty$ e quindi esiste $N_0 \in \mathbb{N}$ tale che $\Implies{n > N_0}{a_n > N}$, da cui $\Implies{n > N_0}{f(a_n) < M}$. Ne deduciamo $f(a_n) \rightarrow +\infty$ per $n \rightarrow +\infty$.
+\par Supponiamo ora $\lim_{n \rightarrow \infty} f(a_n) = +\infty$. Supponiamo inoltre che $f(x)$ non diverga positivamente per $x \rightarrow \infty$. Allora esiste $M > 0$ tale che $\ForAll{N > 0}{\Exists{m \in \mathbb{N}}{\Implies{a_m > N}{f(a_m) \leq M}}}$.
+\par Possiamo quindi definire la sottosuccessione $(a_{g(n)})_{n \in \mathbb{N}} \in \mathbb{R}^{\mathbb{N}}$, con $g: \mathbb{N} \rightarrow \mathbb{N}$ applicazione strettamente crescente, tale che $\ForAll{n \in \mathbb{N}}{f(a_{g(n)}) \leq M}$. Allora
+\begin{itemize}
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ diverge positivamente in quanto sottosuccessione di $(f(a_n))_{n \in \mathbb{N}}$;
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ non diverge positivamente perch\'e $\ForAll{n \in \mathbb{N}}{f(a_{g(n)}) \leq M}$.
+\end{itemize}
+Ma questo \`e assurdo, dunque $f(x)$ diverge positivamente per $x \rightarrow +\infty$. \EndProof
+\begin{Corollary}
+	Siano
+	\begin{itemize}
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente negativamente;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \mathbb{R}$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ diverge positivamente se e solo se $f(x)$ diverge positivamente per $x \rightarrow -\infty$.
+\end{Corollary}
+\Proof Segue dal teorema precedente, moltiplicando per $(-1)$ la successione $a_n$ e sostituendo a $f(x)$ la funzione $f(-x)$. \EndProof
+\begin{Corollary}
+	Siano
+	\begin{itemize}
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente positivamente;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \mathbb{R}$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ diverge negativamente se e solo se $f(x)$ diverge negativamente per $x \rightarrow +\infty$.
+\end{Corollary}
+\Proof Segue dal teorema precedente, sostituendo a $f(x)$ la funzione $-f(x)$. \EndProof
+\begin{Corollary}
+	Siano
+	\begin{itemize}
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \mathbb{R}^\mathbb{N}$ divergente negativamente;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \mathbb{R}$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ diverge negativamente se e solo se $f(x)$ diverge negativamente per $x \rightarrow -\infty$.
+\end{Corollary}
+\Proof Segue dal teorema precedente, sostituendo a $f(x)$ la funzione $-f(-x)$. \EndProof
+\begin{Definition}
+  Dati $x, n \in \mathbb{N}$
+  \begin{itemize}
+    \item \Define{fattoriale crescente}[crescente][fattoriale]
+      di $x$ con $n$ fattori, denotato
+      $\RisingFactorialBar{x}{n}$ o anche
+      $\RisingFactorialPochammer{x}{n}$ o ancora
+      $\RisingFactorialSupscript{x}{n}$,
+      la quantit\`a
+      $\RisingFactorialBar{x}{n} =
+      \begin{cases}
+        0,&\text{ se }n = 0,\\
+        \prod_{k \in n} (x + k),&\text{ se }n = 0;
+      \end{cases}$
+    \item \Define{fattoriale decrescente}[decrescente][fattoriale]
+      di $x$ con $n$ fattori, denotato
+      $\FallingFactorialBar{x}{n}$ o anche
+      $\FallingFactorialPochammer{x}{n}$,
+      la quantit\`a
+      $\FallingFactorialBar{x}{n} =
+      \begin{cases}
+        0,&\text{ se }n = 0,\\
+        \prod_{k \in n} (x - k),&\text{ se }n = 0;
+      \end{cases}$.
+  \end{itemize}
+  Si osservi che la notazione $\FactorialPochammer{x}{n}$, detta
+  \Define{simbolo di Pochammer}[di Pochammer][simbolo],
+  \`e utilizzata sia per il fattoriale crescente che per quello
+  decrescente.
+\end{Definition}
+\begin{Theorem}
+  \TheoremName{Formula di Faulhaber}[di Faulhaber][formula]
+  Siano $n \in \mathbb{N}$ e $p \in \NotZero{\mathbb{N}}$. Abbiamo
+  \[
+    \sum_{k = 1}^n =
+    \frac{n^{p + 1}}{p + 1} + \frac{n^p}{2}
+    + \sum_{k = 2}^p \frac{\BernoulliNumber_k}{k!} \FallingFactorial{p}{k - 1}
+      n^{p - k + 1}.
+  \]
+\end{Theorem}
+\begin{Theorem}
+  Sia $n \in \mathbb{N}$. Abbiamo
+  \begin{itemize}
+    \item $\sum_{k \in n} k^2 = \frac{n(n - 1)(2n - 1)}{6}$;
+    \item $\sum_{k \in n} k^3 = \frac{n^2(n - 1)^2}{4}$.
+  \end{itemize}
+\end{Theorem}

@@ -1,0 +1,117 @@
+\section{Teoremi di Gershgorin.}
+\label{MetodiNumericiPerProblemiAgliAutovalori_Gershgorin}
+\begin{Definition}
+	Data una matrice
+  $\Matrix \in \mathbb{C}{n \times n}$,
+  con
+  $n \in \NotZero{\mathbb{N}}$, definiamo
+  \Define{$k$-esimo cerchio di Gershgorin}[di Gershgorin][cerchio],
+  con
+  $k \in n$, il cerchio
+  \[
+    \GershgorinDisk{k}[\Matrix]
+    = \lbrace z \in \mathbb{C} |
+      \AbsoluteValue{z - \Matrix_k^k} \leq
+      \sum_{j = 0,\\j \neq i}^{n - 1} \AbsoluteValue{\Matrix_k^j}.
+  \]
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Primo teorema di Gershgorin}[primo di Gershgorin][teorema]
+  Data una matrice
+  $\Matrix \in \mathbb{C}^{n \times n}$
+  ($n \in \NotZero{\mathbb{N}}$),
+  abbiamo
+  $\Spectrum{\Matrix} \subseteq \bigcup_{k \in n} \GershgorinDisk{k}$.
+\end{Theorem}
+\Proof Fissato $\Eigenvalue \in \Spectrum{\Matrix}$, sia
+$\Eigenvector$ un autovettore relativo a $\Eigenvalue$.
+Sia $K \in n$ tale che $\ForAll{k \in n}{x_K \geq x_k}$.
+\par Da
+$\Matrix \Eigenvector = \Eigenvalue \Eigenvector$
+deduciamo, per ogni $k \in n$,
+$\sum_{j = 1}^n \Matrix_K^j \Eigenvector_j = \Eigenvalue \Eigenvector_K$,
+da cui
+$\sum_{j = 0,\\j \neq K}^{n - 1} \Matrix_K^j \Eigenvector_j
+= \Eigenvalue \Eigenvector_K - \Matrix_K^K \Eigenvector_K$.
+Poich\'e certamente $\Eigenvector_K \neq 0$, deduciamo ancora
+$\sum_{j = 0,\\j \neq K}^{n - 1}
+\Matrix_K^j \frac{\Eigenvector_j}{\Eigenvector_K}
+= \Eigenvalue - \Matrix_K^K$.
+La tesi segue dal fatto che il modulo del primo membro \`e maggiorato da
+$\sum_{j = 0,\\j \neq K}^{n - 1} \AbsoluteValue{\Matrix_K^j}$
+che \`e proprio il raggio del $K$-esimo cerchio di Gershgorin. \EndProof
+\begin{Theorem}
+	\TheoremName{Secondo teorema di Gershgorin}[secondo di Gershgorin][teorema]
+  Data una matrice $\Matrix \in \mathbb{C}{n \times n}$, con
+  $n \in \NotZero{\mathbb{N}}$,
+  se esiste $K \in \mathbb{N}$ tale che
+  \[
+    \left ( \bigcup_{k = 0}^K \GershgorinDisk{k} \right ) \cap \left ( \bigcup_{k = K}^{n - 1} \GershgorinDisk{k} \right ) = \emptyset,
+  \]
+  allora
+  \[
+    \Cardinality{\Spectrum{\Matrix} \cap \left ( \bigcup_{k = 0}^K \GershgorinDisk{k} \right )} = K.
+  \]
+\end{Theorem}
+\Proof Sia $\DiagonalMatrix$ la matrice diagonale tale che per ogni
+$k \in n$ si abbia
+$\DiagonalMatrix_k^k = \Matrix_k^k$.
+Definiamo l'applicazione
+$\phi: [0,1] \rightarrow \mathbb{C}{n \times n}$ tale che
+$\phi(t) = (1 - t)\DiagonalMatrix + t\Matrix$ e osserviamo che,
+poich\'e gli autovalori di una matrice dipendono con continuit\`a dai
+coefficienti della matrice stessa, gli autovalori di $\phi(t)$ dipendono con
+continuit\`a dal parametro $t$.
+\par I primi $K$ cerchi di Gershgorin della matrice $\phi(0)$ contengono
+effettivamente esattamente $K$ autovalori.
+Per definizione di $\phi$, per ogni $k \in n$ e ogni $t \in [0,1]$, il
+$k$-esimo cerchio di Gershgorin ha lo stesso centro e raggio pi\`u piccolo
+del $k$-esimo centro di Gershgorin di $\Matrix$.
+Pertanto, per ogni $t \in [0,1]$, i primi $K$ cerchi di Gershgorin di
+$\phi(t)$ sono disgiunti dai restanti cerchi: dovendo gli autovalori di
+$\phi(t)$ muoversi con continuit\`a al variare di $t$ rimanendo sempre
+nell'unione dei cerchi di Gershgorin, essi non possono lasciare l'unione
+dei primi $K$ cerchi per entrare nei cerchi restanti o viceversa.
+Quindi il numero di autovalori nei primi $K$ cerchi resta costantemente $K$.
+\EndProof
+\begin{Theorem}
+	\TheoremName{Terzo teorema di Gershgorin}[terzo di Gershgorin][teorema]
+  Data una matrice $\Matrix \in \mathbb{C}{n \times n}$, se
+	\begin{itemize}
+		\item $\Matrix$ \`e irriducibile;
+		\item $\Eigenvalue$ \`e un autovalore di $\Matrix$;
+		\item $\Implies{\Eigenvalue \in \GershgorinDisk{k}}{\Boundary\GershgorinDisk{k}}$;
+	\end{itemize}
+	allora $\Eigenvalue \in \bigcap_{k = 1}^n \Boundary{\GershgorinDisk{k}}$.
+\end{Theorem}
+\Proof Riprendiamo la dimostrazione del primo teorema di Gershgorin.
+Abbiamo visto che
+\begin{align*}
+  \sum_{\substack{j = 0\\j \neq K}}^{n - 1} \AbsoluteValue{\Matrix_K^j}
+  &\geq \sum_{\substack{j = 0\\j \neq K}}^{n - 1} \AbsoluteValue{\Matrix_K^j}
+    \frac{\AbsoluteValue{\Eigenvector_j}}{\AbsoluteValue{\Eigenvector_K}},\\
+  &\geq \AbsoluteValue{\sum_{\substack{j = 0\\j \neq K}}^{n - 1} \Matrix_K^j
+    \frac{\Eigenvector_j}{\Eigenvector_K}},\\
+  &= \AbsoluteValue{\Eigenvalue - \Matrix_K^K}.
+\end{align*}
+Dunque $\Eigenvalue \in \GershgorinDisk{K}$.
+Allora $\Eigenvalue \in \Boundary\GershgorinDisk{K}$ e abbiamo
+$\sum_{j = 1,\\j \neq K}^{n - 1} \AbsoluteValue{\Matrix_K^j}
+= \sum_{j = 1,\\j \neq K}^{n - 1} \AbsoluteValue{\Matrix_K^j}
+\frac{\AbsoluteValue{\Eigenvector_j}}{\AbsoluteValue{\Eigenvector_K}}$.
+Dunque, per ogni $j \in n - \SetMin \lbrace K \rbrace$, abbiamo
+$\Implies{\Matrix_K^j \neq 0}{\Eigenvector_j = \Eigenvector_K}$.
+\par Assumiamo $J \in n$ tale che $\Matrix_K^J = 0$. Poich\'e $\Matrix$ \`e
+irriducibile, il grafo associato a $\Matrix$ \`e fortemente connesso, il
+ch\'e implica che esiste una successione finita $(a_r)_{r \in m}$
+($m \in \mathbb{N}$) di elementi di $n$ tale che
+	\begin{itemize}
+		\item $a_0 = J$;
+		\item $a_m = K$;
+		\item per ogni $r < m$, $\Matrix_{a_r}^{a_{r + 1}} \neq 0$.
+	\end{itemize}
+Ne deduciamo, per ogni $r < m$,
+$\Eigenvector_{a_r} = \Eigenvector_{a_{r + 1}}$ e dunque
+$\Eigenvector_J = \Eigenvector_K$. Dunque $\Eigenvector$ ha tutte le
+componenti uguali e $\Eigenvalue$ appartiene al bordo di tutti i cerchi di
+Gershgorin. \EndProof

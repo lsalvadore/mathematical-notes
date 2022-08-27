@@ -1,0 +1,40 @@
+\subsection{Divide et impera.}
+\label{AlgoritmiEStruttureDiDati_DivideEtImpera}
+\begin{Theorem}
+  \TheoremName{Teorema fondamentale delle ricorrenze}[fondamentale delle ricorrenze][teorema]
+  Siano
+  \begin{itemize}
+    \item $f: \mathbb{N} \rightarrow \RealNonNegative$ una funzione non decresente;
+    \item $\alpha \geq 1$;
+    \item $\beta \geq 1$;
+    \item $n_0, c_0 \geq 0$.
+  \end{itemize}
+  Sia $T: \mathbb{N} \rightarrow \RealNonNegative$ tale che
+  \[
+    T(n) \leq
+    \begin{cases}
+      c_0\text{ se }n \leq n_0,\\
+      \alpha T \left ( \rho \left (\frac{n}{\beta} \right ) \right ) + f(n)\text{ altrimenti}.
+    \end{cases}
+  \]
+  con
+  $\rho \left ( \frac{n}{\beta} \right )
+    = \left \lfloor \frac{n}{\beta} \right \rfloor$
+  o
+  $\rho \left ( \frac{n}{\beta} \right )
+    = \left \lceil \frac{n}{\beta} \right \rceil$.
+  \par Supponiamo che esista $\gamma > 0$ tale che per $n$ sufficientemente
+  grande abbiamo
+  $\alpha f \left ( \rho \left ( \frac{n}{\beta} \right ) \right )
+    \leq \gamma f(n)$.
+  Abbiamo
+  \begin{itemize}
+    \item $T(n) = \BigO{f(n)}$ se $\gamma < 1$;
+    \item $T(n) = \BigO{f(n) \log_\beta n}$ se $\gamma = 1$;
+    \item $T(n) = \BigO{n^{\log_\beta \alpha}}$ se $\gamma > 1$.
+  \end{itemize}
+\end{Theorem}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/DivideEtImpera.cpp"}
+	\caption{Implementazione dell'algoritmo di ricerca binaria in \LanguageName{C++}.}
+\end{listing}

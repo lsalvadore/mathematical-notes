@@ -1,0 +1,15 @@
+\section{Matrici irriducibili.}\label{MatriciIrriducibili}
+\begin{Definition}
+	Una matrice $\Matrix$ si dice \Define{irriducibile}[irriducibile][matrice] se \`e irriducibile l'applicazione lineare associata a $\Matrix$.
+\end{Definition}
+\begin{Definition}
+	Data una matrice $\Matrix \in \MatricesSpace{\Ring}{n}{m}$, dove $\Ring$ \`e un anello e $n, m \in \mathbb{N}$, si chiama \Define{grafo associato a $\Matrix$}[associato a una matrice][grafo] il grafo orientato i cui nodi sono gli elementi dell'insieme $\NaturalInterval{1}{\max{n,m}}$ e esiste un arco uscente dal nodo $k$ e entrante nel nodo $j$ se e solo se $\Matrix[k][j] \neq 0$.
+\end{Definition}
+\begin{Definition}
+	Un grafo orientato si dice \Define{fortemente connesso}[fortemente connesso][grafo] quando per ogni coppia di nodi $(k,j)$ il nodo $j$ \`e raggiungibile a partire al nodo $k$.
+\end{Definition}
+\begin{Theorem}
+	La matrice $\Matrix \in \MatricesSpace{\Ring}{n}{m}$ \`e irriducibile se e solo se il suo grafo associato \`e fortemente connesso.
+\end{Theorem}
+\Proof Sia $\Matrix$ riducibile. Allora per un'opportuna matrice di permutazione $\PermutationMatrix$ la matrice $\tilde{\Matrix} = \PermutationMatrix\Matrix\Transposed{\PermutationMatrix}$ \`e triangolare a blocchi: il grafo di $\tilde{\Matrix}$ non \`e dunque fortemente connesso. Dato che i grafi di $\Matrix$ e $\tilde{\Matrix}$ coincidono a meno di cambiare l'etichetta dei nodi, ne consegue che neanche il grafo di $\Matrix$ \`e fortemente connesso.
+\par Supponiamo ora che il grafo di $\Matrix$ non sia fortemente connesso e si fissi una coppia di nodi $(k,j)$ tali che $j$ non sia raggiungibile da $k$. Si partizioni l'insieme dei nodi del grafo di $\Matrix$ in due sottoinsiemi $N_1$ e $N_2$, il primo composto da tutti e soli gli elementi raggiungibili da $k$, il secondo dagi altri. Se $\PermutationMatrix$ \`e la matrice di permutazione che scambia righe e colonne in modo tale che le righe e colonne corrispondenti a nodi in $N_2$ prendano i primi posti, allora $\PermutationMatrix\Matrix\Transposed{\PermutationMatrix}$ \`e diagonale a blocchi. \EndProof

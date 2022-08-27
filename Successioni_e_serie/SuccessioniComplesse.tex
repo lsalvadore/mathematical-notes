@@ -1,0 +1,45 @@
+\section{Successioni complesse.}\label{SuccessioniComplesse}
+\begin{Theorem}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \mathbb{C}^\mathbb{N}$ convergenti e $\Scalar \in \NotZero{\mathbb{C}}$. Abbiamo
+	\begin{itemize}
+		\item $(a_n + b_n)_{n \in \mathbb{N}}$ converge e $\lim_{n \rightarrow \infty} (a_n + b_n) = \lim_{n \rightarrow \infty} a_n + \lim_{n \rightarrow \infty} b_n$;
+		\item $(a_n b_n)_{n \in \mathbb{N}}$ converge e $\lim_{n \rightarrow \infty} (a_n b_n) = \left ( \lim_{n \rightarrow \infty} a_n \right ) \left ( \lim_{n \rightarrow \infty} b_n \right )$;
+		\item $(\Scalar a_n)_{n \in \mathbb{N}}$ converge e $\lim_{n \rightarrow \infty} \Scalar a_n = \Scalar \lim_{n \rightarrow \infty} a_n$;
+		\item se $\ForAll{n \in \mathbb{N}}{a_n \neq 0}$ e $\lim_{n \rightarrow \infty} a_n \neq 0$, allora $(a_n^{-1})_{n \in \mathbb{N}}$ converge e $\lim_{n \rightarrow \infty} a_n^{-1} = \left ( \lim_{n \rightarrow \infty} a_n \right )^{-1}$;
+	\end{itemize}
+\end{Theorem}
+\Proof Fissiamo $\epsilon > 0$ e poniamo $A = \lim_{n \rightarrow \infty} a_n$ e $B = \lim_{n \rightarrow \infty} b_n$. Abbiamo
+\begin{itemize}
+	\item per $N \in \mathbb{N}$ opportuno $\Implies{n > N}{\And{\AbsoluteValue{a_n - A} < \frac{\epsilon}{2}}{\AbsoluteValue{b_n - B} < \frac{\epsilon}{2}}}$, da cui, per $n > N$, $\AbsoluteValue{(a_n + b_n) - (A + B)} \leq \AbsoluteValue{a_n - A} + \AbsoluteValue{b_n - B} < \epsilon$;
+	\item fissato $K \in \mathbb{R}$ tale che $\ForAll{n \in \mathbb{N}}{\AbsoluteValue{b_n} < K}$, per $N \in \mathbb{N}$ opportuno $\Implies{n > N}{\And{\AbsoluteValue{a_n - A} < \frac{\epsilon}{K + \AbsoluteValue{A}}}{\AbsoluteValue{b_n - B} < \frac{\epsilon}{K + \AbsoluteValue{A}}}}$, da cui, per $n > N$, $\AbsoluteValue{a_nb_n - AB} = \AbsoluteValue{a_nb_n - Ab_n + Ab_n - AB} \leq \AbsoluteValue{a_n - A}\AbsoluteValue{b_n} + \AbsoluteValue{A}\AbsoluteValue{b_n - B} < \frac{\epsilon}{K + \AbsoluteValue{A}} (K + \AbsoluteValue{A}) = \epsilon$;
+	\item per $N \in \mathbb{N}$ opportuno $\Implies{n > N}{\AbsoluteValue{a_n - A} < \AbsoluteValue{\Scalar}^{-1}\epsilon}$, da cui, per $n > N$, $\AbsoluteValue{\Scalar a_n - \Scalar A} = \AbsoluteValue{\Scalar}\AbsoluteValue{a_n - A} < \epsilon$;
+	\item fissato $H \in \mathbb{R}$ tale che $\ForAll{n \in \mathbb{N}}{\AbsoluteValue{a_n}} < H$, per $N \in \mathbb{N}$ opportuno $\Implies{n > N}{\AbsoluteValue{a_n - A} < \epsilon H \AbsoluteValue{A}}$, da cui $\AbsoluteValue{\frac{1}{a_n} - \frac{1}{A}} = \frac{\AbsoluteValue{A - a_n}}{\AbsoluteValue{a_n} \AbsoluteValue{A}} < \frac{\epsilon H \AbsoluteValue{A}}{H \AbsoluteValue{A}} = \epsilon$. \EndProof
+\end{itemize}
+\begin{Corollary}
+	Le successioni convergenti di $\mathbb{C}^\mathbb{N}$ costituiscono un sottospazio vettoriale di $\mathbb{C}^\mathbb{N}$.
+\end{Corollary}
+\Proof Segue direttamente dalle definizioni e dal teorema precedente. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{spazio delle successioni complesse convergenti}[delle successioni complesse convergenti][spazio] il sottospazio spazio vettoriale di $\mathbb{C}^\mathbb{N}$ di tutte le successioni convergenti, denotato $\ConvergentComplexSequences$.
+\end{Definition}
+\begin{Theorem}
+	Sia $(a_n)_{n \in \mathbb{N}} \in \mathbb{C}^\mathbb{N}$. Allora
+	\begin{itemize}
+		\item $(a_n)_{n \in \mathbb{N}}$ converge se e solo se $(\RealPart{a_n})_{n \in \mathbb{N}}$ e $(\ImaginaryPart{a_n})_{n \in \mathbb{N}}$ convergono e in tal caso $\lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} \RealPart{a_n} + i \lim_{n \rightarrow \infty} \ImaginaryPart{a_n}$;
+		\item se $(a_n)_{n \in \mathbb{N}}$ converge se e solo se $(\Conjugate{a_n})_{n \in \mathbb{N}}$ converge e in tal caso $\lim_{n \rightarrow \infty} \Conjugate{a_n} = \Conjugate{\lim_{n \rightarrow \infty} a_n}$;
+		\item se $(a_n)_{n \in \mathbb{N}}$ converge, $(\AbsoluteValue{a_n})_{n \in \mathbb{N}}$ converge e abbiamo $\lim_{n \rightarrow \infty} \AbsoluteValue{a_n} = \AbsoluteValue{\lim_{n \rightarrow \infty} a_n}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo gi\`a provato che se $(\RealPart{a_n})_{n \in \mathbb{N}}$ e $(\ImaginaryPart{a_n})_{n \in \mathbb{N}}$ convergono, allora converge anche $(a_n)_{n \in \mathbb{N}} = (\RealPart{a_n} + i \ImaginaryPart{a_n})_{n \in \mathbb{N}}$ e il suo limite \`e proprio $\lim_{n \rightarrow \infty} (\RealPart{a_n} + i \ImaginaryPart{a_n})$.
+\par Assumiamo viceversa che $a_n$ converga e poniamo $L = \lim_{n \rightarrow \infty} a_n$. Fissiamo $\epsilon > 0$. Abbiamo, per opportuno $N \in \mathbb{N}$ e per ogni $n > N$, $\AbsoluteValue{a_n - L} < \epsilon$, da cui $\sqrt{(\RealPart{a_n - L})^2 + (\ImaginaryPart{a_n - L})^2} < \epsilon$ e quindi $\sqrt{(\RealPart{a_n - L})^2} = \AbsoluteValue{\RealPart{a_n - L}} = \AbsoluteValue{\RealPart{a_n} - \RealPart{L}} < \epsilon$ e analogamente $\AbsoluteValue{\ImaginaryPart{a_n} - \ImaginaryPart{L}} < \epsilon$. Pertanto $(\RealPart{a_n})_{n \in \mathbb{N}}$ e $(\ImaginaryPart{a_n} - L)_{n \in \mathbb{N}}$ convergono a $\RealPart{L}$ e $\ImaginaryPart{L}$ rispettivamente.
+\par Abbiamo provato che se $(a_n)_{n \in \mathbb{N}}$ converge a $L \in \mathbb{C}$, allora convergono $(\RealPart{a_n})_{n \in \mathbb{N}}$ e $(\ImaginaryPart{a_n})_{n \in \mathbb{N}}$ a $\RealPart{L}$ e $\ImaginaryPart{L}$ e dunque $(\RealPart{a_n} - i \ImaginaryPart{a_n})_{n \in \mathbb{N}} = (\Conjugate{a_n})_{n \in \mathbb{N}}$ converge a $\RealPart{L} - i \ImaginaryPart{L} = \Conjugate{L}$.
+\par Assumiamo $(\Conjugate{a_n})_{n \in \mathbb{N}}$ convega a $\Conjugate{L}$. Ne deduciamo che $(a_n)_{n \in \mathbb{N}} = (\Conjugate{\Conjugate{a_n}})_{n \in \mathbb{N}}$ converge a $L = \Conjugate{\Conjugate{L}}$.
+\par Assumiamo infine che $(a_n)_{n \in \mathbb{N}}$ converga a $L$. Fissiamo $\epsilon > 0$ e $N \in \mathbb{N}$ tale che per ogni $n > N$ abbiamo $\AbsoluteValue{a_n - L} < \epsilon$. Abbiamo inoltre $\AbsoluteValue{\AbsoluteValue{a_n} - \AbsoluteValue{L}} = \AbsoluteValue{a_n} - \AbsoluteValue{L}$ o $\AbsoluteValue{\AbsoluteValue{L} - \AbsoluteValue{a_n}}$: in entrambi casi, ne deduciamo $\AbsoluteValue{\AbsoluteValue{a_n} - \AbsoluteValue{L}} \leq \AbsoluteValue{a_n - L} < \epsilon$. E quindi $(\AbsoluteValue{a_n})_{n \in \mathbb{N}}$ converge a $\AbsoluteValue{L}$. \EndProof
+\begin{Theorem}
+	\TheoremName{Teorema di permanenza del segno} Sia $(a_n)_{n \in \mathbb{N}}$ una successione complessa. Se $(a_n)_{n \in \mathbb{N}}$ converge a un limite $L \neq 0$, allora esistono $\delta > 0$ e $N \in \mathbb{N}$ tale che $\Implies{n > N}{\AbsoluteValue{a_n} \geq \delta}$.
+\end{Theorem}
+\Proof Fissiamo $\epsilon \in \mathbb{R}$ tale che $0 < \epsilon < \AbsoluteValue{L}$ e poniamo $\delta = \AbsoluteValue{L} - \epsilon$: chiaramente $\delta > 0$.
+\par Inoltre, fissato $N \in \mathbb{N}$ tale che $\AbsoluteValue{\AbsoluteValue{a_n} - \AbsoluteValue{L}} < \epsilon$, per $n > N$,  abbiamo $\AbsoluteValue{a_n} \geq \AbsoluteValue{L} - \epsilon = \delta$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{successione geometrica}[arimetica][successione] o anche \Define{progressione geometrica}[geometrica][progessione] una successione complessa $(a_n)_{n \in \mathbb{N}}$ tale che per opportuna costatne $K \in \mathbb{C}$, ${\ForAll{n \in \mathbb{N}}{\frac{a_{n + 1}}{a_n} = K}}$. La costante $K$ si chiama \Define{ragione}[di una progressione geometrica][ragione] della progressione geometrica.
+\end{Definition}

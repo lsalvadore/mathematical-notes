@@ -1,0 +1,363 @@
+\subsection{Corrispondenza di Galois.}\label{CorrispondenzaDiGalois}
+\begin{Definition}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campi normale e separabile: diciamo che $\FieldExtension{\Field_2}{\Field_1}$ \`e un'\Define{estensione di Galois}[di Galois][estensione]. Chiamiamo inoltre \Define{gruppo di Galois}[di Galois][gruppo] di $\FieldExtension{\Field_2}{\Field_1}$, denotato $\GaloisGroup{\Field_2}{\Field_1}$, il gruppo $\RelativeAutomorphisms{\Field_2}{\Field_1}$, i cui elementi chiamiamo \Define{automorfismi di Galois}[di Galois][automorfismo].
+\end{Definition}
+\begin{Definition}
+	Dato un campo $\Field$, chiamiamo $\GaloisGroup{\AlgebraicClosure{\Field}}{\Field}$ \Define{gruppo assoluto di Galois}[assoluto di Galois][gruppo] di $\Field$, o anche pi\`u brevemente \Define{gruppo assoluto}[assoluto][gruppo] di Galois.
+\end{Definition}
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di Galois. Abbiamo $\GroupOrder{\GaloisGroup{\Field_2}{\Field_1}} = \FieldDegree{\Field_2}{\Field_1}$.
+\end{Theorem}
+\Proof Sia $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_1}$ un omomorfismo relativo. Per normalit\`a di $\FieldExtension{\Field_2}{\Field_1}$, $\Image{\RelativeHomomorphism} = \Field_2$. \`E dunque possibile associare ad ogni omomorfismo relativo di $\FieldExtension{\Field_2}{\Field_1}$ un automorfismo in $\GaloisGroup{\Field_2}{\Field_1}$ modificandone il codominio e mantenendo lo stesso grafo: la corrispondenza \`e chiaramente biunivoca.
+\par Dunque $\GroupOrder{\GaloisGroup{\Field_2}{\Field_1}} = \SeparableDegree{\Field_2}{\Field_1}$ e, poich\'e $\FieldExtension{\Field_2}{\Field_1}$ \`e separabile, $\GroupOrder{\GaloisGroup{\Field_2}{\Field_1}} = \FieldDegree{\Field_2}{\Field_1}$. \EndProof
+\begin{Theorem}
+	Sia $\Field_1 \subseteq \Field_2 \subseteq \Field_3$ una torre d'estensioni di campo. Se $\FieldExtension{\Field_3}{\Field_1}$ \`e di Galois, allora
+	\begin{itemize}
+		\item $\FieldExtension{\Field_3}{\Field_2}$ \`e di Galois;
+		\item $\FieldExtension{\Field_2}{\Field_1}$ \`e di Galois se e solo se $\FieldExtension{\Field_2}{\Field_1}$ \`e normale;
+	\end{itemize}
+	Inoltre l'essere estensione di Galois \`e una propriet\`a che si trasferisce per traslazione e per composizione, ma non lungo le torri.
+\end{Theorem}
+\Proof Tutt le affermazioni seguono direttamente dagli analoghi teoremi sulla normalit\`a e la separabilit\`a. \EndProof
+\begin{Theorem}
+	Sia $\Field_1 \subseteq \Field_2 \subseteq \Field_3$ una torre d'estensioni di campo con $\FieldExtension{\Field_3}{\Field_1}$ di Galois. Abbiamo
+	\begin{itemize}
+		\item $\GaloisGroup{\Field_3}{\Field_2} \IsSubgroup \GaloisGroup{\Field_3}{\Field_1}$;
+		\item se $\GaloisAutomorphism \in \GaloisGroup{\Field_3}{\Field_1}$, allora $\GaloisAutomorphism\GaloisGroup{\Field_3}{\Field_2}\GaloisAutomorphism^{-1} = \GaloisGroup{\Field_3}{\GaloisAutomorphism{\Field_2}}$;
+		\item se $\FieldExtension{\Field_2}{\Field_1}$ \`e di Galois, allora l'applicazione $f: \GaloisGroup{\Field_3}{\Field_1} \rightarrow \GaloisGroup{\Field_2}{\Field_1}$ che a $\GaloisAutomorphism \in \GaloisGroup{\Field_3}{\Field_1}$ associa $\Restricted{\GaloisAutomorphism}{\Field_2} \in \GaloisGroup{\Field_2}{\Field_1}$ \`e surgettiva.
+	\end{itemize}
+\end{Theorem}
+\Proof Un automorfismo di $\Field_3$ che lascia fisso $\Field_2$ a maggior ragione lascia fisso $\Field_1$, dunque $\GaloisGroup{\Field_3}{\Field_2} \IsSubgroup \GaloisGroup{\Field_3}{\Field_1}$.
+\par Per ogni automorfismo di Galois $\GaloisAutomorphism \in \GaloisGroup{\Field_3}{\Field_1}$ e ogni $\GaloisAutomorphism_0 \in \GaloisGroup{\Field_3}{\Field_2}$ abbiamo
+\begin{itemize}
+	\item se $x \in \GaloisAutomorphism(\Field_2)$, allora $(\GaloisAutomorphism \circ \GaloisAutomorphism_0 \circ \GaloisAutomorphism^{-1})(x) = x$;
+	\item se $x \in \Field_2$ \`e tale che $(\GaloisAutomorphism \circ \GaloisAutomorphism_0 \circ \GaloisAutomorphism^{-1})(x) = x$, allora $\GaloisAutomorphism_0(\GaloisAutomorphism^{-1}(x)) = \GaloisAutomorphism^{-1}(x)$, da cui $x \in \GaloisAutomorphism{\Field_2}$.
+\end{itemize}
+Quindi $\GaloisAutomorphism\GaloisGroup{\Field_3}{\Field_2}\GaloisAutomorphism^{-1} = \GaloisGroup{\Field_3}{\GaloisAutomorphism{\Field_2}}$.
+\par Ogni automorfismo in $\GaloisGroup{\Field_2}{\Field_1}$ ha lo stesso grafo di un'immersione da $\Field_2$ in $\AlgebraicClosure{\Field_1}$, la quale si pu\`o estendere ad omomorfismo relativo da $\Field_3$ in $\AlgebraicClosure{\Field_1}$, la cui immagine \`e $\Field_3$ per la normalit\`a di $\FieldExtension{\Field_3}{\Field_1}$. \EndProof
+\begin{Lemma}
+	\TheoremName{Lemma di Artin}[di Artin][lemma]\footnote{Questa denominazione non \`e molto comune.} Siano $\Field$ un campo e $\Group \IsSubgroup \Automorphisms{\Field}$. Abbiamo
+	\begin{itemize}
+		\item se $\Group$ \`e finito, allora $\FieldExtension{\Field}{\Fixed{\Field}{\Group}}$ \`e un'estensione di Galois finita con $\Group$ per gruppo di Galois;
+		\item se $\Group$ non \`e finito e $\FieldExtension{\Field}{\Fixed{\Field}{\Group}}$ \`e algebrica, allora $\FieldExtension{\Field}{\Fixed{\Field}{\Group}}$ \`e un estensione di Galois infinita e $\Group \IsSubgroup \GaloisGroup{\Field}{\Fixed{\Field}{\Group}}$.
+	\end{itemize}
+\end{Lemma}
+\Proof Proviamo che $\FieldExtension{\Field}{\Fixed{\Field}{\Group}}$ \`e
+\begin{itemize}
+	\item algebrica anche nel caso finito;
+	\item di Galois in ogni caso.
+\end{itemize}
+\par Sia $\alpha \in \Field$. La famiglia $(\GaloisAutomorphism(\alpha))_{\GaloisAutomorphism \in \Group}$ \`e finita e ne indichiamo con $S$ il supporto. Definiamo il polinomio $\Polynomial_{\alpha}(x) = \prod_{s \in S}(x - s)$: esso appartiene a $\RingAdjunction{\Fixed{\Field}{\Group}}{x}$, \`e separabile e ha $\alpha$ per radice, dunque $\alpha$ \`e algebrico e separabile su $\Fixed{\Field}{\Group}$. Inoltre, $\Field$ \`e il campo di spezzamento della famiglia di polinomi $(\Polynomial_\alpha)_{\alpha \in L}$, dunque $\FieldExtension{\Field}{\Fixed{\Field}{\Group}}$ \`e normale. Ne consegue che $\FieldExtension{\Field}{\Fixed{\Field}{\Group}}$ \`e un'estensione di Galois.
+\par Per costruzione di $\Fixed{\Field}{\Group}$, abbiamo $\Group \IsSubgroup \GaloisGroup{\Field}{\Fixed{\Field}{\Group}}$.
+\par Se $\Group$ non \`e finito, allora a maggior ragione non \`e finito $\GaloisGroup{\Field}{\Fixed{\Field}{\Group}}$ e dunque non lo \`e l'estensione $\FieldExtension{\Field}{\Fixed{\Field}{\Group}}$.
+\par Supponiamo $\Group$ finito. Per ogni $\alpha \in \Field$, il polinomio $\Polynomial_\alpha$ prova che $\FieldDegree{\FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha}}{\Fixed{\Field}{\Group}} \leq \GroupOrder{\Group}$: sia $\alpha_0 \in \Field$ tale che $\FieldDegree{\FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha_0}}{\Fixed{\Field}{\Group}} \leq \GroupOrder{\Group} = \max_{\alpha \in \Field} \FieldDegree{\FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha}}{\Fixed{\Field}{\Group}} \leq \GroupOrder{\Group}$.
+\par Supponiamo esista $\beta \in \Field$ tale che $\beta \notin \FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha_0}$. Allora, per il teorema dell'elemento primitivo, $\FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha_0,\beta}$, che ha necessarimante grado maggiore di $\FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha_0}$ \`e semplice, ma ci\`o contraddice la definizione di $\alpha_0$. Dunque $\Field = \FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha_0}$.
+\par Abbiamo infine $\GroupOrder{\Group} \leq \GroupOrder{\GaloisGroup{\Field}{\Fixed{\Field}{\Group}}} = \FieldDegree{\Field}{\Fixed{\Field}{\Group}} = \FieldDegree{\FieldAdjunction{\Fixed{\Field}{\Group}}{\alpha_0}}{\Fixed{\Field}{\Group}} \leq \GroupOrder{\Group}$. Dunque $\Group$ e $\GaloisGroup{\Field}{\Fixed{\Field}{\Group}}$ hanno lo stesso ordine e pertanto coincidono. \EndProof
+\begin{Corollary}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione normale. Abbiamo
+	\begin{itemize}
+		\item $\FieldExtension{\Field_2}{\Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}}$ \`e un'estensione di Galois con gruppo di Galois $\RelativeAutomorphisms{\Field_2}{\Field_1}$;
+		\item se $\FieldExtension{\Field_2}{\Field_1}$ \`e di Galois, allora $\Field_1 = \Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}$.
+	\end{itemize}
+\end{Corollary}
+\Proof L'estensione $\FieldExtension{\Field_2}{\Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}}$ \`e normale perch\'e \`e normale $\FieldExtension{\Field_2}{\Field_1}$ e \`e separabile per un teorema precedentemente dimostrato, dunque \`e di Galois. Per il lemma di Artin, $\RelativeAutomorphisms{\Field_2}{\Field_1} \IsSubgroup \GaloisGroup{\Field_2}{\Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}} = \RelativeAutomorphisms{\Field_2}{\Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}} \IsSubgroup \RelativeAutomorphisms{\Field_2}{\Field_1}$. Quindi $\GaloisGroup{\Field_2}{\Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}} = \RelativeAutomorphisms{\Field_1}{\Field_2}$.
+\par Se inoltre $\FieldExtension{\Field_2}{\Field_1}$ \`e di Galois, allora \`e separabile e dunque anche $\FieldExtension{\Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}}{\Field_1}$ \`e separabile; ma poich\'e essa \`e anche puramente inseprabile, necessariamente \`e banale. \EndProof
+\begin{Theorem}
+	\TheoremName{Teorema fondamentale della teoria di Galois (caso finito)}[fondamentale della teoria di Galois (caso finito)][teorema] Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di Galois. Siano le classi
+	\begin{itemize}
+		\item $G = \lbrace \Group \in \PowerSet{\GaloisGroup{\Field_2}{\Field_1}} | \Group \IsSubgroup \GaloisGroup{\Field_2}{\Field_1} \rbrace$;
+		\item $F = \lbrace \Field \in \PowerSet{\Field_2} | \Field_1 \subseteq \Field \subseteq \Field_2\text{ e $\Field$ \`e un campo} \rbrace$.
+	\end{itemize}
+	Definiamo le applicazioni
+	\begin{itemize}
+		\item $\phi: G \rightarrow F$ tale che $\phi(\Group) = \Fixed{\Field_2}{\Group}$;
+		\item $\psi: F \rightarrow G$ tale che $\psi(\Field) = \GaloisGroup{\Field_2}{\Field}$.
+	\end{itemize}
+	Abbiamo i seguenti risultati:
+	\begin{itemize}
+		\item $\phi \circ \psi = \Identity$;
+		\item se $\FieldExtension{\Field_2}{\Field_1}$ \`e finita, allora $\psi \circ \phi = \Identity$;
+		\item dato $\Field \in F$, $\FieldExtension{\Field}{\Field_1}$ \`e normale se e solo se $\psi(\Field) = \GaloisGroup{\Field_2}{\Field} \IsNormalSubgroup \GaloisGroup{\Field_2}{\Field_1}$;
+		\item dato $\Field \in F$, se $\FieldExtension{\Field}{\Field_1}$ normale allora $\Isomorphic{\GaloisGroup{\Field}{\Field_1}}{\Quotient{\GaloisGroup{\Field_2}{\Field_1}}{\GaloisGroup{\Field_2}{\Field}}}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\Field \in F$. Abbiamo $(\phi \circ \psi)(\Field) = \phi(\GaloisGroup{\Field_2}{\Field}) = \Fixed{\Field_2}{\GaloisGroup{\Field_2}{\Field}}$, da cui, per il corollario precedente, $(\phi \circ \psi)(\Field) = \Field$.
+\par Sia $\Group \in G$. Abbiamo $(\psi \circ \phi)(\Group) = \psi(\Fixed{\Field_2}{\Group}) = \GaloisGroup{\Field_2}{\Fixed{\Field_2}{\Group}}$, da cui, per il lemma di Artin, se $\Group$ \`e finito allora $(\psi \circ \phi)(\Group) = \Group$.
+\par Ora $\FieldExtension{\Field}{\Field_1}$ \`e normale se e solo se, per ogni omomorfismo relativo $\RelativeHomomorphism$ di $\Field$ rispetto a $\Field_1$, abbiamo $\RelativeHomomorphism(\Field) = \Field$.  Supponiamo $\FieldExtension{\Field}{\Field_1}$ sia effettivamente normale e sia $\GaloisAutomorphism \in \GaloisGroup{\Field_2}{\Field_1}$: allora $\GaloisAutomorphism(\Field) = \Field$. Viceversa, se ogni automorfisma di Galois $\GaloisAutomorphism{\Field_2}{\Field_1}$ \`e tale che $\GaloisAutomorphism(\Field) = \Field$, allora dato che ogni omomorfismo relativo di $\Field$ rispetto a $\Field_1$ si estende ad un automorfismo di $\GaloisGroup{\Field_2}{\Field_1}$, allora $\FieldExtension{\Field}{\Field_1}$ \`e normale. Dunque $\FieldExtension{\Field}{\Field_1}$ \`e normale se e solo se $\ForAll{\GaloisAutomorphism \in \GaloisGroup{\Field_2}{\Field_1}}{\GaloisAutomorphism{\Field} = \Field}$.
+\par D'altra parte $\GaloisGroup{\Field_2}{\Field} \IsNormalSubgroup \GaloisGroup{\Field_2}{\Field_1}$ se e solo se, per ogni automorfismo di Galois $\GaloisAutomorphism \in \GaloisGroup{\Field_2}{\Field_1}$, abbiamo $\GaloisAutomorphism\GaloisGroup{\Field_2}{\Field}\GaloisAutomorphism^{-1} = \GaloisGroup{\Field_2}{\GaloisAutomorphism(\Field)} = \GaloisGroup{\Field_2}{\Field}$. Dunque $\GaloisGroup{\Field_2}{\Field} \IsNormalSubgroup \GaloisGroup{\Field_2}{\Field_1}$ se e solo se $\ForAll{\GaloisAutomorphism \in \GaloisGroup{\Field_2}{\Field_1}}{\GaloisAutomorphism\GaloisGroup{\Field_2}{\Field}\GaloisAutomorphism^{-1} = \GaloisGroup{\Field_2}{\GaloisAutomorphism(\Field)} = \GaloisGroup{\Field_2}{\Field}}$.
+\par Si conclude, per l'iniettivit\`a di $\psi$ che $\FieldExtension{\Field}{\Field_1}$ \`e normale se e solo se $\GaloisGroup{\Field_2}{\Field} \IsNormalSubgroup \GaloisGroup{\Field_2}{\Field_1}$.
+\par Infine l'isomorfismo tra $\GaloisGroup{\Field}{\Field_1}$ e $\Quotient{\GaloisGroup{\Field_2}{\Field_1}}{\GaloisGroup{\Field_2}{\Field}}$ si deduce dall'omomorfismo surgettivo che ad ogni automorfismo di $\GaloisGroup{\Field_2}{\Field_1}$ associa la sua restrizione a $\Field$. \EndProof
+\begin{Definition}
+	Le corrispondenze definite dal teorema precedente dalle applicazioni $\phi$ e $\psi$ del teorema precedente prendono entrambe il nome di \Define{corrispondenza di Galois}[di Galois][corrispondenza].
+\end{Definition}
+\par
+Possiamo utilizzare la corrispondenza di Galois per fornire una dimostrazione alternativa del teorema dell'elemento primitivo.
+\begin{Corollary}
+\TheoremName{Teorema dell'elemento primitivo}[dell'elemento primitivo][teorema]
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campi finita e separabile.
+	$\FieldExtension{\Field_2}{\Field_1}$ \`e semplice.
+\end{Corollary}
+\Proof
+Consideriamo la chiusura normale $\NormalClosure{\Field_2}$ di $\Field_2$ in $\AlgebraicClosure{\Field_2}$:
+$\FieldExtension{\NormalClosure{\Field_2}}{\Field_1}$ \`e separabile e dunque di Galois; inoltre \`e anche finita.
+Il gruppo $\GaloisGroup{\NormalClosure{\Field_2}}{\Field_1}$ \`e dunque finito e ammette pertanto solo un numero finito di sottogruppi.
+Ne deduciamo che $\FieldExtension{\NormalClosure{\Field_2}}{\Field_1}$ ammette solo un numero finito di estensioni.
+Dunque anche $\FieldExtension{\Field_2}{\Field_1}$ ammette solo un numero finito di estensioni.
+Ne consegue che $\FieldExtension{\Field_2}{\Field_1}$ \`e semplice.
+\EndProof
+\begin{Corollary}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione finita di Galois e
+	siano $\Group_1, \Group_2 \IsSubgroup \GaloisGroup{\Field_2}{\Field_1}$.
+	Abbiamo
+	\begin{itemize}
+		\item
+		$\Coimplies
+		{\Fixed{\Field_2}{\Group_1}
+		\subseteq \Fixed{\Field_2}{\Group_2}}
+		{\Group_2 \subseteq \Group_1}$;
+		\item
+		$\FieldComposition
+		{\Fixed{\Field_2}{\Group_1}}
+		{\Fixed{\Field_2}{\Group_2}} =
+		\Fixed{\Field_2}{\Group_1 \cap \Group_2}$;
+		\item
+		$\Fixed{\Field_2}{\Group_1} \cap
+		\Fixed{\Field_2}{\Group_2} =
+		\Fixed{\Field_2}
+		{\SpanGroup{\Group_1,\Group_2}}$.
+	\end{itemize}
+\end{Corollary}
+\Proof
+Il primo punto segue direttamente dal teorema fondamentale della teoria di Galois.
+\par
+Per il secondo punto osserviamo che
+$\Group_1 \cap \Group_2 \subseteq \Group_1$,
+da cui $\Fixed{\Field_2}{\Group_1} \subseteq \Fixed{\Field_2}{\Group_1 \cap \Group_2}$
+e analogamente
+$\Fixed{\Field_2}{\Group_2} \subseteq \Fixed{\Field_2}{\Group_1 \cap \Group_1}$.
+Ne deduciamo
+$\FieldComposition{\Fixed{\Field_2}{\Group_1}}{\Fixed{\Field_2}{\Group_2}}
+\subseteq \Fixed{\Field_2}{\Group_1 \cap \Group_2}$.
+D'altra parte abbiamo
+$\GaloisGroup{\Field_2}
+{\FieldComposition{\Fixed{\Field_2}{\Group_1}}{\Fixed{\Field_2}{\Group_2}}}
+\subseteq
+\GaloisGroup{\Field_2}{\Fixed{\Field_2}{\Group_1}} \cap
+\GaloisGroup{\Field_2}{\Fixed{\Field_2}{\Group_2}}$,
+da cui, tramite la corrispondenza di Galois,
+$\FieldComposition{\Fixed{\Field_2}{\Group_1}}{\Fixed{\Field_2}{\Group_2}}
+\supseteq
+\Fixed{\Field_2}{\Group_1} \cap \Fixed{\Field_2}{\Group_2}
+= \Fixed{\Field_2}{\Group_1 \cap \Group_2}$.
+\par
+Per il terzo punto osserviamo che
+$\Group_1 \subseteq \SpanGroup{\Group_1,\Group_2}$,
+da cui $\Fixed{\Field_2}{\SpanGroup{\Group_1,\Group_2}} \subseteq \Fixed{\Field_2}{\Group_1}$
+e analogamente
+$\Fixed{\Field_2}{\SpanGroup{\Group_1,\Group_2}} \subseteq \Fixed{\Field_2}{\Group_2}$.
+Ne deduciamo
+$\Fixed{\Field_2}{\SpanGroup{\Group_1,\Group_2}}
+\subseteq \Fixed{\Field_2}{\Group_1} \cap \Fixed{\Field_2}{\Group_2}$.
+D'altra parte ogni elemento di $\Field_2$ che viene lasciato fisso da ogni
+automorfismo di $\Group_1$ e di $\Group_2$ viene lasciato fisso anche da
+ogni automorfismo di $\SpanGroup{\Group_1,\Group_2}$.
+Quindi abbiamo anche
+$\Fixed{\Field_2}{\Group_1}
+\cap
+\Fixed{\Field_2}{\Group_2}
+\subseteq
+\Fixed{\Field_2}{\SpanGroup{\Group_1}{\Group_2}}$.
+\EndProof
+\begin{Theorem}
+	Con le notazioni del teorema precedente, esistono estensioni di Galois infinite $\FieldExtension{\Field_2}{\Field_1}$ tali che $\phi$ non sia iniettiva; e dunque in particolare tali che $\psi \circ \phi \neq \Identity$.
+\end{Theorem}
+\Proof
+Consideriamo $\Field = \GaloisField{\Prime}$ per qualche $\Prime \in \mathbb{Z}$ primo.
+L'estensione $\FieldExtension{\AlgebraicClosure{\Field}}{\Field}$ \`e
+\begin{itemize}
+	\item normale perch\'e $\AlgebraicClosure{\Field}$ \`e la chiusura algebrica di $\Field$;
+	\item separabile perch\'e i campi di Galois sono perfetti.
+\end{itemize}
+Dunque $\FieldExtension{\AlgebraicClosure{\Field}}{\Field}$ \`e un'estensione di Galois.
+Consideriamo l'endomorfismo di Frobenius
+$\Frobenius: \AlgebraicClosure{\Field} \rightarrow \AlgebraicClosure{\Field}$.
+Essendo $\AlgebraicClosure{\Field}$ algebricamente chiuso di caratteristica $\Prime$, ogni suo elemento ammette una e una sola radice $\Prime$-esima, dunque $\Frobenius$ \`e un automorfismo.
+Ora, \`e chiaro che per ogni
+$\alpha \in \Field$ abbiamo
+$\Frobenius{\alpha} = \alpha^\Prime = \alpha$.
+Abbiamo dunque $\SpanGroup{\Frobenius} \IsSubgroup \GaloisGroup{\AlgebraicClosure{\Field}}{\Field}$.
+Inoltre, $\alpha \in \AlgebraicClosure{\Field}$ \`e tale che $\Frobenius{\alpha} = \alpha$ se e solo se $\alpha^\Prime = \alpha$ cio\`e se e solo se $\alpha \in \Field$, da cui
+$\Fixed{\AlgebraicClosure{\Field}}{\SpanGroup{\Frobenius}} = \Field = \Fixed{\AlgebraicClosure{\Field}}{\GaloisGroup{\AlgebraicClosure{\Field}}{\Field}}$.
+\par Supponiamo $\phi$ inettiva.
+Allora deve essere $\SpanGroup{\Frobenius} =
+\GaloisGroup{\AlgebraicClosure{\Field}}{\Field}$.
+\par Consideriamo l'omomorfismo che a $n \in \mathbb{Z}$ associa $\Frobenius^n \in \SpanGroup{\Frobenius}$: esso \`e chiaramente suriettivo.
+Inoltre, poich\'e $\AlgebraicClosure{\Field}$ \`e un campo finito e l'equazione $x^{\Prime^n} = x$ ha infinite soluzioni se e solo se $n = 0$, allora l'omomorfismo \`e anche iniettivo.
+Dunque $\SpanGroup{\Frobenius}$ \`e isomorfo a $\mathbb{Z}$.
+Ora, tutti i sottogruppi di $\mathbb{Z}$ sono finiti,
+dunque tutte le estensioni di campo del tipo
+$\FieldExtension{\AlgebraicClosure{\Field}}{\Field}$
+sono finite per la suriettivit\`a di $\phi$ ed il lemma di Artin.
+\par
+Tuttavia $\Field' = \GaloisField{\Prime^2}$ \`e un campo tale che $\FieldExtension{\Field'}{\Field}$ \`e finito e dunque $\FieldExtension{\AlgebraicClosure{\Field}}{\Field}$ \`e infinito.
+Questo \`e assurdo: dunque
+$\SpanGroup{\Frobenius} \neq \GaloisGroup{\AlgebraicClosure{\Field}}{\Field}$
+e $\phi$ non \`e un'applicazione iniettiva.
+\EndProof
+\begin{Theorem}
+	Siano date le seguenti torri d'estensione:
+	\begin{itemize}
+		\item $\Field_1 \subseteq
+		\Field_2 \subseteq
+		\AlgebraicClosure{\Field_1}$,
+		con $\FieldExtension{\Field_2}{\Field_1}$
+		finita e di Galois;
+		\item $\Field_1 \subseteq
+		\Field_3 \subseteq
+		\AlgebraicClosure{\Field_1}$.
+	\end{itemize}
+	Abbiamo $\Isomorphic
+	{\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}
+	{\Field_2}}
+	{\GaloisGroup{\Field_2}{\Field_2 \cap \Field_3}}$.
+\end{Theorem}
+\Proof
+Sia $\GaloisAutomorphism \in
+\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_2}$.
+Poich\'e $\FieldExtension{\Field_2}{\Field_1}$ \`e normale,
+$\Restricted{\GaloisAutomorphism}{\Field_2}(\Field_2) =
+\Field_2$.
+Inoltre $\Field_2 \cap \Field_3 \subseteq \Field_2$,
+Esiste dunque un'applicazione
+$\Homomorphism:
+\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_2}
+\rightarrow
+\GaloisGroup{\Field_2}{\Field_2 \cap \Field_3}$:
+\`e immediato verificare che si tratta di un omomorfismo.
+\par
+$\Homomorphism$ \`e iniettivo perch\'e se due automorfismi di
+$\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_2}$
+coincidono su $\Field_2$, allora, coincidendo anche su $\Field_3$,
+devono coincidere su $\FieldComposition{\Field_2}{\Field_3}$.
+\par
+Proviamo che $\Homomorphism$ \`e anche suriettivo.
+Abbiamo $\Image{\Homomorphism} \subseteq \GaloisGroup{\Field_2}{\Field_2 \cap \Field_3}$,
+dunque $\Field_2 \cap \Field_3 \subseteq \Fixed{\Field_2}{\Image{\Homomorphism)}}$.
+Inoltre, sia $\alpha \in \Fixed{\Field_2}{\Image{\Homomorphism}}$.
+Abbiamo $\alpha \in \Field_2$ perch\'e $\Fixed{\Field_2}{\Image{\Homomorphism}} \subseteq
+\Field_2$.
+Inoltre, per costruzione, per ogni $\GaloisAutomorphism \in
+\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_3}$ abbiamo
+$\Homomorphism(\GaloisAutomorphism) (\alpha) = \alpha$, da cui
+$\alpha \in \Field_3$.
+Ne consegue $\Field_2 \cap \Field_3 = \Fixed{\Field_2}{\Image{\Homomorphism}}$ e quindi,
+per la corrispondenza di Galois e a finitezza di $\FieldExtension{\Field_2}{\Field_1}$,
+la suriettivit\`a di $\Homomorphism$.
+\EndProof
+\begin{Theorem}
+	Siano $\FieldExtension{\Field_2}{\Field_1}$ e
+	$\FieldExtension{\Field_3}{\Field_1}$ estensioni di Galois.
+	Allora l'omomorfismo
+	$\Homomorphism
+	\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_1}
+	\rightarrow
+	\GaloisGroup{\Field_2}{\Field_1} \times \GaloisGroup{\Field_3}{\Field_1}$,
+	che a $\GaloisAutomorphism \in
+	\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_1}$
+	associa $(\GaloisAutomorphism_1,\GaloisAutomorphism_2 \in
+	\GaloisGroup{\Field_2}{\Field_1} \times \GaloisGroup{\Field_3}{\Field_1}$,
+	dove $\GaloisAutomorphism_1$ e $\GaloisAutomorphism_2$ hanno lo stesso grafo di
+	$\Restricted{\GaloisAutomorphism}{\Field_2}$ e $\Restricted{\GaloisAutomorphism}{\Field_3}$,
+	\`e iniettiva.
+	Inoltre, se $\Field_2 \cap \Field_3 = \Field_1$, allora \`e anche suriettiva.
+	\par
+	Infine, se $\FieldExtension{\Field_2}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_1}$
+	sono finite, allora la biettivit\`a dell'applicazione implica
+	$\Field_2 \cap \Field_3 = \Field_1$.
+\end{Theorem}
+\Proof
+L'iniettivit\`a segue subito dal fatto che automorfismi di
+$\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_1}$
+che coincidono su $\Field_2$ e $\Field_3$ coincidono anche su
+$\FieldComposition{\Field_2}{\Field_3}$.
+\par
+La suriettivit\`a nel caso $\Field_2 \cap \Field_3 = \Field_1$
+segue dal fatto che
+$\Image{\Homomorphism} =
+= \lbrace (\GaloisAutomorphism_1, \GaloisAutomorphism_2) \in
+\GaloisGroup{\Field_2}{\Field_1} \times \GaloisGroup{\Field_3}{\Field_1} |
+\Restricted{\GaloisAutomorphism_1}{\Field_2 \cap \Field_3} =
+\Restricted{\GaloisAutomorphism_2}{\Field_2 \cap \Field_3}$.
+\par
+Supponiamo $\FieldExtension{\Field_2}{\Field_1}$ e
+$\FieldExtension{\Field_3}{\Field_1}$ finite.
+Per la corrispondenza di Galois, abbiamo che la biettivit\`a di
+$\Homomorphism$ equivale all'equicardinalit\`a di
+$\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_1}$
+e
+$\GaloisGroup{\Field_2}{\Field_1} \times \GaloisGroup{\Field_3}{\Field_1}$
+dunque a
+$\FieldDegree{\FieldComposition{\Field_2}{\Field_3}}{\Field_1} =
+\FieldDegree{\Field_2}{\Field_1}
+\FieldDegree{\Field_3}{\Field_1}$,
+a sua volta equivalente per il teorema precedente a
+$\FieldDegree{\Field_3}{\Field_2 \cap \Field_3} =
+\FieldDegree{\Field_3}{\Field_1}$ e quindi a
+$\Field_2 \cap \Field_3 = \Field_1$.
+\EndProof
+\begin{Theorem}
+	Siano $\Field$ un campo e sia
+	$\Polynomial \in \RingAdjunction{\Field}{x}$ separabile.
+	Sia $\Set \subseteq \AlgebraicClosure{\Field}$ l'insieme di tutte
+	le radici di $\Polynomial$.
+	Allora
+	\begin{itemize}
+		\item l'applicazione
+		$\Homomorphism:
+		\GaloisGroup{\FieldAdjunction{\Field}{\Set}}{\Field}
+		\rightarrow
+		\Automorphisms{\Set} \Isomorphic
+		\SymmetricGroup{\Cardinality{\Set}}$
+		 che a $\GaloisAutomorphism \in
+		\GaloisGroup{\FieldAdjunction{\Field}{\Set}}{\Field}$
+		 associa
+		$\Restricted{\GaloisAutomorphism}{\Set} \in
+		\Automorphisms{\Set}$
+		\`e un omomorfismo iniettivo;
+		\item $\Polynomial$ \`e irriducibile se e solo se
+		$\GaloisGroup{\FieldAdjunction{\Field}{\Set}}{\Field}$
+		agisce transitivamente su $\Set$.
+	\end{itemize}
+\end{Theorem}
+\Proof
+$\Homomorphism$ \`e un omomorfismo perch\'e gli automorfismi di Galois
+trasformano radici di polinomi a coefficienti nel campo di base nelle
+medesime radici. Inoltre \`e un omomorfismo iniettivo perch\'e se un
+automorfismo di Galois lascia fisse tutte le radici di $\Polynomial$,
+allora deve essere l'identit\`a/
+\par
+Affermare che $\Polynomial$ \`e irriducibile equivale ad affermare che \`e
+polinomio minimo di ogni sua radice. La transitivit\`a dell'azione di
+$\GaloisGroup{\FieldAdjunction{\Field}{\Set}}{\Field}$ segue dunque
+dal teorema \ref{th_esistenzaomomorfismirelativi_0}.
+\EndProof
+\begin{Corollary}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di Galois
+	finita.
+	Abbiamo $\GaloisGroup{\Field_2}{\Field_1} \IsSubgroup
+	\SymmetricGroup{\FieldDegree{\Field_2}{\Field_1}}$.
+\end{Corollary}
+\Proof Per il teorema dell'elemento primitivo, esiste
+$\alpha \in \Field_2$ tale che
+$\Field_2 = \FieldAdjunction{\Field_1}{\alpha}$. Dunque $\Field_2$ \`e
+il campo di spezzamento  del polinimio minimo $\MinimalPolynomial{\alpha}$
+e la tesi segue dal teorema precedente.
+\EndProof
+\Proof
+Segue direttamente dal teorema di Cayley.
+\EndProof
+\begin{Theorem}
+	\TheoremName{Teorema fondamentale dell'algebra} Il campo $\mathbb{C}$ \`e algebricamente chiuso.
+\end{Theorem}
+\Proof Supponiamo $\Field$ campo tale che $\FieldExtension{\Field}{\mathbb{C}}$ sia algebrica. La chiusura normale di $\Field$ su $\mathbb{R}$ ha grado finito, dunque $\FieldExtension{\NormalClosure{\Field}}{\mathbb{C}}$ ha ancora grado finito. Poich\'e inoltre $\Characteristic{\mathbb{R}} = 0$, $\FieldExtension{\NormalClosure{\Field}}{\mathbb{C}}$ \`e separabile e dunque di Galois.
+\par Poich\'e $\FieldDegree{\mathbb{C}}{\mathbb{R}} = 2$ divide $\FieldDegree{\NormalClosure{\Field}}{\mathbb{R}}$, esiste un $2$-Sylow $\Sylow[2]$ sottogruppo di $\GaloisGroup{\NormalClosure{\Field}}{\mathbb{R}}$, a cui corrisponde una sottoestensione $\FieldExtension{\NormalClosure{\Field}}{\VarField}$, di grado uguale all'ordine di $\Sylow[2]$. Dunque $\FieldExtension{\VarField}{\mathbb{R}}$ \`e un estensione di grado dispari. Poich\'e non esistono polinomi irriducibili non lineari di grado dispari su $\mathbb{R}$, necessarimente $\VarField = \mathbb{R}$, da cui $\GaloisGroup{\NormalClosure{\Field}}{\mathbb{C}}$ ha ordine potenza di $2$. Se quest'ultimo ordine \`e almeno $2$, allora $\GaloisGroup{\NormalClosure{\Field}}{\mathbb{C}}$ ammette un sottogruppo di ordine $2$, a cui corrisponde una estensione $\FieldExtension{\VarField'}{\mathbb{C}}$ di grado due. Ma tutti i polinomi di $\RingAdjunction{\mathbb{C}}{x}$ di grado $2$ sono riducibili. Dunque deve essere $\FieldDegree{\NormalClosure{\Field}}{\mathbb{C}} = 1$, da cui $\Field = \mathbb{C}$. \EndProof

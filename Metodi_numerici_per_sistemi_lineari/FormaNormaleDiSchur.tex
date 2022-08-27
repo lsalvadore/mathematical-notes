@@ -1,0 +1,63 @@
+\section{Forma normale di Schur}
+\label{MetodiNumericiPerSistemiLineari_FormaNormaleDiSchur}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\UnitaryMatrix \in \mathbb{C}^{n \times n}$ unitaria;
+    \item $\SchurNormalForm \in \mathbb{C}^{n \times n}$ triangolare
+      superiore;
+  \end{itemize}
+  tali che $\HermitianTransposed{\UnitaryMatrix} \Matrix \UnitaryMatrix = \SchurNormalForm$.
+  Si dice che $\SchurNormalForm$ \`e una
+  \Define{forma normale di Schur}[normale di Schur][forma] di $\Matrix$.
+\end{Definition}
+\begin{Theorem}
+  Sia $\Matrix \in \mathbb{C}^{n \times n}$. Il seguente algoritmo restituisce una forma normale
+  di Schur $\SchurNormalForm$ di $\Matrix$ e una matrice unitaria $\UnitaryMatrix$ tale che
+  $\HermitianTransposed{\UnitaryMatrix} \Matrix \UnitaryMatrix = \SchurNormalForm$:
+  \begin{enumerate}
+    \item\label{Schur_1} se $n = 1$ l'algoritmo termina restituendo $\SchurNormalForm = \Matrix$
+      e $\UnitaryMatrix = \Identity$;
+    \item\label{Schur_2} si fissino un autovalore $\Eigenvalue \in \Spectrum{\Matrix}$ e un
+      autovettore $\Eigenvector$ di $\Matrix$ relativo ad $\Eigenvalue$;
+    \item\label{Schur_3} sia $\HouseholderElementaryMatrix$ una matrice elementare di
+      Householder tale che $\HouseholderElementaryMatrix \Eigenvector$
+    \item\label{Schur_4} definiamo
+      $\VarMatrix = \HermitianTransposed{\HouseholderElementaryMatrix} \Matrix
+                    \HouseholderElementaryMatrix$;
+    \item\label{Schur_5} applichiamo l'intero algoritmo alla sottomatrice
+      $(\VarMatrix_k^j)_{\substack{k = 1, ..., n - 1}{j = 1, ..., n -1}}$ ottenendo
+      la matrice triangolare superiore $\VarSchurNormalForm$ e la matrice unitaria
+      $\VarUnitaryMatrix$;
+    \item\label{Schur_6} definiamo
+      \[
+        \SchurNormalForm =
+        \lmatrix
+        \begin{array}{c|c}
+          \Eigenvalue & (\VarMatrix_0^j)_{j = 1, ..., n - 1} \VarUnitaryMatrix\\
+          \hline
+            & \VarSchurNormalForm
+        \end{array}
+        \rmatrix
+      \]
+    \item\label{Schur_7} definiamo
+      \[
+        \UnitaryMatrix =
+        \lmatrix
+        \begin{array}{c|c}
+          1 &\\
+          \hline
+            & \VarUnitaryMatrix
+        \end{array}
+        \rmatrix
+      \]
+    \item\label{Schur_8} l'algoritmo termina restituendo $\SchurNormalForm$ e
+      $\VarUnitaryMatrix$.
+  \end{enumerate}
+\end{Theorem}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/Schur.m"}
+	\caption{Implementazione di un algoritmo in \LanguageName{octave} per il calcolo di una
+  forma normale di Schur.}
+\end{listing}

@@ -1,0 +1,19 @@
+\section{Definizioni e teoremi di base}
+\label{SistemiDinamici_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Un \Define{sistema dinamico}[dinamico][sistema] \`e una tripla $(\Times,\States,\DynSysFunction)$ tale che
+	\begin{itemize}
+		\item $\Times$, detto \Define{spazio dei parametri}[dei parametri][spazio], \`e un monoide;
+		\item $\States$, detto \Define{spazio delle fasi}[delle fasi][spazio] o \Define{spazio degli stati}[degli stati][spazio] \`e una classe non vuota;
+		\item $\DynSysFunction$, detta \Define{funzione di evoluzione}[di evoluzione][funzione], una funzione $\DynSysFunction: \DynSysDomain \rightarrow (\Times,\States) \rightarrow \States$ tale che
+		\begin{itemize}
+			\item $\ForAll{\State \in \States}{\Exists{\Time \in \Times}{(\Time,\State) \in \DynSysDomain}}$;
+			\item $\ForAll{\State \in \States}{\DynSysFunction(\Time,\State) = \State}$;
+			\item $\ForAll{(\State,\Time_0,\Time_1) \in \States \times \Times \times \Times}{\Implies{\And{(\Time_0,\State) \in \DynSysDomain}{(\Time_0 + \Time_1,\State) \in \DynSysDomain}}{\DynSysFunction(\Time_1,\DynSysFunction(\Time_0,\State)) = \DynSysFunction(\Time_0 + \Time_1, \State)}}$
+		\end{itemize}
+	\end{itemize}
+	Chiamiamo inoltre
+	\begin{itemize}
+		\item \Define{flusso integrale}[integrale][flusso] del sistema la famiglia di applicazioni $(\DynSysFlux_\Time)_{\Time \in Times}$ tali che per ogni $\Time \in \Times$  l'applicazione $\DynSysFlux_t: \States \rightarrow \States$ sia l'applicazione che a $\State \in \States$ associa $\DynSysFlux(\Time,\State)$;
+	\end{itemize}
+\end{Definition}

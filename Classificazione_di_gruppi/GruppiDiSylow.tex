@@ -1,0 +1,253 @@
+\section{Gruppi di Sylow.}\label{GruppiDiSylow}
+\begin{Definition}
+	Dato $\Prime \in \mathbb{Z}$ primo,
+	si chiama \Define{$\Prime$-gruppo} un qualsiasi gruppo
+	in cui tutti gli elementi hanno per ordine una potenza di $\Prime$;
+	inoltre, dato un gruppo finito $\Group$,
+	chiamiamo \Define{$\Prime$-Sylow}
+	un $\Prime$-sottogruppo di $\Group$ di ordine
+	coprimo col suo indice.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Prime \in \mathbb{Z}$ primo.
+	Sia $\Group$ un $\Prime$-gruppo.
+	$\GroupCenter{\Group}$ non \`e banale.
+\end{Theorem}
+\Proof
+Per l'equazione delle classi,
+$\GroupOrder{\GroupCenter{\Group}} =
+\GroupCenter{\Group} +
+sum_{x \in R \SetMin \GroupCenter{\Group}}
+\frac{\GroupOrder{\Group}}{\Stabilizer{x}}$,
+dove l'azione \`e l'azione di coniugio e
+$R$ \`e un sistema di rappresentanti delle orbite.
+\par
+Il membro sinistro e la sommatoria sono entrambi
+congruenti a $0$ modulo $\Prime$, dunque lo stesso
+deve valere anche per $\GroupCenter{\Group}$, che non
+pu\`o dunque essere costituito da un solo elemento.
+\EndProof
+\begin{Corollary}
+	Sia $\Prime \in \mathbb{Z}$ primo.
+	Se $\Group$ \`e un $\Prime$-gruppo di ordine
+	$\Prime^2$, allora $\Group$ \`e abeliano.
+\end{Corollary}
+\Proof
+Per il teorema precedente, $\GroupCenter{\Group}$
+non \`e banale.
+\par
+Supponiamo $\GroupOrder{\GroupCenter{\Group}} = p$.
+Allora esiste $x \in \Group \SetMin \GroupCenter{\Group}$ e
+$\GroupCenter{\Group}$ \`e un sottogruppo proprio
+di $\Centralizer{x}$, il quale ha dunque cardinalit\`a
+$\Prime^2$. Ma allora $\Centralizer{x} = \Group$ e
+$x \in \GroupCenter{\Group}$, contro le ipotesi.
+Dunque deve essere $\GroupCenter{\Group} = \Group$
+e $\Group$ \`e abeliano.
+\EndProof
+\begin{Theorem}
+\TheoremName{Teorema di Cauchy per i gruppi abeliani}[di Cauchy per i gruppi
+abeliani][teorema]
+	Sia $\Group$ un gruppo abeliano e sia
+	$\Prime \in \mathbb{Z}$ primo tale che
+	$\Prime | \GroupOrder{\Group}$.
+	Esiste $x \in \Group$ tale che
+	$\GroupOrder{x} = \Prime$.
+\end{Theorem}
+\Proof
+Procediamo per induzione su $\GroupOrder{\Group}$.
+\par
+Per caso base, scegliamo $\GroupOrder{\Group} = \Prime$.
+$\Group$ \`e allora isomorfo al gruppo ciclico
+$\Quotient{\mathbb{Z}}{\SpanIdeal{\Prime}}$,
+ove ogni elemento non nullo ha per ordine $\Prime$.
+\par
+Supponiamo il teorema provato per
+$\Prime \leq \GroupOrder{\Group} < n \in \mathbb{Z}$
+e proviamolo per $\GroupOrder{\Group} = n$.
+Sia $x \in \Group$ tale che $x \neq 1$:
+$\Prime$ divide $\GroupOrder{\SpanGroup{x}}$ o
+$\GroupIndex{\Group}{\SpanGroup{x}}$.
+\par
+Se $\Prime | \GroupOrder{\SpanGroup{x}}$, allora
+$x^{\frac{\GroupOrder{x}}{\Prime}}$ ha ordine $\Prime$.
+\par
+Se $\Prime | \GroupIndex{\Group}{\SpanGroup{x}}$,
+allora, per ipotesi induttiva, esiste $y \in \Group$ tale che
+$\Coset{y}{\SpanGroup{x}} \in \Quotient{\Group}{\SpanGroup{x}}$ abbia
+ordine $\Prime$. Ma allora $\Prime | \GroupOrder{y}$ e quindi,
+$y^{\frac{\GroupOrder{x}}{\Prime}}$ ha ordine $\Prime$.
+\EndProof
+\begin{Theorem}
+	Sia $\Prime \in \mathbb{Z}$ primo e sia
+	$\Group$ un $\Prime$-gruppo finito.
+	Sia $n \in \mathbb{N}$ tale che $\Prime^n | \GroupOrder{\Group}$.
+	Esiste un sottogruppo normale
+	$\NormalSubgroup \IsNormalSubgroup \Group$ tale che
+	$\GroupOrder{\NormalSubgroup} = \Prime^n$.
+\end{Theorem}
+\Proof
+Se $n = 1$, la tesi segue immediatamente per applicazione del teorema di Cauchy
+per i gruppi abeliani.
+\par
+Assumiamo la tesi provata per $n$ e proviamola per $n + 1$.
+Assumiamo anche $\Prime^{n + 1} | \GroupOrder{\Group}$.
+Poich\'e $\GroupCenter{\Group}$ \`e abeliano,
+per il teorema di Cauchy esiste un sottogruppo $\NormalSubgroup$ di
+$\GroupCenter{\Group}$ di ordine $\Prime$; inoltre abbiamo
+$\NormalSubgroup \IsNormalSubgroup \Group$.
+Quindi $\Quotient{\Group}{\NormalSubgroup}$ ha ordine
+$\frac{\GroupOrder{\Group}}{\Prime}$.
+\par
+Per ipotesi induttiva, esiste
+$\Subgroup \IsSubgroup \Quotient{\Group}{\NormalSubgroup}$
+di ordine
+$\GroupOrder{\Subgroup} = \Prime^n$.
+Per il teorema di corrispondenza di gruppi,
+$\bigcup_{X \in \Subgroup} X$ \`e un sottogruppo di $\Group$:
+il suo ordine \`e
+$\GroupOrder{\Subgroup} \GroupOrder{\NormalSubgroup} =
+\Prime^n \Prime = \Prime^{n + 1}$.
+\EndProof
+\begin{Theorem}
+\TheoremName{Primo teorema di Sylow}[primo di Sylow][teorema]
+	Sia $\Group$ un gruppo finito.
+	Per ogni $\Prime \in \mathbb{Z}$ primo tale che
+	$\Prime | \GroupOrder{\Group}$, $\Group$ ammette
+	un $\Prime$-Sylow $\Sylow$.
+\end{Theorem}
+\Proof
+Siano $\Prime \in \mathbb{Z}$ primo e $n \in \mathbb{N}$
+tale che $\Prime^n | \Cardinality{\Group}$, ma
+$\Prime^{n + 1} \NotDivide \Cardinality{\Group}$. Poniamo
+$m = \frac{\GroupOrder{\Group}}{\Prime^n}$.
+\par
+Sia $\Class$ l'insieme di tutti i sottoinsiemi di
+$\Group$ di cardinalit\`a $\Prime^n$.
+Consideriamo l'azione di moltiplicazione a sinistra
+di $\Group$ su $\Class$: per ogni $\Operator \in \Group$
+e $X \in \Class$ abbiamo $\Operator \cdot X =
+\lbrace y \in \Group | \Exists{x \in X}
+{\Operator x = y} \rbrace$.
+\par
+Ora, per ogni $X \in \Class$ e $x \in \Class$,
+abbiamo, per ogni $\Operator \in \Stabilizer{X}$,
+$\Operator x \in X$, da cui $\GroupOrder{\Stabilizer{X}} \leq
+\Cardinality{X} = \Prime^n$.
+\par
+La cardinalit\`a di $\Class$ \`e data da
+$\binom{\Prime^n m}{\Prime^n}$. Per il teorema binomiale,
+$\binom{\Prime^n m}{\Prime^n}$ \`e il coefficiente
+che accompagna il monomio $x^{Prime^n}y{\Prime^n m -\Prime^n}$ nel polinomio
+$(x + y)^{\Prime^n m} \in \RingAdjunction{\mathbb{Z}{\SpanIdeal{\Prime}}}{x,y}$.
+Abbiamo
+$(x + y)^{\Prime^n m} =
+(x^{\Prime^n} + y^{\Prime^n})^m$,
+quindi, modulo $\Prime$, abbiamo
+$\binom{\Prime^n m}{\Prime^n} \Congruent
+\binom{m}{1} = m$.
+Ne deduciamo che esiste $X \in \Class$ tale che
+$\Cardinality{\Orbit{X}}$ non sia multipla di $\Prime$;
+dunque $\GroupOrder{\Stabilizer{X}}$ contiene tanti fattori
+$\Prime$ quanti $\GroupOrder{\Group}$.
+Poich\'e abbiamo gi\`a provato che $\GroupOrder{\Stabilizer{X}} \leq
+\Prime^n$, $\Stabilizer{X}$ \`e un $\Prime$-Sylow di $\Group$.
+\EndProof
+\begin{Corollary}
+	Siano $\Group$ un gruppo finito,
+	$n, \Prime \in \mathbb{Z}$ con
+	$\Prime$ primo.
+	Se $\Prime^n | \GroupOrder{\Group}$, allora
+	$\Group$ ammette un sottogruppo $\Subgroup$
+	di ordine $\GroupOrder{\Subgroup} = \Prime^n$.
+\end{Corollary}
+\Proof
+Segue immediatamente dall'esistenza di un $\Prime$-Sylow e
+dal fatto che ogni $\Prime$-gruppo finito ammette sottogruppi di ordine
+$\Prime^n$ per tutti gli $n \in \mathbb{N}$ tali che $\Prime^n$ divida
+l'ordine del $\Prime$-gruppo.
+\EndProof
+\begin{Corollary}
+\TheoremName{Teorema di Cauchy per i gruppi}[di Cauchy per i gruppi][teorema]
+	Siano $\Group$ un gruppo finito e
+	$\Prime \in \mathbb{Z}$ un primo tale che
+	$\Prime | \Cardinality{\Group}$.
+	Esiste un elemento $x \in \Group$ di ordine $\Prime$.
+\end{Corollary}
+\Proof
+L'enunciato del teorema coincide col caso $n = 1$ del corollario precedente.
+\EndProof
+\begin{Corollary}
+	Sia $\Prime \in \mathbb{Z}$ primo.
+	Sia $\Group$ un $\Prime$-gruppo.
+	Esiste $n \in \mathbb{N}$ tale che
+	$\GroupOrder{\Group} = \Prime^n$.
+\end{Corollary}
+\Proof
+Se $\Prime' \in \mathbb{Z}$ \`e un primo tale che
+$\Prime' | \GroupOrder{\Group}$,
+allora per il teorema di Cauchy esiste in $\Group$ un elemento di
+ordine $\Prime'$.
+Quindi, per definizione di $\Prime$-gruppo,
+deve essere $\Prime' = \Prime$.
+\EndProof
+\begin{Theorem}
+\TheoremName{Secondo teorema di Sylow}[secondo di Sylow][teorema]
+	Siano $\Group$ un gruppo finito e 
+	$\Prime \in \mathbb{Z}$ un primo tale che
+	$\Prime | \Cardinality{\Group}$.
+	Tutti i $\Prime$-Sylow di $\Group$ sono coniugati tra loro.
+\end{Theorem}
+\Proof
+Sia $\Sylow_1$ un $\Prime$-Sylow e
+sia $\Set$ l'insieme di tutti i sottogruppi di $\Group$
+coniugati a $\Sylow$.
+Consideriamo l'azione di coniugio di $\Group$ su $\Set$.
+\par
+Poich\'e $\Stabilizer{\Sylow_1} = \Normalizer{\Sylow_1}$,
+abbiamo $\Sylow_1 \IsSubgroup \Stabilizer{\Sylow_1}$ e dunque
+$\Cardinality{\Set} =
+\Cardinality{\Orbit{\Sylow_1}} =
+\GroupIndex{\Group}{\Stabilizer{\Sylow_1}}$
+\`e coprimo con $\Prime$.
+\par
+Sia ora $\Sylow_2$ un altro $\Prime$-Sylow e
+consideriamo l'azione di coniugio di $\Sylow_2$ su $\Set$.
+Abbiamo, per ogni $X \in \Set$,
+$\Cardinality{\Orbit{x}} =
+\frac{\GroupOrder{\Sylow_2}}{\Stabilizer{\Orbit{X}}} |
+\GroupOrder{\Sylow_2}$.
+Dunque tutte le orbite per l'azione di $\Sylow_2$ hanno per carinalit\`a
+una potenza di $\Prime$. Poich\'e $\Set$ non \`e multiplo di $\Prime$ deve
+esistere $X \in \Set$ tale che $\Orbit{X} = \lbrace X \rbrace$.
+Pertanto, $\Sylow_2 \IsSubgroup \Normalizer{X}$
+\par
+Ora, poich\'e $\Sylow_2 \IsSubgroup \Normalizer{X}$, $\Sylow_2 X$ \`e un
+$\Prime$-gruppo. Poich\'e $X$ \`e un $\Prime$-Sylow, non solo
+$\Sylow_2 X = \Sylow_2$, ma anche $\Sylow_2 X = X$. Dunque $\Sylow_2 = X$
+e $\Sylow_2$ risulta coniugato a $\Sylow_1$.
+\EndProof
+\begin{Theorem}
+\TheoremName{Terzo teorema di Sylow}[terzo di Sylow][teorema]
+	Sia $\Group$ un gruppo finito e
+	$\Prime \in \mathbb{Z}$ un primo tale che
+	$\Prime | \Cardinality{\Group}$.
+	Sia $n$ il numero di $\Prime$-Sylow di $\Group$.
+	Indicato con $\Sylow$ un qualsiasi $\Prime$-Sylow di $\Group$,
+	abbiamo
+	\begin{itemize}
+		\item $n \Congruent 1 (\Modulo \Prime)$;
+		\item $n = \Index{\Group}{\Normalizer{\Sylow}}$
+	\end{itemize}
+\end{Theorem}
+\Proof
+Riprendiamo le mosse dalla dimostrazione del secondo teorema di
+Sylow. Abbiamo provato incidentalmente che $\Sylow_2$ \`e l'unico punto
+fisso di dell'azione di $\Sylow_2$ sull'insieme $\Set$ e dunque che tutte
+le orbite distinte da $\lbrace \Sylow_2 \rbrace$ hanno cardinalit\`a che
+\`e una potenza di $\Prime$. Quindi, in particolare,
+$n \Congruent 1 (\Modulo \Prime)$.
+\par
+Abbiamo gi\`a provato nella dimostrazione del teorema precedente che $n =
+\Index{\Group}{\Normalizer{\Sylow}}$.
+\EndProof

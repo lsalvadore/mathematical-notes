@@ -1,0 +1,296 @@
+\subsection{Estensioni separabili e puramente inseparabili.}\label{EstensioniSeparabiliEPuramenteInseparabili}
+\begin{Definition}
+	Dato un campo $\Field$, un polinomio $p \in \NotZero{\RingAdjunction{\Field}{x}}$ si dice
+	\begin{itemize}
+		\item \Define{separabile}[separabile][polinomio] quando esso ammette tutte radici distinte in $\AlgebraicClosure{\Field}$;
+		\item \Define{puramente inseparabile}[puramente inseparabile][polinomio] quando esso ammette un'unica radice in $\AlgebraicClosure{\Field}$;
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Criterio della derivata}[della derivata][criterio] Dato un campo $\Field$, un polinomio $p \in \RingAdjunction{\Field}{x}$ di grado strettamente positivo ha radici multiple nella chiusura algebrica $\AlgebraicClosure{\Field}$ se e solo se $\SpanIdeal{p,p'} \neq 1$, dove $p'$ \`e la derivata formale di $p$.
+\end{Theorem}
+\Proof Supponiamo $\alpha$ sia una radice di $p$: allora, per il teorema di Ruffini, $p = (x - \alpha)q$, con $q \in \RingAdjunction{\AlgebraicClosure{\Field}}{x}$ opportuno. Abbiamo dunque $p' = q + (x - \alpha)q'$ e $\alpha$ \`e radice doppia di $p$ se e solo se $x - \alpha$ divide $q$ e quindi $p'$ in $\RingAdjunction{\AlgebraicClosure{\Field}}{x}$. Dunque $p$ ammette una radice doppia se e solo se $\SpanIdeal{p,p'} \neq 1$ in $\RingAdjunction{\AlgebraicClosure{\Field}}{x}$.
+\par D'altra parte, $\SpanIdeal{p,p'} = 1$ in $\RingAdjunction{\Field}{x}$ se e solo se esistono polinomi $a, b \in \RingAdjunction{\Field}{x}$ tali che $ap + bp' = 1$. Dunque, $\SpanIdeal{p,p'} \neq 1$ in $\RingAdjunction{\Field}{x}$ se e solo se $\SpanIdeal{p,p'} \neq 1$ in $\RingAdjunction{\AlgebraicClosure{\Field}}{x}$ se e solo se $p$ ammette una radice doppia. \EndProof
+\begin{Corollary}
+	Nelle ipotesi del teorema precedente, se $p$ \`e irriducibile allora ammette radici multiple se e solo se $p' = 0$.
+\end{Corollary}
+\Proof $p$ ammette radici multiple se e solo se $\SpanIdeal{p,p'} \neq 1$, ma gli $\SpanIdeal{p}$ \`e massimale, dunque $\SpanIdeal{p,p'} = \SpanIdeal{p}$ e $p' \in \SpanIdeal{p}$. Poich\'e la derivata formale di un polinomio ha grado strettamente minore del polinomio originale o \`e nulla, necessariamente $p' = 0$. \EndProof
+\begin{Theorem}\label{th_separabilita}
+	Dato un campo $\Field$, sia $p \in \RingAdjunction{\Field}{x}$ un polinomio irriducibile. Abbiamo
+	\begin{itemize}
+		\item se $\Characteristic{\Field} = 0$, allora $p$ \`e separabile;
+		\item se $\Characteristic{\Field} = P$, con $P \in \mathbb{Z}$ primo, allora, posto $r = \max \lbrace k \in \mathbb{N} | (\exists q \in \RingAdjunction{\Field}{x})(p(x) = q(x^{P^k}))$ e $q \in \RingAdjunction{\Field}{x}$ tale che $p(x) = q(x^{P^r})$,
+		\begin{itemize}
+			\item $q$ \`e irriducibile e separabile;
+			\item la moltiplicit\`a di ogni radice di $p$ su $\AlgebraicClosure{\Field}$ \`e $P^r$;
+			\item le radici di $p$ su $\AlgebraicClosure{\Field}$ sono le radici $P^r$-esime delle radici di $q$.
+		\end{itemize}
+	\end{itemize}
+\end{Theorem}
+\Proof Il caso di caratteristica nulla si dimostra immediatamente: $p$ irriducibile \`e separabile se e solo se la sua derivata formale $p'$ \`e nonnulla, cio\`e se e solo se $p$ non \`e costante, ma nessun polinomio irriducibile \`e costante.
+\par $q$ \`e irriducibile perch\'e lo \`e $p$ (una riduzione di $q$ indurrebbe un'analoga riduzione di $p$).
+\par $q$ irriducibile \`e separabile se e solo se la sua derivata formale $q'$ \`e non nulla. Assumiamo $q' = 0$ e supponiamo $q = \sum_{k \in \mathbb{N}} a_kx^k$. Abbiamo $q' = \sum_{k \in \mathbb{N}} (k + 1)a_{k + 1}x^k = 0$, da cui, per ogni $k \in \mathbb{N}$, $(k + 1)a_{k + 1} = 0$. Quindi, per ogni $k \in \mathbb{N}$, $a_{k + 1} = 0$ o $P$ divide $k + 1$; pi\`u precisamente, abbiamo $a_k \neq 0$ solo se $P$ divide $k$. Di conseguenza, $q$ \`e un polinomio in $x^P$, contraddicendo la definizione di $q$.
+\par Siano $(\alpha_i)_{i = 1}^n$, con $n \in \mathbb{N}$, tutte le radici di $q$. Abbiamo, in $\RingAdjunction{\AlgebraicClosure{\Field}}{x}$, $q = c \prod_{i = 1}^n (x - \alpha_i)$, dove $c = \LC{p}$; da cui $p = c \prod_{i = 1}^n \left (x^{P^r} - \alpha_i \right ) = c \prod_{i = 1}^n \left (x^{P^r} - \beta_i^{P^r} \right ) = c \prod_{i = 1}^n (x - \beta_i)^{P^r}$, dove per ogni $i = 1, ..., n$, $\beta_i$ \`e radice $P^r$-esima di $\alpha_i$. \EndProof
+\begin{Corollary}
+	Dato un campo $\Field$ di caratteristica $P > 0$, il polinomio irriducibile $p \in \RingAdjunction{\Field}{x}$ \`e separabile se e solo se, posto $r = \max \lbrace k \in \mathbb{N} | (\exists q \in \RingAdjunction{\Field}{x})(p(x) = q(x^{P^k}))$, abbiamo $r = 0$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Corollary}
+	Dato un campo $\Field$, sia $p \in \RingAdjunction{\Field}{x}$ un polinomio irriducibile. Tutte le radici di $p$ hanno la stessa molteplicit\`a.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Theorem}
+	Sia $\Field$ un campo di caratteristica $\Characteristic{\Field} = \Prime > 0$ e $\Polynomial \in \RingAdjunction{\Field}{x}$ un polinomio irriducibile e monico. Abbiamo che $\Polynomial$ \`e puramente inseparabile se e solo se esistono $\beta \in \Field$ e $r \in \NotZero{\mathbb{N}}$ tali che $\Polynomial = x^{\Prime^r} - \beta$.
+\end{Theorem}
+\Proof Se $\Polynomial$ ammette un'unica radice $\alpha$ e $m \geq 2$ \`e la molteplicit\`a di questa radice, allora $\Polynomial = (x - \alpha)^m$. D'altra parte, abbiamo gi\`a dimostrato che $m$ \`e una potenza di $\Prime$, dunque esiste $r \geq 1$ tale che $\Polynomial = (x - \alpha)^{\Prime^r} = x^{\Prime^r} - \alpha^{\Prime^r}$. \EndProof
+\begin{Definition}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campo. $\alpha \in \Field_2$ si dice
+	\begin{itemize}
+		\item \Define{separabile}[separabile][elemento] su $\Field_1$ quando $\MinimalPolynomial{\alpha}$ \`e separabile;
+		\item \Define{puramente inseparabile}[puramente inseparabile][elemento] su $\Field_1$ quando $\MinimalPolynomial{\alpha}$ \`e puramente separabile.
+	\end{itemize}
+	Inoltre, se $\FieldExtension{\Field_2}{\Field_1}$ \`e un'estensione algebrica tale che
+	\begin{itemize}
+		\item tutti gli elementi sono separabili, allora diciamo che l'estensione \`e \Define{separabile}[separabile][estensione];
+		\item tutti gli elementi sono puramente inseparabili, allora diciamo che l'estensione \`e \Define{puramente inseparabile}[inseparabile][estensione].
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia $\Field$ un campo. Se ogni estensione algebrica di $\Field$ \`e separabile, diciamo che $\Field$ \`e \Define{perfetto}[perfetto][campo].
+\end{Definition}
+\begin{Theorem}
+	I campi di caratteristica $0$ e i campi di Galois sono perfetti.
+\end{Theorem}
+\Proof Abbiamo dimostrato che tutti i campi di caratteristica $0$ sono separabili e, poich\'e ogni estensione di un campo ne mantiene la caratteristica, ogni campo di caratteristica $0$ \`e perfetto.
+\par Consideriamo ora invece un campo di Galois $\GaloisField{P^n}$ di caratteristica $P$, con $n \in \mathbb{N}$ e sia $p \in \RingAdjunction{\GaloisField{P^n}}{x}$. Per il teorema \ref{th_separabilita} $p$ \`e separabile se e solo se $r = \max \lbrace k \in \mathbb{N} | (\exists q \in \RingAdjunction{\Field}{x})(p(x) = q(x^{P^k}))$ \`e nullo. Proviamo quindi che necessariamente $r = 0$. In effetti, se $r > 1$, sfruttando il piccolo teorema di Fermat, applicabile in virt\`u della finitezza di $\GaloisField{P^n}$, abbiamo, per opportuni coefficienti $(a_k)_{k \in \mathbb{N}}$, $p = \sum_{k \in \mathbb{N}} a_kX^k = \sum_{k \in \mathbb{N}} a_{P^{kr}} x^{P^{kr}} = \sum_{k \in \mathbb{N}} a_{P^{kr}}^{P^{kr}} x^{P^{kr}} = \left ( \sum_{k \in \mathbb{N}} a_{P^{kr}}x \right )^{P^{kr}}$, in contraddizione con l'irriducibilit\`a di $p$. \EndProof
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione puramente inseparabile: $\FieldExtension{\Field_2}{\Field_1}$ \`e anche normale.
+\end{Theorem}
+\Proof Sia $\Polynomial \in \FieldAdjunction{\Field_1}{x}$ un polinomio irriducibile che ammette una radice $\alpha \in \Field_2$: allora $\Polynomial$ \`e, a meno di moltiplicazione per una costante, il polinomio minimo di $\alpha$ su $\Field_1$, quindi \`e puramente separabile e si spezza in fattori lineari tutti uguali a $(x - \alpha)$. \EndProof
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione simultaneamente separabile e puramente inseparabile. Allora $\Field_1 = \Field_2$.
+\end{Theorem}
+\Proof Immediata. \EndProof
+\begin{Definition}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campo algebrica. Definiamo
+	\begin{itemize}
+		\item \Define{grado di separabilit\`a}[di separabilit\`a][grado] o \Define{grado separabile}[separabile][grado] di $\FieldExtension{\Field_2}{\Field_1}$ il numero (eventualmente anche infinito) di omomorfismi $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_1}$ relativo ad una stessa immersione: lo denotiamo $\SeparableDegree{\Field_2}{\Field_1}$;
+		\item \Define{grado di inseparabilit\`a}[di inseparabilit\`a][grado] o \Define{grado inseparabile}[inseparabile][grado] di $\FieldExtension{\Field_2}{\Field_1}$ il rapporto $\frac{\FieldDegree{\Field_2}{\Field_1}}{\SeparableDegree{\Field_2}{\Field_1}}$ se $\FieldExtension{\Field_2}{\Field_1}$ \`e finita (altrimenti il grado inseparabile non viene definito): lo denotatiamo $\UnseparableDegree{\Field_2}{\Field_1}$.
+		\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $\Field$ un campo e $\alpha \in \AlgebraicClosure{\Field}$. Sia $m$ la comune moltiplicit\`a di tutte le radici di $\MinimalPolynomial{\alpha}$: abbiamo $m = \UnseparableDegree{\FieldAdjunction{\Field}{\alpha}}{\Field}$.
+\end{Theorem}
+\Proof Abbiamo gi\`a provato che $\SeparableDegree{\FieldAdjunction{\Field}{\alpha}}{\Field}$ \`e uguale al numero di radici distinte di $\MinimalPolynomial{\alpha}$ in $\AlgebraicClosure{\Field}$: il teorema di Ruffini garantisce che questo numero sia propio $\frac{\FieldDegree{\FieldAdjunction{\Field}{\alpha}}{\Field}}{m}$. \EndProof
+\begin{Theorem}
+	Sia la torre d'estensioni di campo $\Field_1 \subseteq \Field_2 \subseteq \Field_3 \subseteq \AlgebraicClosure{\Field_1}$, con $\FieldExtension{\Field_2}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_2}$ finite. Allora $\SeparableDegree{\Field_3}{\Field_1} = \SeparableDegree{\Field_3}{\Field_2} \cdot \SeparableDegree{\Field_2}{\Field_1}$ e $\UnseparableDegree{\Field_3}{\Field_1} = \UnseparableDegree{\Field_3}{\Field_2} \cdot \UnseparableDegree{\Field_2}{\Field_1}$.
+\end{Theorem}
+\Proof Siano $\RelativeHomomorphism_1: \Field_2 \rightarrow \AlgebraicClosure{\Field_1}$ e $\bar{\RelativeHomomorphism}_2: \Field_3 \rightarrow \AlgebraicClosure{\Field_2} = \AlgebraicClosure{\Field_1}$ omomorfismi relativi alle rispettive identit\`a. Sia $\RelativeHomomorphism_1^1: \Field_3 \rightarrow \AlgebraicClosure{\Field_2} = \AlgebraicClosure{\Field_1}$ un omomorfismo relativo a $\RelativeHomomorphism_1$.
+\par $\RelativeHomomorphism_1^1 \circ \bar{\RelativeHomomorphism}_2: \Field_3 \rightarrow \AlgebraicClosure{\Field_1}$ \`e un omomorfismo relativo per $\Field_1$: infatti si verifica subito che $\Restricted{(\RelativeHomomorphism_1^1 \circ \bar{\RelativeHomomorphism}_2)}{\Field_1}$ \`e l'identit\`a di $\Field_1$.
+\par Inoltre ogni coppia $(\RelativeHomomorphism_1,\bar{\RelativeHomomorphism}_2)$ porta a un omomorfiso relativo $\RelativeHomomorphism_1^1 \circ \bar{\RelativeHomomorphism}_2$ diverso. In effetti, sia $(\RelativeHomomorphism_1',\bar{\RelativeHomomorphism}_2')$ un 'altra coppia analoga, da cui analogamente costruiamo $\bar{\RelativeHomomorphism}_1^1 \circ \bar{\RelativeHomomorphism}_2'$. Supponiamo $\bar{\RelativeHomomorphism}_1^1 \circ \bar{\RelativeHomomorphism}_2' = \RelativeHomomorphism_1^1 \circ \bar{\RelativeHomomorphism}_2$, allora per ogni $a \in \Field_2$, $\bar{\RelativeHomomorphism}_1^1(a) = (\RelativeHomomorphism_1^1 \circ \bar{\RelativeHomomorphism}_2)(\bar{\RelativeHomomorphism}_2'^{-1}(a)) = (\RelativeHomomorphism_1^1 \circ \bar{\RelativeHomomorphism}_2)(a) = \RelativeHomomorphism_1^1(a)$: ne consegue che le restrizioni di $\bar{\RelativeHomomorphism}_1^1$ e $\RelativeHomomorphism_1^1$ a $\Field_2$, cio\`e $\RelativeHomomorphism_1'$ e $\RelativeHomomorphism_1$ sono uguali. Per l'iniettivit\`a di $\RelativeHomomorphism_1'$ e $\RelativeHomomorphism_1$, deve essere anche $\bar{\RelativeHomomorphism}_2' = \bar{\RelativeHomomorphism}_2$.
+\par D'altra parte, sia $\RelativeHomomorphism_3: \Field_3 \rightarrow \AlgebraicClosure{\Field_1}$ un omomorfismo relativo. La sua restrizione $\RelativeHomomorphism_1$ a $\Field_2$ \`e un omomorfismo relativo e $\RelativeHomomorphism_3$ \`e un omomorfismo relativo a $\RelativeHomomorphism_1$: se ripetiamo la costruzione precedente ponendo $\RelativeHomomorphism_1^1 = \RelativeHomomorphism_3$ e $\bar{\RelativeHomomorphism}_2$ uguale all'inclusione canonica, allora vediamo che $\RelativeHomomorphism_3$ si pu\`o mettere nella stessa forma degli omomorfismi relativi precedentemente descritti, che sono in numero esattamente $\SeparableDegree{\Field_3}{\Field_2} \cdot \SeparableDegree{\Field_2}{\Field_1}$.
+\par La moltiplicativit\`a dei gradi inseparabili segue direttametne da quella dei gradi separabili. \EndProof
+\begin{Theorem}
+	Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$ finita, con $\Characteristic{\Field_1} > 0$. Il grado inseparabile di $\FieldExtension{\Field_2}{\Field_1}$ \`e una potenza di $\Characteristic{\Field_1}$.
+\end{Theorem}
+\Proof L'estensione $\FieldExtension{\Field_2}{\Field_1}$ \`e finita e dunque finitamente generata da una famiglia di elementi $(\alpha_k)_{k = 1}^n$ di $\Field_2$. Definiamo la torre di estensioni $(\Field^{(k)})_{k = 0}^n$ come $\Field_{(k)} = \begin{cases} \Field_1\text{ se }k = 0,\\ \FieldAdjunction{\Field^{(k - 1)}}{\alpha_k}\text{ altrimenti}.\end{cases}$
+\par Per ogni $k = 0, ..., n - 1$, abbiamo che $\UnseparableDegree{\Field^{(k + 1)}}{\Field^{(k)}}$ \`e potenza di $\Characteristic{\Field_1}$, da cui $\UnseparableDegree{\Field_2}{\Field_1}$ \`e potenza di $\Characteristic{\Field_1}$. \EndProof
+\begin{Theorem}
+	\TheoremName{Teorema di caratterizzazione delle estensioni separabili finite}[di caratterizzazione delle estensioni separabili finite][teorema] Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$ finita. Sono equivalenti le seguenti affermazioni:
+	\begin{itemize}
+		\item $\FieldExtension{\Field_2}{\Field_1}$ \`e separabile;
+		\item esite una famiglia finita di elementi $(\alpha_k)_{k = 1}^n$ di $\Field_2$, con $n \in \mathbb{N}$, separabili su $\Field_1$ tali che $\Field_2 = \FieldAdjunction{\Field_1}{(\alpha_k)_{k = 1}^n}$;
+		\item $\FieldDegree{\Field_2}{\Field_1} = \SeparableDegree{\Field_2}{\Field_1}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Se \`e vera la prima affermazione, segue direttamente dalle definizioni di finitezza e separabilit\`a di un'estensione di campo la validit\`a della seconda affermazione.
+\par Se \`e vera la seconda affermazione, allora la terza affermazione segue considerando la torre d'estensioni $(\Field^{(k)})_{k = 0}^n$, con $\Field^{(k)} = \begin{cases} \Field_1\text{ se }k = 0,\\ \FieldAdjunction{\Field^{(k - 1)}}{\alpha_k}\text{ altrimenti}.\end{cases}$.
+\par Assumiamo vera la terza affermazione e proviamo la prima. Possiamo assumere $\Characteristic{\Field_1} > 0$. Sia $\alpha \in \Field_2$ e consideriamo la torre d'estensioni $\Field_1 \subseteq \FieldAdjunction{\Field_1}{\alpha} \subseteq \Field_2$. Abbiamo $\FieldDegree{\Field_2}{\Field_1} = \FieldDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}\FieldDegree{\Field_2}{\FieldAdjunction{\Field_1}{\alpha}}$ e $\SeparableDegree{\Field_2}{\Field_1} = \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}\SeparableDegree{\Field_2}{\FieldAdjunction{\Field_1}{\alpha}}$, da cui $\FieldDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}\FieldDegree{\Field_2}{\FieldAdjunction{\Field_1}{\alpha}} = \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}\SeparableDegree{\Field_2}{\FieldAdjunction{\Field_1}{\alpha}}$. Poich\'e il grado inseparabile di un'estensione finita \`e una potenza della caratteristica dei campi, dall'ultima uguaglianza deduciamo che $\FieldDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1} = \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field}$ e dunque $\alpha$ \`e separabile. \EndProof
+\begin{Corollary}
+	Sia $\Field$ un campo e $S \subseteq \AlgebraicClosure{\Field}$ non vuoto. $\FieldExtension{\FieldAdjunction{\Field}{S}}{\Field}$ \`e separabile se e solo se \`e separabile ogni elemento di $S$. Inoltre, se $\FieldExtension{\FieldAdjunction{\Field}{S}}{\Field}$ \`e separabile allora $\FieldDegree{\FieldAdjunction{\Field}{S}}{\Field} = \SeparableDegree{\FieldAdjunction{\Field}{S}}{\Field}$, incluso il caso in cui l'estensione \`e infinita.
+\end{Corollary}
+\Proof Se $\FieldExtension{\FieldAdjunction{\Field}{S}}{\Field}$ \`e separabile allora, per definizione, \`e separabile ogni elemento di $S$.
+\par Supponiamo separabile ogni elemento di $S$ e sia $\alpha \in \Field{S}$. Allora $\alpha$ appartiene a qualche sottoestensione di $\FieldAdjunction{\Field}{S}$ generata da un sottoinsieme finito di $S$ e dunque finita essa stessa: per il teorema precedente, tale estensione \`e anche separabile, da cui la separabilit\`a di $\alpha$ su $\Field$.
+\par Rimane solo da dimostrare che se $\FieldExtension{\FieldAdjunction{\Field}{S}}{\Field}$ \`e separabile, allora grado e grado separabile coincidono. Il caso finito \`e gi\`a stato provato dal teorema precedente: vediamo dunque il caso infinito. Se $\FieldExtension{\FieldAdjunction{\Field}{S}}{\Field}$ \`e infinita, allora per ogni $k \in \mathbb{N}$ esiste una sottoestensione finita $\Field_k$ tale che $\FieldDegree{\Field^k}{\Field} \geq k$, che \`e separabile. Per tanto, per ogni $k \in \mathbb{N}$, $\SeparableDegree{\FieldAdjunction{\Field}{S}}{\Field} > \SeparableDegree{\Field_k}{\Field} \geq k$. \EndProof
+\begin{Theorem}	
+	Se l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$ \`e separabile, allora \`e separabile anche $\FieldExtension{\NormalClosure{\Field_2}}{\Field_1}$,dove
+	$\NormalClosure{\Field_2}$ \`e la chiusura normale di $\Field_2$ in $\AlgebraicClosure{\Field_2}$.
+\end{Theorem}
+\Proof Se $\FieldExtension{\Field_2}{\Field_1}$ \`e separabile allora \`e generata da una famiglia di elementi separabili $(\alpha_i)_{i = 1}^n$, $n \in \mathbb{N}$. Quindi $\NormalClosure{\Field_2}$ deve essere il campo di spezzamento dei polinomi minimi $(\MinimalPolynomial{\alpha_i})_{i =1}^n$ ed \`e separabilmente generata e quindi separabile. \EndProof
+\begin{Exercice}
+	Sia $\Field$ un campo e $S \subseteq \AlgebraicClosure{\Field}$ non vuoto. Dimostrare che $\FieldDegree{\FieldAdjunction{\Field}{S}}{\Field} = \SeparableDegree{\FieldAdjunction{\Field}{S}}{\Field}$ non implica necessarimente la separabilit\`a di $\FieldExtension{\FieldAdjunction{\Field}}{S}$.
+\end{Exercice}
+\Solution Per il teorema di caratterizzazione delle estensioni separabili finite, possiamo cercare un controesempio solamente tra le estensioni infinite.
+\par Fissato un primo $p \in \mathbb{Z}$ con $p > 0$, poniamo $\Field = \FieldAdjunction{\GaloisField{p}}{t}$, dove $t$ \`e un nuovo simbolo qualsiasi, e $S = \AlgebraicClosure{\Field}$.
+\par Consideriamo la sottoestensione $\FieldAdjunction{\FieldAdjunction{\GaloisField{p}}{t}}{\AlgebraicClosure{\GaloisField{p}}} = \FieldAdjunction{\AlgebraicClosure{\GaloisField{p}}}{t}$ di $\FieldExtension{\FieldAdjunction{\AlgebraicClosure{\GaloisField{p}}}{t}}{\FieldAdjunction{\GaloisField{p}}{t}}$. Essa \`e
+\begin{itemize}
+	\item separabile: perch\'e i campi di Galois sono perfetti e $\FieldAdjunction{\AlgebraicClosure{\GaloisField{p}}}{t} = \FieldAdjunction{\GaloisField{p}}{\AlgebraicClosure{\GaloisField{p}} \cup \lbrace t \rbrace}$;
+	\item infinita: perch\'e contiene $\AlgebraicClosure{\GaloisField{p}}$;
+	\item di grado separabile infinito: per il corollario precedente.
+\end{itemize}
+\par Ne consegue che l'estensione $\FieldExtension{\FieldAdjunction{\AlgebraicClosure{\GaloisField{p}}}{t}}{\FieldAdjunction{\GaloisField{p}}{t}}$, evidentemente infinita (tutte le potenze di $t$ sono indipendenti) ha grado separabile infinito. Tuttavia non \`e separabile: infatti il polinomio $x^p - t$ ammette una sola radice di molteplicit\`a $p$ in $\AlgebraicClosure{\FieldAdjunction{\GaloisField{p}}{t}}$. \EndSolution
+\begin{Theorem}
+	\TheoremName{Teorema di caratterizzazione delle estensioni puramente inseparabili}[di caratterizzazione delle estensioni puramente inseparabili][teorema] Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$ con $\Characteristic{\Field_1} = \Prime > 0$. Sono equivalenti le seguenti affermazioni:
+	\begin{itemize}
+		\item $\FieldExtension{\Field_2}{\Field_1}$ \`e puramente inseparabile;
+		\item esiste $S \subseteq \Field_2$ tale che tutti gli elementi di $S$ sono puramente inseparabili e $\Field_2 = \FieldAdjunction{\Field_1}{S}$;
+		\item $\SeparableDegree{\Field_2}{\Field_1} = 1$;
+		\item per ogni $\alpha \in \Field_2$ esiste $r \in \mathbb{N}$ tale che $\alpha^{\Prime^r} \in \Field_1$.
+	\end{itemize}
+\end{Theorem}
+\Proof La prima affermazione implica la seconda perch\'e $\Field_2 = \FieldAdjunction{\Field_1}{\Field_2}$. La seconda affermazione implica la terza perch\'e un omomorfismo relativo $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_1}$ non pu\`o che trasformare ogni generatore in $S$ in se stesso e dunque coincide con l'identit\`a. La terza affermazione implica la quarta perch\'e per ogni $\alpha \in \Field_2$ abbiamo $\SeparableDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1} | \SeparableDegree{\Field_2}{\Field_1} = 1$, da cui $\SeparableDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}$ e quindi $\MinimalPolynomial{\alpha}$ \`e puramente inseparabile e dunque della forma $x^{\Prime^r} - \alpha^{\Prime^r}$ per $r \in \mathbb{N}$ opportuno. La quarta affermazione implica la prima perch\'e per ogni $\alpha$, fissato $r \in \mathbb{N}$ tale che $\alpha^{\Prime^r} \in \Field_1$, abbiamo $\MinimalPolynomial{\alpha} | x^{\Prime^r} - \alpha^{\Prime^r}$. \EndProof
+\begin{Theorem}
+	Sia $\Field_1 \subseteq \Field_2 \subseteq \Field_3$ una torre d'estensioni. Allora
+	\begin{itemize}
+		\item $\FieldExtension{\Field_3}{\Field_1}$ \`e separabile se e solo se lo sono $\FieldExtension{\Field_2}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_2}$. In particolare, la separabilit\`a si trasferisce alle torri;
+		\item $\FieldExtension{\Field_3}{\Field_1}$ \`e puramente inseparabile se e solo se lo sono $\FieldExtension{\Field_2}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_2}$. In particolare, la pura inseparabilit\`a si trasferisce alle torri.
+	\end{itemize}
+\end{Theorem}
+\Proof Nel caso l'estensione $\FieldExtension{\Field_3}{\Field_1}$ sia finita, il teorema segue dalla moltiplicativit\`a dei gradi separabili e dall'uguaglianza dei gradi e dei gradi separabili per estensioni separabili.
+\par Vediamo il caso in cui $\FieldExtension{\Field_3}{\Field_1}$ sia infinita.
+\par Supponiamo $\FieldExtension{\Field_3}{\Field_1}$ separabile. Sia $\alpha \in \Field_3$ e $\MinimalPolynomial{\alpha}[\Field_1]$ il polinomio minimo di $\alpha$ su $\Field_1$, necessariamente separabile, e sia $\MinimalPolynomial{\alpha}[\Field_2]$ il suo polinomio minimo su $\Field_2$: per definizione di polinomio minimo, $\MinimalPolynomial{\alpha}[\Field_2]$ divide $\MinimalPolynomial{\alpha}[\Field_1]$ e dunque \`e separabile. Dunque $\FieldExtension{\Field_3}{\Field_2}$ \`e separabile. La separabilit\`a di $\FieldExtension{\Field_2}{\Field_1}$ segue direttamente da $\Field_2 \subseteq \Field_3$.
+\par Supponiamo ora $\FieldExtension{\Field_3}{\Field_2}$ e $\FieldExtension{\Field_2}{\Field_1}$ separabili. Sia $\alpha \in \Field_3$ e sia $\MinimalPolynomial{\alpha}[\Field_2]$ il polinomio minimo di $\alpha$ su $\Field_2$. Consideriamo l'insieme finito $S$ di tutti i coefficienti di $\MinimalPolynomial{\alpha}[\Field_2]$ e la torre d'estensioni $\Field_1 \subseteq \FieldAdjunction{\Field_1}{S} \subseteq \FieldAdjunction{\Field_1}{S \cup \lbrace \alpha \rbrace}$: si tratta di estensioni algebriche finite. Ora, $\FieldExtension{\FieldAdjunction{\Field_1}{S}}{\Field_1}$ \`e separabile perch\'e $\FieldAdjunction{\Field_1}{S} \subseteq \Field_2$ e $\FieldExtension{\FieldAdjunction{\Field_1}{S \cup \lbrace \alpha \rbrace}}{\FieldAdjunction{\Field_1}{S}}$ \`e anch'essa separabile perch\'e $\MinimalPolynomial{\alpha}[\Field_2] = \MinimalPolynomial{\alpha}[\FieldAdjunction{\Field_1}{S}]$.
+\par Per quanto riguarda la pura inseparabilit\`a, tutto segue direttamente dal teorema precedente e da quanto appena dimostrato per la separabilit\`a. \EndProof
+\begin{Theorem}
+	La separabilit\`a  e la pura inseparabilit\`a si trasferiscono per traslazione. 
+\end{Theorem}
+\Proof Consideriamo le torri d'estensioni $\Field_1 \subseteq \Field_2 \subseteq \FieldComposition{\Field_2}{\Field_3}$ e $\Field_1 \subseteq \Field_3 \subseteq \FieldComposition{\Field_2}{\Field_3}$ e supponiamo $\FieldExtension{\Field_2}{\Field_1}$ separabile. La separabilit\`a di $\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}{\Field_3}$ segue direttamente dal fatto che $\FieldComposition{\Field_2}{\Field_3} = \FieldExtension{\Field_3}{\Field_2}$ e dal fatto che se gli elementi di $\Field_2$ sono tutti separabili su $\Field_1$ allora lo sono anche su $\Field_3 \supseteq \Field_1$.
+\par La dimostrazione della trasferibilit\`a della pura inseparabilit\`a \`e identica \textit{mutatis mutandis}. \EndProof
+\begin{Theorem}
+	La separabilit\`a e la pura inseparabilit\`a si trasferiscono per composizione.
+\end{Theorem}
+\Proof Segue direttamente dalla trasferibilit\`a lungo le torri e per traslazione. \EndProof
+\begin{Theorem}
+	Sia l'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$ separabile. Allora \`e separabile anche $\FieldExtension{\NormalClosure{\Field_2}}{\Field_1}$.
+\end{Theorem}
+\Proof Sia $\alpha \in \NormalClosure{\Field_2}$. Poich\'e $\NormalClosure{\Field_2} = \prod_{\phi \in I} \phi(\Field_2)$, dove $I$ \`e l'insieme di tutte le immersioni di $\Field_2$ in $\AlgebraicClosure{\Field_2}$. Poich\'e le immersioni sono isomorfismi sull'immagine, ogni $\phi{\Field_2}$ \`e separabile. Abbiamo necessariamente $\alpha \in \prod_{\phi \in J} \phi{\Field_2}$ per un opportuno sottoinsieme finito $J \subseteq I$, da cui, poich\'e la separabilit\`a si trasferisce per composizione, $\alpha$ \`e separabile. \EndProof
+\begin{Theorem}
+	Data un'estensione di campo $\FieldExtension{\Field_2}{\Field_1}$, $\SeparableClosure{\Field_1}[\Field_2] = \lbrace \alpha \in \Field_2 | \alpha\text{ \`e separabile su }\Field_1 \rbrace$ \`e un campo, e dunque la massima sottoestensione separabile di $\FieldExtension{\Field_2}{\Field_1}$.
+\end{Theorem}
+\Proof Siano $\alpha, \beta \in \Field_2$ separabili: bisogna provare che $\alpha + \beta$, $\alpha\beta$, $- \beta$ e $\alpha^{-1}$ (nell'ipotesi che $\alpha \neq 0$) sono ancora separabili. Ma tutti questi elementi appartengono a $\FieldAdjunction{\Field_1}{\alpha,\beta}$, che \`e separabile in quanto separabilmente generato. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\SeparableClosure{\Field_1}[\Field_2]$ si definisce \Define{chiusura separabile}[separabile][chiusura] di $\Field_1$ in $\Field_2$, omettendo $\Field_2$ quando l'estensione \`e evidente.
+\end{Definition}
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione algebrica. Sia $\Field$ un campo tale che
+	\begin{itemize}
+		\item $\Field_1 \subseteq \Field \subseteq \Field_2$ sia una torre d'estensioni;
+		\item $\FieldExtension{\Field}{\Field_1}$ sia separabile;
+		\item $\FieldExtension{\Field_2}{\Field}$ sia puramente inseparabile.
+	\end{itemize}
+	Allora $\Field = \SeparableClosure{\Field_1}$. Inoltre
+	\begin{itemize}
+		\item $\SeparableDegree{\Field_2}{\Field_1} = \FieldDegree{\SeparableClosure{\Field_1}}{\Field_1}$;
+		\item se $\FieldExtension{\Field_2}{\Field_1}$ \`e finita, allora $\UnseparableDegree{\Field_2}{\Field_1} = \UnseparableDegree{\Field_2}{\SeparableClosure{\Field_1}}$;
+		\item se $\FieldExtension{\Field_2}{\Field_1}$ \`e normale, allora $\FieldExtension{\SeparableClosure{\Field_1}{\Field}}$ \`e normale.
+	\end{itemize}
+\end{Theorem}
+\Proof Poich\'`e $\FieldExtension{\Field}{\Field_1}$ \`e separabile, deve essere $\Field \subseteq \SeparableClosure{\Field_1}$ e $\FieldExtension{\SeparableClosure{\Field_1}}{\Field}$ \`e separabile. Ma poich\'e $\FieldExtension{\Field_2}{\Field}$ \`e puramente inseparabile, anche $\FieldExtension{\SeparableClosure{\Field_1}}{\Field}$ deve essere puramente inseparabile. Dunque $\Field = \SeparableClosure{\Field_1}$.
+\par Abbiamo $\SeparableDegree{\Field_2}{\Field_1} = \SeparableDegree{\Field_2}{\SeparableClosure{\Field_1}}\SeparableDegree{\SeparableClosure{\Field_1}}{\Field_1} = \FieldDegree{\SeparableClosure{\Field_1}}{\Field_1}$ e, se $\FieldExtension{\Field_2}{\Field_1}$ \`e finita, $\UnseparableDegree{\Field_2}{\Field_1} = \UnseparableDegree{\Field_2}{\SeparableClosure{\Field_1}}\UnseparableDegree{\SeparableClosure{\Field_1}}{\Field_1} = \UnseparableDegree{\Field_2}{\SeparableClosure{\Field_1}}$.
+\par Infine se $\alpha \in \SeparableClosure{\Field_1}$, allora $\MinimalPolynomial{\alpha}$ si spezza in fattori lineari in $\RingAdjunction{\Field_2}[x]$ i quali sono tutti distinti in virt\`u della separabilit\`a di $\alpha$. Inoltre tutte le radici coniugate ad $\alpha$ sono separabili e dunque appartengono a $\SeparableClosure{\Field_1}$. Quindi $\FieldExtension{\SeparableClosure{\Field_1}}{\Field_1}$ \`e separabile. \EndProof
+\begin{Definition}
+	Sia $\Field$ un campo di caratterstica $\Prime > 0$. Per ogni $n \in \mathbb{N}$ definiamo $\Field^{\Prime^{-n}}$ il campo di spezzamento della classe di tutti polinomi i polinomi della forma $x^{\Prime^{n}} - c \in \RingAdjunction{\Field}{x}$ con $c \in \Field$. Il campo $\PerfectClosure{\Field} = \bigcup_{n \in \mathbb{N}} \Field^{\Prime^{-n}}$ si dice \Define{chiusura perfetta}[perfetta]{chiusura} o \Define{chiusura puramente inseparabile}[puramente inseparabile][chiusura] di $\Field$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Field_1$ un campo di caratteristica $\Prime > 0$ e sia $\FieldExtension{\Field_2}{\Field_1}$ una sua estensione algebrica. Allora
+	\begin{itemize}
+		\item la chiusura perfetta $\PerfectClosure{\Field_1}$ \`e perfetta;
+		\item $\Field_1$ \`e perfetto se e solo se $\Field_1 = \PerfectClosure{\Field_1}$;
+		\item $\FieldDegree{\PerfectClosure{\Field_1}}{\Field_1} = \begin{cases} 1\text{ se }\Field_1 = \PerfectClosure{\Field_1},\\\infty\text{ altrimenti;} \end{cases}$
+		\item se $\Field_1$ \`e perfetto lo \`e anche $\Field_2$;
+		\item se $\Field_2$ \`e perfetto \`e $\FieldExtension{\Field_2}{\Field_1}$ \`e finito allora \`e perfetto anche $\Field_1$.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\alpha \in \AlgebraicClosure{\PerfectClosure{\Field_1}}$. Sia $r \geq 0$ tale che $\MinimalPolynomial{\alpha} = b + \sum_{k \in \NotZero{\mathbb{N}}} a_k x^{k{\Prime^r}} \in \RingAdjunction{\Field_1}{x}$. Per definizione di chiusura perfetta, esiste $b \in \Field_1$ tale che $b = a_0^{\Prime^r}$. Abbiamo allora $\MinimalPolynomial{\alpha} = \left ( \sum_{k \in \mathbb{N}} a_k x^k \right )^{\Prime^r}$. Per l'irriducibilit\`a di $\MinimalPolynomial{\alpha}$, necessariamente $r = 0$ e quindi $\alpha$ \`e separabile. Dunque $\PerfectClosure{\Field_1}$ \`e perfetto.
+\par \`E chiaro che se $\Field_1 = \PerfectClosure{\Field_1}$ allora $\Field_1$ \`e perfetto. D'altra parte assumiamo $\Field_1$ perfetto. Fissato $n \in \mathbb{N}$, consideriamo il polinomio $\Polynomial(x) = x^{\Prime^n} - c \in \RingAdjunction{\Field_1}{x}$ con $c \in \Field_1$. Sia $\alpha \in \AlgebraicClosure{\Field_1}$ una radice di $\Polynomial$: abbiamo $\Polynomial = x^{\Prime^n} - \alpha^{\Prime^n} = (x - \alpha)^{\Prime^n}$. Poich\'e $\Field_1$ \`e perfetto, il polinomio minimo di $\alpha$ su $\Field_1$ \`e separabile e poich\'e deve dividere $\Polynomial$ non pu\`o che essere $x - \alpha$: quindi $\alpha \in \Field_1$. Ne consegue che $\Field_1 = \PerfectClosure{\Field_1}$.
+\par Se $\Field_1 = \PerfectClosure{\Field_1}$ segue direttamente dalle definizioni che $\FieldDegree{\PerfectClosure{\Field_1}}{\Field_1} = 1$. Supponiamo $\Field_1 \neq \PerfectClosure{\Field_1}$. Allora esistono $n \in \mathbb{N}$ e $c \in \Field_1$ tali che il polinomio $\Polynomial(x) = x^{\Prime^n} - c$ sia irriducibile: sia $\alpha \in \AlgebraicClosure{\Field_1}$ l'unica radice di $\Polynomial$. Allora, per ogni $k \in \mathbb{N}$, \`e irriducibile il polinomio $x^{\Prime^{n + k}} - c \in \RingAdjunction{\Field_1}{x}$, poich\'e se ammettesse una radice $\beta$, necessariamente unica, in $\Field_1$, avremmo allora $\alpha = \beta^{\Prime^k}$ in quanto $\Polynomial(\beta^{\Prime^k}) = \beta^{{\Prime^k}^{\Prime^n}} - c = \beta^{\Prime^{n + k}} - c = 0$ e, quindi, $\alpha \in \Field_1$ contro l'ipotesi di irriducibilit\`a di $\Polynomial$. Pertanto, per ogni $k \in \mathbb{N}$, abbiamo $\FieldDegree{\PerfectClosure{\Field_1}}{\Field_1} \geq \Prime^{n + k}$.
+\par Supponiamo $\Field_1$ perfetto. Sia $\alpha \in \AlgebraicClosure{\Field_2}$. Per perfezione di $\Field_1$, il polinomio minimo $\MinimalPolynomial{\alpha}{\Field_1}$ ha tutte le radici distinte e a maggior ragione ha tutte le radici distinte $\MinimalPolynomial{\alpha}{\Field_2}$. Dunque $\alpha$ \`e separabile su $\Field_2$ e $\Field_2$ \`e perfetto.
+\par Abbiamo $\PerfectClosure{\Field_1} \subseteq \FieldComposition{\PerfectClosure{\Field_1}}{\Field_2} \subseteq \PerfectClosure{\Field_2} = \Field_2$, dunque $\FieldDegree{\PerfectClosure{\Field_1}}{\Field_1} \leq \FieldDegree{\Field_2}{\Field_1}$ e necessariamente $\FieldDegree{\PerfectClosure{\Field_1}}{\Field_1} = 1$, da cui $\Field_1 = \PerfectClosure{\Field_1}$ \`e perfetto. \EndProof
+\begin{Theorem}
+	Sia $\Field$ un campo. Sia $\Field'$ un campo tale che
+	\begin{itemize}
+		\item $\Field \subseteq \Field' \subseteq \AlgebraicClosure{\Field}$ sia una torre d'estensioni;
+		\item $\FieldExtension{\Field'}{\Field}$ sia puramente inseparabile;
+		\item $\FieldExtension{\AlgebraicClosure{\Field}}{\Field'}$ sia separabile.
+	\end{itemize}
+	Allora $\Field = \PerfectClosure{\Field_1}$.
+\end{Theorem}
+\Proof Segue direttamente dalla definizione di chiusura perfetta che $\Field' \subseteq \PerfectClosure{\Field}$.
+\par D'altra parte, se $\alpha \in \PerfectClosure{\Field} \SetMin \Field'$, allora $\alpha \in \AlgebraicClosure{\Field} \SetMin \Field'$ e $\alpha$ \`e simultaneamente separabile su $\Field'$ e puramente inseparabile su $\Field$ e dunque a maggior ragione su $\Field'$: quindi $\alpha \in \Field'$, ma questo \`e assurdo. Quindi $\Field' = \PerfectClosure{\Field}$. \EndProof
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione normale. Se $\Field$ \`e un campo tale che
+	\begin{itemize}
+		\item $\Field_1 \subseteq \Field \subseteq \Field_2$ sia una torre d'estensioni;
+		\item $\FieldExtension{\Field}{\Field_1}$ sia puramente inseparabile;
+		\item $\FieldExtension{\Field_2}{\Field}$ sia separabile.
+	\end{itemize}
+	Allora $\Field = \Fixed{\Field_2}{\RelativeAutomorphisms{\Field_2}{\Field_1}}$.
+\end{Theorem}
+\Proof Per l'ipotesi di normalit\`a, ad ogni omomorfismo relativo $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_1}$ corrisponde un automorfismo $\bar{\RelativeHomomorphism}: \Field_2 \rightarrow \Field_2$ per semplice sostituzione del codominio; viceversa ogni automorfismo di $\Field_2$ che lascia fisso $\Field_1$ diventa un omomorfismo relativo sostiuendone il codominio con $\AlgebraicClosure{\Field_1}$.
+\par Abbiamo chiaramente $\Field_1 \subseteq \Field \subseteq \Field_2$. Inoltre
+\begin{itemize}
+	\item $\FieldExtension{\Field}{\Field_1}$ \`e puramente inseparabile perch\'e ogni omomorfismo relativo $\RelativeHomomorphism: \Field \rightarrow \AlgebraicClosure{\Field_1}$ pu\`o essere esteso ad un omomorfismo relativo da $\Field_2$ in $\AlgebraicClosure{\Field_1}$, il quale corrisponde ad un automorfismo in $\RelativeAutomorphisms{\Field_2}{\Field_1}$ che lascia fisso ogni punto di $\Field$;
+	\item $\FieldExtension{\Field_2}{\Field}$ \`e separabile: consideriamo l'azione di $A$ su $\Field_2$ e sia $\alpha \in \Field_2$. L'orbita di $\alpha$ \`e naturalmente finita. Sia $\Polynomial = \prod_{\bar{\RelativeHomomorphism} \in A} (x - \bar{\RelativeHomomorphism}(\alpha))$: poich\'e per ogni $\tau \in A$ l'applicazione che ad ogni $\bar{\RelativeHomomorphism} \in A$ associa $\tau\bar{\RelativeHomomorphism}$ \`e iniettiva, allora applicando $\tau$ ai coefficienti di $\Polynomial$ -- o equivalentemente ai termini $\bar{\RelativeHomomorphism}(\alpha)$ -- si ottiene lo stesso polinomio $\Polynomial$, quindi $\Polynomial \in \RingAdjunction{\Field}{x}$. Inoltre, per costruzione $\Polynomial$ \`e un polinomio separabile avente $\alpha$ per radice, dunque $\alpha$ \`e separabile su $\Field$;
+	\item $\Field$ \`e l'unico campo che verifica le tre propriet\`a del teorema: supponiamo infatti esista un altro campo $\Field'$ che verifica le stesse propriet\`a. Poich\'e $\Field'$ \`e puramente inseparabile, necessariamente $\Field' \subseteq \Field$ per definizione di $\Field$, da cui $\FieldExtension{\Field}{\Field'}$ \`e puramente inseparabile. Poich\'e inoltre $\FieldExtension{\Field_2}{\Field'}$ \`e separabile, allora \`e separabile anche $\FieldExtension{\Field}{\Field'}$. Quindi $\Field' = \Field$. \EndProof
+\end{itemize}
+\begin{Exercice}
+	Trovare un'estensione $\FieldExtension{\Field_2}{\Field_1}$ per cui non esista nessun campo $\Field$ tale che
+	\begin{itemize}
+		\item $\Field_1 \subseteq \Field \subseteq \Field_2$ sia una torre d'estensioni;
+		\item $\FieldExtension{\Field}{\Field_1}$ sia puramente inseparabile;
+		\item $\FieldExtension{\Field_2}{\Field}$ sia separabile.
+	\end{itemize}
+\end{Exercice}
+\Solution Poniamo $\Field_1 = \FieldAdjunction{\GaloisField{2}}{x,y}$ e $\Field_2 = \FieldAdjunction{\Field_1}{\alpha}$ dove $\alpha$ \`e una radice del polinomio $\Polynomial = t^4 + xt^2 + y \in \RingAdjunction{\RingAdjunction{\GaloisField{2}}{x,y}}{t}$. L'ideale $\SpanIdeal{x,y}$ \`e primo in $\RingAdjunction{\GaloisField{2}}{x,y}$ e ne consegue per il criterio di Eisenstein che $\Polynomial$ \`e primo. Dunque $\FieldDegree{\Field_2}{\Field_1} = 4$.
+\par Inoltre $\Polynomial = \Polynomial_0(t^2)$, dove $\Polynomial_0(t) = t^2 + xt + y$, da cui $\UnseparableDegree{\Field_2}{\Field_1} = 2$, da cui $\FieldExtension{\SeparableClosure{\Field_1}}{\Field_1}$ \`e normale.
+\par D'altra parte, abbiamo $\Polynomial = (t - \alpha)^2(t - \beta^2)$ per opportuno $\beta \in \AlgebraicClosure{\Field_1}$. Supponiamo $\FieldExtension{\Field_2}{\Field_1}$ normale. Allora $\alpha^2\beta^2 = y$ e $\alpha^2 + \beta^2 = (\alpha + \beta)^2 = x$, da cui $\alpha\beta = \sqrt{y}$ e $\alpha + \beta = \sqrt{x}$. Pertanto, poich\'e per normalit\`a $\beta \in \Field_2$, anche $\sqrt{x}, \sqrt{y} \in \Field_2$ e dunque $\UnseparableDegree{\FieldAdjunction{\Field_1}{\sqrt{x}}}{\Field_1} = \UnseparableDegree{\FieldAdjunction{\Field_1}{\sqrt{x},\sqrt{y}}}{\FieldAdjunction{\Field_1}{\sqrt{x}}} = 2$, da cui $\UnseparableDegree{\FieldAdjunction{\Field_1}{\sqrt{x},\sqrt{y}}}{\Field_1} = 4$, ma questo \`e assurdo, dunque $\FieldExtension{\Field_2}{\Field_1}$ non \`e normale. \EndProof
+\\\Solution Supponiamo che il campo $\Field$ dell'enunciato esista. Abbiamo allora le seguenti torri d'estensioni:
+\begin{itemize}
+	\item $\Field \subseteq \FieldComposition{\Field}{\SeparableClosure{\Field_1}} \subseteq \Field_2$,
+	\item $\Field_1 \subseteq \FieldComposition{\Field}{\SeparableClosure{\Field_1}} \subseteq \Field_2$;
+\end{itemize}
+ne deduciamo che $\FieldExtension{\Field_2}{\FieldComposition{\Field}{\SeparableClosure{\Field_1}}}$ \`e simultaneamente puramente inseparabile e separabile, e dunque che $\Field_2 = \FieldComposition{\Field}{\SeparableClosure{\Field_1}}$. Ora, poich\'e $\FieldExtension{\SeparableClosure{\Field_1}}{\Field_1}$ \`e normale, allora \`e normale anche $\FieldExtension{\Field_2}{\Field_1}$ perch\'e la normalit\`a si trasferisce per composizione, ma questo \`e assurdo. Dunque il campo $\Field$ non esiste. \EndSolution
+\begin{Definition}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. Si dice che $\Field_2$ \`e una \Define{chiusura algebrica separabile}[algebrica separabile][chiusura] di $\Field_1$ quando $\FieldExtension{\Field_2}{\Field_1}$ \`e un'estensione algebrica separabile tale che ogni polinomio separabile a coefficienti in $\Field_2$ ammetta una radice in $\Field_2$ (o, equivalentemente per il teorema di Ruffini, tutte le radici appertengono a $\Field_2$). Determinata una chiusura algebrica separabile di un campo $\Field$, essa si denota con $\SeparableAlgebraicClosure{\Field}$.
+\end{Definition}
+\begin{Definition}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. Si dice che $\Field_2$ \`e una \Define{chiusura algebrica puramente inseparabile}[algebrica puramente inseparabile][chiusura] di $\Field_1$ quando $\FieldExtension{\Field_2}{\Field_1}$ \`e un'estensione algebrica puramente inseparabile tale che ogni polinomio puramente inseparabile a coefficienti in $\Field_2$ ha la sua unica radice in $\Field_2$. Determinata una chiusura algebrica separabile di un campo $\Field$, essa si denota con $\UnseparableAlgebraicClosure{\Field}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Field$ un campo. La chiusura algebrica separabile $\SeparableAlgebraicClosure{\Field}$ di $\Field$ coincide con la chiusura separabile di $\Field$ in $\AlgebraicClosure{\Field}$.
+\end{Theorem}
+\Proof Per semplicit\`a notazionale indichiamo con $\Field_1$ la chiusura algebrica separabile di $\Field$ e con $\Field_2$ la chiusura separabile di $\Field$ in $\AlgebraicClosure{\Field}$.
+\par $\Field_1$ \`e separabile, quindi \`e un sottocampo di $\Field_2$.
+\par D'altra parte, sia $\alpha \in \AlgebraicClosure{\Field}$ separabile su $\Field$: ci\`o significa che il polinomio minimo di $\alpha$ su $\Field$ \`e separabile. Ma $\MinimalPolynomial{\alpha}(x) \in \RingAdjunction{\Field_1}{x}$, dunque tutte le radici di $\MinimalPolynomial{\alpha}$ appartengono a $\Field_1$, inclusa $\alpha$. \EndProof
+\begin{Theorem}
+	Sia $\Field$ un campo. La chiusura algebrica puramente inseparabile $\UnseparableAlgebraicClosure{\Field}$ di $\Field$ coincide con la chiusura puramente inseparabile di $\Field$.
+\end{Theorem}
+\Proof Per semplicit\`a notazionale indichiamo con $\Field_1$ la chiusura algebrica puramente inseparabile di $\Field$ e con $\Field_2$ la chiusura perfetta di $\Field$.
+\par $\Field_1$ \`e puramente inseparabile, quindi \`e un sottocampo di $\Field_2$.
+\par D'altra parte, sia $\alpha \in \AlgebraicClosure{\Field}$ puramente inseparabile su $\Field$: ci\`o significa che il polinomio minimo di $\alpha$ su $\Field$ \`e puramente inseparabile. Ma $\MinimalPolynomial{\alpha}(x) \in \RingAdjunction{\Field_1}{x}$, dunque l'unica radice $\alpha$ di $\MinimalPolynomial{\alpha}$ appartiene a $\Field_1$. \EndProof
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campi con $\Characteristic{\Field_1} = \Prime$. Sia $\alpha \in \Field_2$ algebrico. $\alpha$ \`e separabile su $\Field_1$ se e solo se $\FieldAdjunction{\Field_1}{\alpha} = \FieldAdjunction{\Field_1}{\alpha^\Prime}$.
+\end{Theorem}
+\Proof \`E immediato vedere che in ogni caso $\FieldAdjunction{\Field_1}{\alpha^\Prime} \subseteq \FieldAdjunction{\Field_1}{\alpha}$.
+\par Supponiamo $\alpha$ separabile su $\Field_1$. Consideriamo il polinomio $\Polynomial(x) = x^\Prime - \alpha^\Prime = (x - \alpha)^\Prime \in \RingAdjunction{\FieldAdjunction{\Field_1}{\alpha_\Prime}}{x}$: esso ha $\alpha$ per unica radice; ne deduciamo che $\MinimalPolynomial{\alpha}[\FieldAdjunction{\Field_1}{\alpha^\Prime}]$ divide $\Polynomial$. Ma poich\'e $\alpha$ \`e separabile su $\Field_1$, lo \`e a maggior ragione su $\FieldAdjunction{\Field_1}{\alpha^\Prime}$ e dunque $\MinimalPolynomial{\alpha}[\FieldAdjunction{\Field_1}{\alpha^\Prime}] = x - \alpha$, da cui $\alpha \in \FieldAdjunction{\Field_1}{\alpha_\Prime}$.
+\par Supponiamo ora viceversa che $\FieldAdjunction{\Field_1}{\alpha} = \FieldAdjunction{\Field_1}{\alpha^\Prime}$ e proviamo che $\alpha$ \`e separabile su $\Field_1$. Supponiamo $\alpha$ non separabile. Allora il polinomio minimo di $\alpha$ \`e della forma $\MinimalPolynomial{\alpha}(x) = \Polynomial(x^{\Prime^r})$, dove $\Polynomial \in \RingAdjunction{\Field_1}{x}$ \`e irriducibile e $r > 0$. Abbiamo allora $\FieldAdjunction{\Field_1}{\alpha} = \PolynomialDegree{\MinimalPolynomial{\alpha}} = \PolynomialDegree{\Polynomial} \Prime^r$, ma anche, poich\'e $\Polynomial(x^{\Prime^{r - 1}})$ \`e polinomio minimo di $\alpha^\Prime$, $\FieldAdjunction{\Field_1}{\alpha} = \FieldAdjunction{\Field_1}{\alpha^{\Prime^r}} = \PolynomialDegree{\Polynomial(x^{\Prime^{r - 1}})} = \PolynomialDegree{\Polynomial} \Prime^{r - 1}$. Pertanto $\alpha$ deve essere separabile. \EndProof
+\begin{Theorem}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$ un'estensione di campi. Siano $\alpha, \beta \in \Field_2$ tali che
+	\begin{itemize}
+		\item $\alpha$ sia separabile;
+		\item $\beta$ sia puramente inseparabile.
+	\end{itemize}
+	Abbiamo $\FieldAdjunction{\Field_1}{\alpha,\beta} = \FieldAdjunction{\Field_1}{\alpha + \beta} = \FieldAdjunction{\Field_1}{\alpha\beta}$.
+\end{Theorem}
+\Proof L'esistenza di un elemento puramente inseparabile implica $\Characteristic{\Field_1} = \Prime > 0$. L'esercizio precedente prova che, per ogni $r \in \mathbb{N}$, $\FieldAdjunction{\Field_1}{\alpha^{\Prime^r}} \in \FieldAdjunction{\Field_1}{\alpha}$. Inoltre, poich\'e $\beta$ \`e puramente inseparabile, esiste $k \in \mathbb{N}$ tale che $\beta^{\Prime^k} \in \Field_1$.
+\par Abbiamo dunque $(\alpha\beta)^{\Prime^k} \in \FieldAdjunction{\Field_1}{\alpha\beta}$, da cui $\alpha^{\Prime^k} = \frac{(\alpha\beta)^{\Prime^k}}{\beta^{\Prime^k}} \in \FieldAdjunction{\Field_1}{\alpha\beta}$ e pertanto $\FieldAdjunction{\Field_1}{\alpha} = \FieldAdjunction{\Field_1}{\alpha^{\Prime^k}} \subseteq \FieldAdjunction{\Field_1}{\alpha\beta}$. Infine quindi $\FieldAdjunction{\Field_1}{\alpha\beta} = \FieldAdjunction{\Field_1}{\alpha, \beta}$.
+\par La dimostrazione della relazione $\FieldAdjunction{\Field_1}{\alpha + \beta} = \FieldAdjunction{\Field_1}{\alpha, \beta}$ \`e del tutto analoga. \EndProof
+\\\Proof Offriamo una seconda soluzione. Estendiamo ogni omomorfismo relativo $\RelativeHomomorphism: \FieldAdjunction{\Field_1}{\alpha} \rightarrow \AlgebraicClosure{\Field_1}$ ad un omomorfismo relativo $\tilde{\RelativeHomomorphism}: \FieldAdjunction{\Field_1}{\alpha,\beta} \rightarrow \AlgebraicClosure{\FieldAdjunction{\Field_1}{\beta}} = \AlgebraicClosure{\Field_1}$. Tutte le estensioni cos\`i ottenute sono distinte su $\FieldAdjunction{\Field_1}{\alpha + \beta}$, infatti, estendendo due omomorfismi relativi $\RelativeHomomorphism_1$ e $\RelativeHomomorphism_2$ abbiamo $\tilde{\RelativeHomomorphism_1}(\alpha + \beta) = \RelativeHomomorphism_1{\alpha} + \beta$ e $\tilde{\RelativeHomomorphism_2}(\alpha + \beta) = \RelativeHomomorphism_2{\alpha} + \beta$ e dunque $\tilde{\RelativeHomomorphism_1}(\alpha + \beta) = \tilde{\RelativeHomomorphism_2}(\alpha + \beta)$ implica $\RelativeHomomorphism_1(\alpha) = \RelativeHomomorphism_2(\alpha)$ e quindi $\RelativeHomomorphism_1 = \RelativeHomomorphism_2$.
+\par Pertanto $\SeparableDegree{\FieldAdjunction{\Field_1}{\alpha + \beta}}{\Field_1} \geq \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha + \beta}}{\FieldAdjunction{\Field_1}{\beta}} \geq \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1} = \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha, \beta}}{\Field_1} \geq \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha + \beta}}{\Field_1}$ e quindi $\SeparableDegree{\FieldAdjunction{\Field_1}{\alpha + \beta}}{\Field_1} = \SeparableDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}$, da cui $\alpha \in \FieldAdjunction{\Field_1}{\alpha + \beta}$ e quindi infine $\FieldAdjunction{\Field_1}{\alpha, \beta} = \FieldAdjunction{\Field_1}{\alpha + \beta}$. La dimostrazione dell'uguaglianza $\FieldAdjunction{\Field_1}{\alpha, \beta} = \FieldAdjunction{\Field_1}{\alpha\beta}$ \`e analoga. \EndProof
+\\\Proof Una terza soluzione consiste nell'osservare che la separabilit\`a di $\FieldExtension{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}$ e la pura inseparabilit\`a di $\FieldExtension{\FieldAdjunction{\Field_1}{\beta}}{\Field_1}$ si trasferiscono entrambe per traslazione sia a $\FieldExtension{\FieldAdjunction{\Field_1}{\alpha,\beta}}{\FieldAdjunction{\Field_1}{\alpha\beta}}$ che a $\FieldExtension{\FieldAdjunction{\Field_1}{\alpha,\beta}}{\FieldAdjunction{\Field_1}{\alpha + \beta}}$, da cui la tesi. \EndSolution
+\begin{Theorem}
+	Sia $\Field$ un campo tale che $\Characteristic{\Field} = \Prime > 0$. L'endomorfismo di Frobenius $\Frobenius: \Field \rightarrow \Field$ \`e un automorfismo se e solo se $\Field$ \`e perfetto.
+\end{Theorem}
+\Proof \`E sufficiente provare che $\Frobenius$ \`e surgettivo se e solo se $\Field$ \`e perfetto.
+\par Supponiamo $\Frobenius$ surgettivo. Sia $\alpha \in \AlgebraicClosure{\Field}$. Sia $r \geq 0$ tale che $\MinimalPolynomial{\alpha} = b + \sum_{k \in \NotZero{\mathbb{N}}} a_k x^{k{\Prime^r}} \in \RingAdjunction{\Field}{x}$. Per la surgettivit\`a di $\Frobenius$, esiste $b \in \Field$ tale che $b = a_0^{\Prime^r}$. Abbiamo allora $\MinimalPolynomial{\alpha} = \left ( \sum_{k \in \mathbb{N}} a_k x^k \right )^{\Prime^r}$. Per l'irriducibilit\`a di $\MinimalPolynomial{\alpha}$, necessariamente $r = 0$ e quindi $\alpha$ \`e separabile.
+\par Suppponiamo ora invece che $\Field$ sia perfetto. Sia $\alpha \in \Field$ e sia $\Polynomial = x^\Prime - \alpha \in \RingAdjunction{\Field}{x}$. Sia $\beta \in \AlgebraicClosure{\Field}$ radice di $\Polynomial$. Abbiamo allora $\Polynomial = x^\Prime - \beta^\Prime = (x - \beta)^\Prime$: ne deduciamo, per la perfezione di $\Field$, che $\MinimalPolynomial{\beta} = x - \beta$ e dunque che $\beta \in \Field$. \EndProof

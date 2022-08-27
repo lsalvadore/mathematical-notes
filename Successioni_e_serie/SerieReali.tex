@@ -1,0 +1,50 @@
+\section{Serie reali.}\label{SerieReali}
+\begin{Definition}
+	$\sum_{n = 1}^\infty \frac{1}{n(n + 1)}$ si chiama \Define{serie di Mengoli}[di Mengoli][serie].
+\end{Definition}
+\begin{Theorem}
+	La serie di Mengoli \`e una serie telescopica convergente a $1$.
+\end{Theorem}
+\Proof Abbiamo $\frac{1}{n(n + 1)} = \frac{1}{n} - \frac{1}{n + 1}$. Abbiamo pertanto, per ogni $N \in \mathbb{N}$ tale che $N > 2$, $\sum_{n = 1}^N \frac{1}{n(n + 1)} = 1 - \frac{1}{N + 1}$; quindi $\sum_{n = 0}^N \frac{1}{n(n + 1)} = 1$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{serie armonica}[armonica][serie] la serie $\sum_{n \in \NotZero{\mathbb{N}}} n^{-1}$. Fissato $\alpha > 0$, chiamiamo \Define{serie armonica generalizzata}[armonica generalizzata][serie] la serie $\sum_{n \in \NotZero{\mathbb{N}}} n^{-\alpha}$.
+\end{Definition}
+\begin{Theorem}
+	La serie armonica \`e divergente.
+\end{Theorem}
+\Proof Fissiamo $N \in \NotZero{\mathbb{N}}$. Abbiamo $\sum_{n = 1}^{2N} n^{-1} - \sum_{n = 1}^N n^{-1} = \sum_{n = N + 1}^{2N} n^{-1} \geq N (2N)^{-1} = 2^{-1}$. Quindi la serie diverge per il criterio di convergenza di Cauchy. \EndProof
+\begin{Theorem}
+	\TheoremName{Criterio del confronto} Siano $\sum_{i \in \mathbb{N}} a_i$ e $\sum_{i \in \mathbb{N}} b_n$ serie reali a termini positivi o nulli tali che $\ForAll{i \in \mathbb{N}}{a_i \leq b_i}$. Abbiamo
+	\begin{itemize}
+		\item se $\sum_{i \in \mathbb{N}} b_i$ converge, allora converge anche $\sum_{i \in \mathbb{N}} a_i$;
+		\item se $\sum_{i \in \mathbb{N}} a_i$ diverge, allora diverge anche $\sum_{i \in \mathbb{N}} b_i$.
+	\end{itemize}
+\end{Theorem}
+\Proof Supponiamo $\sum_{i \in \mathbb{N}} b_i$ converga a $B$. Allora, per ogni $N \in \mathbb{N}$, $\sum_{i \in N} a_i \leq \sum_{i \in N} b_i \leq B$. Dunque la successione delle somme parziali della serie $\sum_{i \in \mathbb{N}} a_i$ \`e crescente e limitata, e pertanto convergente.
+\par La seconda affermazione \`e equivalente alla prima. \EndProof
+\begin{Theorem}
+	La serie armonica generalizzata $\sum_{n = 1}^\infty n^{-\alpha}$ \`e
+	\begin{itemize}
+		\item convergente per $\alpha > 1$;
+		\item divergente per $\alpha \leq 1$.
+	\end{itemize}
+\end{Theorem}
+\Proof Il risultato \`e gi\`a stato dimostrato per $\alpha = 1$.
+\par Assumiamo $\alpha < 1$. Per ogni $n \in \NotZero{\mathbb{N}}$, abbiamo $n^{-\alpha} > n^{-1}$, da cui la divergenza di $\sum_{n = 1}^\infty n^{-\alpha}$ per il criterio del confronto.
+\par Assumiamo $\alpha = 2$. Abbiamo, per ogni $n \in \mathbb{N}$ tale che $n \geq 2$, $\frac{1}{n^2} \leq \frac{1}{n(n - 1)}$. Quindi, per il criterio del confronto con la serie di Mengoli, $\sum_{n = 2}^\infty n^{-2}$ e dunque anche $\sum_{n = 1}^\infty n^{-2}$ converge.
+\par Assumiamo adesso $\alpha > 2$. Per ogni $n \in \NotZero{\mathbb{N}}$, abbiamo $n^{- alpha} \leq n^{- 2}$ e quindi, per il criterio del confronto, $\sum_{n = 1}^\infty a^{-alpha}$ converge.
+\begin{Theorem}
+	\TheoremName{Criterio del rapporto} Sia $\sum_{i \in \mathbb{N}} a_i$ una serie a termini positivi. Se esistono $\lambda < 1$ e $N \in \mathbb{N}$ tali che $\Implies{i > N}{\frac{a_{i + 1}}{a_i} \leq \lambda}$, allora $\sum_{i \in \mathbb{N}} a_i$ converge.
+\end{Theorem}
+\Proof Siano $\lambda$ e $N$ come nelle ipotesi del teorema. Abbiamo, per $i > N$, $a_i = a_i \prod_{k = N}^{i - 1}\frac{a_{i + 1}}{a_i} \leq a_N \lambda^{i - N}$, che converge per il criterio del confronto con la serie armonica generalizzata. \EndProof
+\begin{Theorem}
+	\TheoremName{Criterio del confronto asintotico} Siano $\sum_{i \in \mathbb{N}} a_i$ una serie reale a termini non negativi e $\sum_{i \in \mathbb{N}} b_i$ una serie reale a termini positivi. Abbiamo
+	\begin{itemize}
+		\item se $\sum_{i \in \mathbb{N}} b_i$ converge e $(a_ib_i^{-1})_{i \in \mathbb{N}}$ converge, allora $\sum_{i \in \mathbb{N}} a_i$ converge;
+		\item se $\sum_{i \in \mathbb{N}} b_i$ diverge e $(a_ib_i^{-1})_{i \in \mathbb{N}}$ converge a un limite strettamente positivo o diverge, allora $\sum_{i \in \mathbb{N}} a_i$ diverge.
+	\end{itemize}
+\end{Theorem}
+\Proof Assumiamo che $(a_ib_i^{-1})_{i \in \mathbb{N}}$ converga e poniamo $L = \lim_{i \rightarrow \infty} a_ib_i^{-1}$.
+\par Se $L \neq 0$, fissiamo $\epsilon \in ]0,L[$. Per $N \in \mathbb{N}$ opportuno, abbiamo, per ogni intero $i > N$, $\AbsoluteValue{a_ib_i^{-1} - L} < \epsilon$, equivalente a $(L - \epsilon)b_i < a_i < (L + \epsilon)b_i$. Ora, se $\sum_{i \in mathbb{N}} b_i$ converge, allora converge anche $\sum_{i \in \mathbb{N}} (L + \epsilon)b_i$ e quindi, per il criterio del confronto anche $\sum_{i \in \mathbb{N}} a_i$. Se invece $\sum_{i \in \mathbb{N}} b_i$ diverge, allora diverge anche $\sum_{i \in \mathbb{N}} (L - \epsilon)b_i$ e quindi, per il criterio del confronto, anche $\sum_{i \in \mathbb{N}} a_i$.
+\par Se invece $L = 0$, allora, fissato $\epsilon > 0$, esiste $N \in \mathbb{N}$ tale che per ogni $i > N$ abbiamo $a_ib_i^{-1} < \epsilon$, equivalente a $a_i < b_i \epsilon$. Dunque, se $\sum_{i \in \mathbb{N}} b_i$ convervge, la serie $\sum_{i = N + 1}^\infty a_i$ converge per il criterio del confronto e quindi anche $\sum_{i \in \mathbb{N}} a_i$.
+\par Infine, se $(a_ib_i^{-1})_{i \in \mathbb{N}}$ diverge, allora, fissato $M > 0$, esiste $N \in \mathbb{N}$ tale che per ogni $i > N$ abbiamo $a_ib_i^{-1} > M$, equivalente a $a_i > b_iM$. Dunque, se $\sum_{i \in \mathbb{N}} b_i$ diverge, la serie $\sum_{i = N + 1}^\infty a_i$ diverge per il criterio del confronto e quindi anche $\sum_{i \in \mathbb{N}} a_i$.\EndProof

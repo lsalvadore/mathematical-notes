@@ -1,0 +1,171 @@
+\section{Definizioni e teoremi di base.}
+\label{Integrali_DefinizioniETeoremiDiBase}
+\begin{Theorem}
+\label{Misura_th_ApplicazioneCaratteristica}
+  Siano
+  \begin{itemize}
+    \item $(\MeasureSpace,\SigmaAlgebra,\Measure)$ uno spazio di misura;
+    \item $\MeasurablePart \in \SigmaAlgebra$;
+    \item $\CharacteristicApplication{\MeasurablePart}:
+      \MeasurableSpace \rightarrow \mathbb{R}$
+      l'applicazione caratteristica
+      di $\MeasurablePart$;
+    \item $c \in \mathbb{R}$.
+  \end{itemize}
+  L'applicazione $c \CharacteristicApplication{\MeasurablePart}$ \`e misurabile.
+\end{Theorem}
+\Proof Se $c = 0$, allora $c \CharacteristicApplication{\MeasurablePart}$ \`e
+costante e dunque misurabile.
+\par Assumiamo $c \neq 0$ e sia $\VarMeasurablePart \subseteq \mathbb{R}$
+misurabile.
+\par Ora,
+\begin{itemize}
+  \item se $0, c \notin \VarMeasurablePart$, allora
+    $\CharacteristicApplication{\MeasurablePart}^{-1} (\VarMeasurablePart)
+    = \emptyset \in \SigmaAlgebra$;
+  \item se $0 \notin \VarMeasurablePart$ e $c \in \VarMeasurablePart$, allora
+    $\CharacteristicApplication{\MeasurablePart}^{-1} (\VarMeasurablePart)
+    = \MeasurablePart \in \SigmaAlgebra$;
+  \item se $0 \in \VarMeasurablePart$ e $c \notin \VarMeasurablePart$, allora
+    $\CharacteristicApplication{\MeasurablePart}^{-1} (\VarMeasurablePart)
+    = \Complement{\MeasurablePart} \in \SigmaAlgebra$;
+  \item se $0, c \in \VarMeasurablePart$, allora
+    $\CharacteristicApplication{\MeasurablePart}^{-1} (\VarMeasurablePart)
+    = \MeasureSpace \in \SigmaAlgebra$. \EndProof
+\end{itemize}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $(\MeasureSpace,\SigmaAlgebra,\Measure)$ uno spazio di misura;
+    \item $\MeasurablePart \in \SigmaAlgebra$.
+  \end{itemize}
+  L'\Define{integrale}[di un'applicazione caratteristica][integrale]
+  dell'applicazione caratteristica
+  $\CharacteristicApplication{\MeasurablePart}:
+  \MeasurableSpace \rightarrow \mathbb{R}$
+  di $\MeasurablePart$, denotato
+  $\int \CharacteristicApplication{\MeasurablePart} d\Measure$, \`e 
+  $\int \CharacteristicApplication{\MeasurablePart} d\Measure
+  = \Measure(\MeasurablePart)$.
+\end{Definition}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $(\MeasureSpace,\SigmaAlgebra,\Measure)$ uno spazio di misura;
+    \item $N \in \mathbb{N}$;
+    \item $(\MeasurablePart_n)_{n \in N} \in \SigmaAlgebra^N$;
+    \item $(\Scalar_n)_{n \in N} \in (\NotZero{\mathbb{C}})^N$
+    \item $\MeasurableApplication
+      = \sum_{n \in N} \Scalar_n\CharacteristicApplication{\MeasurablePart_n}$.
+  \end{itemize}
+  Diciamo che $\MeasurableApplication$ \`e
+  un'\Define{applicazione semplice}[semplice][applicazione]
+  o
+  una \Define{funzione semplice}[semplice][funzione].
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni della definizione precedente,
+  assumendo $\MeasurableApplication$ reale,
+  l'applicazione semplice
+  $\MeasurableApplication$ \`e misurabile.
+\end{Theorem}
+\Proof Per ogni $c \in \Image{\MeasurableApplication}$, definiamo
+$S_c
+= \lbrace X \in \PowerSet{N} | \sum_{n \in N} \Scalar_n = c \rbrace$.
+\par Sia $\VarMeasurablePart \in \LebesgueSigmaAlgebra$.
+\par Abbiamo
+\begin{align*}
+  \MeasurableApplication^{-1}(\VarMeasurablePart)
+  &= \MeasurableApplication^{-1}
+    \left ( \VarMeasurablePart \cap \Image{\MeasurableApplication} \right ),\\
+  &= \MeasurableApplication^{-1}
+    \left ( \bigcup_{c \in \VarMeasurablePart \cap \Image{\MeasurableApplication}}
+    \lbrace c \rbrace \right ),\\
+  &= \bigcup_{c \in \VarMeasurablePart \cap \Image{\MeasurableApplication}}
+    \MeasurableApplication^{-1}(\lbrace c \rbrace).
+\end{align*}
+\par Basta dunque provare
+\[
+  \ForAll{c \in \Image{\MeasurableApplication}}
+  {\MeasurableApplication^{-1}(c) \in \SigmaAlgebra}.
+\]
+\par Abbiamo
+$\MeasurableApplication^{-1}(\lbrace c \rbrace)
+= \bigcup_{X \in S_C} \bigcap_{n \in X} \MeasurablePart_n \in \SigmaAlgebra$.
+\EndProof
+\begin{Theorem}
+  Con le notazioni della definizione precedente,
+  assumendo $\MeasurableApplication$ reale,
+  se
+  \begin{itemize}
+    \item $M \in \mathbb{N}$;
+    \item $(\VarMeasurablePart_m)_{m \in M} \in \SigmaAlgebra^M$;
+    \item $(\VarScalar_m)_{m \in M} \in (\NotZero{\mathbb{R}})^M$;
+    \item $\MeasurableApplication
+      = \sum_{m \in M}
+        \VarScalar_m\CharacteristicApplication{\VarMeasurablePart_m}$,
+  \end{itemize}
+  allora
+  $\sum_{n \in N} \Scalar_n \Measure{\MeasurablePart_n}
+    = \sum_{m \in M} \VarScalar_m \Measure{\VarMeasurablePart_m}$.
+\end{Theorem}
+\Proof Procediamo per doppia induzione su $N$ e $M$.
+\par Siano $N = M = 1$.
+\par Abbiamo 
+\begin{align*}
+  \MeasurableApplication
+  &= \Scalar_0 \CharacteristicApplication{\MeasurablePart_0},
+  &= \VarScalar_0 \CharacteristicApplication{\VarMeasurablePart_0},
+\end{align*}
+da cui
+\begin{align*}
+  \Image{\MeasurableApplication}
+  &= \lbrace \Scalar_0 \rbrace,
+  &= \lbrace \VarScalar_0 \rbrace,
+\end{align*}
+e quindi $\Scalar_0 = \VarScalar_0$.
+\par Abbiamo inoltre
+\begin{align*}
+  \MeasurableApplication^{-1}(\Scalar_0)
+  &= \MeasurablePart_0,\\
+  &= \VarMeasurablePart_0.
+\end{align*}
+Dunque
+$\MeasurablePart_0 = \VarMeasurablePart_0$
+e infine
+$\Scalar_0 \Measure{\MeasurablePart_0}
+= \VarScalar_0 \Measure{\VarMeasurablePart_0}$.
+%INCOMPLETA
+\begin{Definition}
+  Con le notazioni della definizione precedente,
+  assumendo $\MeasurableApplication$ reale,
+  l'\Define{integrale}[di un'applicazione semplice][integrale]
+  dell'applicazione semplice 
+  $\MeasurableApplication$
+  $\int \MeasurableApplication d\Measure$, \`e 
+  $\int \MeasurableApplication d\Measure
+    = \sum_{n \in N} \Scalar_n
+      \int \CharacteristicApplication{\MeasurablePart_n}d\Measure
+    = \sum_{n \in N} \Scalar_n \MeasurablePart_n$.
+\end{Definition}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $(\MeasureSpace,\SigmaAlgebra,\Measure)$ uno spazio di misura;
+    \item $(\VarMeasureSpace,\VarSigmaAlgebra)$ uno spazio misurabile;
+    \item $\MeasurableApplication: \MeasureSpace \rightarrow \VarMeasureSpace$
+      un'applicazione misurabile;
+    \item $\VarMeasure$ la misura immagine di $\Measure$ tramite
+      $\MeasurableApplication$;
+    \item $\VarMeasurableApplication:
+      \VarMeasureSpace \rightarrow \mathbb{R}$
+      un'applicazione misurabile.
+  \end{itemize}
+  $\VarMeasurableApplication$ \`e integrabile rispetto a
+  $\VarMeasure$ se e solo se
+  $\VarMeasurableApplication \circ \MeasurableApplication$
+  \`e integrabile rispetto a
+  $\Measure$ e in tal caso vale
+  $\int \VarMeasurableApplication d\VarMeasure
+    = \int (\VarMeasurableApplication \circ \MeasurableApplication)  d\Measure$.
+\end{Theorem}

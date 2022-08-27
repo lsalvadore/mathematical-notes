@@ -1,0 +1,78 @@
+\subsection{Teoria di Zermelo e Fraenkel (ZF).}\label{ZFC}
+\par La teoria di Zermelo e Fraenkel \`e la teoria degli insiemi di riferimento per ragioni storiche e didattiche, sebbene la nascita della teoria delle categorie abbia contribuito a rendere pi\`u popolare quella di von Neumann, Bernays e G\"odel. Si tratta di una teoria del primo ordine con uguaglianza che prevede solo il concetto di insieme, e non quello di classe: \`e sempre possibile parlare di classi, ma ci\`o deve essere fatto utilizzando complicate perifrasi il cui senso \`e ``tali termini non possono costituire un insieme'' (e dunque costituiscono una classe in NBG).
+\par Come vedremo, molti assiomi sono comuni con le teorie precedenti, eventualmente restringendone la portata agli insiemi: per maggior chiarezza, riporteremo comunque esplicitamente tutti gli assiomi e le definizioni necessarie.
+\begin{Definition}
+	Ogni termine della teoria si chiama \Define{insieme}. Quando vale la relazione $\Set_1 \in \Set_2$ diciamo che l'insieme $\Set_1$ \Define{appartiene}[appartenenza] all'insieme $\Set_2$, che $\Set_1$ \`e \Define{elemento} di $\Set_2$ e che $\Set_2$ \Define{contiene}[contenimento] $\Set_1$. Denotiamo la relazione $\Not{\Set_1 \in \Set_2}$ col simbolo $\notin$.
+\end{Definition}
+\begin{Definition}
+	Quando $(\Set_1 \in \Set_2) \Rightarrow (\Set_1 \in \Set_3)$ diciamo che $\Set_2$ \`e un \Define{sottoinsieme} di $\Set_3$, denotato $\Set_2 \subseteq \Set_3$ e che $\Set_3$ \`e un \Define{soprainsieme} di $\Set_2$, denotato $\Set_3 \supseteq \Set_2$; se $\Set_2 \neq \Set_3$, allora le notazioni diventano rispettivamente $\Set_2 \subset \Set_3$ e $\Set_3 \supset \Set_2$.
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma di estensionalit\`a (ZF)}[di estensionalit\`a (ZF)][assioma] Abbiamo $\Set_1 = \Set_2$ se e solo se $\Set_1 \subseteq \Set_2$ e $\Set_2 \subseteq \Set_1$.
+\end{Axiom}
+\par Per l'assioma di estensionalit\`a, dato un numero finito di insiemi, se esiste un insieme che li contiene tutti senza contenere nient'altro, allora esso \`e unico: lo denoteremo elencandone gli elementi tra parentesi graffe.
+\begin{Axiom}
+	\TheoremName{Schema di comprensione degli insiemi}[di comprensione degli insiemi][schema] Se $\phi(x)$ \`e una formula del primo ordine, allora per ogni insieme $\Set_0$ esiste un insieme $\Set$ tale che $x \in \Set \Leftrightarrow \And{x \in \Set_0}{\phi(x)}$.
+\end{Axiom}
+\par Dati una formula $\phi(x)$ e un insieme $\Set_0$ come nell'assioma precedente, denotiamo l'insieme $\Set$ con $\lbrace x \in \Set_0 | \phi(x) \rbrace$.
+\begin{Definition}
+	Se l'insieme $\Set$ verifica la relazione $(\forall x)(x \notin \Set)$ allora diciamo che $\Set$ \`e \Define{vuoto}[vuoto][insieme].
+\end{Definition}
+\begin{Axiom}
+	Esiste un insieme vuoto $\emptyset$.
+\end{Axiom}
+\begin{Theorem}
+	Sia $\Set_1$ un insieme vuoto e $\Set_2$ un insieme qualsiasi: abbiamo $\Set_1 \subseteq \Set_2$.
+\end{Theorem}
+\Proof Sia $x \in \Set_1$: poich\'e, per definizione di insieme vuoto, $x \notin \Set_1$, ne deduciamo $x \in \Set_2$. \EndProof
+\begin{Corollary}
+	$\emptyset$ \`e l'unico insieme vuoto.
+\end{Corollary}
+\Proof Se $\Set$ \`e un altro insieme vuoto, allora $\emptyset \subseteq \Set$ e $\Set \subseteq \emptyset$, da cui la tesi tramite l'assioma di estensionalit\`a. \EndProof
+\begin{Definition}
+	Se $\Set_1$ e $\Set_2$ sono due insiemi tali che non esista $x$ per cui  $x \in \Set_1$ e $x \in \Set_2$, allora si dice che $\Set_1$ e $\Set_2$ sono \Define{disgiunti}[disgiunti][insiemi].
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma di regolarit\`a (o di fondazione)}[di regolarit\`a (o di fondazione)][assioma] Per ogni insieme $\Set_0$ esiste un elemento $\Set_1 \in \Set_0$ tale che $\Set_0$ e $\Set_1$ sono disgiunti.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma dell'accoppiamento}[della coppia][assioma] Dati due insiemi $\Set_1$ e $\Set_2$ esiste l'insieme $\lbrace \Set_1, \Set_2 \rbrace$.
+\end{Axiom}
+\begin{Theorem}
+	Se $\Set$ \`e un insieme, esiste l'insieme $\lbrace \Set \rbrace$.
+\end{Theorem}
+\Proof $\lbrace \Set \rbrace$ si ottiene dall'assioma di accoppiamento prendendo $\Set_1 = \Set_2 = \Set$. \EndProof
+\begin{Definition}
+	Dati due insiemi $\Set_1$, $\Set_2$, la \Define{coppia} $(\Set_1,\Set_2)$ \`e l'insieme $\lbrace \lbrace \Set_1 \rbrace, \lbrace \Set_1, \Set_2 \rbrace \rbrace$. Per qualsiasi numero naturale\footnote{Non abbiamo ancora definito formalmente il concetto di numero naturale: ci affidiamo qui al concetto intuitivo metamatematico di ``numero usato per contare''.} $n$ maggiore\footnote{Non avendo definito l'insieme dei numeri naturali, non abbiamo definito neanche un loro ordinamento, n\'e l'operazione di sottrazione di $1$ utilizzata poco pi\`u avanti: persistiamo nell'appellarci all'intuizione metamatematica.} di $2$, la \Define{$n$-upla} $(\Set_1, ..., \Set_{n - 1}, \Set_n)$ \`e definita come la coppia $((\Set_1, ..., \Set_{n - 1}), \Set_n)$. Una \Define{terna} \`e una $3$-upla, una \Define{quadrupla} una $4$-upla, una \Define{quintupla} una $5$-upla e cos\`i via. Gli elementi che appaiono in una $n$-upla si chiamano \Define{componenti}[componente].
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{insieme funzionale}[funzionale][insieme] un insieme $\Function$ costituito da sole coppie tale che $\And{(x,y) \in \Function}{(x,z) \in \Function} \Rightarrow y = z$.
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma di rimpiazzamento} Se $\Function$ \`e un insieme funzionale e gli argomenti di $\Function$ costituiscono un insieme, allora anche le immagini di $\Function$ costituiscono un insieme, chiamato \Define{immagine}[immagine][insieme] di $\Function$ e denotato $\Image{\Function}$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma dell'insieme delle parti}[dell'insieme delle parti][assioma] Dato un insieme $\Set$, esiste l'insieme $\lbrace x | x \subseteq \Set \rbrace$, d'ora in poi denotato $\PowerSet{\Set}$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma dell'unione}[dell'unione][assioma] Dato un insieme $\Set$, esiste l'insieme $\lbrace x | (\exists y)(\And{y \in \Set}{x \in y}) \rbrace$, d'ora in poi denotato $\bigcup \Set$. Se $\Set$ ammette solo un numero finito di elementi $\Set_1, ..., \Set_n$ , allora denotiamo $\bigcup \Set$ anche con $\Set_1 \cup ... \cup \Set_n$.
+\end{Axiom}
+\begin{Definition}
+	Un insieme $\Set$ si dice \Define{induttivo}[induttivo][insieme] quando
+	\begin{itemize}
+		\item $\emptyset \in \Set$;
+		\item $x \in \Set \Rightarrow x \cup \lbrace x \rbrace \in \Set$.
+	\end{itemize}
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma dell'infinito}[dell'infinito][assioma] Esiste un insieme induttivo.
+\end{Axiom}
+\par Presentiamo un ultimo assioma. Esso \`e oggetto di controversie: assumerlo vero porta a volte a risultati desiderabili, altre volte a risultati che appaiono controintuitivi. Per questo motivo, si evita il pi\`u possibile di ricorrere ad esso in una dimostrazione e, quando il suo uso \`e veramente inevitabile, ci\`o viene sottolineato.
+\par Il seguente assioma viene spesso indicato con la sigla AC e, quando si suppone vero, alla sigla ZF che indica la teoria di Zermelo e Fraenkel si aggiunge una C ottenendo la sigla ZFC.
+\begin{Axiom}
+	\TheoremName{Assioma della scelta}[della scelta][assioma] Dato un insieme $\Set$ tale che $\emptyset \notin \Set$, esiste un insieme funzionale $\Function$ tale che
+	\begin{itemize}
+		\item gli argomenti di $\Function$ costituiscono l'insieme $\Set$;
+		\item se $(x,y) \in \Function$, allora $x \in y$.
+	\end{itemize}
+\end{Axiom}

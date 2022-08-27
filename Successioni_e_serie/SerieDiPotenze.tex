@@ -1,0 +1,29 @@
+\section{Serie di potenze.}\label{SerieDiPotenze}
+\begin{Theorem}
+	Sia $\sum_{n = 0}^\infty a_n X^n \in \PowerSeries{\mathbb{C}}{X}$ e sia $z \in \mathbb{C}$. Abbiamo
+	\begin{itemize}
+		\item se $\sum_{n = 0}^\infty a_n z^n$ converge, allora per ogni $w \in \mathbb{C}$ tale che $\AbsoluteValue{w} < \AbsoluteValue{z}$, $\sum_{n = 0}^\infty a_n w^n$ converge assolutamente;
+		\item se $\sum_{n = 0}^\infty a_n z^n$ diverge, allora per ogni $w \in \mathbb{C}$ tale che $\AbsoluteValue{w} > \AbsoluteValue{z}$, diverge anche $\sum_{n = 0}^\infty a_n w^n$.
+	\end{itemize}
+\end{Theorem}
+\Proof Supponiamo $\sum_{n = 0}^\infty a_n z^n$ converga. Siano $N \in \mathbb{N}$ e $M > 0$ tali che $\ForAll{n > N}{\AbsoluteValue{a_n z^n} < M}$. Abbiamo $\AbsoluteValue{a_n w^n} = \AbsoluteValue{a_n} \AbsoluteValue{w}^n \frac{\AbsoluteValue{z}^n}{\AbsoluteValue{z}^n} = \AbsoluteValue{a_n z^n} \AbsoluteValue{\frac{w}{z}}^n < M \AbsoluteValue{\frac{w}{z}}^n$. La convergenza assoluta della serie $\sum_{n = N + 1}^\infty a_n w^n$, e dunque della serie $\sum_{n = 0}^\infty a_n w^n$ segue dunque per confronto con la serie geometrica $\sum_{n = N + 1}^\infty M \AbsoluteValue{\frac{w}{z}}^n$ di ragione $\AbsoluteValue{\frac{w}{z}} < 1$.
+\par La seconda parte del teorema pu\`o essere dimostrata in maniera analoga o anche per assurdo osservando che se $\sum_{n = 0}^\infty a_n w^n$ convergesse, allora per la prima parte del teorema deve converge anche $\sum_{n = 0}^\infty a_n z^n$. \EndProof
+\begin{Definition}
+	Sia $\sum_{n = 0}^\infty a_n X^n \in \PowerSeries{\mathbb{C}}{X}$ e sia $z \in \mathbb{C}$. Chiamiamo
+	\begin{itemize}
+		\item \Define{raggio di convergenza}[di convergenza][raggio] di $\sum_{n = 0}^\infty a_n X^n$ l'estremo superiore dei moduli di tutti i punti $z \in \mathbb{C}$ tali che $\sum_{n = 0}^\infty a_n z^n$ converge;
+		\item \Define{cerchio di convergenza}[di convergenza][cerchio] di $\sum_{n = 0}^\infty a_n X^n$ la palla aperta $\Open{0}{\RadiusOfConvergence}$, dove $\RadiusOfConvergence$ \`e il raggio di convergenza di $\sum_{n = 0}^\infty a_n X^n$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Teorema di Cauchy-Hadamard}[di Cauchy-Hadamard][teorema]
+	Sia $\sum_{n = 0}^\infty a_n X^n \in \PowerSeries{\mathbb{C}}{X}$ e denotiamo $\RadiusOfConvergence$ il suo raggio di convergenza. Abbiamo
+	\[
+		\RadiusOfConvergence^{-1}
+    = \limsup_{n \rightarrow \infty} \AbsoluteValue{a_n}^\frac{1}{n}.
+	\]
+\end{Theorem}
+\begin{Theorem}
+	\label{SuccessioniESerie_ConvergenzaDerivataFormale}
+	Sia $\sum_{n = 0}^\infty a_n X^n \in \PowerSeries{\mathbb{C}}{X}$ e sia $z \in \mathbb{C}$. Se $z$ appartiene al cerchio di convergenza di  $\sum_{n = 0}^\infty a_n X^n$, allora appartiene anche al cerchio di convergenza della derivata formale $\sum_{n = 1}^\infty n a_n X^{n - 1} \in \PowerSeries{\mathbb{C}}{X}$.
+\end{Theorem}

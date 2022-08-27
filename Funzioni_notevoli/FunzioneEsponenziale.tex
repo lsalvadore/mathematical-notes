@@ -1,0 +1,126 @@
+\section{Funzione esponenziale.}
+\label{FunzioniNotevoli_FunzioneEsponenziale}
+\begin{Theorem}
+	Sia
+  $\Exponential(X) =
+  \sum_{n \in \mathbb{N}} \frac{X^n}{n!}
+  \in \PowerSeries{\mathbb{C}}{X}$. 
+  $\Exponential(X)$ converge ovunque in $\mathbb{C}$.
+\end{Theorem}
+\begin{Definition}
+	La funzione $\Exponential: \mathbb{C} \rightarrow \mathbb{C}$ che a
+  $z \in \mathbb{C}$ associa la somma della serie
+  $\Exponential(z) \in \mathbb{C}$ si chiama
+  \Define{esponenziale}.
+  Chiamiamo $\Exponential(1)$
+  \Define{numero di Nepero}[di Nepero][numero],
+  denotato $e$.
+  Denoteremo il valore della funzione esponenziale in un punto
+  $z \in \mathbb{C}$ come $\Exponential(z)$ o anche $e^z$.
+\end{Definition}
+\begin{Theorem}
+	L'esponziale verifica la relazione
+	\[
+		\ForAll{(z,w) \in \mathbb{C}^2}{\Exponential(z + w) = \Exponential(z)\Exponential(w)}.
+	\]
+\end{Theorem}
+\Proof Sia $(z,w) \in \mathbb{C}^2$. Abbiamo
+\begin{align*}
+	\Exponential(z + w)
+	&= \sum_{n \in \mathbb{N}} \frac{(z + w)^n}{n!},\\
+	&= \sum_{n \in \mathbb{N}} \sum_{k = 0}^n \frac{\binom{n}{k} z^k w^{n - k}}{n!},\\
+	&= \sum_{n \in \mathbb{N}} \sum_{k = 0}^n \frac{n! z^k w^{n - k}}{)n - k)!k!n!},\\
+	&= \sum_{n \in \mathbb{N}} \sum_{k = 0}^n \frac{z^k}{k!} \frac{w^(n - k)}{n - k!},\\
+	&= \left ( \sum_{n \in \mathbb{N}} \frac{z^n}{n!} \right ) \left ( \sum_{n \in \mathbb{N}} \frac{w^n}{n!} \right ),\\
+	&= \Exponential(z)\Exponential(w).\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  Abbiamo
+  \[
+    \frac{d\Exponential}{dz}(z) = \Exponential(z).
+  \]
+\end{Theorem}
+\Proof Derivando la serie formale che definisce l'esponenziale otteniamo
+\begin{align*}
+  \frac{d\Exponential}{dz}(z)
+    &= \sum_{n \in \NotZero{\mathbb{N}}} n \frac{z^{n - 1}}{n!},\\
+    &= \sum_{n \in \NotZero{\mathbb{N}}} \frac{z^{n - 1}}{(n - 1)!},\\
+    &= \sum_{n \in \mathbb{N}} \frac{z^n}{n!},\\
+    &= \Exponential(z).\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+	Sia
+  $\Exponential(X) =
+  \sum_{n \in \mathbb{N}} \frac{X^n}{n!}
+  \in \PowerSeries{\mathbb{C}}{X}$. 
+  Per ogni $n \in \NotZero{\mathbb{N}}$ e per ogni
+  $\Matrix \in \mathbb{C}^{n \times n}$,
+  $\Exponential(\Matrix)$ converge.
+\end{Theorem}
+\Proof Segue direttamente dal fatto il raggio spettrale di una matrice \`e
+finito, mentre il raggio di convergenza di $\Exponential(X)$ \`e $+\infty$.
+\EndProof
+\begin{Definition}
+	Fissato $n \in \NotZero{\mathbb{N}}$, la funzione
+  $\Exponential: \mathbb{C}^{n \times n} \rightarrow \mathbb{C}^{n \times n}$
+  che a
+  $\Matrix \in \mathbb{C}^{n \times n}$ associa la somma della serie
+  $\Exponential(\Matrix) \in \mathbb{C}^{n \times n}$
+  si chiama
+  \Define{esponenziale di matrice}[di matrice][esponenziale].
+  Denoteremo il valore della funzione esponenziale di matrice in un punto
+  $\Matrix \in \mathbb{C}^{n \times n}$ come $\Exponential(\Matrix)$ o
+  anche $e^\Matrix$.
+\end{Definition}
+\begin{Theorem}
+  Siano $A, B \in \mathbb{C}^{n \times n}$ ($n \in \NotZero{\mathbb{N}}$) tali che $AB = BA$.
+  Allora $\Exponential(A + B) = \Exponential(B) \Exponential(C)$.
+\end{Theorem}
+\Proof Abbiamo, per il teorema del binomio di Newton,
+\begin{align*}
+  \Exponential(A + B)
+  &= \sum_{k \in \mathbb{N}} \frac{(A + B)^k}{k!},\\
+  &= \sum_{k \in \mathbb{N}} \frac{\sum_{l = 0}^k \binom{k}{l} A^lB^{k - l}}{k!},\\
+  &= \sum_{k \in \mathbb{N}} \frac{\sum_{l = 0}^k \frac{k!}{l!(k - l)!} A^lB^{k - l}}{k!},\\
+  &= \sum_{k \in \mathbb{N}} \sum_{l = 0}^k \frac{A^l}{l!}\frac{B^{k - l}}{(k - l)!},\\
+  &= \left ( \sum_{l \in \mathbb{N}} \frac{A^l}{l!} \right )
+      \left ( \sum_{k \in \mathbb{N}} \frac{B^k}{k!} \right ),\\
+  &= \Exponential(A) \Exponential(B).\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{C}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $\Norm{\cdot}$ una norma di matrice su $\mathbb{C}^{n \times n}$.
+  \end{itemize}
+  Vale la disuguaglianza
+  \[
+    \Norm{\Exponential{\Matrix}} \leq \Exponential{\Norm{\Matrix}}.
+  \]
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+  \Norm{\Exponential{\Matrix}}
+  &= \Norm{\sum_{k \in \mathbb{N}} \frac{\Matrix^k}{k!}},\\
+  &\leq \sum_{k \in \mathbb{N}} \frac{\Norm{\Matrix}^k}{k!},\\
+  &= \Exponential{\Norm{\Matrix}}.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $f: \mathbb{C} \rightarrow \mathbb{C}^{n \times n}$ tale che
+      $f(z) = \Exponential(z\Matrix)$.
+  \end{itemize}
+  Abbiamo $f'(z) = \Matrix \Exponential(z \Matrix)$.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+  f'(z)
+    &= \sum_{k \in \NotZero{\mathbb{N}}} k \frac{z^{k - 1} \Matrix^k}{k!},\\
+    &= \Matrix \sum_{k \in \NotZero{\mathbb{N}}} \frac{z^{k - 1}\Matrix^{k - 1}}{(k - 1)!},\\
+    &= \Matrix \sum_{k \in \mathbb{N}} \frac{z^k \Matrix^k}{k!},\\
+    &= \Matrix \Exponential(z \Matrix).\text{ \EndProof}
+\end{align*}

@@ -1,0 +1,50 @@
+\section{Matrici di toeplitz.}
+\label{Matrici_MatriciDiToeplitz}
+\begin{Definition}
+	Siano $\Ring$ un anello, $n \in \mathbb{N}$ e $\Matrix \in \Ring^{n \times n}$. Si dice che $\Matrix$ \`e una \Define{matrice di Toeplitz}[di Toeplitz][matrice] o \Define{matrice a diagonali costanti}[a diagonali costanti][matrice] quando
+	\[
+		\ForAll{(i,j,k,l) \in n \times n \times n \times n}{\Implies{i - k = j - l}{\Matrix_i^j = \Matrix_k^l}}.
+	\]
+\end{Definition}
+\begin{Definition}
+	Siano $\Ring$ un anello, $n \in \mathbb{N}$ e $\Matrix \in \Ring^{n \times n}$. Si dice che $\Matrix$ \`e una \Define{matrice di Hankel}[di Hankel][matrice] quando
+	\[
+		\ForAll{(i,j,k,l) \in n \times n \times n \times n}{\Implies{i - k = l - j}{\Matrix_i^j = \Matrix_k^l}}.
+	\]
+\end{Definition}
+\begin{Theorem}
+	Se $\Matrix$ \`e una matrice di Toeplitz, allora anche $\Transposed{\Matrix}$ \`e una matrice di Toeplitz.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Le matrici di Hankel sono simmetriche.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Siano $\Ring$ un anello, $n \in \mathbb{N}$ e $\Matrix \in \Ring^{n \times n}$. Sia inoltre $\PermutationMatrix \in \Ring^{n \times n}$ la matrice di permutazione definita da $\PermutationMatrix_i^j = \begin{cases}1\text{ se }i = n - j,\\0\text{ altrimenti};\end{cases}$, vale a dire
+	\[
+		\lmatrix
+		\begin{array}{ccc}
+		& & 1\\
+		& \iddots &\\
+		1 & &
+		\end{array}
+		\rmatrix.
+	\]
+	Abbiamo:
+	\begin{itemize}
+		\item se $\Matrix$ \`e una matrice di Toeplitz, allora $\PermutationMatrix \Matrix$ e $\Matrix \PermutationMatrix$ sono matrici di Hankel;
+		\item se $\Matrix$ \`e una matrice di Hankel, allora $\PermutationMatrix \Matrix$ e $\Matrix \PermutationMatrix$ sono matrici di Toeplitz.
+	\end{itemize}
+\end{Theorem}
+\Proof Fissato $(i,j,k,l) \in n \times n \times n \times n$, abbiamo
+\begin{itemize}
+	\item $(\PermutationMatrix \Matrix)_{i,j} = \Matrix_{n - 1 - i,j}$;
+	\item $(\PermutationMatrix \Matrix)_{k,l} = \Matrix_{n - 1 - k,l}$.
+\end{itemize}
+\par Inoltre
+\begin{itemize}
+	\item se $i - k = j - l$, allora $n - 1 - i - (n - 1 - k) = k - i = j - l$, da cui se $\Matrix$ \`e matrice di Toepliz allora $\PermutationMatrix \Matrix$ \`e matrice di Hankel;
+	\item se $i - k = l - j$, allora $n - 1 - i - (n - 1 - k) = k - i = l - j$, da cui se $\Matrix$ \`e matrice di Hankel allora $\PermutationMatrix \Matrix$ \`e matrice di Toeplitz.
+\end{itemize}
+\par Il resto del teorema segue per trasposizione da quanto gi\`a dimostrato. \EndProof

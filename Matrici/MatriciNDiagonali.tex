@@ -1,0 +1,38 @@
+\section{Matrici $N$-diagonali.}
+\label{Matrici_MatriciNDiagonali}
+\begin{Definition}
+	Siano $\Ring$ un anello, $n \in \mathbb{N}$ e $\Matrix \in \Ring^{n \times n}$. Fissato $N \in \mathbb{N}$, chiamiamo $\Matrix$ \Define{$2N + 1$-diagonale}[$N$-diagonale][matrice] quando $\ForAll{(i,j) \in n \times n}{\Implies{\AbsoluteValue{i - j} > N}{\Matrix_i^j = 0}}$. In particolare, chiamiamo $\Matrix$
+\begin{itemize}
+	\item \Define{diagonale}[diagonale][matrice] se \`e $1$-diagonale:
+\[
+\lmatrix
+\begin{array}{ccc}
+\Matrix_0^0 & &\\
+& \ddots &\\
+& & \Matrix_{n - 1}^{n - 1}
+\end{array}
+\rmatrix;
+\]
+	\item \Define{tridiagonale}[tridiagonale][matrice] se \`e $3$-diagonale:
+\[
+\lmatrix
+\begin{array}{ccccc}
+\Matrix_0^0 & \Matrix_0^1 & & &\\
+\Matrix_1^0 & \ddots & \ddots & &\\
+& \ddots  & \ddots & \ddots &\\
+& & \ddots & \ddots & \Matrix_{n - 2}^{n - 1}\\
+& & & \Matrix_{n - 1}^{n - 2} & \Matrix_{n - 1}^{n - 1}
+\end{array}
+\rmatrix;
+\]
+\end{itemize}
+e cos\`i via.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Ring$ un anello, $n \in \mathbb{N}$, $\Matrix, \DiagonalMatrix \in \Ring^{n \times n}$, con $\DiagonalMatrix$ diagonale. Abbiamo, posto $A = \DiagonalMatrix\Matrix$ e $B = \Matrix\DiagonalMatrix$,
+	\begin{itemize}
+		\item $A_i^j = \DiagonalMatrix_i^i\Matrix_i^j$;
+		\item $B_i^j = \Matrix_i^j\DiagonalMatrix_j^j$.
+	\end{itemize}
+\end{Theorem}
+\Proof Segue per calcolo diretto. \EndProof

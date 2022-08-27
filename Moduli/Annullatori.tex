@@ -1,0 +1,13 @@
+\section{Annullatori.}
+\label{TeoriaDeiModuli_Annullatori}
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo. Definiamo \Define{annullatore} di $\Part \subseteq \Module$, denotato $\Annihilator{\Part}$, la classe di tutti i funzionali di $\Module$ che si annullanno in tutti i punti di $\Part$.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precedente, $\Annihilator{\Part}$ \`e un sottomodulo di $\Dual{\Module}$.
+\end{Theorem}
+\Proof Siano $\Functional, \VarFunctional \in \Dual{\Module}$ e $\Scalar \in \Ring$. Abbiamo, per ogni $x \in \Part$,
+\begin{itemize}
+	\item $(\Functional - \VarFunctional)(x) = \Functional(x) - \VarFunctional(x) = 0$;
+	\item $(\Scalar\Functional)(x) = \Scalar \Functional(x) = 0$. \EndProof
+\end{itemize}

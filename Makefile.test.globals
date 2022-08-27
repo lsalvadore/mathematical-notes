@@ -1,0 +1,5 @@
+CXXFLAGS+=	-g -I ..
+
+OCTAVE_CMD?=	octave --no-gui --path $$(echo `find ../.. -type d` | sed "s/ /:/g") \
+	$$(echo $< | rev | cut -f 1 -d '/' | rev)
+OCTAVE_LIB=	Libreria_octave

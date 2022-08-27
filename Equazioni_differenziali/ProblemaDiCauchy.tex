@@ -1,0 +1,67 @@
+\section{Problema di Cauchy.}
+\label{EquazioniDifferenziali_ProblemaDiCauchy}
+\begin{Definition}
+	Dato un intervallo $I = [t_0,t_{\text{max}}]$, con
+  $t_{\text{max}} \in \mathbb{R} \cup \lbrace + \infty \rbrace$ e
+  $t_0 < t_{\text{max}}$, chiamiamo
+  \Define{problema di Cauchy}[di Cauchy][problema] o
+  \Define{problema ai valori iniziali}[ai valori iniziali][problema] su $I$ il
+  sistema
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	dove
+	\begin{itemize}
+		\item $y: I \rightarrow \mathbb{R}^n$;
+		\item $f: I \times \mathbb{R}^n \rightarrow \mathbb{R}^n$.
+	\end{itemize}
+\end{Definition}
+\par Assumeremo sempre nel seguito $f \in \CClass{1}[I]$ in modo che siano verificate le ipotesi del teorema seguente.
+\begin{Theorem}
+	\TheoremName{Teorema di esistenza e unicit\`a di Cauchy-Lipschitz}[di esistenza e unicit\`a di Cauchy-Lipschitz][teorema]
+	Sia un problema di Cauchy
+	\[
+		\begin{cases}
+			y' = f(t,y),\\
+			y(t_0) = y_0.
+		\end{cases}
+	\]
+	Assumiamo inoltre $f$ lipschitziana nella seconda variabile. Allora esiste una e una sola soluzione del problema di Cauchy.
+\end{Theorem}
+\begin{Theorem}
+	Il problema di Cauchy
+	\[
+		\begin{cases}
+			y' = f(t,y),\\
+			y(t_0) = y_0.
+		\end{cases}
+	\]
+	equivale all'equazione integrale $y(t) = y_0 + \int_{t_0}^t f(\tau,y(\tau)) d\tau$.
+\end{Theorem}
+\Proof Da $y' = f(t,y)$ deduciamo $dy = f(t,y)dt$. Integrando sull'intervallo $[t_0,t]$ e rinominando $\tau$ la variabile $t$ in modo da evitare ambiguit\`a, abbiamo $\int_{y_0}^y dy = \int_{t_0}^t f(\tau,y)d\tau$, equivalente a $y = y_0 + \int_{t_0}^t f(\tau,y)d\tau$.
+\par Viceversa, da $y = y_0 + \int_{t_0}^t f(\tau,y)d\tau$ deduciamo
+\begin{itemize}
+	\item $y' = f(t,y)$ per il teorema fondamentale del calcolo integrale;
+	\item $y(t_0) = y_0 + \int_{t_0}^{t_0} f(\tau,y)d\tau = y_0$. \EndProof
+\end{itemize}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$;
+    \item $y_0 \in \mathbb{C}^n$.
+  \end{itemize}
+  Il problema di Cauchy
+	\[
+		\begin{cases}
+			y' = f(t,y),\\
+			y(t_0) = y_0.
+		\end{cases}
+	\]
+  ammette l'unica soluzione
+  $y = \Exponential(t \Matrix)y_0$.
+\end{Theorem}
+\Proof Segue per verifica diretta. \EndProof

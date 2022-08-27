@@ -1,0 +1,354 @@
+\subsection{Matrici tridiagonali.}
+\label{IstituzioniDiAnalisiNumerica_MatriciTridiagonali}
+\begin{Theorem}
+	\label{IstituzioniDiAnalisiNumerica_MatriciTridiagonali_Teorema}
+	Con le ipotesi e le notazioni del teorema \ref{IstituzioniDiAnalisiNumerica_RicorrenzaATreTermini}, posto inoltre $A_1 = a_1$ e $B_1 = b_1$, sia $\TridiagonalMatrix_n$ la matrice tridiagonale definita da
+	\[
+		(\TridiagonalMatrix_n)_i^j =
+		\begin{cases}
+			A_i x + B_i&\text{ se }i = j,\\
+			- a_ 0&\text{ se }(i,j) = (1,2),\\
+			- C_j&\text{ se }i = j + 1,\\
+			- 1&\text{ se }\And{j = i + 1}{i \neq 1};
+		\end{cases}
+	\]
+	vale a dire
+	\[
+	\TridiagonalMatrix_n =
+	\lmatrix
+	\begin{array}{ccccc}
+		A_1x + B_1	&	-a_0		&		&		&\\
+		- C_1		&	A_2x + B_2	&	-1	&		&\\
+				&	\ddots		&	\ddots	&	\ddots	&\\
+				&			&	\ddots	&	\ddots	&	- 1\\
+				&			&	&	-C_{n - 1}	&	A_nx + B_n
+	\end{array}
+	\rmatrix.
+	\]
+	Abbiamo $\ForAll{n \in \NotZero{\mathbb{N}}}{\Determinant \TridiagonalMatrix_n = \OrthogonalPolynomial_n}$.
+\end{Theorem}
+\Proof Procediamo per induzione su $n$.
+\par Abbiamo $\Determinant{\TridiagonalMatrix_1}(x) = A_1x + B_1 = \OrthogonalPolynomial_1(x)$ per costruzione e $\Determinant{\TridiagonalMatrix_2}(x) = (A_2x + B_2)(A_1x + B_1) - C_1a_0 = \OrthogonalPolynomial_2$ per il teorema di ricorrenza a tre termini.
+\par Supponiamo la tesi dimostrata per $n = N$ e proviamola per $n = N + 1$. Abbiamo, sviluppando il determinante con la regola di Laplace rispetto all'ultima riga,
+$\Determinant{\TridiagonalMatrix_n}(x) = (A_nx + B_n) \OrthogonalPolynomial_{n - 1}(x) - C_{n - 1} \OrthogonalPolynomial_{n - 2}(x) = \OrthogonalPolynomial_n(x)$. \EndProof
+\begin{Theorem}
+	Con le ipotesi e le notazioni del teorema \ref{IstituzioniDiAnalisiNumerica_MatriciTridiagonali_Teorema}, per ogni $\xi \in \mathbb{C}$, vale $\TridiagonalMatrix_n(\xi) (\OrthogonalPolynomial_i(\xi))_{i \in n} = \Vector$, dove $\ForAll{i \in n - 1}{\Vector_i = 0}$ e $\Vector_n = \OrthogonalPolynomial_n(\xi)$; vale a dire
+	\[
+		\TridiagonalMatrix_n \lmatrix \begin{array}{c} 0\\ \vdots\\ 0\\ \OrthogonalPolynomial_n(\xi)\end{array} \rmatrix.
+	\] 
+\end{Theorem}
+\Proof Abbiamo
+\begin{itemize}
+	\item $(\TridiagonalMatrix_n(\xi) (\OrthogonalPolynomial_j(\xi))_{j \in n})_1 = (a_1\xi + b_1)a_0 - a_0(a_1\xi + b_1) = 0$;
+	\item $(\TridiagonalMatrix_n(\xi) (\OrthogonalPolynomial_j(\xi))_{j \in n})_i = - C_{i - 1} \OrthogonalPolynomial_{i - 2}(\xi) + (A_i \xi + B_i)\OrthogonalPolynomial_{i - 1}(\xi) - \OrthogonalPolynomial_i(\xi) = 0$;
+	\item $(\TridiagonalMatrix_n(\xi) (\OrthogonalPolynomial_j(\xi))_{j \in n})_n = - C_{n - 1} \OrthogonalPolynomial_{n - 2}(\xi) + (A_n \xi + B_n)\OrthogonalPolynomial_{n - 1}(\xi) = \OrthogonalPolynomial_n(\xi)$. \EndProof
+\end{itemize}
+\begin{Corollary}
+	Con le notazioni del teorema precedente, $(\OrthogonalPolynomial_i(\xi))_{i \in n} \in \Kernel{\TridiagonalMatrix_n(\xi)}$ se e solo se $\xi$ \`e radice di $\OrthogonalPolynomial_i$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Theorem}
+	\label{IstituzioniDiAnalisiNumerica_RadiciEAutovalori}
+	Con le ipotesi e le notazioni del teorema \ref{IstituzioniDiAnalisiNumerica_MatriciTridiagonali_Teorema}, supposti gli $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ monici, il polinomio caratteristico $\CharacteristicPolynomial_n(x)$ della matrice
+	\[
+		(\VarTridiagonalMatrix_n)_i^j =
+		\begin{cases}
+			- B_i&\text{ se }i = j,\\
+			C_j&\text{ se }i = j + 1,\\
+			1&\text{ se }j = i + 1;
+		\end{cases}
+	\]
+	vale a dire
+	\[
+	\VarTridiagonalMatrix_n =
+	\lmatrix
+	\begin{array}{ccccc}
+		- B_1	&	1		&		&		&\\
+		C_1		&	- B_2	&	1	&		&\\
+				&	\ddots		&	\ddots	&	\ddots	&\\
+				&			&	\ddots	&	\ddots	&	1\\
+				&			&	&	C_{n - 1}	&	- B_n
+	\end{array}
+	\rmatrix,
+	\]
+	\`e $- \OrthogonalPolynomial_n(x)$.
+	Inoltre,
+	\begin{itemize}
+		\item $\xi \in \mathbb{C}$ \`e autovalore di $\VarTridiagonalMatrix_n$ se e solo se \`e radice di $\OrthogonalPolynomial_n(x)$;
+		\item $\Eigenvector \in \mathbb{C}^n$ \`e autovettore di $\VarTridiagonalMatrix_n$ relativo ad un autovalore $\xi$ se e solo se \`e della forma $\Eigenvector = (\OrthogonalPolynomial_i(\xi))_{i \in n}$;
+		\item definita la matrice diagonale $\DiagonalMatrix \in \mathbb{C}^{n \times n}$ come $\DiagonalMatrix_j^j = \begin{cases}1\text{ se }j = 1,\\\DiagonalMatrix_{j - 1}^{j - 1}\sqrt{C_{j - 1}}\text{ altrimenti}.\end{cases}$, la matrice $\DiagonalMatrix^{-1}\VarTridiagonalMatrix\DiagonalMatrix$ \`e simmetrica; pi\`u precisamente abbiamo
+	\[
+	\DiagonalMatrix^{-1}\VarTridiagonalMatrix\DiagonalMatrix =
+	\begin{cases}
+		- B_i&\text{ se }i = j,\\
+		\sqrt{C_j}&\text{ se }i = j + 1,\\
+		\sqrt{C_{j - 1}}&\text{ se }j = i + 1,
+	\end{cases}
+	\]
+	vale a dire
+	\[
+		\DiagonalMatrix^{-1}\VarTridiagonalMatrix\DiagonalMatrix =
+		\lmatrix
+		\begin{array}{ccccc}
+			- B_1	&	\sqrt{C_2}		&		&		&\\
+			\sqrt{C_2}		&	- B_2	&	\sqrt{C_3}	&		&\\
+					&	\ddots		&	\ddots	&	\ddots	&\\
+					&			&	\ddots	&	\ddots	&	\sqrt{C_{n - 1}}\\
+					&			&	&	\sqrt{C_{n - 1}}	&	- B_n
+		\end{array}
+		\rmatrix.
+	\]
+	\end{itemize}
+\end{Theorem}
+\Proof Il polinomio caratteristico $\CharacteristicPolynomial(x)$ di $\VarTridiagonalMatrix_n$ \`e dato dal determinante della matrice $\VarTridiagonalMatrix_n - x \Identity$ che si verifica immediatamente essere la matrice $- \TridiagonalMatrix_n(x)$.
+\par Dunque $\CharacteristicPolynomial(x) = - \Determinant{\TridiagonalMatrix_n(x))} = - \OrthogonalPolynomial_n(x)$.
+\par Infine, segue immediatamente dal corollario precedente che $(\OrthogonalPolynomial_i(\xi))_{i \in n} \in \Kernel (\VarTridiagonalMatrix - \xi \Identity ) = \Kernel{\TridiagonalMatrix_n(\xi)}$ se e solo se $\xi$ \`e autovalore di $\VarTridiagonalMatrix$, o equivalentemente $\xi$ \`e radice di $\OrthogonalPolynomial_n(x)$.
+\par Infine abbiamo
+\[
+\DiagonalMatrix^{-1}\VarTridiagonalMatrix\DiagonalMatrix =
+\begin{cases}
+	- B_i&\text{ se }i = j,\\
+	\left (\DiagonalMatrix_{j + 1}^{j + 1} \right)^{-1}C_j\DiagonalMatrix_j^j = \left (\DiagonalMatrix_j^j \right )^{-1} C_j^{-\frac{1}{2}} C_j D_j^j = \sqrt{C_j}&\text{ se }i = j + 1,\\
+	\left (\DiagonalMatrix_{j - 1}^{j - 1} \right )^{-1}\DiagonalMatrix_j^j = \left (\DiagonalMatrix_{j - 1}^{j - 1} \right )^{-1} \DiagonalMatrix_{j - 1}^{j - 1} \sqrt{C_{j - 1}} = \sqrt{C_{j - 1}}&\text{ se }j = i + 1.\text{ \EndProof}
+\end{cases}
+\]
+\begin{Theorem}
+	\label{IstituzioniDiAnalisiNumerica_TeoremaDiOrtogonalitaDiscreta2}
+	\TheoremName{Teorema di ortogonalit\`a discreta (solo caso monico\footnote{Abbiamo gi\`a dimostrato il caso generale con il teorema \ref{IstituzioniDiAnalisiNumerica_TeoremaDiOrtogonalitaDiscreta1}.})}[di ortogonalit\`a discreta][teorema] Siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ polinomi ortogonali monici rispetto ad un prodotto scalare $\VarScalarProduct{\cdot}{\cdot}$ su $\RingAdjunction{\mathbb{R}}{x}$ per cui valgono le ipotesi del teorema di ricorrenza a tre termini. Siano inoltre
+	\begin{itemize}
+		\item $n \in \mathbb{N}$;
+		\item $(x_i)_{i \in m}$ ($m \leq n$) gli zeri distinti di $\OrthogonalPolynomial_n$;
+		\item $(\Vector^{(j)})_{j \in n}$ i vettori di $\mathbb{R}^n$ definiti da $\ForAll{(i,j) \in n \times n}{\Vector^{(j)}_i = \OrthogonalPolynomial_i(x_j)}$;
+		\item $(\sigma_k)_{k \in n}$ gli scalari definiti da $\ForAll{k \in n}{\sigma_k = \Norm{\Vector^{(k)}}^{-1}}$;
+		\item $\ScalarProduct{\cdot}{\cdot}$ il prodotto scalare definito su $\mathbb{R}^n$ da $\ScalarProduct{\Vector}{\VarVector} = \sum_{k \in n} \sigma_k^2\Vector_k\VarVector_k$.
+	\end{itemize}
+	Allora i vettori $(\Vector^{(j)})_{j \in n}$ sono non nulli e ortogonali rispetto a $\ScalarProduct{\cdot}{\cdot}$.
+\end{Theorem}
+\Proof Con le notazioni del teorema precedente,
+\begin{itemize}
+	\item $\DiagonalMatrix_i^i = \sqrt{h_i}$: infatti $\DiagonalMatrix_1^1 = 1$ e, per $i > 1$, assumendo $\DiagonalMatrix_{i - 1}^{i - 1} = \sqrt{h_{i - 1}}$ abbiamo $\DiagonalMatrix_i^i = \DiagonalMatrix_{i - 1}^{i - 1}\sqrt{C_{i - 1}} = \sqrt{h_{i - 1}} \frac{\sqrt{h_i}}{\sqrt{h_{i - 1}}} = \sqrt{h_i}$;
+	\item $\DiagonalMatrix^{-1}(\OrthogonalPolynomial_k(x_i))_{k \in n} = (h_k^{-\frac{1}{2}}\OrthogonalPolynomial_k(x_i))_{k \in n}$ \`e autovettore relativo a $x_i$ di $\DiagonalMatrix^{-1}\VarTridiagonalMatrix\DiagonalMatrix$;
+	\item $\DiagonalMatrix^{-1}(\OrthogonalPolynomial_k(x_j))_{k \in n} = (h_k^{-\frac{1}{2}}\OrthogonalPolynomial_k(x_i))_{k \in n}$ \`e autovettore relativo a $x_j$ di $\DiagonalMatrix^{-1}\VarTridiagonalMatrix\DiagonalMatrix$.
+\end{itemize}
+\par Poich\'e $\DiagonalMatrix^{-1}\VarTridiagonalMatrix\DiagonalMatrix$ \`e una matrice reale simmetrica, e dunque normale, gli autovettori corrispondenti ad autovalori distinti sono ortogonali per il prodotto scalare standard. Ne segue immediatamente la tesi del teorema. \EndProof
+\begin{Definition}
+	\label{IstituzioniDiAnalisiNumerica_QuozienteDiRayleigh}
+	Sia $\HermitianMatrix \in \mathbb{C}^{n \times n}$ ($n \in \mathbb{N}$). Chiamiamo \Define{quoziente di Rayleigh}[di Rayleigh][quoziente] relativo a $\HermitianMatrix$ l'applicazione $\RayleighQuotient: \NotZero{\mathbb{C}^n} \rightarrow \mathbb{R}$ che a $x \in \NotZero{\mathbb{C}^n}$ associa $\frac{\HermitianTransposed{x}\HermitianMatrix x}{\HermitianTransposed{x}x}$.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione \ref{IstituzioniDiAnalisiNumerica_QuozienteDiRayleigh}, fissato $j \in n$, abbiamo$\PartialDerivative{\RayleighQuotient}{x_j} = \frac{2}{\HermitianTransposed{x}{x}} (\HermitianMatrix - \RayleighQuotient(x)x)_j$.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+	\PartialDerivative{\RayleighQuotient}{x_j}
+	&= \frac{\PartialDerivative{\HermitianTransposed{x}\HermitianMatrix x}{x_j} \HermitianTransposed{x}x - \HermitianTransposed{x}\HermitianMatrix x\PartialDerivative{\HermitianTransposed{x}x}{x_j}}{(\HermitianTransposed{x}x)^2},\\
+	&= \frac{\PartialDerivative{\HermitianTransposed{x}\HermitianMatrix x}{x_j}}{\HermitianTransposed{x}x} - \frac{\HermitianTransposed{x}\HermitianMatrix x\PartialDerivative{\HermitianTransposed{x}x}{x_j}}{(\HermitianTransposed{x}x)},\\
+	&= \frac{2(\HermitianMatrix x)_j}{\HermitianTransposed{x}x} - \frac{\HermitianTransposed{x}\HermitianMatrix x \cdot 2 x_j}{(\HermitianTransposed{x}x)},\\
+	&= \frac{2}{\HermitianTransposed{x}x} (\HermitianMatrix x - \RayleighQuotient(x)x)_j.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+	Con le notazioni della definizione \ref{IstituzioniDiAnalisiNumerica_QuozienteDiRayleigh}, $\Gradient{\RayleighQuotient} = \frac{2}{\HermitianTransposed{x}{x}}(\HermitianMatrix - \RayleighQuotient \Identity) x$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Corollary}
+	Con le notazioni della definizione \ref{IstituzioniDiAnalisiNumerica_QuozienteDiRayleigh}, i punti stazionari di $\RayleighQuotient$ sono tutti e soli gli autovettori di $\HermitianMatrix$. Il punto stazinario $\Eigenvector$ corrisponde all'autoavalore $\RayleighQuotient(\Eigenvector)$.
+\end{Corollary}
+\Proof $\Eigenvector$ \`e punto stazionario di $\RayleighQuotient$ se e solo se $(\HermitianMatrix - \RayleighQuotient \Identity)\Eigenvector = 0$, equivalente a $\HermitianMatrix \Eigenvector =\RayleighQuotient(\Eigenvector) \Eigenvector$. \EndProof
+\begin{Corollary}
+	Con le notazioni della definizione \ref{IstituzioniDiAnalisiNumerica_QuozienteDiRayleigh}, abbiamo
+	\begin{itemize}
+		\item $\min \Spectrum{\HermitianMatrix} = \min_{x \in \Dom{\RayleighQuotient}} \RayleighQuotient(x)$;
+		\item $\max \Spectrum{\HermitianMatrix} = \max_{x \in \Dom{\RayleighQuotient}} \RayleighQuotient(x)$.
+	\end{itemize}
+\end{Corollary}
+\Proof Poich\'e $\HermitianMatrix$ \`e hermitiana esiste una matrice unitaria $\UnitaryMatrix$ tale che $\UnitaryMatrix^{-1}\HermitianMatrix\UnitaryMatrix$ \`e diagonale, dove gli elementi diagonali sono precisamente gli autovalori di $\HermitianMatrix$. Abbiamo allora
+\begin{align*}
+	\RayleighQuotient(x)
+	&= \frac{\HermitianTransposed{x}\HermitianMatrix x}{\HermitianTransposed{x}x}, \\
+	&= \frac{\HermitianTransposed{x}\UnitaryMatrix^{-1}\HermitianMatrix\UnitaryMatrix x}{\HermitianTransposed{x}x}, \\
+	&= \frac{\sum_{i \in n} \Eigenvalue_i \Conjugate{x_i}x_i}{\Conjugate{x_i}x_i},
+\end{align*}
+dove $(\Eigenvalue_i)_{i \in n}$ \`e la successione degli autovalori di $\HermitianMatrix$ tale che $\ForAll{i \in n}{\Eigenvalue_i = (\UnitaryMatrix^{-1}\HermitianMatrix\UnitaryMatrix)_i^i}$.
+\par Vediamo dunque che, per ogni $x \in \Dom{\RayleighQuotient}$, $\RayleighQuotient$ \`e una media pesata degli autovalori (con molteplicit\`a algebrica) di $\HermitianMatrix$: dunque
+$\Spectrum{\HermitianMatrix} \subseteq [\min_{x \in \Dom{\RayleighQuotient}} \RayleighQuotient(x),\max_{x \in \Dom{\RayleighQuotient}} \RayleighQuotient(x)]$.
+\par Infine, valutando $\RayleighQuotient$ sugli autovettori di norma $1$ relativi al minimo e al massimo di $\Spectrum{\HermitianMatrix}$, si vede subito che $\min \Spectrum{\HermitianMatrix}, \max \Spectrum{\HermitianMatrix} \in \Image{\RayleighQuotient}$. \EndProof 
+\begin{Theorem}
+	\TheoremName{Teorema del minimax di Courant - Fisher} Siano
+	\begin{itemize}
+		\item $n \in \NotZero{\mathbb{N}}$;
+		\item $\HermitianMatrix \in \mathbb{C}^{n \times n}$;
+		\item $(\Eigenvalue_i)_{i \in \NaturalShift{n}} \in \Spectrum{\HermitianMatrix}^n$ tale che
+		\begin{itemize}
+			\item $(\Eigenvalue_i)_{i \in \NaturalShift{n}}$ sia una successione non crescente;
+			\item ogni autovalore di $\HermitianMatrix$ compaia in $(\Eigenvalue_i)_{i \in n}$ un numero di volte pari alla sua molteplicit\`a algebrica;
+		\end{itemize}
+		\item per ogni $k \in n$, sia $S_k$ la classe di tutti i sottospazi di $\mathbb{C}^n$ di dimensione $k$.
+	\end{itemize}
+	Allora
+	\begin{itemize}
+		\item $\ForAll{k \in \NaturalShift{n}}{\max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \RayleighQuotient(x) = \Eigenvalue_k}$.
+		\item $\ForAll{k \in \NaturalShift{n}}{\min_{\LinearSpace \in S_k} \max_{\substack{x \in \LinearSpace\\x \neq 0}} \RayleighQuotient(x) = \Eigenvalue_{n - k + 1}}$;
+	\end{itemize}
+\end{Theorem}
+\Proof $\HermitianMatrix$ \`e hermitiana, dunque esiste una base $(\OrthonormalBase_i)_{i \in n}$ di $\mathbb{C}^n$ tale che
+\begin{itemize}
+	\item $\ForAll{i \in n}{\HermitianMatrix\OrthonormalBase_i = \Eigenvalue_i\OrthonormalBase_i}$;
+	\item $(\OrthonormalBase_i)_{i \in n}$ \`e ortonormale.
+\end{itemize}
+\par Fissato $k \in n$, siano
+\begin{itemize}
+	\item $\LinearSpace \in S_k$;
+	\item $\VarLinearSpace = \LinearSpan{(\OrthonormalBase_i)_{i \in n \SetMin k}}$.
+\end{itemize}
+\par Per la formula di Grassmann, $\LinearDimension{\LinearSpace \cap \VarLinearSpace} = \LinearDimension{\LinearSpace} + \LinearDimension{\VarLinearSpace} - \LinearDimension{\LinearSpace + \VarLinearSpace} = k + n - k + 1 - \LinearDimension{\LinearSpace + \VarLinearSpace} \geq 1$, dunque $\LinearSpace \cap \VarLinearSpace \neq \lbrace 0 \rbrace$. Sia $\Vector \in \LinearSpace \cap \VarLinearSpace \SetMin \lbrace 0 \rbrace$ e sia $(\Scalar_i)_{i \in n} \in \mathbb{C}^n$ tale che $\Vector = \sum_{i \in n} \Scalar_i \OrthonormalBase_i$.
+\par Poich\'e $\HermitianMatrix$ \`e hermitiana esiste una matrice unitaria $\UnitaryMatrix$ tale che $\UnitaryMatrix^{-1}\HermitianMatrix\UnitaryMatrix$ \`e diagonale, dove gli elementi diagonali sono precisamente gli autovalori di $\HermitianMatrix$. Abbiamo allora, considerando il quoziente di Rayleigh $\RayleighQuotient(x)$ definito dalla matrice $\HermitianMatrix$,
+\begin{align*}
+	\RayleighQuotient(\Vector)
+	&= \frac{\HermitianTransposed{\Vector}\HermitianMatrix \Vector}{\HermitianTransposed{\Vector}\Vector}, \\
+	&= \frac{\HermitianTransposed{\Vector}\UnitaryMatrix^{-1}\HermitianMatrix\UnitaryMatrix \Vector}{\HermitianTransposed{\Vector}\Vector}, \\
+	&= \frac{\sum_{i \in n} \Eigenvalue_i \Conjugate{\Vector_i}\Vector_i}{\Conjugate{\Vector_i}\Vector_i},
+	&= \frac{\sum_{i = k}^n \Eigenvalue_i \Conjugate{\Vector_i}\Vector_i}{\Conjugate{\Vector_i}\Vector_i},
+	&\leq \frac{\sum_{i = k}^n \Eigenvalue_k \Conjugate{\Vector_i}\Vector_i}{\Conjugate{\Vector_i}\Vector_i} = \Eigenvalue_k.
+\end{align*}
+\par Ne deduciamo $\max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \RayleighQuotient(x) \leq \Eigenvalue_k$.
+\par D'altra parte, per $\VarVector \in \LinearSpace{(\OrthonormalBase_i)_{i \in k + 1}} \SetMin \lbrace 0 \rbrace$ abbiamo
+\begin{align*}
+	\RayleighQuotient(\VarVector)
+	&= \frac{\HermitianTransposed{\VarVector}\HermitianMatrix \VarVector}{\HermitianTransposed{\VarVector}\VarVector}, \\
+	&= \frac{\HermitianTransposed{\VarVector}\UnitaryMatrix^{-1}\HermitianMatrix\UnitaryMatrix \VarVector}{\HermitianTransposed{\VarVector}\VarVector}, \\
+	&= \frac{\sum_{i \in n} \Eigenvalue_i \Conjugate{\VarVector_i}\VarVector_i}{\Conjugate{\VarVector_i}\VarVector_i},
+	&= \frac{\sum_{i = 0}^k \Eigenvalue_i \Conjugate{\VarVector_i}\VarVector_i}{\Conjugate{\VarVector_i}\VarVector_i},
+	&\geq \frac{\sum_{i = k}^n \Eigenvalue_k \Conjugate{\VarVector_i}\VarVector_i}{\Conjugate{\VarVector_i}\VarVector_i} = \Eigenvalue_k.
+\end{align*}
+\par Quindi deve essere $\max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \RayleighQuotient(x) = \Eigenvalue_k$: ci\`o prova la prima affermazione. La seconda affermazione segue direttamente dalla prima moltiplicando $\HermitianMatrix$ per $-1$. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema precedente, supponiamo inoltre
+	\begin{itemize}
+		\item $M \in \mathbb{C}^{n \times (n - 1)}$ tale che $\HermitianTransposed{M} M = \Identity$;
+		\item $\VarHermitianMatrix = \HermitianTransposed{M}\HermitianMatrix M$;
+		\item $(\VarEigenvalue_i)_{i \in \NaturalShift{n}} \in \Spectrum{\VarHermitianMatrix}^n$ tale che
+		\begin{itemize}
+			\item $(\VarEigenvalue_i)_{i \in \NaturalShift{n}}$ sia una successione non crescente;
+			\item ogni autovalore di $\VarHermitianMatrix$ compaia in $(\VarEigenvalue_i)_{i \in n}$ un numero di volte pari alla sua molteplicit\`a algebrica.
+		\end{itemize}
+	\end{itemize}
+	Allora
+	\begin{itemize}
+		\item $\VarHermitianMatrix$ \`e hermitiana;
+		\item gli autovalori di $A$ separano gli autovalori di $\HermitianMatrix$: $\Eigenvalue_1 \geq \VarEigenvalue_1 \geq ... \geq \VarEigenvalue_{n - 1} \geq \Eigenvalue_n$.
+	\end{itemize}
+\end{Corollary}
+\Proof L'hermitianit\`a di $\VarHermitianMatrix$ segue da $\HermitianTransposed{\HermitianTransposed{M} \HermitianMatrix M} = \HermitianTransposed{M} \HermitianTransposed{\HermitianMatrix} \HermitianTransposed{\HermitianTransposed{M}} = \HermitianTransposed{M} \HermitianMatrix M$.
+\par Siano ora
+\begin{itemize}
+	\item $k \in \NaturalShift{n - 1}$;
+	\item $\RayleighQuotient_\HermitianMatrix(x)$ il quoziente di Rayleigh rispetto a $\HermitianMatrix$;
+	\item $\RayleighQuotient_\VarHermitianMatrix(x)$ il quoziente di Rayleigh rispetto a $\VarHermitianMatrix$;
+	\item per ogni $\LinearSpace \in S_k$, $\LinearSpace' = \lbrace x \in \mathbb{C}^n | \Exists{y \in \LinearSpace}{x = My} \rbrace$.
+\end{itemize}
+\par Per il teorema di Binet, $\Determinant{M} \neq 0$, dunque $M$ \`e invertibile e $\ForAll{\LinearSpace \in S_k}{\LinearSpace' \in S_k}$.
+\par Abbiamo
+\begin{align*}
+	\VarEigenvalue_k
+	&= \max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \RayleighQuotient_\VarHermitianMatrix(x),\\
+	&= \max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \frac{\HermitianTransposed{x} \VarHermitianMatrix x}{\HermitianTransposed{x} x},\\
+	&= \max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \frac{\HermitianTransposed{x} \HermitianTransposed{M} \HermitianMatrix M x}{\HermitianTransposed{x} \HermitianTransposed{M}M x},\\
+	&= \max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \frac{\HermitianTransposed{(Mx)} \HermitianMatrix (Mx)}{\HermitianTransposed{(Mx)}(Mx)},\\
+	&= \max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \RayleighQuotient_\HermitianMatrix(Mx),\\
+	&= \max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace'\\x \neq 0}} \RayleighQuotient_\HermitianMatrix(x),\\
+	&\leq \max_{\LinearSpace \in S_k} \min_{\substack{x \in \LinearSpace\\x \neq 0}} \RayleighQuotient_\HermitianMatrix(x) = \Eigenvalue_k.
+\end{align*}
+\par Il resto del teorema segue da quanto appena dimostrato applicato agli autovalori delle matrici $- \HermitianMatrix$ e $- \VarHermitianMatrix$ in luogo di $\HermitianMatrix$ e $\VarHermitianMatrix$ rispettivamente. \EndProof
+\begin{Corollary}
+	Sia $\HermitianMatrix \in \mathbb{C}^{n \times n}$ hermitiana. Gli autovalori di ogni matrice principale $(n - 1) \times (n - 1)$ di $\HermitianMatrix$ separano gli autovalori di $\HermitianMatrix$.
+\end{Corollary}
+\Proof Consideriamo la matrice $M \in \mathbb{C}^{n \times (n - 1)}$ tale che $M_i^j = \begin{cases}1\text{ se }i = j,\\0\text{ altrimenti.}\end{cases}$. Abbiamo
+\[
+	M = \lmatrix
+	\begin{array}{ccc}
+	1 & &\\
+	& \ddots &\\
+	& & 1\\
+	0 & \cdots & 0
+	\end{array}
+	\rmatrix.
+\]
+\par Sia $A$ una sottomatrice principale di $\HermitianMatrix$ e sia $\PermutationMatrix \in \mathbb{C}^{n \times n}$ una matrice di permutazione tale che $\PermutationMatrix^{-1} \HermitianMatrix \PermutationMatrix$ ha $A$ come sottomatrice principale di testa. Abbiamo dunque $A = \HermitianTransposed{M} \PermutationMatrix^{-1} \HermitianMatrix \PermutationMatrix M = \HermitianTransposed{(\PermutationMatrix M)} \HermitianMatrix (\PermutationMatrix M)$. Tenendo conto del fatto che $\HermitianTransposed{(\PermutationMatrix M)} (\PermutationMatrix M) = \Identity$, segue immediatamente dal corollario precedente che gli autovalori di $A$ separano gli autovalori di $\HermitianMatrix$. \EndProof
+\begin{Theorem}
+	\TheoremName{Propriet\`a degli zeri dei polinomi ortogonali.} Siano $(\OrthogonalPolynomial_n)_{n \in \\mathbb{N}} \in \RingAdjunction{\mathbb{C}}{x}^\mathbb{N}$ polinomi ortogonali rispetto ad un prodotto hermitiano $\HermitianProduct{\cdot}{\cdot}$ su $\RingAdjunction{\mathbb{C}}{x}$. Per ogni $n \in \NotZero{\mathbb{N}}$, gli zeri di $\OrthogonalPolynomial_n$ separano gli zeri di $\OrthogonalPolynomial_{n + 1}$.
+\end{Theorem}
+\Proof Fissiamo $n \in \NotZero{\mathbb{N}}$. Per prima cosa, osserviamo che nessuna radice di $\OrthogonalPolynomial_n$ \`e radice anche di $\OrthogonalPolynomial_{n + 1}$, infatti se $\xi$ fosse radice di entrambi i polinomi, allora, per la relazione a tre termini, sarebbe anche radice di $\OrthogonalPolynomial_{n - 1}$ e dunque, induttivamente, di $\OrthogonalPolynomial_0$, ma questo sarebbe assurdo.
+\par Il teorema segue dunque direttamente dal corollario precedente osservando che la matrice tridiagonale del teorema \ref{IstituzioniDiAnalisiNumerica_RadiciEAutovalori} d'ordine $n$ e la sottomatrice principale di testa della matrice analoga d'ordine $n + 1$. \EndProof
+\begin{Theorem}
+	\TheoremName{Rappresentazione dei polinomi ortogonali mediante matrice dei momenti}[dei polinomi ortogonali mediante matrice dei momementi][rappresentazione]
+	Sia fissato un prodotto hermitiano su $\RingAdjunction{\mathbb{C}}{x}$ della forma indicata dal teorema \ref{IstituzioniDiAnalisiNumerica_ProdottoHermitianoIntegrale} per un'opportuna funzione peso $\WeightFunction$. Per ogni $n \in \mathbb{N}$, siano
+	\begin{itemize}
+		\item $\Moment_n$ il momento di ordine $n$ di $\WeightFunction$;
+		\item $M_n \in \RingAdjunction{\mathbb{C}}{x}^{(n + 1) \times (n + 1)}$ la matrice definita da
+		\[
+			(M_n)_i^j =
+			\begin{cases}
+				\Moment_{i + j}\text{ se }j \neq n,\\ 
+				x^j\text{ altrimenti;}
+			\end{cases}
+		\]
+		vale a dire
+		\[
+			M_n = 
+			\lmatrix
+			\begin{array}{ccccc}
+				\Moment_0 & \Moment_1 & \cdots & \Moment_{n - 1} & \Moment_n\\
+				\Moment_1 & \Moment_2 & \cdots & \Moment_n & \Moment_{n+1}\\
+				\vdots & \vdots & \ddots & \vdots & \vdots\\
+				\Moment_{n - 2} & \Moment_{n - 1} & \cdots & \Moment_{2n - 3} & \Moment_{2n-2}\\
+				\Moment_{n - 1} & \Moment_n & \cdots & \Moment_{2n - 2} & \Moment_{2n-1}\\
+				1 & x & \cdots & x^{n - 1} & x^n
+			\end{array}
+			\rmatrix.
+		\]
+	\end{itemize}
+	I polinomi $(\OrthogonalPolynomial_n)_{n \in \mathbb{N}}$, definiti per ogni $n \in \mathbb{N}$ da $\OrthogonalPolynomial_n(x) = \Determinant{M_n(x)}$ sono ortogonali rispetto al prodotto hermitiano fissato $\HermitianProduct{\cdot}{\cdot}$.
+\end{Theorem}
+\Proof Per ogni $n \in \mathbb{N}$, si osserva immediatamente dallo sviluppo di Laplace del determinante di $M_n$ lungo l'ultima riga che $\PolynomialDegree{\OrthogonalPolynomial_n} = n$.
+\par Siano $n \in \mathbb{N}$ e $k \in n$. Abbiamo $\HermitianProduct{\OrthogonalPolynomial_n}{x^k} = \int_a^b \WeightFunction(x) \OrthogonalPolynomial_n(x) x^k dx$, poich\'e l'integrale \`e calcolato su un intervallo reale. Dunque $\HermitianProduct{\OrthogonalPolynomial_n}{x^k} = \int_a^b \WeightFunction(x) \Determinant{(M_n(x))} x^k dx$. Poich\'e il determinante \`e una forma multilineare alternante sulle righe di matrici, abbiamo $\HermitianProduct{\OrthogonalPolynomial_n}{x^k} = \int_a^b \Determinant{(\bar{M}_n(x))} dx$, dove $\bar{M}_n(x) \in \RingAdjunction{\mathbb{C}}{x}^{(n + 1) \times (n + 1)}$ \`e la matrice ottenuta da $M(x)$ moltiplicandone l'ultima riga per $\WeightFunction(x) x^k$, vale a dire
+\[
+	\bar{M}_n(x) =
+	\lmatrix
+	\begin{array}{ccccc}
+		\Moment_0 & \Moment_1 & \cdots & \Moment_{n - 1} & \Moment_n\\
+		\Moment_1 & \Moment_2 & \cdots & \Moment_n & \Moment_{n+1}\\
+		\vdots & \vdots & \ddots & \vdots & \vdots\\
+		\Moment_{n - 2} & \Moment_{n - 1} & \cdots & \Moment_{2n - 3} & \Moment_{2n-2}\\
+		\Moment_{n - 1} & \Moment_n & \cdots & \Moment_{2n - 2} & \Moment_{2n-1}\\
+		\WeightFunction(x) x^k & \WeightFunction(x) x^{k + 1} & \cdots & \WeightFunction(x) x^{k + n - 1} & \WeightFunction{x^{k + n}}
+	\end{array}
+	\rmatrix.
+\]
+\par Ora, considerando lo sviluppo del determinante di $\bar{M}_n(x)$ secondo l'ultima riga e sfruttando la linearit\`a dell'integrale si osserva che $\int_a^b \Determinant{(\bar{M}_n(x))} dx = \Determinant{ \widetilde{M}_n(x) }$, dove $\widetilde{M}_n(x) \in \RingAdjunction{\mathbb{C}}{x}^{(n + 1) \times (n + 1)}$ \`e la matrice ottenuta da $\bar{M}_n(x)$ integrando termine a termine l'ultima riga, vale a dire
+\[
+	\widetilde{M}_n(x) =
+	\lmatrix
+	\begin{array}{ccccc}
+		\Moment_0 & \Moment_1 & \cdots & \Moment_{n - 1} & \Moment_n\\
+		\Moment_1 & \Moment_2 & \cdots & \Moment_n & \Moment_{n+1}\\
+		\vdots & \vdots & \ddots & \vdots & \vdots\\
+		\Moment_{n - 2} & \Moment_{n - 1} & \cdots & \Moment_{2n - 3} & \Moment_{2n-2}\\
+		\Moment_{n - 1} & \Moment_n & \cdots & \Moment_{2n - 2} & \Moment_{2n-1}\\
+		\int_a^b \WeightFunction(x) x^k dx & \int_a^b \WeightFunction(x) x^{k + 1} dx & \cdots & \int_a^b \WeightFunction(x) x^{k + n - 1} dx & \int_a^b \WeightFunction{x^{k + n}} dx
+	\end{array}
+	\rmatrix.
+\]
+\par Ma l'ultima riga di $\widetilde{M}_n(x)$, per definizione di momento, coincide con la $(k + 1)$-esima. Dunque $\HermitianProduct{\OrthogonalPolynomial_n}{x^k} = 0$, da cui, per ogni $m \in \mathbb{N}$, $\Implies{m \neq n}{\HermitianProduct{\OrthogonalPolynomial_n}{\OrthogonalPolynomial_m} = 0}$. \EndProof
+
+\begin{Theorem}
+	Sia $u = (u_i)_{i = 1...n}$ e $v = (v_i)_{i = 1...n}$. Abbiamo $\Transposed{u}H_nv = \sum_i\sum_j u_i\mu_{i + j - 2}v_j = \ScalarProduct{\sum_i u_i x^{i - 1}}{\sum_j v_j x^{j - 1}}$.
+	$\Transposed{u}H_n u = \ScalarProduct{.}{.} > 0$ se $u \neq 0$ quindi $H_n$ \`e definita positiva.
+	In particolare $\Transposed{u}H_nv$ \`e prodotto scalre su $\mathbb{R}^n$.
+\end{Theorem}
+\begin{Theorem}
+	Sia $S(x) \in \CClass{n}[[a,b]]$ tale che $S^{(k)}(a) = S^{(k)}(b) = 0$ per $k = 0, ..., n - 1$. Sia $t(x) = \frac{S^{(n)}(x)}{\WeightFunction(x)}$. Allora $\int_a^b t(x)q(x)\WeightFunction(x) = 0$ per ogni polinomio $q$ di grado al pi\`u $n - 1$.
+\end{Theorem}
+\Proof vedi dispense. si usa integrazione per parti e si usa il fatto che $q^{(n)} = 0$.
+\begin{Theorem}
+	\TheoremName{Formula di Rodrigues} se $p_n(x)$ \`e un polinomio di grado $n$ tale $p_n(x) = \frac{\beta_n}{\WeightFunction(x)} \frac{d^n S_n(x)}{dx^n}$, dove $\beta_n \in \mathbb{R}$, $S_n(x) \in \CClass{n}[[a,b]]$ e $S_n^{(k)}(a) = ... (b) = 0$ per $k=0..n-1$, allora $p_0,...,p_n$ sono ortogonali.
+\end{Theorem}

@@ -1,0 +1,108 @@
+\section{Propriet\`a topologiche di alcuni spazi proiettivi e alcuni confronti tra geometria proiettiva e geometria affine.}
+
+	Considereremo la topologia euclidea su $\mathbb{R}^{n + 1}$ e su $\mathbb{C}^{n + 1}$ e le topologie quoziente che se ne deducono sui rispettivi spazi proiettivi $\mathbb{P}^n(\mathbb{R})$ e $\mathbb{P}^n(\mathbb{C})$.
+\begin{Theorem}\label{thtop1}
+	Sia $G$ il gruppo delle omotetie di $\mathbb{K}^{n + 1} - \lbrace 0 \rbrace$. Gli spazi topologici $\mathbb{P}^n(\mathbb{K})$ e $\mathbb{K}^{n + 1}/G$ sono identici.
+\end{Theorem}
+\Proof \`E sufficiente provare l'uguaglianza tra gli insiemi: l'uguaglianza delle strutture topologiche segue dalla definizione di topologia quoziente.
+	\par Siano $x, y \in \mathbb{K}^{n + 1}$. Abbiamo $x \sim y$ se e solo se esiste un $\lambda \in \mathbb{K}^*$ tale che $x = \lambda y$, ci\`o che equivale a dire che esite un'omotetia $\rho$ di rapporto $\lambda$ tale che $x = \rho(y)$. \EndProof
+\begin{Theorem}\label{thtop2}
+	Se $\mathbb{K} = \mathbb{R}$ o $\mathbb{K} = \mathbb{C}$, allora $\mathbb{P}^n(\mathbb{K})$ \`e uno spazio topologico connesso per archi e compatto.
+\end{Theorem}
+\Proof Per definizione di topologia quoziente, la proiezione canonica $\pi: \mathbb{\mathbb{K}}^{n + 1} \rightarrow \mathbb{P}^n(\mathbb{K})$ \`e un'identificazione, e dunque un'applicazione continua e surgettiva. La restrizione di $\pi$ a $S^n$ se $\mathbb{K} = \mathbb{R}$ o a $S^{2n+1}$ se $\mathbb{K} = \mathbb{C}$ \`e ancora continua e surgettiva. La tesi segue dal fatto che l'immagine tramite un'applicazione continua di spazi connessi per archi \`e connessa per archi e l'immagine tramite un'applicazione continua di spazi compatti \`e compatta. \EndProof
+\begin{Theorem}\label{thtop3}
+	$\mathbb{P}^n(\mathbb{R})$ \`e omeomorfo a $S^n/H$ e $\mathbb{P}^n(\mathbb{C})$ \`e omeomorfo a $S^{2n + 1}/H$, dove $H$ \`e il gruppo di omeomorfismi dei $2$ elementi $\Id$ e $- \Id$.
+\end{Theorem}
+\Proof Dimostriamo solo il caso reale: il caso complesso \`e analogo.
+	\par Consideriamo l'inclusione canonica $i: S^n \rightarrow \mathbb{R}^{n + 1}$, l'applicazione $r: \mathbb{R}^{n + 1} \rightarrow S^n$ che a $x$ associa $r(x) = \frac{x}{\Vert x \Vert}$, le proiezioni canoniche $\pi_1: S^n \rightarrow S^n/H$ e $\pi_2: \mathbb{R}^{n + 1} - \lbrace 0 \rbrace \rightarrow \mathbb{P}^n(\mathbb{R})$: tutte queste applicazioni sono continue.
+\par $\pi_2 \circ i$ e $\pi_1 \circ r$ sono applicazioni continue in quanto composizioni di applicazioni continue e $\pi_1$ e $\pi_2$ sono identificazioni per definizione di topologia quoziente: le applicazioni $f$ e $g$ ottenute per passaggio al quoziente da $\pi_2 \circ i$ e $\pi_1 \circ r$ rispettivamente sono dunque continue.
+\par Sia $x \in S^n/H$. Scelto $y \in S^n$ tale che $\pi_1(y) = x$, abbiamo $(g \circ f)(x) = g(f(x)) = g(\pi_2(i(y))) = g(\pi_2(y)) = \pi_1(r(y)) = \pi_1(y) = x$.
+\par Sia adesso invece $x \in \mathbb{P}^n(\mathbb{R})$ e scegliamo $y \in S^n \subset \mathbb{R}^{n + 1}$ tale che $\pi_2(y) = x$. Abbiamo $(f \circ g)(x) = f(g(x)) = f(\pi_1(r(y))) = f(\pi_1(y)) = \pi_2(i(y)) = \pi_2(y) = x$.
+\par Dunque le applicazioni $f$ e $g$ sono l'una l'inversa dell'altra. \EndProof
+\begin{Corollary}\label{cortop1}
+	$\mathbb{P}^n(\mathbb{R})$ e $\mathbb{P}^n(\mathbb{C})$ sono spazi di Hausdorff.
+\end{Corollary}
+\Proof Segue dal teorema precedente, dal fatto che $S^n$ \`e uno spazio di Hausdorff e che $H$ \`e un gruppo finito. \EndProof
+\par Forniamo una seconda dimostrazione del corollario precedente per il caso complesso.
+\begin{Theorem}\label{thtop4}
+	$\mathbb{P}^n(\mathbb{C})$ \`e uno spazio di Hausdorff.
+\end{Theorem}
+\Proof Per un noto teorema di topologia e per il teorema \ref{thtop1}, $\mathbb{P}^n(\mathbb{C})$ \`e di Hausdorff se e solo se l'insieme $K = \lbrace x \in (\mathbb{C}^{n + 1} - \lbrace 0 \rbrace) \times (\mathbb{C}^{n + 1} - \lbrace 0 \rbrace)\ |\ (\exists y \in \mathbb{C}^{n + 1} - \lbrace 0 \rbrace)(\exists g \in G)(x = (y, g(y))) \rbrace$, dove $G$ \`e il gruppo delle omotetie di $\mathbb{C}^{n + 1} - \lbrace 0 \rbrace$, \`e chiuso.
+	\par Sia $\mathcal{M}(\mathbb{C}, n + 1, 2)$ l'insieme delle matrici a coefficienti complessi di dimensione $(n + 1) \times 2$. Sia $f: (\mathbb{C}^{n+ 1} - \lbrace 0 \rbrace) \times (\mathbb{C}^{n + 1} - \lbrace 0 \rbrace) \rightarrow \mathcal{M}(\mathbb{C}, n + 1, 2) - \lbrace 0 \rbrace$ l'applicazione che a $x \in \mathbb{C}^{n + 1} \times \mathbb{C}^{n + 1}$ associa la matrice $f(x)$ la cui prima colonna \`e costituita dal primo vettore di $x$ e la cui seconda colonna \`e costituita dal secondo vettore di $x$. $f$ \`e continua e surgettiva. Consideriamo su $\mathcal{M}(\mathbb{C}, n + 1, 2) - \lbrace 0 \rbrace$ la topologia quoziente rispetto ad $f$. Dunque $K = f^{-1}(f(K))$ \`e chiuso se e solo se $f(K)$ \`e chiuso.
+	\par Ora, $f(K)$ coincide con l'insieme delle matrici di rango $1$. Definiamo l'applicazione $D: \mathcal{M}(\mathbb{C}, n + 1, 2) - \lbrace 0 \rbrace \rightarrow \mathbb{C}$ che a $x$ associa il prodotto dei determinanti dei minori $2 \times 2$ di $x$: $D$ \`e continua e $f(K)$ risulta essere l'immagine inversa di $0$, chiuso in $\mathbb{C}$. \EndProof
+\begin{Definition}\label{deftop1}
+	Per ogni $i = 0, ..., n$, sia $H_i$ l'iperpiano fondamentale di $\mathbb{P}^n(\mathbb{K})$ descritto dall'equazione cartesiana $x_i = 0$ e sia $U_i = \mathbb{P}^n(\mathbb{K}) - H_i$. Consideriamo inoltre le applicazioni invertibili $j_i: \mathbb{K}^n \rightarrow U_i$ che a $(x_1, ..., x_n)$ associa $[y_0, ..., y_n]$, dove per ogni $k = 0, ..., n$ abbiamo $y_k = \begin{cases} x_{k + 1}\text{, se } k < i,\\ 1\text{, se } k = i,\\ x_k \text{, se } k > i. \end{cases}$ Ognuna delle coppie della famiglia $((U_i, j_i^{-1}))_{i = 0, ..., n}$ si chiama \Define{carta affine standard}[affine standard][carta] di $\mathbb{P}^n(\mathbb{K})$\footnote{La dicitura \NIDefine{standard} \`e mia. In ESERCIZIARIO viene chiamata \NIDefine{standard} solo la carta $(U_0, j_0^{-1})$. Non ho trovato altri documenti che chiamassero \NIDefine{standard} una qualche carta.}; la famiglia stessa invece si chiama \Define{atlante standard}[standard][atlante]\footnote{La dicitura \NIDefine{standard} per l'atlante \`e invece comune.}.
+\end{Definition}
+	\par Le notazioni del teorema precedente saranno mantenute per tutta la durata del documento, anche quando non esplicitamente indicato. \`E immediato osservare che ogni $j_i$ \`e un omeomorfismo.
+\begin{Definition}\label{deftop2}
+	Sia $H$ un iperpiano di $\mathbb{P}(V)$ e sia $f: \mathbb{P}^n(K) \rightarrow \mathbb{P}(V)$ un isomorfismo proiettivo tale che $f(H_0) = H$\footnote{Esiste per il teorema fondamentale delle applicazioni proiettive.}. Poniamo $U_H = f(U_0)$ e $j_H = f \circ j_0$. La coppia $(U_H,j_H^{-1})$ viene chiamata \Define{carta affine}[affine][carta] di $\mathbb{P}(V)$; dato $P \in U_H$, $P$ si dice \Define{punto proprio}[proprio][punto] rispetto alla carta $(U_H, j_H^{-1})$ e le componenti di $j_H^{-1}(P)$ si chiamano \Define{coordinate affini}[affini][coordinate] di $P$ rispetto alla carta $(U_H, j_H^{-1})$; dato invece $Q \in H$, $Q$ si dice \Define{punto improprio}[improprio][punto] o \Define{punto all'infinito}[all'infinito][punto] rispetto a $(U_H, j_H^{-1})$.
+\end{Definition}
+	\par A volte una carta $(U_H, j_H^{-1})$ viene indicata per abuso di linguaggio solo con $U_H$, $j_H^{-1}$ o $j_H$.
+\begin{Definition}\label{deftop3}
+	Uno spazio topologico $X$ si dice una \Define{variet\`a} di dimensione $n$ (o $n$-variet\`a), dove $n \in \mathbb{N}$, quando
+	\begin{itemize}
+		\item $X$ \`e uno spazio di Hausdorff;
+		\item per ogni $x \in X$ esiste un intorno aperto $U$ di $x$ tale che $U$ \`e omeomorfo ad un aperto di $\mathbb{R}^n$ (si dice che $X$ \`e \NIDefine{localmente euclideo});
+		\item ogni componente connessa di $X$ soddisfa il secondo assioma di numerabilit\`a.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}\label{deftop4}
+	Dati una $n$-variet\`a $X$ e un suo sottoinsieme $U$ omeomorfo ad un aperto $V$ di $\mathbb{R}^n$ tramite l'omeomorfismo $j: V \rightarrow U$, la coppia $(U,j^{-1})$ si chiama \Define{carta}. Se $(U_i)_{i \in I}$ \`e una famiglia di sottoinsiemi di $X$ che ricopre $X$ omeomorfi a un qualche aperto $V_i$ di $\mathbb{R}^n$ tramite gli omeomorfismi $j_i: V_i \rightarrow U_i$, allora chiamiamo \Define{atlante} la famiglia di carte $((U_i,j_i^{-1}))_{i \in I}$.
+\end{Definition}
+\begin{Theorem}\label{thtop5-1}
+	$\mathbb{P}^n(\mathbb{R})$ \`e omeomorfo a $D^n/\sim$ e $\mathbb{P}^n(\mathbb{C})$ \`e omeomorfo a $D^{2n + 1}/\sim$, dove $\sim$ \`e la relazione d'equivalenza che contrae il bordo di $D^n$ ad un punto.
+\end{Theorem}
+\Proof Dimostriamo il caso reale. Il caso complesso \`e analogo.
+\par Sia $f: S^n_+ \rightarrow D^n$, dove $S^n_+ = S^n \cap \lbrace x = (x_0, ..., x_n) \in \mathbb{R}^{n + 1} | x_0 \geq 0 \rbrace$, l'applicazione che a $x = (x_0, ..., x_n) \in S^n_+$ associa $f(x) = (x_1, ..., x_n)$: l'applicazione $f$ \`e evidentemente un omeomorfismo. Dunque $S^n_+/H$ \`e omeomorfo a $D^n/\sim$, dove $H = \lbrace \Identity, - \Identity \rbrace$\footnote{L'omeomorfsimo si ottiene da $f$ per passaggio ai quozienti.}. La tesi segue dal teorema \ref{thtop3}. \EndProof
+\begin{Theorem}\label{thtop5}
+	$\mathbb{P}^n(\mathbb{R})$ \`e una variet\`a di dimensione $n$ e $\mathbb{P}^n(\mathbb{C})$ \`e una variet\`a di dimensione $2n$.
+\end{Theorem}
+\Proof Per il corollario \ref{cortop1} e per il teorema \ref{thtop4}, i due spazi sono di Hausdorff. Le costruzioni degli atlanti standard provano che essi sono anche localmente euclidei e individua la dimensione delle variet\`a. Entrambi gli spazi sono connessi, quindi occorre dimostrare che essi verificano il secondo assioma di numerabilit\`a.
+\par Per il teorema \ref{thtop5-1} \`e sufficiente dimostrare che $D^n/\sim$ e $D^{2n + 1}/\sim$ ammettono entrambi una base numerabile; dimostreremo solo il primo caso. $D^n$ \`e un sottospazio di $\mathbb{R}^{n + 1}$, quindi ammette a base numerabile: sia $\mathcal{B}$ una base numerabile di $D^n$ e sia $\mathcal{B}'$ la famiglia (numerabile) delle immagini degli elementi di $\mathcal{B}$ in $D^n/\sim$ attraverso la proiezione canonica $\pi: D^n \rightarrow D^n/\sim$.
+\par Sia $A$ un aperto di $D^n/\sim$. Allora $\pi^{-1}(A)$ \`e aperto per definizione di topologia quoziente. Se $A$ non contiene il punto $x$ a cui \`e stato contratto il bordo di $D^n$, allora $\pi^{-1}(A)$ \`e unione di elementi della base $\mathcal{B}$ tutti disgiunti dal bordo di $D^n$, e dunque saturi per la contrazione. Pertanto $A = \pi(\pi^{-1}(A))$ \`e unione di insiemi aperti della famiglia $\mathcal{B}'$.
+\par Supponiamo ora invece $x \in A$. $D^n/\sim$ \`e di Hausdorff, quindi $\lbrace x \rbrace$ \`e chiuso e dunque $A - \lbrace x \rbrace$ \`e ancora aperto: il caso precedente garantisce che quest'ultimo ammette un ricoprimento numerabile $\mathcal{R}$ con elementi di $\mathcal{B}'$. Inoltre, $x \in A$ implica che il bordo di $D^n$ sia contenuto in $\pi^{-1}(A)$. Essendo $\pi^{-1}(A)$ aperto, esiste un elemento $B \in \mathcal{B}$ tale che $B \subseteq \pi^{-1}(A)$ e $B \cap \partial D^n \neq \varnothing$. La famiglia $\mathcal{R}'$, ottenuta da $\mathcal{R}$ aggiungendovi l'insieme $B$ ricopre $A$ e questo conclude la dimostrazione.
+	\par Se $(U_H, j_H^{-1})$ \`e una carta, allora $\mathbb{K}^n$ si immerge in $\mathbb{P}^n(\mathbb{K})$ tramite $i \circ j_H$, dove $i: U_H \rightarrow \mathbb{P}^n(\mathbb{K})$ \`e l'inclusione. Possiamo dunque vedere i punti propri di $\mathbb{P}^n(\mathbb{K})$ per la carta data come punti di $\mathbb{K}^n$ e i punti all'infinito come punti ``aggiunti'' a $\mathbb{K}^n$.
+\begin{Theorem}\label{thtop6}
+	Sia $\AffineGroup(\mathbb{K}^n)$ il gruppo delle affinit\`a di $\mathbb{K}^n$. Sia $G$ il sottogruppo di $\mathbb{P}GL(\mathbb{K}^{n + 1})$ che lascia fisso un iperpiano arbitrario $H$ di $\mathbb{P}^n(\mathbb{K})$. Allora $\AffineGroup(\mathbb{K}^{n + 1}) \cong G$.
+\end{Theorem}
+\Proof A meno di un cambio di coordinate, possiamo supporre $H$ descritto dall'equazione cartesiana $x_0 = 0$. Sia $f \in G$ e $A$ una matrice rappresentante $f$ per il riferimento proiettivo canonico. $f$ fissa $H$ dunque tutti gli elementi di $A$ sulla prima riga tranne il primo sono nulli e possiamo scegliere $A$ in modo che il primo elemento sulla prima riga e sulla prima colonna sia $1$. Abbiamo dunque $A$ della forma $A = \left ( \begin{array}{c|c} 1 & \cdots 0 \cdots\\ \hline B & C \end{array} \right )$; $C$ \`e invertibile.
+	\par Sia $\tilde{f} = j_H^{-1} \circ f \circ j_H$. Abbiamo, per $X \in \mathbb{K}^n$, $\tilde{f}(X) = j_H^{-1}(A (1 \cdots X \cdots)^t) = j_H^{-1}(1 \cdots CX + B \cdots) = CX + B$, dunque $\tilde{f} \in \AffineGroup(\mathbb{K}^n)$
+	\par Consideriamo l'applicazione $\phi: G \rightarrow \AffineGroup(\mathbb{K}^n)$ che a $f \in G$ associa $\tilde{f}$ costruita come appena descritto. Si verifica direttamente che $\phi$ \`e un isomorfismo. \EndProof
+\begin{Definition}\label{deftop5}
+	Consideriamo $W$ sottospazio affine di $\mathbb{K}^n$ e una carta $(U_H, j_H^{-1})$ di $\mathbb{P}^n(\mathbb{K})$. La \Define{chiusura proiettiva}[proiettiva][chiusura] $\bar{W}$ di $W$ rispetto alla carta $(U_H, j_H^{-1})$ \`e il pi\`u piccolo sottospazio proiettivo di $\mathbb{P}^n(\mathbb{K})$ contenente $j_H(W)$.
+\end{Definition}
+\begin{Theorem}\label{thtop7}
+	Sia $W$ il sottospazio affine di $\mathbb{K}^n$ descritto dalle equazioni cartesiane $AX + B = 0$, dove $X = (x_1, ..., x_n)^t$ \`e il vettore delle incognite, e sia $W'$ il sottospazio proiettivo di $\mathbb{P}^n(\mathbb{K})$ descritto dalle equazioni cartesiane $CX' = 0$, dove $C = \left ( \begin{array}{c|c} B & A \end{array} \right )$ e $X' = (x_0, x_1, ..., x_n)$ \`e il vettore delle incognite. Allora $W' = \bar{W}$, dove $\bar{W}$ \`e la chiusura proiettiva rispetto alla carta affine standard $(U_0,j_0^{-1})$. Inoltre $X' \in \bar{W}$ \`e un punto proprio se e solo se $X' \in j_0(W)$.
+\end{Theorem}
+\Proof La chiusura proiettiva di $W$ \`e, per il corollario \ref{cor0.1}, il proiettivizzato del pi\`u piccolo sottospazio vettoriale $R$ di $\mathbb{K}^{n + 1}$ contenente l'insieme dei punti $X'$ tali che la loro prima componente \`e $1$ e il vettore delle sue restanti componenti soddisfa $AX + B = 0$, condizioni equivalenti a $CX' = 0$. Quindi, per il teorema \ref{th22}, $W' = \bar{W}$.
+	\par Sia $X' \in W'$ un punto proprio. Allora possiamo assumere che la sua prima componente sia $1$; denotiamo $X$ il vettore delle componenti restanti: abbiamo $j_0(X) = X'$. Abbiamo $CX' = 0$, che \`e equivalente a $AX + B = 0$, a sua volta equivalente a $X \in W$. Dunque $X' \in \bar{W}$ \`e un punto proprio se e solo se $X' \in j_0(W)$. \EndProof
+\begin{Corollary}\label{cortop2}
+	Sia $W$ un sottospazio affine di $\mathbb{K}^n$ e supponiamo fissata una carta affine: abbiamo $\dim \bar{W} = \dim W$.
+\end{Corollary}
+\Proof A meno di un cambiamento di riferimento proiettivo, possiamo supporre che la carta affine sia la carta standard $(U_0, j_0^{-1})$; manteniamo le notazioni del teorema \ref{thtop7}. La dimensione di $W$ \`e uguale ad $n - k$, dove $k$ \`e il rango della matrice $A$. La dimensione di $\bar{W}$ \`e uguale a $n + 1 - q - 1 = n - q$, dove $q$ \`e il rango della matrice $C$. $W$ \`e uno spazio affine, dunque non vuoto. Per il teorema di Rouch\'e - Capelli $k = q$, da cui segue la tesi del teorema. \EndProof
+\begin{Theorem}\label{thtop8}
+	Sia $T$ un sottospazio proiettivo di $\mathbb{P}^n(\mathbb{K})$ non interamente contenuto in $H_0$ - l'iperpiano fondamentale di equazione $x_0 = 0$ - descritto dall'equazione cartesiana $CX' = 0$, dove $X' = (x_0, x_1, ..., x_n)$ e consideriamo la carta affine standard $(U_0, j_0^{-1})$. L'insieme $j_0^{-1}(T \cap U_0)$ \`e il sottospazio affine di $\mathbb{K}^n$ descritto dall'equazione cartesiana $AX + B = 0$, dove $B$ \`e la prima colonna di $C$ e $A$ la matrice ottenuta da $C$ togliendone la prima colonna e $X = (x_1, ..., x_n)$.
+\end{Theorem}
+\Proof Sia $X' \in T \cap U_0$. $X'$ ha prima coordinata non nulla: possiamo suporre che tale coordinata sia $1$; designamo con $X$ il vettore delle restanti componenti. Allora abbiamo $CX' = 0$ se e solo se $AX + B = 0$ (la condizione di uguaglianza dei ranghi di $A$ e di $C$ \`e soddisfatta per ipotesi). La tesi segue constatando che $X = j_0^{-1}(X')$. \EndProof
+\begin{Theorem}\label{thtop9}
+	Sia $\phi: S \rightarrow \mathbb{S}_0$, dove $S$ \`e l'insieme dei sottospazi affini di $\mathbb{K}^n$ e $\mathbb{S}_0$ l'insieme dei sottospazi proiettivi di $\mathbb{P}^n(\mathbb{K})$ incidenti con $U_0$, l'applicazione che a $W$ associa $\bar{W}$ rispetto alla carta standard $(U_0, j_0^{-1})$. L'applicazione $\phi$ \`e biettiva con inversa $\psi: \mathbb{S} \rightarrow S$ tale che $\psi(T) = j_0^{-1}(T \cap U_0)$ e manda sottospazi affini in sottospazi proiettivi della stessa dimensione.
+\end{Theorem}
+\Proof Siano $X = (x_1, ..., x_n)$ e $X' = (x_0, x_1, ..., x_n)$. Sia $W \in S$ descritto dall'equazione $AX + B = 0$ e sia $C = \left ( \begin{array}{c|c} B & A \end{array} \right )$. Allora, sfruttando i teoremi \ref{thtop7} e \ref{thtop8}, abbiamo che $\phi(W)$ \`e il sottospazio proiettivo descritto dall'equazione $CX' = 0$ e che $\psi(\phi(W))$ \`e il sottospazio affine descritto da $AX + B = 0$, quindi $\psi \circ \phi = \Identity_S$. Analogamente si dimostra $\phi \circ \psi = \Identity_{\mathbb{S}}$. \EndProof
+\begin{Theorem}\label{thtop10}
+	$\mathbb{P}^n(\mathbb{C})$ \`e semplicemente connesso per ogni $n \in \mathbb{N}$.
+\end{Theorem}
+\Proof Se $n = 0$, $\mathbb{P}^n(\mathbb{C})$ \`e ridotto ad un solo punto, necessariamente semplicemente connesso. Supponiamo il teorema vero cambiando $n$ in $n - 1$.
+\par Consideriamo l'iperpiano fondamentale $H_0$ definito dall'equazione $x_0 = 0$. Poniamo $A = \mathbb{P}^n(\mathbb{C}) - H_0$ e $B = \mathbb{P}^n(\mathbb{C}) - \lbrace [1, 0, ..., 0]$. Abbiamo evidentemente $A \cup B = \mathbb{P}^n(\mathbb{C})$. Inoltre $A$ \`e semplicemente connesso in quanto omeomorfo tramite $j_0$ a $\mathbb{C}^n$, semplicemente connesso; $B$ \`e anch'esso semplicemente connesso in quanto esso si deforma in $H$ tramite l'applicazione che a $([x_0, ..., x_n], t) \in B \times [0,1]$ associa $[tx_0, ..., x_n]$, ed $H$ \`e omeomorfo a $\mathbb{P}^{n - 1}(\mathbb{C})$, semplicemente connesso per ipotesi. La tesi segue dunque dal teorema di Van Kampen. \EndProof
+\begin{Theorem}\label{thtop11}
+	$\mathbb{P}^1(\mathbb{R})$ \`e omeomorfo a $S^1$.
+\end{Theorem}
+\Proof $\mathbb{P}^1(\mathbb{R})$ \`e compatto e di Hausdorff ed \`e dunque omeomorfo alla compattificazione di Alexandroff di $\mathbb{P}^1(\mathbb{R}) - \lbrace [0, 1] \rbrace$, omeomorfo a $\mathbb{R}$ tramite l'applicazione $[x_0, x_1] \mapsto \frac{x_1}{x_0}$.
+\par D'altra parte $\mathbb{R}$ \`e omeomorfo per proiezione stereografica a $S^1 - (0,1)$, la cui compattificazione di Alexandroff \`e $S^1$, essendo $S^1$ compatto e di Hausdorff.
+\par In conclusione, $\mathbb{P}^1(\mathbb{R})$ \`e omeomorfo a $S^1$. \EndProof
+\begin{Theorem}\label{thtop12}
+	$\mathbb{P}^0(\mathbb{R})$ \`e semplicemente connesso. Il gruppo fondamentale di $\mathbb{P}^1(\mathbb{R})$ \`e isomorfo a $\mathbb{Z}$, quello di $\mathbb{P}^n(\mathbb{R})$ con $n \geq 2$ \`e isomorfo a $\mathbb{Z}/(2)$.
+\end{Theorem}
+\Proof La semplice connessione di $\mathbb{P}^0(\mathbb{R})$ \`e evidente.
+\par Per il teorema \ref{thtop11}, $\mathbb{P}^1(\mathbb{R})$ \`e omeomorfo alla sfera $S^1$, la quale ha gruppo fondamentale $\mathbb{Z}$.
+\par Sia ora $n \geq 2$. Consideriamo il rivestimento $p: S^n \rightarrow \mathbb{P}^n(\mathbb{R})$ e fissiamo due punti $e \in S^n$ e $x_0 \in \mathbb{P}^n(\mathbb{R})$ tali che $p(e) = x_0$. Sia $x \in \mathbb{P}^n(\mathbb{R})$. Il rivestimento $p$ \`e connesso quindi $p^{-1}(x)$ ha cardinalit\`a uguale all'indice del sottogruppo $p_* \pi_1(S^n, e)$ nel gruppo $\pi_1(\mathbb{P}^n(\mathbb{R}), x_0)$. D'altra parte, $S^n$ \`e semplicemente connesso e pertanto l'ordine di $p_* \pi_1(S^n, e)$ \`e $1$. L'ordine di $\pi_1(\mathbb{P}^n(\mathbb{R}), x_0)$ \`e dunque $2$ e $\pi_1(\mathbb{P}^n(\mathbb{R}), x_0)$ \`e necessariamente isomorfo a $\mathbb{Z}/(2)$. \EndProof
+\par	Concludiamo questa sezione osservando che i teoremi che sono stati enunciati e dimostrati solo per la carta affine standard $(U_0,j_0^{-1})$ si generalizzano facilmente per carte affini qualsiasi.

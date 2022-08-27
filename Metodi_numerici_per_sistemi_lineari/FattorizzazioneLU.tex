@@ -1,0 +1,315 @@
+\section{Fattorizzazione $LU$.}
+\label{MetodiNumericiPerLaRisoluzioneDiSistemiLineari_FattorizzazioneLU}
+\begin{Definition}
+  Chiamiamo
+  \Define{matrice elementare di Gauss}[elementare di Gauss][matrice]
+  una matrice elementare
+  $\GaussElementaryMatrix \in \mathbb{C}^{n \times n}$
+  ($n \in \NotZero{\mathbb{N}}$)
+  tale che
+  $\GaussElementaryMatrix
+  = \Identity - \Vector\HermitianTransposed{\CanonicalBase_0}$, con
+  \begin{itemize}
+    \item $\Scalar \in \mathbb{C}^{n \times n}$;
+    \item $\Vector \in \mathbb{C}^{n \times n}$, dove $\Vector_0 = 0$;
+    \item $\CanonicalBase_0$ primo vettore della base canonica.
+  \end{itemize}
+  Una tale matrice ha la forma
+  \[
+    \GaussElementaryMatrix =
+    \lmatrix
+    \begin{array}{cccc}
+      1                 &   &         &   \\
+      - \Vector_1       & 1 &         &   \\
+      \vdots            &   & \ddots  &   \\
+      - \Vector_{n - 1} &   &         & 1 \\
+    \end{array}
+    \rmatrix.
+  \]
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni della definizione precedente,
+  $\GaussElementaryMatrix$ \`e invertibile e la sua inversa \`e
+  \[
+    \GaussElementaryMatrix =
+    \lmatrix
+    \begin{array}{cccc}
+      1                 &   &         &   \\
+      \Vector_1         & 1 &         &   \\
+      \vdots            &   & \ddots  &   \\
+      \Vector_{n - 1}   &   &         & 1 \\
+    \end{array}
+    \rmatrix.
+  \]
+  L'inversa \`e calcolabile con $0$ operazioni aritmetiche.
+\end{Theorem}
+\Proof Segue per calcolo diretto e per il fatto che l'inversa \`e calcolabile
+con $n - 1$ cambi di segno, che non sono operazioni aritmetiche. \EndProof
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\VarVarVector \in \NotZero{\mathbb{C}^n}$ tale che
+      $\VarVarVector_0 \neq 0$.
+  \end{itemize}
+  Sia
+  $\GaussElementaryMatrix
+  = \Identity - \Vector\HermitianTransposed{\CanonicalBase^0}$,
+  con
+  \begin{itemize}
+    \item $e^0$ primo vettore della base canonica;
+    \item $\Vector_k =
+            \begin{cases}
+              1&\text{ se }k = 0,\\
+              \frac{\VarVarVector_k}{\VarVarVector_0}&\text{ se }k > 0,
+          \end{cases}$
+  \end{itemize}
+  vale a dire
+  \[
+    \GaussElementaryMatrix =
+    \lmatrix
+      \begin{array}{cccc}
+        1 &&&\\
+        - \frac{\VarVarVector_{2}}{\VarVarVector_0}         & \ddots & &\\
+        \vdots            & & \ddots &  \\
+        - \frac{\VarVarVector_{n - 1}}{\VarVarVector_0}   &   & & 1 \\
+      \end{array}
+    \rmatrix.
+  \]
+  $\GaussElementaryMatrix$ \`e l'unica matrice elementare di Gauss tale che
+  \begin{itemize}
+    \item $\GaussElementaryMatrix\VarVarVector_0 = \VarVarVector_0$;
+    \item $\ForAll{k \in \NotZero{n}}{(\GaussElementaryMatrix\VarVarVector)_k = 0}$.
+  \end{itemize}
+\end{Theorem}
+\Proof Si verifica direttamente che $\GaussElementaryMatrix$ verifica le relazioni richieste.
+\par Supponiamo ora
+$\GaussElementaryMatrix' = \Identity - \VarVector \HermitianTransposed{\CanonicalBase^0}$
+con $\VarVector \in \mathbb{C}^n$.
+\par Se $\GaussElementaryMatrix'$ verifica le relazioni richieste, abbiamo allora,
+\[
+  (\Identity - \VarVector \HermitianTransposed{\CanonicalBase^0})\VarVarVector
+  = \VarVarVector_0 \CanonicalBase^0,
+\]
+a sua volta equivalente a
+\begin{align*}
+  \VarVector
+  &= \frac{\VarVarVector - \VarVarVector_0 \CanonicalBase^0}
+    {\HermitianTransposed{\CanonicalBase^0}\VarVarVector},\\
+  &= \frac{\VarVarVector}{\VarVarVector_0} - \CanonicalBase_0,\\
+  &= \VarVector.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Vector \in \mathbb{C}^n$, con $\Vector_0 = 0$;
+    \item $\CanonicalBase_0 \in \mathbb{C}^n$ primo vettore della base canonica;
+    \item $\GaussElementaryMatrix = \Identity - \Vector\HermitianTransposed{\CanonicalBase_0}$
+      matrice elementare di Gauss;
+    \item $\PermutationMatrix \in \mathbb{C}^{n \times n}$ matrice di permutazione tale che
+      la permutazione $\Permutation \in \SymmetricGroup{n}$ associata alle sue righe lascia
+      fisso $0$.
+  \end{itemize}
+  $\PermutationMatrix\GaussElementaryMatrix\PermutationMatrix^{-1}$
+  \`e una matrice elementare di Guass.
+\end{Theorem}
+\Proof Abbiamo, per $(k,j) \in n \times n$,
+$(\PermutationMatrix\Vector\HermitianTransposed{\CanonicalBase_0})_k^j
+= \begin{cases}
+  \Vector_{\Permutation(k)}&\text{ se }j = 0,\\
+  0&\text{ altrimenti}.
+\end{cases}$
+\par Poich\'e il prodotto a destra per $\PermutationMatrix$ lascia
+invariata la prima riga del secondo fattore, il prodotto a sinistra
+per $\PermutationMatrix$ lascia invariata la prima colonna del primo fattore.
+Ne consegue
+$(\PermutationMatrix\Vector\HermitianTransposed{\CanonicalBase_0}\PermutationMatrix^{-1})_k^j
+= \begin{cases}
+  \Vector_{\Permutation(k)}&\text{ se }j = 0,\\
+  0&\text{ altrimenti}.
+\end{cases}$
+\par Dunque
+$\PermutationMatrix\GaussElementaryMatrix\PermutationMatrix^{-1}$
+\`e una matrice elementare di Guass. \EndProof
+\begin{Definition}
+  Sia $\Matrix \in \mathbb{C}^{n \times n}$ ($n \in \mathbb{N}$). Chiamiamo
+  \Define{fattorizzazione $LU$}[$LU$][fattorizzazione]
+  o
+  \Define{decomposizione $LU$}[$LU$][decompisionzione]
+  di $\Matrix$ una coppia di matrici
+  $(L,U) \in \mathbb{C}^{n \times n} \times \mathbb{C}^{n \times n}$
+  tali che
+  \begin{itemize}
+    \item $\Matrix = LU$;
+    \item $L$ \`e triangolare inferiore con tutti gli elementi diagonali uguali
+      a $1$;
+    \item $U$ \`e triangolare superiore.
+  \end{itemize}
+  Chiamiamo inoltre
+  \Define{fattorizzazione $LUP$}[$LUP$][fattorizzazione]
+  o
+  \Define{decomposizione $LUP$}[$LUP$][decomposizione]
+  di $\Matrix$ una terna di matrici
+  $(L,U,P) \in
+  \mathbb{C}^{n \times n} \times \mathbb{C}^{n \times n} \times \mathbb{C}^{n \times n}$
+  tali che
+  \begin{itemize}
+    \item $P \Matrix = LU$;
+    \item $L$ \`e triangolare inferiore con tutti gli elementi diagonali uguali
+      a $1$;
+    \item $U$ \`e triangolare superiore;
+    \item $P$ \`e una matrice di permutazione.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Con le notazioni del teorema \ref{th_FattorizzazioneMatriciElementari},
+  l'algoritmo ottenuto dall'algoritmo del teorema \ref{th_FattorizzazioneMatriciElementari}
+  scegliendo come matrici $(\ElementaryMatrix_{(l,0)})_{l \in m}$ matrici elementari di Gauss
+  si chiama
+  \Define{metodo di Gauss}[di Gauss][metodo].
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/FattorizzazioneLU.m"}
+	\caption{Implementazione del metodo di Gauss in \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Con le notazioni del teorema \ref{th_FattorizzazioneMatriciElementari}, il metodo di Gauss
+  restituisce una fattorizzazione $LU$ di $\Matrix$.
+\end{Theorem}
+\Proof $L$ \`e prodotto di matrici triangolari inferiori con tutti gli elementi diagonali
+uguali a $1$, dunque \`e trinagolare inferiore con tutti gli elementi diagonali uguali a $1$
+essa stessa. \EndProof
+\begin{Theorem}
+  Se $\Matrix \in \mathbb{C}^{n \times n}$ ($n \in \NotZero{\mathbb{N}}$) ha tutte le
+  sottomatrici principali invertibili, allora ammette una fattorizzazione $LU$.
+\end{Theorem}
+\begin{Theorem}
+  \label{th_FattorizzazioneLUP}
+  Siano
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$.
+  \end{itemize}
+  Il seguente algoritmo costruisce una fattorizzazione $LUP$ di
+  $\Matrix$
+  \begin{enumerate}
+    \item\label{FattorizzazioneLUP_1} si ponga $l = 0$, $L = \Identity[n]$;
+    \item\label{FattorizzazioneLUP_2} si definisca
+      $\VarMatrix = (\Matrix_k^j)_{\substack{k = l\\j= l}}^{\substack{k = n - 1}{j = m - 1}}$;
+    \item\label{FattorizzazioneLUP_2_1} se possibile, si scelga una matrice di permutazione
+      $\PermutationMatrix_{(l)} \in \mathbb{C}^{n \times n}$ che permuti la riga $l$ di
+      $\Matrix$ con una riga $r \geq l$ tale che $\Matrix_r^l \neq 0$; se non \`e possibile
+      si vada al punto \ref{FattorizzazioneLUP_9};
+    \item\label{FattorizzazioneLUP_2_2} si ridefinisca
+      $\Matrix = \PermutationMatrix_{(l)} \Matrix$;
+    \item\label{FattorizzazioneLUP_2_2} si ridefinisca
+      $L = \Transposed{\PermutationMatrix_{(l)}} \Matrix \PermutationMatrix$;;
+    \item\label{FattorizzazioneLUP_3} sia $\GaussElementaryMatrix_{(l,0)}$ la matrice elementare
+      di Gauss tale che
+      $\GaussElementaryMatrix_{(l,0)}\VarMatrix = \CanonicalBase_1^{(l)}$, dove
+      $\CanonicalBase_1^{(l)}$ \`e il $l$-esimo vettore della base
+      canonica di $\mathbb{C}^{m - l}$;
+    \item\label{FattorizzazioneLUP_4} si ponga
+      $(\ElementaryMatrix_{(l)})_k^j =
+      \begin{cases}
+        1&\text{ se }k = j < l,\\
+        (\GaussElementaryMatrix_{(l,0)})_{k - l}^{j - l}&\text{ se }\And{k \geq l}{j \geq l},\\
+        0&\text{ altrimenti},
+      \end{cases}$
+      vale a dire
+      \[
+        \ElementaryMatrix_{(l)} =
+        \lmatrix
+        \begin{array}{c|c}
+          \Identity &\\
+          \hline
+          & \GaussElementaryMatrix_{(l,0)}
+        \end{array}
+        \rmatrix;
+      \]
+    \item\label{FattorizzazioneLUP_5} si ridefinisca
+      $\Matrix = \ElementaryMatrix_{(l)}\Matrix$;
+    \item\label{FattorizzazioneLUP_6} si incrementi
+      $l$ di $1$;
+    \item\label{FattorizzazioneLUP_6_1} si ridefinisca
+      $L = L \ElementaryMatrix^{-1}$;
+    \item\label{FattorizzazioneLUP_7} se $l < m$, si torni al
+      punto \ref{FattorizzazioneLUP_2};
+    \item\label{FattorizzazioneLUP_9} si ponga
+      $U = \Matrix$;
+    \item\label{FattorizzazioneLUP_9_1} si ponga
+      $\PermutationMatrix = \PermutationMatrix_{(0)} \cdot ... \cdot \PermutationMatrix_{(m)}$;
+    \item\label{FattorizzazioneLUP_10} l'algoritmo termina restituendo
+      $L$, $U$ e $P$.
+  \end{enumerate}
+\end{Theorem}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/FattorizzazioneLUP.m"}
+	\caption{Implementazione di un algoritmo per il calcolo della decomposizione $LUP$ in
+    \LanguageName{octave}.}
+\end{listing}
+\par In molte applicazioni, siamo interessati ad utilizzare esclusivamente la matrice $U$ di
+una decomposizione $LUP$: per esempio essa pu\`o essere usata per calcolare rapidamente il
+rango della matrice di partenza $\Matrix$, oppure si pu\`o ridurre a scalini la matrice completa
+di un sistema per perlo poi risolvere tramite sostituzione all'indietro. In tal caso, l'algoritmo
+seguente consente di ottenere la matrice $U$ senza impiegare tempo di calcolo ulteriore per le
+matrici $L$ e $P$.
+\begin{Definition}
+  \label{def_EliminazioneGaussiana}
+  Siano
+  \begin{itemize}
+    \item $n, m \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix \in \mathbb{C}^{n \times m}$.
+  \end{itemize}
+  Chiamiamo
+  \Definition{eliminazione gaussiana}[gaussiana][eliminazione]
+  il seguente algoritmo
+  \begin{enumerate}
+    \item\label{EliminazioneGaussiana_1} si ponga $l = 0$, $L = \Identity[n]$;
+    \item\label{EliminazioneGaussiana_2} si definisca
+      $\VarMatrix = (\Matrix_k^j)_{\substack{k = l\\j= l}}^{\substack{k = n - 1}{j = m - 1}}$;
+    \item\label{EliminazioneGaussiana_2_1} se possibile, si scambino la riga $l$ di $\Matrix$
+      con una riga $r \geq l$ di $\Matrix$ in modo tale che, dopo lo scambio, $\Matrix_l^l \neq 0$;
+      se non \`e possibile si vada al punto \ref{EliminazioneGaussiana_9};
+    \item\label{EliminazioneGaussiana_3} sia $\GaussElementaryMatrix_{(l,0)}$ la matrice elementare
+      di Gauss tale che
+      $\GaussElementaryMatrix_{(l,0)}\VarMatrix = \CanonicalBase_1^{(l)}$, dove
+      $\CanonicalBase_1^{(l)}$ \`e il $l$-esimo vettore della base
+      canonica di $\mathbb{C}^{m - l}$;
+    \item\label{EliminazioneGaussiana_4} si ponga
+      $(\ElementaryMatrix_{(l)})_k^j =
+      \begin{cases}
+        1&\text{ se }k = j < l,\\
+        (\GaussElementaryMatrix_{(l,0)})_{k - l}^{j - l}&\text{ se }\And{k \geq l}{j \geq l},\\
+        0&\text{ altrimenti},
+      \end{cases}$
+      vale a dire
+      \[
+        \ElementaryMatrix_{(l)} =
+        \lmatrix
+        \begin{array}{c|c}
+          \Identity &\\
+          \hline
+          & \GaussElementaryMatrix_{(l,0)}
+        \end{array}
+        \rmatrix;
+      \]
+    \item\label{EliminazioneGaussiana_5} si ridefinisca
+      $\Matrix = \ElementaryMatrix_{(l)}\Matrix$;
+    \item\label{EliminazioneGaussiana_6} si incrementi
+      $l$ di $1$;
+    \item\label{EliminazioneGaussiana_7} se $l < m$, si torni al
+      punto \ref{EliminazioneGaussiana_2};
+      $U$.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/EliminazioneGaussiana.m"}
+	\caption{Implementazione dell'eliminazione gaussiana in \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Con le notazioni della definizione precedente, l'eliminazione di Gauss restituisce la stessa
+  matrice triangolare superiore $U$ dell'algoritmo del teorema \ref{th_FattorizzazioneLUP}.
+\end{Theorem}
+\Proof Segue immediatamente dalle definizioni degli algoritmi. \EndProof

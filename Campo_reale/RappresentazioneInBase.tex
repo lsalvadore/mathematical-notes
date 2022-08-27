@@ -1,0 +1,26 @@
+\section{Rappresentazione in base.}
+\label{CampoReale_RappesentazioneInBase}
+\begin{Theorem}
+	Sia $\RealNumberBase \in \mathbb{N} \SetMin 2$. Per ogni $x \in \mathbb{R}$, esistono unici
+	\begin{itemize}
+		\item un intero $\RealNumberExponent \in \mathbb{Z}$;
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \RealNumberBase^\mathbb{N}$;
+	\end{itemize}
+	tali che
+	\begin{itemize}
+		\item \TheoremName{condizione di normalizzazione}[di normalizzazione della rappresentazione di base][condizione] $a_0 \neq 0$;
+		\item $(a_n)_{n \in \mathbb{N}}$ non converge a $\RealNumberBase - 1$;
+		\item $x = \Sign{x} \RealNumberBase^\RealNumberExponent \sum_{n \in \mathbb{N}} a_n \RealNumberBase^{- (n + 1)}$.
+	\end{itemize}
+\end{Theorem}
+\begin{Definition}
+	\label{CampoReale_RappresentazioneInBase}
+	Con le notazioni del teorema precedente, chiamiamo \Define{rappresentazione in base}[in base][rappresentazione] $\RealNumberBase$ di $x$ il dato
+	\begin{itemize}
+		\item del segno $\Sign{x}$;
+		\item della quantit\`a $\RealNumberBase$, detta \Define{base della rappresentazione}[di una rappresentazione numerica][base];
+		\item della quantit\`a $\RealNumberExponent$, detta \Define{esponente della rappresentazione}[di una rappresentazione numerica][esponente];
+		\item della successione $(a_n)_{n \in \mathbb{N}}$, i cui elementi sono detti \Define{cifre della rappresentazione}[di una rappresentazione numerica][cifra].
+	\end{itemize}
+	Inoltre, chiamiamo \Define{mantissa della rappresentazione}[mantissa] la quantit\`a $\sum_{n \in \mathbb{N}} a_n \RealNumberBase^{- (n + 1)}$. Se la successione delle cifre della rappresentazione \`e definitivamente nullo e $a_k$ \`e l'ultima cifra non nulla, diciamo che le cifre della rappresentazione sono in numero $k$.
+\end{Definition}

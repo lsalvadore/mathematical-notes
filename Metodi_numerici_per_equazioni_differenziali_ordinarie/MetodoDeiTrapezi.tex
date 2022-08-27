@@ -1,0 +1,61 @@
+\subsubsection{Metodo dei trapezi.}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_MetodoDeiTrapezi}
+\begin{Definition}
+	Dati un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ e $N$ nodi, chiamiamo \Define{metodo dei trapezi}[dei trapezi][metodo] o \Define{metodo di Crank-Nicolson}[di Crank-Nicolson][metodo] il metodo a un passo definito da
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \frac{\Step (f(t_j,y_j) + f(t_{j + 1},y_{j + 1}))}{2}\text{ per }i \in \mathbb{N}.
+	\end{cases}
+	\]
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_equazioni_differenziali_ordinarie/Trapezi.m"}
+	\caption{Metodo dei trapezi implementato in \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+	Il metodo dei trapezi \`e un metodo di Runge-Kutta a $2$ stadi con \tableau
+	\[
+	\begin{array}{c|cc}
+	0	&	0	&	0\\
+	1	&	\frac{1}{2}	&	\frac{1}{2}\\
+	\hline
+		&	\frac{1}{2}	&	\frac{1}{2}
+	\end{array}.
+	\]
+\end{Theorem}
+\Proof Segue per verifica diretta. \EndProof
+\begin{Theorem}
+	Con le notazioni della definizione precedente, se $y \in \CClass{3}$, il metodo dei trapezi \`e consistente di ordine $2$.
+\end{Theorem}
+\Proof Utilizziamo le notazioni della definizione precedente. Abbiamo evidentemente $\LocalTruncationError_j = 0$. Inoltre, per ogni $i \in N - 1$, abbiamo $y(t_{j + 1}) - y(t_j) - \frac{\Step (f(t_j,y_j) + f(t_{j + 1}, y_{j + 1})}{2} = y(t_{j + 1}) - y(t_j) - \frac{\Step (y'(t_j) + y'(t_{j + 1}))}{2}$.
+\par Sviluppiamo la serie di Taylor intorno a $\hat{t} = \frac{t_j + t_{j + 1}}{2}$. Abbiamo
+\begin{itemize}
+	\item $y(t_{j + 1}) = y(\hat{t}) + \frac{\Step}{2} y'(\hat{t}) + \frac{\Step^2}{8}y''(\hat{t}) + \frac{h^3}{48}y'''(\xi_{j + 1})$ per qualche $\xi_{j + 1} \in (\hat{t},t_{j + 1})$;
+	\item $y(t_j) = y(\hat{t}) - \frac{\Step}{2} y'(\hat{t}) + \frac{\Step^2}{8}y''(\hat{t}) - \frac{h^3}{48}y'''(\xi_j)$ per qualche $\xi_j \in (t_j,\hat{t})$;
+	\item $y'(t_{j + 1}) = y'(\hat{t}) + \frac{\Step}{2} y''(\hat{t}) + \frac{\Step^2}{8}y'''(\eta_{j + 1})$ per qualche $\eta_{j + 1} \in (\hat{t},t_{j + 1})$;
+	\item $y'(t_j) = y'(\hat{t}) - \frac{\Step}{2} y''(\hat{t}) + \frac{\Step^2}{8}y'''(\eta_j)$ per qualche $\eta_j \in (t_j,\hat{t})$.
+\end{itemize}
+\par Dunque $y(t_{j + 1}) - y(t_j) - \frac{\Step (y'(t_j) + y'(t_{j + 1}))}{2} = \Step y'(\hat{t}) + \frac{h^3}{24}(y'''(\xi_{j + 1}) - y'''(\xi_j)) - \Step y'(\hat{t}) - \frac{h^3}{8}(y'''(\eta_{j + 1}) + y'''(\eta_j)) = \BigO{h^3}$. \EndProof
+\begin{Theorem}
+	Il metodo dei trapezi
+	\begin{itemize}
+		\item ha funzione di stabilit\`a $\StabilityFunction(z) = \frac{2 + z}{2 - z}$;
+		\item ha regione di stabilit\`a \`e $\StabilityRegion = \lbrace z | \RealPart{z} < 0 \rbrace$ (e dunque \`e $A$-stabile).
+	\end{itemize}
+\end{Theorem}
+\Proof Applichiamo il metodo dei trapezi con passo $\Step$ al problema test di Dahlquist di parametro $\DahlquistParameter$: 
+\[
+\begin{cases}
+	y_0 = y_0,\\
+	y_{j + 1} = y_j + \frac{\Step \DahlquistParameter (y_j +  y_{j + 1})}{2}\text{ per }j > 0.
+\end{cases}
+\]
+\par Abbiamo dunque, per $j \in \mathbb{N}$, $(1 - \frac{\Step\DahlquistParameter}{2} y_{j + 1} = (1 + \frac{\Step \DahlquistParameter}{2})y_j$ e dunque $y_j = \left ( \frac{2 + \Step \DahlquistParameter}{2 - \Step\DahlquistParameter} \right )^j$: la successione \`e infinitesima se e solo se $\AbsoluteValue{\frac{2 + \Step \DahlquistParameter}{2 - \Step\DahlquistParameter}} < 1$, equivalente a $\RealPart{z} < 0$. \EndProof

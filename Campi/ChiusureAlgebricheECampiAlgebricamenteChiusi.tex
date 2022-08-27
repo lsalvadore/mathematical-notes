@@ -1,0 +1,125 @@
+\subsection{Chiusura algebrica, campi algebricamente chiusi e estensioni di omomorfismi.}\label{ChiusureAlgebricheECampiAlgebricamenteChiusi}
+\begin{Theorem}\label{thChiusuraAlgebricaRelativa}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. L'insieme $\Field_3$ di tutti gli elementi di $\Field_2$ algebrici su $\Field_1$, munito delle operazioni di somma e prodotto indotte da quelle di $\Field_2$ \`e un'estensione algebrica di $\Field_1$. Inoltre, se $\Field_3 \neq \Field_2$, allora $\FieldExtension{\Field_3}{\Field_2}$ \`e trascendente.
+\end{Theorem}
+\Proof Per la prima parte del teorema \`e sufficiente dimostrare che $\Field_3$ \`e un campo. Ma questo \`e immediato perch\'e
+\begin{itemize}
+	\item se $\alpha, \beta \in \Field_3$, allora $\alpha - \beta \in \FieldAdjunction{\Field_1}{\alpha, \beta} \subseteq \Field_3$;
+	\item se $\alpha, \beta \in \Field_3 - \lbrace 0 \rbrace$, allora $\alpha\beta^{-1} \in \FieldAdjunction{\Field_1}{\alpha, \beta} \subseteq \Field_3$.
+\end{itemize}
+\par La trascendenza di $\FieldExtension{\Field_3}{\Field_2}$ segue dal fatto che l'algebricit\`a si trasferisce lungo le torri. \EndProof
+\begin{Definition}
+	Con le notazioni e le ipotesi del teorema \ref{thChiusuraAlgebricaRelativa}, $\Field_3$ si dice la \Define{chiusura algebrica}[algebrica (relativa)][chiusura] di $\Field_1$ in $\Field_2$.
+\end{Definition}
+\begin{Definition}
+	Sia $\Field$ un campo. Si dice che $\Field$ \`e \Define{algebricamente chiuso}[algebricamente chiuso][campo] quando ogni polinomio $p \in \RingAdjunction{\Field}{x}$ ammette una radice in $\Field$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Field$ un campo. Sono equivalenti i seguenti fatti:
+	\begin{itemize}
+		\item $\Field$ \`e algebricamente chiuso;
+		\item ogni polinomio $p \in \RingAdjunction{\Field}{x} \SetMin \lbrace 0 \rbrace$ si spezza in fattori lineari;
+		\item il polinomio $p \in \RingAdjunction{\Field}{x}$ \`e irriducibile se e solo se $\Deg{p} = 1$.
+	\end{itemize}
+\end{Theorem}
+\Proof Assumiamo che $\Field$ sia algebricamente chiuso e sia $p \in \RingAdjunction{\Field}{x}$. Se $p$ \`e di grado $1$ esso \`e gi\`a un fattore lineare. Supponiamo che ogni polinomio di grado $n < \Deg{p}$ si spezzi in fattori lineare: $p$ ammette una radice $\alpha \in \Field$, dunque, per il teorema di Ruffini, $p$ si spezza nel fattore lineare $x - \alpha$ e in un polinomio $q$ di grado minore di $\Deg{p}$, il quale si spezza a sua volta in fattori lineari.
+\par \`E immediato provare che la seconda affermazione implica la prima e che le ultime due sono equivalenti. \EndProof
+\begin{Definition}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. Si dice che $\Field_2$ \`e una \Define{chiusura algebrica}[algebrica][chiusura] di $\Field_1$ quando
+	\begin{itemize}
+		\item $\FieldExtension{\Field_2}{\Field_1}$ \`e un'estensione algebrica;
+		\item $\Field_2$ \`e algebricamente chiuso.
+	\end{itemize}
+	Determinata una chiusura algebrica di un campo $\Field$, essa si denota con $\AlgebraicClosure{\Field}$.
+\end{Definition}
+\begin{Theorem}\label{th_esistenzaradici}
+	Siano $\Field_1$ un campo $(p_i)_{i \in \lbrace 1, ..., n \rbrace}$ una famiglia di polinomi di $\RingAdjunction{\Field_1}{x}$. Allora esiste un'estensione algebrica $\Field_2$ di $\Field_1$ tale che per ogni $i \in \lbrace 1, ..., n \rbrace$ il polinomio $p_i$ ammette una radice in $\Field_2$
+\end{Theorem}
+\Proof Dimostriamo il teorema applicando la costruzione di estensioni algebriche di Leopold Kronecker (1823 -- 1891).
+\par Supponiamo $n = 1$ e sia $f$ un fattore irriducibile di $p_1$. Allora $\SpanIdeal{f}$ \`e massimale nel dominio euclideo $\RingAdjunction{\Field_1}{x}$ e $\Field_2 = \Quotient{\RingAdjunction{\Field_1}{x}}{\SpanIdeal{f}}$ \`e un campo. Poich\'e $\Field_1$ \`e isomorfo a un sottocampo di $\Field_2$ per mezzo della proiezione canonica $\Projection$, ne consegue che $\Field_2$ pu\`o essere visto come un'estensione di $\Field_1$ e che $p$ si identifica col polinimio di $\RingAdjunction{\Field_2}{x}$ ottenuto da $p$ cambiando ogni coefficiente nella sua classe di equivalenza.
+\par Inoltre il polinomio $p$, visto come un polinomio di $\RingAdjunction{\Field_2}{x}$, valutato in $\Projection{x}$ restituisce $\Projection{p} = 0$: il fattore $f$, e dunque il polinomio $p$, ammette una radice in $\Field_2$.
+\par Per vedere l'algebricit\`a dell'estensione, \`e sufficiente notare che \`e finita: la famiglia $\left ( \Projection{x^i} \right )_{i = 0}^{\Deg f - 1}$ ne costituisce una base.
+\par Se $n > 1$ il teorema segue per induzione. \EndProof
+\begin{Theorem}
+	Sia $\Field_0$ un campo. Assunto vero l'assioma della scelta, esiste una chiusura algebrica $\Field$ di $\Field_0$.
+\end{Theorem}
+\Proof Questa dimostrazione \`e di Emil Artin (1898 -- 1962).
+\par Costruiamo una successione di estensioni algebriche $(\Field_i)_{i \in \mathbb{N}}$ nel modo seguente.
+\par $\Field_0$ \`e dato per ipotesi. Sia $i \in \mathbb{N}$ e supponiamo costruito $\Field_i$: costruiamo $\Field_{i + 1}$. Consideriamo l'insieme $S$ di tutti i polinomi di $\Field_i$ di grado almeno $1$ e per ogni polinomio $p \in S$ introduciamo una nuova incognita $x_p$. Consideriamo inoltre l'anello di polinomi $\RingAdjunction{\Field_i}{(x_p)_{p \in S}}$ e l'ideale $\Ideal = \SpanIdeal{(p(x_p))_{p \in S}}$: dimostriamo che $\Ideal$ \`e un ideale proprio di $\RingAdjunction{\Field_i}{(x_p)_{p \in S}}$.
+\par Supponiamo che $\Ideal$ non sia un ideale proprio. Allora esiste un insieme finito $T \subseteq S$ tale che $1 = \sum_{p \in T} a_p p(x_p)$ per un'opportuna famiglia di coefficienti $(a_p)_{p \in T} \in \Field_i^T$. Per il teorema \ref{th_esistenzaradici}, esite un campo $\tilde{\Field_i}$ che estende $\Field_i$ tale che ogni $p \in T$ vi ammetta una radice $\rho_p$. Applichiamo un omomorfismo di valutazione $\phi: \RingAdjunction{\tilde{\Field_i}}{(x_p)_{p \in T}} \rightarrow \tilde{\Field_i}$ tale che per ogni $p \in T$ abbiamo $x_p = \rho_p$: abbiamo allora $1 = \phi(1) = \sum_{p \in T} a_p p(\rho_p) = 0$, ma questo \`e assurdo perch\'e $\Field_1$ \`e un campo e quindi $0 \neq 1$.
+\par $\Ideal$ \`e dunque un ideale proprio di $\RingAdjunction{\Field_i}{(x_p)_{p \in S}}$. Pertanto $\Ideal$ \`e contenuto in un ideale massimale $\MaximalIdeal$. Poniamo allora $\Field_{i + 1} = \Quotient{\RingAdjunction{\Field_i}{(x_p)_{p \in S}}}{\MaximalIdeal}$. Ora,
+\begin{itemize}
+	\item $\Field_{i + 1}$ \`e un campo perch\'e $\MaximalIdeal$ \`e massimale;
+	\item $\Field_{i + 1}$ estende $\Field_i$ perch\'e $\Field_i$ si immerge canonicamente in $\RingAdjunction{\Field_1}{(x_p)_{p \in S}}$ che si immerge canonicamente in $\Field_{i + 1}$;
+	\item $\FieldExtension{\Field_{i + 1}}{\Field_i}$ \`e un'estensione algebrica perch\'e $\Field_{i + 1} = \RingAdjunction{\Field_i}{(\Projection{x_p})_{p \in S}}$ \`e algebricamente generata (\Cfr\ teorema \ref{th_estensionealgebricamentegenerata}).
+\end{itemize}
+\par Poniamo infine $\Field = \bigcup_{i \in \mathbb{N}} \Field_i$, che \`e chiaramente un campo. Ora,
+\begin{itemize}
+	\item $\Field$ \`e un'estensione algebrica di $\Field_0$: infatti se $\alpha \in \Field$, allora $\alpha \in \Field_i$ per opportuno $i \in \mathbb{N}$, ma $\FieldExtension{\Field_i}{\Field_0}$ \`e un'estensione algebrica perch\'e l'algebricit\`a si trasferisce lungo le torri, quindi $\alpha$ \`e algebrico su $\Field_0$;
+	\item $\Field$ \`e algebricamente chiuso: infatti qualsiasi polinomio $p \in \RingAdjunction{\Field}{x}$ include un numero finito di coefficienti i quali sono tutti contenuti in $\Field_i$ per $i \in \mathbb{N}$ opportuno, cosicch\'e $p \in \RingAdjunction{\Field_i}{x}$, e $p$ ammette una radice in $\Field_{i + 1}$ per costruzione ($\Projection{x_p}$). \EndProof
+\end{itemize}
+\begin{Theorem}
+	Sia $\Field_0$ un campo infinito e $\Field$ una sua chiusura algebrica. Abbiamo $\Cardinality{\Field_0} = \Cardinality{\Field}$.
+\end{Theorem}
+\Proof Riprendiamo le costruzioni e le notazioni del teorema precedente e dimostriamo che per ogni $i \in \mathbb{N}$, $\Cardinality{\Field_{i + 1}} = \Cardinality{\Field_i}$.
+\par In primo luogo osserviamo che $\Cardinality{\Field_i} = \Cardinality{\RingAdjunction{\Field_i}{x}}$. Infatti $\RingAdjunction{\Field_i}{x}$ \`e unione numerabile degli insiemi di tutti i polinomi di grado al pi\`u $n$, con $n$ che varia in $\mathbb{N}$: la sua cardinalit\`a \`e dunque minore o uguale a $\aleph_0 \cdot \sum_{n \in \mathbb{N}} \Cardinality{\Field_i}^n = \aleph_0 \cdot \Cardinality{\Field_i} = \Cardinality{\Field_i}$. Dato che $\Field_i \subseteq \RingAdjunction{\Field_i}{x}$, se ne conclude che $\Cardinality{\Field_i} = \Cardinality{\RingAdjunction{\Field_i}{x}}$.
+\par Inoltre, ogni elemento di $\Field_{i + 1}$ \`e radice di un qualche polinomio in $\RingAdjunction{\Field_i}{x}$, dunque $\Cardinality{\Field_{i + 1}} \leq \Cardinality{\RingAdjunction{\Field_i}{x}} = \Cardinality{\Field_i}$ e da $\Field_i \subseteq \Field_{i + 1}$ si deduce che $\Cardinality{\Field_i} = \Cardinality{\Field_{i + 1}}$.
+\par La dimostrazione \`e conclusa osservando che $\Field$ \`e unione numerabile di una famiglia di insiemi equicardinali a $\Field_0$. \EndProof
+\begin{Theorem}
+	Sia $\Field_1$ un campo e $\Field_2$ un campo algebricamente chiuso che estende $\Field_1$. La chiusura algebrica $\Field$ di $\Field_1$ in $\Field_2$ \`e chiusura algebrica di $\Field_1$.
+\end{Theorem}
+\Proof $\FieldExtension{\Field}{\Field_1}$ \`e algebrica per costruzione. Proviamo che $\Field$ \`e algebricamente chiuso.
+\par Sia $p \in \RingAdjunction{\Field}{x} \subseteq \RingAdjunction{\Field_2}{x}$: il polinomio $p$ ammette una radice $a \in \Field_2$. Pertanto $\FieldExtension{\FieldAdjunction{\Field_2}{a}}{\Field}$ \`e un'estensione algebrica e dato che l'algebricit\`a si trasferisce lungo le torri, $\FieldExtension{\FieldAdjunction{\Field_2}{a}}{\Field_1}$ \`e algebrica. \`E quindi algebrico su $\Field_1$ l'elemento $a$, che appartiene dunque a $\Field$. \EndProof
+\begin{Theorem}
+	\TheoremName{Teorema fondamentale dell'algebra} Il campo $\mathbb{C}$ \`e algebricamente chiuso.
+\end{Theorem}
+\Proof Sia $p \in \RingAdjunction{\mathbb{C}}{x}$. Poniamo $f: \mathbb{C} \rightarrow \mathbb{R}^+$ che a $z \in \mathbb{C}$ associa $\Abs{p(z)}$: l'applicazione $f$ \`e continua.
+\par Abbiamo $p = x^{\Deg{p}}\sum_{i = 0}^{\Deg p}a_ix^{i - \Deg{p}}$, da cui $f(z) \rightarrow \infty$ per $\Abs{z} \rightarrow \infty$.
+\par Scegliamo $R > 0$ in modo tale che $\Abs{z} > R$ implichi $f(z) > \inf f + 1$; osserviamo che l'insieme $I$ dei numeri complessi di modulo minore o uguale di $R$ \`e compatto (\`e isomorfo al cerchio di centro $0$ e raggio $R$ di $\mathbb{R}^2$, chiuso e limitato): $f$ assume dunque un minimo in un punto $\mu \in I$, che \`e necessariamente un minimo assoluto.
+\par Supponiamo ora che $f(\mu) \neq 0$. Introduciamo un nuovo polinomio $q \in \RingAdjunction{\mathbb{C}}{x}$ definito come $\frac{p(\mu - z)}{f(\mu)}$, insieme ad una nuova funzione $g: \mathbb{C} \rightarrow \mathbb{R}^+$ che a $z \in \mathbb{C}$ associa $\Abs{q(z)}$: abbiamo $g(z) = \Abs{\frac{p(\mu - z)}{f(\mu)}} = \frac{f(\mu - z)}{f(\mu)}$ e quindi $g$ ha un minimo assoluto in $0$ di valore $1$. Supponiamo $q = \sum_{i \in \mathbb{N}} a_ix^i$, dove $(a_i)_{i \in \mathbb{N}} \in \mathbb{C}^\mathbb{N}$, e poniamo $r = \min_{\NotZero{\mathbb{N}}} \lbrace i \in \mathbb{N} | a_i \neq 0 \rbrace$.
+\par Sia $\lambda > 0$. Abbiamo, posto $\zeta \in \mathbb{C}$ tale che $\zeta^r = a_r^{-1}$,
+\begin{align}
+	g(- \lambda \zeta) &\leq \Abs{a_0 - a_r \lambda^r a_r^{-1}} + \Abs{\sum_{i \in \mathbb{N}} a_{r + 1 + i}\lambda^{r + 1 + i}\zeta^{r + 1 + i}},\\
+	&= 1 - \lambda^r (1 - \lambda\Abs{\sum_{i \in \mathbb{N}} a_{r + 1 +i}\lambda^i\zeta^{r + 1 + i}}).
+\end{align}
+\par Ora, per $\lambda$ sufficientemente piccolo, l'espressione tra parentesi \`e poco meno di $1$ e quindi poco meno di $1$ \`e il secondo termine, cosicch\'e $g(- \lambda \zeta) < 1$, che \`e assurdo. Quindi $f(\mu) = 0$. \EndProof
+\par Nel seguito, dato un omomorfismo di campi $\phi: \Field_1 \rightarrow \Field_2$ e un polinomio $p = \sum_{i \in \mathbb{N}} a_ix^i \in \RingAdjunction{\Field_1}{x}$, la notazione $\ImagePolynomial{\phi}{p}$ indicher\`a il polinomio $\sum_{i \in \mathbb{N}} \phi(a_i)x^i$.
+\begin{Definition}
+	Siano dati tre campi $\Field_1$, $\Field_2$ e $\Field_3$ e un'omomorfismo $\Immersion: \Field_1 \rightarrow \Field_3$ tali che
+	\begin{itemize}
+		\item $\Field_2$ estenda $\Field_1$;
+		\item $\Immersion$ sia un'immersione.
+	\end{itemize}
+	Chiamiamo \Define{omomorfismo relativo}\footnote{Questa terminologia non pare molto frequente. Noi l'abbiamo presa da van der Waerden.} a $\Immersion$ su $\Field_1$ un omomorfismo $\RelativeHomomorphism: \Field_2 \rightarrow \Field_3$ tale che $\Restricted{\RelativeHomomorphism}{\Field_1} = \Immersion$ . La specifica dell'omomorfismo $i$ e del campo $\Field_1$ viene spesso omessa, soprattutto quando $\Field_1 \subseteq \Field_3$ ed $\Immersion$ \`e l'immersione canonica.
+	\par Qualora $\Field_2 = \Field_3$, allora chiamiamo $\RelativeHomomorphism$ \Define{automorfismo di $\Field_2$ relativo}[relativo][automorfismo] a $\Immersion$  su $\Field_1$ e denotiamo $\RelativeAutomorphisms{\Field_2}{\Field_1}$ la classe di tutti questi automorfismi.
+\end{Definition}
+\begin{Theorem}\label{th_esistenzaomomorfismirelativi_0}
+	Siano $\Field_1$ e $\Field_2$ campi tali che $\FieldExtension{\Field_2}{\Field_1}$ sia un'estensione algebrica semplice generata da $\alpha \in \Field_2$. Sia $\Field$ un ulteriore campo e sia $\Immersion: \Field_1 \hookrightarrow \Field$ un'immersione. L'applicazione $\phi: \Field_1 \cup \lbrace \alpha \rbrace \rightarrow \Field$ tale che $\Restricted{\psi}{\Field_1} = \Immersion$ pu\`o essere estesa ad un omomorfismo $\RelativeHomomorphism: \Field_2 \rightarrow \Field$ se e solo se $\phi(\alpha)$ \`e radice di $\ImagePolynomial{\Immersion}{\MinimalPolynomial{\alpha}}$.
+\end{Theorem}
+\Proof Per definizione di omomorfismo e per le ipotesi su $\alpha$, se $\MinimalPolynomial{\alpha} = \sum_{i \in \mathbb{N}} a_i x^i$, abbiamo $\ImagePolynomial{\Immersion}{\MinimalPolynomial{\alpha}}{\phi(\alpha)} = \sum_{i \in \mathbb{N}} \phi(a_i) \phi(\alpha)^i = \phi(\sum_{i \in \mathbb{N}} a_i \alpha^i) = \phi(0) = 0$. Dunque ogni omomorfismo relativo $\RelativeHomomorphism$ manda $\alpha$ in una radice di $\ImagePolynomial{\Immersion}{\MinimalPolynomial{\alpha}}$.
+\par Viceversa, supponiamo che $\phi(\alpha)$ sia radice di $\ImagePolynomial{\Immersion}{\MinimalPolynomial{\alpha}}$. Vogliamo definire l'applicazione $\RelativeHomomorphism$ come l'applicazione che a $\sum_{i \in \mathbb{N}} c_i \alpha^i$ associa $\sum_{i \in \mathbb{N}} \Immersion(c_i) \phi(\alpha)^i$, ma per farlo, dobbiamo verificare che $\sum_{i \in \mathbb{N}} c_i \alpha^i = \sum_{i \in \mathbb{N}} d_i \alpha^i$ implica $\sum_{i \in \mathbb{N}} \Immersion(c_i) \phi(\alpha)^i = \sum_{i \in \mathbb{N}} \Immersion(d_i) \phi(\alpha)^i$.
+\par In effetti, assumiamo $\sum_{i \in \mathbb{N}} c_i \alpha^i = \sum_{i \in \mathbb{N}} d_i \alpha^i$. Definiamo il polinomio $p = \sum_{i \in \mathbb{N}} (c_i - d_i)x^i$: $\alpha$ \`e radice di $p$ e dunque $\MinimalPolynomial{\alpha}|p$. Se ne deduce che $\ImagePolynomial{\Immersion}{\MinimalPolynomial{\alpha}}|\ImagePolynomial{\Immersion}{p}$ e, per le ipotesi su $\phi(\alpha)$, $\ImagePolynomial{\Immersion}{p}(\alpha) = 0$, da cui $\sum_{i \in \mathbb{N}} \Immersion(c_i) \phi(\alpha)^i = \sum_{i \in \mathbb{N}} \Immersion(d_i) \phi(\alpha)^i$.
+\par La verifica che l'applicazione $\RelativeHomomorphism$ sia effettivamente un omomorfismo \`e immediata. \EndProof
+\begin{Corollary}\label{th_esistenzaomomorfismirelativi}
+	Siano $\Field_1$ e $\Field_2$ campi tali che $\FieldExtension{\Field_2}{\Field_1}$ sia un'estensione algebrica semplice generata da $\alpha \in \Field_2$. Sia $\Field$ un ulteriore campo e sia $\phi: \Field_1 \hookrightarrow \Field$ un'immersione. Il numero di omomorfismi $\psi: \Field_2 \rightarrow \Field$ che estendono $\phi$ \`e uguale al numero di elementi di $\Field$ che sono radici del polinomio $\ImagePolynomial{\phi}{\MinimalPolynomial{\alpha}}$.
+\end{Corollary}
+\Proof Poich\'e un omomorfismo da $\Field_2$ in $\Field$ \`e anche un'applicazione lineare tra i $\Field_1$-spazio vettoriali $\Field_2$ e $\Field$, ad ogni elemento di $m \in \Field_2$ corrisponde al pi\`u un omomorfismo $\psi$ che estende $\phi$ tale che $\psi(\alpha) = m$. \EndProof
+\begin{Corollary}
+	Siano $\Field_1$ e $\Field_2$ campi tali che $\FieldExtension{\Field_2}{\Field_1}$ sia un'estensione algebrica semplice generata da $\alpha \in \Field_2$. Sia $\Immersion: \Field_1 \hookrightarrow \AlgebraicClosure{\Field_1}$ un'immersione. Il numero di omomorfismi relativi $\RelativeHomomorphism: \Field_2 \rightarrow \AlgebraicClosure{\Field_1}$ che estendono \`e uguale al numero di radice distinte di $\MinimalPolynomial{\alpha}$ in $\AlgebraicClosure{\Field_1}$.
+\end{Corollary}
+\Proof \`E conseguenza immediata del teorema precedente. \EndProof
+\begin{Theorem}
+	Siano $\Field_1$ e $\Field_2$ campi tali che $\FieldExtension{\Field_2}{\Field_1}$ sia un'estensione algebrica. Sia $\Field$ un campo algebricamente chiuso e sia $\Immersion: \Field_1 \hookrightarrow \Field$ un'immersione. Se \`e vero l'assioma della scelta, esiste un omomorfismo relativo $\RelativeHomomorphism: \Field_2 \rightarrow \Field$.
+\end{Theorem}
+\Proof Consideriamo l'insieme $I = \lbrace (\tilde{\Field},\tilde{\RelativeHomomorphism}) | \text{$\tilde{\Field}$ \`e un'estensione di $\Field_1$, $\tilde{\Field} \subseteq \Field_2$ e $\tilde{\RelativeHomomorphism}: \tilde{\Field} \rightarrow \Field$ \`e un omomorfismo relativo}$. Ordiniamo parzialmente $I$ definendo $(\tilde{\Field_1},\tilde{\RelativeHomomorphism_1}) \leq (\tilde{\Field_2},\tilde{\RelativeHomomorphism_2})$ se e solo se $\tilde{\Field_1} \subseteq \tilde{\Field_2}$ e $\tilde{\RelativeHomomorphism_2}$ prolunga $\tilde{\RelativeHomomorphism_1}$ (cio\`e \`e un omomorfismo relativo a $\tilde{\RelativeHomomorphism_1}$).
+\par $I$ \`e non vuoto perch\'e $(\Field_1,\Immersion) \in I$.
+\par Ogni catena ascendente di $(\tilde{\Field_i},\tilde{\RelativeHomomorphism_i})_{i \in S} \in I^S$, dove $S$ \`e un insieme qualsiasi, \`e maggiorata da $\left ( \bigcup_{i \in S} \tilde{\Field_i}, \tilde{\RelativeHomomorphism} \right )$, dove $\tilde{\RelativeHomomorphism}$ \`e l'unica applicazione da $\bigcup_{i \in S} \tilde{\Field_i}$ in $\Field$ che prolunga tutte le $\tilde{\RelativeHomomorphism_i}$. Quindi per il lemma di Zorn $I$ ammette un elemento massimale $(\Field_M,\RelativeHomomorphism_M)$.
+\par Concludiamo la dimostrazione provando che $\Field_M = \Field_2$. Se fosse diversamente, esisterebbe $\alpha \in \SetMin{\Field_2}{\Field_M}$ e $(\FieldAdjunction{\Field_M}{\alpha},\tilde{\RelativeHomomorphism_M})$, dove $\tilde{\RelativeHomomorphism_M}$ \`e un omomorfismo che prolunga $\RelativeHomomorphism_M$ (la sua esistenza \`e garantita dal corollario precedente) sarebbe un elemento di $I$ strettamente maggiore dell'elemento massimale $(\Field_M,\RelativeHomomorphism_M)$, e questo sarebbe assurdo. \EndProof
+\begin{Theorem}\label{thUnicitaChiusuraAlgebrica}
+	Sia $\Field$ un campo. $\Field$ ammette una e una sola chiusura algebrica a meno di isomorfismo.
+\end{Theorem}
+\Proof Siano $\AlgebraicClosure{\Field}_1$ e $\AlgebraicClosure{\Field}_2$ due chiusure algebriche di $\Field$. Per il teorema precedente, esiste un omomorfismo relativo $\RelativeHomomorphism: \AlgebraicClosure{\Field}_1 \rightarrow \AlgebraicClosure{\Field}_2$.
+\par $\RelativeHomomorphism$ \`e un omomorfismo iniettivo perch\'e non nullo.
+\par Proviamo che $\RelativeHomomorphism$ \`e suriettivo.
+\par $\RelativeHomomorphism(\AlgebraicClosure{\Field}_1)$ \`e un campo. Sia $p \in \RingAdjunction{\RelativeHomomorphism(\AlgebraicClosure{\Field}_1)}{x}$. Esite $q \in \RingAdjunction{\AlgebraicClosure{\Field}_1}{x}$ tale che $\ImagePolynomial{\RelativeHomomorphism}{q} = p$. Poich\'e $\AlgebraicClosure{\Field}_1$ \`e algebricamente chiuso, esiste $\alpha \in \AlgebraicClosure{\Field}_1$ tale che $q(\alpha) = 0$. Si verifica subito che $p(\RelativeHomomorphism(\alpha)) = 0$ e quindi $\RelativeHomomorphism(\AlgebraicClosure{\Field}_1)$ \`e algebricamente chiuso.
+\par Ora, sia $\beta \in \AlgebraicClosure{\Field}_2$. Poich\'e $\beta$ \`e algebrico su $\Field$, esso \`e algebrico anche su $\RelativeHomomorphism{\AlgebraicClosure{\Field}_1}$ e dunque appartiene a $\phi{\AlgebraicClosure{\Field}_1}$, essendo esso algebricamente chiuso. Ne consegue che $\Field_2 \subseteq \RelativeHomomorphism{\AlgebraicClosure{\Field}_1}$ e dato che vale anche il contenimento inverso, $\Field_2 = \RelativeHomomorphism{\AlgebraicClosure{\Field}_1}$. \EndProof

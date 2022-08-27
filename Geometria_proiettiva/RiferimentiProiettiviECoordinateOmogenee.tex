@@ -1,0 +1,99 @@
+\section{Riferimenti proiettivi e coordinate omogenee.}
+
+\begin{Definition}\label{def14}
+	Siano $P_1 = [v_1], ..., P_k = [v_k] \in \mathbb{P}(V)$, con $v_1, ..., v_k \in V$. $P_1, ..., P_k$ si dicono \Define{linearmente indipendenti}[lineare][indipendenza] se e solo se sono linearmente indipendenti $v_1, ..., v_k$. $P_1,... P_k$ si dicono \Define{in posizione generale}[in posizione generale][punti] quando sono linearmente indipendenti o se, per ogni scelta di $n + 1$ punti tra i $P_1, ..., P_k$, questi sono linearmente indipendenti.
+\end{Definition}
+	\par Si verifica subito che la definizione \`e ben posta.
+\begin{Definition}\label{def15}
+	Sia $\mathcal{R} = \lbrace P_0, ..., P_n, P_{n + 1} \rbrace$ un insieme ordinato di $n + 2$ punti in posizione generale: $\mathcal{R}$ si chiama \Define{riferimento proiettivo}[proiettivo][riferimento]. $P_0, ..., P_n$ si chiamano \Define{punti fondamentali}[fondamentali][punti] del riferimento, $P_{n + 1}$ \Define{punto unit\`a}[unit\`a][punto].
+\end{Definition}
+\begin{Theorem}\label{th13}
+	Sia $\mathcal{R} = \lbrace P_0, ..., P_n, P_{n + 1} \rbrace$ un riferimento proiettivo di $\mathbb{P}(V)$. Per ogni $u \in V$ tale che $[u] = P_{n + 1}$ esiste una e una sola base $\mathcal{B}_u = \lbrace v_0, ..., v_n \rbrace$ di $V$ tale che
+\begin{itemize}
+	\item $P_i = [v_i]$ per ogni $i = 0, ..., n$;
+	\item $u = \sum_{i = 0}^n v_i$.
+\end{itemize}
+\end{Theorem}
+\Proof Sia $u \in V - \lbrace 0 \rbrace$ tale che $[u] = P_{n + 1}$. Per ogni $i = 0, ..., n$ scegliamo arbitrariamente un vettore $w_i \in V - \lbrace 0 \rbrace$ tale che $[w_i] = P_i$. I $P_0, ..., P_n, P_{n + 1}$ sono in posizione generale, dunque $w_1, ..., w_n, u$ sono linearmente indipendenti e costituiscono una base di $V$. Allora $w_0$ \`e combinazione lineare dei $w_1, ..., w_n, u$: esistono opportuni $\alpha_1, ..., \alpha_n, \beta \in \mathbb{K}$ tali che $w_0 = \sum_{i = 1}^n \alpha_i w_i + \beta u$. Ne risulta $u = \beta^{-1}w_0 - \sum_{i = 1}^n \beta^{-1} \alpha_i w_i$. Ponendo $v_0 = \beta^{-1}w_0$ e $v_i = - \beta^{-1} \alpha_i w_i$ per $i = 1, ..., n$ abbiamo costruito una base $\mathcal{B}_u = \lbrace v_0, ..., v_n \rbrace$ con le propriet\`a volute (l'indipendenza di $v_0, ..., v_n$ segue di nuovo dal fatto che i punti di $\mathcal{R}$ sono in posizione generale).
+	\par Supponiamo ora invece $\mathcal{B}_u = \lbrace v_0, ..., v_n \rbrace$ e $\mathcal{B}'_u = \lbrace v'_0, ..., v'_n \rbrace$ siano due basi di $V$ tali che $P_i = [v_i] = [v'_i]$ per ogni $i = 0, ..., n$ e $u = \sum_{i = 0}^n v_i = \sum_{i = 0}^n v'_i$. Abbiamo, per ogni $i = 0, ..., n$, $v'_i = \lambda_i v_i$, per $\lambda_i \in \mathbb{K}^*$ opportuno. Dunque $u = \sum_{i = 0}^n v_i = \sum_{i = 0}^n v'_i = \sum_{i = 0}^n \lambda_i v'_i$. Le coordinate di $u$ rispetto a $\mathbb{B}_u$ sono uniche, dunque necessariamente $\lambda_i = 1$ per ogni $i = 0, ..., n$ e le due basi sono identiche. \EndProof
+\begin{Definition}\label{def16}
+	Le basi $\mathcal{B}_u$ costruite come descritto nel teorema precedente si chiamano \Define{basi normalizzate}[normalizzate][basi] rispetto al riferimento proiettivo $\mathcal{R}$.
+\end{Definition}
+\begin{Theorem}\label{th14}
+	Nelle ipotesi del teorema precedente, abbiamo $\mathcal{B}_{\lambda u} = \lbrace \lambda v_0, ..., \lambda v_{n + 1} \rbrace$.
+\end{Theorem}
+\Proof \`E immediato che $P_i = [\lambda v_i]$ per ogni $i = 0, ..., n$. Inoltre $\lambda u = \lambda \sum_{i = 0}^n v_i = \sum_{i = 0}^n \lambda v_i$. \EndProof
+\begin{Theorem}\label{th15}
+	Siano $\mathcal{R} = \lbrace P_0, ..., P_n, P_{n + 1} \rbrace$ un riferimento proiettivo, $\phi_{\mathcal{B}_u}: V \rightarrow \mathbb{K}^{n + 1}$ e $\phi_{\mathcal{B}_v}: V \rightarrow \mathbb{K}^{n + 1}$ le applicazione coordinate rispetto alle basi normalizzate $\mathcal{B}_u$ e $\mathcal{B}_v$. Le applicazioni proiettive associate sono lo stesso isomorfismo proiettivo $f: \mathbb{P}(V) \rightarrow \mathbb{P}^n(\mathbb{K})$.
+\end{Theorem}
+\Proof $\phi_{\mathcal{B}_u}$ e $\phi_{\mathcal{B}_v}$ sono isomorfismi, dunque le applicazioni proiettive associate sono isomorfismi proiettivi.
+	\par Siano $v_0, ..., v_n$ gli elementi della base normalizzata $\mathcal{B}_u$. $\mathcal{B}_u$ e $\mathcal{B}_v$ sono basi normalizzate rispetto allo stesso riferimento proiettivo, dunque $v = \lambda u$ per $\lambda \in \mathbb{K}^*$ opportuno e, per il teorema \ref{th14}, $\mathcal{B}_v = \lbrace \lambda v_0, ..., \lambda v_n \rbrace$. Pertanto $\phi_{\mathcal{B}_u} = \lambda \phi_{\mathcal{B}_v}$, da cui le due applicazioni inducono la stessa applicazione proiettiva per il teorema \ref{th2}. \EndProof
+\begin{Definition}\label{def17}
+	Con le notazioni del teorema precedente, dato $P \in \mathbb{P}(V)$, si chiamano \Define{coordinate omogenee}[omogenee][coordinate] rispetto al riferimento proiettivo $\mathcal{R}$ le coordinate di un qualunque rappresentante di $f(P)$.
+\end{Definition}
+\par Le coordinate omogenee di un punto rispetto ad un riferimento proiettivo dato sono dunque determinate a meno di una costante moltiplicativa non nulla.
+\begin{Definition}\label{def18}
+	In $\mathbb{P}^n(\mathbb{K})$ il \Define{riferimento proiettivo standard}[proiettivo standard][riferimento] \`e l'insieme ordinato $\lbrace [1, 0, ..., 0], [0, 1, ..., 0], ..., [0, 0, ..., 1], [1, 1, ..., 1] \rbrace$.
+\end{Definition}
+	\par Una base normalizzata associata al rifermiento proiettivo standard \`e la base canonica di $\mathbb{K}^{n + 1}$.
+	\par Se in un fissato riferimento proiettivo $\mathcal{R}$ il punto $P \in \mathbb{P}(V)$ ha coordinate omogenee $[x_0, ..., x_n]$, scriveremo $[P]_{\mathcal{R}} = [x_0, ..., x_n]$, o, pi\`u brevemente, $P = [x_0, ..., x_n]$.
+\begin{Theorem}\label{th16}
+\TheoremName{Teorema fondamentale delle applicazioni proiettive}. Siano $\mathbb{P}(V)$ e $\mathbb{P}(W)$ due spazi proiettivi su campo $\mathbb{K}$ tali che $\dim \mathbb{P}(V) = n \leq \dim \mathbb{P}(W)$. Sia $\mathcal{R} = \lbrace P_0, ..., P_{n + 1} \rbrace$ un riferimento proiettivo di $\mathbb{P}(V)$ e sia $\mathcal{R}' = \lbrace Q_0, ..., Q_{n + 1} \rbrace$ un riferimento proiettivo di un sottospazio $S$ di dimensione $n$ di $\mathbb{P}(W)$. Allora esiste una e una sol'applicazione proiettiva $f: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ tale che $f(P_i) = Q_i$ per ogni $i = 0, ..., n + 1$. Se $S = \mathbb{P}(W)$, allora $f$ \`e un isomorfismo proiettivo.
+\end{Theorem}
+\Proof Siano $\mathcal{B}_u = \lbrace u_0, ..., u_n \rbrace$ e $\mathcal{B}_v = \lbrace v_0, ..., v_n \rbrace$ basi normalizzate associate ai riferimenti proiettivi $\mathcal{R}$ e $\mathcal{R}'$ rispettivamente, con $[u] = P_{n + 1}$ e $[v] = Q_{n + 1}$. \`E noto dall'algebra lineare che esiste una ed una sol'applicazione lineare $\phi: V \rightarrow W$ che trasforma la base $\mathcal{B}_u$ nella base $\mathcal{B}_v$; questa \`e iniettiva e si ha che l'applicazione proiettiva indotta $\bar{\phi}$ \`e tale che $\bar{\phi}(P_i) = [\phi(u_i)] = [v_i] = Q_i$ per ogni $i = 0, ..., n$. Inoltre $\bar{\phi}(P_{n + 1}) = [\phi(u)] = [\phi(\sum_{i = 0}^n u_i)] = [\sum_{i = 0}^n v_i] = [v] = Q_{n+ 1}$. Questo dimostra l'esistenza.
+	\par Sia $g: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ un'altra applicazione proiettiva tale che $g(P_i) = Q_i$ per ogni $i = 0, ..., n + 1$. Supponiamo $g$ sia indotta da un'applicazione lineare iniettiva $\psi: V \rightarrow W$.
+	\par Le applicazioni $\phi$ e $\psi$ sono due applicazioni lineari che mandano la stessa base $\mathcal{B}_u$ in due basi normalizzate rispetto allo stesso riferimento proiettivo $\mathcal{R}'$ tali che i loro punti unit\`a, $\phi(u)$ e $\psi(u)$ rispettivamente, verificano la relazione $\phi(u) = \lambda \psi(u)$ per $\lambda \in \mathbb{K}^*$ opportuno. Allora, per il teorema \ref{th14}, abbiamo anche $\phi = \lambda \psi$, da cui, per il teorema \ref{th2}, $f = g$. \EndProof
+\begin{Theorem}\label{th17}
+	Consideriamo gli spazi proiettivi standard $\mathbb{P}^n(\mathbb{K})$ e $\mathbb{P}^m(\mathbb{K})$, con $n, m \in \mathbb{N}$ e $m \geq n$. Sia $A$ una matrice di dimensione $(m + 1) \times (n + 1)$ e rango massimo $n + 1$. L'applicazione $f_A: \mathbb{P}^n(\mathbb{K}) \rightarrow \mathbb{P}^m(\mathbb{K})$ che a $[x_0, ..., x_n]$ associa $[A (x_0 \cdots x_n)^t]$ \`e un'applicazione proiettiva (le coordinate sono espresse rispetto ai riferimenti proiettivi standard).
+\end{Theorem}
+\Proof Consideriamo l'applicazione lineare $\phi: \mathbb{K}^{n + 1} \rightarrow \mathbb{K}^{m + 1}$ definita dalla matrice $A$ rispetto alle basi canoniche: essa \`e iniettiva e induce un'applicazione proiettiva $\bar{\phi}: \mathbb{P}^n(\mathbb{K}) \rightarrow \mathbb{P}^m(\mathbb{K})$. \`E immediato che $\bar{\phi}$ coincide con l'applicazione $f$. \EndProof
+\begin{Theorem}\label{th18}
+	Con le notazioni del teorema precedente, se $B$ \`e un'altra matrice $(m + 1) \times (n + 1)$ di rango $n + 1$, abbiamo $(f_A = f_B) \Leftrightarrow (\exists \lambda \in \mathbb{K}^*)(B = \lambda A)$.
+\end{Theorem}
+\Proof Per quanto visto nella dimostrazione del teorema precedente, $f_A$ \`e indotta dall'applicazione lineare $\phi: \mathbb{K}^{n + 1} \rightarrow \mathbb{K}^{m + 1}$ definita dalla matrice $A$ e $f_B$ dall'applicazione lineare $\psi: \mathbb{K}^{n + 1} \rightarrow \mathbb{K}^{m + 1}$ definita dalla matrice $B$. $f_A = f_B$, per il teorema \ref{th2}, equivale all'esistenza di un $\lambda \in \mathbb{K}^*$ tale che $\psi = \lambda \phi$, relazione a sua volta equivalente a $B = \lambda A$. $\square$
+\begin{Theorem}\label{th19}
+	Sia $f: \mathbb{P}^n(\mathbb{K}) \rightarrow \mathbb{P}^m(\mathbb{K})$, con $n, m \in \mathbb{N}$ e $n \leq m$, un'applicazione proiettiva. Allora, mantenendo le notazioni del teorema \ref{th17}, esiste una matrice $A$ di dimensioni $(m + 1) \times (n + 1)$ e rango massimo $n + 1$ tale che $f_A = f$.
+\end{Theorem}
+\Proof Denotiamo $\mathcal{R} = \lbrace [e_1], ..., [e_{n + 1}], [\sum_{i = 1}^{n + 1} e_i] \rbrace$ il riferimento proiettivo standard. Costruiamo il riferimento proiettivo $f(\mathcal{R})$ di un opportuno sottospazio proiettivo di $\mathbb{P}^m(\mathbb{K})$ e quindi la matrice $A$ di dimensione $(m + 1) \times (n + 1)$ le cui colonne sono i vettori di una base normalizzata associata a $f(\mathcal{R})$. Abbiamo, per costruzione, $f_A([e_i]) = f([e_i])$ per ogni $i = 1, ..., n + 1$; inoltre, sempre per costruzione, $f_A([\sum_{i = 1}^{n + 1} e_i]) = f([\sum_{i = 1}^{n + 1} e_ i])$. Per il teorema \ref{th16}, $f$ ed $f_A$ devono coincidere. $\square$
+\begin{Definition}\label{def19}
+	Nelle ipotesi del teorema precedente, la matrice $A$ si dice \Define{associata all'applicazione proiettiva $f$}[associata ad un'applicazione proiettiva][matrice] (rispetto ai riferimenti proiettivi standard).
+\end{Definition}
+\begin{Definition}\label{def20}
+	Sia $f: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ un'applicazione proiettiva. Siano $\mathcal{R}_1$ un riferimento proiettivo di $\mathbb{P}(V)$ e $\mathcal{R}_2$ un riferimento proiettivo di $\mathbb{P}(W)$, $\phi_1$ e $\phi_2$ i corrispondenti isomorfismi proiettivi con $\mathbb{P}^n(\mathbb{K})$ e $\mathbb{P}^m(\mathbb{K})$ rispettivamente. Se $A$ \`e una matrice associata all'applicazione proiettiva $\phi_2 \circ f \circ \phi_1^{-1}$, allora $A$ si dice \Define{associata ad $f$}[associata ad un'applicazione proiettiva][matrice] rispetto ai riferimenti proiettivi $\mathcal{R}_1$ e $\mathcal{R}_2$.
+\end{Definition}
+	\par La matrice associata ad un'applicazione proiettiva rispetto a due riferimenti proiettivi dati \`e unica a meno di una costante moltiplicativa non nulla per il teorema \ref{th18}.
+\begin{Definition}\label{def21}
+	Siano $\mathcal{R}_1$ e $\mathcal{R}_2$ due riferimenti proiettivi dello stesso spazio proiettivo $\mathbb{P}(V)$. La matrice associata ad $\Identity_{\mathbb{P}(V)}$ rispetto ai riferimenti $\mathcal{R}_1$ e $\mathcal{R}_2$ si chiama \Define{matrice del cambiamento di riferimento proiettivo}[del cambiamento di riferimento proiettivo][matrice] o \Define{matrice del cambiamento di coordinate omogenee}[del cambio di coordinate omogenee][matrice].
+\end{Definition}
+\begin{Theorem}\label{th20}
+	Sia $S = \mathbb{P}(W)$ un sottospazio proiettivo di $\mathbb{P}(V)$ e siano $\dim S = k$ e $\dim \mathbb{P}(V) = n$. Esistono uno spazio vettoriale $U$ e un'applicazione lineare $\phi: V \rightarrow U$ tale che $S = \mathbb{P}(\Kernel \phi)$. Inoltre, fissato un riferimento proiettivo $\mathcal{R}$, esiste una matrice $A$ di rango $n - k$ tale che $(P = [x_0, ..., x_n] \in S) \Leftrightarrow (A (x_0 \cdots x_n)^t = 0)$.
+\end{Theorem}
+\Proof Per la prima parte del teorema basta prendere $U = V/W$ e $\phi$ uguale alla proiezione canonica di $V$ su $V/W$: abbiamo allora in effetti $W = \Kernel \phi$, equivalente a $S = \mathbb{P}(\Kernel \phi)$ per il corollario \ref{cor0.1}.
+	\par Fissiamo una base normalizzata rispetto ad $\mathcal{R}$ di $V$ e una base di $U$; sia $A$ la matrice associata a $\phi$ rispetto a queste basi.
+	\par Sia $x = (x_0, ..., x_n) \in \mathbb{K}^{n+ 1}$. Poich\'e $A$ \`e la matrice associata a $\phi$ rispetto alle basi fissate, abbiamo $A (x_0 \cdots x_n)^t = 0$ se e solo se $x \in \Kernel \phi = W$ e inoltre il rango di $A$ \`e $n - k$. Inoltre $x \in \Kernel \phi = W$ equivale a $[x] \in \mathbb{P}(W) = S$ e le coordinate omogenee di $[x]$ rispetto ad $\mathcal{R}$ sono proprio $[x_0, ..., x_n]$. $\square$
+\begin{Definition}\label{def22}
+	Con le notazioni del teorema precedente, le equazioni del sistema $AX = 0$, dove $X = (x_0 \cdots x_n)^t$, sono dette \Define{equazioni cartesiane}[cartesiane di un sottospazio proiettivo][equazioni] del sottospazio $S$.
+\end{Definition}
+\begin{Theorem}\label{th22}
+	Siano dati un riferimento proiettivo $\mathcal{R}$ di $\mathbb{P}(V)$ e una base $\mathcal{B}$ di $V$ normalizzata rispetto ad $\mathcal{R}$. Il sottospazio vettoriale $W$ di $V$ \`e descritto dalle equazioni cartesiane $AX = 0$, dove $A$ ha rango $\dim V - \dim W$ e $X = (x_0 \cdots x_n)^t$, se e solo se il sottospazio proiettivo $\mathbb{P}(W)$ di $\mathbb{P}(V)$ \`e descritto dalle stesse equazioni cartesiane $AX = 0$.
+\end{Theorem}
+\Proof Sia $W$ descritto dalle equazioni cartesiane $AX = 0$. Sia $[w] \in \mathbb{P}(W)$: abbiamo $w \in W$ (teorema \ref{th1}). Supponiamo che $X_0$ sia il vettore delle coordinate di $w$; allora $AX_0 = 0$. Ma $X_0$ coincide con uno dei possibili vettori delle coordinate omogenee di $[w]$, dunque $\mathbb{P}(W)$ \`e contenuto nel sottospazio proiettivo descritto dalle equazioni cartesiane $AX = 0$.
+	\par Supponiamo ora invece $[x] \in \mathbb{P}(V)$ e sia $X_1$ un vettore delle coordinate omogenee di $[x]$ tale che $AX_1 = 0$: essendo le coordinate omogenee determinate a meno di moltiplicazione per uno scalare non nullo, possiamo supporre che $X_1$ sia anche il vettore delle coordinate di $x \in V$, per cui $x \in W$ e dunque $[x] \in \mathbb{P}(W)$, e questo conclude la prima parte della dimostrazione.
+	\par Supponiamo adesso che $\mathbb{P}(W)$ sia descritto dalle equazioni cartesiane $AX = 0$. Sia $w \in W - \lbrace 0 \rbrace$. Allora $[w] \in \mathbb{P}(W)$ e, se $X_0$ \`e il vettore delle coordinate di $w$, esso \`e anche un vettore delle coordinate omogenee per $[w]$, da cui $AX_0 = 0$. Dunque $W - \lbrace 0 \rbrace$ \`e contenuto nel sottospazio vettoriale descritto dalle equazioni cartesiane $AX = 0$.
+	\par Supponiamo ora invece $x \in V - \lbrace 0 \rbrace$ di coordinate $X_1$ tale che $AX_1 = 0$. Allora $X_1$ \`e anche un vettore di coordinate omogenee per $[x]$ e pertanto $[x] \in \mathbb{P}(W)$, da cui, per il teorema \ref{th1}, $x \in W$.
+	\par Inoltre, se $x = 0$, \`e immediato che $x$ appartiene sia allo spazio vettoriale descritto da $AX = 0$ che a $W$, e questo conclude la dimostrazione. \EndProof
+\begin{Theorem}\label{th23}
+	Sia $S = \mathbb{P}(W)$ un sottospazio proiettivo di $\mathbb{P}(V)$, dove $k = \dim S$. Esiste un'applicazione proiettiva $f: \mathbb{P}^k(\mathbb{K}) \rightarrow \mathbb{P}(V)$ tale che $S = \Image f$.
+\end{Theorem}
+\Proof Fissiamo un riferimento proiettivo $\mathcal{R}$ di $\mathbb{P}(V)$ tale che i primi $k + 1$ punti di $\mathcal{R}$ appartengano ad $S$; sia $\mathcal{B}$ una base di $V$ normalizzata rispetto ad $\mathcal{R}$. Sia $\phi: \mathbb{K}^{k + 1} \rightarrow V$ l'applicazione lineare che a $(x_0 \cdots x_k)^t$ associa l'elemento di coordinate $(x_0, ..., x_k, 0, ..., 0)$ rispetto a $\mathcal{B}$. Abbiamo $\Image \phi = W$. Sia $f: \mathbb{P}^k(\mathbb{K}) \rightarrow \mathbb{P}(V)$ l'applicazione proiettiva indotta da $\phi$: per il corollario \ref{cor0.1}, $\Image f = \mathbb{P}(\Image \phi) = \mathbb{P}(W) = S$. \EndProof
+\begin{Definition}\label{def23}
+	Con le notazioni del teorema e della dimostrazione precedenti, le equazioni del sistema $AX = Y$ - dove $A$ \`e la matrice associata ad $f$ rispetto ai due riferimenti proiettivi $\mathcal{R}_1$ di $\mathbb{P}^k(\mathbb{K})$ e $\mathcal{R}_2$ di $\mathbb{P}(V)$, $X = (x_0 \cdots x_k)^t$ un vettore le cui componenti prendono il nome di \NIDefine{parametri} ed $Y = (y_0 \cdots y_n)^t$ - vengono dette \Define{equazioni parametriche}[parametriche di un sottospazio proiettivo][equazioni] del sottospazio proiettivo $S$.
+\end{Definition}
+\begin{Theorem}\label{th24}
+	Siano dati un riferimento proiettivo $\mathcal{R}$ di $\mathbb{P}(V)$ e una base $\mathcal{B}$ di $V$ normalizzata rispetto ad $\mathcal{R}$. Il sottospazio vettoriale $W$ di $V$ \`e descritto dalle equazioni parametriche $AX = Y$, dove $A$ ha rango $\dim W$, $X = (x_0 \cdots x_n)^t$ e $Y = (y_0 \cdots y_n)^t$, se e solo se il sottospazio proiettivo $\mathbb{P}(W)$ di $\mathbb{P}(V)$ \`e descritto dalle stesse equazioni parametriche $AX = Y$.
+\end{Theorem}
+\Proof Sia $W$ descritto dalle equazioni parametriche $AX = Y$. Sia $[w] \in \mathbb{P}(W)$: abbiamo $w \in W$ (teorema \ref{th1}) e supponiamo che $Y_0$ sia il vettore delle coordinate di $w$. Esiste allora un vettore di parametri $X_0$ tali che $AX_0 = Y_0$. Ma $Y_0$ \`e anche un vettore di coordinate omogenee per $[w]$, dunque $\mathbb{P}(W)$ \`e contenuto nel sottospazio proiettivo descritto dalle equazioni parametriche $AX = Y$.
+	\par Supponiamo ora invece $[y] \in \mathbb{P}(V)$ e sia $Y_1$ un vettore delle coordinate omogenee per $[y]$ tale che esistano parametri $X_1$ per cui $AX_1 = Y_1$: essendo le coordinate omogenee determinate a meno di moltiplicazione per uno scalare non nullo, possiamo supporre $Y_1$ sia anche il vettore delle coordinate per $x$, e l'equazione resta vera moltiplicando il vettore dei parametri per la stessa costante. Dunque $y \in W$, da cui $[y] \in \mathbb{P}(W)$ e questo conclude la prima parte della dimostrazione.
+	\par Supponiamo adesso che $\mathbb{P}(W)$ sia descritto dalle equazioni parametriche $AX = Y$. Sia $w \in W - \lbrace 0 \rbrace$. Allora $[w] \in \mathbb{P}(W)$ e, se $Y_0$ \`e il vettore delle coordinate di $w$, nonch\'e un vettore di coordinate omogenee per $[w]$, esiste un vettore dei parametri $X_0$ tale che $AX_0 = Y_0$. Dunque $W - \lbrace 0 \rbrace$ \`e contenuto nel sottospazio vettoriale descritto dalle equazioni paramtriche $AX = Y$.
+	\par Supponiamo ora invece $x \in V - \lbrace 0 \rbrace$ di coordinate $Y_1$ tale che, per un'opportuna scelta di parametri $X_1$, sia verificata l'uguaglianza $AX_1 = Y_1$. Allora $Y_1$ \`e anche un vettore di coordinate omogenee per $[x]$ e pertanto $[x] \in \mathbb{P}(W)$, da cui, per il teorema \ref{th1}, $x \in W$.
+	\par Inoltre, se $x = 0$, \`e immediato che $x$ appartiene sia allo spazio vettoriale descritto da $AX = Y$ che a $W$, e questo conclude la dimostrazione. \EndProof

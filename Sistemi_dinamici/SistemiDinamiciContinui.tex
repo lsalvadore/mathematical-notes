@@ -1,0 +1,32 @@
+\section{Definizioni e teoremi di base}
+\label{SistemiDinamici_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Chiamiamo \Define{sistema dinamico continuo}[dinamico continuo][sistema] un'equazione differenziale del primo ordine autonoma $\dot{X} = \VectorField(X)$, dove
+	\begin{itemize}
+		\item $n \in \mathbb{N}$;
+		\item $\Open \subseteq \mathbb{R}^n$ aperto;
+		\item $\VectorField: \Open \rightarrow \mathbb{R}^n$ un campo vettoriale di classe almeno $\CClass{1}$.
+	\end{itemize}
+	Definiamo inoltre \Define{orbita}[di un sistema dinamico continuo][orbita] una soluzione dell'equazione differenziale.
+\end{Definition}
+\begin{Definition}
+	Con le notazioni della definizione precedente, chiamiamo \Define{integrale primo}[primo][integrale] una funzione $\PrimeIntegral: \Open \rightarrow \mathbb{R}$ tale che
+	\begin{itemize}
+		\item $\PrimeIntegral$ \`e differenziabile;
+		\item se $X$ \`e un'orbita del sistema dinamico, allora $\ForAll{t \in W}{\PrimeIntegral(X(t)) = \PrimeIntegral(X(0))}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Data un'equazione differenziale ordinaria di ordine $n \in \NotZero{\mathbb{N}}$ in $x$ esiste un sistema dinamico continuo di $n$ funzioni incognite $\dot{X} = \VectorField(X)$ tale che ogni sua soluzione $(X_i)_{i \in n + 1}$ sia tale che $X_0$ risolva l'equazione differenziale ordinaria originale.
+\end{Theorem}
+\Proof Definiamo $X = (X_i)_{i \in n + 1}$ tale che $\ForAll{i \in n + 1}{X_i = x^{(i)}}$. Il sistema dinamico \`e allora dato dall'equazione differenziale ordinaria originale e dalle equazioni $\dot{X_i} = X_{i + 1}$ al variare di $i \in n$. \EndProof
+\begin{Theorem}
+	Data un'equazione differenziale ordinaria non autonoma del primo ordine in $x$, esiste un sistema dinamico continuo di $2$ funzioni incognite $\dot{X} = \VectorField(X)$ tale che ogni sua soluzione $(X_i)_{i \in 2}$ sia tale che $X_0$ risolva l'equzione differenziale ordinaria originale.
+\end{Theorem}
+\Proof Definiamo $X = (X_i)_{i \in 2}$ tale che $X_0 = x$ e $X_1 = t$, dove $t$ \`e la variabile indipendente. Il sistema dinamico \`e allora dato dall'equzione differenziale ordinaria originale e dall'equazione $\dot{X_1} = 1$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{sistima dinamico gradiente}[dinamico gradiente][sistema] \`e un sistema dinamico continuo $\dot{X} = \VectorField(X)$ tale che esista un'applicazione $U: \Dom{\VectorField} \rightarrow \Cod{\VectorField}$ per cui $\VectorField = - \Gradient{U}$. Chiamiamo la funzione $-U$ \Define{potenziale} del sistema.
+\end{Definition}
+\input{Sistemi_dinamici/EquilibriEStabilita.tex}
+\input{Sistemi_dinamici/SistemiNewtoniani.tex}
+\input{Sistemi_dinamici/AnalisiQualitativa.tex}

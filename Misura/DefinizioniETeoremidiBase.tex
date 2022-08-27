@@ -1,0 +1,290 @@
+\section{Definizioni e teoremi di base.}
+\label{Misura_DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Un'\Define{algebra di parti}[di parti][algebra]\footnote{Il termine in uso
+  solitamente \`e
+  \Define{algebra di insiemi}[di insiemi][algebra], ma preferiamo il termine
+  ``algebra di parti'' perch\'e consente facili estensioni al caso in cui le
+  parti in questione siano parti di una classe, e non solo di un insieme, come
+  \`e invece il caso per l'usuale definizione di algebra di insiemi.}
+  $\AlgebraOfParts$ su una classe $\MeasureSpace$ \`e una parte di
+  $\PowerSet{\MeasureSpace}$ tale che
+  \begin{itemize}
+    \item $\emptyset \in \AlgebraOfParts$;
+    \item $\AlgebraOfParts$ sia chiuso per passaggio al complementare;
+    \item $\AlgebraOfParts$ sia chiuso per unione finita.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Un'algebra $\AlgebraOfParts$ su $\MeasureSpace$ \`e chiusa per
+  intersezione finita.
+\end{Theorem}
+\Proof Siano $\MeasurablePart, \VarMeasurablePart \in \AlgebraOfParts$.
+Abbiamo
+$\MeasurablePart \cap \VarMeasurablePart
+= \Complement{\Complement{\MeasurablePart} \cup \Complement{\VarMeasurablePart}}
+\in \AlgebraOfParts$. \EndProof
+\begin{Definition}
+  Una
+  \Define{$\sigma$-algebra} su una classe $\MeasureSpace$ \`e un'algebra
+  di parti su $\MeasureSpace$ chiusa per unione numerabile.
+\end{Definition}
+\begin{Theorem}
+  Una $\sigma$-algebra $\SigmaAlgebra$ su $\MeasureSpace$ \`e chiusa per
+  intersezione numerabile.
+\end{Theorem}
+\Proof Sia
+$(\MeasurablePart_n)_{n \in \mathbb{N}} \in \SigmaAlgebra^\mathbb{N}$.
+Abbiamo
+$\bigcap_{n \in \mathbb{N}} \MeasurablePart_n
+= \Complement{\bigcup_{n \in \mathbb{N}} \Complement{\MeasurablePart_n}}
+\in \SigmaAlgebra$. \EndProof
+\begin{Theorem}
+  Sia $(\AlgebraOfParts_i)_{i \in I}$ una famiglia di algebre di parti
+  sulla stessa classe $\MeasureSpace$.
+  $\bigcap_{i \in I} \AlgebraOfParts$ \`e un'algebra di parti su
+  $\MeasureSpace$.
+\end{Theorem}
+\Proof Segue immediatamente dalle definizioni. \EndProof
+\begin{Corollary}
+  Sia $(\SigmaAlgebra_i)_{i \in I}$ una famiglia di $\sigma$-algebre sulla
+  stessa classe $\MeasureSpace$.
+  $\bigcap_{i \in I} \SigmaAlgebra_i$ \`e una $\sigma$-algebra su
+  $\MeasureSpace$.
+\end{Corollary}
+\Proof Segue immediatamente dalle definizioni. \EndProof
+\begin{Definition}
+  Sia $\MeasureSpace$ una classe e sia $S \subseteq \PowerSet{\MeasureSpace}$.
+  Chiamiamo
+  \begin{itemize}
+    \item \Define{algebra di parti generata}[di parti generata][algebra]
+      da $S$ in $\MeasureSpace$ la pi\`u piccola algebra di parti
+      $\AlgebraOfParts$ di $\MeasureSpace$ tale che
+      $S \subseteq \AlgebraOfParts$;
+    \item \Define{$\sigma$-algebra generata}[generata][$\sigma$-algebra]
+      da $S$ in $\MeasureSpace$ la pi\`u piccola $\sigma$-algebra
+      $\SigmaAlgebra$ di $\MeasureSpace$ tale che
+      $S \subseteq \SigmaAlgebra$, denotata
+      $\GeneratedSigmaAlgebra{S}$.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico. Chiamiamo
+  $\GeneratedSigmaAlgebra{\Topology}$
+  \Define{$\sigma$-algebra di Borel}[di Borel][$\sigma$-algebra]
+  e chiamiamo gli elementi di
+  $\GeneratedSigmaAlgebra{\Topology}$
+  \Define{boreliani}[boreliano].
+\end{Definition}
+\begin{Definition}
+	Uno \Define{spazio misurabile}[misurabile][spazio]
+  $(\MeasureSpace,\SigmaAlgebra)$
+  \`e una coppia in cui
+  \begin{itemize}
+    \item $\MeasureSpace$ \`e una classe;
+    \item $\SigmaAlgebra$ una $\sigma$-algebra su $\MeasureSpace$.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico. Chiamiamo
+  $(\TopologicalSpace,\GeneratedSigmaAlgebra{\Topology})$
+  \Define{spazio boreliano}[boreliano][spazio].
+\end{Definition}
+\begin{Definition}
+	Siano
+  \begin{itemize}
+    \item $(\MeasurableSpace,\SigmaAlgebra)$ e
+      $(\VarMeasurableSpace,\VarSigmaAlgebra)$ spazi misurabili;
+    \item un'applicazione $\MeasurableApplication: \MeasurableSpace \rightarrow
+      \VarMeasurableSpace$.
+  \end{itemize}
+  Se $\ForAll{\VarMeasurablePart \in \VarSigmaAlgebra}
+  {\MeasurableApplication^{-1}(\VarMeasurablePart) \in \SigmaAlgebra}$, allora
+  si dice che $\MeasurableApplication$ \`e
+  \Define{misurabile}[misurabile][applicazione]
+  Se inoltre $\MeasurableSpace$ e $\VarMeasurableSpace$ sono spazi boreliani,
+  allora
+  $\MeasurableApplication$ si dice
+  \Define{boreliana}[boreliana][applicazione].
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni del teorema precedente,
+  se $\MeasurableApplication$ \`e costante, allora \`e misurabile.
+\end{Theorem}
+\Proof Sia $c \in \Image{\MeasurableApplication}$.
+\par Sia $\VarMeasurablePart \in \VarSigmaAlgebra$.
+\par Ora,
+\begin{itemize}
+  \item se $c \notin \VarMeasurablePart$, allora
+    $\MeasurableApplication^{-1} (\VarMeasurablePart)
+    = \emptyset \in \SigmaAlgebra$;
+  \item se $c \in \VarMeasurablePart$, allora
+    $\MeasurableApplication^{-1} (\VarMeasurablePart)
+    = \MeasurableSpace \in \SigmaAlgebra$. \EndProof
+\end{itemize}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $(\MeasureSpace_0,\SigmaAlgebra_0)$,
+      $(\MeasureSpace_1,\SigmaAlgebra_1)$
+      e $(\MeasureSpace_2,\SigmaAlgebra_2)$
+      spazi misurabili;
+    \item $\MeasurableApplication_0:
+      \MeasureSpace_0 \rightarrow \MeasureSpace_1$
+      un'applicazione misurabile;
+    \item $\MeasurableApplication_1:
+      \MeasureSpace_1 \rightarrow \MeasureSpace_2$
+      un'applicazione misurabile.
+  \end{itemize}
+  L'applicazione
+  $\MeasurableApplication
+  = \MeasurableApplication_1 \circ \MeasurableApplication_0$ \`e
+  misurabile.
+\end{Theorem}
+\Proof Sia $\MeasurablePart \in \SigmaAlgebra_2$. Per la misurabilit\`a
+di $\MeasurableApplication_1$, $\MeasurableApplication_1^{-1}(\MeasurablePart)$
+\`e misurabile. Per la misurabilit\`a di $\MeasurableApplication_0$,
+$\MeasurableApplication^{-1}(\MeasurablePart) =
+\MeasurableApplication_0^{-1} (\MeasurableApplication_1^{-1} (\MeasurablePart))$
+\`e misurabile. \EndProof
+\begin{Corollary}
+  Le applicazioni misurabili costituiscono una cateogria i cui oggetti sono gli
+  spazi misurabili. Denoteremo tale categoria $\CatMeasurableSpace$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Definition}
+  Data una classe $\MeasureSpace$ e
+  $\SigmaAlgebra  \subseteq \PowerSet{\MeasureSpace}$,
+  un'applicazione
+  $\Measure: \SigmaAlgebra \rightarrow \mathbb{R}$
+  si dice
+  \begin{itemize}
+    \item \Define{additiva}[additiva][applicazione] se
+      \begin{itemize}
+        \item $\SigmaAlgebra$ \`e un'algebra di parti su
+          $\MeasureSpace$;
+        \item per ogni coppia
+            $(\MeasurablePart,\VarMeasurablePart) \in \SigmaAlgebra^2$
+            di parti disgiunte abbiamo
+            $\Measure(\MeasurablePart \cup \VarMeasurablePart) =
+            \Measure(\MeasurablePart) + \Measure(\VarMeasurablePart)$;
+      \end{itemize}
+    \item \Define{$\sigma$-additiva}[$\sigma$-additiva][applicazione] se
+      \begin{itemize}
+        \item $\SigmaAlgebra$ \`e una $\sigma$-algebra su
+          $\MeasureSpace$;
+        \item per ogni famiglia
+          $(\MeasurablePart_n)_{n \in \mathbb{N}} \in \SigmaAlgebra^\mathbb{N}$
+          di parti disgiunte due a due abbiamo
+          $\Measure \left ( \bigcup_{n \in \mathbb{N}} \MeasurablePart_n\right )
+            = \sum_{n \in \mathbb{N}} \Measure(\MeasurablePart_n)$.
+      \end{itemize}
+  \end{itemize}
+  Nell'ipotesi che
+  \begin{itemize}
+    \item $\SigmaAlgebra$ sia una $\sigma$-algebra;
+    \item $\Measure$ sia $\sigma$-additiva;
+    \item $\Cod{\Measure} = [0,+\infty]$;
+  \end{itemize}
+  definiamo
+  \begin{itemize}
+    \item \Define{misura} sullo spazio misurabile
+      $(\MeasureSpace,\SigmaAlgebra)$
+      l'applicazione $\Measure$;
+    \item \Define{spazio di misura}[di misura][spazio] la terna
+      $(\MeasureSpace,\SigmaAlgebra,\Measure)$.
+  \end{itemize}
+  Inoltre, dato $\MeasurablePart \in \SigmaAlgebra$, diciamo che
+  \begin{itemize}
+    \item $\MeasurablePart$ contiene \Define{quasi tutti}[tutti][quasi]
+      gli elementi di $\MeasureSpace$ se
+      $\Measure(\MeasurablePart) = \Measure(\MeasureSpace)$;
+    \item $\MeasurablePart$ contiene \Define{quasi nessun}[nessuno][quasi]
+      elemento di $\MeasureSpace$ se
+      $\Measure(\MeasurablePart) = 0$; $\MeasurablePart$ si dice in tal caso
+      \Define{trascurabile}[trascurabile][parte].
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Sia $(\MeasurableSpace,\SigmaAlgebra)$ uno spazio di Borel. Una misura
+  $\Measure$ definita su uno spazio misurabile $(\MeasureSpace,\SigmaAlgebra)$
+  si chiama
+  \Define{misura di Borel}[di Borel][misura].
+\end{Definition}
+\begin{Theorem}
+  Dati
+  \begin{itemize}
+    \item una classe $\MeasureSpace$,
+    \item $\SigmaAlgebra  \subseteq \PowerSet{\MeasureSpace}$,
+    \item un'applicazione
+          $\Measure: \SigmaAlgebra \rightarrow \mathbb{R}$
+          additiva;
+  \end{itemize}
+  abbiamo, se $\emptyset \in \SigmaAlgebra$,
+  $\Measure(\emptyset) = 0$
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+  \Measure(\emptyset)
+  &= \Measure(\emptyset \cup \emptyset),\\
+  &= \Measure(\emptyset) + \Measure(\emptyset),
+\end{align*}
+da cui $\Measure(\emptyset) = 0$. \EndProof
+\begin{Theorem}
+	Dati uno spazio misurabile
+  $(\MeasureSpace,\SigmaAlgebra)$ e una funzione
+  $\Measure: \SigmaAlgebra \rightarrow [0; +\infty]$ sono equivalenti i
+  seguenti fatti:
+	\begin{itemize}
+		\item $\Measure$ \`e una misura;
+		\item se
+      $(\MeasurablePart_n)_{n \in \mathbb{N}} \in \SigmaAlgebra^\mathbb{N}$
+      \`e una successione crescente, allora
+      $\lim_{n \rightarrow \infty} \Measure(\MeasurablePart_n)
+      = \Measure(\bigcup_{n \in \mathbb{N}} \MeasurablePart_n)$;
+		\item se
+      $(\MeasurablePart_n)_{n \in \mathbb{N}} \in \SigmaAlgebra^\mathbb{N}$
+      \`e una successione decrescente e
+      $\Exists{n \in \mathbb{N}}{\MeasurablePart_n < + \infty}$, allora
+      $\lim_{n \rightarrow \infty} \Measure(\MeasurablePart_n)
+      = \Measure(\bigcap_{n \in \mathbb{N}} \MeasurablePart_n)$.
+	\end{itemize}
+\end{Theorem}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $(\MeasureSpace,\SigmaAlgebra,\Measure)$ uno spazio di misura;
+    \item $(\MeasurableSpace,\VarSigmaAlgebra)$ uno spazio misurabile;
+    \item $\MeasurableApplication: \MeasureSpace \rightarrow \MeasurableSpace$
+      un'applicazione misurabile.
+  \end{itemize}
+  L'applicazione
+  $\VarMeasure: \VarSigmaAlgebra \rightarrow [0;+\infty]$
+  che a $\VarMeasurablePart \in \VarSigmaAlgebra$ associa
+  $(\Measure \circ \MeasurableApplication^{-1}) (\VarMeasurablePart)$ \`e
+  una misura sullo spazio misurabile $(\MeasurableSpace,\VarSigmaAlgebra)$.
+\end{Theorem}
+\Proof Sia
+$(\VarMeasurablePart_n)_{n \in \mathbb{N}} \in \VarSigmaAlgebra^\mathbb{N}$.
+Abbiamo
+\begin{align*}
+  \VarMeasure \left ( \bigcup_{n \in \mathbb{N}} \VarMeasurablePart_n \right )
+  &= \Measure \left (
+    \MeasurableApplication^{-1} \left (
+    \bigcup_{n \in \mathbb{N}} \VarMeasurablePart_n \right ) \right ),\\
+  &= \Measure \left (
+    \bigcup_{n \in \mathbb{N}}
+      \MeasurableApplication^{-1} (\VarMeasurablePart_n) \right ),\\
+  &= \sum_{n \in \mathbb{N}} \Measure (
+      \MeasurableApplication^{-1} (\VarMeasurablePart_n) ),\\
+  &= \sum_{n \in \mathbb{N}} \VarMeasure (\VarMeasurablePart_n).\text{ \EndProof}
+\end{align*}
+\begin{Definition}
+  Con le notazioni del teorema precedente, chiamiamo $\VarMeasure$
+  \Define{misura immagine}[immagine][misura] di $\Measure$ tramite
+  $\MeasurableApplication$.
+  Inoltre, se $\phi(x)$ \`e una formula che definisce una parte di
+  $\MeasurableSpace$ in $\VarSigmaAlgebra$ secondo lo schema di comprensione,
+  allora denotiamo $\Measure (\phi(\MeasurableApplication))$ la quantit\`a
+  $\VarMeasure(\lbrace x \in \MeasurableSpace | \phi(x) \rbrace)$.
+\end{Definition}

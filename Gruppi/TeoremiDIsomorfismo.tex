@@ -1,0 +1,185 @@
+\section{Teoremi d'isomorfismo.}\label{TeoremiDIsomorfismo}
+\begin{Theorem}
+\TheoremName{Primo teorema d'isomorfismo di gruppi}[primo d'isomorfismo di gruppi][teorema]
+	Sia $\Homomorphism: \Group_1 \rightarrow \Group_2$ un omomorfismo
+	tra i gruppi $\Group_1$ e $\Group_2$. Allora
+	$\Isomorphic{\Quotient{\Group_1}{\Kernel{\Homomorphism}}}
+	{\Image{\Homomorphism}}$.
+\end{Theorem}
+\Proof
+Sia $\Homomorphism_0$ l'omomorfismo ottenuto da $\Homomorphism$
+per passaggio al quoziente: esso \`e chiaramente suriettivo.
+Inoltre $\Homomorphism_0$ \`e anche iniettivo perch\'e
+$\Kernel(\Homomorphism_0) =
+\lbrace \Kernel(\Homomorphism) \rbrace = 1$.
+\EndProof
+\begin{Theorem}
+\TheoremName{Secondo teorema d'isomorfismo di gruppi}[secondo d'isomorfismo di gruppi][teorema]
+	Siano
+	\begin{itemize}
+		\item
+		$\Group$ un gruppo;
+		\item
+		$\Subgroup \IsSubgroup \Group$;
+		\item
+		$\NormalSubgroup \IsNormalSubgroup \Group$.
+	\end{itemize}
+	Abbiamo
+	\begin{itemize}
+		\item
+		$\Subgroup\NormalSubgroup \IsSubgroup \Group$;
+		\item
+		$\NormalSubgroup \IsNormalSubgroup \Subgroup\NormalSubgroup$;
+		\item
+		$\Subgroup \cap \NormalSubgroup \IsNormalSubgroup \Subgroup$;
+		\item
+		l'applicazione
+		$\Homomorphism: \Subgroup \rightarrow
+		\Quotient{\Subgroup\NormalSubgroup}{\NormalSubgroup}$
+		che ad $x \in \Subgroup$ associa $\Coset{x}{\NormalSubgroup} \in
+		\Quotient{\Subgroup\NormalSubgroup}{\NormalSubgroup}$
+		\`e un omomorfismo;
+		\item
+		l'omomorfismo $\Homomorphism_0:
+		\Quotient{\Subgroup}{\Subgroup \cap \NormalSubgroup} \rightarrow
+		\Quotient{\Subgroup\NormalSubgroup}{\NormalSubgroup}$,
+		ottenuto da $\Homomorphism$ per passaggio al quoziente,
+		\`e un isomorfismo,
+		e dunque in particolare
+		$\Isomorphic
+		{\Quotient{\Subgroup}{\Subgroup \cap \NormalSubgroup}}
+		{\Quotient{\Subgroup\NormalSubgroup}{\NormalSubgroup}}$.
+		\end{itemize}
+\end{Theorem}
+\Proof
+Siano $x_1, x_2 \in \Subgroup$ e $y_1, y_2 \in \NormalSubgroup$.
+Abbiamo
+$x_1y_1(x_2y_2)^{-1} =
+x_1y_1y_2^{-1}x_2^{-1} =
+x_1x_2^{-1}x_2y_1y_2^{-1}x_2^{-1}$.
+Poich\'e $x_1x_2^{-1} \in \Subgroup$ e
+$x_2y_1y_2^{-1}x_2^{-1} \in \NormalSubgroup$ per la normalit\`a
+di $\NormalSubgroup \in \Group$, ne deduciamo che $\Subgroup\NormalSubgroup
+\IsSubgroup \Group$.
+\par
+$\NormalSubgroup$ \`e normale in $\Group$ e dunque a maggior ragione lo \`e
+in $\Subgroup\NormalSubgroup$.
+\par
+Siano $x \in \Subgroup \cap \NormalSubgroup$ e $y \in \Subgroup$.
+Abbiamo $yxy^{-1} \in \Subgroup$ perch\'e $x,y \in \Subgroup$ e
+$yxy^{-1} \in \NormalSubgroup$ per normalit\`a di $\NormalSubgroup$ in
+$\Group$. Dunque $\Subgroup \cap \NormalSubgroup \IsNormalSubgroup \Subgroup$.
+\par
+$\Homomorphism$ \`e un omomorfismo perch\'e composizione dell'inclusione
+canonica di $\Subgroup$ in $\Subgroup\NormalSubgroup$ con la proiezione canonica
+di $\Subgroup\NormalSubgroup$ in
+$\Quotient{\Subgroup\NormalSubgroup}{\NormalSubgroup}$.
+\par
+Il nucleo di $\Homomorphism$ \`e $\Subgroup \cap \NormalSubgroup$ e
+$\Homomorphism$ \`e un omomomorfismo suriettivo.
+Dunque $\Homomorphism_0$ \`e un isomorfismo.
+\EndProof
+\begin{Theorem}
+\TheoremName{Terzo teorema d'isomorfismo di gruppi}[terzo d'isomorfismo di gruppi][teorema]
+	Siano
+	\begin{itemize}
+		\item
+		$\Group$ un gruppo;
+		\item
+		$\NormalSubgroup_1,
+		\NormalSubgroup_2 \IsNormalSubgroup \Group$, con
+		$\NormalSubgroup_1 \subseteq \NormalSubgroup_2$.
+	\end{itemize}
+	Allora
+	\begin{itemize}
+		\item
+		esiste un'applicazione
+		$\Homomorphism: \Quotient{\Group}{\NormalSubgroup_1}
+		\rightarrow \Quotient{\Group}{\NormalSubgroup_2}$
+		che associa a
+		$\Coset{x}{\NormalSubgroup_1} \in
+		\Quotient{\Group}{\NormalSubgroup_1}$
+		la classe laterale
+		$\Coset{x}{\NormalSubgroup_2} \in
+		\Quotient{\Group}{\NormalSubgroup_2}$;
+		\item
+		$\Homomorphism$ \`e un omomorfismo;
+		\item l'applicazione
+		$\Homomorphism_0:
+		\Quotient{\Quotient{\Group}{\NormalSubgroup_1}}
+		{\Quotient{\NormalSubgroup_2}{\NormalSubgroup_1}}
+		\rightarrow \Quotient{\Group}{\NormalSubgroup_2}$,
+		ottenuta da $\Homomorphism$ per passaggio al quoziente,
+		\`e un isomorfismo, e dunque in particolare
+		$\Isomorphic{\Quotient
+		{\Quotient{\Group}{\NormalSubgroup_1}}
+		{\Quotient{\NormalSubgroup_2}{\NormalSubgroup_1}}}
+		{\Quotient{\Group}{\NormalSubgroup_2}}$.
+	\end{itemize}
+\end{Theorem}
+\Proof
+L'esistenza di $\Homomorphism$ \`e garantita dal fatto che,
+per ogni $x, y \in \Group$,
+$\Implies{xy^{-1} \in \NormalSubgroup_1}{xy^{-1} \in \NormalSubgroup_2}$.
+\par
+Il fatto che $\Homomorphism$ sia un omomorfismo segue dal fatto che \`e un
+omomorfismo la proiezione di $\Group$ al quoziente
+$\Quotient{\Group}{\NormalSubgroup_2}$, nonch\'e
+dalla struttura di gruppo definita su $\Quotient{\Group}{\NormalSubgroup_1}$.
+\par
+$\Homomorphism$ \`e un omomorfismo suriettivo per costruzione.
+Inoltre il nucleo di $\Homomorphism$ \`e costituito da tutte le classi laterali
+$\Coset{x}{\NormalSubgroup_1}$ con $x \in \NormalSubgroup_2$, le quali sono
+esattamente gli elementi di $\Quotient{\NormalSubgroup_2}{\NormalSubgroup_1}$.
+\EndProof
+\begin{Theorem}
+\TheoremName{Teorema di corrispondenza di sottogruppi}[di corrispondenza di sottogruppi ][teorema]
+	Sia $\Group$ un gruppo e sia
+	$\NormalSubgroup \IsNormalSubgroup \Group$.
+	Indichiamo con $\Class_1$ la classe di tutti i sottogruppi
+	di $\Group$ contenenti $\NormalSubgroup$ e con $\Class_2$ la classe
+	di tutti i sottogruppi di $\Quotient{\Group}{\NormalSubgroup}$:
+	\begin{itemize}
+		\item
+		se $X \in \Class_1$,
+		allora $\Quotient{X}{\NormalSubgroup} \in \Class_2$;
+		\item
+		l'applicazione $\Map: \Class_1 \rightarrow \Class_2$ che a
+		$X \in \Class_1$ associa
+		$\Quotient{X}{\NormalSubgroup} \in \Class_2$
+		\`e un isomorfismo d'ordine.
+	\end{itemize}
+\end{Theorem}
+\Proof
+Sia $X \in \Class_1$ e sia $a \in X$ tale che
+$\Coset{a}{\NormalSubgroup} \in \Quotient{\Group}{\NormalSubgroup}$.
+Gli elementi di $\Coset{a}{\NormalSubgroup}$ sono tutti e soli i prodotti di
+$a$ con elementi $\NormalSubgroup$. Dunque
+$\Coset{a}{\NormalSubgroup} \subseteq X$ e quindi
+$\Coset{a}{\NormalSubgroup} \in \Quotient{X}{\NormalSubgroup}$.
+\par
+Se $X, Y \in \Class_1$ sono tali che $X \IsSubgroup Y$, allora
+$\Quotient{X}{\NormalSubgroup} \IsSubgroup \Quotient{Y}{\NormalSubgroup}$.
+Dunque $\Map$ \`e un'applicazione crescente.
+\par
+Siano ora $X, Y \in \Class_1$ qualsiasi e supponiamo
+$\Quotient{X}{\NormalSubgroup} = \Quotient{Y}{\NormalSubgroup}$.
+Abbiamo
+$X =
+\bigcup_{A \in \Quotient{X}{\NormalSubgroup}} A =
+\bigcup_{A \in \Quotient{Y}{\NormalSubgroup}} A =
+Y$. Quindi $\Map$ \`e un'applicazione iniettiva.
+\par
+Sia ora $Z \in \Class_2$ e poniamo $X = \bigcup_{A \in Z}$.
+Per costruzione di $\Class_2$, $\NormalSubgroup \subseteq X$.
+Siano poi $x, y \in X$. Allora
+$\Coset{x}{\NormalSubgroup}, \Coset{y}{\NormalSubgroup} \in Z$ e,
+poich\'e $Z$ \`e un gruppo,
+$\Coset{xy^{-1}}{\NormalSubgroup} \in Z$, da cui $xy^{-1} \in X$.
+Quindi $X \in \Class_1$.
+Se verifica immediatamente che $\Map(X) = Z$. Quindi $\Map$ \`e
+un'applicazione suriettiva.
+\par
+Dalla biettivit\`a e dalla cresenza di $\Map$ deduciamo che
+$\Map$ \`e un isomorfismo d'ordine.
+\EndProof

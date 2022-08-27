@@ -1,0 +1,104 @@
+\subsection{Concetti generali.}\label{EstensioniConcettiGenerali}
+\begin{Definition}\label{DefEstensione}
+	Siano $\Field_1$ e $\Field_2$ campi tali che
+	\begin{itemize}
+		\item $\Field_1 \subseteq \Field_2$;
+		\item $\Field_2$ induca sul sottoinsieme $\Field_1$ una struttura di campo coincidente con quella di $\Field_1$;
+	\end{itemize}
+	allora
+	\begin{itemize}
+		\item $\Field_1$ \`e un \Define{sottocampo} di $\Field_2$;
+		\item $\Field_2$ \`e un'\Define{estensione} di $\Field_1$;
+		\item la notazione $\FieldExtension{\Field_2}{\Field_1}$ indica l'\NIDefine{estensione del campo} $\Field_1$ ad opera di $\Field_2$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}\label{DefSottoestensione}
+	Siano le estensioni di campi $\FieldExtension{\Field_2}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_1}$. Se $\Field_3$ \`e un'estensione di $\Field_2$, allora $\FieldExtension{\Field_2}{\Field_1}$ \`e una \Define{sottoestensione} di $\FieldExtension{\Field_3}{\Field_1}$.
+\end{Definition}
+\begin{Definition}
+	Sia una successione di campi $(\Field_n)_{n \in \mathbb{N}}$ tale che, per $n > 0$, il campo $\Field_n$ sia un'estensione di $\Field_{n - 1}$: tale successione si chiama \Define{torre d'estensioni}.
+\end{Definition}
+\begin{Definition}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$ e sia $S \subseteq \Field_2$. La notazione $\FieldAdjunction{\Field_1}{S}$ indica il pi\`u piccolo sottocampo di $\Field_2$ contenente $\Field_1 \cup S$. Nel caso in cui $S$ sia un insieme finito $\lbrace x_1, ..., x_n \rbrace$ si scrive semplicemente $\FieldAdjunction{\Field_1}{x_1, ..., x_n}$ e, se $S = \lbrace x \rbrace$ \`e un singoletto, si dice che l'estensione $\FieldExtension{\FieldAdjunction{\Field_1}{x}}{\Field_1}$ \`e \Define{semplice}{estensione}.
+\end{Definition}
+\begin{Theorem}\label{ThEstensioneUnione}
+	Con le notazioni della definizione precedente, indicata con $\mathcal{S}$ la famiglia di tutte le parti finite di $S$, abbiamo $\FieldAdjunction{\Field_1}{S} = \bigcup_{T \in \mathcal{S}} \FieldAdjunction{\Field_1}{T}$.
+\end{Theorem}
+\Proof Chiaramente $\bigcup_{T \in \mathcal{S}} \FieldAdjunction{\Field_1}{S} \subseteq \FieldAdjunction{\Field_1}{S}$. D'altra parte, $S \subseteq \bigcup_{T \in \mathcal{S}} \FieldAdjunction{\Field_1}{S}$ e si verifica facilmente che $\bigcup_{T \in \mathcal{S}} \FieldAdjunction{\Field_1}{S}$ \`e un campo, dunque $\FieldAdjunction{\Field_1}{S} \subseteq \bigcup_{T \in \mathcal{S}} \FieldAdjunction{\Field_1}{S}$ e questo completa la dimostrazione. \EndProof
+\begin{Definition}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$ e sia $\alpha \in \Field_2$. $\alpha$ si dice
+	\begin{itemize}
+		\item \Define{algebrico}[algebrico][elemento] (su $\Field_1$) se esiste un polinomio in $p \in \Field_1[x]$ tale che $p(\alpha) = 0$;
+		\item \Define{trascendente}[algebrico][elemento] (su $\Field_1$) altrimenti.
+	\end{itemize}
+	Inoltre, se ogni $\alpha \in \Field_2$ \`e algebrico su $\Field_1$ si dice che $\FieldExtension{\Field_2}{\Field_1}$ \`e un'\Define{estensione algebrica}[algebrica][estensione].
+\end{Definition}
+\begin{Theorem}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. $\Field_2$ \`e uno spazio vettoriale su $\Field_1$.
+\end{Theorem}
+\Proof La verifica degli assiomi di spazio vettoriale \`e diretta. \EndProof
+\begin{Definition}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. La dimensione del $\Field_1$-spazio vettoriale $\Field_2$ si indica con $\FieldDegree{\Field_2}{\Field_1}$ e si chiama \Define{grado dell'estensione}; se il grado \`e finito, l'estensione si dice \Define{finita}[finita][estensione]. Inoltre, se $\alpha \in \Field_2$ \`e algebrico su $\Field_1$ e $\Field_2 = \FieldAdjunction{\Field_1}{\alpha}$, allora si dice che $\alpha$ \`e un elemento \NIDefine{di grado $\FieldExtension{\Field_2}{\Field_1}$} su $\Field_1$.
+\end{Definition}
+\begin{Theorem}
+	Se l'estensione $\FieldExtension{\Field_2}{\Field_1}$ \`e finita allora \`e anche algebrica.
+\end{Theorem}
+\Proof Sia $\alpha \in \Field_2$ e sia $n = \FieldDegree{\Field_2}{\Field_1}$. La famiglia di vettori $(\alpha^k)_{k = 0}^n$ \`e dipendente ed esiste dunque un polinomio di grado minore o uguale a $n$ che si annulla in $\alpha$. \EndProof
+\begin{Theorem}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$ e sia $\alpha \in \Field_2$. Abbiamo
+	\begin{itemize}
+		\item se $\alpha$ \`e algebrico l'insieme dei polinomi di $\Field_1[x]$ che si annullano in $\alpha$ costituisce un ideale non nullo (principale\footnote{$\Field_1[x]$ \`e un dominio a ideali principali, dunque l'ideale \`e necessariamente principale.});
+		\item se $\alpha$ \`e trascendente $\Isomorphic{\Field_1(x)}{\Field_1[x]}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Si considera l'omomorfismo $\phi: \Field_1[x] \rightarrow \Field_1(x)$ che al polinomio $p$ associa $p(\alpha)$. Ora,
+\begin{itemize}
+	\item se $\alpha$ \`e algebrico il nucleo di $\phi$ contiene un elemento non nullo e $\Kernel{\phi}$ \`e un ideale non nullo;
+	\item se invece $\alpha$ \`e trascendente $\Kernel{\phi}$ \`e l'ideale non nullo: $\phi$ \`e dunque iniettivo; essendo anche surgettivo, \`e un isomorfismo. \EndProof
+\end{itemize}
+\begin{Definition}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. Dato $\alpha \in \Field_2$ algebrico, il generatore monico dell'ideale del teorema precedente \`e detto
+  \Define{polinomio minimo}[minimo di un elemento algebrico][polinomio]
+  di $\alpha$ su $\Field_1$ e lo denoteremo $\MinimalPolynomial{\alpha}[\Field_1]$, omettendo $\Field_1$ quando il campo \`e ovvio dal contesto. Diciamo inoltre che tutte le radici di $\MinimalPolynomial{\alpha}$ sono \Define{radici coniugate} ad $\alpha$.
+\end{Definition}
+\begin{Theorem}
+	Data l'estensione semplice $\FieldExtension{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}$, abbiamo $\FieldDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1} = \begin{cases} \Deg \MinimalPolynomial{\alpha}\text{, se } \alpha \text{\`e algebrico},\\ \infty\text{ altrimenti}. \end{cases}$ Una base \`e data dalla famiglia $(\alpha^k)_{k = 0}^{\FieldDegree{\FieldAdjunction{\Field_1}{\alpha}}{\Field_1}}$.
+\end{Theorem}
+\Proof Sia $n = \Deg \MinimalPolynomial{\alpha}$: il polinomio $\MinimalPolynomial{\alpha}$ prova che gli $n$ elementi della famiglia $(\alpha^k)_{k = 0}^n$ sono dipendenti, dunque $\FieldDegree{\Field_1(\alpha)}{\Field_1} \leq n$. D'altra parte, nessun polinomio di grado minore di $n$ si annulla in $\alpha$, dunque la famiglia $(\alpha^k)_{k = 0}^{n - 1}$ \`e composta da $n$ vettori indipendenti e ne segue la tesi. \EndProof
+\begin{Theorem}\label{thEstensioniTorri}
+	Siano le estensioni di campi $\FieldExtension{\Field_3}{\Field_2}$ e $\FieldExtension{\Field_2}{\Field_1}$, allora
+	\begin{itemize}
+		\item $\Field_3$ \`e un'estensione di $\Field_1$;
+		\item se $\FieldExtension{\Field_3}{\Field_2}$ e $\FieldExtension{\Field_2}{\Field_1}$ sono finite, allora \`e finita anche $\FieldExtension{\Field_3}{\Field_1}$ e abbiamo $\FieldDegree{\Field_3}{\Field_1} = \FieldDegree{\Field_3}{\Field_2} \cdot \FieldDegree{\Field_2}{\Field_1}$;
+		\item se $\FieldExtension{\Field_3}{\Field_2}$ e $\FieldExtension{\Field_2}{\Field_1}$ sono algebriche, allora \`e algebrica anche $\FieldExtension{\Field_3}{\Field_1}$.
+	\end{itemize}
+\end{Theorem}
+\Proof \`E chiaro che $\Field_1 \subseteq \Field_3$ e che $\Field_3$ induce su $\Field_1$ una struttura di campo coincidente con quella di $\Field_1$.
+\par Siano $n = \FieldDegree{\Field_3}{\Field_2}$ e $m = \FieldDegree{\Field_2}{\Field_1}$. Sia $(b_k)_{k = 1}^n$ una base del $\Field_2$-spazio vettoriale $\Field_3$ e sia $(c_l)_{l = 1}^m$ una base del $\Field_1$-spazio vettoriale $\Field_2$: si verifica facilmente che la famiglia $(b_k c_l)_{k = 1, ..., n\\l = 1, ..., m}$ \`e una base del $\Field_1$-spazio vettoriale $\Field_3$.
+\par Infine, se $\alpha \in \Field_3$ \`e algebrico su $\Field_2$, allora annulla un polinomio $p$ a coefficienti in $\Field_2$: sia $P$ l'insieme (finito) dei coefficienti di $p$. Poich\'e $\FieldExtension{\Field_2(P \cup \lbrace \alpha \rbrace)}{\Field_2(P)}$ e $\FieldExtension{\Field_2(P)}{\Field_1}$ sono estensioni finite, \`e finita anche l'estensione $\FieldExtension{\Field_2(P \cup \lbrace \alpha \rbrace)}{\Field_1}$ e dunque algebrica; ne segue che \`e algebrica anche $\FieldExtension{\Field_3}{\Field_1}$. \EndProof
+\begin{Definition}
+	Siano le estensioni di campi $\FieldExtension{\Field_3}{\Field_1}$ e $\FieldExtension{\Field_3}{\Field_2}$. Si definisce \Define{composto}[composto][campo] di $\Field_1$ e $\Field_2$, denotato $\FieldComposition{\Field_1}{\Field_2}$, il pi\`u piccolo sottocampo di $\Field_3$ contenente $\Field_1$ e $\Field_2$.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precedente, $\FieldComposition{\Field_1}{\Field_2} = \FieldAdjunction{\Field_1}{\Field_2} = \FieldAdjunction{\Field_2}{\Field_1}$.
+\end{Theorem}
+\Proof Immediata dalle definizioni. \EndProof
+\begin{Theorem}\label{th_estensionealgebricamentegenerata}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$ e sia $S \subseteq \Field_2$. $\FieldExtension{\FieldAdjunction{\Field_1}{S}}{\Field_1}$ \`e algebrica se e solo se ogni elemento di $S$ \`e algebrico su $\Field_1$.
+\end{Theorem}
+\Proof Sia $\gamma \in \FieldAdjunction{\Field_1}{S}$. Allora per il teorema \ref{ThEstensioneUnione} esiste $T \subseteq S$ tale che $T$ \`e finito e $\gamma \in \FieldAdjunction{\Field_1}{T}$.Per la finitezza di $T$, $\FieldExtension{\FieldAdjunction{\Field_1}{T}}{\Field_1}$ \`e algebrica, dunque $\gamma$ \`e algebrico su $\Field_1$. Il viceversa \`e immediato. \EndProof
+\begin{Exercice}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$, con $\Characteristic \Field_1 \neq 2$. Esiste $\Delta \in \Field_2$ tale Se $\alpha$ \`e un elemento di grado $2$ su $\Field_1$ e $\Delta$ il discriminante di $\MinimalPolynomial{\alpha}$, allora $\FieldAdjunction{\Field_1}{\alpha} = \FieldAdjunction{\Field_1}{\sqrt{\Delta}}$.
+\end{Exercice}
+\Solution $\alpha$ \`e soluzione dell'equazione di secondo grado a coefficienti in $\Field_1$ data da $\MinimalPolynomial{\alpha} = 0$. Poich\'e $\Characteristic \Field_1 \neq 2$, possiamo risolvere l'equazione con la formula classica e, ricavandonoe $\sqrt{\Delta}$, si prova che $\sqrt{\Delta} \in \FieldAdjunction{\Field_1}{\alpha}$. Un argomento dimensionale prova che le due estensioni di $\Field_1$ coincidono. \EndSolution
+\begin{Exercice}
+	Sia l'estensione di campi $\FieldExtension{\Field_2}{\Field_1}$. L'applicazione $\psi: \frac{\Field_1}{{\Invertible{\Field_1}}^2} \rightarrow \mathcal{F}$, dove $\mathcal{F}$ \`e l'insieme di tutte le sottoestensioni quadratiche $\FieldExtension{\Field_3}{\Field_1}$ di $\FieldExtension{\Field_2}{\Field_1}$, tale che $\psi(x{\Invertible{\Field_1}}^2) = \FieldAdjunction{\Field_1}{\sqrt{x}}$ \`e biettiva.
+\end{Exercice}
+\Solution Proviamo la suriettivit\`a di $\psi$. Sia $\FieldExtension{\Field_3}{\Field_1}$ un'estensione quadratica: essa \`e finita e dunque necessariamente algebrica; inoltre, essendo quadratica, \`e necessariamente semplice. Sia dunque $\alpha$ tale che $\Field_3 = \FieldAdjunction{\Field_1}{\alpha}$. Per il risultato dell'esercicio precedente, esiste $\Delta \in \Field_1$ tale che $\psi(\sqrt{\Delta}{\Invertible{\Field_1}}^2 = \FieldAdjunction{\Field_1}{\alpha}$.
+\par Vediamo l'iniettivit\`a. Siano $\alpha, \beta \in \Field_1$ tali che $\FieldAdjunction{\Field_1}{\sqrt{\alpha}} = \FieldAdjunction{\Field_1}{\sqrt{\beta}}$. Allora, per opportuni $a, b \in \Field_1$, $\sqrt{\beta} = a + b \sqrt{\alpha}$, da cui $\beta = a^2 + 2ab\sqrt{\alpha} + b^2\alpha$; poich\'e $\beta \in \Field_1$, deve essere $ab = 0$.
+\par Ora, se $a = 0$, allora $\beta = b^2\alpha$, da cui $\beta\alpha^{-1} = b^2 \in {\Invertible{\Field_1}}^2$; se invece $b = 0$, allora $\beta = a^2$, quindi $\FieldAdjunction{\Field_1}{\sqrt{\beta}} = \Field_1$ e quindi, di nuovo $\beta\alpha^{-1} \in {\Invertible{\Field_1}}^2$ e questo conclude la dimostrazione. \EndSolution
+\begin{Exercice}
+	Fornire un esempio di estensione algebrica non finita.
+\end{Exercice}
+\Solution Consideriamo l'insieme $S$ di tutte le radici $n$-esime di $2$ al variare di $n \in \mathbb{N}$: il campo $\FieldAdjunction{\mathbb{Q}}{S}$ \`e un'estensione algebrica non finita di $\mathbb{Q}$.
+\par L'estensione \`e algebrica perch\'e $\sqrt[n]{2}$ \`e radice del polinomio $x^n - 2$; il grado dell'estensione \`e infinito perch\'e $x^n - 2$ \`e un polinomio irriducibile su $\mathbb{Q}$ per il criterio di Eisenstein e quindi $\FieldExtension{\FieldAdjunction{\mathbb{Q}}{S}}{\mathbb{Q}}$ contiene la sottoestensione $\FieldExtension{\FieldAdjunction{\mathbb{Q}}{\sqrt[n]{2}}}{\mathbb{Q}}$ di grado $n$ arbitrariamente grande. \EndSolution

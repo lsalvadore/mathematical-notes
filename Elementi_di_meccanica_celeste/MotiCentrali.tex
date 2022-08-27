@@ -1,0 +1,128 @@
+\section{Moti centrali.}
+\label{ElementiDiMeccanicaCeleste_MotiCentrali}
+\begin{Definition}
+\label{ElementiDiMeccanicaCeleste_CampiCentrali}
+	Un campo vettoriale $\VectorField: \mathbb{R}^n \rightarrow \mathbb{R}^n$ ($n \in \mathbb{N}$) si dice \Define{centrale rispetto all'origine}[vettoriale centrale rispetto all'origine][campo] quando \`e della forma $\VectorField(\vec{X}) = f(X) \frac{\vec{X}}{X}$, per qualche funzione $f: \RealPositive \rightarrow \mathbb{R}$ regolare a sufficienza. Un campo vettoriale si dice \Define{centrale}[vettoriale centrale][campo] se \`e centrale rispetto all'origine a seguito di un'oppotuna traslazione.
+\end{Definition}
+\par Nel seguito studieremo solo campi centrali rispetto all'origine: ogni altra situazione potr\`a essere ricondotta a questa dopo opportuna traslazione.
+\begin{Definition}
+	Chiamiamo \Define{moto centrale} il moto di un punto materiale in un campo di forze centrali.
+\end{Definition}
+\begin{Theorem}
+	Un campo vettoriale centrale \`e conservativo.
+\end{Theorem}
+\Proof Con le notazioni della definizione \ref{ElementiDiMeccanicaCeleste_CampiCentrali}, basta scegliere come potenziale l'opposto di una primitiva di $f$. \EndProof
+\begin{Theorem}
+	Sia un punto materiale di massa $\Mass$ e posizione $X$ in un campo di forze centrali $\VectorField$ e sia $\vec{\AngularMoment}$ il suo momento angolare: $\vec{\AngularMoment}$ \`e un integrale primo del moto.
+\end{Theorem}
+\Proof Per definizione di campo di forze centrali, $\vec{X}$ e $\VectorField(\vec{X})$ sono sempre vettori paralleli, dunque il momento dell forze sul punto materiale \`e nullo e quindi $\dot{\vec{\AngularMoment}} = 0$. \EndProof
+\begin{Theorem}
+	Sia un punto materiale di massa $\Mass$ e posizione $X$ in un campo di forze centrali $\VectorField$ e sia $\vec{\AngularMoment}$ il suo momento angolare:
+	\begin{itemize}
+		\item se $\vec{\AngularMoment} = 0$, allora il punto si muove di moto rettilineo uniforme lungo una retta passante per l'origine;
+		\item se $\vec{\AngularMoment} \neq 0$, allora il punto si muove interamente nel piano passante per l'origine e ortogonale ad $\vec{\AngularMoment}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Se $\vec{\AngularMoment} = 0$, allora $X$ e $\dot{\vec{X}}$ sono sempre paralleli e dunque il punto materiale si muove di moto rettilineo uniforme lungo una retta passante per l'origine.
+\par Se invece $\vec{\AngularMoment} \neq 0$, $X$ e $\dot{\vec{X}}$ sono sempre ortogonali al vettore costante $\vec{\AngularMoment}$ ed apparatengono dunque sempre al piano passante per l'origine e ortogonale ad $\vec{\AngularMoment}$. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, nell'ipotesi in cui $\vec{\AngularMoment} \neq 0$, il piano in cui giace l'orbita del punto materiale si chiama \Define{piano orbitale}[orbitale][piano].
+\end{Definition}
+\par  Proseguiamo la trattazione considerando un punto materiale di massa $\Mass$, posizione $X$ e con momento angolare $\vec{\AngularMoment} \neq 0$.
+\begin{Theorem}
+	Sia un sistema di riferimento di coordinate polari $\lbrace \ver{e_1}, \ver{e_2}, \ver{e_3} \rbrace$ tale che
+\begin{itemize}
+	\item $\ver{e_1}$ e $\ver{e_2}$ nel piano orbitale;
+	\item $\ver{e_3}$ parrallelo e concorde con $\vec{\AngularMoment}$;
+	\item $\ver{e_3} = \VectorProduct{\ver{e_1}}{\ver{e_2}}$.
+\end{itemize}
+	Posto $\rho = \Norm{\vec{X}}$ e $\theta$ uguale all'anomalia del vettore $\vec{X}$, definiamo i versori $\ver{e_\rho} = \frac{\vec{X}}{\rho}$ e $\ver{e_\theta} = \VectorProduct{\ver{e_3}}{\ver{e_\rho}}$. Abbiamo
+	\begin{itemize}
+		\item $\ver{e_\rho} = \cos(\theta) \ver{e_1} + \sin(\theta)\ver{e_2}$;
+		\item $\ver{e_\theta} = - \sin(\theta) \ver{e_1} + \cos(\theta)\ver{e_2}$;
+		\item $\dot{\ver{e_\rho}} = \dot{\theta} \ver{e_\theta}$;
+		\item $\dot{\ver{e_\theta}} = - \dot{\theta} \ver{e_\rho}$.
+	\end{itemize}
+	Inoltre
+	\begin{itemize}
+		\item $\vec{X} = \rho \ver{e_\rho}$;
+		\item $\dot{\vec{X}} = \dot{\rho} \ver{e_\rho} + \rho \dot{\theta} \ver{e_\theta}$;
+		\item $\ddot{\vec{X}} = (\ddot{\rho} - \rho \dot{\theta}^2) \ver{e_\rho} + (2 \dot{\rho} \dot{\theta} + \rho \ddot{\theta}) \ver{e_\theta}$.
+	\end{itemize}
+\end{Theorem}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_SistemiDiRiferimentoPerUnMotoCentrale.png}
+	\centering
+	\caption{Sistemi di riferimento nel piano orbitale di un moto centrale con momento angolare non nullo.}
+\end{figure}
+\Proof Abbiamo, dalle definizioni e da calcoli diretti,
+\begin{itemize}
+	\item $\ver{e_\rho} = \cos(\theta) \ver{e_1} + \sin(\theta)\ver{e_2}$;
+	\item $\ver{e_\theta} = \VectorProduct{\ver{e_3}}{(\cos(\theta) \ver{e_1} + \sin(\theta)\ver{e_2})} = \VectorProduct{\cos(\theta) \ver{e_3}}{\ver{e_1}} + \VectorProduct{\sin(\theta) \ver{e_3}}{\ver{e_2}} = - \sin(\theta) \ver{e_1} + \cos(\theta)\ver{e_2}$;
+	\item $\dot{\ver{e_\rho}} = - \sin(\theta) \dot{\theta} \ver{e_1} + \cos{\theta} \dot{\theta} \ver{e_2} = \dot{\theta}\ver{e_\theta}$;
+	\item $\dot{\ver{e_\theta}} = - \cos(\theta) \dot{\theta} \ver{e_1} - \sin(\theta) \dot{\theta} \ver{e_2} = - \dot{\theta} \ver{e_\rho}$;
+	\item $\vec{X} = \rho \ver{e_\rho}$;
+	\item $\dot{\vec{X}} = \dot{\rho} \ver{e_\rho} + \rho \dot{\ver{e_\rho}} = \dot{\rho} \ver{e_\rho} + \rho \dot{\theta} \ver{e_\theta}$;
+	\item $\ddot{\vec{X}} = \ddot{\rho} \ver{e_\rho} + \dot{\rho} \dot{\ver{e_\rho}} + (\dot{\rho} \dot{\theta} + \rho \ddot{\theta}) \ver{e_\theta} + \rho \dot{\theta} \dot{\ver{e_\theta}} = \ddot{\rho} \ver{e_\rho} + \dot{\rho} \dot{\theta} \ver{e_\theta} + \dot{\rho} \dot{\theta} \ver{e_\theta} + \rho \ddot{\theta} \ver{e_\theta} - \rho \dot{\theta}^2 \ver{e_\rho} = (\ddot{\rho} - \rho \dot{\theta}^2) \ver{e_\rho} + (2 \dot{\rho} \dot{\theta} + \rho \ddot{\theta}) \ver{e_\theta}$. \EndProof
+\end{itemize}
+\begin{Theorem}
+	Con le notazioni del teorema precedente, definiamo $\EffectivePotential = \Potential(\rho) + \frac{l^2}{2 \Mass \rho^2}$, dove
+	\begin{itemize}
+		\item $\Potential(\rho)$ \`e l'opposto di una primitiva dell'applicazione $f$ che a $\rho$ associa $\StandardScalarProduct{\VectorField(\vec{X})}{\ver{e_\rho}}$, con $\vec{X}$ vettore qualsiasi avente $\rho$ come modulo\footnote{Ricordiamo che stiamo supponendo $\VectorField$ centrale.};
+		\item $l = \StandardScalarProduct{\vec{\AngularMoment}}{\ver{e_3}}$.
+	\end{itemize}
+	Abbiamo:
+	\begin{itemize}
+		\item $l$ \`e costante;
+		\item $\Mass \ddot{\vec{X}} = \VectorField(\vec{X})$ equivale a $\begin{cases}\Mass \ddot{\rho} = - \TotalDerivative{}{\rho} \EffectivePotential(\rho),\\\dot{\theta} = \frac{l}{\Mass \rho^2}\end{cases}.$
+	\end{itemize}
+\end{Theorem}
+\Proof Poich\'e $\vec{\AngularMoment}$ e ${\ver{e_3}}$ sono costanti deve essere costante anche $l$. Abbiamo
+\begin{align*}
+l &= \StandardScalarProduct{\vec{\AngularMoment}}{\ver{e_3}}\\
+&= \StandardScalarProduct{\VectorProduct{\rho\ver{e_\rho}}{\Mass \dot{\vec{X}}}}{\ver{e_3}},\\
+&= \rho \Mass \StandardScalarProduct{\VectorProduct{\ver{e_\rho}}{\dot{\rho}\ver{e_\rho} + \rho \dot{\theta}\ver{e_\theta}}}{\ver{e_3}},\\
+&= \rho \Mass \rho \dot{\theta},\\
+&= \Mass \rho^2 \dot{\theta},
+\end{align*}
+da cui $\dot{\theta} = \frac{l}{\Mass \rho^2}$.
+\par L'equazione $\Mass \ddot{\vec{X}} = \VectorField(\Vec{X})$ si trasforma in coordinate polari, in $\Mass ((\ddot{\rho} - \rho \dot{\theta}^2)\ver{e_\rho} + (2\dot{\rho}\dot{\theta} + \rho\ddot{\theta})\ver{e_\theta}) = \StandardScalarProduct{\VectorField(\vec{X})}{\ver{e_\rho}} \ver{e_\rho} + \StandardScalarProduct{\VectorField(\vec{X})}{\ver{e_\theta}} \ver{e_\theta}$, equivalente al sistema
+\[
+\begin{cases}
+\Mass(\ddot{\rho} - \rho \dot{\theta}^2) = f(\rho),\\
+\Mass(2 \dot{\rho}\dot{\theta} + \rho\ddot{\theta}) = 0.
+\end{cases}
+\]
+\par La prima equazione equivale a $\Mass \ddot{\rho} = f(p) + \frac{l^2}{\Mass \rho^3}$. Poich\'e $\TotalDerivative{}{\rho} \EffectivePotential(\rho) = f(\rho) + \frac{l^2}{2\Mass\rho^3}$, abbiamo $\Mass \ddot{\rho} = - \TotalDerivative{}{\rho} \EffectivePotential(\rho)$. \EndProof
+\begin{Corollary}
+	L'applicazione $\theta$ \`e monotona.
+\end{Corollary}
+\Proof $\dot{\theta}$ mantiene sempre lo stesso segno di $l$, che \`e costante. \EndProof
+\begin{Definition}
+	Dato un moto descritto in coordinate polari $(\rho,\theta)$, definiamo
+	\begin{itemize}
+		\item \Define{spostamento areolare}[areolare][spostamento] la quantit\`a
+	$\ArealDisplacement(t) =
+	\int_{\theta(0)}^{\theta(t)} \int_0^{\rho(t)} \rho d\rho d\theta =
+	\frac{1}{2} \int_{\theta(0)}^{\theta(t)} (\rho(t))^2 d\theta$;
+		\item \Define{velocit\`a areolare}[areolare][velocit\`a] la quantit\`a $\ArealVelocity(t) = \dot{\ArealDisplacement}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	La velocit\`a areolare $\ArealVelocity$ di un moto centrale \`e
+	\begin{itemize}
+		\item $\ArealVelocity(t) = \frac{1}{2} (\rho(t))^2\dot{\theta}$;
+		\item costante \TheoremName{seconda legge di Keplero}[seconda di Keplero][legge]. 
+	\end{itemize}
+\end{Theorem}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_MotiCentrali_SecondaLeggeDiKeplero.png}
+	\centering
+	\caption{Illustrazione della seconda legge di Keplero.}
+\end{figure}
+\Proof Abbiamo
+$\ArealVelocity(t) =
+\TotalDerivative{}{t} \frac{1}{2} \int_{\theta(0)}^{\theta(t)} (\rho(t))^2 d\theta =
+\frac{1}{2} \TotalDerivative{}{t} \int_0^t (\rho(t))^2 \dot{\theta} d\tau =
+\frac{1}{2} (\rho(t))^2 \dot{\theta} =
+\frac{l^2}{2\Mass}$. \EndProof

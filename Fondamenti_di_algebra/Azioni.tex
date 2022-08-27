@@ -1,0 +1,84 @@
+\section{Azioni.}\label{Azioni}
+\begin{Definition}
+	Siano $\Class$ e $\Operators$ due classi. Un'\Define{azione} di $\Operators$ su $\Class$ \`e un'applicazione $\Action: \Operators \rightarrow \Class^\Class$: diciamo in tal caso che $\Operators$ \NIDefine{agisce} su $\Class$ tramite $\Action$.
+\end{Definition}
+\begin{Theorem}
+	Un'azione $\Action: \Operators \rightarrow \Class^\Class$ equivale ad un'operazione binaria $\cdot: \Operators \times \Class \rightarrow \Class$. Pi\`u precisamente,
+	\begin{itemize}
+		\item data $\Action: \Operators \rightarrow \Class^\Class$ esiste una e una sola operazione $\cdot: \Operators \times \Class \rightarrow \Class$, detta \Define{operazione indotta da $\Action$}[indotta da un'azione][operazione] tale che per ogni $\Operator \in \Operators$ e $x \in \Class$ si abbia $\Operator \cdot x = (\Action(\Operator))(x)$;
+		\item data $\cdot: \Operators \times \Class \rightarrow \Class$ esiste una e una sola azione $\Action: \Operators \rightarrow \Class^\Class$, detta \Define{azione indotta da $\cdot$}[indotta da un'operazione][azione], tale che per ogni $\Operator \in \Operators$ e $x \in \Class$ si abbia $\Operator \cdot x = (\Action(\Operator))(x)$.
+	\end{itemize}
+\end{Theorem}
+\Proof Segue immediatamente dalle definizioni. \EndProof
+\begin{Definition}
+	Sia $\Action: \Operators \rightarrow \Class^\Class$ un'azione tale che $\Operators$ sia un magma. Allora $\Action$ si dice un'\Define{azione sinistra}[sinistra][azione] se per ogni $\Operator_1, \Operator_2 \in \Action$ e $x \in \Class$ vale l'uguaglianza $\Action(\Operator_1\Operator_2)(x) = (\Action(\Operator_1) \circ \Action(\Operator_2))(x)$.
+	\par Nel caso di un'azione sinistra si usa spesso identificare l'azione $\Action$ con l'operazione equivalente descritta dal teorema precedente, mentre nel caso di un'azione destra si usa spesso identificare $\Action$ con l'operazione opposta equivalente descritta dal teorema precedente, con evidenti vantaggi notazionali.
+\end{Definition}
+\begin{Definition}
+	Sia dato un magma $\Operators$. $\Operators$ agisce su se stesso sia a sinistra che a destra tramite
+	\begin{itemize}
+		\item l'azione di \Define{traslazione a sinistra}[a sinistra][traslazione] indotta dall'operazione $\cdot$ del $\Operators$;
+		\item l'azione di \Define{traslazione a destra}[a destra][traslazione] indotta dal duale dell'operazione $\cdot$ del $\Operators$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia data un'azione $\Action: \Operators \rightarrow \Class^\Class$ e un'elemento $x \in \Class$. Definiamo
+	\begin{itemize}
+		\item lo \Define{stabilizzatore} di $x$ rispetto ad $\Action$ come la classe $\Stabilizer{x}[\Action] = \lbrace \Operator \in \Operators | \Operator \cdot x = x \rbrace$;
+		\item l'\Define{orbita} di $x$ rispetto ad $\Action$ come la classe $\Orbit{x}[\Action] = \lbrace y \in \Class | \Exists{\Operator \in \Operators}{\Operator \cdot x = y} \rbrace$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia data un'azione
+	$\Action: \Operators \rightarrow \Class^\Class$.
+	L'azione si dice
+	\begin{itemize}
+		\item
+		\Define{transitiva}[transitiva][azione]
+		quando
+		$\ForAll{x \in \Class}
+		{\ForAll{y \in \Class}
+		{\Exists{\Operator \in \Operators}
+		{y = \Operator \cdot x}}}$;
+		\item
+		\Define{semplicemente transitiva}[semplicemente transitiva][azione]
+		quando
+		$\ForAll{x \in \Class}
+		{\ForAll{y \in \Class}
+		{\ExistsOne{\Operator \in \Operators}
+		{y = \Operator \cdot x}}}$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $\Operators$ un magma e $\Class$ una classe qualsiasi. Un'\Define{azione di magma}[di magma][azione] di $\Operators$ su $\Class$ \`e un'azione del sostegno di $\Operators$ su $\Class$ che \`e anche un omomorfismo di $\Operators$ con $\Class^\Class$. Quando un magma $\Operators$ \NIDefine{agisce} su una classe $\Class$ intendiamo sempre che si tratta di un'azione di magma, salvo avvisi contrari.
+	Diciamo anche che l'azione di $\Operators$ \`e
+	\Define{distributiva}[distributiva][azione].
+\end{Definition}
+\begin{Definition}
+	Siano $\Operators$ un magma unitario e $\Class$ una classe qualsiasi. Un'\Define{azione di magma unitario}[di magma unitario][azione] di $\Operators$ su $\Class$ \`e un'azione del sostegno di $\Operators$ su $\Class$ che \`e anche un omomorfismo di $\Operators$ con $\Class^\Class$. Quando un magma unitario $\Operators$ \NIDefine{agisce} su una classe $\Class$ intendiamo sempre che si tratta di un'azione di magma unitario, salvo avvisi contrari.
+\end{Definition}
+\begin{Definition}
+	Siano $\Operators$ un monoide e $\Class$ una classe qualsiasi. Un'\Define{azione di monoide}[di monoide][azione] di $\Operators$ su $\Class$ \`e un'azione del sostegno di $\Operators$ su $\Class$ che \`e anche un omomorfismo di $\Operators$ con $\Class^\Class$. Quando un monoide $\Operators$ \NIDefine{agisce} su una classe $\Class$ intendiamo sempre che si tratta di un'azione di monoide, salvo avvisi contrari.
+\end{Definition}
+\begin{Definition}
+	Sia data un'azione $\Action: \Operators \rightarrow \Class^\Class$ e una classe $\Operators_0 \subseteq \Operators$. Definiamo la \Define{classe fissa}[fissa][classe] di $\Class$ sotto l'azione di $\Operators_0$, denotata $\Fixed{\Class}{\Operators_0}$, la classe di tutti gli elementi di $\Class$ che rimangono fissi sotto l'azione di $\Operators_0$. Se $\Operators_0$ \`e un singoletto si usa anche scriverne l'unico elemento $\Operator$ nella notazione di classe fissa: $\Fixed{\Class}{\Operator}$.
+\end{Definition}
+\begin{Definition}
+	Sia data un'azione di magma unitari
+	$\Action: \Operators \rightarrow \Class^\Class$.
+	L'azione si dice
+	\begin{itemize}
+		\item
+		\Define{fedele}[fedele][azione]
+		quando
+		$\Implies{\And{\Operator \in \Operators}
+		{\Operator \neq 1}}
+		{\Fixed{\Class}{\Operator} \neq \Class}$;
+		\item
+		\Define{libera}[libera][azione]
+		quando
+		$\Implies{\And{\Operator \in \Operators}
+		{\Operator \neq 1}}
+		{\Fixed{\Class}{\Operator} = \emptyset}$.
+	\end{itemize}
+\end{Definition}

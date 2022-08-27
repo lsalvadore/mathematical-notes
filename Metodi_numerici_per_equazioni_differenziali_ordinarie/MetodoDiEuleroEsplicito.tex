@@ -1,0 +1,52 @@
+\subsubsection{Metodo di Eulero esplicito.}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_MetodoDiEuleroEsplicito}
+\begin{Definition}
+	Dati un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ e $N$ nodi, chiamiamo \Define{metodo di Eulero esplicito}[di Eulero esplicito][metodo] o \Define{metodo di Eulero in avanti}[di Eulero in avanti][metodo] il metodo a un passo definito da
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step f(t_j,y_j)\text{ per }i \in \mathbb{N}.
+	\end{cases}
+	\]
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_equazioni_differenziali_ordinarie/EuleroEsplicito.m"}
+	\caption{Metodo di Eulero esplicito implementato in \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+	Il metodo di Eulero esplicito \`e un metodo di Runge-Kutta a $1$ stadio con \tableau
+	\[
+	\begin{array}{c|c}
+	0	&	0\\
+	\hline
+		&	1
+	\end{array}.
+	\]
+\end{Theorem}
+\Proof Segue per verifica diretta. \EndProof
+\begin{Theorem}
+	Con le notazioni della definizione precedente, assumendo $y \in \CClass{2}$, il metodo di Eulero esplicito \`e consistente di ordine $1$.
+\end{Theorem}
+\Proof Abbiamo evidentemente $\LocalTruncationError_j = 0$. Inoltre, per ogni $i \in N - 1$ abbiamo $y(t_{j + 1}) - y(t_j) - \Step f(t_j,y_j) = y(t_{j + 1}) - y(t_j) - \Step y'(t_j) = \Step y'(t_j) + \frac{\Step^2}{2} y''(\xi) - \Step y'(t_j) = \BigO{\Step^2}$, dove $\xi \in (t_j,t_{j + 1})$. \EndProof
+\begin{Theorem}
+	Il metodo di Eulero esplicito
+	\begin{itemize}
+		\item ha funzione di stabilit\`a $\StabilityFunction(z) = 1 + z$;
+		\item ha regione di stabilit\`a \`e $\StabilityRegion = \lbrace z | \AbsoluteValue{1 + z} < 1 \rbrace$.
+	\end{itemize}
+\end{Theorem}
+\Proof Applichiamo il metodo di Eulero esplicito con passo $\Step$ al problema test di Dahlquist di parametro $\DahlquistParameter$: 
+\[
+\begin{cases}
+	y_0 = y_0,\\
+	y_{j + 1} = y_j + \Step \DahlquistParameter y_j\text{ per }j > 0.
+\end{cases}
+\]
+\par Abbiamo dunque, per $j \in \mathbb{N}$, $y_j = (1 + \Step \DahlquistParameter)^j$: la successione \`e infinitesima se e solo se $\AbsoluteValue{1 + \Step \DahlquistParameter} < 1$, equivalente a $\AbsoluteValue{1 + z} < 1$. \EndProof

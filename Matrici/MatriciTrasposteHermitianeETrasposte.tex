@@ -1,0 +1,32 @@
+\section{Matrici trasposte hermitiane e trasposte.}
+\label{Matrici_MatriciTrasposteHermitianeETrasposte}
+\begin{Definition}
+	Siano $\Ring$ un anello e $(n,m) \in \mathbb{N}^2$. Sia $\Matrix = (\MatrixElement_{i,j})_{(i,j) \in m \times n} \in \Ring^{m \times n}$. Chiamiamo
+	\begin{itemize}
+		\item \Define{matrice trasposta}[trasposta][matrice] di $\Matrix$, denotata $\Transposed{\Matrix}$, la matrice $\Transposed{\Matrix} = (\MatrixElement_{j,i})_{(j,i) \in n \times m} \in \Ring^{n \times m}$;
+		\item se $\Ring = \mathbb{C}$, \Define{matrice trasposta coniugata}[trasposta coniugata][matrice] o \Define{trasposta hermitiana}[trasposta hermitiana][matrice] o ancora \Define{matrice aggiunta}[aggiunta][matrice] di $\Matrix$, denotata $\HermitianTransposed{\Matrix}$, la matrice $\HermitianTransposed{\Matrix} = (\Conjugate{\MatrixElement_{j,i}})_{(j,i) \in n \times m} \in \Ring^{n \times m}$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $\Ring$ un anello, $n \in \mathbb{N}$ e $\Matrix = \in \Ring^{n \times n}$. Diciamo che $\Matrix$ \`e
+	\begin{itemize}
+		\item \Define{simmetrica}[simmetrica][matrice] quando $\Matrix = \Transposed{\Matrix}$;
+		\item se $\Ring = \mathbb{C}$, \Define{hermitiana}[hermitiana][matrice] o \Define{autoaggiunta}[autoaggiunta][matrice] quando $\Matrix = \HermitianTransposed{\Matrix}$;
+		\item se $\Ring = \mathbb{C}$, \Define{antihermitiana}[antihermitiana][matrice] quando $\Matrix = - \HermitianTransposed{\Matrix}$.
+		\item
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $\Ring$ un anello, $n \in \mathbb{N}$ e $\Matrix = \in \Ring^{n \times n}$. Diciamo che $\Matrix$ \`e
+	\begin{itemize}
+		\item \Define{ortogonale}[ortogonale][matrice] quando $\Matrix$ \`e invertibile e $\Matrix^{-1} = \Transposed{\Matrix}$;
+		\item \Define{unitaria}[unitaria][matrice] quando $\Matrix$ \`e invertibile e $\Matrix^{-1} = \HermitianTransposed{\Matrix}$;
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $n \in \mathbb{N}$ e $\Matrix = \in \mathbb{C}^{n \times n}$. Diciamo che $\Matrix$ \`e \Define{normale}[normale][matrice] quando $\Matrix\HermitianTransposed{\Matrix} = \HermitianTransposed{\Matrix}\Matrix$.
+\end{Definition}
+\begin{Theorem}
+	Tutte le matrici unitarie sono normali.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof

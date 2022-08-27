@@ -1,0 +1,30 @@
+\subsubsection{Metodo di Heun.}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_MetodoDiHeun}
+\begin{Definition}
+	Dati un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ e $N$ nodi, chiamiamo \Define{metodo di Heun}[di Heun][metodo] il metodo a un passo definito da
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \frac{\Step (f(t_j,y_j) + f(t_{j + 1},y_j + \Step f(t_j,y_j)))}{2}\text{ per }i \in \mathbb{N}.
+	\end{cases}
+	\]
+\end{Definition}
+\begin{Theorem}
+	Il metodo di Heun \`e un metodo di Runge-Kutta a $2$ stadi con \tableau
+	\[
+	\begin{array}{c|cc}
+	0	&	0	&	0\\
+	1	&	1	&	0\\
+	\hline
+		&	\frac{1}{2}	&	\frac{1}{2}
+	\end{array}.
+	\]
+\end{Theorem}
+\Proof Segue per verifica diretta. \EndProof

@@ -1,0 +1,39 @@
+\ProvidesPackage{calculus}
+
+\DeclareDocumentCommand \CClass{m o o}{\IfNoValueTF{#3}{\IfNoValueTF{#2}{\mathbf{C}^{#1}}{\mathbf{C}^{#1} \left ( #2 \right )}}{\mathbf{C}^{#1} \left ( #2 ; #3 \right )}}
+\DeclareDocumentCommand \Differential{m o}{\IfNoValueTF{#2}{\TotalDifferential{#1}}{\TotalDifferential{#2}}}
+\DeclareDocumentCommand \PartialDifferential{m m o}{\IfNoValueTF{#3}{\partial_{#2} #1}{\partial_{#2,#3} #1}}
+\DeclareDocumentCommand \TotalDifferential{m o}{\IfNoValueTF{#2}{d#1}{d_{#2}#1}}
+\newcommand{\AbsoluteValue}[1]{\left \lvert #1 \right \rvert}
+\newcommand{\Analytical}{\mathcal{A}}
+\newcommand{\AnalyticalFunctions}{\CClass{\omega}}
+\newcommand{\AsymptoticallyEquivalent}{\sim}
+\newcommand{\BigO}[1]{O \left ( #1 \right )}
+\newcommand{\BigOmega}[1]{\Omega \left ( #1 \right )}
+\newcommand{\BigTheta}[1]{\Theta \left ( #1 \right )}
+\newcommand{\ComplexPole}{p}
+\newcommand{\ConvergentComplexSequences}{c}
+\newcommand{\Curve}{\gamma}
+\newcommand{\Derivative}[1]{#1'}
+\newcommand{\DirectionalDerivative}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\DerivClass}[1]{\mathbf{C}^{#1}}
+\newcommand{\Exponential}{\text{exp}}
+\newcommand{\Gradient}[1]{\nabla #1}
+\newcommand{\Holomorphic}{\mathcal{H}}
+\newcommand{\Interval}{I}
+\newcommand{\IsBigO}[2]{#1 = \BigO{#2}}
+\newcommand{\IsBigOmega}[2]{#1 = \BigOmega{#2}}
+\newcommand{\IsBigTheta}[2]{#1 = \BigTheta{#2}}
+\newcommand{\IsLittleo}[2]{#1 = \Littleo{#2}}
+\newcommand{\Jacobian}{J}
+\newcommand{\Littleo}[1]{o \left ( #1 \right )}
+\newcommand{\Meromorphic}{\mathcal{M}}
+\newcommand{\NotionOfConvergence}{\mathcal{N}}
+\newcommand{\PartialDerivative}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\HigherPartialDerivative}[2]{D^{#1}_{#2}}
+\newcommand{\RadiusOfConvergence}{R}
+\newcommand{\RealNumberBase}{B}
+\newcommand{\RealNumberExponent}{\epsilon}
+\newcommand{\Singularity}{s}
+\newcommand{\SequenceElement}{a}
+\newcommand{\TotalDerivative}[2]{\frac{d #1}{d #2}}

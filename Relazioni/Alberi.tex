@@ -1,0 +1,121 @@
+\subsection{Alberi.}
+\label{Relazioni_Alberi}
+\begin{Definition}
+	Chiamiamo \Define{albero} un grafo $\Graph = (\Nodes, \Edges)$,
+	\begin{itemize}
+		\item connesso;
+		\item aciclico.
+	\end{itemize}
+  Se $\Graph$ \`e
+  \begin{itemize}
+    \item non orientato, allora l'albero si dice
+      \Define{non orientato}[non orientato][albero];
+    \item orientato, allora l'albero si dice
+      \Define{orientato}[orientato][albero].
+  \end{itemize}
+  Qualora non si specifichi se l'albero orientato, esso si intende non
+orientato.
+\end{Definition}
+\begin{Definition}
+	Se $\Graph$ \`e un grafo le cui componenti connesse sono tutti alberi,
+  allora $\Graph$ si dice una \Define{foresta}.
+\end{Definition}
+\begin{Definition}
+	Consideriamo un albero $\Tree$. Definiamo
+  \Define{dimensione}[di un albero][dimensione]
+  di $\Tree$ il numero di nodi di cui esso \`e composto.
+\end{Definition}
+\begin{Definition}
+  Un \Define{albero radicato}[radicato][albero] \`e una coppia
+  $\RootedTree = (\Graph,\Root)$, dove
+  \begin{itemize}
+    \item $\Graph = (\Nodes, \Edges)$ \`e un albero;
+    \item $\Root \in \Nodes$ \`e un nodo, detto \Define{radice}.
+  \end{itemize}
+  Inoltre,
+  \begin{itemize}
+    \item se l'albero \`e orientato in modo tale che la radice sia antenata
+      di tutti gli altri nodi, l'albero si chiama \Define{arborescenza};
+    \item se l'albero \`e orientato in modo tale che la radice sia discendente
+      di tutti gli altri nodi, l'albero si chiama \Define{antiarborescenza}.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Sia $\Arborescence$ un'arborescenza. Definiamo
+  \begin{itemize}
+    \item \Define{foglia} un nodo di $\Arborescence$ senza figli;
+		\item \Define{altezza}[di un nodo][altezza] di un nodo il massimo numero di
+      nodi da percorrere per passare da una foglia esclusa al nodo in questione
+      incluso;
+		\item \Define{profondit\`a}[di un nodo][profondit\`a] o
+      \Define{livello}[di un nodo][livello] di un nodo il numero di
+      nodi da percorrere per passare dalla radice esclusa al nodo in questione
+      incluso;
+    \item \Define{profondit\`a}[di un arborescenza][profondit\`a] di
+      $\Arborescence$ il massimo delle profondit\`a dei suoi nodi;
+    \item per ogni $n \in \mathbb{N}$,
+      \Define{livello $n$-esimo}[di un'arborescenza][livello] di $\Arborescence$
+      l'insieme di tutti i suoi nodi di livello $n$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+  Sia $n \in \NotZero{\mathbb{N}}$. Chiamiamo \Define{albero $n$-ario}
+  un'arborescenza in cui ogni nodo ha al pi\`u $n$ figli.
+\end{Definition}
+\begin{Definition}
+  Sia $\BinaryTree$ un albero binari. Gli eventuali figli di un nodo si
+  distinguono arbitrariamente in
+  \Define{figlio sinistro}[sinistro][figlio]
+  e
+  \Define{figlio destro}[destro][figlio]; anche quando un nodo ha un solo
+  figlio, si usa indicarlo come sinistro o destro.
+  \par Siano inoltre $\Node$ e $\VarNode$ due nodi di $\BinaryTree$ di stesso
+  livello. Diciamo che $\Node$ \`e
+  \Define{pi\`u a sinistra}[pi\`u a sinistra][nodo]
+  di $\Node$
+  o che $\VarNode$ \`e
+  \Define{pi\`u a destra}[pi\`u a destra][nodo]
+  di $\Node$ quando si verifica una delle due condizioni seguenti:
+  \begin{itemize}
+    \item $\Node$ e $\VarNode$ sono figlio sinistro e destro rispettivamente di
+      uno stesso nodo;
+    \item $\Node$ ha un antenato pi\`u a sinistra rispetto all'antenato di
+      $\VarNode$ di stesso livello.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Sia $\Arborescence$ un albero $n$-ario ($n \in \NotZero{\mathbb{N}}$).
+  $\Arborescence$ si dice
+  \begin{itemize}
+    \item \Define{quasi completo}[$n$-ario quasi completo][albero]
+      quando
+      \begin{itemize}
+        \item tutti i nodi con $0$ figli hanno lo stesso livello
+          $L \in \mathbb{N}$;
+        \item tutti i nodi di livello minore di $L$ hanno esattamente $n$ figli;
+      \end{itemize}
+    \item \Define{completo}[$n$-ario completo][albero]
+      quando
+      \begin{itemize}
+        \item \`e quasi completo;
+        \item denotata $L$ la sua profondit\`a, tutti i nodi di livello $L$
+          hanno $0$ figli;
+      \end{itemize}
+    \item \Define{bilanciato}[bilanciato][albero]
+      quando per ogni nodo di $\Arborescence$, i livelli dei sottoalberi di quel
+      nodo differiscono al pi\`u di $1$.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+  Sia $\BinaryTree$ un albero binario quasi completo. $\BinaryTree$ si dice
+  \begin{itemize}
+    \item \Define{completo da sinistra}[$n$-ario completo da sinistra][albero]
+      quando denotata $L$ la sua profondit\`a, se $\Node$ \`e un nodo di
+      livello $L$, allora tutti i nodi pi\`u a sinistra del genitore
+      di $\Node$ hanno esattamente due figli;
+    \item \Define{completo da destra}[$n$-ario completo da destra][albero]
+      quando denotata $L$ la sua profondit\`a, se $\Node$ \`e un nodo di
+      livello $L$, allora tutti i nodi pi\`u a destra del genitore
+      di $\Node$ hanno esattamente due figli.
+  \end{itemize}
+\end{Definition}

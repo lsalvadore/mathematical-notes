@@ -1,0 +1,55 @@
+\subsection{Definizioni e teoremi di base.}
+\label{IstituzioniDiAnalisiNumerica_PolinomiOrtogonali}
+\begin{Definition}
+	Chiamiamo \Define{sequenza polinomiale}[polinomiale][sequenza] o \Define{successione polinomiale graduale}[polinomiale graduale][successione] una successione di polinomi $(\Polynomial_i)_{i \in N} \in (\RingAdjunction{\mathbb{C}}{x})^N)$ ($N \in \mathbb{N} \cup \lbrace \omega_0 \rbrace$) tale che $\ForAll{i \in I}{\PolynomialDegree{\Polynomial_i} = i}$.
+\end{Definition}
+\par Nel seguito, quando parleremo di \Define{polinomi ortogonali}[ortogonale][polinomio] o \Define{polinomi ortonormali}[ortonormale][polinomio] assumeremo sempre implicitamente che essi costituiscono una sequenza polinomiale, salvo avvisi contrari.
+\begin{Theorem}
+	Siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ polinomi ortogonali rispetto a un prodotto hermitiano $\HermitianProduct{\cdot}{\cdot}$ fissato. Per ogni $n \in \mathbb{N}$, $(\OrthogonalPolynomial_i)_{i \in n}$ costituisce una base ortogonale del sottospazio di $\RingAdjunction{\mathbb{C}}{x}$ di tutti i polinomi di grado minore di $n$. Inoltre $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ costituisce una base di $\RingAdjunction{\mathbb{C}}{x}$.
+\end{Theorem}
+\Proof I polinomi $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ sono ortogonali quindi linearmente indipendenti: per ogni $n \in \mathbb{N}$, $(\OrthogonalPolynomial_i)_{i \in n}$ generano dunque uno spazio di dimensione $n$, che \`e appunto la dimensione del sottospazio di $\RingAdjunction{\mathbb{C}}{x}$ di tutti i polinomi di grado minore di $n$, a cui essi evidentemente appartengono.
+\par Ogni polinomio $\Polynomial \in \RingAdjunction{\mathbb{C}}{x}$ appartiene al sottospazio di $\RingAdjunction{\mathbb{C}}{x}$ di tutti i polinomi di grado al pi\`u $\PolynomialDegree{\Polynomial}$ ed \`e dunque combinazione lineare dei polinomi $(\OrthogonalPolynomial_i)_{i \in n}$ e a maggior ragione dei polinomi $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$. Dunque $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ \`e una base di $\RingAdjunction{\mathbb{C}}{x}$. \EndProof
+\begin{Corollary}
+	Fissato un prodotto hermitiano $\HermitianProduct{\cdot}{\cdot}$ su $\RingAdjunction{\mathbb{C}}{x}$, esistono e sono unici, a meno di costanti moltiplicative, i polinomi $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ ortogonali rispetto ad esso; pi\`u precisamente, siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ e $(\VarOrthogonalPolynomial_i)_{i \in \mathbb{N}}$ due famiglie di polinomi ortogonali: abbiamo $\ForAll{i \in \mathbb{N}}{\Exists{C \in \mathbb{C}}{\VarOrthogonalPolynomial_i = C \OrthogonalPolynomial_i}}$.
+\end{Corollary}
+\Proof L'esistenza segue direttamente dal teorema precedente e dal teorema di ortogonalizzazione di Gram-Schmidt.
+\par Dimostriamo l'unicit\`a e meno di costanti moltiplicative. Per il teorema precedente, per ogni $i \in \mathbb{N}$ esistono unici scalari $(\Scalar_k)_{k \in i + 1} \in \mathbb{C}^{i + 1}$ tali che $\VarOrthogonalPolynomial_i = \sum_{k \in i + 1} \Scalar_k \OrthogonalPolynomial_k$. Abbiamo
+$\ScalarProduct{\VarOrthogonalPolynomial_i}{\OrthogonalPolynomial_i} =
+\ScalarProduct{\sum_{k \in i + 1} \Scalar_k \OrthogonalPolynomial_k}{\OrthogonalPolynomial_i} =
+\sum _{k \in i + 1} \Scalar_k \ScalarProduct{\OrthogonalPolynomial_k}{\OrthogonalPolynomial_i} =
+\Scalar_i \ScalarProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}$. Ne deduciamo $\ScalarProduct{\VarOrthogonalPolynomial_i - \Scalar_i\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i} = 0$ e dunque $\VarOrthogonalPolynomial_i = \Scalar_i \OrthogonalPolynomial_i$. \EndProof
+\par Per il corollario precedente, nel seguito, salvo avvisi contrari, considereremo sempre successioni di polinomi graduali indicizzate in tutto $\mathbb{N}$.
+\begin{Theorem}
+	Siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}} \in (\RingAdjunction{\mathbb{C}}{x})^\mathbb{N}$ polinomi ortogonali rispetto a un prodotto hermitiano $\HermitianProduct{\cdot}{\cdot}$ fissato. Fissiamo $n \in \mathbb{N}$ e sia $\Polynomial \in \RingAdjunction{\mathbb{C}}{x}$ di grado $m = \PolynomialDegree{\Polynomial} < n$. Abbiamo $\HermitianProduct{\Polynomial}{\OrthogonalPolynomial_n} = 0$.
+\end{Theorem}
+\Proof Esistono scalari $(\Scalar_i)_{i \in n} \in \mathbb{C}^n$ tali che $\Polynomial = \sum_{i \in n} \Scalar_i \OrthogonalPolynomial_i$. Abbiamo $\HermitianProduct{\Polynomial}{\OrthogonalPolynomial_n} = \sum_{i \in n} \Scalar_i\HermitianProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_n} = 0$. \EndProof
+\begin{Theorem}
+	\TheoremName{Propriet\`a di minima norma} Siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}} \in (\RingAdjunction{\mathbb{C}}{x})^\mathbb{N}$ polinomi ortogonali rispetto a un prodotto hermitiano $\HermitianProduct{\cdot}{\cdot}$ fissato. Sia $\Polynomial \in \RingAdjunction{\mathbb{C}}{x}$ di grado $n = \PolynomialDegree{\Polynomial}$ tale che $\LeadingCoefficient{\Polynomial} = \LeadingCoefficient{\OrthogonalPolynomial_n}$. Allora
+	\begin{itemize}
+		\item $\Norm{\OrthogonalPolynomial_n} \leq \Norm{\Polynomial}$;
+		\item $\Implies{\Norm{\OrthogonalPolynomial_n} = \Norm{\Polynomial}}{\OrthogonalPolynomial_n = \Polynomial}$;
+	\end{itemize}
+\end{Theorem}
+\Proof Poniamo $\VarPolynomial = \Polynomial - \OrthogonalPolynomial_n$. Abbiamo $\PolynomialDegree{\VarPolynomial} < n$ in virt\`u di $\LeadingCoefficient{\Polynomial} = \LeadingCoefficient{\OrthogonalPolynomial_n}$.
+\par Abbiamo ${\Norm{\Polynomial}}^2 = \HermitianProduct{\OrthogonalPolynomial_n + \VarPolynomial}{\OrthogonalPolynomial_n + \VarPolynomial} = \HermitianProduct{\OrthogonalPolynomial_n}{\OrthogonalPolynomial_n} + 2 \HermitianProduct{\OrthogonalPolynomial_n}{\VarPolynomial} + \HermitianProduct{\VarPolynomial}{\VarPolynomial} = {\Norm{\OrthogonalPolynomial_n}}^2 + {\Norm{\VarPolynomial}}^2$, da cui segue immediatamente la tesi. \EndProof
+\begin{Theorem}
+	\label{IstituzioniDiAnalisiNumerica_ProdottoHermitianoIntegrale}
+	Sia data una \Define{funzione peso}[peso][funzione] $\WeightFunction: [a,b] \rightarrow \RealExtended$ tale che
+	\begin{itemize}
+		\item se $a < x < b$, allora  $0 < \WeightFunction(x) < + \infty$;
+		\item per ogni polinomio $\Polynomial \in \RingAdjunction{\mathbb{R}}{x}$ esiste finito $\int_a^b \WeightFunction(x) \Polynomial(x) dx$.
+	\end{itemize}
+	Sia $\HermitianProduct{\cdot}{\cdot}: (\RingAdjunction{\mathbb{C}}{x})^2 \rightarrow \mathbb{C}$ l'applicazione che a $(\Polynomial,\VarPolynomial) \in (\RingAdjunction{\mathbb{C}}{x})^2$ associa $\int_a^b \WeightFunction(x) f(x) \Conjugate{g(x)} dx$. $\HermitianProduct{\cdot}{\cdot}$ \`e un prodotto scalare.
+\end{Theorem}
+\Proof Segue direttamente dalla definizione di prodotto hermitiano e dalle propriet\`a dell'integrale. \EndProof
+\begin{Theorem}
+	$X: \RingAdjunction{\mathbb{R}}{x} \rightarrow \RingAdjunction{\mathbb{R}}{x}$ che a $\Polynomial \in \RingAdjunction{\mathbb{R}}{x}$ associa $x\Polynomial \in \RingAdjunction{\mathbb{R}}{x}$ \`e un operatore lineare autoaggiunto.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	\TheoremName{Propriet\`a degli zeri dei polinomi ortogonali} Siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ polinomi ortogonali rispetto ad un prodotto hermitiano della forma specificata dal teorema \ref{PolinomiOrtogonali_ProdottoHermitianoIntegrale}. Per ogni $i \in \mathbb{N}$, $\OrthogonalPolynomial_i$ ha tutti gli zeri semplici e appartenenti a $(a,b)$.
+\end{Theorem}
+\Proof Fissiamo $n \in \mathbb{N}$ e siano $(x_j)_{j \in m}$ ($m \in \mathbb{N}$) la famiglia degli zeri reali e distinti di $\OrthogonalPolynomial_n$ nell'intervallo $(a,b)$. Per il teorema fondamentale dell'algebra, certamente $m \leq n$.
+\par Supponiamo $m < n$ e, se necessario, riordiniamo gli indici di $(x_j)_{j \in m}$ in modo tale che esista $k \in m$ tale che $x_j$ ha moltiplicit\`a dispari se $j \in k$ e molteplicit\`a pari altrimenti. Poniamo $\VarPolynomial(x) = 1$ se $k = 0$ e $\VarPolynomial(x) = \prod_{j \in k} x_j$ altrimenti.
+\par Il polinomio $\OrthogonalPolynomial_n \VarPolynomial$ ha allora tutte le radici reali di molteplicit\`a pari e non cambia segno in $(a,b)$. Dunque $\HermitianProduct{\OrthogonalPolynomial_n}{\VarPolynomial} = \int_a^b \WeightFunction(x)\OrthogonalPolynomial_n(x)\Conjugate{\VarPolynomial(x)}dx = \int_a^n \WeightFunction(x)\OrthogonalPolynomial_n(x)\VarPolynomial(x) \neq 0$. Ma abbiamo anche $\PolynomialDegree{\VarPolynomial} < \PolynomialDegree{\OrthogonalPolynomial_n}$, da cui $\HermitianProduct{\OrthogonalPolynomial_n}{\VarPolynomial} = 0$, e questo \`e assurdo.
+\par Deve dunque essere $m = n$. \EndProof

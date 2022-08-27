@@ -1,0 +1,44 @@
+\section{Sottospazi misurabili e sottospazi di misura.}
+\label{Misura_SottospaziMisurabiliESottospaziDiMisura}
+\begin{Theorem}
+  Sia $(\MeasurableSpace,\SigmaAlgebra)$ uno spazio misurabile e sia
+  $\MeasurableSpace_0 \in \SigmaAlgebra$. Posto
+  \[
+    \SigmaAlgebra_0 =
+    \lbrace \MeasurablePart_0 \in \PowerSet{\MeasurableSpace_0} |
+    \Exists{\MeasurablePart \in \SigmaAlgebra}
+    {\MeasurablePart_0 = \MeasurablePart \cap \MeasurableSpace_0} \rbrace,
+  \]
+  e
+  $(\MeasurableSpace_0,\SigmaAlgebra_0)$ \`e uno spazio misurabile.
+\end{Theorem}
+\Proof Poich\'e $\emptyset = \emptyset \cap \MeasurableSpace_0$,
+$\emptyset \in \SigmaAlgebra_0$.
+\par Sia $\MeasurablePart_0 \in \SigmaAlgebra_0$. Per opportuno
+$\MeasurablePart \in \SigmaAlgebra$, abbiamo
+$\MeasurablePart_0 = \MeasurablePart \cap \SigmaAlgebra_0$.
+Poich\'e $\Complement{\MeasurablePart} \in \SigmaAlgebra$, anche
+\begin{align*}
+        \Complement{\MeasurablePart} \cap \MeasurableSpace_0,
+        &= \MeasurableSpace_0 \SetMin \MeasurablePart,\\
+        &=\MeasurableSpace_0 \SetMin (\MeasurablePart \cap \MeasurableSpace_0)
+        \in \SigmaAlgebra_0.
+\end{align*}
+\par Sia
+$(\MeasurablePart_{0,n})_{n \in \mathbb{N}}
+\in \SigmaAlgebra_0^\mathbb{N}$.
+Esiste
+$(\MeasurablePart_n)_{n \in \mathbb{N}}
+\in \SigmaAlgebra^\mathbb{N}$ tale che
+\[
+  \ForAll{n \in \mathbb{N}}
+  {\MeasurablePart_{0,n} = \MeasurablePart_n \cap \MeasurableSpace_0}.
+\]
+Abbiamo
+\begin{align*}
+  \bigcup_{n \in \mathbb{N}} \MeasurablePart_{0,n}
+  &= \bigcup_{n \in \mathbb{N}} (\MeasurablePart_n \cap \MeasurableSpace_0),\\
+  &= \left ( \bigcup_{n \in \mathbb{N}} \MeasurablePart_n \right )
+    \cap \MeasurableSpace_0
+  \in \SigmaAlgebra_0.\text{ \EndProof}
+\end{align*}

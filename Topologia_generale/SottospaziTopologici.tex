@@ -1,0 +1,67 @@
+\section{Sottospazi topologici.}\label{SottospaziTopologici}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico e sia
+	$\TopologicalSpace_0 \subseteq \TopologicalSpace$. $\Topology$ induce
+	una topologia su $\TopologicalSpace_0$ tramite la famiglia di
+	classi $\Topology_0 = \lbrace \Open_0 \subseteq
+	\TopologicalSpace_0 | \Exists{\Open \in \Topology}{\Open_0 = \Open
+	\cap \TopologicalSpace_0} \rbrace$
+\end{Theorem}
+\Proof Sia $(\Open^{(i)}_0)_{i \in I}$ una famiglia di elementi di
+$\Topology_0$ e, per ogni $i \in I$, sia $\Open^{(i)} \in \Topology$ tale
+che $\Open^{(i)}_0 = \Open^{(i)} \cap \TopologicalSpace_0$.
+Abbiamo
+\begin{itemize}
+	\item $\bigcup_{i \in I} \Open^{(i)}_0 =
+	\bigcup_{i \in I} (\Open^{(i)} \cap \TopologicalSpace_0) =
+	\left ( \bigcup_{i \in I} \Open^{(i)} \right ) \cap
+	\TopologicalSpace_0$;
+	\item $\bigcap_{i \in I} \Open^{(i)}_0 =
+	\bigcap_{i \in I} (\Open^{(i)} \cap \TopologicalSpace_0) =
+	\left ( \bigcap_{i \in I} \Open^{(i)} \right ) \cap
+	\TopologicalSpace_0$.
+\end{itemize}
+\par Dunque l'unione arbitraria e l'intersezione finita  di elementi di
+$\Topology_0$ restituisce un elemento di $\Topology_0$. \EndProof
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico e sia
+	$(\TopologicalSpace_0,\Topology_0)$ un suo sottospazio.
+	I chiusi di $\TopologicalSpace_0$ sono tutti e soli i
+	$\Closed_0 \subseteq \TopologicalSpace_0$ tali che esista un
+	chiuso $\Closed$ in $\TopologicalSpace$ per cui $\Closed_0 =
+	\Closed \cap \Topology_0$. Fissato $x \in \TopologicalSpace_0$,
+	gli intorni di $x$ per $\Topology_0$ sono tutti e soli i
+	$\Neighborhood_{x,\Topology_0} \subseteq \TopologicalSpace_0$  tali che esista
+	$\Neighborhood_{x,\TopologicalSpace} \in \Neighborhoods{x}[\TopologicalSpace]$ tale che
+	$\Neighborhood_{x,\TopologicalSpace_0} = \Neighborhood_{x,\TopologicalSpace} \cap
+	\TopologicalSpace_0$.
+\end{Theorem}
+\Proof Sia $\Closed_0$ chiuso in $\TopologicalSpace_0$. Allora
+$\TopologicalSpace_0 \SetMin \Closed_0$ \`e aperto in
+$\TopologicalSpace_0$ e dunque traccia di un aperto $\Open$ di
+$\TopologicalSpace$. Abbiamo $
+(\TopologicalSpace \SetMin \Open) \cap \TopologicalSpace_0 =
+\TopologicalSpace_0 \SetMin (\Open \cap \TopologicalSpace_0) =
+\TopologicalSpace_0 \SetMin (\TopologicalSpace_0 \SetMin \Closed_0) =
+\Closed_0$. Quindi $\Closed$ \`e traccia di del chiuso $\TopologicalSpace
+\SetMin \Open$ di $\TopologicalSpace$.
+\par Sia d'altra parte $\Closed$ chiuso in $\TopologicalSpace$. Abbiamo
+$\TopologicalSpace_0 \SetMin (\Closed \cap \TopologicalSpace_0) =
+\TopologicalSpace \SetMin (\Closed \cap \TopologicalSpace_0) =
+(\TopologicalSpace \SetMin \Closed) \cap \TopologicalSpace_0$, dunque la
+traccia di $\Closed$ in $\TopologicalSpace_0$ \`e chiusa in
+$\TopologicalSpace_0$.
+\par Sia $\Neighborhood_{x,\Topology_0}$ intorno di $x$ in
+$\TopologicalSpace_0$. Allora esiste $\Open_0$ aperto di
+$\TopologicalSpace_0$ tale che $x \in \Open_0$ e $\Open_0 \subseteq
+\Neighborhood_{x,\Topology}{0}$. Sia $\Open$ aperto di $\TopologicalSpace$ tale che
+$\Open_0 = \Open \cap \TopologicalSpace_0$.
+$\Open \cup \Neighborhood_{x,\Topology_0}$ \`e un intorno di $x$ in
+$\TopologicalSpace$ e $\Neighborhood_{x,\Topology_0}$ ne \`e chiaramente la
+traccia su $\TopologicalSpace_0$.
+\par Sia infine $\Neighborhood_{x,\Topology}$ un intorno di $x$ in
+$\TopologicalSpace$. Allora esiste $\Open \in \Topology$ tale che $x \in
+\Open$ e $\Open \subseteq \Neighborhood_{x,\Topology}$. Chiaramente la traccia di
+$\Neighborhood_{x,\Topology}$ su $\TopologicalSpace_0$ contiene l'aperto $\Open \cap
+\TopologicalSpace_0$ di $\TopologicalSpace_0$ e $x \in \Open \cap
+\TopologicalSpace_0$. \EndProof

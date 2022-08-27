@@ -1,0 +1,66 @@
+\section{Basi e ricoprimenti.}\label{BasiERicoprimenti}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio e sia, per
+	un'opportuna classe $I$, $(\TopologicalBase_i)_{i \in I}$ una
+	famiglia di sottoclassi di $\TopologicalSpace$.
+	$(\TopologicalBase_i)_{i \in I}$ si dice
+	\begin{itemize}
+		\item \Define{ricoprimento} di $\TopologicalSpace$ quando
+		$\bigcup_{i \in I} \TopologicalBase_i =
+		\TopologicalSpace$;
+		\item \Define{ricoprimento aperto}[aperto][ricoprimento]
+		quando $(\TopologicalBase_i)_{i \in I}$ \`e un
+		ricoprimento e, per ogni $i \in I$, $\TopologicalBase_i$
+		\`e aperto;
+		\item \Define{ricoprimento chiuso}[chiuso][ricoprimento]
+		quando $(\TopologicalBase_i)_{i \in I}$ \`e un
+		ricoprimento e, per ogni $i \in I$, $\TopologicalBase_i$
+		\`e chiuso;
+		\item \Define{base}[di uno spazio topologico][base] quando
+		quando $(\TopologicalBase_i)_{i \in I}$ \`e un
+		ricoprimento aperto e ogni aperto di $\Topology$ \`e
+		unione di elementi di $(\TopologicalBase_i)_{i \in I}$.
+	\end{itemize} 
+\end{Definition}
+\begin{Theorem}\label{th_BaseDiUnaTopologia}
+	Sia $\TopologicalSpace$ una classe e sia
+	$(\TopologicalBase_i)_{i \in I}$ una famiglia di parti di
+	$\TopologicalSpace$ tali che
+	\begin{itemize}
+		\item $\bigcup_{i \in I} \TopologicalBase_i =
+		\TopologicalSpace$;
+		\item fissati $i, j \in I$, $\Implies{x \in
+		\TopologicalBase_i \ cap \TopologicalBase_j}{\Exists{k \in
+		I}{\And{x \in \TopologicalBase_k}{\TopologicalBase_k
+		\subseteq \TopologicalBase_i \cap \TopologicalBase_j}}}$.
+	\end{itemize}
+	Allora $\TopologicalBase_i$ \`e base di una topologia per
+	$\TopologicalSpace$.
+\end{Theorem}
+\Proof La topologia $\Topology$ in questione non pu\`o che essere quella i
+cui elementi sono tutte e sole le unioni di elementi di
+$(\TopologicalBase_i)_{i \in I}$: proviamo che si tratta effettivamente di
+una topologia.
+\par A tal fine basta provare che l'intersezione di due unioni di elementi
+ di $(\TopologicalBase_i)_{i \in I}$ \`e ancora unione di elementi di
+$(\TopologicalBase_i)_{i \in I}$. Abbiamo
+$\left (\bigcup_{i \in I_1} \TopologicalBase_i \right ) \cap
+\left (\bigcup_{i \in I_2} \TopologicalBase_i \right ) =
+\bigcup_{(i,j) \in I_1 \times I_2}
+(\TopologicalBase_i \cap \TopologicalBase_j) =
+\bigcup_{(i,j) \in I_1 \times I_2}
+\bigcup_{x \in (\TopologicalBase_i \cap \TopologicalBase_j)}
+\TopologicalBase_{x,i,j}$, dove $\TopologicalBase_{x,i,j}$ \`e un elemento
+di $(\TopologicalBase_i)_{i \in I}$ tale che
+$x \in \TopologicalBase_{x,i,j}$ e $\TopologicalBase_{x,i,j} \subseteq
+(\TopologicalBase_i \cap \TopologicalBase_j)$. \EndProof
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio e sia
+	$x \in \TopologicalSpace$. Una famiglia di intorni
+	$(\Neighborhood_{x,i})_{i \in I} \in \Neighborhoods{x}^{I}$ si chiama
+	\Define{base locale}[locale][base] o
+	\Define{sistema fondamentale di intorni}[fondamentale di intorni][sistema]
+	quando per ogni intorno $\Neighborhood_x \in \Neighborhoods{x}$ di $x$ esiste $i \in I$
+	tale che $\Neighborhood_{x,i} \subseteq
+	\Neighborhood_x$.
+\end{Definition}

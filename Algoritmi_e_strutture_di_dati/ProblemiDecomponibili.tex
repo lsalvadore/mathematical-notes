@@ -1,0 +1,12 @@
+\subsection{Problemi decomponibili.}
+\label{AlgoritmiEStruttureDiDati_ProblemiDecomponibili}
+\begin{Definition}
+	Chiamiamo \Define{decomponibile}[decomponibile][problema] un problema che pu\`o essere risolto induttivamente.
+\end{Definition}
+\begin{Theorem}
+	Se un problema \`e decomponibile in $n$ passi e $C$ \`e il costo della rimcomposizione del problema, allora il costo dell'algoritmo induttivo \`e $\BigO{n C}$.
+\end{Theorem}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Decomponi.cpp"}
+	\caption{Implementazione generica di un algoritmo per la risoluzione di un problema decomponibile in \LanguageName{C++}.}
+\end{listing}

@@ -1,0 +1,36 @@
+\section{Valore atteso e speranza condizionale.}\label{ValoreAttesoESperanzaCondizionale}
+\begin{Definition}
+	Si definisce
+  \Define{valore atteso}[atteso][valore]
+  della variabile aleatoria integrabile $\RandomVariable$ la quantit\`a
+  $\ExpectationValue{X} = \int_\SamplesSpace X(\omega) d\Probability{\omega}$.
+\end{Definition}
+\begin{Definition}
+	Due variabili aleatorie $\RandomVariable$ e $\VarRandomVariable$ su uno stesso
+  spazio di probabilit\`a $(\ProbabilitySpace,\Events,\Probability)$ si dicono
+  \Define{equivalenti}[aleatorie equivalenti][variabili]
+  quando sono quasi certamente uguali:
+  $\Probability(X = Y) = 1$.
+\end{Definition}
+\begin{Definition}
+	Sia $X$ una variabile aleatoria integrabile per lo spazio $(\SamplesSpace,\SigmaAlgebra_1,\Probability)$ e sia $\SigmaAlgebra_2$ un'altra $\sigma$-algebra tale che $\SigmaAlgebra_2 \subseteq \SigmaAlgebra_1$. Qualsiasi variabile aleatoria $Y$ $\SigmaAlgebra_2$-misurabile tale che per ogni $A \in \SigmaAlgebra_2$ si abbia $\int_A Xd\Probability = \int_A Yd\Probability$ si chiama \Define{speranza condizionale di $X$ rispetto a $\SigmaAlgebra_2$} e si denota $Y = \ConditionalExpectationValue{X}{\SigmaAlgebra_2}$.
+\end{Definition}
+\begin{Theorem}
+	Date una variabile aleatoria integrablie $X$ per lo spazio $(\SamplesSpace,\SigmaAlgebra_1,\Probability)$ e una $\sigma$-algebra $\SigmaAlgebra_2 \subseteq \SigmaAlgebra_1$ esiste una speranza condizionale di $X$ rispetto a $\SigmaAlgebra_2$ e tutte le speranze condizionali sono equivalenti.
+\end{Theorem}
+\begin{Definition}
+	Siano $X$ una variabile aleatoria integrabile da $(\SamplesSpace_1,\SigmaAlgebra_1,\Probability)$ e $Y: (\SamplesSpace_1,\SigmaAlgebra_1) \rightarrow (\SamplesSpace_2,\SigmaAlgebra_2)$ una variabile aleatoria. Si chiama \Define{speranza condizionale di $X$ rispetto ad $Y$} la quantit\`a $\ConditionalExpectationValue{X}{Y} = \ConditionalExpectationValue{X}{Y^{-1}(\SigmaAlgebra_2)}$.
+\end{Definition}
+\begin{Theorem}
+	La speranza condizionale gode delle seguenti propriet\`a:
+	\begin{itemize}
+		\item $\ExpectationValue{X} = \ExpectationValue{\ConditionalExpectationValue{X}{\SigmaAlgebra_2}}$;
+		\item $\ConditionalExpectationValue{aX+Y}{\SigmaAlgebra_2} = a\ConditionalExpectationValue{X}{\SigmaAlgebra_2} + \ConditionalExpectationValue{Y}{\SigmaAlgebra_2}$;
+		\item se $X \leq Y$ quasi certamente, allora $\ConditionalExpectationValue{X}{\SigmaAlgebra_2} \leq \ConditionalExpectationValue{Y}{\SigmaAlgebra_2}$;
+		\item se $X$ \`e $\SigmaAlgebra_2$-misurabile, allora $\ConditionalExpectationValue{X}{\SigmaAlgebra_2} = X$;
+		\item se $X$ \`e indipendente da $\SigmaAlgebra_2$, allora $\ConditionalExpectationValue{X}{\SigmaAlgebra_2} = \ExpectationValue{X}$;
+		\item se $\SigmaAlgebra_3 \subseteq \SigmaAlgebra_2$, allora $\ConditionalExpectationValue{\ConditionalExpectationValue{X}{\SigmaAlgebra_2}}{\SigmaAlgebra_3} = \ConditionalExpectationValue{X}{\SigmaAlgebra_3}$;
+		\item se $Y$ \`e $\SigmaAlgebra_2$-misurabile e limitata, allora $\ConditionalExpectationValue{XY}{\SigmaAlgebra_2} = Y\ConditionalExpectationValue{X}{\SigmaAlgebra_2}$;
+		\item se $(X_n)_{n \in \mathbb{N}}$ \`e una successione crescente di variabili aleatorie convergente quasi certamente ad $X$, allora $(\ConditionalExpectationValue{X_n}{\SigmaAlgebra_2})_{n \in \mathbb{N}}$ converge quasi certamente a $\ConditionalExpectationValue{X}{\SigmaAlgebra_2}$.
+	\end{itemize}
+\end{Theorem}

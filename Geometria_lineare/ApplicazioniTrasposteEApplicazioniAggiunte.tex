@@ -1,0 +1,150 @@
+\section{Applicazioni trasposte e applicazione aggiunte.}
+\label{GeometriaLineare_ApplicazioniTrasposteEApplicazioniAggiunte}
+\begin{Definition}
+	Sia
+  $\Linear: \LinearSpace \rightarrow \VarLinearSpace$
+  un'applicazione lineare tra i $\Field$-spazi vettoriali
+  $\LinearSpace$ e $\VarLinearSpace$.
+  Chiamiamo
+  \Define{applicazione trasposta}[lineare trasposta][applicazione] di
+  $\Linear$ l'applicazione
+  $\Transposed{\Linear}: \Dual{\VarLinearSpace} \rightarrow \Dual{\LinearSpace}$
+  che a $\VarFunctional \in \Dual{\VarLinearSpace}$ associa
+  $\VarFunctional \circ \Linear \in \Dual{\LinearSpace}$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\LinearSpace$ e $\VarLinearSpace$ $\Field$-spazi vettoriali finiti
+  di dimensioni
+  $\Dimension{\LinearSpace} = n$
+  e
+  $\Dimension{\VarLinearSpace} = m$.
+  Fissisamo basi
+  $(\LinearBase_j)_{j \in n}$
+  e
+  $(\VarLinearBase_i)_{i \in m}$
+  di $\LinearSpace$ e $\VarLinearSpace$ rispettivamente.
+  Se $A$ \`e la matrice che rappresenta $\Linear$ rispetto alle basi fissate e
+  $B$ la matrice che rappresenta $\Transposed{\Linear}$ rispetto alle basi
+  duali, allora $B = \Transposed{A}$.
+\end{Theorem}
+\Proof Fissiamo $i \in m$. Abbiamo
+  $\Transposed{\Linear}(\VarLinearBase^i) = \VarLinearBase^i \circ \Linear$.
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\LinearSpace$ e $\VarLinearSpace$ $\Field$-spazi vettoriali su cui
+          sono definiti prodotti denotati entrambi
+          $\InnerProduct{\cdot}{\cdot}$;
+		\item $\LinearOperator: \LinearSpace \rightarrow \VarLinearSpace$ lineare.
+	\end{itemize}
+	Esiste una e una sola applicazione lineare
+  $\Adjoint{\LinearOperator}: \VarLinearSpace \rightarrow \LinearSpace$ tale che
+  $\ForAll{(x,y) \in \LinearSpace \times \VarLinearSpace}
+    {\InnerProduct{\LinearOperator x}{y}
+      = \InnerProduct{x}{\Adjoint{\LinearOperator} y}}$.
+\end{Theorem}
+\Proof Se l'applicazione $\Adjoint{\Linear}$ esiste,
+allora essa \`e necessarimente l'applicazione che a $y \in \VarLinearSpace$
+associa il vettore di $\LinearSpace$ che, per il teorema di rappresentazione di
+Riesz, rappresenta il funzionale su $\LinearSpace$ dato da
+$x \mapsto \InnerProduct{\LinearOperator x}{y}$; e dunque, se esiste, essa \`e
+unica. Occora allora provare solo la linearit\`a di $\Adjoint{\Linear}$.
+\par Siano $y_0, y_1 \in \VarLinearSpace$.
+Abbiamo, per ogni $x \in \LinearSpace$,
+$\InnerProduct{\LinearOperator x}{y_0 + y_1}
+= \InnerProduct{x}{\Adjoint{\LinearOperator}(y_0 + y_1)}$, ma anche
+\begin{align*}
+  \InnerProduct{\LinearOperator x}{y_0 + y_1}
+  &= \InnerProduct{\LinearOperator x}{y_0}
+    + \InnerProduct{\LinearOperator x}{y_1},\\
+  &= \InnerProduct{x}{\Adjoint{\LinearOperator}y_0}
+    + \InnerProduct{x}{\Adjoint{\LinearOperator}y_1},\\
+  &= \InnerProduct{x}{\Adjoint{\LinearOperator}y_0
+    + \Adjoint{\LinearOperator}y_1}.
+\end{align*}
+\par Quindi, per il teorema di rappresentazione di Riesz,
+$\Adjoint{\LinearOperator}(y_0 + y_1)
+= \Adjoint{\LinearOperator}y_0 + \Adjoint{\LinearOperator}y_1$.
+\par Siano ora $y \in \VarLinearSpace$ e $\Scalar \in \Field$.
+Abbiamo, per ogni $x \in \LinearSpace$,
+$\InnerProduct{\LinearOperator x}{\Scalar y}
+= \InnerProduct{x}{\Adjoint{\LinearOperator} \Scalar y}$,
+ma anche
+\begin{align*}
+  \InnerProduct{\LinearOperator x}{\Scalar y}
+  &= \Conjugate{\Scalar} \InnerProduct{\LinearOperator x}{y},\\
+  &= \Conjugate{\Scalar}\InnerProduct{x}{\Adjoint{\LinearOperator}y},\\
+  &= \InnerProduct{x}{\Scalar \Adjoint{\LinearOperator} y}.
+\end{align*}
+\par Quindi, per il teorema di rappresentazione di Riesz,
+$\Adjoint{\LinearOperator} \Scalar y = \Scalar \Adjoint{\LinearOperator} y$.
+\par $\Adjoint{\LinearOperator}$ \`e pertanto un'applicazione lineare. \EndProof
+\begin{Theorem}\label{GeometriaLineare_Teorema_TraspostaAggiunta}
+	Siano
+	\begin{itemize}
+		\item $\LinearSpace$ e $\VarLinearSpace$ $\Field$-spazi vettoriali su cui
+          sono definiti prodotti denotati entrambi $\InnerProduct{\cdot}{\cdot}$
+		\item $\LinearOperator: \LinearSpace \rightarrow \VarLinearSpace$ lineare;
+		\item per ogni $\Vector \in \LinearSpace$,
+          $F_{\LinearSpace}: \LinearSpace \rightarrow \Dual{\LinearSpace}$
+          che a $\Vector \in \LinearSpace$ associa
+          $\Functional \in \Dual{\LinearSpace}$ definito da
+          $\Functional: x \mapsto \InnerProduct{x}{\Vector}$;
+		\item per ogni $\VarVector \in \LinearSpace$,
+      $G_{\VarLinearSpace}: \VarLinearSpace \rightarrow \Dual{\VarLinearSpace}$
+          che a $\VarVector \in \VarLinearSpace$ associa
+          $\VarFunctional \in \Dual{\VarLinearSpace}$ definito da
+          $\VarFunctional: x \mapsto \InnerProduct{x}{\VarVector}$.
+	\end{itemize}
+	Abbiamo
+  $F_{\LinearSpace} \circ \Adjoint{\LinearOperator}
+    = \Transposed{\LinearOperator} \circ G_{\LinearSpace}$,
+  \Cfr\ figura \label{GeometriaLineare_Figura_TraspostaAggiunta}.
+\end{Theorem}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		{\VarLinearSpace} \arrow{r}{\Adjoint{\LinearOperator}} \arrow{d}{G_{\LinearSpace}} & {\LinearSpace} \arrow{d}{F_{\LinearSpace}}\\
+		{\Dual{\VarLinearSpace}} \arrow{r}{\Transposed{\LinearOperator}} & {\Dual{\LinearSpace}}
+	\end{tikzcd}
+	\caption{Enunciato del teorema \ref{GeometriaLineare_Teorema_TraspostaAggiunta}, diagramma 1.}
+	\label{GeometriaLineare_Figura_TraspostaAggiunta}
+\end{figure}
+\Proof Fissiamo $\VarVector \in \VarLinearSpace$ e sia
+$\Vector \in \LinearSpace$.
+Abbiamo
+\begin{itemize}
+	\item $(F_{\LinearSpace} \circ \Adjoint{\LinearOperator})(\VarVector)(\Vector)
+        = \InnerProduct{\Vector}{\Adjoint{\LinearOperator} \VarVector}
+        = \InnerProduct{\LinearOperator \Vector}{\VarVector}$;
+	\item $(\Transposed{\LinearOperator} \circ  G_{\VarLinearSpace})
+          (\VarVector)(\Vector)
+        = G_{\VarLinearSpace}(\VarVector)(\LinearOperator \Vector)
+        = \InnerProduct{\LinearOperator \Vector}{\VarVector}$. \EndProof
+\end{itemize}
+\begin{Definition}
+  Sia $\PrehilbertSpace$ uno spazio prehilbertiano con prodotto interno
+  $\InnerProduct{\cdot}{\cdot}$.
+  Sia inoltre
+  $\HermitianOperator: \PrehilbertSpace \rightarrow \PrehilbertSpace$
+  un operatore lineare autoaggiunto.
+  $\HermitianOperator$ si dice
+  \begin{itemize}
+    \item \Define{hermitiano}[hermitiano][operatore] quando lo spazio
+          prehilbertiano \`e complesso;
+    \item \Define{simmetrico}[simmetrico][operatore] quando lo spazio
+          prehilbertiano \`e reale.
+    \item \Define{normale}[normale][operatore] quando
+          $\HermitianOperator\Adjoint{\HermitianOperator}
+            = \Adjoint{\HermitianOperator}\HermitianOperator$.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Sia $\PrehilbertSpace$ uno spazio prehilbertiano con prodotto interno
+  $\InnerProduct{\cdot}{\cdot}$.
+  Sia inoltre
+  $\HermitianOperator: \PrehilbertSpace \rightarrow \PrehilbertSpace$
+  un operatore lineare hermitiano.
+  $\HermitianOperator$ \`e normale.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof

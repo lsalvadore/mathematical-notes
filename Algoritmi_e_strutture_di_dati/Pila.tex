@@ -1,0 +1,52 @@
+\subsection{Pila.}
+\label{AlgoritmiEStruttureDiDati_Pila}
+\begin{Definition}
+	Si dice che una struttura di dati implementa la strategia \Define{LIFO}
+  (\English{Last in first out}) quando memorizza dati in successione e, quando
+  interrogata, restituisce ed espelle il dato memorizzato pi\`u di recente.
+\end{Definition}
+\begin{Definition}
+  Una struttura di dati che implementa la strategia LIFO si chiama \Define{pila}
+  (\Define{\English{stack}}). Inoltre,
+  \begin{itemize}
+    \item il metodo che aggiunge un dato alla pila \`e solitamente chiamato
+      \Define{\English{push}};
+    \item il metodo che estrae un dato dalla pila \`e solitamente chiamato
+      \Define{\English{pop}}.
+  \end{itemize}
+\end{Definition}
+\par Un'implementazione di una pila tramite \English{array}
+richiede normalmente di conoscere a tempo di compilazione qual \`e il massimo
+numero di elementi che possa essere impilato; tuttavia, qualora ci\`o non fosse
+possibile, esiste comunque la possibilit\`a di ricollocare una pila esistente in
+un nuovo \English{array} pi\`u lungo quando
+necessario, e successivamente di ricollocare nuovamente la pila in un
+\English{array} pi\`u piccolo qualora si ritenesse utile mantenere limitata la
+quantit\`a di memoria occupata da un programma. Al fine di ammortizzare i costi
+di ricollocazione, conviene evitare di allungare o accorciare l'\English{array}
+di una cella per volta, per esempio preferendo invece procedere per
+raddoppiamenti e dimezzamenti.
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Pila.h"}
+	\caption{Implementazione di una pila in \LanguageName{C++}: dichiarazione della classe.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Pila.cpp"}
+	\caption{Implementazione di una pila in \LanguageName{C++}: costruttore.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Pila_Push.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per l'aggiunta di un elemento ad una pila.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Pila_Pop.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per l'estrazione di un elemento da una pila.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Pila_Top.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per la restituzione di un elemento da una pila, ma senza estrazione.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Pila_Vuota.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per determinare se la pila \`e vuota.}
+\end{listing}

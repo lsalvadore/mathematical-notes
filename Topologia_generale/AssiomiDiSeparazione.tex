@@ -1,0 +1,44 @@
+\section{Assiomi di separazione.}\label{AssiomiDiSeparazione}
+\begin{Axiom}
+	\TheoremName{Assiomi di separazione}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Si dice che $\TopologicalSpace$ \`e
+	\begin{itemize}
+		\item \Define{$T_0$}[$T_0$][spazio]
+		quando per ogni coppia $(x_1,x_2) \in
+		\TopologicalSpace$ esiste un aperto $\Open$ tale che
+		$\And{x_1 \in \Open}{x_2 \notin \Open}$ o
+		$\And{x_2 \in \Open}{x_1 \notin \Open}$; in questo
+		caso $\TopologicalSpace$ si chiama
+		\Define{spazio di Kolmogorov}[di Kolmogorov][spazio];
+		\item \Define{$T_1$}[$T_1$][spazio]
+		quando per ogni coppia $(x_1,x_2) \in
+		\TopologicalSpace$ esiste due aperti $\Open_1$ e $\Open_2$
+		tali che
+		$\And{x_1 \in \Open_1}{x_2 \notin \Open_1}$ e
+		$\And{x_2 \in \Open_2}{x_1 \notin \Open_2}$;
+		\item \Define{$T_2$}[$T_2$][spazio]
+		quando per ogni coppia $(x_1,x_2) \in
+		\TopologicalSpace$ esiste due aperti disgiunti $\Open_1$ e
+		$\Open_2$ tali che
+		$\And{x_1 \in \Open_1}{x_2 \notin \Open_1}$ e
+		$\And{x_2 \in \Open_2}{x_1 \notin \Open_2}$; in questo
+		caso $\TopologicalSpace$ si chiama
+		\Define{spazio di Hausdorff}[di Hausdorff][spazio];
+		\item \Define{$T_3$}[$T_3$][spazio] quando per ogni
+		$x \in \TopologicalSpace$ e chiuso $\Closed$ tale che
+		$x \notin \Closed$ esistono due aperti disgiunti $\Open_1$
+		e $\Open_2$ tali che $x \in \Open_1$ e $\Closed
+		\subseteq \Open_2$;
+		\item \Define{$T_4$}[$T_4$][spazio] quando per ogni
+		dati due chiusi disgiunti $\Closed_1$ e $\Closed_2$ tale
+		che $x \notin \Closed$ esistono due aperti disgiunti
+		$\Open_1$ e $\Open_2$ tali che $\Closed_1 \subseteq
+		\Open_1$ e $\Closed_2 \subseteq \Open_2$.
+	\end{itemize}
+\end{Axiom}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	$\TopologicalSpace$ si dice \Define{regolare}[regolare][spazio] se
+	\`e $T_1$ e $T_3$.
+\end{Definition}

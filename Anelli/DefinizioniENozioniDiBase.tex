@@ -1,0 +1,61 @@
+\section{Definizioni e nozioni di base.}\label{DefinizioniENozioniDiBase}
+\begin{Definition}
+	Un \Define{anello} \`e un gruppo commutativo che agisce distributivamente su se stesso sia a destra che a sinistra.
+\end{Definition}
+\par Denoteremo usualmente additivamente l'operazione di gruppo e moltiplicativamente le due azioni.
+\begin{Definition}
+	Sia $\Ring$ un anello. $\Ring$ si dice
+	\begin{itemize}
+		\item \Define{commutativo}[commutativo][anello] se le due azioni che definiscono $\Ring$ coincidono;
+		\item \Define{unitario}[unitario][anello] o \Define{con identit\`a}[con identit\`a][anello] quando il magma indotto su $\Ring$ dalle due azioni \`e unitario.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia $\Ring$ un anello unitario. Ogni elemento invertibile per il prodotto si dice \Define{unit\`a} o anche semplicemente \Define{invertibile}[invertibilie][elemento].
+\end{Definition}
+\begin{Definition}
+	Si chiama \Define{corpo} un anello con identit\`a non banale in cui tutti gli elementi non nulli sono invertibili.
+\end{Definition}
+\begin{Definition}
+	Un \Define{campo} \`e un corpo commutativo.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Ring$ un anello e $a \in \Ring$. Abbiamo
+	\begin{itemize}
+		\item $a \cdot 0 = 0$;
+		\item $0 \cdot a = 0$.
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo $a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0$ , da cui segue la prima affermazione sottraendo l'opposto di $a \cdot 0$. La dimostrazione della seconda affermazione \`e analoga. \EndProof
+\begin{Theorem}
+	Siano $\Ring$ un anello e $a, b \in \Ring$. Abbiamo
+	\begin{itemize}
+		\item $a \cdot (-b) = (-a) \cdot b = - ab$;
+		\item $(-a) \cdot (-b) = ab$.
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo
+\begin{itemize}
+	\item $ab + a \cdot (-b) = a \cdot (b - b) = a \cdot 0 = 0$;
+	\item $ab + (-a) \cdot b = (a - a) \cdot b = 0 \cdot b = 0$;
+	\item $(-a) \cdot (-b) = (-(-a)) \cdot b = ab$. \EndProof
+\end{itemize}
+\begin{Definition}
+	Dato un anello $\Ring$, siano $a, c \in \Ring$. $a$ si chiama \Define{divisore di $c$ sinistro}[divisore] se esiste un elemento $b \in \NotZero{\Ring}$ tale che $ab = c$. Se $a$ \`e divisore sinistro di $c$ si dice che $c$ \`e \Define{multiplo destro}[multiplo] di $a$ e che $a$ \NIDefine{divide $c$ a sinistra}, denotato $a|c$.
+\end{Definition}
+\par In un anello commutativo ci si riferisce a divisori e multipli senza ulteriori specificazioni, essendo le tre definizioni appena date equivalenti.
+\begin{Definition}
+	Dato un anello $\Ring$, siano $a, b \in \Ring$. Un divisore sinistro $d$ comune ad $a$ e $b$ si dice \Define{massimo comun divisore} sinistro quando, dato un qualsiasi divisore sinistro $e$ si ha che $e$ divide $d$. Inoltre, se $\Ring$ \`e un anello con identit\`a, due elementi si discono \Define{coprimi}[coprimo][elemento] a sinistra quando il loro massimo comun divisore sinistro \`e $1$.
+\end{Definition}
+\begin{Definition}
+	Siano $\Ring$ un anello e $a \in \Ring$. $a$ si dice
+	\begin{itemize}
+		\item \Define{primo}[primo][elemento] se non \`e un'unit\`a e per ogni $b, c \in \Ring$ tali che $a$ divide $bc$ abbiamo $a|b \vee a |c$;
+		\item \Define{irriducibile}[irriducibile][elemento] se non \`e $0$, non \`e un'unit\`a e non \`e prodotto di due elementi non invertibili;
+		\item \Define{riducibile}[riducibile][elemento] se non \`e irriducibile e in tal caso una scrittura di $a$ come prodotto di due o pi\`u elementi non tutti invertibili si chiama \Define{riduzione}.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $\Ring$ un anello. L'insieme dei divisori di $0$ e degli elementi invertibili sono disgiunti.
+\end{Theorem}
+\Proof Sia $a \in \Ring$ un divisore di $0$ invertibile. Allora esiste $b \in \NotZero{\Ring}$ tale che $ab = 0$, da cui $b = a^{-1} \cdot 0 = 0$, ma questo \`e assurdo. \EndProof

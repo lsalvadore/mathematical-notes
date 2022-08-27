@@ -1,0 +1,23 @@
+\section{Condizionamento.}
+\label{AnalisiDegliErrori_Condizionamento.}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $(\NormedSpace,\Norm{\cdot})$ uno spazio normato;
+    \item $(\MetricSpace,\Distance)$ uno spazio metrico;
+    \item $f: \NormedSpace \rightarrow \NormedSpace$;
+    \item $x \in \NormedSpace$.
+  \end{itemize}
+  Definiamo
+  \Define{numero di condizionamento}[di condizionamento][numero]
+  di $f$ in $x$ la quantit\`a
+  $\ConditionNumber
+  = \limsup_{\Norm{\delta x} \rightarrow 0}
+    \frac{\Distance{f(x + \delta x)}{f(x)}}{\Norm{\delta x}}$.
+\end{Definition}
+\par Nelle applicazioni, spesso abbiamo $\NormedSpace = \MetricSpace$ e
+$\Distance$ \`e la distanza indotta da $\Norm{\cdot}$, per cui il numero di
+condizionamento sopra definito diventa
+$\ConditionNumber
+= \limsup_{\Norm{\delta x} \rightarrow 0}
+  \frac{\Norm{f(x + \delta x) - f(x)}}{\Norm{\delta x}}$.

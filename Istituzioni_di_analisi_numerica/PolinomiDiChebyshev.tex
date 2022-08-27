@@ -1,0 +1,110 @@
+\subsection{Polinomi di \Chebyshev.}
+\label{IstituzioniDiAnalisiNumerici_AltriPolinomiOrtogonalSpecifici}
+\begin{Definition}
+	Chiamiamo \Define{polinomi di \Chebyshev\ di prima specie}[di \Chebyshev\ di prima specie][polinomi] i polinomi $(\FirstChebyshevPolynomial_n)_{n \in \mathbb{N}}$ definiti da
+	\[
+		\FirstChebyshevPolynomial_{n + 1}(x) =
+		\begin{cases}
+			\FirstChebyshevPolynomial_0(x) = 1\text{ se }n = - 1,\\
+			\FirstChebyshevPolynomial_1(x) = x\text{ se }n = 0,\\
+			2x\FirstChebyshevPolynomial_n(x) - \FirstChebyshevPolynomial_{n - 1}(x)\text{ altrimenti}.
+		\end{cases}
+	\]
+\end{Definition}
+\begin{Theorem}
+	I polinomi di \Chebyshev\ di prima specie $(\FirstChebyshevPolynomial_n)_{n \in \mathbb{N}}$ verificano la relazione
+\[
+	\ForAll{(n,\theta) \in \mathbb{N} \times \mathbb{R}}{\FirstChebyshevPolynomial_n(\cos{\theta}) = \cos{n \theta}}.
+\]
+\end{Theorem}
+\Proof Procediamo per induzione su $i$.
+\par Nei casi $n = 0$ e $n = 1$ la tesi \`e immediata: dimostriamola per $n > 1$. Abbiamo. per qualunque $\theta \in \mathbb{R}$,
+\begin{align*}
+	\FirstChebyshevPolynomial_{n + 1}(\cos{\theta})
+	&= 2 \cos{\theta} \FirstChebyshevPolynomial_n(\cos{\theta}) - \FirstChebyshevPolynomial_{n - 1}(\cos{\theta}),\\
+	&= 2 \cos{\theta} \cos{n \theta} - \cos{(n - 1) \theta},\\
+	&= 2 \cos{\theta} \cos{n \theta} - \cos{n\theta} \cos{\theta} - \sin{n\theta} \sin{\theta},\\
+	&= \cos{\theta} \cos{n \theta} - \sin{n\theta} \sin{\theta},\\
+	&= \cos{(n + 1) \theta}.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+	Definiamo su $\RingAdjunction{\mathbb{C}}{x}$ il prodotto hermitiano $\HermitianProduct{\Polynomial}{\VarPolynomial} = \int_{-1}^1 (1 - x^2)^{-\frac{1}{2}} \Polynomial(x)\Conjugate{\VarPolynomial(x)}dx$. I polimoni di \Chebyshev\ di prima specie $(\FirstChebyshevPolynomial_i)_{n \in \mathbb{N}}$ verificano la relazione
+	\[
+		\HermitianProduct{\FirstChebyshevPolynomial_n}{\FirstChebyshevPolynomial_m} =
+		\begin{cases}
+			0\text{ se }n \neq m,\\
+			\pi\text{ se }n = m = 0,\\
+			\frac{\pi}{2}\text{ se }n = m \neq 0.
+		\end{cases}
+	\]
+	In particolare i polimoni di \Chebyshev\ di prima specie sono i polinomi ortogonali rispetto al prodotto hermitiano $\HermitianProduct{\cdot}{\cdot}$.
+\end{Corollary}
+\Proof Abbiamo, per ogni $(n,m) \in \mathbb{N}^2$ e sfruttando il cambio di variabile $x = \cos{\theta}$ per il calcolo dell'integrale,
+\begin{align*}
+	\HermitianProduct{\FirstChebyshevPolynomial_n}{\FirstChebyshevPolynomial_m}
+	&= \int_{-1}^1 (1 - x^2)^{-\frac{1}{2}}\FirstChebyshevPolynomial_n(x)\Conjugate{\FirstChebyshevPolynomial_m(x)} dx,\\
+	&= \int_\pi^0 (1 - (\cos{\theta})^2)^{-\frac{1}{2}} \cos{n \theta} \cos{m \theta} (- \sin{\theta}) d\theta,\\
+	&= \int_0^\pi \cos{(n \theta)} \cos{(m \theta)} d\theta. 
+\end{align*}
+\par Abbiamo poi
+\begin{itemize}
+	\item $\HermitianProduct{\FirstChebyshevPolynomial_0}{\FirstChebyshevPolynomial_0} = \int_0^\pi d\theta = \pi$;
+	\item supposto $n = m \neq 0$, $\HermitianProduct{\FirstChebyshevPolynomial_n}{\FirstChebyshevPolynomial_m} = \int_0^\pi (\cos{n \theta})^2 d\theta = \int_0^\pi \frac{\cos{2 n \theta} + 1}{2} d\theta = \left [\frac{\sin{2 n\theta}}{4i} + \frac{\theta}{2} \right ]_0^\pi = \frac{\pi}{2}$;
+	\item supposto $n \neq m$, $\HermitianProduct{\FirstChebyshevPolynomial_n}{\FirstChebyshevPolynomial_m} = \int_0^\pi \cos{(n\theta)} \cos{(m\theta)} d\theta = \int_0^\pi \frac{\cos{(n + m)\theta} + \cos{(n - m)\theta}}{2} d\theta = \frac{1}{2} \left [ \frac{\sin{(n + m)\theta}}{n + m} + \frac{\sin{(n - m)\theta}}{n - m} \right ]_0^\pi = 0$. \EndProof
+\end{itemize}
+\begin{Corollary}
+	Dati i polinomi di \Chebyshev\ di prima specie $(\FirstChebyshevPolynomial_n)_{n \in \mathbb{N}}$, abbiamo, per ogni $n \in \mathbb{N}$
+	\begin{itemize}
+		\item gli zeri di $\FirstChebyshevPolynomial_n$ sono $\left ( \cos{\frac{(2 k - 1)\pi}{2n}} \right )_{k \in n}$;
+		\item il massimo di $\FirstChebyshevPolynomial_n$ su $[-1;1]$ \`e $1$ e viene assunto nei punti $\left ( \cos \frac{2k\pi}{n} \right )_{k \in \lfloor \frac{n}{2} \rfloor}$;
+		\item il minimo di $\FirstChebyshevPolynomial_n$ su $[-1;1]$ \`e $- 1$ e viene assunto nei punti $\left ( \cos \frac{(2k + 1)\pi}{n} \right )_{k \in \lfloor \frac{n}{2} \rfloor}$;
+		\item $\FirstChebyshevPolynomial_n$ ha $n + 1$ estremi locali su $[-1;1]$, alternati tra massimi e minimi.
+	\end{itemize}
+\end{Corollary}
+\Proof Fissiamo $n \in \mathbb{N}$.
+\par Cerchiamo gli zeri di $\FirstChebyshevPolynomial_n$ nell'intervallo $[-1;1]$: essi possono essere messi nella forma $\cos{\theta}$ per opportuno $\theta \in \mathbb{R}$. Abbiamo che $\FirstChebyshevPolynomial_n(\cos(\theta)) = \cos(n \theta)$ \`e nullo se e solo se $\Exists{k \in \mathbb{Z}}{n \theta = \frac{\pi}{2} + k\pi}$, equivalente a $\Exists{k \in \mathbb{Z}}{\theta = \frac{(2k + 1)\pi}{2n}}$. Quindi gli zeri in $[-1;1]$ di $\FirstChebyshevPolynomial_n$ sono $\cos \frac{(2k + 1)\pi}{2n}$ con $k \in n$: essi sono in numero $n$ e dunque sono tutte le radici del polinomio $\FirstChebyshevPolynomial_n$.
+\par Cerchiamo i punti di massimo e minimo di $\FirstChebyshevPolynomial_n$ nell'intervallo $[-1;1]$: essi possono essere messi nella forma $\cos{\theta}$ per opportuno $\theta \in \mathbb{R}$. Abbiamo
+\[
+	\FirstChebyshevPolynomial_n(\cos(\theta)) = \cos(n \theta) =
+	\begin{cases}
+		1\text{ se e solo se }\Exists{k \in \mathbb{Z}}{\theta = \frac{2k\pi}{n}},\\
+		- 1\text{ se e solo se }\Exists{k \in \mathbb{Z}}{\theta = \frac{(2k + 1)\pi}{n}}.
+	\end{cases}
+\]
+\par Quindi i massimi di $\FirstChebyshevPolynomial_n$ sono $\cos \frac{2k\pi}{n}$ con $k \in \lfloor \frac{n}{2} \rfloor$ e i minimi $\cos \frac{2(k + 1)\pi}{n}$ con $k \in \lfloor \frac{n - 1}{2} \rfloor$.
+\par Infine,
+\begin{itemize}
+	\item se $n$ \`e pari, poniamo $a = \frac{n}{2}$: abbiamo $\left \lfloor \frac{n}{2} \right \rfloor + 1 + \left \lfloor \frac{n - 1}{2} \right \rfloor  + 1 = a + 1 + \left \lfloor a - \frac{1}{2} \right \rfloor + 1 = a + 1 + a - 1 + 1= 2a + 1 = n + 1$.
+	\item se $n$ \`e dispari, poniamo $a = \frac{n - 1}{2}$: abbiamo $\left \lfloor \frac{n}{2} \right \rfloor + 1 + \left \lfloor \frac{n - 1}{2} \right \rfloor  + 1 = \left \lfloor \frac{n - 1 + 1}{2} \right \rfloor + 1 + a + 1 = \left \lfloor a + \frac{1}{2} \right \rfloor + 1 + a + 1 = a + 1 + a + 1 = 2a + 2 = n - 1 + 2 = n + 1$. \EndProof 
+\end{itemize}
+\begin{Theorem}
+	Sia $n \in \NotZero{\mathbb{N}}$ e sia $\FirstChebyshevPolynomial_n$ il polinomio di \Chebyshev di prima specie di grado $n$. Allora,
+	\begin{itemize}
+		\item $\frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}$ \`e monico;
+		\item se $\Polynomial \in \RingAdjunction{C}{x}$ \`e di grado $n$ e monico, allora, considerando $\FirstChebyshevPolynomial_n$ e $\Polynomial$ sul dominio $[-1;1]$, abbiamo $\Norm{\frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}}[\infty] \leq \Norm{\Polynomial}[\infty]$.
+	\end{itemize}
+\end{Theorem}
+\Proof Se $n = 1$, allora $\frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}(x) = \frac{x}{2^{1 - 1}} = x$.
+\par Supponiamo ora
+\[
+	\ForAll{m \in n}{\LeadingCoefficient{\frac{\FirstChebyshevPolynomial_m}{2^{m - 1}}} = 1}.
+\]
+\par Abbiamo $\LeadingCoefficient{\FirstChebyshevPolynomial_n(x)} = \LeadingCoefficient{2x\FirstChebyshevPolynomial_{n - 1} - \FirstChebyshevPolynomial_{n - 2}} = \LeadingCoefficient{2x\FirstChebyshevPolynomial_{n - 1}} = 2\LeadingCoefficient{\FirstChebyshevPolynomial_{n - 1}}$. Da cui $\LeadingCoefficient{\frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}} = \frac{2 \LeadingCoefficient{\FirstChebyshevPolynomial_{n - 1}}}{2^{n - 1}} = 1$.
+\par Quindi, per induzione, $\frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}$ \`e monico.
+\par Ora, $\Norm{\frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}}[\infty] = \frac{\Norm{\FirstChebyshevPolynomial_n}[\infty]}{2^{n - 1}} = 2^{1 - n}$.
+\par Supponiamo $\Polynomial \in \RingAdjunction{C}{x}$ di grado $n$ e monico tale che $\Norm{\Polynomial}[\infty] \leq \Norm{\frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}}[\infty] = 2^{1 - n}$.
+\par Poniamo $\VarPolynomial = \Polynomial - \frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}$. Abbiamo $\PolynomialDegree{\VarPolynomial} \leq n - 1$, quindi o $\VarPolynomial = 0$ o $\PolynomialDegree$ ha al pi\`u $n - 1$ radici distinte.
+\par D'altra parte,
+\begin{itemize}
+	\item sia $M \in [-1;1]$ massimo di $\FirstChebyshevPolynomial_n$: abbiamo $\VarPolynomial(M) = \Polynomial(M) - \frac{\FirstChebyshevPolynomial_n(M)}{2^{n - 1}} = \Polynomial(M) - 2^{1 - n} < 0$;
+	\item sia $m \in [-1;1]$ massimo di $\FirstChebyshevPolynomial_n$: abbiamo $\VarPolynomial(m) = \Polynomial(m) - \frac{\FirstChebyshevPolynomial_n(m)}{2^{n - 1}} = \Polynomial(m) + 2^{1 - n} > 0$.
+\end{itemize}
+\par Per la continuit\`a di $\VarPolynomial$ e poich\'e $\VarPolynomial$ cambia segno $n$ volte, $\VarPolynomial$ deve avere almeno $n$ radici. Dunque, necessariamente, $\VarPolynomial = 0$, a cui $\Polynomial = \frac{\FirstChebyshevPolynomial_n}{2^{n - 1}}$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{polinomi di \Chebyshev\ di seconda specie}[di \Chebyshev\ di seconda specie][polinomi] gli unici polinomi $(\SecondChebyshevPolynomial_n)_{n \in \mathbb{N}}$ tali che
+	\begin{itemize}
+		\item essi siano ortogonali rispetto al prodotto scalare $\ScalarProduct{\Polynomial}{\VarPolynomial} = \int_{-1}^1 (1 - x^2)^{\frac{1}{2}} \Polynomial(x)\VarPolynomial(x)dx$;
+		\item $\SecondChebyshevPolynomial_0 = 1$;
+		\item $\SecondChebyshevPolynomial_1 = 2x$.
+	\end{itemize}
+\end{Definition}

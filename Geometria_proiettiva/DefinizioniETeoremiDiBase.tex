@@ -1,0 +1,166 @@
+\section{Definizioni e Teoremi di base.}
+
+\begin{Definition}\label{def1}
+	Siano $K$ un campo, $V$ un $\mathbb{K}$-spazio vettoriale di dimensione $n$ ($n \in \mathbb{N}$), $\sim$ la relazione d'equivalenza sugli elementi di $V - \lbrace 0 \rbrace$ data da $(x \sim y) \Leftrightarrow ((\exists \lambda \in \mathbb{K}^*)(x = \lambda y))$, dove $\mathbb{K}^* = \mathbb{K} - \lbrace 0 \rbrace$. Il quoziente $(V - \lbrace 0 \rbrace)/\sim$ si denota $\mathbb{P}(V)$ e si chiama \Define{spazio proiettivo}[proiettivo][spazio] associato a $V$. Si definisce \Define{dimensione}[di uno spazio proiettivo][dimensione] di $\mathbb{P}(V)$ il numero $\dim \mathbb{P}(V) = \dim V - 1$.
+\end{Definition}
+	\par Nel seguito, salvo eccezioni esplicitamente espresse, $\mathbb{K}$ indicher\`a sempre un campo e $V$ e $W$ indicheranno sempre $\mathbb{K}$-spazi vettoriali; $\sim$ sar\`a sempre la relazione sopradefinita; indicheremo sempre con $\pi$ la proiezione canonica di $V$ su $\mathbb{P}(V)$. Dato $v \in V$ indicheremo spesso $\pi(v)$ con $[v]$. $\mathbb{K}^*$ indicher\`a l'insieme $\mathbb{K} - \lbrace 0 \rbrace$. Quanto fissato per $V$ riguardo a $\sim$, $\pi$ e parentesi quadre varr\`a per qualunque spazio vettoriale comunque denotato; eventuali ambiguit\`a saranno risolte caso per caso.
+\begin{Definition}\label{def2}
+	Se $V = \mathbb{K}^{n + 1}$, con $n \in \mathbb{N}$, indicheremo con $\mathbb{P}^n(\mathbb{K})$ lo spazio proiettivo $\mathbb{P}(V)$ e lo chiameremo \Define{spazio proiettivo standard}[proiettivo standard][spazio] di dimensione $n$ su $\mathbb{K}$.
+\end{Definition}
+	\par Nelle ipotesi della definizione precedente, indicheremo $\pi((x_0, ..., x_n))$ con $[x_0,...,x_n]$ piuttosto che con $[(x_0, ..., x_n)]$.
+\begin{Definition}\label{def3}
+	Sia $W \subset V$ un sottospazio vettoriale di $V$. $\pi(W)$ \`e chiamato \Define{sottospazio proiettivo}[proiettivo][sottospazio] di $\mathbb{P}(V)$.
+\end{Definition}
+\begin{Theorem}\label{th1}
+	Sia $W \subset V$ un sottospazio vettoriale di $V$. $W$ \`e saturo per la relazione d'equivalenza $\sim$\footnote{\label{nota_saturo} Qui e nel seguito, quando diremo che un sottospazio vettoriale $W$ \`e saturo per $\sim$, intenderemo con abuso di linguaggio che $W - \lbrace 0 \rbrace$ \`e saturo per $\sim$.} e abbiamo $\pi(W) = \mathbb{P}(W)$.
+\end{Theorem}
+\Proof Siano $x \in W - \lbrace 0 \rbrace$ e $y \in V \in \lbrace 0 \rbrace$ tali che $x \sim y$. Poich\'e $W$ \`e un sottospazio vettoriale ed $y = \lambda x$ per $\lambda \in \mathbb{K}^*$ opportuno, $y \in W$.
+	\par Sia poi $z \in \pi(W)$: questa relazione equivale a $(\exists w)(w \in W \land z = [w])$, a sua volta equivalente a $z \in \mathbb{P}(W)$. \EndProof
+	\par Quando scriveremo espressioni quali ``$\mathbb{P}(W) \subseteq \mathbb{P}(V)$ \`e un sottospazio proiettivo'', intenderemo che $W \subseteq V$ \`e un sottospazio vettoriale di $V$ e, di conseguenza, $\mathbb{P}(W)$ \`e un sottospazio proiettivo di $\mathbb{P}(V)$.
+\begin{Corollary}\label{cor0.1}
+	Siano $\mathbb{P}(W), \mathbb{P}(U) \subseteq \mathbb{P}(V)$ sottospazi proiettivi. Abbiamo $(\mathbb{P}(W) \subseteq \mathbb{P}(U)) \Leftrightarrow (W \subseteq U)$; in particolare, $(\mathbb{P}(W) = \mathbb{P}(U)) \Leftrightarrow (U = W)$. In maniera pi\`u precisa, se $S$ \`e l'insieme dei sottospazi vettoriali di $V$ e $\mathbb{S}$ l'insieme dei sottospazi proiettivi di $\mathbb{P}(V)$ e consideriamo su entrambi gli insiemi l'ordinamento di inclusione, allora l'applicazione $f: S \rightarrow \mathbb{S}$ che a $W \in S$ associa $f(W) = \mathbb{P}(W) \in \mathbb{S}$ \`e un isomorfismo d'insiemi ordinati.
+\end{Corollary}
+\Proof Sia $W \subseteq U$. $x \in \mathbb{P}(W)$ significa che esiste un elemento $w \in W - \lbrace 0 \rbrace$ tale che $x = [w]$; ma $W \subseteq U$, quindi $w \in U$ e, essendo i sottospazi vettoriali $U$ e $W$ saturi per $\sim$ per il teorema \ref{th1}, allora $x = [w] \in \mathbb{P}(U)$.
+	\par Viceversa, sia $\mathbb{P}(W) \subseteq \mathbb{P}(U)$. Sia $w \in W - 0$. Allora $[w] \in \mathbb{P}(W)$, da cui $[w] \in \mathbb{P}(U)$. Per il teorema \ref{th1}, $U$ \`e saturo per $\sim$, dunque $w \in U$. \EndProof
+\begin{Definition}\label{def4}
+	Sia $\mathbb{P}(W) \subseteq \mathbb{P}(V)$ un sottospazio proiettivo. $\mathbb{P}(W)$ si chiama
+	\begin{itemize}
+		\item\Define{retta proiettiva}[proiettiva][retta] se $\dim \mathbb{P}(W) = 1$;
+		\item\Define{piano proiettivo}[proiettivo][piano] se $\dim \mathbb{P}(W) = 2$;
+		\item\Define{iperpiano proiettivo}[proiettivo][iperpiano] se $\dim \mathbb{P}(W) = \dim \mathbb{P}(V) - 1$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}\label{def5}
+	Sia $\phi: V \rightarrow W$ un'applicazione lineare iniettiva e sia $f: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ l'applicazione ottenuta da $\phi$ per passaggio ai quozienti: $f$ \`e detta \Define{applicazione proiettiva}[proiettiva][applicazione]\footnote{La terminologia qui adottata \`e coerente con l'uso comune di riservare la parola ``trasformazione'' ad applicazioni biettive che hanno ugual dominio e codominio (``endofunzioni''). Nell'eserciziario \cite{1}, tuttavia, quanto appena definito viene chiamato ``trasformazione proiettiva''}.
+\end{Definition}
+	\par  Data $\phi$ come sopra, indichiamo con $\bar{\phi}$ l'applicazione proiettiva associata. Nelle notazioni della definizione precedente, $f = \bar{\phi}$.
+\begin{Theorem}\label{th1.1}
+	Sia $\phi: V \rightarrow W$ un'applicazione lineare iniettiva. Abbiamo $\Image \bar{\phi} = \mathbb{P}(\Image \phi)$; in particolare, l'immagine di un'applicazione proiettiva \`e un sottospazio proiettivo del codominio.
+\end{Theorem}
+\Proof $x \in \Image \bar{\phi}$ equivale a $(\exists y)(y \in \mathbb{P}(V) \land x = \bar{\phi}(y))$, a sua volta equivalente a $(\exists y)(\exists z)(z \in V - \lbrace 0 \rbrace \land y = [z] \land x = \bar{\phi}(y))$ e quindi a $(\exists z)(z \in V - \lbrace 0 \rbrace \land x = [\phi(z)])$ e quest'ultima relazione \`e equivalente a $(\exists u)(u \in \Image \phi - \lbrace 0 \rbrace \land x = [u])$. \EndProof
+	\par Osserviamo che non vale un teorema analogo per il nucleo, dato che non esiste un concetto di nucleo per un'applicazione proiettiva.
+\begin{Theorem}\label{th2}
+	Siano $\phi: V \rightarrow W$ e $\psi: V \rightarrow W$ due applicazioni lineari iniettive tra gli stessi spazi vettoriali $V$ e $W$. Allora vale $(\bar{\phi} = \bar{\psi}) \Leftrightarrow ((\exists \lambda \in \mathbb{K}^*)(\psi = \lambda\phi))$ .
+\end{Theorem}
+\Proof Supponiamo $\bar{\phi} = \bar{\psi}$. Allora, per ogni $v \in V - \lbrace 0 \rbrace$, $[\phi(v)] = [\psi(v)]$; esiste dunque $\lambda_v \in \mathbb{K}^*$ tale che $\psi(v) = \lambda_v \phi(v)$. Sia $\lambda_0 \in \mathbb{K}^*$ qualsiasi: abbiamo $\psi(0) = \lambda_0 \phi(0)$.
+	\par Ora, $\bar{\phi} = \bar{\psi}$, dunque $\Image \bar{\phi} = \Image \bar{\psi}$, da cui, per il teorema \ref{th1.1}, $\mathbb{P}(\Image \phi) = \mathbb{P}(\Image \psi)$: ne deduciamo $\dim \Image \phi = \dim \Image \psi$. Consideriamo dunque le applicazioni $\phi'$ e $\psi'$ ottenute da $\phi$ e $\psi$ rispettivamente restringendo il codominio alle immagini. $\phi'$ e $\psi'$ sono invertibili e risulta, per ogni $v \in V$, $\phi'^{-1} \psi'(v) = \lambda_v \Identity_V(v)$.
+	\par Dunque tutti i vettori sono autovettori di $A = \phi'^{-1} \psi'$.
+	\par Siano $v, w \in V$. Allora
+\begin{alignat*}{2}
+	&Av = \lambda_v v,\\
+	&Aw = \lambda_w w,\\
+	&A(v + w) = \lambda_{v + w}(v + w) &&= \lambda_{v+w} v + \lambda_{v+w} w,\\
+	&&&= \lambda_v v + \lambda_w w.
+\end{alignat*}
+	\par Se $v$ e $w$ sono dipendenti, chiaramente $\lambda_v = \lambda_w = \lambda_{v + w}$; se invece $v$ e $w$ sono indipendenti allora lo stesso risultato vale per unicit\`a delle coordinate.
+	\par Ne consegue che $A = \lambda \Identity_V$ per $\lambda \in \mathbb{K}^*$ opportuno e dunque $\psi = \lambda \phi$.
+	\par Supponiamo ora viceversa, per un certo $\lambda \in \mathbb{K}^*$, $\psi = \lambda\phi$. Allora, per ogni $v \in V - \lbrace 0 \rbrace$, abbiamo $\bar{\phi}([v]) = [\phi(v)] = [\lambda\phi(v)] = [\psi(v)] = \bar{\psi}([v])$. \EndProof
+\begin{Definition}\label{def6}
+	Sia $\phi: V \rightarrow W$ un'applicazione lineare. $\bar{\phi}: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ si dice
+	\begin{itemize}
+		\item \Define{isomorfismo proiettivo}[proiettivo][isomorfismo] o \Define{omografia} quando $\phi$ \`e un isomorfismo lineare;
+		\item \Define{proiettivit\`a} quando $\bar{\phi}$ \`e un isomorfismo proiettivo e $V = W$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}\label{th3}
+	Siano $\mathbb{P}(V)$ e $\mathbb{P}(W)$ spazi proiettivi. $\mathbb{P}(V)$ e $\mathbb{P}(W)$ sono isomorfi se e solo se $\dim \mathbb{P}(V) = \dim \mathbb{P}(W)$.
+\end{Theorem}
+\Proof La condizione $\dim \mathbb{P}(V) = \dim \mathbb{P}(W)$ equivale a $\dim V = \dim W$, a sua volta equivalente all'esistenza di un isomorfismo tra $V$ e $W$, corrispondente ad un isomorfismo proiettivo tra $\mathbb{P}(V)$ e $\mathbb{P}(W)$. \EndProof
+\begin{Theorem}\label{th4}
+	Un'applicazione proiettiva trasforma sottospazi proiettivi in sottospazi proiettivi isomorfi e un'omografia \`e data dalla restrizione dell'applicazione stessa al sottospazio proiettivo in questione, considerata come applicazione sull'immagine.
+	\par Pi\`u precisamente, siano $f: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ un'applicazione proiettiva, $H$ un sottospazio proiettivo di $\mathbb{P}(V)$. Allora
+	\begin{itemize}
+		\item $f(H)$ \`e sottospazio proiettivo di $\mathbb{P}(W)$;
+		\item $\dim H = \dim f(H)$;
+		\item $f_{|H}: H \rightarrow f(H)$ \`e un isomorfismo proiettivo.
+	\end{itemize}
+\end{Theorem}
+\Proof Per definizione di applicazione proiettiva esiste un'applicazione lineare iniettiva $\phi: V \rightarrow W$ tale che $f = \bar{\phi}$. Per definizione di sottospazio proiettivo esiste $K \subseteq V$ sottospazio vettoriale tale che $\mathbb{P}(K) = H$.
+	\par Segue dalla teoria delle applicazioni lineare che $\phi_{|K}: K \rightarrow \phi(K)$ \`e un isomorfismo tra gli spazi vettoriali $K$ e $\phi(K)$. Se ne deduce un isomorfismo proiettivo $h$ tra $\mathbb{P}(K) = H$ e $\mathbb{P}(\phi(K))$.
+	\par Si verifica facilmente che $h = f_{|H}$. Se ne deduce che $f(H) = \Image f_{|H} = \mathbb{P}(\phi(K))$. \EndProof
+\begin{Definition}\label{def7}
+	Siano $A, B \subseteq \mathbb{P}(V)$. $A$ e $B$ sono \Define{proiettivamente equivalenti}[proiettivamente equivalenti][parti] quando esiste una proiettivit\`a $f$ di $\mathbb{P}(V)$ tale che $f(A) = B$.
+\end{Definition}
+\begin{Theorem}\label{th5}
+	Sia $(W_i)_{i \in I}$ una famiglia di sottospazi vettoriali di $V$. Allora $\bigcap_{i \in I} \mathbb{P}(W_i)$ \`e un sottospazio proiettivo di $\mathbb{P}(V)$ e $\bigcap_{i \in I} \mathbb{P}(W_i) = \mathbb{P}(\bigcap_{i \in I} W_i)$.
+\end{Theorem}
+\Proof $\bigcap_{i \in I} W_i$ \`e un sottospazio vettoriale di $V$, dunque $\mathbb{P}(\bigcap_{i \in I} W_i)$ \`e un sottospazio proiettivo di $\mathbb{P}(V)$.
+	\par $x \in \bigcap_{i \in I} \mathbb{P}(W_i)$ significa che esiste una famiglia di vettori $(w_i)_{i \in I}$ tale che $(\forall i \in I)(w_i \in W_i - \lbrace 0 \rbrace \land x = [w_i])$. Per il teorema \ref{th1}, ogni sottospazio vettoriale $W_i$ \`e saturo\footnote{Cfr. nota \ref{nota_saturo}.} per la relazione d'equivalenza $\sim$ e pertanto \`e possibile scegliere i $w_i$ tutti uguali ad uno stesso elemento $w \in \bigcap_{i \in I} W_i - \lbrace 0 \rbrace$: se ne deduce che $x \in \bigcap_{i \in I} \mathbb{P}(W_i)$ equivale a $x \in \mathbb{P}(\bigcap_{i \in I} W_i)$. \EndProof
+\begin{Definition}\label{def8}
+	Siano $S_1$ e $S_2$ sottospazi proiettivi di uno stesso spazio proiettivo $\mathbb{P}(V)$. $S_1$ e $S_2$ si dicono
+	\begin{itemize}
+		\item \Define{incidenti}[incidenti][sottospazi] quando $S_1 \cap S_2 \neq \varnothing$;
+		\item \Define{sghembi}[sghembi][sottospazi] altrimenti.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}\label{def9}
+	Sia $A \subseteq \mathbb{P}(V)$. Definiamo \Define{sottospazio proiettivo generato da $A$}[proiettivo generato][sottospazio] il sottospazio proiettivo $L(A) = \bigcap_{S \in I} S$, dove $I$ \`e l'insieme di tutti i sottospazi proiettivi $T$ di $\mathbb{P}(V)$ tali che $A \subseteq T$.
+	\par Dato $B \subseteq \mathbb{P}(V)$ denotiamo $L(A, B)$ il sottospazio $L(A \cup B)$ e, dati i punti, $P_1, ..., P_n \in \mathbb{P}(V)$ denotiamo $L(P_1, ..., P_n)$ il sottospazio $L(\bigcup_{i = 1, ..., n} \lbrace P_i \rbrace)$.
+\end{Definition}
+\begin{Theorem}\label{th6}
+	Sia $(W_i)_{i \in I}$ una famiglia di sottospazi vettoriali di $V$. Abbiamo $L(\bigcup_{i \in I}(\mathbb{P}(W_i)) = \mathbb{P}(\sum_{i \in I} W_i)$.
+\end{Theorem}
+\Proof $\sum_{i \in I} W_i$ \`e il pi\`u piccolo sottospazio vettoriale che contiene $\bigcup_{i \in I} W_i$, dunque $\mathbb{P}(\sum_{i \in I} W_i)$ \`e il pi\`u piccolo sottospazio proiettivo che contiene $\bigcup_{i \in I} \mathbb{P}(W_i)$ (corollario \ref{cor0.1}). \EndProof
+\begin{Theorem}\label{th7}
+	\TheoremName{Formula di Grassman}. Siano $S_1$ e $S_2$ sottospazi proiettivi. Vale la relazione $\dim S_1 + \dim S_2 = \dim L(S_1, S_2) + \dim (S_1 \cap S_2)$.
+\end{Theorem}
+\Proof Siano $W_1, W_2 \subseteq V$ sottospazi vettoriali tali che $\mathbb{P}(W_1) = S_1$ e $\mathbb{P}(W_2) = S_2$. Dalla formula di Grassman per gli spazi vettoriali sappiamo che $\dim W_1 + \dim W_2 = \dim (W_1 + W_2) + \dim (W_1 \cap W_2)$. Passando alle dimensioni degli spazi proiettivi associati a $W_1$, $W_2$, $W_1 + W_2$ e $W_1 \cap W_2$ e applicando il teorema \ref{th6} si deduce la relazione della tesi. \EndProof
+\begin{Definition}\label{def10}
+	Il gruppo delle proiettivit\`a di $\mathbb{P}(V)$\footnote{La verifica che le proiettivit\`a costituiscono un gruppo \`e immediata.} viene detto \Define{gruppo lineare proiettivo}[lineare proiettivo][gruppo] e denotato $\mathbb{P}GL(V)$.
+\end{Definition}
+\begin{Theorem}\label{th8}
+	Sia $\alpha: GL(V) \rightarrow \mathbb{P}GL(V)$ che a $\phi$ associa $\bar{\phi}$. $\alpha$ induce un isomorfismo (di gruppi) tra $GL(V)/\sim$ e $\mathbb{P}GL(V)$, dove $\sim$ \`e la relazione su $GL(V)$ definita da $(f \sim g) \Leftrightarrow ((\exists \lambda \in \mathbb{K}^*)(f = \lambda g))$.
+\end{Theorem}
+\Proof Siano $\phi, \psi \in GL(V)$ e $v \in V - \lbrace 0 \rbrace$. Abbiamo $(\alpha(\phi) \circ \alpha(\psi))(v) = \alpha(\phi)(\alpha(\psi)(v)) = \alpha(\phi)[\psi(v)]= [(\phi \circ \psi)(v)] = \alpha(\phi \circ \psi)(v)$. Dunque $\alpha$ \`e un omomorfismo.
+	\par Inoltre $\alpha$ \`e suriettiva per costruzione e per il teorema \ref{th2} la relazione d'equivalenza determinata da $\alpha$ coincide con $\sim$. Dunque $GL(V)/\sim \cong \mathbb{P}GL(V)$. \EndProof
+\begin{Corollary}\label{cor1}
+	$\mathbb{P}GL(V)$ \`e isomorfo a $\mathbb{P}GL(n + 1, \mathbb{K}) = GL(n+ 1, \mathbb{K})/\sim$, dove $GL(n + 1, \mathbb{K})$ \`e il gruppo delle matrici quadrate di ordine $n + 1$ a coefficienti in $\mathbb{K}$.
+\end{Corollary}
+\Proof $GL(V) \cong GL(n + 1, \mathbb{K})$, quindi $GL(V)/\sim \cong GL(n + 1, \mathbb{K})/\sim$ e di conseguenza $\mathbb{P}GL(V) \cong GL(n + 1, \mathbb{K})/\sim$. \EndProof
+\begin{Definition}\label{def11}
+	Sia $\phi: V \rightarrow W$ un'applicazione lineare non nulla. Chiamiamo \Define{applicazione proiettiva degenere}[proiettiva degenere][applicazione] indotta da $\phi$ l'applicazione $f: \mathbb{P}(V) - \mathbb{P}(\Kernel \phi) \rightarrow \mathbb{P}(W)$ ottenuta per passaggio ai quozienti dall'applicazione $\phi_{|V - \Kernel \phi}$.
+\end{Definition}
+\begin{Theorem}\label{th9}
+	Siano $\phi: V \rightarrow W$ e $\psi: V \rightarrow W$ due applicazioni lineari non nulle. Le applicazioni proiettive degeneri $f$ e $g$, indotte da $\phi$ e $\psi$ rispettivamente, sono uguali se e solo se esiste $\lambda \in \mathbb{K}^*$ tale che $\psi = \lambda \phi$.
+\end{Theorem}
+\Proof Supponiamo $f = g$. Consideriamo le applicazioni ottenute per passaggio al quoziente $\widetilde{\phi}: V/(\Kernel \phi) \rightarrow W$ e $\widetilde{\psi}: V/(\Kernel \psi) \rightarrow W$: queste sono lineari e iniettive.
+	\par Da $f = g$ segue che $\mathbb{P}(V) - \mathbb{P}(\Kernel \phi) = \mathbb{P}(V) - \mathbb{P}(\Kernel \psi)$, da cui $\mathbb{P}(\Kernel \phi) = \mathbb{P}(\Kernel \psi)$ e $\Kernel \phi = \Kernel \psi$ (corollario \ref{cor0.1}), cosicch\'e $V/(\Kernel \phi) = V/(\Kernel \psi)$. Denotiamo $\pi'$ la proiezione canonica di $V$ su $V/(\Kernel \phi)$.
+	\par Allora $f([v]) = [\phi(v)] = [(\widetilde{\phi} \circ \pi')(v)] = [\widetilde{\phi}(\pi'(v))]$ e $g([v]) = [\psi(v)] = [(\widetilde{\psi} \circ \pi') (v)] = [\widetilde{\psi}(\pi'(v))]$, per ogni $v \in V - \Kernel \phi$, da cui, poich\'e $f = g$, $[\widetilde{\phi}(\pi'(v))] = [\widetilde{\psi}(\pi'(v))]$, vale a dire le applicazioni proiettive indotte da $\widetilde{\phi}$ e $\widetilde{\psi}$ coincidono su tutto il dominio e dunque, per il teorema \ref{th2}, $\widetilde{\psi} = \lambda \widetilde{\phi}$ per $\lambda \in \mathbb{K}^*$ opportuno.
+	\par Se ne deduce $\psi = \widetilde{\psi} \circ \pi' = (\lambda \widetilde{\phi}) \circ \pi' = \lambda \phi$.
+	\par Viceversa, se $\psi = \lambda \phi$, allora per ogni $v \in V - \Kernel \phi = V - \Kernel \psi$, abbiamo $g([v]) = [\psi(v)] = [\lambda \phi(v)] = [\phi(v)] = f([v])$. \EndProof
+\begin{Theorem}\label{th10}
+	Siano $S = \mathbb{P}(U)$ e $H = \mathbb{P}(W)$ sottospazi proiettivi di $\mathbb{P}(V)$ tali che $S \cap H = \varnothing$ e $L(S, H) = \mathbb{P}(V)$. Sia $P \in \mathbb{P}(V) - H$. $L(H, P)$ interseca $S$ in uno e un solo punto.
+\end{Theorem}
+\Proof Sfruttiamo la formula di Grassman:
+\begin{align*}
+	\dim(L(H,P) \cap S) &= \dim L(H,P) + \dim S - \dim L(L(H,P),S),\\
+	&= \dim H + 1 + \dim S - \dim \mathbb{P}(V),\\
+	&= \dim L(S,H) + \dim(S \cap H) + 1 - \dim \mathbb{P}(V) = 0.
+\end{align*}
+	\par Dunque $L(H,P) \cap S$ \`e costituito da un solo punto. $\square$
+\begin{Definition}\label{def12}
+	Con le notazioni del teorema precedente, l'applicazione $\pi_H: \mathbb{P}(V) - H \rightarrow S$ che associa a $P$ l'unico punto nell'intersezione $L(H,P) \cap S$ si chiama \Define{proiezione} su $S$ di centro $H$.
+\end{Definition}
+\begin{Theorem}\label{th11}
+	L'applicazione $\pi_H$ della definizione precedente \`e un'applicazione proiettiva degenere.
+\end{Theorem}
+\Proof Usiamo le stesse notazioni della definizione e del teorema precedenti. Per il corollario \ref{cor0.1}, da $S \cap H = \varnothing$ deduciamo $U \cap W = \lbrace 0 \rbrace$ e, usando anche il teorema \ref{th5}, da $L(S, H) = \mathbb{P}(V)$ deduciamo $U + W = V$. Dunque $U \oplus W = V$. Sia $p: V \rightarrow V$ la proiezione su $U$ lungo $W$: abbiamo $\Kernel p = W$.
+	\par Sia $\bar{p}: \mathbb{P}(V) - H \rightarrow S$ l'applicazione proiettiva degenere associata a $p$. Proviamo che $\bar{p} = \pi_H$.
+	\par Sia $v \in V - W$. Abbiamo $[v] \in \mathbb{P}(V) - H$ e $\bar{p}([v]) = [p(v)] = [u]$, dove $v = u + w$ con $u \in U$ e $w \in W$. Abbiamo $[u] \in \mathbb{P}(U) = S$. Inoltre, $L(H, [v]) = \mathbb{P}(W + <v>)$ e, essendo $u = - w + v$, $[u] \in L(H, [v])$. Dunque $[u]$ \`e l'unico punto a cui \`e ridotto l'insieme $L(H, [v]) \cap S$ - i.e. $\pi_H([v]) = [u]$. \EndProof
+\begin{Definition}\label{def13}
+	Siano $S_1$ e $S_2$ sottospazi proiettivi di stessa dimensione $k$, $H$ un terzo sottospazio tale che $H \cap S_1 = H \cap S_2 = \varnothing$ e $\dim H = n - k - 1$. La restrizione $f$ a $S_1$ della proiezione su $S_2$ di centro $H$ si chiama \Define{prospettivit\`a} di centro $H$.
+\end{Definition}
+	\par Nella definizione precedente, la proiezione su $S_2$ di centro $H$ \`e definita in virt\`u del fatto che abbiamo $S_2 \cap H = \varnothing$ e $\dim L(S_2, H) = \dim S_2 + \dim H - \dim(S_2 \cap H) = k + n - k - 1 - (-1) = n$, cosicch\'e $L(S_2, H) = \mathbb{P}(V)$.
+\begin{Theorem}\label{th12}
+	Con le notazioni della definizione precedente, $f$ \`e un isomorfismo proiettivo, $f^{-1}$ \`e un'altra prospettivit\`a di centro $H$ e le applicazioni $f_{|S_1 \cap S_2}$ e $\Identity_{S_1 \cap S_2}$ hanno lo stesso grafo.
+\end{Theorem}
+\Proof Siano $\pi_H: \mathbb{P}(V) - H \rightarrow S_2$ la proiezione di centro $H$ su $S_2$ e $p: V \rightarrow V$ l'endomorfismo che induce $\pi_H$ costruito come nella dimostrazione precedente. $S_1 \cap H = \varnothing$ dunque $\pi_H$ \`e effettivamente restringibile a $S_1$ ottenendo $f$.
+	\par Siano $U, W, Z \subseteq V$ sottospazi vettoriali tali che $S_2 = \mathbb{P}(U)$, $H = \mathbb{P}(W)$ e $S_1 = \mathbb{P}(Z)$ e consideriamo la restrizione $g$ di $p$ a $Z$ come applicazione sulla sua immagine. Vogliamo provare che
+\begin{itemize}
+	\item $\Image g = p(Z) = U$;
+	\item $g$ \`e un isomorfismo;
+	\item $g$ induce $f$.
+\end{itemize}
+	\par Tutto questo segue subito osservando che $g$ \`e suriettiva per costruzione, iniettiva perch\'e $\Kernel g = Z \cap W = \lbrace 0 \rbrace$, e dunque $g$ \`e un isomorfismo. Cos\`i $\dim p(Z) = \dim Z = \dim U$ ed essendo $p(Z) \subseteq U$ deve essere $p(Z) = U$. Dunque $g$ induce un isomorfismo proiettivo tra $S_1$ e $S_2$ che non pu\`o che coincidere con $f$.
+	\par Per dimostrare che $f^{-1}$ \`e un'altra prospettivit\`a di centro $H$ \`e sufficiente provare che $f^{-1}$ \`e la restrizione a $S_2$ della proiezione su $S_1$ di centro $H$: ci\`o segue osservando che $f^{-1}$ \`e indotta da $g^{-1}$.
+	\par Il fatto che $f_{|S_1 \cap S_2} = \Identity_{S_1 \cap S_2}$ segue direttamente dalla definizione di $f$. \EndProof

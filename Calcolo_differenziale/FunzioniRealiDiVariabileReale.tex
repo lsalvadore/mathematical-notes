@@ -1,0 +1,67 @@
+\section{Funzioni reali variabili reale}
+\label{CalcoloDifferenziale_FunzioniRealiDiVariabiliReale}
+\begin{Definition}
+	Una funzione $f$ si dice
+	\begin{itemize}
+		\item \Define{reale}[reale][funzione] quando $\Cod{f} \subseteq \mathbb{R}$;
+		\item \Define{di variabile reale}[di variabile reale] quando $\Dom{f} \subseteq \mathbb{R}$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Data la funzione reale di variabile reale $f$, per ogni $n \in \mathbb{N}$, chiamiamo la sua derivata di ordine $n$, se esiste, \Define{derivata $n$-esima}[$n$-esima][derivata].
+\end{Definition}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $n, m \in \NotZero{\mathbb{N}}$;
+		\item $\Open \subseteq \mathbb{R}^n$ aperto;
+		\item $\Part \subseteq \mathbb{R}^m$.
+	\end{itemize}
+	Per ogni $k \in \mathbb{N}$, definiamo $\CClass{k}[\Open][\Part]$ come la classe di tutte le funzioni $f$ tali che
+	\begin{itemize}
+		\item $f: \Open \rightarrow \Part$;
+		\item $f$ \`e continua;
+		\item $f$ ammette tutte le derivate parziali di ordine minore o uguale a $k$ e esse sono tutte continue.
+	\end{itemize}
+	Poniamo inoltre $\CClass{\infty}[\Open][\Part] = \bigcap_{n \in \mathbb{N}} \CClass{k}[\Open][\Part]$. Ometteremo spesso l'indicazione esplicita del dominio $\Open$ e del codominio $\Part$ quando essi saranno chiari dal contesto.
+\end{Definition}
+\begin{Definition}
+	Sia $f$ funzione reale di variabile reale avente come dominio un intervallo e derivabile $N \in \mathbb{N}$ volte in un punto $x_0 \in \Dom{f}$, dove $\Dom{f}$ \`e un intervallo, definiamo
+	\begin{itemize}
+		\item \Define{polinomio di Taylor}[di Taylor][polinomio] di grado $N \in \mathbb{N}$ il polinomio $\sum_{n = 0}^N \frac{f^{(n)}(x)}{n!} (x - x_0)^n$, al variare di $x \in \Dom{f}$;
+		\item nel caso $f$ sia derivabile in $x_0$ infinite volte, \Define{serie di Taylor}[di Taylor][serie] la serie $\sum_{n = 0}^\infty \frac{f^{(n)}(x)}{n!} (x - x_0)^n$, al variare di $x \in \Dom{f}$;
+		\item nel caso $f$ sia derivabile in $x_0 = 0$ infinite volte, \Define{serie di Maclaurin}[di Maclaurin][serie] la serie $\sum_{n = 0}^\infty \frac{f^{(n)}(x)}{n!} (x - x_0)^n$, al variare di $x \in \Dom{f}$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Teorema di Taylor}[di Taylor][teorema]
+	Sia $f$ funzione reale di variabile reale avente come dominio un intervallo e derivabile $N \in \mathbb{N}$ volte in un punto $x_0 \in \Dom{f}$. Abbiamo, per $x \in \Dom{f}$,
+\[
+	f(x) = \sum_{n = 0}^N \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n + \Littleo{(x - x_0)^N}.
+\]
+\end{Theorem}
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\Littleo{(x - x_0)^k}$ si chiama \Define{resto di Peano}[di Peano][resto].
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Resto di Lagrange}[di Lagrange][resto] 
+	Sia $f$ funzione reale di variabile reale avente come dominio un intervallo e derivabile $N + 1$ ($N \in \mathbb{N}$) volte in un punto $x_0 \in \Dom{f}$. Abbiamo, per $x \in \Dom{f}$, $f(x) = \sum_{n = 0}^N \frac{f^{(n)}(x_0)}{n!} (x - x_0)^n + \frac{f^{N + 1}(\xi)}{(N + 1)!}(x - x_0)^{N + 1}$, per opportuno $\xi \in [x,x_0] \cup [x_0,x]$. 
+\end{Theorem}
+\begin{Theorem}
+	\TheoremName{Teorema di Taylor}[di Taylor][teorema]
+	Sia $f$ funzione reale di variabile pi\`u variabili reali avente come dominio un intervallo di $\mathbb{R}^m$ $(m \in \NotZero{\mathbb{N}})$ e differenziabile $N \in \mathbb{N}$ volte in un punto $x_0 \in \Dom{f}$. Abbiamo, per $x \in \Dom{f}$,
+\[
+	f(x) = \sum_{\NaturalDegree{\alpha} \leq N} \frac{\HigherPartialDerivative{\alpha}{f}(x_0)}{\alpha!} (x - x_0)^\alpha + \sum_{\NaturalDegree{\alpha} = N}\Littleo{(x - x_0)^\alpha}.
+\]
+\end{Theorem}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $\Open \subseteq \mathbb{R}$ aperto;
+    \item $f \in \CClass{\infty}[\Open][\mathbb{R}]$.
+  \end{itemize}
+  $f$ si dice
+  \Define{analitica}[analitica][funzione]
+  quando in ogni punto $x \in \Open$ lo sviluppo di Taylor di $f$ attorno ad
+  $x$ converge a $f(x)$.
+\end{Definition}

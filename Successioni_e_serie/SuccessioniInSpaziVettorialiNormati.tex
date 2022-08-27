@@ -1,0 +1,54 @@
+\section{Successioni in spazi vettoriali normati.}
+\label{TeoriaDelleSuccessioniEDelleSerie_SuccessioniInSpaziVettorialiNormati}
+\begin{Definition}
+	Sia $\NormedSpace$ un $\Field$-spazio vettoriale normato.
+	Sia $(a_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$. $(a_n)_{n \in \mathbb{N}}$ si dice
+	\begin{itemize}
+		\item \Define{divergente}[divergente][successione] se $\ForAll{M \in \mathbb{R}}{\Exists{N \in \mathbb{N}}{\Implies{n > N}{\Norm{a_n} > M}}}$, e in tal caso scriviamo anche $\lim_{n \rightarrow \infty} a_n = \infty$;
+		\item \Define{indeterminata}[indeterminata][successione] se non \`e n\'e convergente n\'e divergente.
+	\end{itemize}
+	Chiamiamo la propriet\`a di $(a_n)_{n \in \mathbb{N}}$ di convergere, divergere o non avere limite \Define{comportamento}[di una successione][comportamento] di $(a_n)_{n \in \mathbb{N}}$
+\end{Definition}
+\begin{Definition}
+	Sia $\NormedSpace$ un $\Field$-spazio vettoriale normato.
+	Sia $(a_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$ e sia la sottosuccessione $(a_{f(n)})_{n \in \mathbb{N}}$, con $f: \mathbb{N} \rightarrow \mathbb{N}$ crescente. Se $(a_n)_{n \in \mathbb{N}}$ diverge, allora diverge anche $(a_{f(n)})_{n \in \mathbb{N}}$.
+\end{Definition}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ uno spazio topologico;
+		\item $\NormedSpace$ un $\Field$-spazio vettoriale normato;
+		\item $\Part \subseteq \TopologicalSpace$;
+		\item $f: \Part \rightarrow \VarTopologicalSpace$;
+		\item $\AccumulationPoint$ punto di accumulazione per $\Part$.
+	\end{itemize}
+	Se $\ForAll{M > 0}{\Exists{\Neighborhood_\AccumulationPoint \in \Neighborhoods{\AccumulationPoint} \cap \Topology}{\Implies{x \in \Neighborhood_\AccumulationPoint \cap \Part}{\Norm{f(x)} > M}}}$, allora diciamo che $f(x)$ \Define{diverge}[di una funzione][divergenza], in simboli $f(x) \rightarrow \infty$, per $x$ che tende a $\AccumulationPoint$, in simboli $x \rightarrow \AccumulationPoint$; diciamo anche che $\infty$ \`e il \Define{limite}[infinito di una funzione][limite], denotato $\lim_{x \rightarrow \AccumulationPoint} f(x) = \infty$. In tal caso diciamo inoltre che la retta $x = \AccumulationPoint$ \`e \Define{asintoto verticale}[verticale][asintoto] del grafico della funzione $y = f(x)$ nel piano $\OxyPlane$.
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $(\TopologicalSpace,\Topology)$ spazio topologico che verifica il primo assioma di numerabilit\`a;
+		\item $\NormedSpace$ un $\Field$-spazio vettoriale normato;
+		\item una successione $(a_n)_{n \in \mathbb{N}} \in \TopologicalSpace^\mathbb{N}$ convergente a $\AccumulationPoint \in \TopologicalSpace$;
+		\item $f: \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace \rightarrow \NormedSpace$.
+	\end{itemize}
+	Se \`e vero l'assioma della scelta, $(f(a_n))_{n \in \mathbb{N}}$ diverge se e solo se $f(x)$ diverge per $x \rightarrow \AccumulationPoint$.
+\end{Theorem}
+\Proof Per prima cosa osserviamo che $\AccumulationPoint$ \`e di accumulazione per il dominio di $f$.
+\par Supponiamo $f(x) \rightarrow \infty$ per $x \rightarrow \AccumulationPoint$. Sia $M > 0$: per opportuno $\Neighborhood_\AccumulationPoint \in \Neighborhoods{\AccumulationPoint} \cap \Topology$, abbiamo, per ogni $x \in \Neighborhood_\AccumulationPoint \cap \bigcup_{n \in \mathbb{N}} \lbrace a_n \rbrace$, $\Norm{f(x)} > M$.  Ma $a_n \rightarrow \AccumulationPoint$ per $n \rightarrow \infty$ e quindi esiste $N \in \mathbb{N}$ tale che $\Implies{n > N}{a_n \in \Neighborhood_\AccumulationPoint}$, da cui $\Implies{n > N}{\Norm{f(a_n)} > M}$. Ne deduciamo $f(a_n) \rightarrow \infty$ per $n \rightarrow \infty$.
+\par Supponiamo ora $\lim_{n \rightarrow \infty} f(a_n) = \infty$. Supponiamo inoltre che $f(x)$ non diverga per $x \rightarrow \AccumulationPoint$. Allora esiste $M > 0$ tale che $\ForAll{\Neighborhood_\AccumulationPoint \in \Neighborhoods{\AccumulationPoint} \cap \Topology}{\Exists{x \in \Neighborhood_\AccumulationPoint \cap \bigcup_{m \in \mathbb{N}} \lbrace a_m \rbrace}{\Norm{f(x)} \leq M}}$. Sia $(\LocalBase_n)_{n \in \mathbb{N}}$ un sistema fondamentale di intorni aperti di $\AccumulationPoint$. Abbiamo $\ForAll{n \in \mathbb{N}}{\Exists{m \in \mathbb{N}}{\And{a_m \in \LocalBase_n}{\Norm{f(a)} \leq M}}}$. D'altra parte, lo stesso ragionamento pu\`o essere ripetuto per ogni sottosuccesione di $(a_n)_{n \in \mathbb{N}}$ del tipo $(a_{n + k})_{n \in \mathbb{N}}$ per qualsiasi $k \in \mathbb{N}$ e sempre con lo stesso $M > 0$ e quindi $\ForAll{n \in \mathbb{N}}{\ForAll{N \in \mathbb{N}}{\Exists{m \in \mathbb{N} \SetMin N}{\And{a_m \in \LocalBase_n}{\Norm{f(a_m)} \leq M}}}}$.
+\par Possiamo quindi definire la sottosuccessione $(a_{g(n)})_{n \in \mathbb{N}} \in \TopologicalSpace^{\mathbb{N}}$, con $g: \mathbb{N} \rightarrow \mathbb{N}$ applicazione strettamente crescente, tale che $\ForAll{n \in \mathbb{N}}{\Norm{f(a_{g(n)})} \leq M}$. Allora
+\begin{itemize}
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ diverge in quanto sottosuccessione di $(f(a_n))_{n \in \mathbb{N}}$;
+	\item $(f(a_{g(n)}))_{n \in \mathbb{N}}$ non diverge perch\'e $\ForAll{n \in \mathbb{N}}{\Norm{f(a_{g(n)})} \leq M}$.
+\end{itemize}
+Ma questo \`e assurdo, dunque $f(x)$ deve divergere per $x \rightarrow \AccumulationPoint$. \EndProof
+\begin{Definition}
+	Sia $\NormedSpace$ un $\Field$-spazio vettoriale normato.
+	Chiamiamo \Define{successione aritmetica}[arimetica][successione] o anche \Define{progressione aritmetica}[aritmetica][progessione] una successione $(a_n)_{n \in \mathbb{N}} \in \NormedSpace^\mathbb{N}$ tale che per opportuna costante $K \in \NormedSpace$, $\ForAll{n \in \mathbb{N}}{a_{n + 1} - a_n = K}$. La costante $K$ si chiama \Define{ragione}[di una progressione aritemetica][ragione] della progressione aritmetica.
+\end{Definition}
+\begin{Theorem}
+	Tutte le progressioni aritmetiche divergono.
+\end{Theorem}
+\Proof Per definizione, le progressioni aritmetiche non sono di Cauchy. \EndProof

@@ -1,0 +1,31 @@
+\subsection{\English{Array} circolare.}
+\label{AlgoritmiEStruttureDiDati_ArrayCircolare}
+\begin{Definition}
+  Un
+  \Define{\English{array} circolare}[circolare][\English{array}]
+  \`e una struttura di dati caratterizzata da
+  \begin{itemize}
+    \item una dimensione $n \in \mathbb{N}$;
+    \item $n$ dati $(e_i)_{i \in n}$;
+    \item un sistema di indicizzazione su $\mathbb{Z}$ (nella pratica, su un suo
+      sottoinsieme sufficientemente grande) tale che l'elemento indicizzato da
+      $i \in \mathbb{Z}$ \`e l'elemento $e_I$ dove $I \in \mathbb{Z}$ \`e il
+      pi\`u piccolo rappresentante non negativo della classe di resto di $i$
+      modulo $n$.
+  \end{itemize}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/ArrayCircolare.h"}
+	\caption{Implementazione di un \English{array} circolare in
+    \LanguageName{C++}: dichiarazione della classe.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/ArrayCircolare.cpp"}
+	\caption{Implementazione di un \English{array} circolare in
+    \LanguageName{C++}: costruttore e distruttore.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/ArrayCircolare_Indexing.cpp"}
+	\caption{Implementazione di un \English{array} circolare in
+    \LanguageName{C++}: definizione dell'operazione di indicizzazione.}
+\end{listing}

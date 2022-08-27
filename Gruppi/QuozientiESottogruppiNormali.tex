@@ -1,0 +1,105 @@
+\section{Sottogruppi normali e classi laterali.}\label{SottogruppiNormaliEQuozienti}
+\begin{Definition}
+	Sia $\Group$ un gruppo e $\NormalSubgroup \IsSubgroup \Group$. Se, per ogni automorfismo interno $\InnerAutomorphism$, abbiamo $\InnerAutomorphism(\NormalSubgroup) \subseteq \NormalSubgroup$, allora si dice che $\NormalSubgroup$ \`e un sottogruppo \Define{normale}[normale][sottogruppo] di $\Group$ e il fatto viene denotato con $\NormalSubgroup \IsNormalSubgroup \Group$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Group$ un gruppo, $\InnerAutomorphism$ un automorfismo interno di $\Group$ e $\NormalSubgroup \IsNormalSubgroup \Group$. Abbiamo $\InnerAutomorphism(\NormalSubgroup) = \NormalSubgroup$.
+\end{Theorem}
+\Proof Basta provare che $\NormalSubgroup \subseteq \InnerAutomorphism(\NormalSubgroup)$. Supponiamo $x \in \NormalSubgroup$ e che $\InnerAutomorphism: x \mapsto gxg^{-1}$, con $g \in \Group$. Sia $y$ tale che $\InnerAutomorphism(y) = x$, che esiste in virt\`u del fatto che $\InnerAutomorphism$ \`e un automorfismo. Abbiamo $gyg^{-1} = x$, da cui $y = g^{-1}xg = (gg^{-1})g^{-1}xg(gg^{-1})$ e quindi $y = \InnerAutomorphism(g^{-1}g^{-1}xgg)$. Ma $x \in \NormalSubgroup$ per ipotesi quindi appartengono anche a $\NormalSubgroup$ gli elementi $g^{-1}xg$ e $g^{-1}g^{-1}xgg$ e quindi $y \in \InnerAutomorphism(\NormalSubgroup)$. \EndProof
+\begin{Theorem}
+	Siano $\Group_1, \Group_2$ gruppi e $\Homomorphism: \Group_1 \rightarrow \Group_2$ un omomofismo. Allora $\Kernel{\Homomorphism} \IsNormalSubgroup \Group_1$.
+\end{Theorem}
+\Proof Siano $x \in \Kernel{\Homomorphism}$ e $g \in \Group_1$. Abbiamo $\Homomorphism(gxg^{-1}) = \Homomorphism(g)\Homomorphism(x)\Homomorphism(g)^{-1} = 1$. \EndProof
+\begin{Theorem}
+	Sia $\Group$ un gruppo. Una relazione d'equivalenza $\Equivalence$ sul sostegno di $\Group$ \`e compatibile con la struttura di $\Group$ se e solo se
+	\begin{itemize}
+		\item $\EquivalenceClass{1} \IsNormalSubgroup \Group$;
+		\item \`e equivalente alla relazione $xy^{-1} \in \EquivalenceClass{1}$ nelle variabili $x$ e $y$.
+	\end{itemize}
+\end{Theorem}
+\Proof Supponiamo $\Equivalence$ sia compatibile con la struttura di $\Group$. Allora esiste il gruppo quoziente $\Quotient{\Group}{\Equivalence}$ e la proiezione sul quoziente \`e un omomorfismo, il cui nucleo \`e proprio $\EquivalenceClass{1}$ che \`e dunque un sottogruppo normale di $\Group$.
+\par Siano ora $x, y \in \Group$. $x \Equivalence y$ equivale a $xy^{-1} \Equivalence 1$ e dunque a $xy^{-1} \in \EquivalenceClass{1}$.
+\par Supponiamo ora invece che $\EquivalenceClass{1} \IsNormalSubgroup \Group$ e che la relazione di equivalenza $\Equivalence$ sia equivalente alla relazione $xy^{-1} \in \EquivalenceClass{1}$ nelle variabili $x$ e $y$. Siano $x, \xi, y, \eta \in \Group$ tali che $x \Equivalence \xi$ e $y \Equivalence \eta$. Abbiamo $x \xi^{-1} \in \EquivalenceClass{1}$ e $y \eta^{-1} \in \EquivalenceClass{1}$, da cui $xy(\xi\eta)^{-1} = xy\eta^{-1}\xi^{-1} = x (\xi^{-1}\xi) y\eta^{-1}\xi^{-1} = (x\xi^{-1}) (\xi y\eta^{-1}\xi^{-1}) \in \EquivalenceClass{1}$ e quindi $xy \Equivalence \xi\eta$. \EndProof
+\par Il teorema precedente stabilisce che, dato un gruppo $\Group$, \`e equivalente fornire una relazione di equivalenza compatibile con la struttura di $\Group$ o il sottogruppo normale di $\Group$ che costituisce la classe di equivalenza di $1$: questo giustifica la definizione seguente.
+\begin{Definition}
+	Siano $\Group$ un gruppo e $\NormalSubgroup \IsNormalSubgroup \Group$. Si definisce \Define{gruppo quoziente di $\Group$ rispetto a $\NormalSubgroup$}[rispetto a un sottogruppo normale][sottogruppo], denotato $\Quotient{\Group}{\NormalSubgroup}$, il gruppo quoziente definito dalla relazione d'equivalenza $xy^{-1} \in \NormalSubgroup$ nelle variabili $x$ e $y$.
+	Nel caso invece $\NormalSubgroup \IsSubgroup \Group$, ma non sia verificata la relazione $\NormalSubgroup \IsNormalSubgroup$, utilizziamo la stessa notazione per denotare lo stesso quoziente, che ha per\`o stavolta una struttura solo di classe quoziente, non di gruppo.
+\end{Definition}
+\begin{Definition}
+	Siano $\Group$ un gruppo, $\Subgroup \IsSubgroup \Group$ e $x \in \Group$. L'immagine di $\Subgroup$ per l'azione di traslazione a sinistra di $\Group$ su se stesso, denotata $\Coset{x}{\Subgroup}$ si chiama \Define{classe laterale sinistra}[laterale][classe].
+\end{Definition}
+\begin{Theorem}
+	Siano $\Group$ un gruppo, $\NormalSubgroup \IsNormalSubgroup \Group$ e $x \in \Group$. Allora $\Coset{x}{\NormalSubgroup} = \RightCoset{\NormalSubgroup}{x} = \EquivalenceClass{x} \in \Quotient{\Group}{\NormalSubgroup}$. D'altra parte, per ogni sottogruppo $\Subgroup \IsSubgroup \Group$, abbiamo $\Coimplies{\Subgroup \IsNormalSubgroup \Group}{\ForAll{x \in \Group}{\Coset{x}{\Subgroup} = \RightCoset{\Subgroup}{x}}}$.
+\end{Theorem}
+\Proof Per la prima parte del teorema, osserviamo che $y \in \Coset{x}{\NormalSubgroup}$ equivale all'affermare che vale l'equazione $y = xh$ per opportuno $h \in \NormalSubgroup$, e quindi a $xy^{-1} = h^{-1}$ e a $y \in \EquivalenceClass{x}$; un ragionamento analogo prova $\RightCoset{\NormalSubgroup}{x} = \EquivalenceClass{x}$.
+\par Per la seconda parte, osserviamo che affermare che per ogni $x$ vale $\Coset{x}{\Subgroup} = \RightCoset{\Subgroup}{x}$ equivale ad affermare che per ogni $g \in \Subgroup$ esiste un $h \in \Subgroup$ tale che $xg = hx$; ci\`o \`e a sua volta equivalente a $xgx^{-1} = h$. Dunque, indicando per ogni $x \in \Group$ con $\InnerAutomorphism[x]$ l'automorfismo interno associato ad $x$, abbiamo $\ForAll{x \in \Group}{\Coimplies{x\Subgroup = \Subgroup x}{\InnerAutomorphism[x](\Subgroup) \subseteq \Subgroup}}$. \EndProof
+\begin{Definition}
+	Siano $\Group$ un gruppo e $\Subgroup \IsSubgroup \Group$. L'\Define{indice}[di un sottogruppo][indice] di $\Subgroup$ in $\Group$, denotato $\GroupIndex{\Group}{\Subgroup}$, \`e il numero di classi laterali di $\Subgroup \in \Group$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Group$ un gruppo e $\Subgroup \IsSubgroup \Group$. Tutte le classi laterali di $\Subgroup$ sono equicardinali.
+\end{Theorem}
+\Proof Sia $x \Group$ e siano $g, h \in \Subgroup$. Per l'invertibilit\`a di $x$, abbiamo $xg = xh$ se e solo $g = h$. Ne consegue che $\Cardinality{\Subgroup} = \Cardinality{x\Subgroup}$. Analogamente si prova che $\Cardinality{\Subgroup} = \Cardinality{\Subgroup x}$. \EndProof
+\begin{Corollary}
+	\TheoremName{Teorema di Lagrange\footnote{Molti testi preferiscono indicare col nome di ``teorema di Lagrange'' l'enunciato che afferma che l'ordine di un sottogruppo divide l'ordine del gruppo intero: la nostra formulazione ha il vantaggio di comprendere il caso di gruppi di ordine infinito.}}[di Lagrange][teorema] Siano $\Group$ e $\Subgroup \IsSubgroup \Group$. Abbiamo $\GroupOrder{\Group} = \GroupIndex{\Group}{\Subgroup}\GroupOrder{\Subgroup}$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente e dal principio dei pastori. \EndProof
+\begin{Theorem}
+	Sia $\Operators$ un gruppo che agisce su una classe $\Class$. Per ogni $x \in \Class$, l'applicazione $f: \Quotient{\Operators}{\Stabilizer{x}} \rightarrow \Orbit{x}$ che alla classe laterale $\Coset{\Operator}{\Stabilizer{x}}$, con $\Operator \in \Operators$, associa $\Operator x$ \`e biunivoca.
+\end{Theorem}
+\Proof Siano $\Operator_1, \Operator_2 \in \Operators$ tali che $\Coset{\Operator_1}{\Stabilizer{x}} = \Coset{\Operator_2}{\Stabilizer{x}}$. Per opportuno $\Operator \in \Stabilizer{x}$ abbiamo $\Operator_1 = \Operator_2\Operator$, da cui $\Operator_1 x = \Operator_2\Operator x = \Operator_2 x$.
+\par Siano ora $\Operator_1, \Operator_2 \in \Operators$ tali che $\Operator_1 x = \Operator_2 x$. Allora $\Operator_2^{-1}\Operator_1 \in \Stabilizer{x}$, cio\`e $\Coset{\Operator_1}{\Stabilizer{x}} = \Coset{\Operator_2}{\Stabilizer{x}}$.
+\par Infine, sia $y \in \Orbit{x}$. Sia $\Operator \in \Operators$ tale che $\Operator x = y$. Chiaramente $y$ \`e l'immagine di $\Coset{\Operator}{\Stabilizer{x}}$.\EndProof
+\begin{Definition}
+	Sia $\Group$ un gruppo e sia
+	$\Class \subseteq \Group$. Definiamo
+	\Define{normalizzatore} di $\Class$,
+	denotato $\Normalizer{\Class}$, la classe
+	$\lbrace x \in \Group | x\Class = \Class x \rbrace$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Group$ un gruppo e $\Class \subseteq \Group$.
+	$\Normalizer{\Class}$ \`e un sottogruppo di $\Group$.
+\end{Theorem}
+\Proof
+Siano $x, y \in \Normalizer{\Class}$ e sia
+$a \in \Class$.
+Per opportuni $b, c \in \Class$, abbiamo
+$xy^{-1}a =
+xy^{-1}ayy^{-1} =
+xy^{-1}yby^{-1} =
+xby^{-1} =
+cxy^{-1}$.
+Dunque $xy^{-1}\Class \subseteq \Class xy^{-1}\Class$.
+Analogamente si dimostra il contenimento inverso e quindi
+$\Normalizer{\Class} \IsSubgroup \Group$.
+\EndProof
+\begin{Theorem}
+	Siano $\Group$ un gruppo e
+	$\Subgroup \IsSubgroup \Group$.
+	Abbiamo
+	\begin{itemize}
+		\item
+		$\Subgroup \IsNormalSubgroup
+		\Normalizer{\Subgroup}$;
+		\item
+		se $\Subgroup' \IsSubgroup \Group$
+		tale che $\Subgroup \IsNormalSubgroup \Subgroup'$,
+		allora $\Subgroup' \IsSubgroup \NormalSubgroup$.
+	\end{itemize}
+\end{Theorem}
+\Proof
+Siano $x \in \Subgroup$ e
+$g \in \Normalizer{\Subgroup}$.
+Per opportuno $y \in \Subgroup$, abbiamo
+$gxg^{-1} =
+ygg^{-1} = y \in \Subgroup$.
+Dunque $\Subgroup \IsNormalSubgroup \Normalizer{\Subgroup}$.
+\par
+Sia $\Subgroup' \IsSubgroup \Group$ tale che
+$\Subgroup \IsNormalSubgroup \Group$.
+Sia $g \in \Subgroup'$. Per ogni $x \in \Subgroup$, esiste
+$y \in \Subgroup$ tale che $gxg^{-1} = y$, che equivale a
+$gx = yx$. Dunque $g \in \Normalizer{\Subgroup}$ e questo
+conclude la dimostrazione.
+\EndProof

@@ -1,0 +1,71 @@
+\subsection{Criteri di riducibilit\`a e d'irriducibilit\`a.}\label{CriteriDIrriducibilita}
+\begin{Theorem}
+	\TheoremName{Ruffini}[di Ruffini][teorema] Sia $\Ring$ un anello commutativo e sia $p \in \PolynomialsRing$. $a \in \Ring$ \`e radice di $p$ se e solo se il polinomio $x - a$ divide $p$.
+\end{Theorem}
+\Proof Supponiamo $a$ radice di $p$ e effettuiamo la divisione euclidea di $p$ per $x - a$ ottenendo un quoziente $q$ e un resto $r$ che \`e necessariamente un elemento di $\Ring$. Abbiamo $p = q(x - a) + r$, da cui $p(a) = r$, quindi $r = 0$ e $x - a$ divide $p$.
+\par Se $x - a$ divide $p$, per opportuno $q \in \PolynomialsRing$ abbiamo $p = q(x - a)$, da cui $p(a) = 0$. \EndProof
+\begin{Theorem}
+	Se $\UFD$ \`e un dominio a fattorizzazione unica lo \`e anche ogni suo quoziente.
+\end{Theorem}
+\Proof Immediata considerando l'omomorfismo di proiezione di $\UFD$ sul quoziente \EndProof
+\begin{Definition}
+	Sia dato un anello di polinomi $\PolynomialsRing$ e un polinomio $p \in \PolynomialsRing$. Definiamo
+	\begin{itemize}
+		\item \Define{contenuto} di $p$, denotato $\Content{p}$ il massimo comun divisore dei coefficienti di $p$;
+		\item \Define{primitivo}[primitivo][polinomio] $p$ quando $\Content{p} = 1$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $\Ring$ un anello commutativo e sia $p \in \PolynomialsRing$ primitivo. Siano inoltre $\MaximalIdeal$ un ideale massimale di $\Ring$ tale che $\LC{p} \notin \MaximalIdeal$ e $q \in \RingAdjunction{\Quotient{\Ring}{\MaximalIdeal}}{x}$ ottenuto da $p$ proiettandone i coefficienti in $\Quotient{\Ring}{\MaximalIdeal}$. Se $q$ \`e irriducibile allora \`e irriducibile anche $p$.
+\end{Theorem}
+\Proof L'irriducibilit\`a di $q$ implica $q \neq 0$. Dimostriamo che se $p$ \`e riducibile, allora lo \`e anche $q$.
+\par Supponiamo $p = ab$, con $a,b \in \PolynomialsRing$ non invertibili e necessariamente di grado almeno $1$ per l'ipotesi di primitivit\`a. Proiettando i coefficienti di $a$ e di $b$ otteniamo $c,d \in \RingAdjunction{\Quotient{\Ring}{\PrimeIdeal}}{x}$ tali che $q = cd$. Poich\'e $q \neq 0$, non sono $0$ neanche $c$ e $d$.
+\par Resta da vedere che $c$ e $d$ non sono invertibili. Poich\'e $\MaximalIdeal$ \`e massimale, $\Quotient{\Ring}{\MaximalIdeal}$ \`e un campo e $\RingAdjunction{\Quotient{\Ring}{\MaximalIdeal}}{x}$ \`e un dominio euclideo. Quindi gli unici polinomi invertibili in $\RingAdjunction{\Quotient{\Ring}{\MaximalIdeal}}{x}$ sono i polinomi di grado $0$.
+\par Ora, necessariamente $\LC{p} = \LC{a} \LC{b}$ e poich\'e $\LC{p} \notin \MaximalIdeal$, anche $\LC{a}, \LC{b} \notin \MaximalIdeal$ e dunque anch\'e $c$ e $d$ hanno grado almeno $1$: abbiamo dunque ridotto il polinomio $q$. \EndProof
+\begin{Theorem}
+	\TheoremName{Lemma di Gauss sulla primitivit\`a}[di Gauss sulla primitivit\`a][lemma] Sia $\UFD$ un dominio a fattorizzazione unica. Il prodotto di due polinomi primitivi di $\UFDPolynomialsRing$ \`e primitivo.
+\end{Theorem}
+\Proof Siano $p, q \in \UFDPolynomialsRing$ primitivi. Supponiamo $\Content{pq} \neq 1$. Per la definizione di dominio a fattorizzazione unica, esiste un primo $P$ che divide $\Content{pq}$. D'altra parte, $P$ non pu\`o dividere tutti i coefficienti di $p$ n\'e tutti i coefficienti di $q$. Indicate con $(a_i)_{i \in \mathbb{N}}$ e $(b_i)_{i \in \mathbb{N}}$ le famiglie dei coefficienti di $p$ e $q$ rispettivamente, poniamo $I = \min \lbrace i \in \mathbb{N} | P \NotDivide a_i \rbrace$ e $J = \min i \in \mathbb{N} | P \NotDivide b_i \rbrace$. Consideriamo il coefficiente di $x^{I + J}$ in $pq$: esso \`e $\sum_{i + j = I + J} a_ib_j$. Per la minimalit\`a di $I$ e $J$, l'unico termine della somma precedente non divisibile per $P$ \`e $a_Ib_J$, ma allora, essendo $P$ primo e poich\'e le condizioni $P \NotDivide a_I$ e $P \NotDivide b_J$ escludono $a_Ib_J = 0$, $P$ non pu\`o dividere il coefficiente di $x^{I + J}$, in contraddizione con l'ipotesi $\Content{pq} \neq 1$. \EndProof
+\begin{Theorem}
+	\TheoremName{Lemma di Gauss sull'irriducibilit\`a}[di Gauss sull'irriducibilit\`a][lemma] Siano $\UFD$ un dominio a fattorizzazione unica e $\Field$ il suo campo dei quozienti. Un polinomio $p \in \UFDPolynomialsRing$ non costante \`e irriducibile se e solo se lo \`e in $\FieldPolynomialsRing$.
+\end{Theorem}
+\Proof Poich\'e $\UFD$ si identifica canonicamente con un sottoanello di $\Field$, \`e chiaro che che se $p$ \`e riducibile in $\UFDPolynomialsRing$ lo \`e anche in $\FieldPolynomialsRing$, a meno di essere invertibile in $\FieldPolynomialsRing$, cio\`e costante, ci\`o che \`e escluso dalle ipotesi. Proviamo che se $p$ \`e riducibile in $\FieldPolynomialsRing$ lo \`e anche in $\UFDPolynomialsRing$.
+\par Se $p$ non \`e primitivo, allora si pu\`o scrivere nella forma $c p_0$, dove $p_0$ \`e primitivo e $c$ \`e un opportuno rappresentante di $\Content{p}$, che non \`e un'unit\`a: la fattorizzazione in irriducibili di $c$ contiene dunque un elemento irriducibile il quale \`e necessariamente irriducibile anche in $\UFDPolynomialsRing$. Quindi, supposto $p$ non primitivo, esso \`e necessariamente riducibile in $\UFDPolynomialsRing$ e dobbiamo dunque considerare solo il caso in cui $p$ \`e primitivo.
+\par Supponiamo $p$ primitivo e riducibile: $p = ab$, dove $a,b \in \FieldPolynomialsRing$. Per opportuni elementi $d_a, d_b \in \Field$\footnote{Per esempio l'inverso del prodotto di tutti i denominatori di $a$ e $b$ rispettivamente.}, abbiamo $a = d_a a_0$ e $b = d_b b_0$, con $a_0, b_0 \in \UFDPolynomialsRing$, e scegliendo poi due rappresentanti $c_a, c_b \in \UFD$ di $\Content{a}$ e $\Content{b}$ rispettivamente abbiamo ancora $a = d_a c_a a_1$, $b = d_b c_b a_2$, con $a_1, b_1 \in \UFDPolynomialsRing$ primitivi. Abbiamo quindi $p = d_a c_a d_b c_b a_1 b_1$, dove $d_a c_a d_b c_b$ deve necessariamente appartenere a $\UFD$ (perch\'e appartengono a $\UFD$ sia i coefficienti di $p$ che di $a_1b_1$). Poich\'e $a_1$ e $b_1$ hanno lo stesso grado di $a$ e $b$ essi non sono invertibili come non lo erano $a$ e $b$ e abbiamo dunque esibito una riduzione di $p$ in $\UFDPolynomialsRing$. \EndProof
+\begin{Theorem}
+	Un anello $\UFD$ \`e un dominio a fattorizzazione unica se e solo se lo \`e il corripondente anello di polinomi $\UFDPolynomialsRing$.
+\end{Theorem}
+\Proof Poich\'e $\UFD$ si identifica canonicamente ad un sottoanello di $\UFDPolynomialsRing$, \`e chiaro che se $\UFD$ non \`e un dominio a fattorizzazione unica non lo \`e neanche $\UFDPolynomialsRing$.
+\par Supponiamo $\UFD$ dominio a fattorizzazione unica e sia $p \in \UFDPolynomialsRing$. Denotato con $\Field$ il campo dei quozienti di $\UFD$, abbiamo gi\`a dimostrato che $\FieldPolynomialsRing$ \`e un dominio euclideo e dunque un dominio a fattorizzazione unica. Ora, dalla fattorizzazione unica di $p$ in $\FieldPolynomialsRing$ possiamo ricavare una fattorizzazione in irriducibili in $\UFDPolynomialsRing$ moltiplicando per un opportuno elemento $c \in \UFD$ come gi\`a indicato nella dimostrazione del lemma di Gauss sull'irriducibilit\`a: tutti i polinomi irriducibili di questa fattorizzazione sono irriducibili anche in $\UFDPolynomialsRing$ per il lemma di Gauss, all'eccezione forse di $c$, che \`e un'unit\`a in $\FieldPolynomialsRing$, ma ammette una fattorizzazione in irriducibili in $\UFDPolynomialsRing$ in quanto $c$ appartiene a $\UFD$ che \`e un dominio a fattorizzazione unica. Abbiamo dunque costruito una fattorizzazione in irriducibili di $p$, la quale non pu\`o che essere unica, poich\'e se esistessero due fattorizzazioni in $\UFDPolynomialsRing$ ne esisterebbero due anche nel dominio a fattorizzazione unica $\FieldPolynomialsRing$. \EndProof
+\begin{Theorem}
+	Dato un dominio a fattorizzazione unica $\UFD$ la fattorizzazione di ogni monomio di $\UFDPolynomialsRing$ \`e costituita da soli monomi.
+\end{Theorem}
+\Proof Immediata per induzione sul grado dei monomi. \EndProof
+\begin{Theorem}
+	\TheoremName{Criterio di Eisenstein (generalizzato)}[di Eisenstein (generalizzato)][criterio] Sia $\IntegralDomain$ un dominio d'integrit\`a. Sia $\Polynomial = \sum_{i \in \mathbb{N}} a_ix^i \in \RingAdjunction{\IntegralDomain}{x}$ primitivo. Se esiste un ideale primo $\PrimeIdeal \subseteq \IntegralDomain$ tale che
+	\begin{itemize}
+		\item $\LC{\Polynomial} \notin \PrimeIdeal$;
+		\item per ogni $i \in \mathbb{N}$ se $a_i \neq 0$ e $a_i \neq \LC{\Polynomial}$, allora $a_i \in \PrimeIdeal$;
+		\item $a_0 \notin \PrimeIdeal^2$;
+	\end{itemize}
+	allora $\Polynomial$ non \`e il prodotto di due polinomi entrambi non costanti in $\RingAdjunction{\IntegralDomain}{x}$.
+\end{Theorem}
+\Proof Supponiamo $\Polynomial = qr$ per opportuni $q = \sum_{i \in \mathbb{N}} b_ix^i$ e $r = \sum_{i \in \mathbb{N}} c_ix^i$ non costanti. Consideriamo l'omomorfismo di proiezione $\Projection: \IntegralDomain \rightarrow \Quotient{\IntegralDomain}{\PrimeIdeal}$. Definiamo
+\begin{itemize}
+	\item $\bar{\Polynomial} = \sum_{i \in \mathbb{N}} \Projection{a_i}x^i = \Projection{a_N} x^N$, dove $N = \Deg{\Polynomial}$;
+	\item $\bar{q} = \sum_{i \in \mathbb{N}} \Projection{b_i}x^i$;
+	\item $\bar{r} = \sum_{i \in \mathbb{N}} \Projection{c_i}x^i$.
+\end{itemize}
+\par Ora, come conseguenza del fatto che $\Projection$ \`e un omomorfismo, deve essere $\bar{\Polynomial} = \bar{q}\bar{r}$ e poich\`e $\RingAdjunction{\Quotient{\IntegralDomain}{\PrimeIdeal}}{x}$ \`e un dominio d'integrit\`a $\bar{q}$ e $\bar{r}$ devono essere costituiti da un solo termine ciascuno corrispondente al termine di testa di $q$ ed $r$ rispettivamente, diciamo $\bar{q} = \Projection{b_M}x^M$ e $\bar{q} = \Projection{c_L}x^L$ per $M, L \in \mathbb{N}$.
+\par Per ipotesi deve essere $M \neq 0$ e $L \neq 0$. Ma allora entrambi i termini noti di $q$ ed $r$ appartengono a $\PrimeIdeal$ e dunque $a_0 \in \PrimeIdeal^2$, contro le ipotesi.
+\par Dunque $\Polynomial$ non \`e prodotto di due polinomi entrambi non costanti. \EndProof
+\begin{Corollary}
+	\TheoremName{Criterio di Eisenstein}[di Eisenstein][criterio] Sia $\UFD$ un dominio a fattorizzazione unica. Sia $\Polynomial = \sum_{i \in \mathbb{N}} a_ix^i \in \UFDPolynomialsRing$ primitivo. Se esiste un elemento primo $\Prime \in \UFD$ tale che
+	\begin{itemize}
+		\item $\Prime\NotDivide\LC{\Polynomial}$;
+		\item $\Prime$ divide tutti i coefficienti non nulli di $\Polynomial - \LT{\Polynomial}$;
+		\item $\Prime^2\NotDivide a_0$;
+	\end{itemize}
+	allora $\Polynomial$ \`e irriducibile.
+\end{Corollary}
+\Proof Segue dal teorema precedente applicato a $\Polynomial$ visto come elemento di $\FieldPolynomialsRing$ e dal lemma di Gauss. \EndProof

@@ -1,0 +1,2 @@
+load Rettangolare_2;
+EliminazioneGaussiana(Rettangolare_2)

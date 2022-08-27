@@ -1,0 +1,157 @@
+\section{Gruppi ciclici.}\label{GruppiCiclici}
+\begin{Definition}
+	Un gruppo generato da un solo elemento si dice
+	\Define{ciclico}[ciclico][gruppo].
+\end{Definition}
+\begin{Theorem}
+	Sia $\Group$ un gruppo finito tale che
+	$\GroupOrder{\Group}$ sia primo.
+	$\Group$ \`e ciclico.
+\end{Theorem}
+\Proof
+Sia $\Subgroup \IsSubgroup \Group$.
+Per il teorema di Lagrange, $\GroupOrder{\Subgroup}$
+non pu\`o essere che $1$ o $\GroupOrder{\Group}$.
+\EndProof
+\begin{Theorem}
+	Sia $\Group$ un gruppo ciclico e
+	sia $\Subgroup \IsSubgroup \Group$.
+	$\Subgroup$ \`e ciclico.
+\end{Theorem}
+\Proof
+Sia $\Generator \in \Group$ tale che
+$\Group = \SpanGroup{\Generator}$.
+Sia $n = \min \lbrace k \in \NotZero{\mathbb{N}} |
+\Generator^k \in \Subgroup \rbrace$.
+/par
+Sia ora $x \in \Subgroup$.
+Per opportuno $m \in \mathbb{N}$ abbiamo
+$x = \Generator^m$.
+Effettuiamo la divisione euclidea di $m$ per $n$:
+abbiamo
+$m = qn + r$ per $q, r \in \mathbb{Z}$ con
+$0 \leq r < n$.
+Poich\'e $\Generator^r = \Generator^{m - qn} =
+\Generator^m \left ( \Generator^n \right )^{- q}$,
+per la minimalit\`a di $n$ deve essere $r = 0$.
+\par
+Ne deduciamo che $\Generator^n$ genera $\Subgroup$.
+\EndProof
+\begin{Theorem}
+	Il gruppo additivo $\mathbb{Z}$ \`e ciclico
+	e generato da $1$.
+\end{Theorem}
+\Proof
+Sia $n \in \mathbb{Z}$.
+Abbiamo $n \cdot 1 = n$.
+\EndProof
+\begin{Theorem}
+	Sia $\Group$ un gruppo ciclico.
+	$\Group$ \`e isomorfo a $\mathbb{Z}$ o
+	a un suo quoziente.
+\end{Theorem}
+\Proof
+Basta considerare l'omomorfismo
+$\Homomorphism: \mathbb{Z} \rightarrow \Group$
+che a $n \in \mathbb{Z}$ associa $\Generator^n$,
+dove $\Generator$ \`e un generatore di $\Group$.
+$\Homomorphism$ \`e suriettivo.
+La tesi segue dunque dal primo teorema d'isomorfismo.
+\EndProof
+\begin{Corollary}
+	Tutti i gruppi ciclici sono abeliani.
+\end{Corollary}
+\Proof
+$\mathbb{Z}$ \`e un gruppo abeliano e tutti i
+quozienti di gruppi abeliani sono abeliani.
+\EndProof
+\begin{Definition}
+	Chiamiamo \Define{funzione $\EulerFunction$ di Eulero}[$\EulerFunction$ di Eulero][funzione] o anche \Define{funzione toziente}[toziente][funzione] la funzione $\EulerFunction: \NotZero{\mathbb{N}} \rightarrow \mathbb{N}$ che a $n \in \mathbb{Z}$ associa il numero di interi minori di $n$ coprimi con $n$.
+\end{Definition}
+\begin{Theorem}
+	Sia $n \in \mathbb{N}$. Il numero di elementi invertibili in $\Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ \`e $\EulerFunction(n)$.
+\end{Theorem}
+\Proof Segue direttamente dalla definizione di $\EulerFunction$ e dal fatto che $\EquivalenceClass{x} \in \Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ \`e invertibile se e solo se $x$ \`e coprimo con $n$. \EndProof
+\begin{Corollary}
+	Sia $\Prime \in \mathbb{Z}$ primo. $\Quotient{\mathbb{Z}}{\SpanIdeal{\Prime}}$ \`e un campo.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente e dalla definizione di campo. \EndProof
+\par Del corollario precedente sar\`a fornita un'altra dimostrazione in materia di teoria dei campi.
+\begin{Theorem}
+	Sia $n \in \mathbb{N}$. $\EquivalenceClass{x} \in \Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ genera il gruppo ciclico $\Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ se e solo se $\MCD{x}{n} = 1$.
+\end{Theorem}
+\Proof $\SpanGroup{\EquivalenceClass{x}}$ \`e per definizione l'insieme di tutti gli elementi $a\EquivalenceClass{x} \in \Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ con $a \in \mathbb{Z}$. Poich\'e $x$ \`e coprimo con $n$, \`e invertible $\EquivalenceClass{x}$. Sia $\EquivalenceClass{y} \in \Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ e scegliamo $a \in \EquivalenceClass{yx^{-1}}$: abbiamo allora $a\EquivalenceClass{x} = \EquivalenceClass{ax} = \EquivalenceClass{a}\EquivalenceClass{x} = \EquivalenceClass{yx^{-1}}\EquivalenceClass{x} = \EquivalenceClass{yx^{-1}x} = \EquivalenceClass{y}$. \EndProof
+\begin{Corollary}
+	Per ogni $n \in \mathbb{N}$, il numero di generatori del gruppo ciclico $\Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ \`e $\EulerFunction(n)$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Theorem}
+	La funzione $\EulerFunction$ di Eulero \`e moltiplicativa.
+\end{Theorem}
+\Proof Siano $m, n \in \NotZero{\mathbb{N}}$. Per le fattorizzazioni di $m$ ed $n$, ogni $x \in \mathbb{N}$ \`e coprimo con $mn$ se e solo se \`e coprimo anche con $m$ ed $n$ simultaneamente.
+\par Ora, per ogni $x \in \mathbb{N}$ tale che $x < mn$ l'applicazione che ad $x$ associa $\EquivalenceClass{x}[\SpanIdeal{mn}] \in \Quotient{\mathbb{Z}}{\SpanIdeal{mn}}$ \`e biunivoca e, per l'isomorfismo dato dal teorema cinese del resto, lo \`e anche l'applicazione che ad $x$ associa $(\EquivalenceClass{x}[\SpanIdeal{m}],\EquivalenceClass{x}[\SpanIdeal{n}]) \in \Quotient{\mathbb{Z}}{\SpanIdeal{m}} \times \Quotient{\mathbb{Z}}{\SpanIdeal{n}}$ ed infine quella che ad $x$ associa la coppia $(y,z) \in \mathbb{N}^2$ dove $y$ e $z$ sono gli unici rappresentanti di $\EquivalenceClass{x}[\SpanIdeal{m}]$ con $y < m$ e di $\EquivalenceClass{x}[\SpanIdeal{n}]$ con $z < n$ rispettivamente. Essendo $x$ coprimo con $m$, deve esserlo anche $y$ e analogamente $z$ deve essere coprimo con $n$: questo conclude la dimotrazione. \EndProof
+\begin{Theorem}
+	Sia $\Prime \in \mathbb{Z}$ primo e positivo. Per ogni $n \in \NotZero{\mathbb{N}}$, abbiamo $\EulerFunction(\Prime^n) = \Prime^{n - 1}(\Prime - 1)$.
+\end{Theorem}
+\Proof Tra tutti gli interi positivi minori di $\Prime^n$, sono coprimi con $\Prime^n$ tutti coloro che non sono multipli di $\Prime$, e i multipli di $\Prime$ sono esattamente $\Prime^{n - 1}$. Di conseguenza $\EulerFunction(\Prime^n) = \Prime^n - \Prime^{n - 1} = \Prime^{n - 1}(\Prime - 1)$. \EndProof
+\begin{Theorem}
+	Sia $n \in \NotZero{\mathbb{N}}$, abbiamo $\EulerFunction(n) = n \prod_{\Prime \in I} \left ( 1 - \frac{1}{p} \right )$, dove $I$ \`e l'insieme di tutti i fattori primi di $n$.
+\end{Theorem}
+\Proof Abbiamo $\EulerFunction(n) = \prod_{\Prime \in I} \EulerFunction(\Prime^{e_\Prime})$, dove, per ogni $\Prime \in I$ $e_\Prime$ \`e il numero di volte in cui compare $\Prime$ nella fattorizzazione di $n$. Dunque $\EulerFunction = \prod_{\Prime \in I} \Prime^{e_\Prime - 1}(\Prime - 1) = \prod_{\Prime \in I} \Prime^{e_\Prime} \Prime^{- 1}(\Prime - 1) = n \prod_{\Prime \in I} \left ( 1 - \frac{1}{\Prime} \right )$. \EndProof
+\begin{Theorem}
+	Sia $\Group$ un gruppo ciclico finito,
+	generato da $\Generator \in \Group$.
+	Per ogni $d | \GroupOrder{\Group}$,
+	$\SpanGroup{\Generator^{\frac{\GroupOrder{\Group}}{d}}}$
+	\`e l'unico sottogruppo di $\Group$ di ordine $d$.
+\end{Theorem}
+\Proof
+Si verifica facilmente che
+$\SpanGroup{\Generator^{\frac{\GroupOrder{\Group}}{d}}} \IsSubgroup
+\Group$ e che
+$\GroupOrder{\SpanGroup{\Generator^{\frac{\GroupOrder{\Group}}{d}}}} = d$.
+Sia $\Subgroup \IsSubgroup \Group$ di ordine $d$.
+Sia $k \in \mathbb{N}$ il minimo naturale tale che
+$\Subgroup = \SpanGroup{\Generator^k}$.
+Poich\'e l'ordine di $\Subgroup$ \`e $d$ e
+l'ordine di $\Group$ \`e $n$,
+abbiamo
+$\Generator^{kd} = \Generator^{n} = 1$.
+Dunque, per opportuno $q \in \mathbb{N}$, abbiamo
+$kd = qn$ o equivalentemente $k = \frac{qn}{d}$.
+Poich\'e $\frac{n}{d} | k$, abbiamo
+$\Subgroup \IsSubgroup \SpanGroup{\Generator^{\frac{n}{d}}}$,
+ma dato che
+$\GroupOrder{\Subgroup} \IsSubgroup \GroupOrder{\SpanGroup{\Generator^{\frac{n}{d}}}}$,
+deve essere
+$\Subgroup = \SpanGroup{\Generator^{\frac{n}{d}}}$.
+\EndProof
+\begin{Corollary}
+	Sia $\Group$ un gruppo ciclico finito.
+	$\Group$ ammette tanti sottogruppi
+	quanti sono i divisori di $\GroupOrder{\Group}$.
+\end{Corollary}
+\Proof
+Segue direttamente dal teorema precedente.
+\EndProof
+\begin{Corollary}
+	Per ogni $n \in \NotZero{\mathbb{N}}$, abbiamo
+	$n = \sum_{d \in \mathbb{N},\\d|n} \EulerFunction(d)$.
+\end{Corollary}
+\Proof
+Consideriamo il gruppo ciclico di ordine $n$
+$\Quotient{\mathbb{Z}}{\SpanIdeal{n}}$.
+Ogni elemento \`e generatore di un sottogruppo
+di
+$\Quotient{\mathbb{Z}}{\SpanIdeal{n}}$.
+Per il teorema precedente, per ogni intero $d \in \mathbb{N}$
+che divide $n$ il gruppo $\Quotient{\mathbb{Z}}{\SpanIdeal{n}}$
+ammette esattamente un sottogruppo $\Subgroup_d$.
+Pertanto, indicato con $G_d$ l'insieme dei generatori di
+$\Subgroup_d$, abbiamo
+$\Quotient{\mathbb{Z}}{\SpanIdeal{n}} =
+\bigcup_{d \in \mathbb{N},\\d|n} G_d$
+da cui, passando alle cardinalit\`a e essendo i $G_d$ tutti
+disgiunti,
+$n = \sum_{d \in \mathbb{N},\\d|n} \EulerFunction(d)$.
+\EndProof

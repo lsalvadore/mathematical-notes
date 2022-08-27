@@ -1,0 +1,161 @@
+\subsection{Coda con priorit\`a e \English{heap}.}
+\label{AlgoritmiEStruttureDiDati_CodaConPrioritaEHeap}
+\begin{Definition}
+  Una \Define{coda con priorit\`a}[con priorit\`a][coda]
+  (\Define{\English{priority queue}}) \`e una struttura di dati che memorizza
+  dati in successione accoppiati con un numero chiamato \Define{priorit\`a} e li
+  restituisce in ordine di priorit\`a, decrescente o crescente a seconda
+  dell'implementazione.
+  Inoltre, come per le code senza priorit\`a,
+  \begin{itemize}
+    \item il metodo che aggiunge un dato alla coda \`e solitamente chiamato
+      \Define{\English{enqueue}};
+    \item il metodo che estrae un dato dalla coda \`e solitamente chiamato
+      \Define{\English{dequeue}}.
+  \end{itemize}
+\end{Definition}
+\par Salvo indicazioni contrarie, assumeremo sempre che una coda di priorit\`a
+estrae gli elementi con priorit\`a massima.
+Ai fini della teoria, possiamo assumere tutte le
+priorit\`a distinte senza perdita di generalit\`a: infatti, se una coda di
+priorit\`a ha pi\`u elementi con la massima priorit\`a, allora dovr\`a essere
+usato un criterio per scegliere quale elemento effettivamente estrarre; ma 
+questo criterio pu\`o anche essere scelto per aumentare la priorit\`a di
+quell'elemento o abbassare la priorit\`a degli altri, e un ragionamento analogo
+vale per qualsiasi altra situazione in cui serva discrimanre tra elementi con
+la stessa prioririt\`a.
+\par Inoltre, senza perdita di generalit\`a, esamineremo solo code con
+priorit\`a che memorizzano dati vuoti, cio\`e che memorizzano solo le priorit\`a
+stesse: in effetti, il funzionamento della struttura dipende esclusivamente
+dalle priorit\`a, mentre per quanto riguarda i costi in termini di spazio,
+baster\`a aumentare il costo della priorit\`a in modo tale che esso includa
+anche il costo del dato ad esso associato, operazione che per un'analisi
+asintotica non implica nessuna conseguenza.
+\par Una possibile implementazione di una coda con priorit\`a prevede l'uso di
+liste; essa consente
+\begin{itemize}
+  \item l'accodamento di nuovi dati in tempo $\BigO{1}$ mettendo in testa alla
+    lista il nuovo elemento;
+  \item l'estrazione di dati in tempo $\BigO{n}$, leggendo tutti gli elementi
+    della lista in successione per individuare l'elemento di priorit\`a pi\`u
+    alta o pi\`u bassa.
+\end{itemize}
+\par Un'ulteriore possibilit\`a \`e l'implementazione tramite un \English{array}
+ordinato, che naturalmente deve essere sufficientemente grande o essere
+ricollocato in \English{array} pi\`u o meno grandi a seconda delle necessit\`a.
+In tal caso, accodamento ed estrazione possono essere effettuati sfruttando
+l'algoritmo di ricerca binaria e hanno dunque entrambi costo $\BigO{\log n}$.
+\par Generalmente, le code con priorit\`a vengono implementate tramite un'aaltra
+struttura ancora denominata \English{heap}, motivo per cui le code di priorit\`a
+sono spesso chiamate anche \English{heap}.
+\begin{Definition}
+  Si chiama \Define{\English{heap}} un albero completo da sinistra che registra
+  dati numerici tale che una delle condizioni seguenti sia verificata
+  \begin{itemize}
+    \item se $\Node$ \`e genitore di $\VarNode$, allora 
+      $\Node \geq \VarNode$: in tal caso si dice che l'\English{heap}
+      \`e un \Define{\English{heap} $\max$};
+    \item se $\Node$ \`e genitore di $\VarNode$, allora 
+      $\Node \leq \VarNode$: in tal caso si dice che l'\English{heap}
+      \`e un \Define{\English{heap} $\min$}.
+  \end{itemize}
+  Se l'\English{heap} \`e un albero $n$-ario, allora si dice che
+  l'\English{heap} \`e \English{$n$-ario}[$n$-ario][\English{heap}].
+\end{Definition}
+\begin{Definition}
+  Si chiama
+  \Define{\English{heap} binario implicito}[binario implicito][\English{heap}]
+  la struttura di dati definita da un \English{array} di numeri
+  $(e_i)_{i \in n}$ che verifica una delle due delle condizioni seguenti:
+  \begin{itemize}
+    \item \TheoremName{propriet\`a di \English{heap} $\max$}[di \English{heap} $\max$][propriet\`a]
+      se $i \in n$, allora
+      \begin{itemize}
+        \item se $j = \left \lfloor \frac{i - 1}{2} \right \rfloor \in n$,
+          allora $e_j \geq e_i$;
+        \item se $j = 2i + 1 \in n$,
+          allora $e_i \geq e_j$;
+        \item se $j = 2i + 2 \in n$,
+          allora $e_i \geq e_j$:
+      \end{itemize}
+      in tal caso si dice che l'\English{heap} binario implicito \`e un
+      \Define{\English{heap} binario implicito $\max$}[binario implicito $\max$][\English{heap}];
+    \item \TheoremName{propriet\`a di \English{heap} $\min$}[di \English{heap} $\min$][propriet\`a]
+      se $i \in n$, allora
+      \begin{itemize}
+        \item se $j = \left \lfloor \frac{i - 1}{2} \right \rfloor \in n$,
+          allora $e_j \leq e_i$;
+        \item se $j = 2i + 1 \in n$,
+          allora $e_i \leq e_j$;
+        \item se $j = 2i + 2 \in n$,
+          allora $e_i \leq e_j$:
+      \end{itemize}
+      in tal caso si dice che l'\English{heap} binario implicito \`e un
+      \Define{\English{heap} binario implicito $\min$}[binario implicito $\min$][\English{heap}].
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Un \English{heap} binario $\max$ di $n \in \NotZero{\mathbb{N}}$ nodi pu\`o
+  essere implementato tramite un \English{heap} binario implicito $\max$ di
+  dimensione $n$ tramite una corrispondenza che associa al $k$-esimo (contando
+  da $0$) nodo da sinistra di livello $L$ l'elemento di indice $2^L + k - 1$
+  dell'\English{heap} binario impliciato in modo tale che il dato numerico
+  registrato nel nodo sia lo stesso registrato nell'elemento dell'\English{heap}
+  binario implicito ad esso associato.
+\end{Theorem}
+\Proof Occorre verificare che l'\English{array} immagine della corrispondenza
+sia effettivamente un \English{heap} binario implicito.
+\par Consideriamo il $k$-esimo (contando da $0$) nodo $\Node$ di livello $L$
+dell'\English{heap} binario. I suoi figli, se esistono, si ottengono scorrendo i
+figli di tutti i nodi pi\`u a sinistra di $\Node$: essi sono in numero $2k$.
+Dunque, i figli di $\Node$ sono, se esistono, il $2k$-esimo e il
+$(2k + 1)$-esimo nodo al livello $L + 1$: le loro immagini, rispetto alla
+corrispondenza dell'enunciato, sono
+l'$(2^{L + 1} + 2k - 1)$-esimo
+e
+l'$(2^{L + 1} + 2k)$-esimo elemento dell'\English{array}.
+\par Fissiamo ora $I \in n$. Siano
+\begin{itemize}
+  \item $L \in \mathbb{N}$;
+  \item $k \in \mathbb{N}$ con $0 \leq k < 2^L$;
+\end{itemize}
+tali che $I = 2^L + k - 1$.
+Denotiamo $(e_i)_{i \in n}$ gli elementi dell'\English{array}.
+\par Per costruzione, $e_I$ \`e immagine del $k$-esimo (contando da $0$) nodo
+$\Node$ di livello $L$ dell'\English{heap} binario. Per la propritet\`a di
+\English{heap} $\max$, il nodo \`e maggiore o uguale dei suoi figli, e dunque
+\begin{itemize}
+  \item se $J = 2I + 1 \in n$, abbiamo $J = 2^{L + 1} + 2k - 1$ e $e_J$ \`e
+    l'immagine del $(2k + 1)$-esimo nodo di livello $L + 1$, dunque
+    $e_I \geq e_J$;
+  \item se $J = 2I + 2 \in n$, abbiamo $J = 2^{L + 1} + 2k$ e $e_J$ \`e
+    l'immagine del $(2k)$-esimo nodo di livello $L + 1$, dunque
+    $e_I \geq e_J$.
+\end{itemize}
+\par Inoltre,
+\begin{itemize}
+  \item se $I = 0$, allora
+    $J = \left \lfloor \frac{I - 1}{2} \right \rfloor = - 1 \notin n$;
+  \item se $I > 0$ \`e dispari, allora $L > 0$, $k > 0$ e $k$ \`e pari, da cui
+    $J = \left \lfloor \frac{I - 1}{2} \right \rfloor
+    = \frac{2^L + k - 2}{2} = 2^{L - 1} + \frac{k}{2} - 1$: $e_J$ \`e l'immagine
+    del $\frac{k}{2}$-esimo nodo di livello $L - 1$ e ha per figlio sinistro
+    l'$I$-esimo nodo di livello $L$, dunque $e_J \geq e_I$;
+  \item se $I > 0$ \`e pari, allora $L > 0$, $k > 0$ e $k$ \`e dispari, da cui
+    $J = \left \lfloor \frac{I - 1}{2} \right \rfloor
+    = \left \lfloor \frac{2^L + k - 2}{2} \right \rfloor
+    = 2^{L - 1} + \frac{k - 1}{2} - 1$: $e_J$ \`e
+    l'immagine del $\frac{k - 1}{2}$-esimo nodo di
+    livello $L - 1$ e ha per figlio destro l'$I$-esimo nodo di livello $L$,
+    dunque $e_J \geq e_I$. \EndProof
+\end{itemize}
+\begin{Theorem}
+  Un \English{heap} binario di $n \in \mathbb{N}$ elementi costa
+  \begin{itemize}
+    \item $\BigO{n}$ spazio se implementato tramite liste;
+    \item $n$ spazio se implementato tramite \English{heap} binario implicito.
+  \end{itemize}
+\end{Theorem}
+\Proof L'implementazione tramite liste richiede la memorizzazione di puntatori,
+mentre l'implementazione tramite \English{heap} binario implicito memorizza solo
+le priorit\`a. \EndProof

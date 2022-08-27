@@ -1,0 +1,36 @@
+\subsection{Domini Euclidei.}\label{DominiEuclidei}
+\begin{Definition}
+	Un \Define{dominio euclideo}[euclideo][dominio] $\EuclideanDomain$ \`e un anello commutativo con identit\`a in cui \`e definibile una funzione $\EuclideanDegree: \NotZero{\EuclideanDomain} \rightarrow \mathbb{N}$, detta \Define{grado}[in un dominio euclideo][grado], tale che
+	\begin{itemize}
+		\item ogni elemento $a \in \NotZero{\EuclideanDomain}$ si scrive, per ogni $b \in \NotZero{\EuclideanDomain}$, in modo unico nella forma $a = qb + r$, dove $q, r \in \EuclideanDomain$ e $\EuclideanDegree(r) < \EuclideanDegree(b) \vee r = 0$;
+		\item dati due elementi qualsiasi $a, b \in \NotZero{\EuclideanDomain}$, \`e verificata la disuguaglianza $\EuclideanDegree(a) \leq \EuclideanDegree(ab)$.
+	\end{itemize}
+	Scrivere $a$ nella forma $qb + r$ si chiama effettuare la \Define{divisione euclidea} (o \Define{divisione con resto}) di $a$ per $b$ o anche semplicemente \Define{dividere} $a$ per $b$; $q$ si chiama \Define{quoziente} e $r$ \Define{resto}.
+\end{Definition}
+\par Sottolineamo il fatto che la funzione $\EuclideanDegree$ della definizione precedente \`e solo definibile, non definita: in particolare, uno stesso dominio euclideo pu\`o ammettere pi\`u funzioni grado\footnote{In effetti ne ammette infinite: \`e sufficiente moltiplicare una funzione grado per un intero positivo qualsiasi per ottenere una nuova funzione grado.}.
+\begin{Theorem}
+	Sia $\EuclideanDomain$ un dominio euclideo. Data una funziona grado $\EuclideanDegree$, gli elementi di grado minimo sono tutti e soli gli elementi invertibili.
+\end{Theorem}
+\Proof Sia $a \in \EuclideanDomain$. Abbiamo $a = a \cdot 1$, per cui $\EuclideanDegree(1) \leq \EuclideanDegree(a)$ e quindi il grado di $1$ \`e minimo in tutto l'anello.
+\Proof Supponiamo ora $a \in \EuclideanDomain$ invertibile. Abbiamo $1 = aa^{-1}$, da cui $\EuclideanDegree(a) \leq \EuclideanDegree(1)$. Quindi $\EuclideanDegree(a) = \EuclideanDegree(1)$. \EndProof
+\begin{Theorem}
+	Ogni dominio euclideo $\EuclideanDomain$ \`e un dominio ad ideali principali.
+\end{Theorem}
+\Proof Sia $\Ideal$ un ideale e sia $a \in \Ideal$ un elemento di grado minimo in $\Ideal$. Sia $b \in \Ideal$ e consideriamo la divisione euclidea di $b$ per $a$: abbiamo $b = qa + r$ per $q, r \in \EuclideanDomain$ opportuni con $r$ nullo o di grado strettamente minore di $\EuclideanDegree(a)$. Abbiamo $r = b - qa \in \Ideal$, dunque, per la minimalit\`a del grado di $a$, $r$ \`e nullo. Ne consegue $\Ideal = \SpanIdeal{a}$.\EndProof
+\begin{Theorem}
+	Siano dati due elementi $a, b \in \NotZero{DomEucl}$. Si esegua il seguente algoritmo:
+	\begin{enumerate}
+		\item poniamo $n = 0$, $a_0 = a$, $b_0 = b$;
+		\item effettuiamo la divisione con resto di $a_n$ per $b_n$ ottenendo $a_n = q_nb_n + r_n$, dove $q_n, r_n \in \EuclideanDomain$ ed $r_n = 0$ o $\EuclideanDegree(r_n) < \EuclideanDegree(b_n)$;\label{AlgEucl_1}
+		\item se $r_n = 0$, allora l'algoritmo termina;
+		\item se $r_n \neq 0$, allora poniamo $n = n + 1$, $a_n = b_{n - 1}$, $b_n = r_n$ e torniamo al punto \ref{AlgEucl_1}.
+	\end{enumerate}
+	L'algoritmo termina e, chiamato $N$ l'ultimo valore assunto da $n$, $b_N$ \`e il massimo comun divisore di $a$ e $b$.
+\end{Theorem}
+\Proof L'algoritmo termina necessariamente poich\'e ad ogni passo il grado di $b$ diminuisce, ma esso non pu\`o diminuire indefinitamente.
+\par Per provare che $b_N$ \`e il massimo comun divisore di $a$ e $b$ procediamo per induzione su $N$. Se $N = 0$, allora $b$ divide $a$ ed \`e chiaro che $b$ \`e il massimo comun divisore di $a$ e $b$.
+\par Supponiamo il teorema dimostrato per $N$ fissato e proviamolo per $N + 1$. Abbiamo, per ipotesi induttiva, che $b_N$ \`e il massimo comun divisore di $a_1$ e $b_1$. Abbiamo inoltre $a = q_0b + b_1$ e che $b_N = xa_1 + yb_1 = xb + yb_1$, per $x, y \in \EuclideanDomain$ opportuni, da cui $ya = yq_0b + b_N - xb$ e quindi $b_N = ya + (yq_0 -x)b$ e questo conclude la dimostrazione. \EndProof
+\begin{Definition}
+	L'algoritmo descritto nell'enunciato del teorema precedente si chiama \Define{algoritmo euclideo}[euclideo][algoritmo].
+\end{Definition}
+\par Osserviamo che l'algoritmo euclideo consente fornisce un metodo per costruire le identit\`a di B\'ezout in un dominio euclideo.

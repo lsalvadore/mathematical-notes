@@ -1,0 +1,131 @@
+\section{Connessione.}\label{Connessione}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	$\TopologicalSpace$ si dice \Define{connesso}[connesso][spazio]
+	quando $\TopologicalSpace$ e $\emptyset$ sono gli unici due
+	aperti ad essere anche chiusi. Uno spazio topologico non connesso
+	si dice \Define{disconesso}[disconnesso][spazio].
+\end{Definition}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Sono equivalenti le seguenti proposizioni:
+	\begin{itemize}
+		\item $\TopologicalSpace$ \`e disconnesso;
+		\item esistono $\Open_1, \Open_2 \in \Topology$ disgiunti
+		e non vuoti tali che $\Open_1 \cup \Open_2 =
+		\TopologicalSpace$.
+		\item esistono chiusi $\Closed_1, \Closed_2$ disgiunti e
+		non vuoti tali che $\Closed_1 \cup \Closed_2 =
+		\TopologicalSpace$.
+	\end{itemize}
+\end{Theorem}
+\Proof Supponiamo $\TopologicalSpace$ disconesso. Allora esiste
+$\Open \in \Topology$ chiuso. Dunque $\Compl{\Open} \in \Topology$.Abbiamo
+ $\Open \cup \Compl{\Open} = \TopologicalSpace$.
+Quindi $\TopologicalSpace$ \`e unione di due aperti disgiunti.
+\par Supponiamo $\TopologicalSpace = \Open_1 \cup \Open_2$ con $\Open_1,
+\Open_2  \in \Topology$ non vuoti e disgiunti. Allora $\Open_1 =
+\Compl{\Open_2}$ e $\Open_2 = \Compl{\Open_1}$ sono chiusi disgiunti.
+\par Supponiamo $\Closed_1, \Closed_2$ siano chiusi disgiunti non vuoti
+tali che $\TopologicalSpace = \Closed_1 \cup \Closed_2$. Allora $\Closed_1
+= \Compl{\Closed_2}$ \`e aperto non vuoto e non uguale a
+$\TopologicalSpace$ dunque $\TopologicalSpace$ \`e disconnesso. \EndProof
+\begin{Theorem}
+	Sia $\Continuous: \TopologicalSpace \rightarrow \VarTopologicalSpace$ un'applicazione continua tra gli spazi topologici $\TopologicalSpace$ e $\VarTopologicalSpace$. Se $\TopologicalSpace$ \`e connesso, allora \`e connesso anche $\Image{\Continuous}$.
+\end{Theorem}
+\Proof Sia $\Part \subseteq \Image{\Continuous}$ aperto e chiuso non vuoto di $\Image{\Continuous}$: esistono un aperto $\Open$ e un chiuso $\Closed$ in $\VarTopologicalSpace$ tali che $\Part = \Open \cap \Image{\Continuous} = \Closed \cap \Image{\Continuous}$. Abbiamo $\Continuous^{-1}(\Part) = \Continuous^{-1}(\Open) = \Continuous^{-1}(\Closed)$ aperto e chiuso in $\TopologicalSpace$ e dunque, essendo esso anche non vuoto, $\Continuous^{-1}(\Part) = \TopologicalSpace$. Pertanto $\Part = \Image{\Continuous}$. \EndProof
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico e sia
+  $\Interval \subseteq \mathbb{R}$ un intervallo.
+  Chiamiamo
+  \Define{curva}
+  un'applicazione continua
+  $\Curve: \Interval \rightarrow \TopologicalSpace$.
+  I punti
+  \begin{itemize}
+    \item $\Curve(\inf \Interval)$, se $\inf \Interval \in \Interval$;
+    \item $\Curve(\sup \Interval)$, se $\sup \Interval \in \Interval$;
+  \end{itemize}
+  si chiamamo
+  \Define{estremi}[di una curva][estremo]
+  di $\Curve$, l'immagine $\Image{\Curve}$ si chiama
+  \Define{supporto}[di una curva][supporto].
+  \par $\Curve$ si dice
+  \begin{itemize}
+    \item \Define{chiusa}[chiusa][curva]
+    quando $\Interval$ \`e chiuso e
+    $\Curve(\inf \Interval) = \Curve(\sup \Interval)$;
+    \item \Define{semplice}[semplice][curva]
+    quando
+    $\ForAll{(x,y) \in \Interior{\Interval} \times \Interval}{
+    \Implies{\Curve(x) = \Curve{y}}{x = y}}$.
+  \end{itemize}
+\end{Definition}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+  Chiamiamo
+  \Define{cammino}
+  o
+  \Define{arco}
+  una curva $\Path$ tale che $\Dom{\Path} = [0,1]$.
+\end{Definition}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	$\TopologicalSpace$ si dice
+	\Define{connesso per cammini}[connesso per cammini][spazio]
+  quando,
+	dati due punti $a, b \in \TopologicalSpace$ esiste un arco
+	$\Path: [0,1] \rightarrow \TopologicalSpace$ tale
+	che $\Path(0) = a$ e $\Path(1) = b$.
+\end{Definition}
+\begin{Definition}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Si chiamano
+	\begin{itemize}
+		\item \Define{componente connessa}[connessa][componente]
+		 tutti i sottospazi connessi massimali di
+		$\TopologicalSpace$;
+		\item \Define{componente connessa per cammini}[connessa per cammini][componente]
+		tutti i sottospazi connessi per cammini massimali di
+		$\TopologicalSpace$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Le componenti connesse di $\TopologicalSpace$ ne determinano una
+	partizione.
+\end{Theorem}
+\Proof Siano $\ConnectedComponent_1$ e $\ConnectedComponent_2$ due
+componenti connesse. 
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio topologico.
+	Le componenti connesse per cammini di $\TopologicalSpace$ ne
+	determinano una partizione.
+\end{Theorem}
+\begin{Theorem}
+	$[0,1]$ \`e connesso per la topologia euclidea.
+\end{Theorem}
+\Proof Supponiamo $\Closed_0$ e $\Closed_1$ chiusi non vuoti disgiunti tali che $[0,1] = \Closed_0 \cup \Closed_1$. Poich\'e $\Closed_1$ \`e chiuso, $\inf \Closed_1 \in \Closed_1$.
+\par Supponiamo $0 \in \Closed_0$. Se $\inf \Closed_1 = 0$, allora $\Closed_0 \cap \Closed_1 \neq \emptyset$.
+\par Supponiamo invece $\inf \Closed_1 \neq 0$. Allora $\Closed_0 \cap [0,\inf{\Closed_1}]$ \`e chiuso e dunque $\inf{\Closed_1} \in \Closed_0$.
+\par Quindi, in ogni caso $\Closed_0 \cap \Closed_1 \neq \emptyset$, contro l'ipotesi. \EndProof
+\begin{Theorem}
+	I connessi di $\mathbb{R}$ sono tutti e soli gli intervalli.
+\end{Theorem}
+\Proof
+\begin{Theorem}
+	Sia $\Continuous: \ConnectedSpace \rightarrow \mathbb{R}$ un'applicazione continua con $\ConnectedSpace$ spazio topologico connesso. Siano $x, y \in \ConnectedSpace$ tali che $\Continuous(x) \leq \Continuous(y)$. Allora $\ForAll{\eta \in [\Continuous(x),\Continuous(y)]}{\Exists{\xi \in \ConnectedSpace}{\Continuous(\xi) = \eta}}$.
+\end{Theorem}
+\begin{Corollary}
+	\TheoremName{Teorema dei valori intermedi}[dei valori intermedi][teorema] Sia $\Continuous: [a,b] \rightarrow \mathbb{R}$ ($a,b \in \mathbb{R}$, $a \leq b$) un'applicazione continua. Allora $\ForAll{\eta \in [\Continuous(a),\Continuous(b)] \cup [\Continuous(b),\Continuous(a)]}{\Exists{\xi \in \ConnectedSpace}{\Continuous(\xi) = \eta}}$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Corollary}
+	\TheoremName{Teorema di esistenza degli zeri o di Bolzano}[di esistenza degli zeri o di Bolzano][teorema] Sia $\Continuous: [a,b] \rightarrow \mathbb{R}$ ($a,b \in \mathbb{R}$, $a \leq b$) un'applicazione continua tale che $\Continuous(a) \Continuous(b) < 0$. Allora $\Exists{\xi \in [a,b]}{\Continuous(\xi) = 0}$.
+\end{Corollary}
+\Proof Segue direttamente dal corollario precedente osservando che $\Continuous(a) \Continuous(b) < 0$ equivale a $\Or{\Continuous(a) < 0 < \Continuous(b)}{\Continuous(b) < 0 < \Continuous(a)}$. \EndProof
+\begin{Theorem}
+	Sia $(\TopologicalSpace,\Topology)$ uno spazio connesso per cammini.
+	Esso \`e anche connesso.
+\end{Theorem}
+\Proof 

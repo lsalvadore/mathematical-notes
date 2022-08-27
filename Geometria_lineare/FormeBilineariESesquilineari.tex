@@ -1,0 +1,124 @@
+\section{Forme bilineari e sesquilineari.}
+\label{GeometriaLineare_FormeBilineariESesquilineari}
+\begin{Definition}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale. Si definisce \Define{forma quadratica}[quadratica][forma] un'applicazione $\QuadraticForm: \LinearSpace \rightarrow \Field$ tale che
+	\begin{itemize}
+		\item $\ForAll{(\Scalar,\Vector) \in \Field \times \LinearSpace}{\QuadraticForm(\Scalar \Vector) = \Scalar^2 \QuadraticForm(\Vector)}$;
+		\item $\QuadraticForm(\Vector_0 + \Vector_1) - \QuadraticForm(\Vector_0) - \QuadraticForm(\Vector_1)$ \`e una forma bilineare.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale e sia $\QuadraticForm: \LinearSpace \rightarrow \Field$ una forma quadratica. L'applicazione $\BilinearForm: \LinearSpace^2 \rightarrow \Field$ che a $(\Vector_0,\Vector_1) \in \LinearSpace^2$ associa $\frac{\QuadraticForm(\Vector_0 + \Vector_1) - \QuadraticForm(\Vector_0) - \QuadraticForm(\Vector_1)}{2}$ \`e una forma bilineare.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\BilinearForm$ si chiama \Define{forma bilineare associata}[bilineare associata][forma] alla forma quadratica $\QuadraticForm$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale e sia $\BilinearForm: \LinearSpace^2 \rightarrow \Field$ una forma bilineare. L'applicazione $\QuadraticForm: \LinearSpace \rightarrow \Field$ che a $\Vector \in \LinearSpace$ associa $\BilinearForm(\Vector,\Vector)$: $\QuadraticForm$ \`e una forma quadratica.
+\end{Theorem}
+\Proof Siano $\Scalar \in \Field$ e $\Vector \in \LinearSpace$. Abbiamo $\QuadraticForm(\Scalar \Vector) = \BilinearForm(\Scalar \Vector, \Scalar \Vector) = \Scalar^2 \BilinearForm(\Vector,\Vector) = \Scalar^2\QuadraticForm(\Vector)$.
+\par Sia $(\Vector_0,\Vector_1) \in \LinearSpace^2$. Abbiamo $\QuadraticForm(\Vector_0 + \Vector_1) - \QuadraticForm(\Vector_0) - \QuadraticForm(\Vector_1) = \BilinearForm(\Vector_0 + \Vector_1, \Vector_0 + \Vector_1) - \BilinearForm(\Vector_0, \Vector_0) - \BilinearForm(\Vector_1, \Vector_1) = \BilinearForm(\Vector_0,\Vector_0) + \BilinearForm(\Vector_1,\Vector_0) + \BilinearForm(\Vector_0,\Vector_1) + \BilinearForm(\Vector_1, \Vector_1) - \BilinearForm(\Vector_0,\Vector_0) - \BilinearForm(\Vector_1,\Vector_1) = \BilinearForm(\Vector_0,\Vector_1) + \BilinearForm(\Vector_1,\Vector_0)$, che si verifica facilmente essere una forma bilineare.
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\QuadraticForm$ si chiama \Define{forma quadratica associata}[quadratica associata][forma] alla forma bilineare $\BilinearForm$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale. Siano
+	\begin{itemize}
+		\item $\BilinearForm_0: \LinearSpace^2 \rightarrow \Field$ una forma bilineare simmetrica;
+		\item $\QuadraticForm_1$ la forma quadratica associata alla forma bilineare $\BilinearForm_0$;
+		\item $\BilinearForm_2$ la forma bilineare associata alla forma quadratica $\QuadraticForm_1$;
+		\item $\QuadraticForm_0: \LinearSpace \rightarrow \Field$ una forma quadratica;
+		\item $\BilinearForm_1$ la forma bilineare associata a $\QuadraticForm_0$;
+		\item $\QuadraticForm_2$ la forma quadratica associata a $\BilinearForm_1$.
+	\end{itemize}
+	Abbiamo $\BilinearForm_0 = \BilinearForm_2$ e $\QuadraticForm_0 = \QuadraticForm_2$.
+\end{Theorem}
+\Proof Sia $(\Vector_0,\Vector_1) \in \LinearSpace^2$. Abbiamo
+$\BilinearForm_2(\Vector_0,\Vector_1) =
+\frac{\QuadraticForm_1(\Vector_0 + \Vector_1) - \QuadraticForm_1(\Vector_0) - \QuadraticForm_1(\Vector_1)}{2} =
+\frac{\BilinearForm_0(\Vector_0 + \Vector_1, \Vector_0 + \Vector_1) - \BilinearForm_0(\Vector_0, \Vector_0) - \BilinearForm_0(\Vector_1,\Vector_1)}{2} =
+\frac{\BilinearForm_0(\Vector_0,\Vector_1) + \BilinearForm_0(\Vector_1,\Vector_0)}{2} = \BilinearForm_0(\Vector_0,\Vector_1)$.
+\par Sia $\Vector \in \LinearSpace$. Abbiamo
+$\QuadraticForm_2(\Vector) =
+\BilinearForm_1(\Vector,\Vector) =
+\frac{\QuadraticForm_0(\Vector + \Vector) - \QuadraticForm_0(\Vector) - \QuadraticForm(\Vector)}{2} = 
+\frac{4 \QuadraticForm_0(\Vector) - 2 \QuadraticForm_0(\Vector)}{2} =
+\QuadraticForm_0(\Vector)$. \EndProof
+\begin{Definition}
+	Una forma quadratica $\QuadraticForm$ su un $\Field$-spazio vettoriale $\LinearSpace$ reale o complesso si dice
+	\begin{itemize}
+		\item \Define{semidefinita positiva}[quadratica semidefinita positiva][forma] quando $\ForAll{\Vector \in \LinearSpace}{\QuadraticForm(\Vector) \geq 0}$;
+		\item \Define{semidefinita negativa}[quadratica semidefinita negativa][forma] quando $\ForAll{\Vector \in \LinearSpace}{\QuadraticForm(\Vector) \geq 0}$;
+		\item \Define{definita positiva}[quadratica definita positiva][forma] quando \`e semidefinita positiva e inoltre $\Implies{\QuadraticForm(\Vector) = 0}{\Vector = 0}$;
+		\item \Define{definita negativa}[quadratica definita negativa][forma] quando \`e semidefinita negativa e inoltre $\Implies{\QuadraticForm(\Vector) = 0}{\Vector = 0}$.
+	\end{itemize}
+	Una forma bilineare $\BilinearForm$ su un $\Field$-spazio vettoriale $\LinearSpace$ reale o complesso si dice \Define{semidefinita positiva}[bilineare semidefinita positiva][forma], \Define{semidefinita negativa}[bilineare semidefinata negativa], \Define{definita positiva}[bilineare definita positiva][forma] o \Define{definita negativa}[bilineare definita negativa][forma] quando la forma quadratica associata \`e, rispettivamente, semidefinita positiva, semidefinita negativa, definita positiva, definita negativa.
+\end{Definition}
+\begin{Definition}
+	Siano $\LinearSpace_1$ e $\LinearSpace_2$ $\mathbb{C}$-spazi vettoriali. Si chiama \Define{applicazione antilineare}[antilineare][applicazione] un'applicazione $\Antilinear: \LinearSpace_1 \rightarrow \LinearSpace_2$ additiva e tale che $\ForAll{(x,\Scalar) \in (\LinearSpace_1,\mathbb{C})}{\Antilinear(\Scalar x) = \overline{\Scalar}\Antilinear(x)}$. Un'applicazione antilineare biettiva si chiama \Define{antisomorfismo}.
+\end{Definition}
+\begin{Definition}
+	Dato un $\mathbb{C}$-spazio vettoriale $\LinearSpace$, sia $\SesquilinearForm: \LinearSpace^2 \rightarrow \mathbb{C}$ tale che \`e lineare nel primo argomento e antilineare nel secondo argomento: $\SesquilinearForm$ si chiama \Define{forma sesquilineare}[sesquilineare][forma] su $\LinearSpace$.
+\end{Definition}
+\begin{Definition}
+	Siano $\Class$ una classe e $f: \Class^2 \rightarrow \mathbb{C}$ tale che $\ForAll{(x,y) \in \Class^2}{f(x,y) = \overline{f(y,x)}}$. Si dice che $f$ \`e un'\Define{applicazione coniugata simmetrica}[coniugata simmetrica][applicazione].
+\end{Definition}
+\begin{Definition}
+	Dato un $\Field$-spazio vettoriale $\LinearSpace$ su cui \`e definita una forma bilineare o sesquilineare $\BilinearOrSesquilinearForm$, siano $\Vector, \VarVector \in \LinearSpace$. Se $\BilinearOrSesquilinearForm(\Vector,\VarVector) = 0$, diciamo che
+	\begin{itemize}
+		\item $\Vector$ \`e \Define{ortogonale a sinistra}[a sinistra][ortogonalit\`a] a $\VarVector$ rispetto a $\BilinearOrSesquilinearForm$;
+		\item $\VarVector$ \`e \Define{ortogonale a destra}[a destra rispetto a una forma bilineare][ortogonalit\`a] a $\Vector$ rispetto a $\BilinearOrSesquilinearForm$.
+	\end{itemize}
+	Per ogni parte $\Part \subseteq \LinearSpace$, chiamiamo inoltre
+	\begin{itemize}
+		\item \Define{complemento ortogonale sinistro}[ortogonale sinistro][complemento] di $\Part$, denotata $\LeftOrthogonalComplement{\Part}$ la parte di $\LinearSpace$ di tutti i vettori ortogonali a sinistra a tutti i vettori di $\Part$;
+		\item \Define{complemento ortogonale destro}[ortogonale destro][complemento] di $\Part$, denotata $\RightOrthogonalComplement{\Part}$ la parte di $\LinearSpace$ di tutti i vettori ortogonali a sinistra a tutti i vettori di $\Part$.
+	\end{itemize}
+	Definiamo ancora
+	\begin{itemize}
+		\item $\LeftOrthogonalComplement{\LinearSpace}$ \Define{radicale sinistro}[sinistro di uno spazio vettoriale][radicale] di $\LinearSpace$;
+		\item $\RightOrthogonalComplement{\LinearSpace}$ \Define{radicale destro}[destro di uno spazio vettoriale][radicale] di $\LinearSpace$;
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Dato un $\Field$-spazio vettoriale $\LinearSpace$ su cui \`e definita una forma bilineare o sesquilineare $\BilinearOrSesquilinearForm$, se $\ForAll{(\Vector\,\VarVector) \in \LinearSpace^2)}{\Implies{\BilinearOrSesquilinearForm(\Vector,\VarVector) = 0}{\BilinearOrSesquilinearForm(\VarVector,\Vector) = 0}}$, diciamo che $\BilinearOrSesquilinearForm$ \`e riflessiva.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale. Se $\BilinearOrSesquilinearForm$ \`e una forma bilineare o sesquilineare riflessiva, allora ortogonalit\`a a sinistra e a destra coincidono.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale su cui \`e definita una forma bilineare o sesquilineare $\BilinearOrSesquilinearForm$ e sia $\Part \subseteq \LinearSpace$. $\LeftOrthogonalComplement{\Part}$ \`e un sottospazio vettoriale di $\LinearSpace$
+\end{Theorem}
+\Proof Si verifica immediatamente che se $\Vector, \VarVector \in \LeftOrthogonalComplement{\Part}$ e $\Scalar \in \Field$, allora $\Vector - \VarVector \in \LeftOrthogonalComplement{\Part}$ e $\Scalar \Vector \in \LeftOrthogonalComplement{\Part}$. \EndProof
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale su cui \`e definita una forma bilineare o sesquilineare $\BilinearOrSesquilinearForm$ e sia $\Part \subseteq \LinearSpace$. Abbiamo $\Part \subseteq \RightOrthogonalComplement{(\LeftOrthogonalComplement{\Part})}$ e $\Part \subseteq \LeftOrthogonalComplement{(\RightOrthogonalComplement{\Part})}$.
+\end{Theorem}
+\Proof Abbiamo $\ForAll{\VarVector \in \LeftOrthogonalComplement{\Part}}{\ForAll{\Vector \in \Part}{\BilinearOrSesquilinearForm(\VarVector,\Vector) = 0}}$, da cui $\ForAll{\Vector \in \Part}{\ForAll{\VarVector \in \LeftOrthogonalComplement{\Part}}{\BilinearOrSesquilinearForm(\VarVector,\Vector) = 0}}$ e dunque $\Part \subseteq \RightOrthogonalComplement{(\LeftOrthogonalComplement{\Part})}$
+\par La dimostrazione di $\Part \subseteq \RightOrthogonalComplement{(\LeftOrthogonalComplement{\Part})}$ \`e del tutto analoga. \EndProof
+\begin{Definition}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale su cui \`e definita una forma
+  bilineare o sesquilineare $\BilinearOrSesquilinearForm$. Diciamo che
+  $\Part \subseteq \LinearSpace$ \`e
+  \`e
+	\begin{itemize}
+		\item \Define{ortogonale}[ortogonale][parte] quando
+      \[
+        \ForAll{(\Vector,\VarVector) \in \Part}
+          {\Implies{\Vector \neq \VarVector}
+            {\BilinearOrSesquilinearForm(\Vector,\VarVector) = 0}}.
+      \]
+      Inoltre $\Part$ si dice \Define{completa}[ortogonale completa][parte] se
+      \`e massimale;
+		\item \Define{ortonormale}[ortonormale][parte] quando
+      \[
+        \ForAll{(\Vector,\VarVector) \in \Part}
+          {\BilinearOrSesquilinearForm(\Vector,\VarVector)
+            = \begin{cases}
+                0\text{, se }\Vector \neq \VarVector;\\
+                1\text{, se }\Vector = \VarVector.
+              \end{cases}}
+      \]
+	\end{itemize}
+\end{Definition}

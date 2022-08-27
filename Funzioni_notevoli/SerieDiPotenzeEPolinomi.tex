@@ -1,0 +1,53 @@
+\section{Serie di potenze e polinomi}
+\label{FunzioniNotevoli_SerieDiPotenzePolinomi}
+\begin{Theorem}
+	Sia $n \in \mathbb{N}$, sia $\Monomial{m}(x) = x^n \in \RingAdjunction{\mathbb{C}}{x}$. $\Monomial{m}$ \`e derivabile ovunque in $\mathbb{C}$ e abbiamo
+	\[
+		\Derivative{\Monomial}(x) =
+		\begin{cases}
+			x^{n - 1}&\text{ se }n > 0,\\
+			0&\text{ altrimenti}.
+		\end{cases}
+	\]
+\end{Theorem}
+\Proof Per $n > 1$, abbiamo
+\begin{align*}
+	\Derivative{\Polynomial}
+	&= \lim_{h \rightarrow 0} \frac{(x + h)^n - x^n}{h},\\
+	&= \lim_{h \rightarrow 0} \frac{\sum_{k = 1}^n \binom{n}{k} x^{n - k}h^k}{h},\\
+	&= \lim_{h \rightarrow 0} \left ( \sum_{k = 1}^n \binom{n}{k} x^{n - k}h^{k - 1} \right ),\\
+	&= n x^{n - 1}.
+\end{align*}
+\par Se invece $n = 0$, allora $\Monomial{m}$ \`e costante e dunque $\Derivative{\Monomial{m}} = 0$. \EndProof
+\begin{Corollary}
+	Fissato $n \in \mathbb{N}$, sia $\Polynomial(x) = \sum_{k \in n} a_k x^k \in \RingAdjunction{C}{x}$. $\Polynomial$ \`e derivabile ovunque in $\mathbb{C}$ e abbiamo
+	\[
+		\Derivative{\Polynomial}(x) =
+		\begin{cases}
+			\sum_{k \in \NotZero{n - 1}} k a_k x^{n - 1}&\text{ se }n > 0,\\
+			0&\text{ altrimenti}.
+		\end{cases}
+	\]
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente per la linearit\`a dell'operatore di derivazione. \EndProof
+\begin{Corollary}
+	Sia $s(X) = \sum_{k \in \mathbb{N}} a_k X^k \in \PowerSeries{\mathbb{C}}{X}$. Se $\xi \in \mathbb{C}$ appartiene al cerchio di convergenza, allora $s(X)$ \`e derivabile in $\xi$ e
+	\[
+	\Derivative{s}(\xi) = \sum_{k \in \NotZero{\mathbb{N}}} n a_k \xi^{k - 1},
+	\]
+	vale a dire, il valore della derivata di $s$ in $\xi$ coincide col valore della derivata formale di $s$ in $\xi$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema \ref{SuccessioniESerie_ConvergenzaDerivataFormale} e dal teorema precedente. \EndProof
+\begin{Theorem}
+	Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $s(X) = \sum_{k \in \mathbb{N}} a_k X^k
+                \in \PowerSeries{\mathbb{C}}{X}$;
+    \item $\RadiusOfConvergence \in \RealNonNegative$ il raggio di convergenza
+      di $s(X)$;
+    \item $\Matrix \in \mathbb{C}^{n \times n}$.
+  \end{itemize}
+  Se $\SpectralRadius{\Matrix} < \RadiusOfConvergence$, allora la serie
+  $\sum_{k \in \mathbb{N}} a_k \Matrix^k$ \`e convergente.
+\end{Theorem}

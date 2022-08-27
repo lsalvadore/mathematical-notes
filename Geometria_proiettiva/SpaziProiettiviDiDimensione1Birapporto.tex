@@ -1,0 +1,41 @@
+\section{Spazi proiettivi di dimensione $1$: birapporto.}
+
+	\par Per questa sezione, $V$ sar\`a uno spazio vettoriale di dimensione $2$, e di conseguenza $\mathbb{P}(V)$ uno spazio proiettivo di dimensione $1$. Introduciamo un simbolo $\infty$ definito dalla propriet\`a di essere uguale ad ogni rapporto $\frac{\lambda}{0}$, dove $\lambda \in \mathbb{K}^*$.
+	\par Per ogni $i = 1, ..., 4$, $P_i$ sar\`a un punto di $\mathbb{P}(V)$ di coordinate omogenee $[\lambda_i, \mu_i]$ rispetto ad un dato riferimento proiettivo $\mathcal{R}$ e supporremo che almeno tre di questi quattro punti siano distinti. Per ogni $i = 1, ..., 4$ ed ogni $j = 1, ..., 4$, la matrice $M^{(i,j)}$ \`e la matrice $2 \times 2$ che ha le coordinate omogenee fissate di $P_i$ nella prima colonna e quelle di $P_j$ nella seconda colonna.
+\begin{Definition}\label{def38}
+	Chiamiamo \Define{birapporto} $\beta(P_1, P_2, P_3, P_4)$ il rapporto $\frac{\det(M^{(1,4)}) \cdot \det(M^{(3,2)})}{\det(M^{(1,3)}) \cdot \det(M^{(4,2)})} = \frac{(\lambda_1\mu_4 - \lambda_4\mu_1)(\lambda_3\mu_2 - \lambda_2\mu_3)}{(\lambda_1\mu_3 - \lambda_3\mu_1)(\lambda_4\mu_2 - \lambda_2\mu_4)}$.
+\end{Definition}
+\begin{Theorem}\label{th41}
+	Siano $\mathcal{R}$ e $\mathcal{S}$ due riferimenti proiettivi di $\mathbb{P}(V)$. Siano $r_1$ e $r_2$ i birapporti della famiglia $(P_i)_{i = 1,2,3,4}$ relativamente ad $\mathcal{R}$ ed $\mathcal{S}$ rispettivamente. Abbiamo $r_1 = r_2$.
+\end{Theorem}
+\Proof Sia $A$ una matrice di cambio di riferimento proiettivo da $\mathcal{R}$ ad $\mathcal{S}$. Allora, per ogni $i = 1, ..., 4$, una coppia di coordinate omogenee di $P_i$ rispetto a $\mathcal{S}$ \`e $A \begin{pmatrix} \lambda_i & \mu_i \end{pmatrix}^t$.
+	\par Abbiamo dunque $r_2 = \frac{\det(A) \cdot \det(M^{(1,4)}) \cdot \det(A) \cdot \det(M^{(3,2)})}{\det(A) \cdot \det(M^{(1,3)}) \cdot \det(A) \cdot \det(M^{(4,2)})} = r_1$. \EndProof
+\begin{Theorem}\label{th42}
+	Siano $P_1$, $P_2$ e $P_3$ distinti e supponiamo che $\mathcal{R}$ sia il riferimento proiettivo $(P_i)_{i = 1, 2, 3}$. Abbiamo $\beta(P_1, P_2, P_3, P_4) = \frac{\mu_4}{\lambda_4}$.
+\end{Theorem}
+\Proof Segue immediatamente dalla definizione \ref{def38}. \EndProof
+\begin{Theorem}\label{th43}
+	Siano $P_1$, $P_2$ e $P_3$ distinti, sia $P_4 \neq P_2$ e supponiamo $\mathcal{R} = (P_i)_{i = 1, 2, 3}$. Allora $\beta(P_1, P_2, P_3, P_4)$ \`e la coordinata affine di $P_4$ nella carta affine $\mathbb{P}(V) - \lbrace P_2 \rbrace$ rispetto al riferimento affine $\lbrace P_1, P_3 \rbrace$.
+\end{Theorem}
+\Proof Sia $f: \mathbb{P}(\mathbb{K}) \rightarrow \mathbb{P}(V)$ la proiettivit\`a tale che $f([1,0]) = P_1$, $f([0,1]) = P_2$, $f([1,1]) = P_3$. Consideriamo la carta affine $(U, j^{-1})$, dove $U = \mathbb{P}(V) - \lbrace P_2 \rbrace$ e $j = f \circ j_0$.
+	\par La coordinata affine di $P_4$ nella carta affine $U$ rispetto al riferimento affine $\lbrace P_1, P_3 \rbrace$ \`e dunque $j^{-1}(P_4) = j_0^{-1}(f^{-1}(P_4)) = j_0^{-1}([\lambda_4, \mu_4]) = \frac{\mu_4}{\lambda_4} = \beta(P_1, P_2, P_3, P_4)$. \EndProof
+\begin{Theorem}\label{th44}
+	Siano $P_1$, $P_2$ e $P_3$ distinti e sia $x \in \mathbb{K} \cup \lbrace \infty \rbrace$. Esiste uno e un solo punto $Q \in \mathbb{P}(V)$ tale che $\beta(P_1, P_2, P_3, Q) = x$.
+\end{Theorem}
+\Proof Ragioniamo nel riferimento proiettivo $\mathcal{R} = (P_i)_{i = 1,2,3}$. Sia $Q$ di coordinate $[\xi, \eta]$.
+	\par Abbiamo $\beta(P_1, P_2, P_3, Q) = x$ se e solo se $x = \frac{\eta}{\xi}$. Per l'esistenza, basta scegliere $\xi = 1$ e $\eta = \xi x = x$ quando $x \in \mathbb{K}$ e scegliere $\xi = 0$, $\eta = 1$ quando invece $x = \infty$.
+	\par Per l'unicit\`a, sia $Q'$ di coordinate $[\alpha, \beta]$ che verifica l'equazione $\beta(P_1, P_2, P_3, Q') = x$. Se $x \in \mathbb{K} - \lbrace 0 \rbrace$, allora abbiamo $\frac{\eta}{\xi} = \frac{\beta}{\alpha}$, equivalente a $\frac{\eta}{\beta} = \frac{\xi}{\alpha}$, da cui $Q = Q'$; se invece $x = 0$ o $x = \infty$, allora necessariamente abbiamo $\eta = \beta = 0$ nel primo caso e $\xi = \alpha = 0$ nel seconodo, e dunque di nuovo $Q = Q'$. \EndProof
+\begin{Theorem}\label{th45}
+	Siano $\mathbb{P}(V)$ e $\mathbb{P}(W)$ rette proiettive. Siano $(P_i)_{i = 1,2,3,4}$ e $(Q_i)_{i = 1,2,3,4}$ due quaterne di punti tali che
+	\begin{itemize}
+		\item $P_1, P_2, P_3, P_4 \in \mathbb{P}(V)$;\\
+		\item $Q_1, Q_2, Q_3, Q_4 \in \mathbb{P}(V)$;\\
+		\item $P_1$, $P_2$ e $P_3$ siano distinti;\\
+		\item $Q_1$, $Q_2$ e $Q_3$ siano distinti.
+	\end{itemize}
+	Esiste un isomorfismo proiettivo $f: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ tale che, per ogni $i = 1, ..., 4$, $f(P_i) = Q_i$ se e solo se $\beta(P_1,P_2,P_3,P_4) = \beta(Q_1, Q_2, Q_3, Q_4)$.
+\end{Theorem}
+\Proof Consideriamo i riferimenti proiettivi $\mathcal{R} = (P_i)_{i = 1,2,3}$ e $\mathcal{S} = (Q_i)_{i = 1,2,3}$; siano $\phi: \mathbb{P}(V) \rightarrow \mathbb{P}(\mathbb{K})$ e $\psi: \mathbb{P}(W) \rightarrow \mathbb{P}(\mathbb{K})$ gli isomorfismi coordinati.
+	\par Se esiste l'isomorfismo proiettivo $f$, sia $A$ una matrice associata ad $f$ rispetto ai riferimenti proiettivi $\mathcal{R}$ ed $\mathcal{S}$. Allora la stessa dimostrazione del teorema \ref{th41} prova l'uguaglianza dei due birapporti.
+	\par Supponiamo adesso che i due birapporti siano uguali. Esiste un unico isomorfismo proiettivo $f: \mathbb{P}(V) \rightarrow \mathbb{P}(W)$ che trasforma $\mathcal{R}$ in $\mathcal{S}$ (teorema fondamentale delle applicazioni proiettive): occorre dunque verificare che $f(P_4) = Q_4$.
+	\par Per l'implicazione gi\`a dimostrata, $\beta(Q_1, Q_2, Q_3, f(P_4)) = \beta(P_1, P_2, P_3, P_4)$. D'altra parte, $\beta(Q_1,Q_2,Q_3,Q_4) = \beta(P_1,P_2,P_3,P_4)$ per ipotesi; dunque, per il teorema \ref{th44}, $f(P_4) = Q_4$. \EndProof

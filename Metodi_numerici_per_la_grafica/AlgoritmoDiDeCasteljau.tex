@@ -1,0 +1,82 @@
+\section{Algoritmo di de Casteljau.}
+\label{MetodiNumericiPerLaGrafica_AlgoritmoDiDeCasteljau}
+\begin{Definition}
+  \label{Definition_DeCasteljau}
+  Sia $\AffineSpace$ uno spazio $\mathbb{R}$-affine e sia,
+  fissato $n \in \mathbb{N}$,
+  $(P_k)_{k \in n} \in \AffineSpace^n$.
+  Chiamiamo
+  \Define{algoritmo di de Casteljau}[di de Casteljau][algoritmo]
+  l'algoritmo seguente
+  \begin{enumerate}
+    \item\label{DeCasteljau_1} si ponga $r = 1$ e, per ogni $k \in n$,
+      \[
+        \DeCasteljau{k}{0} = P_k;
+      \]
+    \item\label{DeCasteljau_2} per ogni $k \in n - r$ definiamo
+      \[
+        \DeCasteljau{k}{r}(t)
+          = (1 - t)\DeCasteljau{k}{r - 1} + t\DeCasteljau{k + 1}{r - 1};
+      \]
+    \item\label{DeCasteljau_3} incrementiamo $r$ di $1$;
+    \item\label{DeCasteljau_4} se $r \leq n - 1$ torniamo al punto
+      \ref{DeCasteljau_2}, altrimenti l'algoritmo termina.
+  \end{enumerate}
+  Chiamiamo inoltre
+  \begin{itemize}
+    \item \Define{punti di controllo}[di controllo][punto]
+      i punti $P_k$ al variare di $k \in n$;
+    \item \Define{poligono di controllo}[di controllo][poligono]
+      il poligono definito dai punti di controllo o, pi\`u frequentemente,
+      la spezzata definita da $(P_k)_{k \in n}$;
+    \item \Define{curva di B\'ezier}[di B\'ezier][curva]
+      la curva $\DeCasteljau{0}{n - 1}$.
+  \end{itemize}
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_la_grafica/DeCasteljau.m"}
+	\caption{Implementazione dell'algoritmo di De Casteljau in
+  \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Con le notazioni della definizione precedente, l'algoritmo di Casteljau costa
+  \begin{itemize}
+    \item $\frac{n(n + 1)}{2}$ combinazioni lineari;
+    \item $\BigO{n}$ spazio.
+  \end{itemize}
+\end{Theorem}
+\Proof Per ogni valore di $r$ vengono calcolate $n - r$ combinazioni lineari:
+in totale abbiamo dunque
+$\sum_{r = 1}^{n - 1} (n - r)
+= n^2 - \sum_{r = 1}^{n - 1} r
+= n^2 - \frac{n(n - 1)}{2}
+= \frac{n^2 + n}{2}
+= \frac{n(n + 1)}{2}$.
+\par Per quanto riguarda lo spazio,
+\begin{Theorem}
+  L'algoritmo di Casteljau \`e numericamente stabile.
+\end{Theorem}
+\Proof Segue direttamente dalla stabilit\`a numerica delle combinazioni lineari.
+\EndProof
+\begin{Theorem}
+  Sia $\BezierCurve$ una curva di B\'ezier generata dai punti di controllo
+  $(P_k)_{k \in n}$ ($n \in \mathbb{N}$). $\BezierCurve$ passa da
+  $P_0$ e $P_{n - 1}$.
+\end{Theorem}
+\Proof Costruiamo $\BezierCurve$ tramite l'algoritmo di Casteljau. Con le
+notazioni della definizione \ref{Definition_DeCasteljau}, si dimostra
+immediatamente per induzione che
+\[
+  \ForAll{r \in n}{\DeCasteljau{0}{r}(0) = P_0},
+\]
+e
+\[
+  \ForAll{r \in n}{\DeCasteljau{n - r - 1}{r}(1) = P_{n - 1}}.\text{ \EndProof}
+\]
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Metodi_numerici_per_la_grafica/Immagine_DeCasteljau.png}
+	\centering
+	\caption[Esempio di curva di B\'ezier]
+  {In blu una curva di B\'ezier, corrispondente al poligono di controllo
+  tracciato in rosso.}
+\end{figure}

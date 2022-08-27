@@ -1,0 +1,197 @@
+\section{Definizioni e teoremi di base.}\label{DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Chiamiamo
+	\Define{problema decisionale}[decisionale][problema] o
+	\Define{problema di esistenza}[di esistenza][problema]
+	il dato di un insieme $\AdmissibleSet$ detto
+  \Define{insieme ammissibile}[ammissibile di un problema di ottimizzazione][insieme],
+  che dipende da certi dati detti
+  \Define{parametri}[di un problema di ottimizzazione][parametro] o
+  \Define{varabili}[di un problema di ottimizzazione][variabile]:
+  la specifica di tali parametri produce una particolare
+  \Define{istanza}[di un problema di ottimizzazione][istanza].
+  Gli elementi di $\AdmissibleSet$ si chiamano
+  \Define{soluzioni ammissibili}[ammissible di un problema di ottimizzazione][soluzione];
+  se inoltre $\AdmissibleSet$ \`e espresso come sottoinsieme
+  di un insieme $\AdmissibleSet'$, allora gli elementi di
+  $\AdmissibleSet' - \AdmissibleSet$ vengono talvolta chiamate
+  \Define{soluzioni non ammissibili}[non ammissible di un problema di ottimizzazione][soluzione].
+  Risolvere un problema decisionale significa determinare se esistono soluzioni ammissibili.
+\end{Definition}
+\begin{Definition}
+	Un problema decisionale $\DecisionalProblem$ si dice \Define{vuoto}[decisionale][problema] quando $\AdmissibleSet = \emptyset$.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo
+	\Define{problema di certificato}[di certificato][problema]
+	il dato di
+	\begin{itemize}
+		\item un insieme $\AdmissibleSet$ detto
+		\Define{insieme ammissibile}[ammissibile di un problema di ottimizzazione][insieme],
+		che dipende da certi dati detti
+		\Define{parametri}[di un problema di ottimizzazione][parametro] o
+		\Define{varabili}[di un problema di ottimizzazione][variabile]:
+		la specifica di tali parametri produce una particolare
+		\Define{istanza}[di un problema di ottimizzazione][istanza].
+		Gli elementi di $\AdmissibleSet$ si chiamano
+		\Define{soluzioni ammissibili}[ammissible di un problema di ottimizzazione][soluzione];
+		$\AdmissibleSet$ \`e espresso come sottoinsieme
+		di un insieme $\AdmissibleSet'$ e gli elementi di
+		$\AdmissibleSet' - \AdmissibleSet$ vengono talvolta chiamate
+		\Define{soluzioni non ammissibili}[non ammissible di un problema di ottimizzazione][soluzione];
+		\item un elemento $x \in \AdmissibleSet'$
+	\end{itemize}
+	Risolvere un problema di certificato significa determinare se $x$ \`e o meno una soluzione ammissibile.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo
+	\Define{problema di ottimizzazione}[di ottimizzazione][problema]
+	il dato di
+	\begin{itemize}
+		\item un insieme $\AdmissibleSet$ detto
+		\Define{insieme ammissibile}[ammissibile di un problema di ottimizzazione][insieme],
+		che dipende da certi dati detti
+		\Define{parametri}[di un problema di ottimizzazione][parametro] o
+		\Define{varabili}[di un problema di ottimizzazione][variabile]:
+		la specifica di tali parametri produce una particolare
+		\Define{istanza}[di un problema di ottimizzazione][istanza].
+		Gli elementi di $\AdmissibleSet$ si chiamano
+		\Define{soluzioni ammissibili}[ammissible di un problema di ottimizzazione][soluzione];
+		se inoltre $\AdmissibleSet$ \`e espresso come sottoinsieme
+		di un insieme $\AdmissibleSet'$, allora gli elementi di
+		$\AdmissibleSet' - \AdmissibleSet$ vengono talvolta chiamate
+		\Define{soluzioni non ammissibili}[non ammissible di un problema di ottimizzazione][soluzione].
+		\item una \Define{funzione obiettivo}[obiettivo][funzione]
+		o \Define{funzione di costo}[di costo]{funzione}
+		$\ObjectiveFunction: \AdmissibleSet \rightarrow \mathbb{R}$;
+		\item l'indicazione di se il problema \`e
+		\Define{di minimo}[di minimo][problema] o
+		\Define{di massimo}[di massimo][problema]: chiameremo
+		\Define{soluzione ottimale}[ottimale di un problema di ottimizzazione][soluzione]
+		una soluzione ammissibile $\OptimalSolution$ tale che
+		\begin{itemize}
+			\item $\ObjectiveFunction(\OptimalSolution) =
+			\min_{\AdmissibleSolution \in \AdmissibleSet}
+			\ObjectiveFunction(\AdmissibleSolution)$ se il
+			problema \`e definito di minimo;
+			\item $\ObjectiveFunction(\OptimalSolution) =
+			\max_{\AdmissibleSolution \in \AdmissibleSet}
+			\ObjectiveFunction(\AdmissibleSolution)$ se il
+			problema \`e definito di massimo.
+		\end{itemize}
+	\end{itemize}
+	Denoteremo i dati di un problema di minimo
+	$\MinimumProblem$ con la notazione
+	$$(\MinimumProblem)\ \min \lbrace \ObjectiveFunction(\AdmissibleSolution): \AdmissibleSolution \in \AdmissibleSet \rbrace$$
+	e i dati di un problema di massimo $\MaximumProblem$ con
+	$$(\MaximumProblem)\ \max \lbrace \ObjectiveFunction(\AdmissibleSolution): \AdmissibleSolution \in \AdmissibleSet \rbrace.$$
+	\par In alternativa, quando l'insieme ammissibile \`e descritto tramite vincoli su variabili, denoteremo il problema scrivendo su una riga $\min$ o $\max$ e la funzione da minimizzare o massimizzare, e nelle righe successive i vincoli posti (forniremo nel seguito molti esempi).
+	\par Risolvere un problema di ottimizzazione significa individuarne una soluzione ottimale.
+\end{Definition}
+\begin{Definition}
+	Supponiamo l'insieme ammissibile di un problema (decisionale, di certificato o di ottimizzazione indifferentemente) sia sottoinsieme di uno spazio vettoriale di dimensione $n \in \mathbb{N}$: $n$ si chiama \Define{dimensione del problema}[di un problema][dimensione].
+\end{Definition}
+\begin{Definition}
+	Un problema di ottimizzazione $\OptimizationProblem$ si dice \Define{vuoto}[di ottimizzazione][problema] quando $\AdmissibleSet = \emptyset$.
+\end{Definition}
+\begin{Example}
+	Non tutti i problemi con valore ottimo finito ammettono soluzioni ottime: \`e il caso dei problemi $\min \lbrace x: x > 0 \rbrace$ e $\min \lbrace \frac{1}{x}: x \geq 0 \rbrace$.
+\end{Example}
+\begin{Example}
+	\TheoremName{Problema di equipartizione} Il problema di
+	equipartizione \`e determinato da un primo parametro
+	$n \in \mathbb{N}$, che determina il numero dei
+	restanti parametri, e appunto dai restanti parametri
+	$(a_i)_{i \in n} \in \mathbb{N}^n$. Il problema pu\`o
+	essere formulato come segue:
+	$$(\EquipartitionProblem)\ \min \lbrace \ObjectiveFunction(\Set): \Set \in \PowerSet{n} \rbrace$$
+	dove $\ObjectiveFunction(\Set) = \AbsoluteValue{\sum_{i \in S} a_i - \sum_{n \SetMin S} a_i}$.
+\end{Example}
+\begin{Example}
+	\TheoremName{Problema di impaccamento di cerchi (Circle Packing)}
+	Il problema di impaccamento di cerchi prevede un unico parametro
+	$n \in \mathbb{N}$ e risponde alla seguente domanda: qual \`e il
+	massimo raggio che possono avere $n$ cerchi identici posti
+	all'interno di un quadrato di lato unitario che non si
+	sovrappongono?
+	\par Consideriamo l'insieme $\AdmissibleSet'$ di tutte le coppie
+	$((x_i,y_i)_{i \in n}, r)$, con, per ogni $i \in n$, $x_i, y_i \in
+	[0,1]$ e $r \in \mathbb{R}$: interpretiamo $(x_i, y_i)$ come le
+	coordinate del centro del cerchio di indice $i$ e $r$ come il
+	raggio comune di tutti gli $n$ cerchi. Restringiamo
+	$\AdmissibleSet'$ ad un insieme ammissible $\AdmissibleSet$
+	aggiungendo le condizioni seguenti:
+	\begin{itemize}
+		\item affinch\'e il cerchio di centro $(x_i,y_i)$ sia
+		interamente contenuto nel quadrato $[0,1]^2$ richiediamo
+		$r \leq x_i \leq 1 - r$ e $r \leq y_i \leq 1 - r$;
+		\item affinch\'e i cerchi di centro $(x_i,y_i)$ e
+		$(x_j,y_j)$, con $i \neq j$, non si sovrappongano
+		richiediamo
+		$\Distance[2]((x_i,y_i),(x_j,y_j)) \leq 2r$.
+	\end{itemize}
+	Il problema pu\`o allora essere descritto come segue:
+	$$(\CirclePacking)\ \max \lbrace r: ((x_i,y_i)_{i \in n}, r) \in [0,1]^n \times \mathbb{R} \rbrace.$$
+\end{Example}
+\begin{Definition}
+	Un problema di ottimizzazione si dice
+	\begin{itemize}
+		\item \Define{combinatorio}[di ottimizzazione combinatorio][problema] quando il suo insieme ammissible \`e finito o numerabile;
+		\item \Define{continuo}[di ottimizzazione continuo][problema] quando il suo insieme ammissible \`e pi\`u che numerabile.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Problemi di minimo e problemi di massimo sono equivalenti, nel senso che
+	\begin{itemize}
+		\item per ogni problema di minimo esiste un problema di massimo le cui soluzioni ottimali coincidono con le soluzioni ottimali del problema di minimo;
+		\item per ogni problema di massimo esiste un problema di minimo le cui soluzioni ottimali coincidono con le soluzioni ottimali del problema di massimo.
+	\end{itemize}
+\end{Theorem}
+\Proof Per trasformare un problema di minimo o di massimo in un problema dell'altro tipo \`e sufficiente moltiplicare la funzione obiettivo per $-1$. \EndProof
+\par Nel seguito, per il teorema appena enunciato, enunceremo alcune definizioni o dimostreremo alcuni teoremi validi sia per problemi di minimo che di massimo solo per problemi di minimo: il lettore ricaver\`a facilmente i risultati equivalenti per i problemi di massimo.
+\begin{Theorem}
+	Problemi decisionali e problemi di ottimizzazione sono equivalenti, nel senso che
+	\begin{itemize}
+		\item per ogni problema decisionale esiste un problema di ottimizzazione le cui soluzioni ottimali coincidono con le soluzioni ammissibili del problema decisionale;
+		\item per ogni problema di ottimizzazione esiste un problema decisionale le cui soluzioni ammissibili coincidono con le soluzioni ottimali del prolbema di ottimizzazione.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\DecisionalProblem$ un problema decisionale di insieme ammissibile $\AdmissibleSet$ definito come sottoinsieme di $\AdmissibleSet'$. Il problema di massimo avente $\AdmissibleSet'$ come insieme ammissibile e funzione obiettivo coincidente con la funzione caratteristica di $\AdmissibleSet$ ha la propriet\`a richiesta.
+\par Sia $\OptimizationProblem$ un problema di ottimizzazione di insieme ammissible $\AdmissibleSet$. Il problema decisionale il cui insieme ammissibile \`e il sottoinsieme di $\AdmissibleSet$ costituito da tutte le soluzioni ottimali ha la propriet\`a richiesta. \EndProof
+\par Nel seguito, per il teorema appena enunciato, enunceremo alcune definizioni o dimostreremo alcuni teoremi validi sia per i problemi di ottimizzazione che per i problemi decisionali solo per problemi di ottimizzazione: il lettore ricaver\`a facilmente i risultati equivalenti per i problemi decisionali.
+\begin{Definition}
+	Sia $\MinimumProblem$ un problema di minimo con insieme ammissibile $\AdmissibleSet$ e funzione obiettivo $\ObjectiveFunction$. Fissato $k \in \mathbb{R}$, definiamo
+	\Define{problema decisionale associato}[decisionale associato][problema] o
+	\Define{versione decisionale}[di un problema di ottimizzazione][versione decisionale]
+	il problema decisionale consistente nell'individuare l'esistenza di elementi nell'insieme
+	$\AdmissibleSet_k = \lbrace \AdmissibleSolution \in \AdmissibleSet | \ObjectiveFunction(\AdmissibleSolution) \leq k$.
+\end{Definition}
+\begin{Definition}
+	Sia $\MinimumProblem$ un problema di minimo. Un
+	\Define{algoritmo di risoluzione}[di risoluzione di un problema][algoritmo] \`e
+	un algoritmo che associa ad un'istanza di $\MinimumProblem$ il suo valore ottimo (da cui \`e poi generalmente possibile individuare una soluzione ottima). Un algoritmo capace di individuare il valore ottimo di qualsiasi istanza di un determinato problema si dice
+	\Define{esatto}[algoritmo esatto][algoritmo].
+\end{Definition}
+\begin{Definition}
+	Siano dati i seguenti problemi di minimo:
+	$$(\MinimumProblem_1) \min \lbrace \ObjectiveFunction_1(\AdmissibleSolution): \AdmissibleSolution \in \AdmissibleSet_1 \rbrace,$$
+	$$(\MinimumProblem_2) \min \lbrace \ObjectiveFunction_2(\AdmissibleSolution): \AdmissibleSolution \in \AdmissibleSet_2 \rbrace.$$
+	Se abbiamo
+	\begin{itemize}
+		\item $\AdmissibleSet_1 \subseteq \AdmissibleSet_2$;
+		\item $\ForAll{\AdmissibleSolution \in \AdmissibleSet_1}{\ObjectiveFunction_2(\AdmissibleSolution) \leq \ObjectiveFunction_1(\AdmissibleSolution)}$;
+	\end{itemize}
+	Allora diciamo che $\MinimumProblem_2$ \`e un
+	\Define{rilassamento}[di un problema di ottimizzazione][rilassamento]
+	di $\MinimumProblem_1$.
+\end{Definition}
+\begin{Definition}
+	Dato un problema di ottimizzazione, definiamo
+	\begin{itemize}
+		\item \Define{variabile quantitativa}[quantitativa][variabile] una variabile che esprime una quantit\`a del problema;
+		\item \Define{variabile decisionale}[decisionale][variabile] una variabile che esprime una decisione da prendere nella soluzione del problema;
+		\item \Define{variabile booleana}[booleana][variabile] o \Define{variabile binaria}[binaria][variabile] o ancora \Define{variabile logica}[logica][variabile] una variabile decisionale che pu\`o valere $0$ -- equivalente al significato di falso -- o $1$ -- equivalente a vero --;
+		\item \Define{variabile strutturale}[strutturale][variabile] una variabile decisionale essenziale del problema, togliendo la quale non \`e pi\`u possibile descriverne una soluzione (a meno di introdurne altre equivalenti);
+		\item \Define{variabile ausiliaria}[ausiliaria][variabile] una variabile decisionale non indispensabile alla descrizione di una soluzione del problema, ma ci\`o non di meno utile per esempio ad esprimere vincoli.
+	\end{itemize}
+\end{Definition}

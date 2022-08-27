@@ -1,0 +1,120 @@
+\section{Definizioni e teoremi di base}\label{DefinizioniETeoremiDiBase}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $\BanachSpace$ e $\VarBanachSpace$ $\Field$-spazi di Banach;
+		\item $\Open \subseteq \BanachSpace$ aperto;
+		\item $f: \Open \rightarrow \VarBanachSpace$;
+		\item $x \in \Open$.
+	\end{itemize}
+	Se esiste $\phi: \BanachSpace \rightarrow \VarBanachSpace$ operatore lineare continuo tale che $f(x + h) = f(x) + \phi(h) + \Littleo{h}$, allora diciamo che
+	\begin{itemize}
+		\item $f$ \`e \Define{differenziabile secondo Fr\'echet}[differenziabile secondo Fr\'echet][applicazione] o anche solo \Define{differenziabile}[differenziabile][applicazione] in $x$;
+		\item $\phi$ \`e la \Define{derivata di Fr\'echet}[di Fr\'echet][derivata] o, molto pi\`u comunemente, il \Define{differenziale} o ancora il \Define{differenziale totale}[totale][differenziale] di $f$ nel punto $x$, denotato $df_x$ o $D_x f$, omettendo la $x$ ogni qual volta il punto $x$ \`e evidente dal contesto;
+		\item la matrice che rappresenta $\phi$ rispetto a basi fissate si chiama \Define{matrice jacobiana}[jacobiana][matrice].
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precedente, la derivata di Fr\'echet, se esiste, \`e unica.
+\end{Theorem}
+\Proof Siano $\phi$ e $\psi$ entrambe derivate di Fr\'echet in $x$. Fissiamo $\epsilon > 0$. Per definizione di derivata di Fr\'echet, esiste $\delta > 0$, tale che per ogni $h \in \BanachSpace$ tale che $\Norm{h} < \delta$ abbiamo
+\begin{itemize}
+	\item $\Norm{f(x + h) - f(x) - \phi(h)} \leq \frac{\epsilon}{2}\Norm{h}$;
+	\item $\Norm{f(x + h) - f(x) - \psi(h)} \leq \frac{\epsilon}{2}\Norm{h}$.
+\end{itemize}
+Da cui $\Norm{(\phi - \psi)h} = \Norm{(f(x + h) - f(x) - \psi(h)) - (f(x + h) - f(x) - \phi(h)} \leq \Norm{f(x + h) - f(x) - psi(h)} + \Norm{f(x + h) - f(x) - \phi(h)} \leq \epsilon \Norm{h}$. E quindi $\delta \Norm{\phi - \psi} = \delta \sup_{\Norm{\Vector} \leq 1} \Norm{(\phi - \psi)\Vector} = \sup_{\Norm{\Vector} \leq \delta} \Norm{(\phi - \psi) \Vector} \leq \sup_{\Norm{\Vector} \leq \delta} \epsilon \Norm{\Vector} \leq \epsilon \delta$. Pertanto $\Norm{\phi - \psi} \leq \epsilon$.
+\par Ne deduciamo $\Norm{\phi - \psi} = 0$ e dunque $\phi = \psi$. \EndProof
+\begin{Definition}
+	Siano $(\BanachSpace_i)_{i \in n}$ ($n \in \mathbb{N}$) e $\VarBanachSpace$ $\Field$-spazi di Banach. Sia $f: \bigoplus_{i \in n} \BanachSpace_i \rightarrow \VarBanachSpace$ e sia $(x_i)_{i \in n} \in \bigoplus_{i \in n} \BanachSpace_i$. Fissiamo $j \in n$: se $f_j: \BanachSpace_j \rightarrow \VarBanachSpace$ che a $x \in \BanachSpace_j$ associa $f((y_i)_{i \in n}) \in \VarBanachSpace$, con $y_i = \begin{cases} x\text{ se }i = j,\\x_i\text{ altimenti,}\end{cases}$ \`e differenziabile secondo Fr\'echet, chiamiamo $\TotalDifferential{f_j}$ \Define{$j$-esimo differenziale parziale}[parziale][differenziale] o \Define{$j$-esima derivata parziale di Fr\'echet}[parziale di Fr\'echet][derivata], denotato $\PartialDifferential{f}{j}$.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precedente, abbiamo $\phi = \PartialDifferential{f}{j}$ se e solo se, per ogni $h \in \bigoplus_{i \in n} \BanachSpace_i$, $f(x + \Projection(h)) = f(x) + \phi(\Projection(h)) + \Littleo{h}$, dove $\Projection: \bigoplus_{i \in n} \BanachSpace_i \rightarrow \bigoplus_{i \in n} \BanachSpace_i$ \`e una proiezione su $\BanachSpace_j$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Siano $(\BanachSpace_i)_{i \in n}$ ($n \in \mathbb{N}$) e $\VarBanachSpace$ $\Field$-spazi di Banach. Sia $\Open \subseteq \bigoplus_{i \in n}$ aperto, $f: \Open \BanachSpace_i \rightarrow \VarBanachSpace$ e sia $(x_i)_{i \in n} \in \bigoplus_{i \in n} \BanachSpace_i$. Se $f$ \`e differenziabile in $(x_i)_{i \in n}$, allora
+	\begin{itemize}
+		\item esistono anche tutti i differenziali parziali $(\PartialDifferential{f}{i})_{i \in n}$;
+		\item per ogni famiglia di proiezioni $(\Projection_i)_{i \in n}$ di $\bigoplus_{i \in n} \BanachSpace_i$ tali che, per ogni $h \in \bigoplus_{i \in n} \BanachSpace_i$, abbiamo $h = \sum_{i \in n} \Projection_i(h)$, abbiamo $\ForAll{i \in n}{\PartialDifferential{f}{i} = \TotalDifferential \circ \Projection_i}$;
+		\item abbiamo $\TotalDifferential{f} = \bigoplus_{i \in n} \PartialDifferential{f}{i}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Definiamo una famiglia di proiezioni $(\Projection_i)_{i \in n}$ di $\bigoplus_{i \in n} \BanachSpace_i$ tali che, per ogni $h \in \bigoplus_{i \in n} \BanachSpace_i$, abbiamo $h = \sum_{i \in n} \Projection_i(h)$.
+\par Abbiamo allora,
+$f(x + h) = f(x) + \TotalDifferential(h) + \Littleo{h}$, da cui
+$f(x + \Projection_i(h)) = f(x) + \TotalDifferential((\Projection_i(h)) + \Littleo{h}$
+e quindi $\TotalDifferential \circ \Projection_i$ \`e l'$i$-esimo differenziale parziale $\PartialDifferential{f}{i}$ di $f$.
+\par Abbiamo infine, per ogni $h \in \bigoplus_{i \in n} \BanachSpace_i$, $\left ( \bigoplus_{i \in n} \PartialDifferential{f}{i} \right )(h) = \sum_{i \in n} (\TotalDifferential \circ \Projection_i)(h) = \TotalDifferential \left ( \sum_{i \in n} \Projection_i(h) \right ) = \TotalDifferential(h)$. \EndProof
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $(\BanachSpace_i)_{i \in 3}$ $\Field$-spazi di Banach;
+		\item $\Open \subseteq \BanachSpace_0$ aperto;
+		\item $f: \Open \rightarrow \BanachSpace_1$;
+		\item $\VarOpen \subseteq \BanachSpace_1$ aperto tale che $f(\Open) \subseteq \VarOpen$;
+		\item $g: \VarOpen \rightarrow \BanachSpace_2$;
+		\item $x \in \Open$.
+	\end{itemize}
+	Se $f$ \`e differenziabile in $x$ e $g$ \`e differenziabile in $f(x)$, allora $(f \circ g)$ \`e differenziabile in $x$ e abbiamo $\TotalDifferential{(g \circ f)}[x] = \TotalDifferential{g}[f(x)] \circ \TotalDifferential{f}[x]$.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+(g \circ f)(x + h) &= g(f(x) + \TotalDifferential{f}[x](h) + \Littleo{h}),\\
+&= g(f(x) + \TotalDifferential{f}[x](h) + \Littleo{h}),\\
+&= g(f(x)) + \TotalDifferential{g}[f(x)](\TotalDifferential{f}[x](h) + \Littleo{h}) + \Littleo{\TotalDifferential{f}[x](h) + \Littleo{h}},\\
+&= g(f(x)) + \TotalDifferential{g}[f(x)](\TotalDifferential{f}[x](h)) + \TotalDifferential{g}[f(x)](\Littleo{h}) + \Littleo{\TotalDifferential{f}[x](h) + \Littleo{h}}.
+\end{align*}
+\par Abbiamo $\TotalDifferential{g}[f(x)](\Littleo{h}) = \Littleo{h}$ perch\'e il differenziale totale \`e un operatore lineare continuo. Di conseguenza, $\TotalDifferential{g}[f(x)](\Littleo{h}) + \Littleo{\TotalDifferential{f}[x](h) + \Littleo{h}} = \Littleo{h}$.
+\par Quindi $(g \circ f)$ \`e differenziabile in $x$ e il suo differenziale \`e $\TotalDifferential{(g \circ f)}[x] = \TotalDifferential{g}[f(x)] \circ \TotalDifferential{f}[x]$. \EndProof
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $\BanachSpace$ e $\VarBanachSpace$ $\Field$-spazi di Banach;
+		\item $\Open \subseteq \BanachSpace$ aperto;
+		\item $f: \Open \rightarrow \VarBanachSpace$;
+		\item $x \in \Open$;
+		\item $\Vector \in \BanachSpace$.
+	\end{itemize}
+	Se esiste $\lim_{t \rightarrow 0} \frac{f(x + t\Vector) - f(x)}{t}$ ($t \in \Field$), definiamo tale limite \Define{derivata direzionale}[direzionale][derivata] di $f$ in $x$ lungo $\Vector$, denotata $\frac{\partial f}{\partial \Vector}(x)$ o $D_{\Vector} f(x)$ o ancora $f_{\Vector}(x)$. Inoltre, se $\BanachSpace = \Field^n$ per $n \in \mathbb{N}$ e $\Vector$ \`e l'$i$-esimo vettore della base canonica di $\Field^n$, chiamiamo $\PartialDerivative{f}{\Vector}$ \Define{$i$-esima derivata parziale}[parziale][derivata] di $f$; quando denotiamo con un simbolo diverso ogni componente di $\Field^n$, denotiamo anche la derivata parziale anche sostituendo a $\Vector$ il simbolo in questione: per esempio per esprimere le tre derivate parziali di $f(x,y,z)$ (supponendo che esistano) useremo le notazioni $\PartialDerivative{f}{x}$, $\PartialDerivative{f}{y}$, $\PartialDerivative{f}{z}$. Inoltre, se $\Dimension{\BanachSpace} = 1$, anzich\'e $\PartialDerivative{f}{\Vector}$ o $\PartialDerivative{f}{x}$ scriveremo $\frac{df}{dx}$ o $f'(x)$ o ancora $\dot{f}(x)$.
+\end{Definition}
+\begin{Definition}
+	Siano
+	\begin{itemize}
+		\item $\BanachSpace$ e $\VarBanachSpace$ $\Field$-spazi di Banach;
+		\item $\Open \subseteq \BanachSpace$ aperto;
+		\item $\VarOpen \subseteq \Open$ aperto;
+		\item $f: \Open \rightarrow \VarBanachSpace$.
+		\item $\Vector \in \BanachSpace$.
+	\end{itemize}
+	Sia $\Part$ la parte di $\Open$ tale che per ogni $x \in \VarOpen$, $f$ \`e derivabile lungo $\Vector$ in $x$: chiamiamo $g: \Part \rightarrow \VarBanachSpace$ \Define{funzione derivata lungo $\Vector$}[derivata lungo un vettore][funzione] la funzione che a $x \in \Part$ associa $\DirectionalDerivative{f}{\Vector}(x)$. Inoltre, se per opportuna parte $\Part' \subseteq \Open$, la funzione $h: \Part' \rightarrow \VarBanachSpace$ si ottiene derivando $f$ a turno lungo i vettori di una famiglia di vettori $(\Vector_i)_{i \in n}$ ($n \in \mathbb{N}$), allora $h$ si chiama \Define{derivata di ordine $n$}[di una derivata][ordine].
+\end{Definition}
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\BanachSpace$ e $\VarBanachSpace$ $\Field$-spazi di Banach;
+		\item $\Linear: \BanachSpace \rightarrow \VarBanachSpace$ un'applicazione lineare;
+		\item $x \in \BanachSpace$.
+	\end{itemize}
+	Abbiamo $\TotalDifferential{\Linear} = \Linear$.
+\end{Theorem}
+\Proof Abbiamo $\Linear(x + h) = \Linear(x) + \Linear(h) + 0$ e $\IsLittleo{0}{h}$. \EndProof
+\begin{Corollary}
+	Siano
+	\begin{itemize}
+		\item $\BanachSpace$ un $\Field$-spazio di Banach;
+		\item $x \in \BanachSpace$.
+	\end{itemize}
+	Abbiamo $\TotalDifferential{\Identity[\BanachSpace]} = \Identity[\BanachSpace]$.
+\end{Corollary}
+\Proof $\Identity[\BanachSpace]$ \`e un automorifsmo lineare di $\BanachSpace$. \EndProof
+\begin{Theorem}
+	Siano
+	\begin{itemize}
+		\item $\BanachSpace$ un $\Field$-spazio di Banach tale che $\Dimension{\BanachSpace} = 1$;
+		\item $\Open \subseteq \BanachSpace$ aperto;
+		\item $f: \Open \rightarrow \Field$;
+		\item $x \in \Open$.
+	\end{itemize}
+	$f$ \`e differenziabile in $x$ se e solo se \`e derivabile in $x$ e abbiamo $\Differential{f} = \Derivative{f}(x) \Differential{x}$.
+\end{Theorem}
+\Proof Sia $\Vector$ un vettore unitario di $\BanachSpace$: esso ne costituisce da solo una base normale. $\lim_{t \rightarrow 0} \frac{f(x + t\Vector) - f(x)}{t} = \Derivative{f}(x)$ equivale a $\lim_{t \rightarrow 0} \frac{\Norm{f(x + t\Vector) - f(x) - t f'(x)}}{\Norm{t\Vector}}$

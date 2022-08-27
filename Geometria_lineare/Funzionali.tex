@@ -1,0 +1,85 @@
+\section{Funzionali.}\label{Funzionali}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale e sia $(\LinearBase_i)_{i \in n}$ ($n \in \mathbb{N}$)
+	una base di $\LinearSpace$. Sia $(\LinearBase^i)_{i \in n}$ la famiglia
+	di funzionali definita, per ogni $(i,j) \in n \times n$ da
+	$\LinearBase^i(\LinearBase_j) =
+	\begin{cases}
+		0\text{, se }i \neq j,\\
+		1\text{, se }i = j.
+	\end{cases}$
+	$(\LinearBase^i)_{i \in n}$ costituisce una base di
+	$\Dual{\LinearSpace}$.
+\end{Theorem}
+\Proof Sia $(\Scalar_i)_{i \in n} \in \Field^n$ tale che
+$\sum_{i \in n} \Scalar_i \LinearBase^i = 0$. Per ogni $j \in n$, abbiamo
+$(\sum_{i \in n} \Scalar_i \LinearBase^i)(\LinearBase_j) =
+\sum_{i \in n} \Scalar_i \LinearBase^i(\LinearBase_j) =
+\Scalar_j$. Dunque, necessariamente, $\ForAll{i \in n}{\Scalar_i = 0}$.
+\par Sia $\Functional \in \Dual{\LinearSpace}$ e sia $(\Scalar_i)_{i \in n} \in \Field^n$.
+Abbiamo
+$(\sum_{i \in n} \Functional(\LinearBase_i)\LinearBase^i)
+(\sum_{i \in n} \Scalar_i\LinearBase_i)
+= \sum_{i \in n} \Scalar_i \Functional(\LinearBase_i)
+= \Functional(\Scalar_i \LinearBase_i)$. Dunque $(\LinearBase^i)_{i \in n}$
+genera $\LinearSpace$. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente,
+	$(\LinearBase^i)_{i \in n}$ si dice
+	\Define{base duale}[duale][base] di $(\LinearBase_i)_{i \in n}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale e sia $(\LinearBase_i)_{i \in n}$
+	una base di $\LinearSpace$. L'applicazione lineare $\Linear$ definita
+	da $\ForAll{i \in n}{\Linear(\LinearBase_i) = \LinearBase^i}$ \`e un isomorfismo.
+\end{Theorem}
+\Proof $\Linear$ \`e un'applicazione lineare iniettiva tra spazi finiti. \EndProof
+\begin{Lemma}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale. $\Linear'': \LinearSpace \rightarrow \Field^\Dual{\LinearSpace}$ l'applicazione definita da $\ForAll{\Vector \in \LinearSpace}{\ForAll{\Functional \in \Dual{\LinearSpace}}{{(\Linear''(\Vector))(\Functional) = \Functional(\Vector)}}}$. Abbiamo $\Image{\Linear''} \subseteq \Dual{\Dual{\LinearSpace}}$.
+\end{Lemma}
+\Proof Occorre dimostrare che, per ogni $\Vector \in \LinearSpace$, $\Linear''(\Vector)$ \`e lineare.
+\par Siano $\Functional_0, \Functional_1 \in \Dual{\LinearSpace}$ e $\Scalar \in \Field$. Abbiamo
+\begin{itemize}
+	\item $\Linear''(\Vector)(\Functional_0 + \Functional_1) = (\Functional_0 + \Functional_1)(\Vector) = \Functional_0(\Vector) + \Functional_1(\Vector) = \Linear''(\Vector)(\Functional_0) + \Linear''(\Vector)(\Functional_1)$;
+	\item $\Linear''(\Vector)(\Scalar \Functional_0) = (\Scalar \Functional_0)(\Vector) = \Scalar \Functional_0(\Vector) = \Scalar \Linear''(\Vector)(\Functional_0)$. \EndProof
+\end{itemize} 
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale e sia $(\LinearBase_i)_{i \in n}$ ($n \in \mathbb{N}$) una base di $\LinearSpace$. Denotiamo $(\LinearBase_{(i)})_{i \in n}$ la base duale di $(\LinearBase^i)_{i \in n}$. Siano
+	\begin{itemize}
+		\item $\Linear: \LinearSpace \rightarrow \Dual{\LinearSpace}$ l'applicazione lineare definita da $\ForAll{i \in n}{\Linear(\LinearBase_i) = \LinearBase^i}$;
+		\item $\Linear': \Dual{\LinearSpace} \rightarrow \Dual{\Dual{\LinearSpace}}$ l'applicazione lineare definita da $\ForAll{i \in n}{\Linear'(\LinearBase^i) = \LinearBase_{(i)}}$.
+		\item $\Linear'': \LinearSpace \rightarrow \Dual{\Dual{\LinearSpace}}$ l'applicazione definita da $\ForAll{\Vector \in \LinearSpace}{\ForAll{\Functional \in \Dual{\LinearSpace}}{{(\Linear''(\Vector))(\Functional) = \Functional(\Vector)}}}$.
+	\end{itemize}
+	Abbiamo
+	\begin{itemize}
+		\item $\Linear'' = \Linear' \circ \Linear$;
+		\item $\Linear''$ \`e un isomorfismo;
+		\item $\Linear''$ non dipende dalla base fissata $(\LinearBase_i)_{i \in n}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\Vector \in \LinearSpace$ e siano $(\Scalar_i)_{i \in n} \in \Field^n$ le coordinate di $\Vector$ rispetto a $(\LinearBase_i)_{i \in n}$. Inoltre, sia $\Functional \in \LinearSpace$ e siano $(\Scalar^i)_{i \in n} \in \Field^n$ le coordinate di $\Functional$ rispetto a $(\LinearBase^i)_{i \in n}$.
+\par Abbiamo
+$(\Linear' \circ \Linear)(\Vector)(\Functional) =
+\Linear' \left ( \Linear \left ( \sum_{i \in n} \Scalar_i \LinearBase_i \right ) \right )(\Functional) =
+\Linear' \left ( \sum_{i \in n} \Scalar_i \LinearBase^i \right )(\Functional) =
+\left ( \sum_{i \in n} \Scalar_i \LinearBase_{(i)} \right ) \left ( \sum_{i \in n} \Scalar^i \LinearBase^i \right ) =
+\sum_{i \in n} \Scalar_i \Scalar^i$,
+ma anche
+$\Linear''(\Vector)(\Functional) =
+\Functional(\Vector) =
+\left ( \sum_{i \in n} \Scalar_i \LinearBase^i \right ) \left ( \sum_{i \in n} \Scalar^i \LinearBase_i \right ) =
+\sum_{i \in n} \Scalar_i \Scalar^i$.
+Quindi effettivamente $\Linear'' = \Linear ' \circ \Linear$.
+\par $\Linear''$ \`e allora un isomorfismo in quanto composizione di isomorfismi e non dipende dalla base fissata per costruzione. \EndProof
+\begin{Definition}
+	L'isomorfismo $\Linear''$ del teorema precedente si chiama
+	\Define{isomorfismo canonico sul biduale}[canonico sul biduale][isomorfismo].
+\end{Definition}
+\par Nel seguito ogni spazio vettoriale verr\`a sempre identificato col suo biduale.
+\begin{Theorem}
+	Siano $(\LinearSpace_i)_{i \in n}$ ($n \in \mathbb{N}$) una famiglia di $\Field$-spazi vettoriali e $\LinearSpace$ un ulteriore $\Field$-spazio vettoriale. L'applicazione $\Linear: \Multilinears{(\LinearSpace_i)_{i \in n}}{\LinearSpace} \rightarrow \Multilinears{(\LinearSpace_{i \in n}),\Dual{\LinearSpace}}{\Field}$ che a $\Multilinear \in \Multilinears{(\LinearSpace_i)_{i \in n}}{\LinearSpace}$ associa la forma multilineare che a $((\Vector_i)_{i \in n},\Functional) \in \bigoplus_{i \in n}\LinearSpace_i \oplus \LinearSpace$ associa $\Functional(\Multilinear((\Vector_i)_{i \in n})) \in \Field$ \`e un isomorfismo, indipendente dalla scelta di qualsiasi base.
+\end{Theorem}
+\Proof Siano $\Multilinear_0, \Multilinear_1 \in \Multilinears{(\LinearSpace_i)_{i \in n}}{\LinearSpace}$. $\Linear(\Multilinear_0 + \Multilinear_1)$ \`e la forma multilineare che a $((\Vector_i)_{i \in n}, \Functional) \in \bigoplus_{i \in n} \LinearSpace_i \oplus \LinearSpace$ associa $\Functional((\Multilinear_0 + \Multilinear_1)((\Vector_i)_{i \in n})) = \Functional(\Multilinear_0((\Vector_i)_{i \in n})) + \Functional(\Multilinear_1((\Vector_i)_{i \in n})$, quindi effettivamente $\Linear(\Multilinear_0) + \Linear(\Multilinear_1) = \Linear(\Multilinear_0 + \Multilinear_1)$.
+\par Sia inoltre $\Scalar \in \Field$. Allora $\Linear(\Scalar\Multilinear_0)$ \`e la forma multilineare che a $((\Vector_i)_{i \in n},\Functional)$ associa $\Functional((\Scalar \Multilinear_0)((\Vector_i)_{i \in n})) = \Scalar \Functional(\Multilinear_0((\Vector_i)_{i \in n}))$, quindi effettivamente $\Scalar \Linear(\Multilinear_0) = \Linear(\Scalar \Multilinear_0)$. $\Linear$ \`e pertanto un'applicazione multilineare.
+\par Supponiamo ora $\Multilinear \in \Kernel{\Linear}$. Allora, $\ForAll{\Functional \in \Dual{\LinearSpace}}{\ForAll{(\Vector_i \in n) \in \bigoplus{i \in n} \LinearSpace_i}{\Functional(\Multilinear((\Vector_i)_{i \in n}) = 0}}$. Quindi $\ForAll{(\Vector_i \in n) \in \bigoplus{i \in n} \LinearSpace_i}{\Multilinear((\Vector_i)_{i \in n}) = 0}$, da quindi $\Multilinear = 0$.
+\par $\Linear$ \`e allora un'applicazione lineare iniettiva tra spazi finiti equidimensionali, e pertanto un isomorfismo. Esso \`e indipendente dalla scelta di qualsiasi base per costruzione. \EndProof

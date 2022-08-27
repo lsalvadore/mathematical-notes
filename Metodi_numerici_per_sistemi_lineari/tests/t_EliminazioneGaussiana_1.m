@@ -1,0 +1,2 @@
+load Quadrata_Triangolare;
+EliminazioneGaussiana(Quadrata_Triangolare)

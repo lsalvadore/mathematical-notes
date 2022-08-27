@@ -1,0 +1,169 @@
+\ProvidesPackage{algebra}
+
+\DeclareDocumentCommand \InnerAutomorphism{o}{\IfNoValueTF{#1}{i}{i_{#1}}}
+\DeclareDocumentCommand \MinimalPolynomial{m o}{\IfNoValueTF{#2}{\mu_{#1}}{\mu_{#1,#2}}}
+\DeclareDocumentCommand \NormalClosure{m o}{\IfNoValueTF{#2}{\underline{#1}}{\underline{#1}_{#2}}}
+\DeclareDocumentCommand \Orbit{m o}{\IfNoValueTF{#2}{\text{Orb}\left ( #1 \right )}{\text{Orb}_{#2}\left ( #1 \right )}}
+\DeclareDocumentCommand \PerfectClosure{m o}{\IfNoValueTF{#2}{#1^{\Prime^{-\infty}}}{#1^{#2^{-\infty}}}}
+\DeclareDocumentCommand \Permutation{o o}{\IfNoValueTF{#1}{\sigma}{\left ( \begin{matrix} #1 \\ #2 \end{matrix} \right )}}
+\DeclareDocumentCommand \PrimitiveRoots{o}{\IfNoValueTF{#1}{U}{U_{#1}}}
+\DeclareDocumentCommand \Roots{o}{\IfNoValueTF{#1}{R}{R_{#1}}}
+\DeclareDocumentCommand \SemidirectProduct{o}{\IfNoValueTF{#1}{\rtimes}{\rtimes_{#1}}}
+\DeclareDocumentCommand \SeparableClosure{m o}{\IfNoValueTF{#2}{{#1}_s}{{#1}_s^{(#2)}}}
+\DeclareDocumentCommand \Stabilizer{m o}{\IfNoValueTF{#2}{\text{Stab}\left ( #1 \right )}{\text{Stab}_{#2}\left ( #1 \right )}}
+\DeclareDocumentCommand \Sylow{o}{\IfNoValueTF{#1}{\mathcal{S}}{\mathcal{S}_{#1}}}
+\DeclareMathOperator{\Argument}{arg}
+\DeclareMathOperator{\Automorphisms}{Aut}
+\DeclareMathOperator{\Characteristic}{Char}
+\DeclareMathOperator{\Deg}{Deg}
+\DeclareMathOperator{\Endomorphisms}{End}
+\DeclareMathOperator{\GroupOrder}{\Order}
+\DeclareMathOperator{\InnerAutomorphisms}{Inn}
+\DeclareMathOperator{\Kernel}{Ker}
+\DeclareMathOperator{\Order}{Ord}
+\DeclareMathOperator{\PermutationSign}{\Sign}
+\DeclareMathOperator{\PolynomialDegree}{\Deg}
+\DeclareMathOperator{\Sign}{\textbf{sgn}}
+\DeclareMathOperator{\Supp}{Supp}
+\newcommand{\Abelianization}[1]{\text{Ab} \left ( #1 \right )}
+\newcommand{\Abs}[1]{\left \lvert #1 \right \rvert}
+\newcommand{\Action}{\rho}
+\newcommand{\AlgebraicClosure}{\Closure}
+\newcommand{\AlternatingGroup}[1]{\mathcal{A}_{#1}}
+\newcommand{\AlternatingForm}{\mathcal{A}}
+\newcommand{\AlternatingForms}[1]{\text{Alter} \left ( #1 \right )}
+\newcommand{\AssociativeMagma}{{\mathcal{M}_{\text{ass}}}}
+\newcommand{\Automorphism}{\alpha}
+\newcommand{\BernoulliNumber}{B}
+\newcommand{\BernoulliPolynomial}{B}
+\newcommand{\Bezoutian}[2]{B \left ( #1,#2 \right)}
+\newcommand{\BigComposition}[2]{\prod_{#1} #2}
+\newcommand{\Centralizer}[1]{\textbf{Z} \left ( #1 \right )}
+\newcommand{\Commutator}[2]{\left [ #1,#2 \right ]}
+\newcommand{\Congruent}{\cong}
+\newcommand{\Conjugate}[1]{\overline{#1}}
+\newcommand{\Content}[1]{\mathbf{c}\left ( #1 \right )}
+\newcommand{\Coset}[2]{#1#2}
+\newcommand{\Cycle}[1]{\left ( \begin{matrix} #1 \end{matrix} \right )}
+\newcommand{\CyclotomicPolynomial}[1]{\gamma_{#1}}
+\newcommand{\DerivedSubgroup}[1]{\Commutator{#1}{#1}}
+\newcommand{\EuclideanDegree}{\Deg}
+\newcommand{\EuclideanDomain}{\mathcal{E}}
+\newcommand{\EulerFunction}{\phi}
+\newcommand{\Ext}[1]{#1 \cup \lbrace \infty \rbrace}
+\newcommand{\Factorial}[1]{#1 !}
+\newcommand{\FactorialPochammer}[2]{\left ( {#1} \right )_{#2}}
+\newcommand{\FallingFactorial}[2]{\FallingFactorialPochammer{#1}{#2}}
+\newcommand{\FallingFactorialBar}[2]{{#1}^{\underline{#2}}}
+\newcommand{\FallingFactorialPochammer}[2]{\FactorialPochammer{#1}{#2}}
+\newcommand{\Field}{\mathbb{K}}
+\newcommand{\FieldAdjunction}[2]{#1 \left ( #2 \right )}
+\newcommand{\FieldComposition}[2]{#1#2}
+\newcommand{\FieldDegree}[2]{[#1:#2]}
+\newcommand{\FieldExtension}[2]{#1/#2}
+\newcommand{\FieldPolynomialsRing}{\RingAdjunction{\Field}{x}}
+\newcommand{\FieldSpezzamento}{\SplittingField}
+\newcommand{\Fixed}[2]{#1^{#2}}
+\newcommand{\Frobenius}{\varphi}
+\newcommand{\GaloisAutomorphism}{\RelativeHomomorphism}
+\newcommand{\GaloisField}[1]{\textbf{GF} \left ( #1 \right )}
+\newcommand{\GaloisGroup}[2]{\textit{Gal} \left ( \FieldExtension{#1}{#2} \right )}
+\newcommand{\Generator}{\rho}
+\newcommand{\Group}{\mathcal{G}}
+\newcommand{\GroupCenter}[1]{\Centralizer{#1}}
+\newcommand{\GroupIndex}[2]{[#1:#2]}
+\newcommand{\Homomorphism}{\phi}
+\newcommand{\Homomorphisms}[2]{\text{Hom}\left ( #1, #2 \right )}
+\newcommand{\Ideal}{\mathfrak{I}}
+\newcommand{\ImagePolynomial}[2]{{#1}{#2}}
+\newcommand{\ImaginaryPart}[1]{\text{Im} \left ( #1 \right )}
+\newcommand{\Immersion}{\imath}
+\newcommand{\Index}[2]{\left | #1 : #2 \right |}
+\newcommand{\IntegralDomain}{\mathcal{D}}
+\newcommand{\Invertible}[1]{#1^*}
+\newcommand{\Irreducible}{\Prime}
+\newcommand{\Isomorphism}{\imath}
+\newcommand{\IsSubgroup}{<}
+\newcommand{\IsNormalSubgroup}{\triangleleft}
+\newcommand{\LeadingCoefficient}[1]{\text{LC} \left ( #1 \right )}
+\newcommand{\LeadingTerm}[1]{\text{LT} \left ( #1 \right )}
+\newcommand{\LeadingMonomial}[1]{\text{LM} \left ( #1 \right )}
+\newcommand{\LC}[1]{\LeadingCoefficient{#1}}
+\newcommand{\LM}[1]{\LeadingMonomial{#1}}
+\newcommand{\Localization}[2]{{#2}^{-1}#1}
+\newcommand{\LocalizationizationEquivalence}{\equiv}
+\newcommand{\LocalizationizationInverted}{S}
+\newcommand{\LT}[1]{\LeadingTerm{#1}}
+\newcommand{\MCD}[2]{\SpanIdeal{#1,#2}}
+\newcommand{\Magma}{\mathcal{M}}
+\newcommand{\MaximalIdeal}{\mathfrak{M}}
+\newcommand{\Module}{\mathcal{M}}
+\newcommand{\ModuleBase}{\mathcal{B}}
+\newcommand{\ModuleElement}{m}
+\newcommand{\Modulo}{\text{mod}}
+\newcommand{\Modulus}[1]{\Abs{#1}}
+\newcommand{\Monoid}{\mathcal{N}}
+\newcommand{\Monomial}[1]{\mathbf{#1}}
+\newcommand{\MonomialialsSet}[1]{\mathcal{M}\left ( #1 \right )}
+\newcommand{\Multilinear}{\mu}
+\newcommand{\MultilinearForm}{\Multilinear}
+\newcommand{\MultilinearForms}[1]{\text{Multi}\left ( #1 \right )}
+\newcommand{\Multilinears}[2]{\text{Multi}\left ( #1 ; #2 \right )}
+\newcommand{\MultivariatePolynomialsRing}{\RingAdjunction{\Ring}{x_1, ..., x_n}}
+\newcommand{\NaturalDegree}[1]{\left \lvert #1 \right \rvert}
+\newcommand{\Noether}{\mathcal{N}}
+\newcommand{\NormalSubgroup}{\mathcal{N}}
+\newcommand{\Normalizer}[1]{\textbf{N} \left ( #1 \right )}
+\newcommand{\NotDivide}{\nmid}
+\newcommand{\NotZero}[1]{#1 \SetMin \lbrace 0 \rbrace}
+\newcommand{\Operation}{\top}
+\newcommand{\Operator}{\omega}
+\newcommand{\Operators}{\Omega}
+\newcommand{\PID}{\mathcal{P}}
+\newcommand{\Polynomial}{p}
+\newcommand{\PolynomialIdeal}{\Ideal}
+\newcommand{\PolynomialsRing}{\RingAdjunction{\Ring}{x}}
+\newcommand{\PowerSeries}[2]{\RingAdjunction{#1}{\left [ #2 \right ]}}
+\newcommand{\PowerSeriesRing}{\PowerSeries{\Ring}{x}}
+\newcommand{\Prime}{P}
+\newcommand{\PrimeIdeal}{\mathfrak{P}}
+\newcommand{\PrimitiveRoot}{\zeta}
+\newcommand{\Proposition}{\mathbf{P}}
+\newcommand{\Radical}[1]{\sqrt{1}}
+\newcommand{\RealPart}[1]{\text{Re} \left ( #1 \right )}
+\newcommand{\RelativeAutomorphism}{\RelativeHomomorphism}
+\newcommand{\RelativeAutomorphisms}[2]{\Automorphisms_{#2}{#1}}
+\newcommand{\RelativeHomomorphism}{\sigma}
+\newcommand{\Resultant}[2]{\text{Res} \left ( #1 , #2 \right )}
+\newcommand{\RightCoset}[2]{#1#2}
+\newcommand{\Ring}{\mathcal{R}}
+\newcommand{\RingWithIdentity}{\mathcal{R}_1}
+\newcommand{\RingAdjunction}[2]{#1 \left [ #2 \right ]}
+\newcommand{\RisingFactorial}[2]{\RisingFactorialPochammer{#1}{#2}}
+\newcommand{\RisingFactorialBar}[2]{{#1}^{\bar{#2}}}
+\newcommand{\RisingFactorialPochammer}[2]{\FactorialPochammer{#1}{#2}}
+\newcommand{\RisingFactorialSupscript}[2]{{#1}^{\left ( #2 \right )}}
+\newcommand{\SeparableAlgebraicClosure}[1]{\AlgebraicClosure{\SeparableClosure{#1}}}
+\newcommand{\SeparableDegree}[2]{\FieldDegree{#1}{#2}_S}
+\newcommand{\SpanGroup}[1]{\left < #1 \right >}
+\newcommand{\SpanIdeal}[1]{\left ( #1 \right )}
+\newcommand{\SplittingField}{\mathbb{S}}
+\newcommand{\Subgroup}{\mathcal{S}}
+\newcommand{\Submagma}{\mathcal{N}}
+\newcommand{\Submonoid}{{\Monoid}^{1}}
+\newcommand{\SymmetricGroup}[1]{\mathcal{S}_{#1}}
+\newcommand{\Transposition}{\tau}
+\newcommand{\UFD}{\mathcal{U}}
+\newcommand{\UFDPolynomialsRing}{\RingAdjunction{\UFD}{x_1, ..., x_n}}
+\newcommand{\UnitaryHomomorphism}{{\Homomorphism_{\text{un}}}}
+\newcommand{\UnitaryMagma}{{\mathcal{M}_{\text{un}}}}
+\newcommand{\UnseparableAlgebraicClosure}[1]{\AlgebraicClosure{\PerfectClosure{#1}}}
+\newcommand{\UnseparableDegree}[2]{\FieldDegree{#1}{#2}_I}
+\newcommand{\VarAlternatingForm}{\mathcal{B}}
+\newcommand{\VarGroup}{\mathcal{H}}
+\newcommand{\VarField}{\mathbb{L}}
+\newcommand{\VarModule}{\mathcal{N}}
+\newcommand{\VarModuleBase}{\mathcal{C}}
+\newcommand{\VarModuleElement}{n}
+\newcommand{\VarPermutation}{\pi}
+\newcommand{\VarPolynomial}{q}

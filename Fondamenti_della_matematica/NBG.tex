@@ -1,0 +1,33 @@
+\subsection{Teoria di von Neumann, Bernays e G\"odel (NBG).}\label{NBG}
+\par La teoria di von Neumann, Bernays e G\"odel \`e un'altra teoria degli insiemi, identica a quella di Morse e Kelley, ecceto che per lo schema di comprensione delle classi, che viene riformulato nel modo seguente.
+\begin{Axiom}
+	\TheoremName{Schema di comprensione delle classi (NBG)}[di comprensione delle classi (NBG)][schema] Se $\phi(x)$ \`e una formula del primo ordine che \`e priva di quantificatori sulle classi, allora esiste una classe $\Class$ tale che $\Set \in \Class \Leftrightarrow \phi(\Set)$.
+\end{Axiom}
+\par Naturalmente questa riformulazione produce una teoria degli insiemi pi\`u debole rispetto a quella di Morse e Kelley, ma questo indebolimento \`e ripagato dal fatto che la nuova teoria \`e finitamente assiomatizzabile. Diamo di seguito un esempio di un insieme finito di assiomi che pu\`o essere usato per sostituire lo schema di comprensione delle classi.
+\begin{Axiom}
+	\TheoremName{Assioma dell'appartenenza}[dell'appartenenza][assioma] Esiste una classe $\BelongingRelation$ tale che ne siano elementi tutte le coppie $(\Class_1,\Class_2$) tali che $\Class_1 \in \Class_2$ (non si esclude l'esistenza di altri elementi).
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma dell'intersezione}[dell'intersezione][assioma] Date due classi $\Class_1$ e $\Class_2$ esiste la classe $\Class_1 \cap \Class_2$ tale che $x \in \Class_1 \cap \Class_2 \Leftrightarrow x \in \Class_1 \wedge x \in \Class_2$, detta \Define{intersezione} delle classi $\Class_1$ e $\Class_2$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma del complementare}[del complementare][assioma] Data una classe $\Class$, esiste una classe $\Compl{\Class}$ tale che $x \in \Compl{\Class} \Leftrightarrow (\exists y)(x \in y) \wedge x \notin \Class$; vale a dire, $\Compl{\Class}$ \`e la classe i cui elementi sono tutti e soli gli insiemi (ma non le classi!) che non appartengono a $\Class$.
+\end{Axiom}
+\begin{Definition}
+	Date due classi $\Class_1$, $\Class_2$, la classe $\Class_1 \cap \Compl{\Class_2}$ si chiama \Define{differenza} delle classi $\Class_1$ e $\Class_2$, denotata $\Class_1 \SetMin \Class_2$.
+\end{Definition}
+\begin{Axiom}
+	\TheoremName{Assioma del dominio}[del dominio][assioma] Data una classe $\Class_1$, esiste la classe $\Class_2$ i cui elementi sono tutte e sole le prime componenti delle coppie appartenenti a $\Class_1$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma del prodotto per $\VonNeumannUniverse$}[del prodotto per $\VonNeumannUniverse$][assioma] Per ogni classe $\Class_1$, esiste una classe $\Class_2$ i cui elementi sono tutte e sole le coppie $(x,y)$ dove $x \in \Class_1$ e $y \in \VonNeumannUniverse$. Denoteremo d'ora in poi la classe $\Class_2$ con la notazione $\Class_1 \times \VonNeumannUniverse$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma della permutazione circolare}[della permutazione circolare][assioma] Per ogni classe $\Class_1$, esiste una classe $\Class_2$ tale per ogni terna $(x,y,z)$, $(x,y,z) \in \Class_2 \Leftrightarrow (y,z,x) \in \Class_2$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma della trasposizione}[della trasposizione][assioma] Per ogni classe $\Class_1$, esiste una classe $\Class_2$ tale per ogni terna $(x,y,z)$, $(x,y,z) \in \Class_2 \Leftrightarrow (x,z,y) \in \Class_2$.
+\end{Axiom}
+\begin{Axiom}
+	\TheoremName{Assioma di rimpiazzamento} Sia $\Function$ una classe funzionale. Se le prime componenti di tutte le coppie in $\Function$ costituiscono un insieme, allora le seconde componenti di tutte le coppie in $\Function$ costituiscono un secondo insieme.
+\end{Axiom}

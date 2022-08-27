@@ -1,0 +1,31 @@
+\subsection{Rappresentazione di Grafi.}
+\label{Relazioni_RappresentazioneDiGrafi}
+\begin{Definition}
+  Sia $n \in \mathbb{N}$ e $\Graph$ un grafo finito orientato
+  $\Graph = (n,\Edges)$ di $n$ nodi. Chiamiamo
+  \Define{matrice di adiacenza}[di adiacenza][matrice]
+  la famiglia
+  $\AdjacencyMatrix
+    = (\AdjacencyMatrix_i^j)_{(i,j) \in n \times n}$, dove
+  $\AdjacencyMatrix_i^j =
+    \begin{cases}
+      0\text{ se }(i,j) \in \Edges,\\
+      1\text{ se }(i,j) \in \Edges.
+    \end{cases}$
+  La matrice di adiacenza di un grafo finito non orientato si
+  definisce analogamente per mezzo del grafo orientato associato.
+\end{Definition}
+\begin{Theorem}
+  Sia $n \in \mathbb{N}$ e $\Graph$ un grafo finito orientato
+  $\Graph = (n,\Edges)$ di $n$ nodi. La matrice di adiacenza
+  contiene esattamente $2 \Cardinality{\Edges}$.
+\end{Theorem}
+\Proof Segue direttamente dal lemma della stretta di mano. \EndProof
+\begin{Definition}
+  Sia $n \in \mathbb{N}$ e $\Graph$ un grafo finito orientato
+  $\Graph = (n,\Edges)$ di $n$ nodi.
+  Chiamiamo \Define{lista di adiacenza}[di adiacienza][lista] un
+  \Aarray\ di liste tale che l'$i$-esima ($i \in n$) lista dell'\Aarray\
+  sia una lista di tutti i vicini (vicini uscenti nel caso orientato)
+  del nodo $i$.
+\end{Definition}

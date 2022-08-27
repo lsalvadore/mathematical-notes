@@ -1,0 +1,98 @@
+\subsection{Funtori e trasformazioni naturali.}\label{FuntoriETrasformazioniNaturali}
+\begin{Definition}
+	Siano $\Category_1$ e $\Category_2$ due categorie. Un \Define{funtore} $T$ dalla categoria $\Category_1$ alla categoria $\Category_2$ \`e un'applicazione che associa ad ogni freccia $f$ di $\Category_1$ una e una sola freccia di $\Category_2$, denotata $T(f)$, in modo tale che, per ogni coppia di frecce componibili $f$ e $g$ di $\Category_1$, si abbia $T(fg) = T(f)T(g)$ e se $f$ \`e un'identit\`a, allora anche $T(f)$ \`e un'identit\`a.
+\end{Definition}
+\begin{Theorem}
+	Dati due funtori $T$ e $S$, il primo dalla categoria $\Category_2$ nella categoria $\Category_3$, il secondo dalla categoria $\Category_1$ nella categoria $\Category_2$, l'applicazione che associa ad ogni freccia $f$ di $\Category_1$ la freccia $T(S(f))$ (che denoteremo anche pi\`u brevemente $TS(f)$) della categoria $\Category_3$ \`e un funtore dalla categoria $\Category_1$ alla categoria $\Category_3$.
+\end{Theorem}
+\Proof Siano $f$ e $g$ due frecce di $\Category_1$. Abbiamo $T(S(fg)) = T(S(f)S(g)) = TS(f)TS(g)$. \EndProof
+\begin{Definition}
+	Dati due funtori $T$ e $S$ come nel teorema precedente, il funtore $TS$ si chiama \Define{funtore composto}[composto][funtore] di $T$ ed $S$.
+\end{Definition}
+\begin{Definition}
+	Data una categoria $\Category$, il funtore $\Id_\Category$ da $\Category$ in $\Category$ che ad ogni freccia associa la stessa freccia si chiama \Define{funtore identit\`a}[identit\`a][funtore] di $\Category$.
+\end{Definition}
+\begin{Theorem}
+	I funtori costituiscono una categoria cos\`i definita:
+	\begin{itemize}
+		\item due funtori sono componibili se e solo la categoria d'arrivo del secondo coincide con la categoria di partenza del primo;
+		\item se due funtori sono componibili, la loro composizione \`e definita essere il funtore composto.
+	\end{itemize}
+\end{Theorem}
+\Proof La verifica degli assiomi di categoria \`e immediata. \EndProof
+\par La corrispondenza che associa ad ogni categoria il suo funtore identit\`a \`e biunivoca, si pu\`o dunque dire che gli oggetti della categoria di tutti i funtori sono le categorie. Si usa dare un nome alle categorie a partire dai suoi oggetti: cos\`i la categoria di tutti i funtori \`e la categoria $\CatCateg$.
+\par D'ora in poi, anzich\'e scrivere che $T$ \`e un funtore dalla categoria $\Category_1$ nella categoria $\Category_2$ potremo dunque scrivere che $T: \Category_1 \rightarrow \Category_2$ \`e un funtore.
+\begin{Theorem}
+	Esiste una e una sola categoria con un'unica freccia, a meno d'isomorfismo.
+\end{Theorem}
+\Proof Supponiamo che la categoria esista e denotiamo la sua unica freccia $u$. Necessariamente $\Dom u = \Cod u = u$ e dunque $u$ \`e componibile con se stessa; inoltre deve essere $u \circ u = u$. La verifica degli assiomi di categoria \`e immediata, cos\`i come la dimostrazione d'isomorfismo di due categorie qualsiasi di un'unica freccia ciascuna. \EndProof
+\begin{Definition}
+	L'unica categoria costituita da un'unica freccia viene denotata con $1$ e la sua unica freccia viene anch'essa denotata con $1$: la chiameremo \Define{categoria unit\`a}[unit\`a][categoria].
+\end{Definition}
+\begin{Theorem}
+	Sia $T: \Category_1 \rightarrow \Category_2$ un funtore. L'applicazione $S: \Dual{\Category_1} \rightarrow\Dual{\Category_2}$ con grafo uguale a quello di $T$ \`e un funtore.
+\end{Theorem}
+\Proof Siano $f$ e $g$ frecce di $\Dual{\Category_1}$, componibili in quest'ordine. Allora $g$ e $f$ sono componibili in $\Category_1$ in quest'ordine e abbiamo $S(fg) = T(gf) = T(g)T(f) = S(g)s(f)$. Ma $S(g)S(f)$ in $\Category_2$ \`e il risultato della composizione $S(f)S(g)$ in $\Dual{\Category_2}$. \EndProof
+\begin{Theorem}
+	Sia $T: \Category_1 \rightarrow \Category_2$ un funtore. Abbiamo, per ogni freccia $f$ di $\Category_1$:
+	\begin{itemize}
+		\item $T(\Dom f) = \Dom T(f)$;
+		\item $T(\Cod f) = \Cod T(f)$.
+	\end{itemize}
+\end{Theorem}
+\Proof Per definizione di funtore $T(\Dom f)$ \`e un'identit\`a. Inoltre $T(f) \circ T(\Dom f) = T(f \circ \Dom f) = T(f)$, pertanto $\Dom T(f) = T(\Dom f)$. L'altra affermazione si ottiene per dualit\`a considerando $T: \Dual{\Category_1} \rightarrow \Dual{\Category_2}$. \EndProof
+\begin{Definition}\label{def_trasfnat}
+	Una \Define{trasformazione naturale} $\tau$ dal funtore $T: \Category_1 \rightarrow \Category_2$ nel funtore $S: \Category_1 \rightarrow \Category_2$ \`e un'applicazione che associa ad ogni identit\`a $c$ di $\Category_1$ una freccia $\tau(c)$ di $\Category_1$ in modo tale che il diagramma di figura \ref{fig_trasfnat} sia commutativo per qualsiasi scelta di $f$ in $\Category_1$.
+\end{Definition}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		T(\Dom f) \arrow{r}{\tau(T(\Dom f))} \arrow{d}[swap]{T(f)} & S(\Dom f) \arrow{d}{S(f)} \\
+		T(\Cod f) \arrow{r}{\tau(T(\Cod f))} & S(\Cod f)
+	\end{tikzcd}
+	\caption{Definizione di trasformazione naturale.}
+	\label{fig_trasfnat}
+\end{figure}
+\begin{Theorem}\label{natop1}
+	Siano $\tau$ e $\sigma$ due trasformazioni naturali, la prima da $T: \Category_1 \rightarrow \Category_2$ in $R: \Category_1 \rightarrow \Category_2$, la seconda da $R$ a $S: \Category_1 \rightarrow \Category_2$. L'applicazione che associa a $c$ oggetto di $\Category_1$ la freccia $\tau(c)\sigma(c)$ \`e una trasformazione naturale da $T$ in $S$.
+\end{Theorem}
+\Proof Basta osservare che il diagramma di figura \ref{fig_natop1} \`e commutativo. \EndProof
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		T(\Dom f) \arrow{r}{\tau(T(\Dom f))} \arrow{d}[swap]{T(f)} & R(\Dom f) \arrow{r}{\sigma(R(\Dom f))} \arrow{d}{R(f)} & S(\Dom f) \arrow{d}{S(f)} \\
+		T(\Cod f) \arrow{r}{\tau(T(\Cod f))} & R(\Cod f) \arrow{r}{\sigma(R(\Cod f))} & S(\Cod f)
+	\end{tikzcd}
+	\caption{Dimostrazione del teorema \ref{natop1}.}
+	\label{fig_natop1}
+\end{figure}
+\begin{Theorem}\label{natop2}
+	Siano $\tau$ e $\tau'$ trasformazioni naturali, la prima da $T: \Category_1 \rightarrow \Category_2$ in $S: \Category_1 \rightarrow \Category_2$, la seconda da $T': \Category_2 \rightarrow \Category_3$ in $S': \Category_2 \rightarrow \Category_3$. Per ogni oggetto $c$ di $\Category_1$ il diagramma di figura \ref{fig_natop2_1} \`e commutativo e l'applicazione che associa a $c$ la freccia $\tau'(S(c))T'(\tau(c))$ (la diagonale dello stesso diagramma) \`e una trasformarzione naturale da $T'T$ in $S'S$.
+\end{Theorem}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		T'(T(c)) \arrow{r}{\tau'(T(c))} \arrow{d}{T'(\tau(c))} & S'(T(c)) \arrow{d}{S'(\tau(c))}\\
+		T'(S(c)) \arrow{r}{\tau'(S(c))} & S'(S(c))
+	\end{tikzcd}
+	\caption{Enunciato del teorema \ref{natop2}.}
+	\label{fig_natop2_1}
+\end{figure}
+\Proof Per la prima parte del teorema \`e sufficiente ridisegnare il diagramma di figura \ref{fig_trasfnat} ponendo $f = \tau(c)$, per la seconda parte si deve osservare che il diagramma di figura \ref{fig_natop2_2} \`e commutativo.\EndProof
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		(T'T)(\Cod f) \arrow[red]{dd}{T'(\tau(\Cod f))} & (T'T)(\Dom f) \arrow{l}{(T'T)(f)} \arrow[red]{d}{T'(\tau(\Dom f))} \arrow{r}{\tau'(T(\Dom f))} & (S'T)(\Dom f) \arrow{d}{S'(\tau(\Dom f))}\\
+		 & (T'S)(\Dom f) \arrow{dl}{(T'S)(f)} \arrow[red]{r}{\tau'(S(\Dom f))} & (S'S)(\Dom f) \arrow{d}{(S'S)(f)}\\
+		(T'S)(\Cod f) \arrow[red]{rr}{\tau'(S(\Cod f))} & & (S'S)(\Cod f)
+	\end{tikzcd}
+	\caption{Dimostrazione del teorema \ref{natop2}.}
+	\label{fig_natop2_2}
+\end{figure}
+\begin{Definition}
+	Denotiamo $\tau \bullet \sigma$ la trasformazione naturale definita dal teorema \ref{natop1} e $\tau \circ \tau'$ la trasformazione naturale definita dal teorema \ref{natop2}.
+\end{Definition}
+\begin{Theorem}
+	Le trasformazioni naturali costituiscono due categorie, una definita dall'operazione $\bullet$, l'altra dall'operazione $\circ$.
+\end{Theorem}
+\Proof La verifica degli assiomi di categoria \`e immediata (gli oggetti sono quelle trasformazioni naturali da un funtore allo stesso funtore che associano ad ogni oggetto della categoria di partenza la sua identit\`a, sono lo stesso oggetto). \EndProof

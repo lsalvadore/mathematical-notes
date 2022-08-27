@@ -1,0 +1,1392 @@
+\section{Problema di Keplero.}
+\label{ElementiDiMeccanicaCeleste_ProblemaDiKeplero}
+Assumiamo nel seguito di aver fissato un sistema di riferimento inerziale.
+\begin{Definition}
+	Chiamiamo \Define{problema di Keplero}[di Keplero][problema] il problema dello studio del moto di un punto materiale di massa $\ReducedMass$ in un campo gravitazionale generato da una massa $\TotalMass$ vincolata nell'origine del sistema.
+\end{Definition}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero.png}
+	\centering
+	\caption{Problema di Keplero.}
+\end{figure}
+\begin{Theorem}
+	Il moto del punto materiale del problema di Keplero giace in un piano ortogonale al momento angolare del punto materiale stesso.
+\end{Theorem}
+\Proof Segue direttamente dal fatto che la forza che definisce il problema di Keplero \`e centrale. \EndProof
+\par Nel seguito suporremo fissato un sistema di riferimento inerziale $(\vec{e_x},\vec{e_y},\vec{e_z})$ tale che $\ver{e_x}$ e $\ver{e_y}$ giaciano nel piano orbitale del problema di Keplero Utilizzermo inoltre un secondo sistema di riferimento $(\ver{e_r},\ver{e_\theta},\ver{e_z})$, definito da
+\begin{itemize}
+	\item $\ver{e_r} = \frac{\vec{r}}{r}$;
+	\item $\ver{e_\theta} = \ver{e_z} \times \ver{e_r}$.
+\end{itemize}
+\begin{Definition}
+	Dato un punto materiale $\PointMass$ di massa $\Mass$, chiamiamo \Define{momento angolare per unit\`a di massa}[angolare per unit\`a di massa][momento] il vettore $\vec{\AngularMomentPerUnitMass} = \frac{\AngularMoment}{\Mass}$, dove $\AngularMoment$ \`e il momento angolare del punto $\PointMass$.
+\end{Definition}
+\begin{Theorem}
+	Il momento angolare per unit\`a di massa di un punto materiale $\PointMass$ in posizione $\vec{r}$ in moto nel piano dei versori $\vec{e_x}$ e $\vec{e_y}$\ \`e $\vec{\AngularMomentPerUnitMass} = r^2\dot{\theta}\ver{e_z}$.
+\end{Theorem}
+\Proof Denotata $\Mass$ la massa del punto materiale, abbiamo $\vec{\AngularMomentPerUnitMass} = \frac{\vec{\AngularMoment}}{\Mass} = \frac{\VectorProduct{\vec{r}}{\Mass \dot{\vec{r}}}}{\Mass} = \VectorProduct{\vec{r}}{\dot{\vec{r}}} = \VectorProduct{r \ver{e_r}}{\dot{r}\ver{e_r} + r\dot{\theta}\ver{e_\theta}} = r^2\dot{\theta}) \ver{e_z}$. \EndProof
+\begin{Theorem}
+	Il problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}
+	\]
+	\`e equivalente a
+	\[
+		\begin{cases}
+			\ddot{r} = \frac{\AngularMomentPerUnitMass}{r^3} - \NewtonConstant \frac{\TotalMass}{r^2},\\
+			2 \dot{r}\dot{\theta} + r \ddot{\theta} = 0,
+		\end{cases}
+	\]
+	dove $\AngularMomentPerUnitMass$ \`e il momento angolare del punto materiale di massa $\ReducedMass$ e $\theta$ l'anomalia del vettore $\vec{r}$, tramite la trasformazione che trasforma la base cartesiana $(\ver{e_x},\ver{e_y},\ver{e_z})$ nella base polare $(\ver{e_r},\ver{e_\theta},\ver{e_z})$, definita da $\ver{e_r} = \frac{\vec{r}}{r}$ e $\ver{e_\theta} = \ver{e_z} \times \ver{e_r}$.
+\end{Theorem}
+\Proof Essendo il campo di forze di un problema di Keplero centrale,
+\[
+	\ReducedMass \ddot{r} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}
+\]
+equivale, tramite trasformazione di cambiamento delle coordinate cartesiani in coordinate polari,
+\[
+	\begin{cases}
+		\ReducedMass (\ddot{r} - r \dot{\theta}^2) = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^2},\\
+		\ReducedMass (2\dot{r}\dot{\theta} + r \ddot{\theta}) = 0;
+	\end{cases}
+\]
+vale a dire, dividendo per $\ReducedMass$,
+\[
+	\begin{cases}
+		\ddot{r} - r \dot{\theta}^2 = - \NewtonConstant \frac{\TotalMass}{r^2},\\
+		2\dot{r}\dot{\theta} + r \ddot{\theta} = 0.
+	\end{cases}
+\]
+\par Utilizzando l'equazione $\AngularMomentPerUnitMass = r^2\dot{\theta}$, possiamo ricondurre la prima equazione a un'equazione nella sola incognita $r$, ottenendo infine
+\[
+	\begin{cases}
+		\ddot{r} = \frac{\AngularMomentPerUnitMass}{r^3} - \NewtonConstant \frac{\TotalMass}{r^2},\\
+		2 \dot{r}\dot{\theta} + r \ddot{\theta} = 0.\text{ \EndProof}
+	\end{cases}
+\]
+\begin{Definition}
+	\label{ElementiDiMeccanicaCeleste_VettoreDiLenz}
+	Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	definiamo \Define{vettore di Lenz}[di Lenz][vettore] o \Define{vettore di Laplace-Runge-Lenz}[di Laplace-Runge-Lenz][vettore] il vettore
+	\[
+		\vec{\LenzVector} = \frac{1}{\NewtonConstant\TotalMass} \VectorProduct{\dot{\vec{r}}}{\vec{\AngularMomentPerUnitMass}} - \ver{e_r}.
+	\]
+\end{Definition}
+\begin{Theorem}
+	Il vettore di Lenz $\vec{\LenzVector}$ \`e costante.
+\end{Theorem}
+\Proof Con le notazioni della definizione \ref{ElementiDiMeccanicaCeleste_VettoreDiLenz}, abbiamo
+\begin{align*}
+	\dot{\vec{\LenzVector}}
+	&= \frac{1}{\NewtonConstant \TotalMass} (\VectorProduct{\ddot{\vec{r}}}{\vec{\AngularMomentPerUnitMass}} + \VectorProduct{\dot{\vec{r}}}{\dot{\AngularMomentPerUnitMass}}) - \dot{\ver{e_r}},\\
+	&= \frac{1}{\NewtonConstant \TotalMass} (\VectorProduct{\ddot{\vec{r}}}{\vec{\AngularMomentPerUnitMass}}) - \dot{\ver{e_r}},\\
+	&= - \frac{1}{\NewtonConstant \TotalMass} (\frac{\NewtonConstant\TotalMass}{r^3}\VectorProduct{\vec{r}}{\vec{\AngularMomentPerUnitMass}}) - \dot{\ver{e_r}},\\
+	&= - r^{-2} \VectorProduct{\ver{e_r}}{\vec{\AngularMomentPerUnitMass}}) - \dot{\ver{e_r}},\\
+	&= - r^{-2} r^2 \dot{\theta} \VectorProduct{\ver{e_r}}{\ver{e_z}}) - \dot{\ver{e_r}},\\
+	&= - \dot{\theta} \VectorProduct{\ver{e_r}}{\ver{e_z}}) - \dot{\ver{e_r}},\\
+	&= \dot{\theta} \ver{e_\theta} - \dot{\theta}\ver{e_\theta} = 0.\text{ \EndProof}
+\end{align*}
+\begin{Definition}
+	\label{ElementiDiMeccanicaCeleste_AnomaliaVera}
+	Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	definiamo \Define{anomalia vera}[vera][anomalia] la quantit\`a $\TrueAnomaly = \theta - \delta$, dove $\delta$ \`e l'anomalia del vettore di Lenz.
+\end{Definition}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_AnomaliaVera.png}
+	\centering
+	\caption{Definizione di anomalia vera (notazione della definizione \ref{ElementiDiMeccanicaCeleste_AnomaliaVera}).}
+\end{figure}
+\begin{Lemma}
+	Con le notazioni della definizione precedente, abbiamo $\dot{\TrueAnomaly} = \dot{\theta}$.
+\end{Lemma}
+\Proof Abbiamo $\dot{\TrueAnomaly} = \dot{\theta} - \dot{\delta} = \dot{\theta}$. \EndProof
+\begin{Theorem}
+	L'orbita del problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	in dipendenza dell'anomalia vera $\TrueAnomaly$ \`e
+	\[
+		r(\TrueAnomaly) = \frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}},
+	\]
+	dove $\SemilatusRectum = \frac{\AngularMomentPerUnitMass^2}{\NewtonConstant \TotalMass}$.
+\end{Theorem}
+\Proof Abbiamo $\StandardScalarProduct{\ver{e_r}}{\LenzVector} = \LenzVector \cos{\TrueAnomaly}$.
+\par Inoltre,
+\begin{align*}
+	\StandardScalarProduct{\ver{e_r}}{\LenzVector}
+	&= \StandardScalarProduct{\ver{e_r}}{\frac{1}{\NewtonConstant\TotalMass}\VectorProduct{\dot{\vec{r}}}{\vec{\AngularMomentPerUnitMass}} - \ver{e_r}},\\
+	&= \frac{1}{\NewtonConstant\TotalMass} \StandardScalarProduct{\ver{e_r}}{\VectorProduct{\dot{\vec{r}}}{\vec{\AngularMomentPerUnitMass}}} - 1,\\
+	&= \frac{1}{\NewtonConstant\TotalMass} \StandardScalarProduct{\vec{\AngularMomentPerUnitMass}}{\VectorProduct{\ver{e_r}}{\dot{\vec{r}}}} - 1,\\
+	&= \frac{1}{\NewtonConstant\TotalMass} \StandardScalarProduct{\vec{\AngularMomentPerUnitMass}}{\VectorProduct{\ver{e_r}}{\dot{r}\ver{e_r} + r\dot{\TrueAnomaly}\ver{e_\theta}}} - 1,\\
+	&= \frac{r\dot{\TrueAnomaly}}{\NewtonConstant\TotalMass} \StandardScalarProduct{\vec{\AngularMomentPerUnitMass}}{\ver{e_z}} - 1,\\
+	&= \frac{r\dot{\TrueAnomaly}}{\NewtonConstant\TotalMass}\AngularMomentPerUnitMass - 1,\\
+	&= \frac{\AngularMomentPerUnitMass^2}{r\NewtonConstant\TotalMass} - 1.
+\end{align*}
+\par Dunque $\LenzVector \cos{\TrueAnomaly} = \frac{\AngularMomentPerUnitMass^2}{r\NewtonConstant\TotalMass} - 1$, equivalente a $\frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}}$. \EndProof
+\begin{Theorem}
+	L'orbita del problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}
+	\]
+	\`e una conica di eccentricit\`a $\LenzVector$.
+\end{Theorem}
+\Proof $\frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}}$ equivale a $r = \SemilatusRectum - r \LenzVector\cos{\TrueAnomaly}$, vale a dire, in coordinate cartesiane, $\sqrt{x^2 + y^2} = \SemilatusRectum - \LenzVector\cos{\TrueAnomaly}$, a sua volta equivalente a $x^2 + y^2 = (\SemilatusRectum - \LenzVector x)^2$. \EndProof
+\begin{Corollary}
+	\TheoremName{Classificazione delle orbite del problema di Keplero in base al modulo del vettore di Lenz}[delle orbite del problema di Keplero in base al modulo del vettore di Lenz][classificazione]
+	L'orbita del problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}
+	\]
+	\`e
+	\begin{itemize}
+		\item un'ellisse se $0 \leq \LenzVector < 1$, e in particolare una circonferenza per $\LenzVector = 0$;
+		\item una parabola se $\LenzVector = 1$;
+		\item un ramo di iperbole se $\LenzVector > 1$.
+	\end{itemize}
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente e dalla classificazione delle coniche in base all'eccentricit\`a. \EndProof
+\begin{Definition}
+	Data un'orbita del problema di Keplero
+	\[
+		r(\TrueAnomaly) = \frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}},
+	\]
+	dove
+	\begin{itemize}
+		\item $\SemilatusRectum$ \`e il semilato retto dell'orbita;
+		\item $\LenzVector$ \`e il modulo del vettore di Lenz del problema, cio\`e l'eccentricit\`a dell'orbita,
+	\end{itemize}
+	chiamiamo
+	\begin{itemize}
+		\item \Define{pericentro} o \Define{periapside} o ancora, nel
+      caso del sistema solare, \Define{perielio} il punto dell'orbita a
+      distanza $\min r$;
+		\item \Define{apocentro} o \Define{apoapside} o ancora, nel caso del
+      sistema solare, \Define{afelio} il punto dell'orbita a distanza
+      $\max r$.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Data un'orbita del problema di Keplero
+	\[
+		r(\TrueAnomaly) = \frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}},
+	\]
+	dove
+	\begin{itemize}
+		\item $\SemilatusRectum$ \`e il semilato retto dell'orbita;
+		\item $\LenzVector$ \`e il modulo del vettore di Lenz del problema, cio\`e l'eccentricit\`a dell'orbita.
+	\end{itemize}
+	Se l'orbita \`e ellittica, allora
+	\begin{itemize}
+		\item il suo semiasse maggiore \`e $\SemiMajorAxis = \frac{\SemilatusRectum}{1 - \LenzVector^2}$;
+		\item il suo semiasse minore \`e $\SemiMinorAxis = \SemiMajorAxis \sqrt{1 - \Eccentricity^2}$;
+		\item la sua semidistanza focale \`e $\SemiFocalLength = \SemiMajorAxis \LenzVector$;
+		\item $\min r = \SemiMajorAxis(1 - \LenzVector)$;
+		\item $\max r = \SemiMajorAxis(1 + \LenzVector)$.
+	\end{itemize}
+	Se l'orbita \`e parabolica, allora
+	\begin{itemize}
+		\item $\min r = \frac{\SemilatusRectum}{2}$;
+		\item l'equazione della parabola nel sistema di riferimento $Oxy$, dove $O$ coincide con l'origine del sistema di partenza e $x$ \`e nella direzione del vettore di Lenz $\LenzVector$, \`e $x = - \frac{y^2}{2 \SemilatusRectum} + \frac{\SemilatusRectum}{2}$.
+	\end{itemize}
+	Se l'orbita \`e iperbolica, allora
+	\begin{itemize}
+		\item $\min r = \frac{\SemilatusRectum}{1 + \LenzVector} < \frac{\SemilatusRectum}{2}$;
+		\item il semiasse maggiore \`e $- \SemiMajorAxis = - \frac{\SemilatusRectum}{1 - \LenzVector^2}$;
+		\item la sua semidistanza focale \`e $\SemiFocalLength = \AbsoluteValue{\SemiMajorAxis} \LenzVector$;
+		\item $\cos \nu_{as} - \frac{1}{\LenzVector}$, dove $\nu_as$ \`e l'angolo formato da un asintoto con la retta la cui direzione \`e data dal vettore di Lenz (per esempio quello segnato in figura \ref{ElementiDiMeccanicaCeleste_Keplero_Iperbole}).
+	\end{itemize}
+\end{Theorem}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_Ellisse.png}
+	\centering
+	\caption{Orbita ellittica per un problema di Keplero.}
+\end{figure}
+\Proof Supponiamo l'orbita ellittica. Abbiamo
+\begin{itemize}
+	\item $2 \SemiMajorAxis = r(0) + r(\pi) = \frac{\SemilatusRectum}{1 + \LenzVector \cos{0}} + \frac{\SemilatusRectum}{1 + \LenzVector \cos(\pi)} = \frac{\SemilatusRectum}{1 + \LenzVector} + \frac{\SemilatusRectum}{1 - \LenzVector} = \frac{2 \SemilatusRectum}{1 - \LenzVector^2}$, da cui $\SemiMajorAxis = \frac{\SemilatusRectum}{1 - \LenzVector^2}$;
+	\item $\SemiFocalLength = \SemiMajorAxis \LenzVector$ e $\SemiMinorAxis = \SemiMajorAxis \sqrt{1 - \LenzVector}$ per le propriet\`a geometriche delle ellissi;
+	\item $\min r = r(0) = \frac{\SemilatusRectum}{1 + \LenzVector} = \SemiMajorAxis (1 - \LenzVector)$;
+	\item $\max r = r(0) = \frac{\SemilatusRectum}{1 - \LenzVector} = \SemiMajorAxis (1 + \LenzVector)$.
+\end{itemize}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_Parabola.png}
+	\centering
+	\caption{Orbita parabolica per un problema di Keplero.}
+\end{figure}
+\par Supponiamo l'orbita parabolica. Abbiamo
+\begin{itemize}
+	\item $\min r = \frac{\SemilatusRectum}{1 + \LenzVector} = \frac{\SemilatusRectum}{2}$;
+	\item per ragioni di simmetria, l'equazione della parabola \`e della forma $x = c_1y^2 + c_2y + c_3$ per opportuni $c_1, c_2, c_3 \in \mathbb{R}$; abbiamo
+\[
+\begin{cases}
+	- \frac{c_2}{2 c_1} = 0,\\
+	c_3 = \SemilatusRectum,\\
+	c_1 \SemilatusRectum^2 + c_2 \SemilatusRectum + c_3 = 0,\\
+\end{cases}
+\]
+	e quindi $x = -\frac{y^2}{2 \SemilatusRectum} + \frac{\SemilatusRectum}{2}$.
+\end{itemize}
+\begin{figure}
+	\label{ElementiDiMeccanicaCeleste_Keplero_Iperbole}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_Iperbole.png}
+	\centering
+	\caption{Orbita iperbolica per un problema di Keplero.}
+\end{figure}
+\par Supponiamo l'orbita iperbolica. Abbiamo
+\begin{itemize}
+	\item $\min r = \frac{\SemilatusRectum}{1 + \LenzVector} < \frac{\SemilatusRectum}{2}$ poich\'e $\LenzVector > 1$;
+	\item $\begin{cases}\SemiFocalLength = - \LenzVector \SemiMajorAxis,\\\SemiFocalLength =  - \SemiMajorAxis - \frac{\SemilatusRectum}{1 + \LenzVector}\end{cases}$, da cui $\SemiMajorAxis = \frac{\SemilatusRectum}{(1 - \LenzVector)^2}$;
+	\item $\frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}} \rightarrow + \infty$ se e solo se $\cos{\TrueAnomaly} \rightarrow - \frac{1}{\LenzVector}$, dunque $\nu_{as} = \frac{1}{\LenzVector}$. \EndProof
+\end{itemize}
+\begin{Theorem}
+	L'energia per unit\`a di massa $\EnergyPerUnitMass$ del problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}
+	\]
+	\`e
+	\[
+		\EnergyPerUnitMass =
+		\begin{cases}
+			0\text{, se l'orbita \`e parabolica;}\\
+			- \NewtonConstant \frac{\TotalMass}{2 \SemiMajorAxis}\text{, altrimenti.}
+		\end{cases}
+	\]
+	Nel secondo caso, $\SemiMajorAxis$ indica
+	\begin{itemize}
+		\item il semiasse maggiore dell'ellisse nel caso di un'orbita ellittica;
+		\item l'opposto del semiasse maggiore dell'iperbole nel caso di un'orbita iperbolica.
+	\end{itemize}
+\end{Theorem}
+\par Usiamo le notazioni del teorema \label{ElementiDiMeccanicaCeleste_VettoreDiLenz} e denotiamo con $\TrueAnomaly$ l'anomalia vera. Abbiamo
+\begin{align*}
+	\vec{\LenzVector}
+	&= \frac{1}{\NewtonConstant\TotalMass} \VectorProduct{\dot{\vec{r}}}{\vec{\AngularMomentPerUnitMass}} - \ver{e_r},\\
+	&= \frac{1}{\NewtonConstant\TotalMass} \VectorProduct{\dot{r}\ver{e_r} + r\dot{\TrueAnomaly}\ver{e_{\TrueAnomaly}}}{r^2\dot{\TrueAnomaly} \ver{e_z}} - \ver{e_r},\\
+	&= \frac{1}{\NewtonConstant\TotalMass} (- r^2 \dot{r} \dot{\TrueAnomaly} \ver{e_\TrueAnomaly} + r^3 \dot{\TrueAnomaly}^2) - \ver{e_r},\\
+	&= \left ( \frac{r^3\dot{\TrueAnomaly}^2}{\NewtonConstant\TotalMass} - 1 \right ) \ver{e_r} - \frac{r^2\dot{r}\dot{\TrueAnomaly}}{\NewtonConstant\TotalMass} \ver{e_\TrueAnomaly}.
+\end{align*}
+\par Abbiamo dimostrato che nessuna orbita del problema di Keplero passa dall'origine, cio\`e che per ogni punto dell'orbita $r \neq 0$. Abbiamo adesso
+\begin{align*}
+	\LenzVector^2
+	&= \left ( \frac{r^3\dot{\TrueAnomaly}^2}{\NewtonConstant\TotalMass} - 1 \right )^2 + \left ( \frac{r^2\dot{r}\dot{\TrueAnomaly}}{\NewtonConstant\TotalMass} \right )^2,\\
+	&= \frac{r^6\dot{\TrueAnomaly}^4}{\NewtonConstant^2\TotalMass^2} - 2 \frac{r^3\dot{\TrueAnomaly}^2}{\NewtonConstant\TotalMass} + 1 + \frac{r^4\dot{r}^2\dot{\TrueAnomaly}^2}{\NewtonConstant^2\TotalMass^2},\\
+	&= 1 + 2 \frac{r^3\dot{\TrueAnomaly}^2}{\NewtonConstant^2\TotalMass^2} \left (\frac{r^3\dot{\TrueAnomaly}^2}{2} - \NewtonConstant\TotalMass + \frac{r\dot{r}^2}{2} \right ),\\
+	&= 1 + 2 \frac{r^4\dot{\TrueAnomaly}^2}{\NewtonConstant^2\TotalMass^2} \left (\frac{r^2\dot{\TrueAnomaly}^2}{2} - \frac{\NewtonConstant\TotalMass}{r} + \frac{\dot{r}^2}{2} \right ),\\
+	&= 1 + 2 \frac{r^4\dot{\TrueAnomaly}^2}{\NewtonConstant^2\TotalMass^2} \left (\frac{r^2\dot{\TrueAnomaly}^2 + \dot{r}}{2} - \frac{\NewtonConstant\TotalMass}{r} \right ),\\
+	&= 1 + 2 \frac{r^4\dot{\TrueAnomaly}^2}{\NewtonConstant^2\TotalMass^2} \left (\frac{\Norm{\dot{\vec{r}}^2}}{2} - \frac{\NewtonConstant\TotalMass}{r} \right ),\\
+	&= 1 + 2 \frac{r^4\dot{\TrueAnomaly}^2}{\NewtonConstant^2\TotalMass^2} \EnergyPerUnitMass,\\
+	&= 1 + 2 \frac{\AngularMomentPerUnitMass^2}{\NewtonConstant^2\TotalMass^2} \EnergyPerUnitMass,\\
+	&= 1 + 2 \frac{\SemilatusRectum}{\NewtonConstant\TotalMass} \EnergyPerUnitMass.
+\end{align*}
+\par Se l'orbita \`e parabolica, allora $\LenzVector = 1$ da cui $\EnergyPerUnitMass = 0$.
+\par Supponiamo ora l'orbita ellittica o iperbolica. In tal caso \`e definito il semiasse maggiore $\SemiMajorAxis$ e abbiamo $\EnergyPerUnitMass = 1 + 2 \frac{\SemiMajorAxis (1 - \LenzVector^2)}{\NewtonConstant\TotalMass} \EnergyPerUnitMass$. Ne deduciamo $\EnergyPerUnitMass = \frac{(\LenzVector^2 - 1)\NewtonConstant\TotalMass}{2\SemiMajorAxis(1 - \LenzVector^2)} = - \frac{\NewtonConstant\TotalMass}{2\SemiMajorAxis}$. \EndProof
+\begin{Corollary}
+	\TheoremName{Classificazione delle orbite del problema di Keplero in base all'energia}[delle orbite del problema di Keplero in base all'energia][classificazione]
+	L'orbita del problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}
+	\]
+	\`e, denotata $\EnergyPerUnitMass$ l'energia per unit\`a di massa,
+	\begin{itemize}
+		\item un'ellisse se $\EnergyPerUnitMass < 0$;
+		\item una parabola se $\EnergyPerUnitMass = 0$;
+		\item un ramo di iperbole se $\EnergyPerUnitMass > 0$.
+	\end{itemize}
+\end{Corollary}
+\Proof Segue direttamente dal teorema precedente. \EndProof
+\begin{Corollary}
+	Nelle ipotesi del teorema precedente, se l'orbita \`e aperta, abbiamo
+	\begin{itemize}
+		\item $\lim_{r \rightarrow + \infty} \Norm{\dot{\vec{r}}} = 0$ nel caso parabolico;
+		\item $\lim_{r \rightarrow + \infty} \Norm{\dot{\vec{r}}} = \sqrt{\NewtonConstant \frac{\TotalMass}{\SemiMajorAxis}}$.
+	\end{itemize}
+\end{Corollary}
+\Proof Se l'orbita \`e parabolica, allora $\frac{\Norm{\dot{\vec{r}}}^2}{2} - \NewtonConstant \frac{\TotalMass}{r} = 0$, da cui $\lim_{r \rightarrow \infty} \Norm{\dot{\vec{r}}} = 0$.
+\par Se l'orbita \`e iperbolica, allora
+\[
+\begin{cases}
+	\EnergyPerUnitMass = \frac{\Norm{\dot{\vec{r}}}^2}{2} - \NewtonConstant \frac{\TotalMass}{r},\\
+	\EnergyPerUnitMass = - \NewtonConstant \frac{\TotalMass}{2\SemiMajorAxis},
+\end{cases}
+\]
+da cui $\lim_{r \rightarrow \infty} \Norm{\dot{\vec{r}}} = \sqrt{2\EnergyPerUnitMass} = \sqrt{\NewtonConstant\frac{\TotalMass}{\SemiMajorAxis}}$. \EndProof
+\begin{Definition}
+	Dato il problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	denotato $\AngularMomentPerUnitMass$ il momento angolare per unit\`a di massa, chiamiamo \Define{potenziale efficace}[efficace][potenziale] la quantit\`a $\EffectivePotential = \frac{\AngularMomentPerUnitMass}{2r^2} - \NewtonConstant\frac{\TotalMass}{r}$.
+\end{Definition}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_PotenzialeEfficace.png}
+	\centering
+	\caption{Esempio di potenziale efficace di un problema di Keplero.}
+\end{figure}
+\begin{Theorem}
+	Nelle ipotesi della definizione precedente, l'energia per unit\`a di massa $\EnergyPerUnitMass$ \`e data da $\EnergyPerUnitMass = \frac{\dot{r}^2}{2} + \EffectivePotential$.
+\end{Theorem}
+\Proof Abbiamo, denotando con $\TrueAnomaly$ l'anomalia vera,
+\begin{align*}
+	\EnergyPerUnitMass
+	&= \frac{\Norm{\dot{\vec{r}}}^2}{2} - \NewtonConstant\frac{\TotalMass}{r},\\
+	&= \frac{\dot{r}^2 + \dot{r}^2\dot{\TrueAnomaly^2}}{2} - \NewtonConstant\frac{\TotalMass}{r},\\
+	&= \frac{\dot{r}^2}{2} + \frac{\AngularMomentPerUnitMass^2}{2r^2} - \NewtonConstant\frac{\TotalMass}{r},\\
+	&= \frac{\dot{r}^2}{2} + \frac{\AngularMomentPerUnitMass^2}{2r^2} - \NewtonConstant\frac{\TotalMass}{r}.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+	Se l'orbita del problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}
+	\]
+	\`e chiusa, allora \`e periodica.
+\end{Theorem}
+\Proof Poich\'e l'orbita \`e chiusa, abbiamo $\vec{r}(t + \Period) = \vec{r}(t)$ per opportuno $T \in \mathbb{R}$. Inoltre, per la conversazione del momento angolare per unit\`a di massa, abbiamo
+\begin{align*}
+	\VectorProduct{\vec{r}(t + \Period)}{\dot{\vec{r}}(t + \Period)}
+	&= \vec{\AngularMomentPerUnitMass}(t + \Period),\\
+	&= \vec{\AngularMomentPerUnitMass}(t),\\
+	&= \VectorProduct{\vec{r}(t)}{\dot{\vec{r}}(t)},\\
+	&= \VectorProduct{\vec{r}(t + \Period)}{\dot{\vec{r}}(t)}.
+\end{align*}
+\par Poich\'e inoltre, per la conservazione dell'energia, il modulo della velocit\`a in $\vec{r}(t + \Period) = \vec{r}(t)$ \`e uguale sia al tempo $t$ che al tempo $t + \Period$, deve essere $\dot{\vec{r}}(t + \Period) = \dot{\vec{r}}(t)$. \EndProof
+\begin{Definition}
+	Data un'orbita periodica di periodo $\Period$ di un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	definiamo \Define{moto medio}[medio][moto] la quantit\`a $\MeanMotion = \frac{2\pi}{\Period}$.
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Terza legge di Keplero}[terza di Keplero][legge] 
+	Sia il problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r}.
+	\]
+	Se l'orbita \`e ellittica con semiasse maggiore $\SemiMajorAxis$ e periodo $\Period$, allora abbiamo
+	\[
+		\frac{\Period^2}{\SemiMajorAxis^3} = \frac{4\pi^2}{\NewtonConstant\TotalMass},
+	\]
+	o, equivalentemente, denotando $\MeanMotion$ il moto medio,
+	\[
+		\SemiMajorAxis^3\MeanMotion^2 = \NewtonConstant\TotalMass.
+	\]
+\end{Theorem}
+\Proof L'area dell'orbita ellittica \`e $\pi\SemiMajorAxis\SemiMinorAxis$, dove $\SemiMinorAxis$ \`e il semiasse minore dell'ellisse. La velocit\`a areolare invece \`e $\frac{r^2\dot{\TrueAnomaly}}{2} = \frac{\AngularMomentPerUnitMass}{2}$.
+Abbiamo allora, denotato $\LenzVector$ il modulo del vettore di Lenz,
+\begin{align*}
+	\frac{\Period^2}{\SemiMajorAxis^3}
+	&= \frac{4 \pi^2\SemiMajorAxis^2\SemiMinorAxis^2}{\AngularMomentPerUnitMass^2\SemiMajorAxis^3},\\
+	&= \frac{4 \pi^2\SemiMinorAxis^2}{\AngularMomentPerUnitMass^2\SemiMajorAxis},\\
+	&= \frac{4 \pi^2 \SemiMajorAxis^2(1 - \LenzVector^2)}{\NewtonConstant\TotalMass\SemiMajorAxis(1 - \LenzVector^2)\SemiMajorAxis},\\
+	&= \frac{4 \pi^2}{\NewtonConstant\TotalMass}.\text{ \EndProof}
+\end{align*}
+\begin{Definition}
+	Data un'orbita periodica di periodo $\Period$ di un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}} = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	denotati
+	\begin{itemize}
+		\item $\SemiMajorAxis$ il semiasse maggiore dell'orbita ellittica;
+		\item $\EnergyPerUnitMass$ l'energia per unit\`a di massa;
+		\item $\MeanMotion$ il \Define{moto medio}[medio][moto],
+	\end{itemize}
+	abbiamo
+	\[
+		\MeanMotion = - \frac{2 \EnergyPerUnitMass}{\NewtonConstant^2\TotalMass^2}.
+	\]
+\end{Definition}
+\Proof Abbiamo $\SemiMajorAxis^3 = - \left ( \frac{2 \EnergyPerUnitMass}{\NewtonConstant\TotalMass} \right )^3$ e, per la terza legge di Keplero,
+\begin{align*}
+	\MeanMotion
+	&= \sqrt{\frac{\NewtonConstant\TotalMass}{\SemiMajorAxis^3}},\\
+	&= \sqrt{\frac{ - (2 \EnergyPerUnitMass)^3 \NewtonConstant\TotalMass}{\NewtonConstant^3\TotalMass^3}},\\
+	&= - \frac{2 \EnergyPerUnitMass}{\NewtonConstant^2\TotalMass^2}.\text{ \EndProof}
+\end{align*}
+\begin{Definition}
+	Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	chiamiamo
+	\begin{itemize}
+		\item
+    \Define{tempo di passaggio al pericentro}[di passaggio al pericentro][tempo]
+      un qualsiasi tempo $\PericenterPassageTime$ tale che
+      $\TrueAnomaly(\PericenterPassageTime) = 0$, dove $\TrueAnomaly$ \`e
+      l'anomalia vera;
+		\item se l'orbita \`e ellittica,
+      fissato un tempo di passaggio al pericentro,
+      \Define{anomalia media}[media][anomalia] la quantit\`a
+      $\MeanAnomaly(t) = \MeanMotion(t - \PericenterPassageTime)$;
+		\item se l'orbita \`e ellittica,
+      con riferimento alla figura
+      \ref{ElementiDiMeccanicaCeleste_Figura_AnomaliaEccentricaEllittica},
+      chiamiamo l'angolo $\EccentricAnomaly$
+      \Define{anomalia eccentrica ellittica}[eccentrica ellittica][anomalia]:
+      \`e l'angolo individuato dalla direzione $CP$ coincidente con
+      quella del vettore di Lenz $\vec{\LenzVector}$ e dalla congiungente
+      il centro dell'ellisse $C$ con la proiezione $Q$ del punto $P$
+      individuato dal vettore $\vec{r}$ sulla circonferenza di stesso
+      centro dell'ellisse e raggio il semiasse maggiore $\SemiMajorAxis$
+      dell'ellisse;
+    \item se l'orbita \`e iperbolica,
+      con riferimento alla figura
+      \ref{ElementiDiMeccanicaCeleste_Figura_AnomaliaEccentricaIperbolica},
+      denominati $D$ il pericentro dell'orbita,
+      $C$ il punto d'intersezione degli asintoti dell'iperbole
+      equilatera con vertice sinistro coincidente con $D$,
+      $B$ la proiezione della posizione del punto materiale sul semiramo
+      di iperbole equilatera dello stesso semipiano (rispetto all'asse $x$),
+      chiamiamo la quantit\`a $\EccentricAnomaly$, definita come il doppio
+      dell'area compresa tra i segmenti $CB$, $CD$ e
+      l'orbita iperbolica divisa per il quadarato del semiasse maggiore
+      $\SemiMajorAxis$, con segno positivo se l'area \`e contenuta nel
+      semipiano positivo e con segno negativo se l'area \`e contenuta nel
+      semipiano negativo,
+      \Define{anomalia eccentrica iperbolica}[eccentrica iperbolica][anomalia]
+	\end{itemize}
+\end{Definition}
+\par Ometteremo l'aggettivo ``ellittica'' o ``iperbolica'' quando
+il tipo di anomalia eccentrica sar\`a evidente dal contesto. Inoltre,
+poich\'e, nel considerare un'unica orbita, \`e definibile al pi\`u  solo
+uno dei due tipi di anomalia eccentrica, possiamo utilizzare la stessa
+notazione per entrambi i tipi senza rischi di confusione come abbiamo
+fatto nella definizione precedente.
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_AnomaliaEccentricaEllittica.png}
+	\centering
+	\caption{Definizione di anomalia eccentrica ellittica.}
+	\label{ElementiDiMeccanicaCeleste_Figura_AnomaliaEccentricaEllittica}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_AnomaliaEccentricaIperbolica.png}
+	\centering
+	\caption{Definizione di anomalia eccentrica iperbolica.}
+	\label{ElementiDiMeccanicaCeleste_Figura_AnomaliaEccentricaIperbolica}
+\end{figure}
+\begin{Theorem}
+  \label{ElementiDiMeccanicaCeleste_ThTrueEccentric}
+	Con le notazioni della definizione precedente, abbiamo
+	\begin{itemize}
+		\item $r = \SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly})$;
+		\item
+		$
+			\begin{cases}
+				\cos{\TrueAnomaly}
+          = \frac{\cos{\EccentricAnomaly} - \LenzVector}
+              {1 - \LenzVector \cos{\EccentricAnomaly}},\\
+				\sin{\TrueAnomaly}
+          = \frac{(\sin{\EccentricAnomaly})\sqrt{1 - \LenzVector^2}}
+            {1 - \LenzVector \cos{\EccentricAnomaly}}; 
+			\end{cases}
+		$
+    \item $\tan \frac{\TrueAnomaly}{2}
+            = \sqrt{\frac{1 + \LenzVector}{1 - \LenzVector}}
+              \tan \frac{\EccentricAnomaly}{2}$;
+    \item
+    $
+      \begin{cases}
+        \cos{\EccentricAnomaly}
+          = \frac{\cos{\TrueAnomaly} + \LenzVector}
+              {1 + \LenzVector \cos{\TrueAnomaly}},\\
+        \sin{\EccentricAnomaly}
+          = \frac{\sqrt{1 - \EccentricAnomaly^2} \sin{\TrueAnomaly}}
+              {1 + \LenzVector \cos{\TrueAnomaly}}.
+      \end{cases}
+    $
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo
+\begin{itemize}
+	\item $\Length{HB} = \SemiMajorAxis \sin{\EccentricAnomaly}$;
+	\item $\Length{HA} = r \sin{\TrueAnomaly}$;
+	\item $\Length{HA} = \Length{HB} \sqrt{1 - \LenzVector^2}$;
+	\item $\Length{OH} = r \cos{\TrueAnomaly}$;
+	\item $\Length{OH}
+          = \Length{CH} - \Length{CS}
+          = \SemiMajorAxis \cos{\EccentricAnomaly}
+            - \SemiMajorAxis \LenzVector$.
+\end{itemize}
+Da cui
+\[
+\begin{cases}
+	r \sin{\TrueAnomaly}
+    = \SemiMajorAxis(\sin{\EccentricAnomaly})\sqrt{1 - \LenzVector^2},\\
+	r \cos{\TrueAnomaly}
+    = \SemiMajorAxis (\cos{\EccentricAnomaly} - \LenzVector).
+\end{cases}
+\]
+\par Abbiamo allora
+\begin{align*}
+	r^2
+	&= r^2(\sin^2{\TrueAnomaly} + \cos^2{\TrueAnomaly}),\\
+	&= \SemiMajorAxis^2 (\sin^2{\EccentricAnomaly}) (1 - \LenzVector^2)
+    + \SemiMajorAxis^2 (\cos^2{\EccentricAnomaly}
+    - 2 \LenzVector \cos{\EccentricAnomaly} + \LenzVector^2),\\
+	&= \SemiMajorAxis^2 (\sin^2{\EccentricAnomaly}
+    - (\sin^2{\EccentricAnomaly})\LenzVector^2
+    + \cos^2{\EccentricAnomaly} - 2 \LenzVector \cos{\EccentricAnomaly}
+    + \LenzVector^2),\\
+	&= \SemiMajorAxis^2 (1 + (1 - \sin^2{\EccentricAnomaly})\LenzVector^2
+    - 2 \LenzVector \cos{\EccentricAnomaly}),\\
+	&= \SemiMajorAxis^2 (1 + \cos^2{\EccentricAnomaly}\LenzVector^2
+    - 2 \LenzVector \cos{\EccentricAnomaly}),\\
+	&= \SemiMajorAxis^2 (1 - \LenzVector \cos{\EccentricAnomaly})^2.
+\end{align*}
+\par E quindi
+\begin{itemize}
+	\item $r = \SemiMajorAxis (1 - \LenzVector \cos{\EccentricAnomaly})$;
+	\item
+	$
+		\begin{cases}
+			\cos{\TrueAnomaly}
+        = \frac{\SemiMajorAxis(\cos{\EccentricAnomaly} - \LenzVector)}
+          {\SemiMajorAxis (1 - \LenzVector \cos{\EccentricAnomaly})}
+        =  \frac{\cos{\EccentricAnomaly} - \LenzVector}
+          {1 - \LenzVector \cos{\EccentricAnomaly}};\\
+			\sin{\TrueAnomaly}
+        = \frac{\SemiMajorAxis (\sin{\EccentricAnomaly})
+            \sqrt{1 - \LenzVector^2})}
+          {\SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly})}
+        = \frac{\sin{\EccentricAnomaly}\sqrt{1 - \LenzVector^2}}
+          {1 - \LenzVector \cos{\EccentricAnomaly}}. 
+		\end{cases}
+	$
+\end{itemize}
+\par Abbiamo inoltre
+\begin{align*}
+  \tan \frac{\TrueAnomaly}{2}
+    &= \frac{\sin \TrueAnomaly}{1 + \cos \TrueAnomaly},\\
+    &=  \frac{\frac{\sin{\EccentricAnomaly}\sqrt{1 - \LenzVector^2}}
+          {1 - \LenzVector \cos{\EccentricAnomaly}}}
+         {1 + \frac{\cos{\EccentricAnomaly} - \LenzVector}
+          {1 - \LenzVector \cos{\EccentricAnomaly}}},\\
+    &= \frac{\sqrt{1 - \LenzVector^2} \sin \EccentricAnomaly}
+        {1 - \LenzVector \cos \EccentricAnomaly + \cos \EccentricAnomaly
+          -  \LenzVector},\\
+    &= \frac{\sqrt{1 - \LenzVector^2}}{1 - \LenzVector}
+        \frac{\sin \EccentricAnomaly}{1 + \cos \EccentricAnomaly},\\
+    &= \sqrt{\frac{1 + \LenzVector}{1 - \LenzVector}}
+        \tan \frac{\EccentricAnomaly}{2}.
+\end{align*}
+\par Inoltre, da
+\[
+  \begin{cases}
+	  r = \SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly}),\\
+    r = \frac{\SemiMajorAxis(1 - \LenzVector^2)}
+        {1 + \LenzVector\cos{\TrueAnomaly}},
+  \end{cases}
+\]
+deduciamo
+\begin{align*}
+  \cos \EccentricAnomaly
+  &= - \frac{1}{\LenzVector} \left (
+    \frac{1 - \LenzVector^2}{1 + \LenzVector \cos \TrueAnomaly}
+    - 1 \right ),\\
+  &= \frac{1 + \LenzVector \cos \TrueAnomaly - 1 + \LenzVector^2}
+      {\LenzVector(1 + \LenzVector \cos \TrueAnomaly)},\\
+  &= \frac{\LenzVector + \cos \TrueAnomaly}
+      {1 + \LenzVector \cos \TrueAnomaly};
+\end{align*}
+e inoltre
+\[
+	  \frac{\sqrt{1 - \LenzVector^2} \sin \EccentricAnomaly}
+      {\sin \TrueAnomaly}
+    = \frac{1 - \LenzVector^2}
+      {1 + \LenzVector\cos{\TrueAnomaly}},
+\]
+da cui
+\begin{align*}
+  \sin \EccentricAnomaly
+  &= \frac{\sin \TrueAnomaly}
+      {\sqrt{1 - \LenzVector^2}}
+      \frac{1 - \LenzVector^2}
+      {1 + \LenzVector\cos{\TrueAnomaly}},\\
+  &= \frac{\sqrt{1 - \LenzVector^2} \sin \TrueAnomaly}
+      {1 + \LenzVector\cos{\TrueAnomaly}}.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+  \label{ElementiDiMeccanicaCeleste_ThTrueEccentricHyperbolic}
+	Con le notazioni della definizione precedente, abbiamo
+	\begin{itemize}
+		\item $r = \SemiMajorAxis(1 - \LenzVector \cosh{\EccentricAnomaly})$;
+		\item
+		$
+			\begin{cases}
+				\cos{\TrueAnomaly}
+          = \frac{\cosh{\EccentricAnomaly} - \LenzVector}
+              {1 - \LenzVector \cosh{\EccentricAnomaly}},\\
+				\sin{\TrueAnomaly}
+          = \frac{- (\sinh{\EccentricAnomaly})\sqrt{\LenzVector^2 - 1}}
+            {1 - \LenzVector \cosh{\EccentricAnomaly}}; 
+			\end{cases}
+		$
+    \item $\tanh \frac{\TrueAnomaly}{2}
+            = \sqrt{\frac{\LenzVector + 1}{\LenzVector - 1}}
+              \tanh \frac{\EccentricAnomaly}{2}$;
+    \item
+    $
+      \begin{cases}
+        \cosh{\EccentricAnomaly}
+          = \frac{\cos{\TrueAnomaly} + \LenzVector}
+              {1 + \LenzVector \cos{\TrueAnomaly}},\\
+        \sinh{\EccentricAnomaly}
+          = \frac{\sqrt{\EccentricAnomaly^2 - 1} \sin{\TrueAnomaly}}
+              {1 + \LenzVector \cos{\TrueAnomaly}}.
+      \end{cases}
+    $
+	\end{itemize}
+\end{Theorem}
+%\Proof Abbiamo
+%\begin{itemize}
+%	\item $\Length{HB} = \SemiMajorAxis \sin{\EccentricAnomaly}$;
+%	\item $\Length{HA} = r \sin{\TrueAnomaly}$;
+%	\item $\Length{HA} = \Length{HB} \sqrt{1 - \LenzVector^2}$;
+%	\item $\Length{OH} = r \cos{\TrueAnomaly}$;
+%	\item $\Length{OH}
+%          = \Length{CH} - \Length{CS}
+%          = \SemiMajorAxis \cos{\EccentricAnomaly}
+%            - \SemiMajorAxis \LenzVector$.
+%\end{itemize}
+%Da cui
+%\[
+%\begin{cases}
+%	r \sin{\TrueAnomaly}
+%    = \SemiMajorAxis(\sin{\EccentricAnomaly})\sqrt{1 - \LenzVector^2},\\
+%	r \cos{\TrueAnomaly}
+%    = \SemiMajorAxis (\cos{\EccentricAnomaly} - \LenzVector).
+%\end{cases}
+%\]
+%\par Abbiamo allora
+%\begin{align*}
+%	r^2
+%	&= r^2(\sin^2{\TrueAnomaly} + \cos^2{\TrueAnomaly}),\\
+%	&= \SemiMajorAxis^2 (\sin^2{\EccentricAnomaly}) (1 - \LenzVector^2)
+%    + \SemiMajorAxis^2 (\cos^2{\EccentricAnomaly}
+%    - 2 \LenzVector \cos{\EccentricAnomaly} + \LenzVector^2),\\
+%	&= \SemiMajorAxis^2 (\sin^2{\EccentricAnomaly}
+%    - (\sin^2{\EccentricAnomaly})\LenzVector^2
+%    + \cos^2{\EccentricAnomaly} - 2 \LenzVector \cos{\EccentricAnomaly}
+%    + \LenzVector^2),\\
+%	&= \SemiMajorAxis^2 (1 + (1 - \sin^2{\EccentricAnomaly})\LenzVector^2
+%    - 2 \LenzVector \cos{\EccentricAnomaly}),\\
+%	&= \SemiMajorAxis^2 (1 + \cos^2{\EccentricAnomaly}\LenzVector^2
+%    - 2 \LenzVector \cos{\EccentricAnomaly}),\\
+%	&= \SemiMajorAxis^2 (1 - \LenzVector \cos{\EccentricAnomaly})^2.
+%\end{align*}
+%\par E quindi
+%\begin{itemize}
+%	\item $r = \SemiMajorAxis (1 - \LenzVector \cos{\EccentricAnomaly})$;
+%	\item
+%	$
+%		\begin{cases}
+%			\cos{\TrueAnomaly}
+%        = \frac{\SemiMajorAxis(\cos{\EccentricAnomaly} - \LenzVector)}
+%          {\SemiMajorAxis (1 - \LenzVector \cos{\EccentricAnomaly})}
+%        =  \frac{\cos{\EccentricAnomaly} - \LenzVector}
+%          {1 - \LenzVector \cos{\EccentricAnomaly}};\\
+%			\sin{\TrueAnomaly}
+%        = \frac{\SemiMajorAxis (\sin{\EccentricAnomaly})
+%            \sqrt{1 - \LenzVector^2})}
+%          {\SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly})}
+%        = \frac{\sin{\EccentricAnomaly}\sqrt{1 - \LenzVector^2}}
+%          {1 - \LenzVector \cos{\EccentricAnomaly}}. 
+%		\end{cases}
+%	$
+%\end{itemize}
+
+
+\par Abbiamo inoltre
+\begin{align*}
+  \tan \frac{\TrueAnomaly}{2}
+    &= \frac{\sin \TrueAnomaly}{1 + \cos \TrueAnomaly},\\
+    &=  \frac{\frac{- \sinh{\EccentricAnomaly}\sqrt{\LenzVector^2 - 1}}
+          {1 - \LenzVector \cosh{\EccentricAnomaly}}}
+         {1 + \frac{\cosh{\EccentricAnomaly} - \LenzVector}
+          {1 - \LenzVector \cosh{\EccentricAnomaly}}},\\
+    &= \frac{- \sqrt{\LenzVector^2 - 1} \sinh \EccentricAnomaly}
+        {1 - \LenzVector \cosh \EccentricAnomaly + \cosh \EccentricAnomaly
+          -  \LenzVector},\\
+    &= \frac{\sqrt{\LenzVector^2 - 1}}{\LenzVector - 1}
+        \frac{\sinh \EccentricAnomaly}{1 + \cosh \EccentricAnomaly},\\
+    &= \sqrt{\frac{\LenzVector + 1}{\LenzVector - 1}}
+        \tanh \frac{\EccentricAnomaly}{2}.
+\end{align*}
+\par Inoltre, da
+\[
+  \begin{cases}
+	  r = \SemiMajorAxis(1 - \LenzVector \cosh{\EccentricAnomaly}),\\
+    r = \frac{\SemiMajorAxis(1 - \LenzVector^2)}
+        {1 + \LenzVector\cos{\TrueAnomaly}},
+  \end{cases}
+\]
+deduciamo
+\begin{align*}
+  \cosh \EccentricAnomaly
+  &= - \frac{1}{\LenzVector} \left (
+    \frac{1 - \LenzVector^2}{1 + \LenzVector \cos \TrueAnomaly}
+    - 1 \right ),\\
+  &= \frac{1 + \LenzVector \cos \TrueAnomaly - 1 + \LenzVector^2}
+      {\LenzVector(1 + \LenzVector \cos \TrueAnomaly)},\\
+  &= \frac{\LenzVector + \cos \TrueAnomaly}
+      {1 + \LenzVector \cos \TrueAnomaly};
+\end{align*}
+e inoltre
+\[
+	  \frac{- \sqrt{\LenzVector^2 - 1} \sinh \EccentricAnomaly}
+      {\sin \TrueAnomaly}
+    = \frac{1 - \LenzVector^2}
+      {1 + \LenzVector\cos{\TrueAnomaly}},
+\]
+da cui
+\begin{align*}
+  \sinh \EccentricAnomaly
+  &= \frac{\sin \TrueAnomaly}
+      {\sqrt{\LenzVector^2 - 1}}
+      \frac{\LenzVector^2 - 1}
+      {1 + \LenzVector\cos{\TrueAnomaly}},\\
+  &= \frac{\sqrt{\LenzVector^2 - 1} \sin \TrueAnomaly}
+      {1 + \LenzVector\cos{\TrueAnomaly}}.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+	\TheoremName{Formula di Keplero}[di Keplero][formula]
+	Data un'orbita periodica di periodo $\Period$ di un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+	abbiamo
+	\[
+		\MeanAnomaly = \EccentricAnomaly
+      - \LenzVector \sin{\EccentricAnomaly},
+	\]
+	dove
+	\begin{itemize}
+		\item $\MeanAnomaly$ \`e l'anomalia media;
+		\item $\EccentricAnomaly$ \`e l'anomalia eccentrica;
+		\item $\vec{\LenzVector}$ \`e il vettore di Lenz.
+	\end{itemize}
+\end{Theorem}
+\Proof Con riferimento alla figura
+\ref{ElementiDiMeccanicaCeleste_Figura_AnomaliaEccentricaEllittica},
+denotiamo
+\begin{itemize}
+	\item $A_{HOA}$
+    l'area del triangolo rettangolo individuato dai punti $H$, $O$, $A$;
+	\item $A_{DCB}$
+    l'area della porzione di circonferenza individuata dai raggi $HD$ e
+    $HB$;
+	\item $A_{HCQ}$
+    l'area del triangolo rettangolo individuato dai punti $H$, $C$, $Q$;
+	\item $A_{DHB}$
+    l'area della porzione di circonferenza individuata dai segmenti $HD$
+     e $HB$;
+	\item $A_{DHA}$
+    l'area della porzione di ellisse individuata dai segmenti $HD$ e
+    $HA$;
+	\item $A_{DOA}$
+    l'area della porzione di ellisse individuata dai segmenti $OD$ e
+    $OA$;
+	\item $A$ l'area dell'ellisse.
+\end{itemize}
+\par Abbiamo
+\begin{itemize}
+	\item $A
+    = \pi \SemiMajorAxis^2 \sqrt{1 - \LenzVector^2}$;
+	\item $A_{HOA}
+    = \frac{(\SemiMajorAxis \cos{\EccentricAnomaly} - \SemiMajorAxis \LenzVector) \cdot \sqrt{1 - \LenzVector^2} \SemiMajorAxis \sin{\EccentricAnomaly}}{2} = \SemiMajorAxis^2 \frac{(\cos{\EccentricAnomaly} - \LenzVector) \sqrt{1 - \LenzVector^2} \sin{\EccentricAnomaly}}{2}$;
+	\item $A_{DCB}
+    = \frac{\EccentricAnomaly \SemiMajorAxis^2}{2}$;
+	\item $A_{HCQ}
+    = \frac{\SemiMajorAxis^2 \cos{\EccentricAnomaly} \sin{\EccentricAnomaly}}{2}$;
+	\item $A_{DHB}
+    = A_{DCB} - A_{HCQ}$;
+	\item $A_{DHA}
+    = \sqrt{1 - \LenzVector^2} A_{DHB}$;
+	\item $A_{DOA}
+    = A_{DHA} + A_{HOA}$.
+\end{itemize}
+\par Ne deduciamo
+\begin{align*}
+	A_{DOA}
+	&= A_{DHA} + A_{HOA},\\
+	&= \sqrt{1 - \LenzVector^2} \left ( \frac{\EccentricAnomaly \SemiMajorAxis^2}{2} - \frac{\SemiMajorAxis^2 \cos{\EccentricAnomaly} \sin{\EccentricAnomaly}}{2} \right ) + \SemiMajorAxis^2 \frac{(\cos{\EccentricAnomaly} - \LenzVector) \sqrt{1 - \LenzVector^2} \sin{\EccentricAnomaly}}{2},\\
+	&= \frac{\SemiMajorAxis^2\sqrt{1 - \LenzVector^2}}{2} ( \EccentricAnomaly - \cos{\EccentricAnomaly} \sin{\EccentricAnomaly} + \cos{\EccentricAnomaly} \sin{\EccentricAnomaly} - \LenzVector \sin{\EccentricAnomaly} ),\\
+	&= \frac{\SemiMajorAxis^2\sqrt{1 - \LenzVector^2}}{2} ( \EccentricAnomaly - \LenzVector \sin{\EccentricAnomaly} ).
+\end{align*}
+Infine abbiamo, denotando $\MeanMotion$ il moto medio e tenendo conto della seconda legge di Keplero,
+\begin{align*}
+	\MeanAnomaly
+	&= \MeanMotion (t - \PericenterPassageTime),\\
+	&= \frac{2 \pi}{\Period} (t - \PericenterPassageTime),\\
+	&= 2 \pi \frac{A_{DOA}}{A},\\
+	&= 2 \pi \frac{\SemiMajorAxis^2\sqrt{1 - \LenzVector^2}}{2} ( \EccentricAnomaly - \LenzVector \sin{\EccentricAnomaly} ) \frac{1}{\pi \SemiMajorAxis^2 \sqrt{1 - \LenzVector^2}},\\
+	&= \EccentricAnomaly - \LenzVector \sin{\EccentricAnomaly}.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+	Con le ipotesi e le notazioni del teorema precedente, abbiamo
+	\[
+		\PericenterPassageTime = \frac{\LenzVector \sin{\EccentricAnomaly(0)} - \EccentricAnomaly(0)}{\MeanMotion}
+	\]
+	dove
+	\begin{itemize}
+		\item $\PericenterPassageTime$ \`e il tempo di passaggio al pericentro;
+		\item $\MeanMotion$ \`e il moto medio.
+	\end{itemize}
+\end{Corollary}
+\Proof Da $\MeanAnomaly(0) = \MeanMotion(0 - \PericenterPassageTime)$,
+deduciamo, tramite la formula di Keplero,
+$\PericenterPassageTime
+= - \frac{\MeanAnomaly(0)}{\MeanMotion}
+= \frac{\LenzVector \sin{\EccentricAnomaly(0)} - \EccentricAnomaly(0)}{\MeanMotion}$.
+\EndProof
+\begin{Theorem}
+	Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  se l'orbita \`e ellittica, allora fornire
+  \begin{itemize}
+    \item tempo di passaggio al pericentro $\PericenterPassageTime$;
+    \item moto medio $\MeanMotion$;
+    \item eccentricit\`a $\LenzVector$;
+  \end{itemize}
+  determina univocamente l'orbita.
+\end{Theorem}
+\Proof Da $\PericenterPassageTime$ e $\MeanMotion$ deduciamo
+$\MeanAnomaly
+= \MeanMotion(t - \PericenterPassageTime)$. Possiamo allora risolvere
+l'equazione
+\[
+	\MeanAnomaly = \EccentricAnomaly
+    - \LenzVector \sin{\EccentricAnomaly},
+\]
+data dalla formula di Keplero
+\footnote{Concretamente, si usa un metodo numerico come per esempio il
+metodo di Newton).}.
+\par La terza legge di Keplero fornisce il semiasse maggiore
+$\SemiMajorAxis
+= \sqrt[3]{\frac{\NewtonConstant\TotalMass}{\MeanMotion^2}}$.
+\par Si conclude tramite il teorema
+\ref{ElementiDiMeccanicaCeleste_ThTrueEccentric}. \EndProof
+\begin{Theorem}
+	Data un'orbita periodica un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  abbiamo
+  \[
+    \dot{\EccentricAnomaly} = \frac{\MeanMotion \SemiMajorAxis}{r},
+  \]
+  dove
+	\begin{itemize}
+		\item $\EccentricAnomaly$ \`e l'anomalia eccentrica;
+		\item $\MeanAnomaly$ \`e l'anomalia media;
+		\item $\SemiMajorAxis$ \`e il semiasse maggiore dell'orbita
+      ellittica.
+	\end{itemize}
+\end{Theorem}
+\Proof Denotiamo
+\begin{itemize}
+  \item $\SemilatusRectum$ il semilato retto;
+  \item $\TrueAnomaly$ l'anomalia vera.
+\end{itemize}
+Da
+\[
+  \begin{cases}
+    r = \frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}},\\
+    r = \SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly}),
+  \end{cases}
+\]
+deduciamo
+\begin{align*}
+  \frac{\SemilatusRectum}{1 + \LenzVector \cos{\TrueAnomaly}}
+    &= \SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly}),\\
+  \frac{\SemiMajorAxis(1 - \LenzVector^2)}
+    {1 + \LenzVector \cos{\TrueAnomaly}}
+    &= \SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly}),\\
+  1 - \LenzVector^2
+    &= (1 + \LenzVector \cos{\TrueAnomaly})
+    (1 - \LenzVector\cos{\EccentricAnomaly}),\\
+  1 - \LenzVector^2
+    &= 1 + \LenzVector \cos{\TrueAnomaly}
+    - \LenzVector \cos{\EccentricAnomaly}
+    - \LenzVector^2 \cos{\EccentricAnomaly} \cos{\TrueAnomaly},\\
+  0 &= \LenzVector \cos{\TrueAnomaly}
+  - \LenzVector \cos{\EccentricAnomaly}
+  - \LenzVector^2 \cos{\EccentricAnomaly} \cos{\TrueAnomaly}
+  + \LenzVector^2.
+\end{align*}
+Deriviamo rispetto al tempo:
+\begin{align*}
+  - \LenzVector \sin{\TrueAnomaly} \dot{\TrueAnomaly}
+    + \LenzVector \sin{\EccentricAnomaly} \dot{\EccentricAnomaly}
+    + \LenzVector^2 \sin{\EccentricAnomaly} \cos{\TrueAnomaly}
+      \dot{\EccentricAnomaly}
+    + \LenzVector^2 \sin{\TrueAnomaly} \cos{\EccentricAnomaly}
+      \dot{\TrueAnomaly}
+    &= 0,\\
+  (\LenzVector^2 \sin{\TrueAnomaly} \cos{\EccentricAnomaly}
+    - \LenzVector \sin{\TrueAnomaly}) \dot{\TrueAnomaly}
+    + (\LenzVector^2 \sin{\EccentricAnomaly} \cos{\TrueAnomaly}
+    + \LenzVector \sin{\EccentricAnomaly}) \dot{\EccentricAnomaly}
+    &= 0,
+\end{align*}
+da cui, denotando $\AngularMomentPerUnitMass$ il momento angolare per
+unit\`a di massa,
+\begin{align*}
+  \dot{\EccentricAnomaly} &=
+    \frac{\LenzVector \sin{\TrueAnomaly}
+      - \LenzVector^2 \sin{\TrueAnomaly} \cos{\EccentricAnomaly}}
+    {\LenzVector^2 \sin{\EccentricAnomaly} \cos{\TrueAnomaly}
+      + \LenzVector \sin{\EccentricAnomaly}} \dot{\TrueAnomaly},\\
+  &=
+    \frac{\sin{\TrueAnomaly} (1 - \LenzVector \cos{\EccentricAnomaly})}
+      {\sin{\EccentricAnomaly} (\LenzVector \cos{\TrueAnomaly} + 1)}
+    \frac{\AngularMomentPerUnitMass}{r^2},\\
+  &=
+    \frac{\sin{\EccentricAnomaly} \sqrt{1 - \LenzVector^2}}
+      {1 - \LenzVector \cos{\EccentricAnomaly}}
+    \frac{(1 - \LenzVector \cos{\EccentricAnomaly})}
+      {\sin{\EccentricAnomaly} (\LenzVector \cos{\TrueAnomaly} + 1)}
+    \frac{\AngularMomentPerUnitMass}{r^2},\\
+  &=
+    \sqrt{1 - \LenzVector^2}
+    \frac{\AngularMomentPerUnitMass}
+    {(\LenzVector \cos{\TrueAnomaly} + 1) r^2},\\
+  &=
+    \sqrt{1 - \LenzVector^2}
+    \frac{\sqrt{\NewtonConstant \TotalMass}}{r^2}
+    \frac{\sqrt{\SemilatusRectum}}
+      {1 + \LenzVector \cos{\TrueAnomaly}},\\
+  &=
+    \sqrt{1 - \LenzVector^2}
+    \frac{\sqrt{\NewtonConstant \TotalMass}}{r}
+    \frac{1}{\sqrt{\SemilatusRectum}},\\
+  &=
+    \sqrt{1 - \LenzVector^2}
+    \MeanMotion \SemiMajorAxis^{\frac{3}{2}}
+    \frac{1}{r}
+    \frac{1}{\sqrt{\SemiMajorAxis}\sqrt{1 - \LenzVector^2}},\\
+  &=
+    \frac{\MeanMotion \SemiMajorAxis}{r}.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+	Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  se l'orbita \`e ellittica, allora, denotati
+  \begin{itemize}
+    \item $\MeanMotion$ l'anomalia media;
+    \item $\EnergyPerUnitMass$ l'integrale dell'energia per unit\`a di
+      massa;
+    \item $\vec{\LenzVector}$ il vettore di Lenz;
+  \end{itemize}
+  abbiamo
+  \begin{itemize}
+    \item $\MeanMotion = \frac{\NewtonConstant^2\TotalMass^2}
+    {2 \AbsoluteValue{\EnergyPerUnitMass}\sqrt{- 2 \EnergyPerUnitMass}}$;
+    \item $\PericenterPassageTime$ pu\`o essere calcolato direttamente
+      noto $\EccentricAnomaly(0)$ soluzione del sistema
+      \[
+        \begin{cases}
+          \cos{\EccentricAnomaly(0)} = \frac{1}{\LenzVector}
+            \left ( 1 - \frac{r(0)}{\SemiMajorAxis} \right ),\\
+          \sin{\EccentricAnomaly(0)} = \frac{r(0)\dot{r}(0)}
+            {\SemiMajorAxis^2 \LenzVector \MeanMotion}.
+        \end{cases}
+      \]
+  \end{itemize}
+\end{Theorem}
+\Proof Per il moto medio abbiamo
+\begin{align*}
+  \MeanMotion
+  &= \sqrt{\frac{\NewtonConstant\TotalMass}{\SemiMajorAxis^3}},\\
+  &= \sqrt
+    {- \frac{\NewtonConstant^4\TotalMass^4}{8 \EnergyPerUnitMass^3}},\\
+  &= \frac{\NewtonConstant^2\TotalMass^2}
+    {2 \AbsoluteValue{\EnergyPerUnitMass}\sqrt{- 2 \EnergyPerUnitMass}}.
+\end{align*}
+\par Da $r = \SemiMajorAxis(1 - \LenzVector \cos{\EccentricAnomaly(0)})$
+deduciamo immediatamente
+$\cos{\EccentricAnomaly(0)} = \frac{1}{\LenzVector}
+\left ( 1 - \frac{r(0)}{\SemiMajorAxis} \right )$.
+\par Abbiamo inoltre
+ $\dot{r}
+= \SemiMajorAxis \LenzVector \sin{(\EccentricAnomaly)}
+\dot{\EccentricAnomaly}$, da cui
+\begin{align*}
+  \sin{\EccentricAnomaly(0)}
+  &=\frac{\dot{r}(0)}{\SemiMajorAxis\LenzVector\dot{\EccentricAnomaly}},
+  &=\frac{r(0) \dot{r}(0)}{\SemiMajorAxis^2\LenzVector\MeanMotion}.
+\end{align*}
+\par Possiamo allora calcolare $\EccentricAnomaly(0)$ e ottenere
+$\PericenterPassageTime
+= \frac{\LenzVector \sin{\EccentricAnomaly(0)} - \EccentricAnomaly(0)}
+{\MeanMotion}$. \EndProof
+\par Consideriamo adesso il problema di Keplero in un sistema di
+riferimento in il campo gravitazionale \`e sempre centrale, ma il piano
+orbitale non coincide pi\`u col piano $Oxy$.
+\begin{Definition}
+  Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  chiamiamo
+  \begin{itemize}
+    \item \Define{linea dei nodi}[dei nodi][linea] la traccia del piano
+      orbitale sul piano $Oxy$;
+    \item \Define{nodo ascendente}[ascendente][nodo] il punto
+      d'intersezione tra l'orbita e la linea dei nodi dove il punto
+      materiale ha velocit\`a positiva lungo l'asse $z$, denotato
+      tipicamente $\AscendingNode$;
+    \item \Define{nodo discendente}[discendente][nodo] il punto
+      d'intersezione tra l'orbita e la linea dei nodi dove il punto
+      materiale ha velocit\`a negativa lungo l'asse $z$, denotato
+      tipicamente $\DescendingNode$;
+    \item \Define{longitudine del nodo ascendente}[del nodo ascendente][longitudine]
+      l'angolo $\LongitudeOfAscendingNode$ individuato dalla
+      direzione positiva dell'asse $x$ al nodo ascendente misurato in
+      senso positivo;
+    \item \Define{argomento del pericentro}[del pericentro][argomento]
+      l'angolo $\ArgumentOfPericenter$ individuato dal nodo ascendente
+      al vettore di Lenz misurato in senso positivo;
+    \item \Define{inclinazione} l'angolo $\Inclination$ individuato
+      dall'asse $z$ al momento angolare misurato in senso positivo.
+  \end{itemize}
+  Chiamiamo inoltre
+  \begin{itemize}
+    \item \Define{elementi cartesiani}[cartesiani][elementi] le sei
+    componenti dei vettori $\vec{r}$ e $\dot{\vec{r}}$;
+    \item \Define{elementi kepleriani}[kepleriani][elementi]
+      le sei quantit\`a scalari
+      \begin{itemize}
+        \item semiasse maggiore $\SemiMajorAxis$
+          (si considera $\SemiMajorAxis = + \infty$ nel
+          caso di orbita parabolica);
+        \item eccentricit\`a $\LenzVector$;
+        \item inclinazione $\Inclination$;
+        \item la longitudine del nodo ascendente
+          $\LongitudeOfAscendingNode$;
+        \item l'argomento del pericentro $\ArgumentOfPericenter$;
+        \item l'anomalia media $\MeanAnomaly$.
+      \end{itemize}
+  \end{itemize}
+\end{Definition}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Elementi_di_meccanica_celeste/Immagine_Keplero_ElementiKepleriani.png}
+	\centering
+	\caption{Elementi kepleriani.}
+\end{figure}
+\begin{Theorem}
+  Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  la corrispondenza che associa, per un fissato istante $t$, agli
+  elementi cartesiani gli elementi kepleriani \`e biunivoca.
+\end{Theorem}
+\Proof Manteniamo le notazioni della definizione precedente.
+Supponiamo noti gli elementi cartesiani.
+Abbiamo
+\begin{itemize}
+  \item l'inclinazione \`e l'angolo compreso tra $0$ e $\pi$ tra il
+    vettore
+    $\vec{\AngularMomentPerUnitMass}
+      = \VectorProduct{\vec{r}}{\vec{\dot{r}}}$ e il versore
+    $\ver{e_z}$: \`e soluzione dell'equazione
+    $\cos{\Inclination}
+      =\frac{\ScalarProduct{\vec{\AngularMomentPerUnitMass}}{\ver{e_z}}}
+        {\AngularMomentPerUnitMass}$;
+  \item l'eccentrit\`a \`e data dal modulo del vettore di Lenz
+    $\vec{\LenzVector}
+      = \frac{1}
+        {\NewtonConstant\TotalMass}
+        \VectorProduct{\vec{r}}{\AngularMomentPerUnitMass}
+        - \frac{\vec{r}}{r}$;
+  \item la linea dei nodi \`e l'intersezione del piano $Oxy$ e del piano
+    orbitale: il versore
+    $\ver{\LongitudeOfAscendingNode}
+      = \frac{\VectorProduct{\ver{e_z}}{\AngularMomentPerUnitMass}}
+        {\Norm{\VectorProduct{\ver{e_z}}{\AngularMomentPerUnitMass}}}$
+    giace sulla linea dei nodi: da esso, tramite prodotto scalare con
+    $\ver{e_x}$, ricavo $\LongitudeOfAscendingNode$;
+  \item l'argomento del pericentro \`e l'angolo compreso tra il versore
+    $\ver{\LongitudeOfAscendingNode}$ e il vettore di Lenz: \`e dunque
+    soluzione di
+    \[
+      \begin{cases}
+        \cos{\LongitudeOfAscendingNode}
+          = \ScalarProduct{\vec{\LenzVector}}
+            {\ver{\LongitudeOfAscendingNode}},\\
+        \sin{\LongitudeOfAscendingNode}
+          = \Norm{\VectorProduct{\vec{\LenzVector}}
+            {\ver{\LongitudeOfAscendingNode}}}.
+      \end{cases}
+    \]
+  \item l'energia per unit\`a di massa \`e
+    $\EnergyPerUnitMass
+      = \frac{\ScalarProduct{\dot{r}}{\dot{r}}}{2}
+        - \frac{\NewtonConstant\TotalMass}{r}$. Ora, se
+    $\EnergyPerUnitMass = 0$, abbiamo visto che l'orbita \`e parabolica
+    e abbiamo allora $\SemiMajorAxis = + \infty$; altrimenti abbiamo
+    $\SemiMajorAxis
+      = - \frac{\NewtonConstant\TotalMass}{2\EnergyPerUnitMass}$;
+  \item la terza legge di Keplero fornisce il moto medio
+    $\MeanMotion
+      = \sqrt{\frac{\NewtonConstant\TotalMass}
+        {\SemiMajorAxis^3}}$,
+    da cui calcoliamo l'anomalia eccentrica come soluzione di
+    \[
+      \begin{cases}
+        \cos{\EccentricAnomaly} = \frac{1}{\LenzVector}
+          \left ( 1 - \frac{r}{\SemiMajorAxis} \right ),\\
+        \sin{\EccentricAnomaly} = \frac{r\dot{r}}
+          {\SemiMajorAxis^2 \LenzVector \MeanMotion}.
+      \end{cases}
+    \];
+    ne deduciamo l'anomalia media tramite formula di Keplero.
+    SOLO CASO ELLITTICO PER ORA
+\end{itemize}
+\par Supponiamo ora invece noti gli elementi kepleriani. Abbiamo gi\`a
+visto come fornire il moto medio $\MeanMotion$, il tempo di passaggio al
+pericentro $\PericenterPassageTime$ e l'eccentricit\`a determini
+univocamente l'orbita nel caso in cui il piano $Oxy$ coincida col piano
+orbitale.
+\par Avendo gli elementi kepleriani abbiamo effettivamente anche
+\begin{itemize}
+  \item $\MeanMotion
+          = \sqrt{\frac{\NewtonConstant\TotalMass}
+            {\SemiMajorAxis^3}}$;
+  \item l'anomalia eccentrica soluzione di
+    \[
+      \begin{cases}
+        \cos{\EccentricAnomaly} = \frac{1}{\LenzVector}
+          \left ( 1 - \frac{r}{\SemiMajorAxis} \right ),\\
+        \sin{\EccentricAnomaly} = \frac{r\dot{r}}
+          {\SemiMajorAxis^2 \LenzVector \MeanMotion}.
+      \end{cases}
+    \];
+  \item il tempo di passaggio al pericentro
+    $\PericenterPassageTime
+      = \frac{\LenzVector \sin{\EccentricAnomaly(0)}
+          - \EccentricAnomaly(0)}{\MeanMotion}$.
+\end{itemize}
+\par Possiamo dunque calcolare i vettori $\vec{r}$ e $\dot{\vec{r}}$ in
+un tale sistema di riferimento. Per ottenere le loro coordinate nel
+sistema di riferimento originale occorrer\`a dunque eseguire la
+trasformazione
+$R
+  = R_{\LongitudeOfAscendingNode}
+    R_{\Inclination}
+    R_{\ArgumentOfPericenter}$,
+dove $R_{\LongitudeOfAscendingNode}$, $R_{\Inclination}$,
+$R_{\ArgumentOfPericenter}$, sono le rotazioni
+\begin{itemize}
+  \item $R_{\LongitudeOfAscendingNode} =
+        \lmatrix
+        \begin{array}{ccc}
+          \cos{\LongitudeOfAscendingNode} &
+          - \sin{\LongitudeOfAscendingNode} &
+          0\\
+          \sin{\LongitudeOfAscendingNode} &
+          \cos{\LongitudeOfAscendingNode} &
+          0\\
+          0 &
+          0 &
+          1
+        \end{array}
+        \rmatrix$;
+  \item $R_{\Inclination}
+        \lmatrix
+        \begin{array}{ccc}
+          1 &
+          0 &
+          0\\
+          \cos{\Inclination} &
+          - \sin{\Inclination} &
+          0\\
+          \sin{\Inclination} &
+          \cos{\Inclination} &
+          0\\
+        \end{array}
+        \rmatrix$;
+  \item $R_{\ArgumentOfPericenter},
+        \lmatrix
+        \begin{array}{ccc}
+          \cos{\ArgumentOfPericenter} &
+          - \sin{\ArgumentOfPericenter} &
+          0\\
+          \sin{\ArgumentOfPericenter} &
+          \cos{\ArgumentOfPericenter} &
+          0\\
+          0 &
+          0 &
+          1
+        \end{array}
+        \rmatrix$. \EndProof
+\end{itemize}
+\begin{Theorem}
+  \TheoremName{Equazione di Baker}[di Baker][equazione]
+  Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  se l'orbita \`e iperbolica allora
+  \[ 
+    t - t_0
+    = \frac{1}{2}
+    \sqrt{\frac{\SemilatusRectum^3}{\NewtonConstant\TotalMass}}
+    \left [
+    \tan \frac{\TrueAnomaly}{2}
+    + \frac{1}{3} \tan^3 \frac{\TrueAnomaly}{3}
+    \right ]_{\TrueAnomaly_0}^{\TrueAnomaly}.
+  \]
+  dove
+  \begin{itemize}
+    \item $t_0$ \`e un tempo iniziale fissato;
+    \item $\TrueAnomaly_0$ \`e l'anomalia vera al tempo $t_0$;
+    \item $\TrueAnomaly$ l'anomalia vera al tempo $t$;
+    \item $\SemilatusRectum$ il semilato retto.
+  \end{itemize}
+\end{Theorem}
+\Proof Dall'equazione
+$\AngularMomentPerUnitMass = r^2 \dot{\TrueAnomaly}$
+deduciamo
+$\int_{t_0}^t \AngularMomentPerUnitMass d\tau
+= \int_{\TrueAnomaly_0}^\TrueAnomaly r^2 d\TrueAnomaly$,
+dove $\TrueAnomaly_0$ \`e l'anomalia vera al tempo $t_0$:
+$\TrueAnomaly_0 = \TrueAnomaly(t_0)$.
+\par Ora, abbiamo
+\begin{align*}
+  r
+  &= \frac{\SemilatusRectum}{1 + \cos \TrueAnomaly},\\
+  &= \frac{\SemilatusRectum}{2}
+      \frac{1}{\cos^2 \frac{\TrueAnomaly}{2}},\\
+  &= \frac{\SemilatusRectum}{2}
+      \frac{\cos^2\frac{\TrueAnomaly}{2} + \sin^2\frac{\TrueAnomaly}{2}}
+        {\cos^2 \frac{\TrueAnomaly}{2}},\\
+  &= \frac{\SemilatusRectum}{2}
+      \left ( 1 + \tan^2 \frac{\TrueAnomaly}{2} \right );
+\end{align*}
+inoltre, posto $x = \tan \frac{\TrueAnomaly}{2}$, abbiamo
+\begin{align*}
+  dx
+    &= \frac{1}{2}
+      \left (1 + \tan^2\frac{\TrueAnomaly}{2} \right ) d\TrueAnomaly,\\
+  d\TrueAnomaly = \frac{2}{1 + x^2} dx.
+\end{align*}
+Dunque
+\begin{align*}
+t - t_0
+&= \frac{1}{\AngularMomentPerUnitMass}
+    \int_{t_0}^t \AngularMomentPerUnitMass d\tau,\\
+&= \frac{1}{\sqrt{\NewtonConstant\TotalMass\SemilatusRectum}}
+    \int_{\TrueAnomaly_0}^\TrueAnomaly r^2 d\TrueAnomaly,\\
+&= \frac{\SemilatusRectum^2}
+    {4\sqrt{\NewtonConstant\TotalMass\SemilatusRectum}}
+    \int_{\TrueAnomaly_0}^\TrueAnomaly
+    \left (
+    1 + \tan^2 \frac{\TrueAnomaly}{2}
+    \right )^2
+    d\TrueAnomaly,\\
+&= \frac{1}{4}
+    \sqrt{\frac{\SemilatusRectum^3}{\NewtonConstant\TotalMass}}
+    \int_{x(\TrueAnomaly_0)}^{x(\TrueAnomaly)}
+    \frac{(1 + x^2)^2}
+    {x^2 + 1}
+    dx,\\
+&= \frac{1}{4}
+    \sqrt{\frac{\SemilatusRectum^3}{\NewtonConstant\TotalMass}}
+    \int_{x(\TrueAnomaly_0)}^{x(\TrueAnomaly)}
+    2 (1 + x^2)
+    dx,\\
+&= \frac{1}{2}
+    \sqrt{\frac{\SemilatusRectum^3}{\NewtonConstant\TotalMass}}
+    \left [
+    x + \frac{x^3}{3}
+    \right ]_{x(\TrueAnomaly_0)}^{x(\TrueAnomaly)},\\
+&= \frac{1}{2}
+    \sqrt{\frac{\SemilatusRectum^3}{\NewtonConstant\TotalMass}}
+    \left [
+    \tan \frac{\TrueAnomaly}{2}
+    + \frac{1}{3} \tan^3 \frac{\TrueAnomaly}{3}
+    \right ]_{\TrueAnomaly_0}^{\TrueAnomaly}.
+\end{align*}
+\begin{Definition}
+  Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  chiamiamo
+  \Define{tempo di volo}[di volo][tempo]
+  la quantit\`a $t - \PericenterPassageTime$, dove
+  $\PericenterPassageTime$ \`e il tempo di passaggio al pericentro.
+\end{Definition}
+\begin{Theorem}
+  Dato un problema di Keplero
+	\[
+		\ReducedMass \ddot{\vec{r}}
+    = - \NewtonConstant \frac{\TotalMass\ReducedMass}{r^3}\vec{r},
+	\]
+  il tempo di volo \`e
+  \begin{itemize}
+    \item $t - \PericenterPassageTime
+            = \sqrt{\frac{\SemiMajorAxis^3}{\NewtonConstant\TotalMass}}
+              (\EccentricAnomaly - \LenzVector \sin \EccentricAnomaly)$
+          se l'orbita \`e ellittica;
+    \item $t - \PericenterPassageTime
+            = \frac{1}{2}
+              \sqrt{\frac{\SemilatusRectum^3}{\NewtonConstant\TotalMass}}
+              \left (
+              \tan \frac{\TrueAnomaly}{2}
+              + \frac{1}{3} \tan^3 \frac{\TrueAnomaly}{2}
+              \right )$
+          se l'orbita \`e parabolica;
+    \item $t - \PericenterPassageTime
+            = \sqrt{-\frac{\SemiMajorAxis^3}{\NewtonConstant\TotalMass}}
+              (\LenzVector \sinh \EccentricAnomaly - \EccentricAnomaly)$
+          se l'orbita \`e iperbolica.
+  \end{itemize}
+\end{Theorem}
+\Proof Supponiamo l'orbita ellittica. Abbiamo
+\[
+  \MeanAnomaly
+    = \EccentricAnomaly - \LenzVector \sin \EccentricAnomaly,\\
+  \MeanAnomaly
+    = \MeanMotion (t - \PericenterPassageTime).
+\]
+Da cui, tramite la terza legge di Keplero,
+\begin{align*}
+  t - \PericenterPassageTime
+    &= \frac{1}{\MeanMotion} 
+      \EccentricAnomaly - \LenzVector \sin \EccentricAnomaly,\\
+    &= \sqrt{\frac{\SemiMajorAxis^3}{\NewtonConstant\TotalMass}}
+      \EccentricAnomaly - \LenzVector \sin \EccentricAnomaly.
+\end{align*}
+\par Supponiamo l'orbita parabolica. Segue direttamente dall'equazione
+di Baker che il tempo di volo \`e
+$t - \PericenterPassageTime
+= \frac{1}{2}
+\sqrt{\frac{\SemilatusRectum^3}{\NewtonConstant\TotalMass}}
+\left (
+\tan \frac{\TrueAnomaly}{2}
++ \frac{1}{3} \tan^3 \frac{\TrueAnomaly}{2}
+\right )$.

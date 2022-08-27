@@ -1,0 +1,88 @@
+\section{Spazio proiettivo duale e dualit\`a.}
+
+\par In questa sezione $\mu$ indica l'isomorfismo canonico dal biduale $V^{**}$ di $V$ in $V$. In questa sezione assumeremo $n$, dimensione dello spazio proiettivo $\mathbb{P}(V)$, \underline{finito}.
+\begin{Definition}\label{def24}
+	Sia $\mathbb{P}(V)$ lo spazio proiettivo associato allo spazio vettoriale $V$. $\mathbb{P}(V^*)$, dove $V^*$ \`e il duale di $V$, si chiama \Define{spazio proiettivo duale}[proiettivo duale][spazio] di $\mathbb{P}(V)$ e si denota $\mathbb{P}(V)^*$.
+\end{Definition}
+\begin{Definition}\label{def25}
+	Siano $\mathcal{R}$ un riferimento proiettivo di $\mathbb{P}(V)$, $\mathcal{B}$ una base di $V$ normalizzata rispetto ad $\mathcal{R}$. Chiamiamo \Define{riferimento proiettivo duale}[proiettivo duale][riferimento] di $\mathcal{R}$, denotato $\mathcal{R}^*$, il riferimento proiettivo i cui elementi sono le classi d'equivalenza degli elementi della base $\mathcal{B}^*$ duale di $\mathcal{B}$ e la classe d'equivalenza della somma degli elementi della base duale $\mathcal{B}^*$.
+\end{Definition}
+\begin{Theorem}\label{th25}
+	Per ogni $k = -1, ..., n$, siano
+	\begin{itemize}
+		\item $\mathbb{S}_k$ l'insieme dei sottospazi proiettivi di $\mathbb{P}(V)$ di dimensione $k$, ordinato per inclusione;
+		\item $\mathbb{S}_k^*$ l'insieme dei sottospazi proiettivi di $\mathbb{P}(V)^*$ di dimensione $k$, ordinato per la relazione d'ordine opposta all'inclusione;
+		\item $\delta_k: \mathbb{S}_k \rightarrow \mathbb{S}_{n - k - 1}^*$ l'applicazione che a $\mathbb{P}(W)$ associa $\mathbb{P}(\Annihilator(W))$.
+	\end{itemize}
+	Allora, per ogni $k = -1, ..., n$, $\delta_k$ \`e un isomorfismo d'insiemi ordinati.
+\end{Theorem}
+\Proof Fissiamo $k \in \lbrace -1, ..., n \rbrace$. Consideriamo l'insieme $S_k$ dei sottospazi vettoriali di $V$ di dimensione $k + 1$, ordinato per inclusione, l'insieme $S_k^*$ dei sottospazi vettoriali di $V^*$ di dimensione $k + 1$, ordinato con la relazione d'ordine opposta alla relazione d'inclusione, e l'applicazione $\delta': S_k \rightarrow S_{n - k - 1}^*$ che a $W \in S_k$ associa $\Annihilator W \in S_{n - k - 1}^*$. Definiamo analogamente l'applicazione $\delta'': S_{n - k - 1}^* \rightarrow S_k^{**}$ che a $U \in S_{n - k - 1}^*$ associa $\Annihilator U \in S_k^{**}$, dove $S_k^{**}$ \`e l'insieme dei sottospazi vettoriali di $V^{**}$.
+	\par Abbiamo $((\mu \circ \delta'') \circ \delta')(W) = \mu(\Annihilator (\Annihilator W)) = W$ e $(\delta' \circ (\mu \circ \delta''))(U) = \Annihilator (\mu(\Annihilator U)) = U$, dunque $\delta'$ \`e biettiva e la verifica che sia un isomorfismo d'insiemi ordinati \`e immediata. La tesi segue per il corollario \ref{cor0.1}. \EndProof
+\begin{Definition}\label{def26}
+	Con le notazioni del teorema precedente, sia $\delta: \mathbb{S} \rightarrow \mathbb{S}^*$, dove $\mathbb{S}$ \`e l'insieme dei sottospazi proiettivi di $\mathbb{P}(V)$ e $\mathbb{S}^*$ l'insieme dei sottospazi proiettivi di $\mathbb{P}^*$, l'applicazione definita da $\delta(S) = \delta_{\dim S} (S)$. L'applicazione $\delta$ \`e chiamata \Define{corrispondenza di dualit\`a}[di dualit\`a][corrispondenza].
+\end{Definition}
+\par Per abuso di linguaggio, denoteremo con la stessa lettera $\delta$ la corrispondenza di dualit\`a di qualunque spazio proiettivo. Questo permetter\`a di un'interpretazione pi\`u intuitiva dei teoremi che seguono.
+\begin{Theorem}\label{th25.1}
+	Vale la relazione $\delta^2 = \bar{\mu}$. In altri termini, la corrispondenza di dualit\`a $\delta$ \`e un'involuzione se identifichiamo $V$ e il suo biduale $V^{**}$ tramite l'isomorfismo canonico $\mu$, e dunque $\mathbb{P}(V)$ e $\mathbb{P}(V)^{**}$ tramite la proiettivit\`a $\bar{\mu}$.
+\end{Theorem}
+\Proof Sia $S$ un sottospazio proiettivo proprio di $\mathbb{P}(V)$ corrispondente al sottospazio vettoriale $W$ di $V$. Allora $(\delta \circ \delta)(S) = \delta(\delta(S)) = \delta(\mathbb{P}(\Annihilator W)) = \mathbb{P}(\Annihilator (\Annihilator W)) = \mathbb{P}(\mu(W)) = \bar{\mu}(S)$. \EndProof
+\begin{Corollary}\label{corth25.1}
+	Sia $S$ un sottospazio proiettivo proprio di $\mathbb{P}(V)$. Se $T = \delta(S)$, allora $\delta(T) = \bar{\mu}(S)$.
+\end{Corollary}
+\Proof Abbiamo $\delta(T) = \delta^2(S) = \bar{\mu}(S)$. \EndProof
+\begin{Theorem}\label{th26}
+	Data una famiglia \underline{finita}\footnote{Non so se la dimostrazione che ho scritto valga anche nel caso infinito: ci\`o dipende da se l'annullatore dell'intersezione di una famiglia infinita di sottospazi vettoriali sia uguale alla somma degli annullatori dei singoli sottospazi e da se l'annullatore della somma di una famiglia finita di sottospazi sia uguale all'intersezione degli annullatori dei singoli sottospazi.} $(S_i)_{i \in I}$ sottospazi proiettivi di $\mathbb{P}(V)$ sono verificate le relazioni $\delta(\bigcap_{i \in I} S_i) = L(\bigcup_{i \in I} \delta(S_i))$ e $\delta(L(\bigcup_{i \in I} S_i)) = \bigcap_{i \in I} \delta(S_i)$.
+\end{Theorem}
+\Proof Siano $(W_i)_{i \in I}$ una famiglia di sottospazi vettoriali di $V$ tali che per ogni $i \in I$ si abbia $S_i = \mathbb{P}(W_i)$. Abbiamo $\delta(\bigcap_{i \in I} S_i) = \delta(\bigcap_{i \in I} \mathbb{P}(W_i)) = \delta(\mathbb{P}(\bigcap_{i \in I} W_i)) = \mathbb{P}(\Annihilator (\bigcap_{i \in I} W_i)) = \mathbb{P}(\sum_{i \in I} \Annihilator W_i) = L(\bigcup_{i \in I} \mathbb{P}(\Annihilator W_i)) = L(\bigcup_{i \in I} \delta(S_i))$. E ancora $\delta(L(\bigcup_{i \in I} S_i)) = \delta(L(\bigcup_{i \in I} \mathbb{P}(W_i))) = \delta(\mathbb{P}(\sum_{i \in I} W_i)) = \mathbb{P}(\Annihilator (\sum_{i \in I} W_i)) = \bigcap_{i \in I} \mathbb{P}(\Annihilator W_i) = \bigcap_{i \in I} \delta(S_i)$. \EndProof
+\begin{Definition}\label{def27}
+	Sia $\mathcal{P}$ una proposizione che riguarda i sottospazi proiettivi di uno spazio proiettivo $\mathbb{P}(V)$ di dimensione $n$. Chiamiamo \Define{proposizione duale}[duale][proposizione] di $\mathcal{P}$, denotata $\mathcal{P}^*$, la proposizione ottenuta sostituendo i termini ``intersezione'', ``sottospazio generato'', ``contenuto'', ``contenente'', ``dimensione'' coi termini ``sottospazio generato'', ``intersezione'', ``contenente'', ``contenuto'', ``dimensione duale'', dove la ``dimensione duale'' vale $n - k - 1$ se la dimensione vale $k$. Se $\mathcal{P}$ e $\mathcal{P}^*$ sono la stessa proposizione, allora $\mathcal{P}$ viene detta \Define{autoduale}[autoduale][proposizione].
+\end{Definition}
+\begin{Principle}\label{princ1}
+	\TheoremName{Principio di dualit\`a}. Sia $\mathcal{P}$ una proposizione che riguarda i sottospazi proiettivi di uno spazio proiettivo $\mathbb{P}(V)$. $\mathcal{P}$ \`e vera se e solo se $\mathcal{P}^*$ \`e vera.
+\end{Principle}
+\Proof La dimostrazione metamatematica del principio consiste nell'applicare su $\mathcal{P}$ i teoremi \ref{th25} e \ref{th26}. \EndProof
+\begin{Definition}\label{def28}
+	Supponiamo fissato un riferimento proiettivo $\mathcal{R}$ su $\mathbb{P}(V)$. Sia $S$ un iperpiano proiettivo di $\mathbb{P}(V)$. Chiameremo \Define{coordinate omogenee dell'iperpiano $S$}[omogenee di un iperpiano][coordinate] le coordinate del punto $\delta(S) \in \mathbb{P}(V)^*$ rispetto al riferimento proiettivo duale $\mathcal{R}^*$\footnote{Identifichiamo $\delta(S)$ con l'unico punto di $\mathbb{P}(V)$ che esso contiene.}.
+\end{Definition}
+\begin{Theorem}\label{th27}
+	Supponiamo fissato un riferimento proiettivo $\mathcal{R}$ di $\mathbb{P}(V)$. Sia $S$ un iperpiano proiettivo di $\mathbb{P}(V)$ descritto dall'equazione cartesiana $\sum_{i = 0}^n a_i x_i = 0$, con $a_i \in \mathbb{K}$. Le coordinate omogenee dell'iperpiano $S$ sono $[a_0, ..., a_n]$.
+\end{Theorem}
+\Proof Sia $W$ l'iperpiano di $V$ tale che $\mathbb{P}(W) = S$. Allora fissata una base $\mathcal{B}$ di $V$ normalizzata rispetto ad $\mathcal{R}$, per il teorema \ref{th22}, $W$ \`e descritto dalla stessa equazione cartesiana. Consideriamo il duale $V^*$ di $V$ con la base duale $\mathcal{B}^*$: un argomento dimensionale permette di concludere subito che l'annulatore di $W$ \`e dato dalla retta di $V^*$ generata dal vettore di coordinate $(a_0, ..., a_n)$. Dunque $\delta(S)$ ha coordinate omogenee $[a_0, ..., a_n]$. \EndProof
+\begin{Definition}\label{def29}
+	Un \Define{sistema lineare}[lineare][sistema] $\mathcal{L}$ di $\mathbb{P}(V)$ \`e un qualunque sottospazio proiettivo di $\mathbb{P}(V)^*$. Il \Define{centro}[di un sistema lineare][centro] $S$ di $\mathcal{L}$ \`e definito come $S = \bigcap_{P \in \mathcal{L}} \delta^{-1}(P)$.
+\end{Definition}
+\begin{Lemma}\label{Lemma1}
+	Sia $\mathcal{L}$ un sistema lineare di centro $S$. Allora $\delta(S) = \mathcal{L}$ e $\delta(\mathcal{L}) = \bar{\mu}(S)$.
+\end{Lemma}
+\Proof Abbiamo $\delta(S) = \delta(\bigcap_{P \in \mathcal{L}} \delta^{-1}(P))$.
+\par Sia $\mathcal{S}$ un insieme massimale di punti indipendenti di $\mathcal{L}$. Chiaramente, $\bigcap_{P \in \mathcal{L}} \delta^{-1}(P) \subseteq \bigcap_{P \in \mathcal{S}} \delta^{-1}(P)$.
+\par Siano poi $x \in \bigcap_{P \in \mathcal{S}} \delta^{-1}(P)$ e $Q \in \mathcal{L}$: proviamo che $x \in \delta^{-1}(Q)$. Sia $W$ il sottospazio vettoriale di $V^*$ tale che $\mathbb{P}(W) = \mathcal{L}$ e sia $(s_i)_{i \in I}$ una base di $W$ tale che, per ogni $i \in I$, $[s_i] \in \mathcal{S}$. $Q \in \mathcal{L}$, dunque esiste $q \in W$ tale che $[q] = Q$. Inoltre, esiste una famiglia $(\alpha_i)_{i \in I}$ di scalari tale che $q = \sum_{i \in I} \alpha_i s_i$.
+\par Sia $y \in V - \lbrace 0 \rbrace$ tale che $[y] = x$: abbiamo, per ogni $P \in \mathcal{L}$, $x \in \delta^{-1}(P)$ se e solo se $\Annihilator {y} \subseteq \tilde{P}$, dove $\tilde{p}$ \`e il sottospazio vettoriale di $V^*$ generato da un qualunque $p$ rappresentante di $P$. Abbiamo dunque, per ogni $i \in I$, $\Annihilator {y} \subseteq \tilde{s_i}$. Inoltre, sia $z \in \Annihilator {y}$: abbiamo $zq = \sum_{i \in I} \alpha_i zs_i = 0$, dunque $\Annihilator {y} \subseteq \tilde{q}$, e quindi $x \in \delta^{-1}(Q)$.
+\par Abbiamo quindi provato che $\bigcap_{P \in \mathcal{L}} \delta^{-1}(P) = \bigcap_{P \in \mathcal{S}} \delta^{-1}(P)$.
+\par Abbiamo dunque infine $\delta(S) = \delta(\bigcap_{P \in \mathcal{L}} \delta^{-1}(P)) = \delta(\bigcap_{P \in \mathcal{S}} \delta^{-1}(P)) = L((\delta(\delta^{-1}(P)))_{P \in \mathcal{S}}) = L((P)_{P \in \mathcal{S}}) = \mathcal{L}$. \EndProof
+\begin{Theorem}\label{th28}
+	Dato $S$, sottospazio proiettivo di $\mathbb{P}(V)$, esiste uno e un solo sistema lineare $\mathcal{L}$ di centro $S$.
+\end{Theorem}
+\Proof Per il Lemma \ref{Lemma1}, $\delta(S)$ ha per centro $S$ e, se $\mathcal{L}$ \`e un sistema lineare di centro $S$, $\delta{\mathcal{L}} = \bar{\mu}(S)$ e dunque $\mathcal{L} = (\delta^{-1} \circ \bar{\mu})(S)$. \EndProof
+\begin{Definition}\label{def30}
+	Il \Define{sistema lineare}[lineare][sistema] degli iperpiani di centro $S$, denotato $\Lambda_1(S)$, \`e l'unico sistema lineare avente $S$ per centro: $\Lambda_1(S) = \delta(S)$.
+\end{Definition}
+\begin{Theorem}\label{th29}
+	Sia $\mathcal{L}$ un sistema lineare. $\mathcal{L} = \Lambda_1(S)$ se e solo se la famiglia $F = (\delta^{-1}(P))_{P \in \mathcal{L}}$ \`e costituita da tutti e soli gli iperpiani di $\mathbb{P}(V)$ che contengono $S$.
+\end{Theorem}
+\Proof Supponiamo $\mathcal{L}$ abbia centro $S$. Se $P \in \mathcal{L}$, allora per definizione di centro $S \subseteq \delta^{-1}(P)$; quindi tutti gli iperpiani di $F$ contengono effettivamente $S$. Supponiamo viceversa che $T$ sia un iperpiano di $\mathbb{P}(V)$ contenente $S$; allora $\delta(T)$ \`e un punto di $\mathbb{P}(V)^*$ contenuto in $\delta(S) = \mathcal{L}$ (teorema \ref{th25} e Lemma \ref{Lemma1}), dunque $T = \delta^{-1}(\delta(T)) \in F$. \EndProof
+\begin{Definition}\label{def31}
+	Sia $S$ un sottospazio proiettivo di $\mathbb{P}(V)$. Se $\dim S = n - 2$, allora il sistema lineare $\Lambda_1(S)$ viene chiamato \Define{fascio di iperpiani}[di iperpiani][fascio] di centro $S$.
+\end{Definition}
+\begin{Definition}\label{def37}
+	Siano $\Lambda_1(S)$, dove $S$ \`e un sottospazio proiettivo di $\mathbb{P}(V)$, il sistema lineare degli iperpiani di centro $S$ e $L$ un iperpiano di $\mathbb{P}(V)$ e consideriamo la carta affine corrispondente data da $(U_L, j_L^{-1})$ (cfr. definizione \ref{deftop2}). La famiglia $(\delta^{-1}(P) \cap U_L)_{P \in \Lambda_1(S)}$ delle intersezioni degli iperpiani di $\Lambda_1(S)$ con la carta $U_L$, che denoteremo $\Lambda_1(S) \cap U_L$, si dice \Define{sistema lineare di iperpiani affini}[lineare di iperpiani affini][sistema]. Il sistema viene detto \Define{improprio}[lineare di iperpiani affini improprio][sistema] se $S \subseteq L$, \Define{proprio}[lineare di iperpiani affini proprio] altrimenti. Se il sistema lineare $\Lambda_1(S)$ \`e un fascio si parla allora di \Define{fascio improprio}[improprio][fascio] o \Define{fascio proprio}[proprio][fascio] rispettivamente.
+\end{Definition}
+\begin{Theorem}\label{th37}
+	Siano $S$ un sottospazio proiettivo di $\mathbb{P}(V)$, $L$ un iperpiano di $\mathbb{P}(V)$. Se il sistema lineare $\Lambda_1(S) \cap U_L$ \`e proprio allora $L$ non \`e un iperpiano del sistema lineare $\Lambda_1(S)$.
+\end{Theorem}
+\Proof $\Lambda_1(S) \cap U_L$ \`e proprio se e solo se $S$ non \`e sottoinsieme di $L$ per definizione. Ma $S$ \`e per definizione l'intersezione comune di tutti gli iperpiani del sistema lineare. \EndProof
+\begin{Theorem}\label{th40}
+	Siano $S$ un sottospazio proiettivo di $\mathbb{P}(V)$, $L$ un iperpiano di $\mathbb{P}(V)$. Consideriamo l'applicazione $\phi: \Lambda_1(S) \rightarrow \Lambda_1(S) \cap U_L$ che al punto $P \in \Lambda_1(S)$ associa $\delta^{-1}(P) \cap U_L$. Se $\Lambda_1(S)$ \`e proprio allora $\phi$ \`e biettiva; se $\Lambda_1(S)$ \`e improprio allora $\phi(\delta(L)) = \varnothing$.
+\end{Theorem}
+\Proof Sia $\Lambda_1(S)$ un sistema lineare proprio. Allora, per definizione, ogni $\delta^{-1}(P)$ interseca $U_L$ e la biettivit\`a di $\phi$ segue dunque dal teorema \ref{thtop9}.
+	\par Sia ora invece $\Lambda_1(S)$ improprio. Allora $S \subseteq L$ e quindi $\delta(L) \in \Lambda(S)$ e risulta $\phi(\delta(L)) = \varnothing$. \EndProof

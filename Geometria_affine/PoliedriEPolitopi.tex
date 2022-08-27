@@ -1,0 +1,108 @@
+\section{Poliedri e politopi.}\label{PoliedriEPolitopi}
+\begin{Definition}
+	Un \Define{poliedro convesso} \`e l'intersezione di un numero finito di semispazi affini.
+\end{Definition}
+\begin{Definition}
+	Un \Define{politopo} \`e un poliedro convesso limitato.
+\end{Definition}
+\par \`E importante osservare che non c'\`e accordo su queste definizioni: per altra impostazione, un poliedro convesso viene chiamato invece ``politopo convesso'', mentre un poliedro \`e un politopo convesso (per noi un poliedro convesso) in uno spazio affine di dimensione $3$.
+\begin{Theorem}
+	Un poliedro convesso \`e convesso.
+\end{Theorem}
+\Proof I semispazi affini sono convessi e l'intersezione di convessi \`e convessa. \EndProof
+%	\begin{Theorem}
+%		Ogni problema di programmazione lineare di dimensione $\ProblemDimension$ e con $\ConstraintsNumber$ vincoli lineari pu\`o essere messo nella forma $\max\ \lbrace \CostsVector \cdot x : A\AdmissibleSolution \leq b \rbrace$, dove $\CostsVector,\AdmissibleSolution \in \mathbb{R}^\ProblemDimension$, $A \in \mathbb{R}^{\ConstraintsNumber \times \ProblemDimension}$, $b \in \mathbb{R}^\ConstraintsNumber$ e su $\ConstraintsNumber$ consideriamo l'ordinamento parziale definito da $\Coimplies{(x_i)_{i \in \ConstraintsNumber} \leq (y_i)_{i \in \ConstraintsNumber}}{\ForAll{i \in \ConstraintsNumber}{x_i \leq y_i}}$.
+%	\end{Theorem}
+%	\Proof Abbiamo gi\`a provato l'equivalenza tra problemi di massimo e di minimo tramite la moltiplifcazione per $-1$ della funzione obiettivo. Basta dunque provare che tutti i vincoli lineari possono essere riscritti nella forma $a \cdot \AdmissibleSolution \leq b$ per opportuni $a \in \mathbb{R}^\ProblemDimension$ e $b \in \mathbb{R}$.
+%	\par Supponiamo dato il vincolo lineare $a \cdot \AdmissibleSolution \geq b$ ($a \in \mathbb{R}^\ProblemDimension$, $b \in \mathbb{R}$): esso \`e equivalente al vincolo $-a \cdot \AdmissibleSolution \leq -b$. Supponiamo dato il vincolo $a \cdot \AdmissibleSolution = b$ ($a \in \mathbb{R}^\ProblemDimension$, $b \in \mathbb{R}$): esso \`e equivalente alla congiunzione dei vincoli $a \cdot \AdmissibleSolution \leq b$ e $a \cdot \AdmissibleSolution \geq b$. \EndProof
+\begin{Definition}
+	Un cono lineare che \`e anche un poliedro convesso si chiama \Define{cono poliedrico}[poliedrico][cono].
+\end{Definition}
+\begin{Theorem}
+	Un cono poliedrico \`e un cono convesso.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	$\PolyhedricCone \subseteq \mathbb{R}^n$ \`e un cono poliedrico se solo se esiste $\Matrix \in \mathbb{R}^{m \times n}$ tale $\PolyhedricCone = \lbrace \Vector \in \mathbb{R}^n : \Matrix \Vector \leq 0\rbrace$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Definition}
+	Sia $\Polyhedron$ un poliedro convesso nel $\Field$-spazio vettoriale $\LinearSpace$. Definiamo
+	\begin{itemize}
+		\item \Define{direzione di linealit\`a}[di linealit\`a][direzione] un vettore $\Vector \in \LinearSpace$ tale che $\ForAll{(x,\Scalar) \in \Polyhedron \times \Field}{x + \Scalar\Vector \in \Polyhedron}$;
+		\item \Define{direzione di recessione}[di recessione][direzione] un vettore $\Vector \in \LinearSpace$ tale che $\ForAll{(x,\Scalar) \in \Polyhedron \times \Field}{\Implies{\Scalar \geq 0}{x + \Scalar\Vector \in \Polyhedron}}$ (si suppone che su $\Field$ sia definito un ordinamento).
+	\end{itemize}
+	Denoteremo $\LinealityDirections{\Polyhedron}$ e $\RecessionDirections{\Polyhedron}$ le classi delle direzioni di linealit\`a e di recessione di $\Polyhedron$ rispettivamente.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Polyhedron$ un poliedro convesso nello spazio affine $\mathbb{R}^n$ ($n \in \mathbb{N}$), definito come luogo di tutti e soli gli $X \in \mathbb{R}^n$ tali che $AX \leq B$, con $A \in \mathbb{R}^{m \times n}$ e $B \in \mathbb{R}^m$ ($m \in \mathbb{R}^m$). Abbiamo
+	\begin{itemize}
+		\item $\RecessionDirections{\Polyhedron} = \lbrace \Vector \in \mathbb{R}^n: A\Vector \leq 0 \rbrace$;
+		\item $\LinealityDirections{\Polyhedron} = \lbrace \Vector \in \mathbb{R}^n: A\Vector = 0 \rbrace$.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\Vector \in \mathbb{R}^n$ tale che $A\Vector \leq 0$. Siano poi $X \in \Polyhedron$ e $\Scalar \in \mathbb{R}$ con $\Scalar \geq 0$: abbiamo $A(X + \Scalar\Vector) = AX + \Scalar A\Vector \leq AX \leq B$. Quindi $\Vector$ \`e una direzione di recessione.
+\par Supponiamo ora che $\Vector$ sia una direzione di recessione: per ogni $X \in \mathbb{R}^n$ e $\Scalar \in \mathbb{R}$ con $\Scalar \geq 0$ abbiamo $A(X + \Scalar\Vector) = AX + \Scalar A \Vector \leq B$. Quindi, per ogni $\Scalar > 0$, $A\Vector \leq \frac{B - AX}{\Scalar}$: ne deduciamo $A\Vector \leq \inf_{\Scalar > 0} \frac{B - AX}{\Scalar} = 0$.
+\par La dimostrazione riguardo alle direzioni di linealit\`a e del tutto analoga. \EndProof
+\begin{Theorem}
+	La proiezione di un poliedro convesso su un sottospazio vettoriale \`e ancora un poliedro convesso.
+\end{Theorem}
+\Proof Dimostriamo il teorema nello spazio vettoriale $\mathbb{R}^n$ ($n \in \mathbb{N}$) e rispetto al sottospazio vettoriale di tutti i punti aventi le prime $k$ componenti nulle ($k \in \NotZero{n}$), isomorfo a $\mathbb{R}^{n - k}$: non si perde generalit\`a in virt\`u dell'esistenza di una base che consenta di ricondurci a questa situazione tramite l'isomorfismo di coordinate. Denotiamo dunque $\Projection: \mathbb{R}^n \rightarrow \mathbb{R}^{n - k}$ la proiezione di $\mathbb{R}^n$ su $\mathbb{R}^{n - k}$.
+\par Supponiamo inizialmente $k = 1$.
+\par Sia $\Polyhedron = \lbrace x: M x \leq B \rbrace$, con $M \in \mathbb{R}^{m \times n}$ e $B \in \mathbb{R}^m$ ($m \in \mathbb{N}$). Eseguiamo il seguente algoritmo:
+\begin{enumerate}
+	\item definiamo i seguenti sottoinsiemi di $m$:
+	\begin{itemize}
+		\item $m^+ = \lbrace i \in m: M_{i,0} \geq 0 \rbrace$;
+		\item $m^0 = \lbrace i \in m: M_{i,0} = 0 \rbrace$;
+		\item $m^- = \lbrace i \in m: M_{i,0} \leq 0 \rbrace$;
+	\end{itemize}
+	\item per ogni coppia $(i,h) \in m^+ \times m^-$,
+	\begin{itemize}
+		\item eliminiano la prima colonna di $M$ e ne rinumeriamo le colonne;
+		\item rimuoviamo le righe $M_i$ e $M_j$ e i corrispondenti elementi $B_i$ e $B_j$ (non rinumeriamo le righe);
+		\item aggiungiamo a $M$ la riga $(M_{h,1}M_{i,j} - M_{i,1}M_{h,j})_{j \in n - 1}$ e a $B$ il termine noto corrispondente $M_{h,1}B_i - M_{i,1}B_h$;
+	\end{itemize}
+	\item rinominiamo la nuova matrice del sistema ottenuta $M'$ e il nuovo vettore dei termini noti $B'$, per distinguerli dagli originali $M$ e $B$.
+\end{enumerate}
+\par Poniamo $\Polyhedron' = \lbrace x: M' x \leq B' \rbrace$ e dimostriamo che $X \in \Polyhedron$ se e solo se $\Projection(X) \in \Polyhedron'$.
+\par Supponiamo $X \in \Polyhedron$. $\Projection(X)$, che il vettore $X$ tolta la prima componente, soddisfa chiaramente tutte le disequazioni di $\Polyhedron'$ che apparivano gi\`a identiche in $\Polyhedron$, cio\`e quelle corrispondenti agli indici di riga in $m^0$.
+\par Consideriamo ora le nuove disequazioni di $\Polyhedron'$. Fissiamo $(i,h) \in m^+ \times m^-$ e proviamo che $\Projection(X)$ verifica la disequazione introdotta tramite questa coppia. Dall'$i$-esima disequazione di $\Polyhedron$ deduciamo $X_0 \leq \frac{B_i - \sum_{j \in \NotZero{n}} M_{i,j}X_j}{M_{i,1}}$ e dall'$h$-esima $\frac{B_h - \sum_{j \in \NotZero{n}} M_{h,j}X_j}{M_{h,1}} \leq X_0$, da cui $\frac{(B_h - \sum_{j \in \NotZero{n}} M_{h,j}X_j}{M_{h,1}} \leq \frac{B_i - \sum_{j \in \NotZero{n}} M_{i,j}X_j}{M_{i,1}}$, che si verifica facilmente essere equivalente alla disequazione introdotta tramite la coppia $(i,h)$.
+\par Supponiamo ora $Y \in \Polyhedron'$ e proviamo che esiste $X \in \Polyhedron$ tale che $Y = \Projection(X)$. Per tutte le coppie $(i,h) \in m^+ \times m^-$, abbiamo $\frac{(B_h - \sum_{j \in n - 1} M_{h,j}Y_j}{M_{h,1}} \leq \frac{B_i - \sum_{j \in n - 1} M_{i,j}Y_j}{M_{i,1}}$: scegliamo $X_0$ tale che $\max_{h \in m^-} \frac{(B_h - \sum_{j \in n - 1} M_{h,j}Y_j}{M_{h,1}} \leq X_0 \leq \min_{i \in m^+} \frac{B_i - \sum_{j \in n - 1} M_{i,j}Y_j}{M_{i,1}}$ e poniamo, per ogni $k \in \NotZero{n}$, $X_k = Y_k$. $X = (X_k)_{k \in n}$ verifica chiaramente tutte le disequazioni di $\Polyhedron$ e $Y = \Projection(X)$. \EndProof
+\begin{Definition}
+	L'algoritmo descritto nella dimostrazione del teorema precedente si chiama \Define{eliminazione di Fourier-Motzkin}[di Fourier-Motzkin][eliminazione].
+\end{Definition}
+\begin{Corollary}
+	Un cono finitamente generato \`e un cono poliedrico.
+\end{Corollary}
+\Proof Ragioniamo in $\mathbb{R}^n$ ($n \in \mathbb{R}$) tramite l'isomorfismo di coordinate. Sia $(\Vector_i)_{i \in m}$ un insieme finito di generatori del cono finitamente generato $\FinitelyGeneratedCone$. Abbiamo $X \in \FinitelyGeneratedCone$ se e solo se $X = \sum_{i \in m} \Scalar_i \Vector_i$, dove $(\Scalar_i)_{i \in m}$ sono tutti scalari positivi o nulli. Queste relazioni, viste come relazioni in $\mathbb{R}^{n + m}$ (consideriamo cio\`e variabili le componententi di $X$, ma anche gli scalari $(\Scalar_i)_{i \in m}$), sono tutte lineari: esse descrivono dunque un cono poliedrico di $\mathbb{R}^{n + m}$. Proiettenado tale cono sullo spazio originale (sono cio\`e variabili solo le componenti di $X$), per il teorema precedente, abbiamo ancora un poliedro. Dunque un $\FinitelyGeneratedCone$ \`e un cono poliedrico. \EndProof
+\begin{Definition}
+	Fissati $n, m \in \mathbb{N}$ e $\Matrix \in \mathbb{R}^{m \times n}$, sia il cono poliedrico $\PolyhedricCone = \lbrace \Vector \in \mathbb{R}^n : \Matrix \Vector \leq 0 \rbrace$. Definiamo \Define{cono duale}[duale][cono] il cono finitamente generato $\Dual{\PolyhedricCone} = \ConicalHull{\bigcup_{i \in m} \lbrace \Matrix_i \rbrace}$.
+\end{Definition}
+\begin{Lemma}
+	Sia $(\Vector_i)_{i \in I}$ una famiglia di vettori di $\mathbb{R}^n$ ($n \in \mathbb{N}$) e sia $\Vector \in \mathbb{R}^n$. Poniamo $\FinitelyGeneratedCone = \ConicalHull{\bigcup_{i \in I} \lbrace \Vector_i \rbrace}$. Esiste $\Vector_+ \in \FinitelyGeneratedCone$ tale che $\Vector \cdot \Vector_+ > 0$ se e solo se esiste $i \in I$ tale che $\Vector \cdot \Vector_i > 0$.
+\end{Lemma}
+\Proof Supponiamo per assurdo $\ForAll{i \in I}{\Vector \cdot \Vector_i \leq 0}$ e sia $\Vector_\FinitelyGeneratedCone \in \FinitelyGeneratedCone$. Per definizione di inviluppo conico, esistono scalari positivi o nulli $(\Scalar_i)_{i \in I}$ tali che $\Vector_\FinitelyGeneratedCone = \sum_{i \in I} \Scalar_i\Vector_i$. Abbiamo allora $\Vector \cdot \Vector_\FinitelyGeneratedCone = \sum_{i \in I} \Scalar_i(\Vector \cdot \Vector_i) \leq 0$. \EndProof
+\begin{Theorem}
+	Sia $\PolyhedricCone$ un cono poliedrico. Abbiamo $\ForAll{(\Vector,\VarVector) \in \PolyhedricCone \times \Dual{\PolyhedricCone}}{\Vector \cdot \VarVector \leq 0}$.
+\end{Theorem}
+\Proof Segue direttamente dal lemma precedente. \EndProof
+\begin{Lemma}
+	Fissati $n, m \in \mathbb{N}$ e $\Matrix \in \mathbb{R}^{m \times n}$, sia il cono poliedrico $\PolyhedricCone = \lbrace \Vector \in \mathbb{R}^n : \Matrix \Vector \leq 0 \rbrace$. Esiste $\VarMatrix \in \mathbb{R}^{m \times n}$ tale che $\Dual{\PolyhedricCone} = \lbrace \Vector \in \mathbb{R}^n: \VarMatrix \Vector \leq 0 \rbrace$, tale che $\ForAll{i \in m}{\VarMatrix_i \in \PolyhedricCone}$.
+\end{Lemma}
+\Proof Ogni cono finitamente generato \`e poliedrico. Esiste dunque $\VarMatrix \in \mathbb{R}^{m \times n}$ tale che $\Dual{\PolyhedricCone} = \lbrace \Vector \in \mathbb{R}^n: \VarMatrix \Vector \leq 0 \rbrace$. Inoltre $\ForAll{i \in m}{\VarMatrix \Matrix_i \leq 0}$. Dunque $\ForAll{i \in m}{\VarMatrix_i \Matrix_i \leq 0}$, da cui $\ForAll{i \in m}{\Matrix \VarMatrix_i \leq 0}$. \EndProof
+\begin{Theorem}
+	Sia $\PolyhedricCone$ un cono poliedrico. $\PolyhedricCone$ coincide col suo biduale.
+\end{Theorem}
+\Proof Siano $\Matrix \in \mathbb{R}^{m \times n}$, $\Dual{\Matrix} \in \mathbb{R}^{\Dual{m} \times n}$, $\Dual{\Dual{\Matrix}} \in \mathbb{R}^{\Dual{\Dual{m}} \times n}$ ($m, \Dual{m}, \Dual{\Dual{m}}, n \in \mathbb{N}^2$) tali che
+\begin{itemize}
+	\item $\PolyhedricCone = \lbrace \Vector \in \mathbb{R}^n: \Matrix \Vector \leq 0 \rbrace$;
+	\item $\Dual{\PolyhedricCone} = \lbrace \Vector \in \mathbb{R}^n: \Dual{\Matrix} \Vector \leq 0 \rbrace$ e ogni riga di $\Dual{\Matrix}$ appartiene a $\PolyhedricCone$;
+	\item $\Dual{\Dual{\PolyhedricCone}} = \lbrace \Vector \in \mathbb{R}^n: \Dual{\Dual{\Matrix}} \Vector \leq 0 \rbrace$ e ogni riga di $\Dual{\Dual{\Matrix}}$ appartiene a $\PolyhedricCone$.
+\par Ora, $\Dual{\Dual{\PolyhedricCone}}$ \`e inviluppo conico delle righe di $\Dual{\Matrix}$, che sono vettori appartenenti a $\PolyhedricCone$, dunque $\Dual{\Dual{\PolyhedricCone}} \subseteq \PolyhedricCone$.
+\par D'altra parte, per ogni $i \in \Dual{\Dual{m}}$, abbiamo $\Dual{\Dual{\Matrix}}_i \in \Dual{\PolyhedricCone}$, da cui, per opportuni scalari non negativi $(\Scalar_{i,j})_{(i,j) \in \Dual{\Dual{m}} \times m}$, per ogni $i \in \Dual{\Dual{m}}$, $\Dual{\Dual{\Matrix}}_i = \sum_{j \in m} \Scalar_{i,j} \Matrix_i$. Fissato $\Vector \in \PolyhedricCone$, abbiamo, per ogni $i \in \Dual{\Dual{m}}$, $\Dual{\Dual{\Matrix}}_i \Vector = \sum_{j \in m} \Scalar_{i,j} \Matrix_i \Vector \leq 0$. Dunque $\Vector \in \Dual{\Dual{\PolyhedricCone}}$. \EndProof
+\end{itemize}
+\begin{Corollary}
+	Un cono poliedrico \`e un cono finitamente generato.
+\end{Corollary}
+\Proof Il duale di un cono poliedrico \`e finitamente generato, ogni cono finitamente generato \`e poliedrico e ogni cono poliedrico coincide col suo biduale. \EndProof

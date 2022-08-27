@@ -1,0 +1,35 @@
+\subsection{Localizzazione di un anello commutativo.}\label{Localizzazione}
+\begin{Theorem}
+	Sia $\Ring$ un anello commutativo con identit\`a e $\LocalizationizationInverted \subseteq \Ring$ chiuso per il prodotto e contenente $1$. Definiamo su $\Ring \times \LocalizationizationInverted$ la relazione $\LocalizationizationEquivalence$ come segue: $((a,s) \LocalizationizationEquivalence (b, t)) \Leftrightarrow (\exists u \in \LocalizationizationInverted)(atu = bsu)$. La relazione $\LocalizationizationEquivalence$ \`e una relazione di equivalenza.
+\end{Theorem}
+\Proof La riflessiviti\`a si dimostra scegliendo $u = 1$, la simmetria segue direttamente dalla simmetria della definizione di $\LocalizationizationEquivalence$.
+\par Vediamo la transitivit\`a. Supponiamo $(a,s) \LocalizationizationEquivalence (b,t)$ e $(b,t) \LocalizationizationEquivalence (c,r)$, con $a,b,c \in \Ring$ e $s,t,r \in \LocalizationizationInverted$. Per opportuni $u, v \in \LocalizationizationInverted$ abbiamo $atu = bsu$ e $brv = ctv$, da cui $aturv = bsurv = ctvsu$, con $tvu \in \LocalizationizationInverted$, da cui $(a,s) \LocalizationizationEquivalence (c,r)$. \EndProof
+\begin{Definition}
+	Sia $\Ring$ un anello commutativo con identit\`a e $\LocalizationizationInverted \subseteq \Ring$ chiuso per il prodotto e contenente $1$. Definiamo \Define{localizzazione} di $\Ring$ rispetto a $\LocalizationizationInverted$, l'anello $\Localization{\Ring}{\LocalizationizationInverted} = \Quotient{\Ring \times \LocalizationizationInverted}{\LocalizationizationEquivalence}$, dove
+	\begin{itemize}
+		\item $\LocalizationizationEquivalence$ \`e la relazione di equivalenza descritta dal teorema precedente;
+		\item scegliamo di denotare la classe di equivalenza dell'elemento $(a,s) \in \Ring \times \LocalizationizationInverted$ con $\frac{a}{s}$;
+		\item le operazioni di somma e prodotto sono definite come segue\footnote{La verifica degli assiomi di anello \`e diretta.}:
+		\begin{itemize}
+			\item $\frac{a}{s} + \frac{b}{t} = \frac{at + bs}{st}$;
+			\item $\frac{a}{s} \cdot \frac{b}{t} = \frac{ab}{st}$.
+		\end{itemize}
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Sia $f: \Ring \rightarrow \Localization{\Ring}{\LocalizationizationInverted}$ l'applicazione che a $a \in \Ring$ associa $(a,1)$. Sono vere le seguenti affermazioni:
+	\begin{itemize}
+		\item $f$ \`e un omomorfismo;
+		\item se $\LocalizationizationInverted$ non contiene divisori di $0$ allora $f$ \`e iniettivo.
+	\end{itemize}
+\end{Theorem}
+\Proof Siano $a, b \in \Ring$. Abbiamo $f(a) + f(b) = \frac{a}{1} + \frac{b}{1} = \frac{a + b}{1} = f(a + b)$ e $f(a) \cdot f(b) = \frac{a}{1} \cdot \frac{b}{1} = \frac{ab}{1} = f(ab)$.
+\par Vediamo la seconda affermazione. Occorre provare che $\Kernel{f} = \lbrace 0 \rbrace$. Sia $a \in \Ring$ tale che $f(a) = \frac{0}{1}$. Allora, per $u \in \LocalizationizationInverted$ opportuno, abbiamo $au = 0u = 0$. Poich\'e $u$ non \`e divisore di $0$, deve essere $a = 0$. \EndProof
+\par Il teorema precedente fornisce, nei casi in cui $\LocalizationizationInverted$ non contiene divisori di $0$ un'\Define{identificazione canonica} di $\Ring$ in $\Localization{\Ring}{\LocalizationizationInverted}$.
+\begin{Definition}
+	Sia $\IntegralDomain$ un dominio d'integrit\`a: la sua localizzazione $\Localization{\IntegralDomain}{(\NotZero{\IntegralDomain})}$ si chiama \Define{campo dei quozienti} o \Define{campo delle frazioni} di $\IntegralDomain$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\IntegralDomain$ un dominio d'integrit\`a: il suo campo dei quozienti \`e un campo.
+\end{Theorem}
+\Proof \`E sufficiente verificare direttamente gli assiomi di campo. \EndProof

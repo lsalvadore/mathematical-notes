@@ -1,0 +1,330 @@
+\subsection{Metodi di Runge-Kutta.}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_MetodiDiRungeKutta}
+\begin{Definition}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_Definizione_MetodoDiRungeKutta}
+	Siano dati un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ ed $N \in \NaturalExtended$ nodi. Siano inoltre
+	\begin{itemize}
+		\item $s \in \mathbb{N}$;
+		\item $A = (a_{i,j})_{(i,j) \in \NaturalShift{s} \times \NaturalShift{s}} \in \mathbb{R}^{\NaturalShift{s} \times \NaturalShift{s}}$;
+		\item $b, c \in \mathbb{R}^s$.
+	\end{itemize}
+	Chiamiamo \Define{metodo di Runge-Kutta ad $s$ stadi}[di Runge-Kutta ad $s$-stadi][metodo] il metodo numerico definito da
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		Y_i^{(j + 1)} = y_j + \Step\sum_{k \in \NaturalShift{s}} a_{i,k}f(t_j + c_k\Step,Y_k^{(j + 1)})\text{ per }i \in \NaturalShift{s}\text{ e }j \in N,\\
+		y_{j + 1} = y_j + \Step\sum_{k \in \NaturalShift{s}} b_k f(t_j + c_k\Step,Y_k^{(j + 1)})\text{ per }j \in N.
+	\end{cases}
+	\]
+	Rappresenteremo spesso un metodo di Runge-Kutta tramite una tabella del tipo
+	\[
+	\begin{array}{c|c}
+		c	&	A\\
+		\hline
+			&	b
+	\end{array},
+	\]
+	detta \Define{\tableau\ di Butcher}[di Butcher][tableau].
+\end{Definition}
+\begin{Definition}
+	Diciamo che un metodo di Runge-Kutta \`e \Define{banale}[di Runge-Kutta banale][metodo] quando ha $0$ stadi.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione precendente, se $A$ \`e strettamente triangolare inferiore, allora il metodo di Runge-Kutta \`e esplicito.
+\end{Theorem}
+\Proof Se $A$ \`e strettamente triangolare inferiore, abbiamo allora, per ogni $(i,j) \in \NaturalShift{s} \times N$,
+$Y_i^{(j + 1)} = y_j + \Step\sum_{k \in \NaturalShift{s}} a_{i,k}f(t_j + c_k\Step,Y_k^{(j + 1)}) = y_j + \Step\sum_{k \in \NaturalShift{i - 1}} a_{i,k}f(t_j + c_k\Step,Y_k^{(j + 1)})$. Quindi tutti gli elementi della famiglia $(Y_i^{(j + 1)})_{i \in \NaturalShift{s}}$ sono calcolabili in ordine direttamente, conoscendo solo gli elementi precedenti. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema precedente, se $A$ \`e simile a una matrice triangolare inferiore per mezzo di una matrice di permutazione, allora il metodo di Runge-Kutta \`e esplicito.
+\end{Corollary}
+\Proof Segue immediatamente dal teorema precedente, dopo riordino delle componenti di $(Y_i^{(j + 1)})_{i \in \NaturalShift{s}}$ ($(i,j) \in \NaturalShift{s} \times N$). \EndProof
+\par Nel seguito, assumeremo sempre, con le notazioni della definizione \ref{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_Definizione_MetodoDiRungeKutta}:
+\begin{itemize}
+	\item $\ForAll{i \in \NaturalShift{s}}{\sum_{k \in \NaturalShift{s}} a_{i,k} = c_k}$;
+	\item $\sum_{k \in \NaturalShift{s}} b_k = 1$.
+\end{itemize}
+\par Quest'assunto \`e giustificato dal teorema seguente, che ci consente di applicare un metodo numerico ad un'equazione differenziale autonoma ottenuta aggiungendo la variabile indipendente dalle funzioni incognite integrando esattamente il tempo.
+\begin{Theorem}
+	Con le notazioni della definizione \ref{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_Definizione_MetodoDiRungeKutta}, se abbiamo
+	\begin{itemize}
+		\item $\ForAll{i \in \NaturalShift{s}}{\sum_{k \in \NaturalShift{s}} a_{i,k} = c_k}$;
+		\item $\sum_{k \in \NaturalShift{s}} b_k = 1$;
+	\end{itemize}
+	allora il problema di Cauchy
+	\[
+	\begin{cases}
+		y' = 1,\\
+		y(0) = 0,
+	\end{cases}
+	\]
+	\`e risolto esattamente nei nodi $(t_j)_{j \in N}$ negli stadi intermedi.
+\end{Theorem}
+\Proof Abbiamo
+\[
+\begin{cases}
+	Y_i^{(j + 1)} = y_j + \Step\sum_{k \in \NaturalShift{s}} a_{i,k}\text{ per }i \in \NaturalShift{s}\text{ e }j \in N,\\
+	y_{j + 1} = y_j + \Step\sum_{k \in \NaturalShift{s}} b_k\text{ per }j \in N,
+\end{cases}
+\]
+da cui
+\[
+\begin{cases}
+	t_j + c_i \Step = t_j + \Step\sum_{k \in \NaturalShift{s}} a_{i,k}\text{ per }i \in \NaturalShift{s}\text{ e }j \in N,\\
+	t_j + \Step = t_j + \Step\sum_{k \in \NaturalShift{s}} b_k\text{ per }j \in N,
+\end{cases}
+\]
+da cui la tesi. \EndProof
+\begin{Theorem}
+	Un metodo di Runge-Kutta
+	\[
+	\begin{cases}
+		y_0 = y_0,\\
+		y_{j + 1} = y_j + \Step\phi_\Step(t_j,y_j)\text{ per }i > 0,
+	\end{cases}
+	\]
+	per un problema di Cauchy
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	con $f$ lipschitziana \`e convergente se e solo se \`e consistente.
+\end{Theorem}
+\Proof Segue dal teorema di Lax-Richmyer, osservando che la lipschitzianit\`a di $f$ implica quella di $\phi$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{serie di Neumann}[di Neumann][serie] una serie $\sum_{n \in \mathbb{N}} A^n$, dove $A$ \`e un operatore qualsiasi per cui abbiano un senso le operazioni di somma e composizione.
+\end{Definition}
+\begin{Lemma}
+	Sia $\Matrix$ una matrice quadrata tale che $\SpectralRadius{\Matrix} < 1$. Allora
+	\begin{itemize}
+		\item $\Identity - \Matrix$ \`e invertibile;
+		\item la serie di Neumann $\sum_{n \in \mathbb{N}} \Matrix^n$ converge;
+		\item $(\Identity - \Matrix)^{-1} = \sum_{n \in \mathbb{N}} \Matrix^n$.
+	\end{itemize}
+\end{Lemma}
+\Proof Poich\'e $\SpectralRadius{\Matrix} < 1$, $1$ non \`e autovalore di $\Matrix$ e dunque $\Identity - \Matrix$ \`e invertibile.
+\par Esiste una norma matriciale $\Norm{\cdot}$ tale che, per opportuna costante $a \in (\SpectralRadius{\Matrix},1)$, $\SpectralRadius{\Matrix} \leq \Norm{\Matrix} \leq a$. Dunque la serie $\sum_{n \in \mathbb{N}} \Matrix^n$ \`e assolutamente convergente per confronto con la serie geometrica di ragione $a$.
+\par Abbiamo infine $\lim_{N \rightarrow \infty} \Norm{\Identity - (\Identity - \Matrix)\sum_{n \in N} \Matrix^n} = \lim_{N \rightarrow \infty} \Norm{\Matrix^N} \leq \lim_{N \rightarrow \infty} \Norm{\Matrix}^N \leq \lim_{N \rightarrow \infty} a^N = 0$. \EndProof
+\begin{Theorem}
+	Sia un metodo di Runge-Kutta a $\StagesNumber$ stadi e consistente di ordine $\ConsistencyOrder$ definito dal \tableau\ di Butcher
+	\[
+	\begin{array}{c|c}
+		c	&	A\\
+		\hline
+			&	b
+	\end{array}.
+	\]
+	e siano inoltre
+	\begin{itemize}
+		\item $e \in \mathbb{R}^\StagesNumber$ tale che $\ForAll{i \in \NaturalShift{\StagesNumber}}{e_i = 1}$;
+		\item $C = (c_i\KroneckerDelta{i}{j})_{(i,j) \in \NaturalShift{\StagesNumber}\times\NaturalShift{\StagesNumber}}$;
+		\item $(l,k) \in \mathbb{N}^2$ tali che $l > 0$, $k \geq 0$ e $1 \leq l + k \leq \ConsistencyOrder$.
+	\end{itemize}
+	Allora
+	\begin{itemize}
+		\item vale l'identit\`a $\Transposed{b}A^kC^{l - 1} e = \frac{(l - 1)!}{(l + k)!}$;
+		\item se il metodo di Runge-Kutta \`e esplicito, deve essere $\ConsistencyOrder \leq \StagesNumber$.
+	\end{itemize}
+\end{Theorem}
+\Proof Fissiamo $l \in \mathbb{N}$ tale che $1 \leq l \leq \ConsistencyOrder$ e consideriamo il problema di Cauchy definito su $\RealPositive$
+\[
+\begin{cases}
+	y' = y + t^{l - 1},\\
+	y(0) = 0.
+\end{cases}
+\]
+\par Esso ha soluzione $\int_0^t e^{t -\tau}\tau^{l - 1}d\tau \in \CClass{\infty}$.
+\par Applichiamo un passo del metodo di Runge-Kutta:
+\[
+\begin{cases}
+	Y_i = \Step\sum_{k \in \NaturalShift{\StagesNumber}} A_{i,k}(Y_k + (\Step c_k)^{l - 1})\text{ per }i \in \NaturalShift{s},\\
+	y_1 = \Step\sum_{k \in \NaturalShift{\StagesNumber}} b_k(Y_k + (\Step c_k)^{l - 1}).
+\end{cases}
+\]
+\par Posto $Y = (Y_i)_{i \in \NaturalShift{s}}$, la prima equazione \`e equivalente a $Y = \Step A Y + \Step^l A C^{l - 1} e$ cio\`e a $(\Identity - \Step A) Y = \Step^l A C^{l - 1} e$ e dunque, per il lemma precedente assumendo $h$ sufficientemente piccolo da garantire $\SpectralRadius{A} < 1$, a $Y = \Step^{l} \left( \sum_{k \in \mathbb{N}} \Step^k A^k \right ) A C^{l - 1} e$.
+\par Per l'errore locale di troncamento $\LocalTruncationError$ abbiamo, utilizzando la seconda equazione,
+\begin{align*}
+	\Step\LocalTruncationError = y(h) - y_1 &=y(h) - \Step \Transposed{b} Y - \Transposed{b} \Step^l C^{l - 1} e,\\
+	&= y(h) - \Step \Transposed{b}\Step^l \left ( \sum_{k \in \mathbb{N}} \Step^k A^k \right ) A C^{l - 1} e - \Transposed{b} \Step^l C^{l - 1}e,\\
+	&= y(h) - \Transposed{b}\Step^l \left ( \left ( \sum_{k \in \mathbb{N}} \Step^k A^k \right ) \Step A + \Identity \right ) C^{l - 1}e,\\
+	&= y(h) - \Transposed{b}\Step^l \left ( \left ( \sum_{k \in \mathbb{N}} \Step^{n + 1} A^{n + 1} \right ) + \Identity \right ) C^{l - 1}e,\\
+	&= y(h) - \Transposed{b}\Step^l \left ( \sum_{k \in \mathbb{N}} \Step^k A^k \right ) C^{l - 1}e.
+\end{align*}
+\par Consideriamo lo sviluppo di Taylor di $y(h) = \sum_{k = 0}^\infty \frac{h^k y^{(k)}(0)}{n!}$. Al variare di $k$ in $\mathbb{N}$ abbiamo
+\[
+y^{(k)} = \begin{cases}
+y^{(k - 1)} + \frac{(l - 1)!}{(l - k)!}t^{l - k}&\text{ se }k \in l + 1,\\
+y^{(k - 1)}&\text{ altrimenti},
+\end{cases}
+\]
+da cui
+\[
+y^{(k)}(0) = \begin{cases}
+0&\text{ se }k \in l,\\
+(l - 1)!&\text{ altrimenti}.
+\end{cases}
+\]
+\par Abbiamo dunque $y(h) = \sum_{k \in \mathbb{N}} \frac{h^{l + k} (l - 1)!}{(l + k)!}$. Ne deduciamo, per l'errore locale di troncamento,
+\begin{align*}
+	\Step\LocalTruncationError &= y(h) - \Transposed{b}\Step^l \left ( \sum_{k \in \mathbb{N}} \Step^k A^k \right ) C^{l - 1}e,\\
+	&= \sum_{k \in \mathbb{N}} \frac{h^{l + k} (l - 1)!}{(l + k)!} - \Transposed{b}\Step^l \left ( \sum_{k \in \mathbb{N}} \Step^k A^k \right ) C^{l - 1}e,\\
+	&= \sum_{k \in \mathbb{N}} h^{l + k} \left ( \frac{(l - 1)!}{(l + k)!} - \Transposed{b} A^k C^{l - 1}e \right ).
+\end{align*}
+\par L'identit\`a $\Transposed{b}A^kC^{l - 1} e = \frac{(l - 1)!}{(l + k)!}$ per ogni $(l,k) \in \mathbb{N}^2$ tale che $l > 0$ e $1 \leq l + k \leq \ConsistencyOrder$ segue dalla consistenza di ordine $\ConsistencyOrder$ del metodo.
+\par Infine, poniamo $l = 1$ e consideriamo il coefficiente $\gamma$ di $\Step^\StagesNumber$ nello sviluppo di Taylor di $\LocalTruncationError$: esso \`e $\gamma = \frac{1}{(\StagesNumber + 1)!} - \Transposed{b}A^{\StagesNumber}e$. Se il metodo \`e esplicito, allora $A$ \`e simile a una matrice strettamente triangolare inferiore per mezzo di una matrice di permutazione e dunque $A^{\StagesNumber} = 0$, da cui $\gamma = \frac{1}{(\StagesNumber + 1)!} \neq 0$ e quindi $\StagesNumber \geq \ConsistencyOrder$. \EndProof
+\par Per un metodo di Runge-Kutta di $\StagesNumber \in \NaturalShift{10}$ stadi esplicito, si dimostra che il massimo ordine di convergenza possibile \`e dato dalla seguente tabella \ref{RungeKutta_OrdiniDiConvergenza}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|cccccccccc|}
+		\hline
+		Numero di stadi&1&2&3&4&5&6&7&8&9&10\\
+		\hline
+		Ordine massimo di convergenza&1&2&3&4&4&5&6&6&7&7\\
+		\hline
+	\end{tabular}
+	\caption{Massimi ordini di convergenza di un metodo di Runge-Kutta esplicito al variare del numero di stadi in $\NaturalShift{10}$.}
+	\label{RungeKutta_OrdiniDiConvergenza}
+\end{table}
+\par Nella pratice si tende a preferire metodi di Runge-Kutta a $4$ stadi, dato che essi possono arrivare ad ordine di convergenza $4$ mentre i metodi con un numero superiore di stadi aumentano s\'i l'ordine di convergenza, ma troppo lentamente rispetto alla complessit\`a del calcolo di stadi ulteriori. Si usano anche metodi di Runge-Kutta con un numero minore di $4$ stadi in quei casi in cui la soluzione del problema di Cauchy non \`e sufficientemente regolare per il raggiungimento dell'ordine di convergenza $4$.
+\begin{Definition}
+	Un metodo di Runge-Kutta esplicito che ha numero di stadi $\StagesNumber$ uguale al suo ordine di consistenza $\ConsistencyOrder$ si dice \Define{ottimale}[di Runge-Kutta ottimale][metodo].
+\end{Definition}
+\begin{Theorem}
+	Sia un metodo di Runge-Kutta a $\StagesNumber$ stadi definito dal \tableau\ di Butcher
+	\[
+	\begin{array}{c|c}
+		c	&	A\\
+		\hline
+			&	b
+	\end{array}.
+	\]
+	Il metodo ha funzione di stabilit\`a $\StabilityFunction(z) = 1 + z \Transposed{b} (\Identity - z A)^{-1} e$, con $e \in \mathbb{R}^\StagesNumber$ tale che $\ForAll{i \in \NaturalShift{\StagesNumber}}{e_i = 1}$.
+\end{Theorem}
+\Proof Applichiamo il metodo di Runge-Kutta al problema test di Dahlquist di parametro $\DahlquistParameter$: fissato $j \in \mathbb{N}$ abbiamo
+\[
+\begin{cases}
+	Y_i = y_j + \Step\sum_{k \in \NaturalShift{s}} a_{i,k}\DahlquistParameter Y_k)\text{ per }i \in \NaturalShift{s},\\
+	y_{j + 1} = y_j + \Step\sum_{k \in \NaturalShift{s}} b_k \DahlquistParameter Y_k.
+\end{cases}
+\]
+Definendo $Y = (Y_i)_{i \in \NaturalShift{s}}$ abbiamo
+\[
+\begin{cases}
+	Y = y_j e + \Step \DahlquistParameter A Y\text{ per }i \in \NaturalShift{s},\\
+	y_{j + 1} = y_j + \Step \DahlquistParameter \Transposed{b_k} Y.
+\end{cases}
+\]
+\par Ponendo $z = \Step \DahlquistParameter$, dalla prima equazione deduciamo, assumendo che $z^{-1}$ non sia autovalore di $A$ (\`e sempre possibile scegliere $\Step$ in modo da evitarlo\footnote{Se $z^{-1}$ fosse autovalore di $A$ il sistema lineare che definisce $Y$ sarebbe singolare e il metodo di Runge-Kutta non sarebbe applicabile.}) $Y = y_j (\Identity - zA)^{-1}e$. Dunque $y_{j + 1} = y_j + z \Transposed{b} y_j (\Identity - zA)^{-1}e = (1 + z \Transposed{b}(\Identity - zA)^{-1}) y_j$. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema precedente, abbiamo $\StabilityRegion = \lbrace z \in \mathbb{C} | \AbsoluteValue{1 + z\Transposed{b}(\Identity - z A)^{-1}e} < 1 \rbrace$.
+\end{Corollary}
+\Proof Segue direttmante dal teorema precedente. \EndProof
+\begin{Theorem}
+	Sia un metodo di Runge-Kutta esplicito a $\StagesNumber$ stadi e consistente di ordine $\ConsistencyOrder$ definito dal \tableau\ di Butcher
+	\[
+	\begin{array}{c|c}
+		c	&	A\\
+		\hline
+			&	b
+	\end{array}.
+	\]
+	e sia inoltre $e \in \mathbb{R}^\StagesNumber$ tale che $\ForAll{i \in \NaturalShift{\StagesNumber}}{e_i = 1}$.
+	Il metodo ha funzione di stabilit\`a $\StabilityFunction(z) = \sum_{j = 0}^\ConsistencyOrder \frac{z^\ConsistencyOrder}{\ConsistencyOrder !} + \sum_{j = \ConsistencyOrder + 1}^\StagesNumber z^j \Transposed{b} A^{j - 1} e$.
+\end{Theorem}
+\Proof Per l'esplicit\`a del metodo, $A$ \`e nilpotente di ordine $\StagesNumber$, dunque $\ForAll{z \in \mathbb{C}}{\SpectralRadius{zA} = 0}$. Abbiamo allora $(\Identity - z A)^{-1} = \sum_{j = 0}^{\StagesNumber - 1} z^jA^j$.
+\par Il metodo ha funzione di stabilit\`a
+\begin{align*}
+	\StabilityFunction(z) &= 1 + z \Transposed{b} \left ( \sum_{j = 0}^{\StagesNumber - 1} z^jA^j \right ) e,\\
+	&= 1 + \left ( \sum_{j = 0}^{\StagesNumber - 1} z^{j + 1} \Transposed{b} A^j e \right ),\\
+	&= \sum_{j = 0}^\ConsistencyOrder \frac{z^\ConsistencyOrder}{\ConsistencyOrder !} + \sum_{j = \ConsistencyOrder + 1}^\StagesNumber z^j \Transposed{b} A^{j - 1} e.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+	Tutti i metodi di Runge-Kutta espliciti ottimali di ordine di consistenza $\ConsistencyOrder$ hanno la stessa funzione di stabilit\`a.
+\end{Corollary}
+\Proof Qualsiasi metodo di Runge-Kutta esplicito ottimale di ordine di consistenza $\ConsistencyOrder$ ha funzione di stabilit\`a $\StabilityFunction(z) = \sum_{j = 0}^\ConsistencyOrder \frac{z^\ConsistencyOrder}{\ConsistencyOrder !}$. \EndProof
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{Metodi_numerici_per_equazioni_differenziali_ordinarie/Immagine_RegioneDiStabilitaMetodiEsplicitiOttimali.png}
+	\centering
+	\caption{Regione di stabilit\`a dei metodi di Runge-Kutta espliciti ottimali.}
+\end{figure}
+\begin{Corollary}
+	Sia un metodo di Runge-Kutta esplicito a $\StagesNumber > 0$ stadi e consistente di ordine $\ConsistencyOrder$ definito dal \tableau\ di Butcher
+	\[
+	\begin{array}{c|c}
+		c	&	A\\
+		\hline
+			&	b
+	\end{array}.
+	\]
+	Il metodo non \`e
+	\begin{itemize}
+		\item $A$-stabile;
+		\item $A(\alpha)$-stabile ($\alpha \in (-\pi,\pi]$);
+		\item $L$-stabile.
+	\end{itemize}
+\end{Corollary}
+\Proof Per la non banalit\`a del metodo di Runge-Kutta, deve essere $\ConsistencyOrder > 0$, quindi $\StabilityFunction$ \`e un polinomio di grado almento $1$. Pertanto $\lim_{\AbsoluteValue{z} \rightarrow + \infty} \AbsoluteValue{\StabilityFunction(z)} = + \infty$.
+\par Ora,
+\begin{itemize}
+	\item il metodo non \`e $A$-stabile o $A(\alpha)$-stabile ($\alpha \in (-\pi,\pi]$)  perch\'e la regione di stabilit\`a \`e limitata;
+	\item il metodo non \`e $L$-stabile perch\'e $\lim_{z \rightarrow - \infty} \AbsoluteValue{\StabilityFunction(z)} \neq 0$. \EndProof
+\end{itemize}
+\begin{Definition}
+\label{MetodiNumericiPerEquazioniDifferenzialiOrdinarie_Definizione_MetodoDiRungeKutta_Embedded}
+	Siano dati un problema di Cauchy su un intervallo $I$
+	\[
+	\begin{cases}
+		y' = f(t,y),\\
+		y(t_0) = y_0,
+	\end{cases}
+	\]
+	e una discretizzazione uniforme di $I$ di passo $\Step \in \RealPositive$ ed $N \in \NaturalExtended$ nodi. Siano inoltre due metodi Runge-Kutta di ordine $p$ e $q < p$ (tipicamente $q = p - 1$) definiti rispettivamente dai \tableau
+	\[
+		\begin{array}{c|c}
+		c	&	A\\
+		\hline
+			&	b
+		\end{array},
+		\begin{array}{c|c}
+		c	&	A,\\
+		\hline
+			&	b'
+		\end{array},
+	\]
+	che riscriviamo pi\`u compattamente
+	\[
+		\begin{array}{c|c}
+		c	&	A\\
+		\hline
+			&	b\\
+		\hline
+			&	b'
+		\end{array},
+	\]
+	dove
+	\begin{itemize}
+		\item $s \in \mathbb{N}$;
+		\item $A = (a_{i,j})_{(i,j) \in \NaturalShift{s} \times \NaturalShift{s}} \in \mathbb{R}^{\NaturalShift{s} \times \NaturalShift{s}}$;
+		\item $b, b', c \in \mathbb{R}^s$.
+	\end{itemize}
+	Chiamiamo \Define{metodo di Runge-Kutta \embedded}[di Runge-Kutta \embedded][metodo] il metodo numerico a passo adattivo definito dallo schema seguente
+	\begin{itemize}
+		\item si fissa una tolleranza $\epsilon > 0$;
+		\item si fissa un passo iniziale $\Step$;
+		\item si effettuano due passi del metodo di ordine $p$ e si stima l'errore utilizzando il metodo di ordine $q$ ripercorrendo i passaggi della dimostrazione del teorema di estrapolazione di Richardson;
+		\item se l'errore \`e minore della tolleranza $\epsilon$, si raddoppia il passo $\Step$ finch\'e la stima dell'errore rimane sotto la tolleranza; se invece \`e maggiore di $\epsilon$ si dimezza $\Step$ sino a quando la stima dell'errore scende sotto $\epsilon$;
+		\item si applica il metodo numerico di ordine $p$ col nuovo passo $\Step$, ripetendo ogni tanto la stima dell'errore e aggiustando il passo $\Step$ secondo le istruzioni del punto precedente.
+	\end{itemize}
+\end{Definition}
+\input{Metodi_numerici_per_equazioni_differenziali_ordinarie/MetodoDiEuleroEsplicito.tex}
+\input{Metodi_numerici_per_equazioni_differenziali_ordinarie/MetodoDiEuleroImplicito.tex}
+\input{Metodi_numerici_per_equazioni_differenziali_ordinarie/MetodoDeiTrapezi.tex}
+\input{Metodi_numerici_per_equazioni_differenziali_ordinarie/MetodoDiHeun.tex}

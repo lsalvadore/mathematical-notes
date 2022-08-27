@@ -1,0 +1,87 @@
+\subsection{Equazioni lineari del secondo ordine.}
+\label{EquazioniDifferenziali_EquazioniLineariDelSecondoOrdine}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $a, b, c \in \mathbb{C}$;
+    \item $\lambda_1 \in \mathbb{R}$ una soluzione di
+        $a\lambda^2 + b\lambda + c$, se esiste;
+    \item $\lambda_2 \in \mathbb{R} \SetMin \lbrace \lambda_1 \rbrace$
+        un'ulteriore soluzione di $a\lambda^2 + b\lambda + c$, se esiste;
+    \item $\alpha = \RealPart{\tilde{\lambda}}$ e
+        $\beta = \ImaginaryPart{\tilde{\lambda}}$, dove
+        $\tilde{\lambda} \in \mathbb{C} \SetMin \mathbb{R}$
+        \`e una soluzione di
+        $a\lambda^2 + b\lambda + c$, se esiste.
+  \end{itemize}
+  L'equazione in $x(t)$
+  \[
+    a\ddot{x} + b\dot{x} + cx = 0
+  \]
+  ammette le seguenti soluzioni particolari:
+  \begin{itemize}
+    \item $e^{\lambda_1 t}$ e $e^{\lambda_2 t}$
+      se $a\lambda^2 + b\lambda + c = 0$
+      ammette due soluzioni reali distinte;
+    \item $e^{\lambda_1 t}$ e $e^{\lambda_1 t}$
+      se $a\lambda^2 + b\lambda + c = 0$
+      ammette un'unica soluzione reale;
+    \item $e^{\alpha t}\cos \beta t$ e
+      $e^{\alpha t}\sin \beta t$
+      se $a\lambda^2 + b\lambda + c = 0$
+      ammette soluzioni coniugate complesse,
+  \end{itemize}
+\end{Theorem}
+\Proof Supponiamo $\lambda_1$ sia una soluzione reale di
+$a\lambda^2 + b\lambda + c = 0$. Abbiamo
+\begin{align*}
+  a \frac{d^2 e^{\lambda_1 t}}{dt^2}
+  + b \frac{d e^{\lambda_1 t}}{dt}
+  + c e^{\lambda_1 t}
+  &= a \lambda_1^2 e^{\lambda_1 t}
+  + b \lambda_1 e^{\lambda_1 t}
+  + c e^{\lambda_1 t},\\
+  &= e^{\lambda_1 t} (a \lambda_1^2 + b \lambda_1 + c),\\
+  &= 0.
+\end{align*}
+\par Supponiamo ora $\lambda_1$ sia l'unica soluzione reale di
+$a\lambda^2 + b\lambda + c = 0$.
+Abbiamo dunque
+$\lambda_1 = - \frac{b}{2a}$
+e
+$b^2 - 4 ac = 0$. Inoltre 
+\begin{align*}
+  a \frac{d^2 t e^{\lambda_1 t}}{dt^2}
+  + b \frac{d t e^{\lambda_1 t}}{dt}
+  + c t e^{\lambda_1 t}
+  &= a \lambda_1 e^{\lambda_1 t}
+  + a \lambda_1 e^{\lambda_1 t}
+  + a \lambda_1^2 t e^{\lambda_1 t}
+  + b e^{\lambda_1 t}
+  + b \lambda_1 t e^{\lambda_1 t}
+  + c t e^{\lambda_1 t},\\
+  &= e^{\lambda_1 t}
+    (at \lambda_1^2 + 2a \lambda_1 + bt \lambda_1 + b + c t),\\
+  &= e^{\lambda_1 t}
+    (a t \frac{b^2}{4 a^2} - 2a \frac{b}{2a} - bt \frac{b}{2 a} + b + ct),\\
+  &= t e^{\lambda_1 t}
+    (\frac{b^2}{4a} -  \frac{b^2}{2a} + c),\\
+  &= t e^{\lambda_1 t}
+    \frac{4ac - b^2}{4a}
+  &= 0.
+\end{align*}
+\par Supponiamo infine
+$a\lambda^2 + b\lambda + c = 0$
+ammetta soluzioni coniugate complesse distinte.
+Poniamo $z = e^{\tilde{\lambda}}$. Abbiamo
+\begin{align*}
+  a \frac{d^2 e^{\tilde{\lambda}_1 t}}{dt^2}
+  + b \frac{d e^{\tilde{\lambda}_1 t}}{dt}
+  + c e^{\tilde{\lambda}_1 t}
+  &= a \tilde{\lambda}_1^2 e^{\tilde{\lambda}_1 t}
+  + b \tilde{\lambda}_1 e^{\tilde{\lambda}_1 t}
+  + c e^{\tilde{\lambda}_1 t},\\
+  &= e^{\tilde{\lambda}_1 t} (a \tilde{\lambda}_1^2 + b \tilde{\lambda}_1 + c),\\
+  &= 0.
+\end{align*}
+Ne consegue la tesi separando parte reale e immaginaria. \EndProof

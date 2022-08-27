@@ -1,0 +1,43 @@
+\section{Successioni esatte.}\label{SuccessioniEsatte}
+\begin{Definition}
+	Sia $(\Homomorphism_i)_{i \in n}$, con $n \in \omega + 1$, una
+	successione di omomorfismi tali che, per ogni $i \in n$ tale che
+	$i + 1 \in n$, si abbia
+	$\Image{\Homomorphism_i} = \Kernel{\Homomorphism_{i + 1}}$. Si
+	dice che la successione $(\Homomorphism_i)_{i \in n}$ \`e
+	\Define{esatta}[esatta][successione], denotate
+	$\Dom{\Homomorphism_0} \xrightarrow{\Homomorphism_0}
+	\Dom{\Homomorphism_1} \xrightarrow{\Homomorphism_1}
+	... \xrightarrow{\Homomorphism_{n - 2}}
+	\Dom{\Homomorphism_{n - 1}} \xrightarrow{\Homomorphism_{n - 1}}
+	\Dom{\Homomorphism_n} \xrightarrow{\Homomorphism_n}$.
+\end{Definition}
+\begin{Definition}
+	Sia una successione esatta della forma
+	$0 \xrightarrow{\Homomorphism_0}
+	\Group_1 \xrightarrow{\Homomorphism_0}
+	\Group_2 \xrightarrow{\Homomorphism_1}
+	\Group_3 \xrightarrow{\Homomorphism_2}
+	0$:
+	si dice che tale successione \`e
+	\Define{corta}[esatta corta][succesione].
+\end{Definition}
+\begin{Theorem}
+	Sia la successione esatta corta
+	$0 \rightarrow
+	\Group_1 \xrightarrow{\Homomorphism_1}
+	\Group_2 \xrightarrow{\Homomorphism_2}
+	\Group_3 \rightarrow
+	0$.
+	Sono equivalenti i seguenti fatti:
+	\begin{itemize}
+		\item $\Homomorphism_1$ \`e una retrazione;
+		\item $\Homomorphism_2$ \`e una sezione;
+		\item $\Group_2$ \`e isomorfo a
+		$\Group_1 \DirectSum \Group_3$ tramite
+		un isomorfismo $\Isomorphism$ tale che
+		$\Isomorphism \circ \Homomorphism_1 = \Identity_{\Group_1}$
+		e $\Section \circ \Isomorphism = \Identity_{\Group_2}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Supponiamo $\Homomorphism$ possieda una retrazione $\Retraction$.

@@ -1,0 +1,182 @@
+\subsection{Ricorrenza a tre termini.}
+\label{IstituzioniDiAnalisiNumerica_PolinomiOrtogonali}
+\begin{Theorem}
+\label{IstituzioniDiAnalisiNumerica_RicorrenzaATreTermini}
+	\TheoremName{Ricorrenza a tre termini}[a tre termini][ricorrenza] Siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ polinomi ortogonali rispetto a un qualsiasi prodotto scalare $\HermitianProduct{\cdot}{\cdot}$ per cui l'operatore lineare di moltiplicazione per il polinomio $x$ sia autoaggiunto. Siano inoltre
+	\begin{itemize}
+		\item $a_0, a_1, b_1 \in \mathbb{C}$;
+		\item $\OrthogonalPolynomial_0 = a_0$;
+		\item $\OrthogonalPolynomial_1(x) = a_1x + b_1$.
+	\end{itemize}
+	Per ogni $i \in N \SetMin 1$, abbiamo
+	\[
+	\OrthogonalPolynomial_{i + 1}(x) = (A_{i + 1}x + B_{i + 1}) p_i(x) - C_i p_{i - 1}
+	\]
+	per opportuni $A_i, B_i, C_i \in \mathbb{C}$. In particolare, abbiamo
+	\begin{itemize}
+		\item $A_{i + 1} = \frac{\HermitianProduct{\OrthogonalPolynomial_{i + 1}}{\OrthogonalPolynomial_{i + 1}}}{\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_{i + 1}}}$;
+		\item $B_{i + 1} = - A_{i + 1} \frac{\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}}{\HermitianProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}}$;
+		\item $C_i = A_{i + 1} \frac{\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_{i - 1}}}{\HermitianProduct{\OrthogonalPolynomial_{i - 1}}{\OrthogonalPolynomial_{i - 1}}} = \frac{A_{i + 1}}{A_i} \frac{\HermitianProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}}{\HermitianProduct{\OrthogonalPolynomial_{i - 1}}{\OrthogonalPolynomial_{i - 1}}}$.
+	\end{itemize}
+	Inoltre, denotati $a_i$ e $b_i$ i coefficienti di $x^i$ e $x^{i - 1}$ rispettivamente in $\OrthogonalPolynomial_i$ e posto $h_i = \ScalarProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}$, abbiamo
+	\begin{itemize}
+		\item $A_{i + 1} = \frac{a_{i + 1}}{a_i}$;
+		\item $B_{i + 1} = \frac{a_{i + 1}}{a_i} \left ( \frac{b_{i + 1}}{a_{i + 1}} - \frac{b_i}{a_i} \right )$;
+		\item $C_i = \frac{a_{i + 1}a_{i - 1}}{a_i^2} \frac{h_i}{h_{i - 1}}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Fissiamo $i \geq 1$. Il polinomio $x \OrthogonalPolynomial_i$ ha grado $i + 1$ ed \`e dunque linearmente indipendente dai polinomi $(\OrthogonalPolynomial_j)_{j \in i + 1}$: insieme formano una base dello spazio di tutti i polinomi di grado al pi\`u $i + 1$. Esistono quindi scalari $(\Scalar_j)_{j \in i + 2} \in \mathbb{C}^{i + 2}$ tali che $\OrthogonalPolynomial_{i + 1} = \sum_{j \in i + 1} \Scalar_j \OrthogonalPolynomial_j + \Scalar_{i + 1} x \OrthogonalPolynomial_i$.
+\par Per ogni $k \in i + 1$ abbiamo $\HermitianProduct{\OrthogonalPolynomial_{i + 1}}{\OrthogonalPolynomial_k} =
+\sum_{j \in i + 1} \Scalar_j \HermitianProduct{\OrthogonalPolynomial_j}{\OrthogonalPolynomial_k} + \Scalar_{i + 1} \HermitianProduct{x \OrthogonalPolynomial_i}{\OrthogonalPolynomial_k} =
+\sum_{j \in i + 1} \Scalar_j \HermitianProduct{\OrthogonalPolynomial_j}{\OrthogonalPolynomial_k} + \Scalar_{i + 1} \HermitianProduct{\OrthogonalPolynomial_i}{x \OrthogonalPolynomial_k} = \Scalar_k \HermitianProduct{\OrthogonalPolynomial_k}{\OrthogonalPolynomial_k} + \Scalar_{i + 1} \HermitianProduct{\OrthogonalPolynomial_i}{x\OrthogonalPolynomial_k}$
+e, naturalmente, $\HermitianProduct{\OrthogonalPolynomial_{i + 1}}{\OrthogonalPolynomial_k} = 0$.
+Ora, se $k \leq i - 2$, allora $\PolynomialDegree{x \OrthogonalPolynomial_k} < i$, dunque $\HermitianProduct{\OrthogonalPolynomial_i}{x \OrthogonalPolynomial_k} = 0$. Ne deduciamo $\ForAll{k \in i - 1}{\Scalar_k = 0}$.
+\par Abbiamo dunque $\OrthogonalPolynomial_{i + 1} = \Scalar_{i - 1} \OrthogonalPolynomial_{i - 1} + \Scalar_i \OrthogonalPolynomial_i + \Scalar_{i + 1} x \OrthogonalPolynomial_i = 
+(\Scalar_{i + 1} x + \Scalar_i) \OrthogonalPolynomial_i + \Scalar_{i - 1} \OrthogonalPolynomial_{i - 1}$. Poniamo
+\begin{itemize}
+	\item $A_{i + 1} = \Scalar_{i + 1}$;
+	\item $B_{i + 1} = \Scalar_i$;
+	\item $C_i = - \Scalar_{i - 1}$.
+\end{itemize}
+\par Abbiamo inoltre
+\begin{itemize}
+		\item $\HermitianProduct{\OrthogonalPolynomial_{i + 1}}{\OrthogonalPolynomial_{i + 1}} = A_{i + 1} \HermitianProduct{x \OrthogonalPolynomial_i}{\OrthogonalPolynomial_{i +1}}$, da cui $A_{i + 1} = \frac{\HermitianProduct{\OrthogonalPolynomial_{i + 1}}{\OrthogonalPolynomial_{i + 1}}}{\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_{i + 1}}}$;
+		\item $\HermitianProduct{\OrthogonalPolynomial_{i + 1}}{\OrthogonalPolynomial_i} = A_{i + 1}\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i} + B_{i + 1}\HermitianProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i} = 0$, da cui $B_{i + 1} = - A_{i + 1} \frac{\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}}{\HermitianProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}}$;
+		\item $\HermitianProduct{\OrthogonalPolynomial_{i + 1}}{\OrthogonalPolynomial_{i - 1}} = A_{i + 1}\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_{i - 1}} - C_i\HermitianProduct{\OrthogonalPolynomial_{i - 1}}{\OrthogonalPolynomial_{i - 1}} = 0$, da cui $C_i = A_{i + 1} \frac{\HermitianProduct{x\OrthogonalPolynomial_i}{\OrthogonalPolynomial_{i - 1}}}{\HermitianProduct{\OrthogonalPolynomial_{i - 1}}{\OrthogonalPolynomial_{i - 1}}} = \frac{A_{i + 1}}{A_i} \frac{\HermitianProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}}{\HermitianProduct{\OrthogonalPolynomial_{i - 1}}{\OrthogonalPolynomial_{i - 1}}}$.
+\end{itemize}
+\par Per l'ultima parte del teorema, osserviamo che la formula di ricorrenza a tre termini implica quanto segue:
+\begin{itemize}
+	\item il coefficiente $a_{i + 1}$ di $x^{i + 1}$ \`e uguale a $A_{i + 1}a_i$;
+	\item il coefficente $b_{i + 1}$ di $x^i$ \`e uguale a $A_{i + 1} b_i + B_{i + 1}a_i$.
+\end{itemize}
+\par Ne seguono immediatamente le tre uguaglianze finali dell'enunciato. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema \ref{IstituzioniDiAnalisiNumerica_RicorrenzaATreTermini},
+	se $\OrthogonalPolynomial_0(x) = 1$ e $\OrthogonalPolynomial_1(x) = x$, allora, per ogni $i \in N$ con $i > 1$, $\OrthogonalPolynomial_i$ \`e monico.
+\end{Corollary}
+\Proof Segue direttamente dalle espressioni individuate per $A_{i + 1}$ e $C_i$. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema \ref{IstituzioniDiAnalisiNumerica_RicorrenzaATreTermini},
+	per ogni $i \in N$ con $i > 1$ abbiamo $A_{i + 1} \neq 0$ e $C_i \neq 0$. Inoltre se tutti i polinomi ortogonali sono monici, allora, per ogni $i \in N$ con $i > 1$, $C_i$ \`e reale e strettamente positivo.
+\end{Corollary}
+\Proof Segue direttamente dalle espressioni individuate per i coefficenti della ricorrenza a tre termini e dal fatto che i prodotti hermitiani sono forme sesquilineari definite positive. \EndProof
+\begin{Corollary}
+	Con le notazioni del teorema \ref{IstituzioniDiAnalisiNumerica_RicorrenzaATreTermini},
+	per ogni $i > 1$, $\OrthogonalPolynomial_{i - 1}$ \`e il resto della divisione di $\OrthogonalPolynomial_{i + 1}$ per $\OrthogonalPolynomial_i$.
+\end{Corollary}
+\Proof Segue direttamente dal teorema \ref{IstituzioniDiAnalisiNumerica_RicorrenzaATreTermini} e dalla definizione di resto della divisione tra polinomi. \EndProof
+\begin{Theorem}
+	\label{IstituzioniDiAnalisiNumerica_Christoffel_Darboux}
+	\TheoremName{Formula di Christoffel-Darboux}[di Christoffel-Darboux][formula]
+	Nelle ipotesi del teorema \ref{IstituzioniDiAnalisiNumerica_RicorrenzaATreTermini}, assumendo $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}} \in (\RingAdjunction{\mathbb{R}}{x})^\mathbb{N}$, per ogni $n \geq 0$ e per ogni $(x,y) \in \mathbb{R}^2$ abbiamo
+	\[
+	(x - y) \sum_{i = 0}^n h_i^{-1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y) = \gamma_n (\OrthogonalPolynomial_{n + 1}(x)\OrthogonalPolynomial_n(y) - \OrthogonalPolynomial_{n + 1}(y)\OrthogonalPolynomial_n(x)),
+	\]
+	dove, per ogni $i \in \mathbb{N}$, $h_i = \ScalarProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}$ e $\gamma_n = \frac{a_n}{a_{n + 1}h_n}$.
+\end{Theorem}
+\Proof Procediamo per induzione su $n$.
+\par Se $n = 0$, allora abbiamo
+\begin{align*}
+\gamma_0((a_1x + b_1)a_0 - (a_1y + b_1)a_0)
+&= \frac{a_0}{h_0a_1}a_0((a_1x + b_1) - (a_1y + b_1)),\\
+&= \frac{a_0^2}{h_0a_1}a_1(x - y),\\
+&= (x - y)h_0^{-1}a_0^2.
+\end{align*}
+\par Assumiamo ora il teorema dimostrato per $n = N - 1$ e proviamolo per $n = N$. Abbiamo
+\begin{align*}
+\OrthogonalPolynomial_{n + 1}(x)\OrthogonalPolynomial_n(y) - \OrthogonalPolynomial_{n + 1}(y)\OrthogonalPolynomial_n(x)
+&= ((A_{n + 1}x + B_{i + 1})\OrthogonalPolynomial_n(x) - C_n\OrthogonalPolynomial_{n - 1}(x))\OrthogonalPolynomial_n(y) -
+((A_{n + 1}y + B_{i + 1})\OrthogonalPolynomial_n(y) - C_n\OrthogonalPolynomial_{n - 1}(y))\OrthogonalPolynomial_n(x),\\
+&= (x - y)A_{n + 1}\OrthogonalPolynomial_n(x)\OrthogonalPolynomial_n(y) + C_n(\OrthogonalPolynomial_n(x)\OrthogonalPolynomial_{n - 1}(y) - \OrthogonalPolynomial_n(y)\OrthogonalPolynomial_{n - 1}(x)),\\
+&= (x - y)\left (A_{n + 1}\OrthogonalPolynomial_n(x)\OrthogonalPolynomial_n(y) + \frac{C_n}{\gamma_{n - 1}} \sum_{i = 0}^{n - 1} h_i^{-1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y)\right ),\\
+&= (x - y)\left (\gamma_n^{-1}h_n^{-1}\OrthogonalPolynomial_n(x)\OrthogonalPolynomial_n(y) + \gamma_n^{-1} \sum_{i = 0}^{n - 1} h_i^{-1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y)\right ),\\
+&= (x - y) \gamma_n^{-1} \sum_{i = 0}^n h_i^{-1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y).\text{\EndProof}
+\end{align*}
+\Proof Offriamo una dimostrazione alternativa. Il caso $n = 0$ si dimostra identicamente a quanto appena visto. Supponiamo nel seguito $n > 0$.
+\par Dalla ricorrenza a tre termini deduciamo, per ogni intero $i > 0$.
+\begin{itemize}
+	\item $\OrthogonalPolynomial_{i + 1}(x)\OrthogonalPolynomial_i(y) = (A_{i + 1}x + B_{i + 1})\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y) - C_i\OrthogonalPolynomial_{i - 1}(x)\OrthogonalPolynomial_i(y)$;
+	\item $\OrthogonalPolynomial_{i + 1}(y)\OrthogonalPolynomial_i(x) = (A_{i + 1}y + B_{i + 1})\OrthogonalPolynomial_i(y)\OrthogonalPolynomial_i(x) - C_i\OrthogonalPolynomial_{i - 1}(y)\OrthogonalPolynomial_i(x)$.
+\end{itemize}
+\par Sottraendo la seconda equazione alla prima otteniamo
+$\OrthogonalPolynomial_{i + 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i + 1}(y)\OrthogonalPolynomial_i(x) =
+(x - y)A_{i + 1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y) - C_i(\OrthogonalPolynomial_{i - 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i - 1}(y)\OrthogonalPolynomial_i(x))$,
+equivalente a
+$(x - y)A_{i + 1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y) = \OrthogonalPolynomial_{i + 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i + 1}(y)\OrthogonalPolynomial_i(x) + C_i(\OrthogonalPolynomial_{i - 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i - 1}(y)\OrthogonalPolynomial_i(x))$.
+Dividamo ambi i membri per $h_iA_{i + 1}$:
+$(x - y)h_i^{-1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y) = h_i^{-1}A_{i + 1}^{-1} \OrthogonalPolynomial_{i + 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i + 1}(y)\OrthogonalPolynomial_i(x) + \frac{C_i}{h_iA_{i + 1}}(\OrthogonalPolynomial_{i - 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i - 1}(y)\OrthogonalPolynomial_i(x))$,
+da cui
+$(x - y)h_i^{-1}\OrthogonalPolynomial_i(x)\OrthogonalPolynomial_i(y) = \gamma_i\OrthogonalPolynomial_{i + 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i + 1}(y)\OrthogonalPolynomial_i(x) + \gamma_{i - 1}(\OrthogonalPolynomial_{i - 1}(x)\OrthogonalPolynomial_i(y) - \OrthogonalPolynomial_{i - 1}(y)\OrthogonalPolynomial_i(x))$.
+\par La tesi segue sommando ambi i membri per $i \in n + 1$. \EndProof
+\begin{Theorem}
+	\label{IstituzioniDiAnalisiNumerica_TeoremaDiOrtogonalitaDiscreta1}
+	\TheoremName{Teorema di ortogonalit\`a discreta}[di ortogonalit\`a discreta][teorema] Siano $(\OrthogonalPolynomial_i)_{i \in \mathbb{N}}$ polinomi ortogonali rispetto ad un prodotto scalare $\VarScalarProduct{\cdot}{\cdot}$ su $\RingAdjunction{\mathbb{R}}{x}$ per cui vale la formula di Christoffel-Darboux. Siano inoltre
+	\begin{itemize}
+		\item $n \in \mathbb{N}$;
+		\item $(x_i)_{i \in m}$ ($m \leq n$) gli zeri distinti di $\OrthogonalPolynomial_n$;
+		\item $(\Vector^{(j)})_{j \in n}$ i vettori di $\mathbb{R}^n$ definiti da $\ForAll{(i,j) \in n \times n}{\Vector^{(j)}_i = \OrthogonalPolynomial_i(x_j)}$;
+		\item $(\sigma_k)_{k \in n}$ gli scalari definiti da $\ForAll{k \in n}{\sigma_k = \Norm{\Vector^{(k)}}^{-1}}$;
+		\item $\ScalarProduct{\cdot}{\cdot}$ il prodotto scalare definito su $\mathbb{R}^n$ da $\ScalarProduct{\Vector}{\VarVector} = \sum_{k \in n} \sigma_k^2\Vector_k\VarVector_k$.
+	\end{itemize}
+	Allora i vettori $(\Vector^{(j)})_{j \in n}$ sono non nulli e ortogonali rispetto a $\ScalarProduct{\cdot}{\cdot}$.
+\end{Theorem}
+\Proof Denotiamo $\gamma_n = \frac{\LeadingCoefficient{\OrthogonalPolynomial_n}}{\LeadingCoefficient{\OrthogonalPolynomial_{n + 1}}\VarScalarProduct{\OrthogonalPolynomial_n}{\OrthogonalPolynomial_n}}$ e $(\OrthonormalPolynomial_i)_{i \in n}$ i polinomi definiti da $\ForAll{i \in n}{\OrthonormalPolynomial_i = \ScalarProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}^{-\frac{1}{2}}\OrthogonalPolynomial_i}$;
+\par Abbiamo
+\begin{align*}
+	\Norm{\Vector^{(i)}}^2
+	&= \ScalarProduct{\Vector^{(i)}}{\Vector^{(i)}},\\
+	&= \sum_{k \in n} \sigma_k^2 \OrthogonalPolynomial_k(x_i)^2,\\
+	&= \sum_{k \in n} \OrthonormalPolynomial_k(x_i)^2,\\
+	&\geq \OrthonormalPolynomial_0(x_i)^2 = 1.
+\end{align*}
+\par Inoltre, per $i, j \in n$ con $i \neq j$,
+\begin{align*}
+	\ScalarProduct{\Vector^{(i)}}{\Vector^{(j)}}
+	&= \sum_{k \in n} \sigma_k^2 \OrthogonalPolynomial_k(x_i)\OrthogonalPolynomial_k(x_j),\\
+	&= \sum_{k \in n} \OrthonormalPolynomial_k(x_i)\OrthonormalPolynomial_k(x_j),\\
+	&= \gamma_n(\OrthonormalPolynomial_n(x_i)\OrthonormalPolynomial_{n - 1}(x_j) - \OrthonormalPolynomial_n(x_j)\OrthonormalPolynomial_{n - 1}(x_i)) = 0.\text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+	\label{IstituzioniDiAnalisiNumerica_TeoremaDiOrtonormalitaDiscreta}
+	\TheoremName{Teorema di ortonormalit\`a discreta}[di ortonormalit\`a discreta][teorema] Assumiamo tutte le ipotesi del teorema \ref{IstituzioniDiAnalisiNumerica_TeoremaDiOrtogonalitaDiscreta1}. Assumiamo inoltre
+	\begin{itemize}
+		\item $m = n$;
+		\item $(\OrthonormalPolynomial_i)_{i \in n}$ i polinomi definiti da $\ForAll{i \in n}{\OrthonormalPolynomial_i = \ScalarProduct{\OrthogonalPolynomial_i}{\OrthogonalPolynomial_i}^{-\frac{1}{2}}\OrthogonalPolynomial_i}$;
+		\item $(\VarVector^{(j)})_{j \in n}$ i vettori di $\mathbb{R}^n$ definiti da $\ForAll{(i,j) \in n \times n}{\VarVector^{(j)}_i = \OrthonormalPolynomial_i(x_j)}$;
+	\end{itemize}
+	Allora i vettori $(\VarVector^{(j)})_{j \in n}$ sono non nulli e ortonormali rispetto a $\ScalarProduct{\cdot}{\cdot}$.
+\end{Theorem}
+\Proof Sia $V \in \mathbb{R}^{n \times n}$ la matrice tale che, per ogni $j \in n$, $W^j = \VarVector^{(j)}$: per il teorema \ref{IstituzioniDiAnalisiNumerica_TeoremaDiOrtogonalitaDiscreta1} $\Transposed{W}W$ \`e una matrice diagonale. Sia $\DiagonalMatrix \in \mathbb{R}^{n \times n}$ la matrice diagonale tale che $\ForAll{k \in n}{\DiagonalMatrix_k^k = \sigma_k}$: abbiamo $W\DiagonalMatrix = \Identity$. Abbiamo
+\begin{itemize}
+	\item $W\DiagonalMatrix$ \`e invertibile perch\'e lo sono $W$ e $\DiagonalMatrix$;
+	\item $\Transposed{(W\DiagonalMatrix)}W\DiagonalMatrix = \DiagonalMatrix \Transposed{W}W \DiagonalMatrix = \Identity$.
+\end{itemize}
+\par Dunque $W\DiagonalMatrix$ \`e ortogonale. Abbiamo allora $W\DiagonalMatrix\Transposed{(W\DiagonalMatrix)} = (W\DiagonalMatrix) \DiagonalMatrix\Transposed{W} = \Identity$, da cui, per ogni $(i,j) \in n \times n$, $\sum_{k \in n} (\VarVector_k^{(j)}\sigma_k)(\sigma_k\VarVector_k^{(i)}) = \sum_{k \in n} \sigma_k^2 \OrthonormalPolynomial_k(x_j) \OrthonormalPolynomial_k(x_i) = \KroneckerDelta{i}{j}$. \EndProof
+\begin{Definition}
+	\label{IstituzioniDiAnalisiNumerica_Bezoutiano}
+	Siano $\Polynomial, \VarPolynomial \in \RingAdjunction{\mathbb{C}}{x}$. Fissata un'ulteriore incognita $y$, definiamo \Define{b\'ezoutiano} di $\Polynomial$ e $\VarPolynomial$, denotato $\Bezoutian{\Polynomial}{\VarPolynomial}$, l'espressione  $\Bezoutian{\Polynomial}{\VarPolynomial}(x,y) = \frac{\Polynomial(x)\VarPolynomial(y) - \Polynomial(y)\VarPolynomial(x)}{x - y}$.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione \ref{IstituzioniDiAnalisiNumerica_Bezoutiano}, $\Bezoutian{\Polynomial}{\VarPolynomial}(x,y)$ \`e un polinomio di $\RingAdjunction{\mathbb{C}}{x,y}$ di grado al pi\`u $2(n + 1)$, dove $n = \max \lbrace \PolynomialDegree{\Polynomial}, \PolynomialDegree{\VarPolynomial} \rbrace$. 
+\end{Theorem}
+\begin{Definition}
+	\label{IstituzioniDiAnalisiNumerica_MatriceBezoutiana}
+	Con le notazioni del teorema precedente, definiamo \Define{matrice b\'ezoutiana}[b\'ezoutiana][matrice] associata a $\Polynomial$ e $\VarPolynomial$ la matrice quadrata $\BezoutianMatrix$ di ordine $n$ tale che $\Bezoutian{\Polynomial}{\VarPolynomial}(x,y) = \sum_{(i,j) \in n \times n} \BezoutianMatrix_i^j x^i y^j$. Definiamo inoltre \Define{risultante}[di due polinomi][risultante] di $\Polynomial$ e $\VarPolynomial$, denotato $\Resultant{\Polynomial}{\VarPolynomial}$, lo scalare $\Determinant{\BezoutianMatrix}$.
+\end{Definition}
+\begin{Theorem}
+	Con le notazioni della definizione \ref{IstituzioniDiAnalisiNumerica_MatriceBezoutiana},
+	\begin{itemize}
+		\item $\BezoutianMatrix$ \`e simmetrica;
+		\item $\BezoutianMatrix$ \`e invertibile se e solo se $\Polynomial$ e $\VarPolynomial$ sono coprimi;
+		\item $\Bezoutian{\Polynomial}{\VarPolynomial}(x,y) = \Transposed{(x^i)_{i \in n}} \BezoutianMatrix (y^i)_{i \in n}$.
+	\end{itemize}
+\end{Theorem}
+\begin{Theorem}
+	Nelle ipotesi del teorema \ref{IstituzioniDiAnalisiNumerica_Christoffel_Darboux}, fissiamo $n \in \mathbb{N}$ e, per ogni $k \in \mathbb{N}$, poniamo $\vec{\OrthogonalPolynomial_k}$ uguale al vettore dei coefficienti di $\OrthogonalPolynomial_n$ in $\mathbb{C}^n$. Sia inoltre $\BezoutianMatrix$ la matrice b\'ezoutiana associata ai polinomi $\OrthogonalPolynomial_n$ e $\OrthogonalPolynomial_{n + 1}$. Abbiamo
+	\begin{itemize}
+		\item $\Bezoutian{\OrthogonalPolynomial_n}{\OrthogonalPolynomial_{n + 1}}$ \`e somma di prodotti di polinomi ortogonali;
+		\item $\BezoutianMatrix = \sum_{k = 1}^n \gamma_n^{-1} h^{-k} \vec{\OrthogonalPolynomial_k} \Transposed{\vec{\OrthogonalPolynomial_k}}$;
+		\item $\gamma_n \BezoutianMatrix = \Transposed{L}L$, dove $L$ \`e la matrice triangolare inferiore quadrata di ordine $n$ tale che, per ogni $i \in n$, $L_i = h_i^{-\frac{1}{2}} \Transposed{\vec{\OrthogonalPolynomial_i}}$.
+	\end{itemize}
+\end{Theorem}
+%c'e' un'altro teorema sulla fattorizzazione UL. Se voglio aggiungerlo posso forse capirci qualcosa usando l'articolo https://www.tu-chemnitz.de/mathematik/preprint/2008/PREPRINT_09.php

@@ -1,0 +1,69 @@
+\section{Martingale e concetti correlati.}\label{Martingale}
+\par D'ora in poi supporremo sempre dato uno spazio di probabilit\`a $(\SamplesSpace,\SigmaAlgebra,\Probability)$, dove $\SamplesSpace$ \`e lo spazio dei campioni, $\SigmaAlgebra$ la $\sigma$-algebra degli eventi e $\Probability$ la misura di probabilit\`a.
+\begin{Definition}
+	Una \Define{filtrazione} \`e una famiglia crescente\footnote{Per la relazione d'inclusione.} $(\SigmaAlgebra_t)_{t \in T}$, con $T \subseteq \mathbb{R}^+$, di sotto $\sigma$-algebre di $\SigmaAlgebra$. $(\SamplesSpace,\SigmaAlgebra,\SigmaAlgebra_t,\Probability)$ si chiama allora \Define{spazio di probabilit\`a filtrato}.
+\end{Definition}
+\par Si intrepreta normalmente $\SigmaAlgebra_t$ come la $\sigma$-algebra degli eventi noti al tempo $t$. Supporremo di seguito assegnato un insieme $T \subset \mathbb{N}$.
+\begin{Definition}
+	Chiamiamo \Define{processo stocastico} una famiglia di variabili aleatorie $(X_t)_{t \in T}$, dove ogni $X_t$ \`e $\SigmaAlgebra_t$-misurabile.
+\end{Definition}
+\par D'ora in poi, supporremo $T \subseteq \mathbb{N}$ tale che se $x \in T$ e $y < x$ (con $y \in \mathbb{N}$), allora $y \in T$.
+\begin{Definition}
+	Un processo stocastico $(X_t)_{t \in T}$ si dice
+	\begin{itemize}
+		\item \Define{adattato} se, per ogni $t \in T$, $X_t$ \`e $\SigmaAlgebra_t$-misurabile;
+		\item \Define{prevedibile} se, per ogni $t \in T$, $X_t$ \`e $\SigmaAlgebra_{t - 1}$-misurabile.
+	\end{itemize}
+\end{Definition}
+\par Un processo stocastico prevedibile \`e adattabile.
+\begin{Definition}
+	Un processo adattato $(M_t)_{t \in T}$ (reale o vettoriale reale) si chiama
+	\begin{itemize}
+		\item \Define{martingala} quando per ogni $t > 0$ si ha $\ConditionalExpectationValue{M_t}{\SigmaAlgebra_{t - 1}} = M_{t - 1}$;
+		\item \Define{supermartingala} quando per ogni $t > 0$ si ha $\ConditionalExpectationValue{M_t}{\SigmaAlgebra_{t - 1}} \leq M_{t - 1}$;
+		\item \Define{submartingala} quando per ogni $t > 0$ si ha $\ConditionalExpectationValue{M_t}{\SigmaAlgebra_{t - 1}} \geq M_{t - 1}$.
+	\end{itemize}
+\end{Definition}
+\begin{Lemma}
+	Un processo stocastivo vettoriale \`e una [super,sub]martingala se e solo se lo sono le sue componenti.
+\end{Lemma}
+\begin{Theorem}
+	Sia $(M_t)_{t \in T}$ un processo stocastico. Valgono le seguenti propriet\`a:
+	\begin{itemize}
+		\item $(M_t)_{t \in T}$ \`e una martingala se e solo se, per ogni $t \in T$, $(\forall j \in \mathbb{N})(\ConditionalExpectationValue{M_{t + j}}{\SigmaAlgebra_t} = M_t)$;
+		\item se $(M_t)_{t \in T}$ \`e una martingala, allora $(\forall t \in \mathbb{N})(\ExpectationValue{M_t}=\ExpectationValue{M_0})$;
+		\item se $(M_t)_{t \in T}$ \`e una martingala e lo \`e anche $(N_t)_{t \in T}$, allora lo \`e anche $(M_t + N_t)_{t \in T}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Vediamo la prima propriet\`a. Sia $(M_t)_{t \in T}$ una martingala. Per $j = 0$ abbiamo $\ConditionalExpectationValue{M_{t + j}}{\SigmaAlgebra_t} = \ConditionalExpectationValue{M_t}{\SigmaAlgebra_t} = M_t$. Consideriamo ora $j$ arbitrario: assumendo l'uguaglianza della tesi vera per $j$, per $j + 1$ abbiamo $\ConditionalExpectationValue{M_{t + j + 1}}{\SigmaAlgebra_t} = \ConditionalExpectationValue{\ConditionalExpectationValue{M_{t + j + 1}}{\SigmaAlgebra_{t + j}}}{\SigmaAlgebra_t} = \ConditionalExpectationValue{M_{t + j}}{\SigmaAlgebra_t} = M_t$.
+\par Viceversa supponiamo ora vera l'uguaglianza della prima propriet\`a per ogni $j$. Abbiamo $\ConditionalExpectationValue{M_t}{\SigmaAlgebra_{t - 1}} = \ConditionalExpectationValue{M_{t - 1 + 1}}{\SigmaAlgebra_{t - 1}} = M_{t - 1}$. Inoltre, $M_t$ \`e $\SigmaAlgebra_t$-misurabile e dunque $(M_t)_{t \in T}$ \`e adattabile.
+\par Passiamo alla seconda propriet\`a. Procediamo per induzione su $t$. Il passo base \`e immediato, vediamo il passo induttivo: supponiamo dunque $\ExpectationValue{M_t} = \ExpectationValue{M_0}$. Abbiamo $\ExpectationValue{M_{t + 1}} = \ExpectationValue{\ConditionalExpectationValue{M_{t + 1}}{\SigmaAlgebra_t}} = \ExpectationValue{M_t} = \ExpectationValue{M_0}$.
+\par Infine la terza propriet\`a. \`E chiaro che la somma di processi adattabili \`e adattabile e che, per ogni $t \in T$, $\ConditionalExpectationValue{M_t + N_t}{\SigmaAlgebra_{t - 1}} = \ConditionalExpectationValue{M_t}{\SigmaAlgebra_{t - 1}} + \ConditionalExpectationValue{N_t}{\SigmaAlgebra_{t - 1}} = M_{t - 1} + N_{t - 1}$. \EndProof
+\begin{Corollary}
+	Valogono propriet\`a analoghe a quelle del teorema precedente per le supermartingale e le submartingale.
+\end{Corollary}
+\Proof Analoga a quella del teorema precedente. \EndProof
+\par Dato un processo stocastico $(X_t)_{t \in T}$, poniamo, per ogni $t > 0$,  $\Delta X_t = X_t - X_{t - 1}$.
+\begin{Definition}
+	Sia $(M_t)_{t \in T}$ una martingala e sia $(H_t)_{t \in T}$ un processo stocastico. Si chiama \Define{trasformata di $(M_t)_{t \in T}$ tramite $(H_t)_{t \in T}$} il processo stocastico $(X_t)_{t \in T}$ definito da
+	\begin{align}
+		&X_0 = H_0M_0,\nonumber\\
+		&X_t = H_0M_0 + \sum_{j = 1}^t H_j\Delta M_j.\nonumber
+	\end{align}
+\end{Definition}
+\begin{Theorem}
+	Mantenendo le notazione della definizione precedente, se $(H_t)_{t \in T}$ \`e prevedibile, allora la trasformata di $(M_t)_{t \in T}$ tramite $(H_t)_{t \in T}$ \`e una martingala\footnote{Il teorema qui enunciato e dimostrato \`e un caso specifico di un teorema pi\`u generale: se si rilasciano le ipotesi che abbiamo imposto sull'insieme $T$, \`e necessario richiedere inoltre che $(H_t)_{t \in T}$ sia limitato.}.
+\end{Theorem}
+\Proof \`E chiaro che $(X_t)_{t \in T}$ \`e adattabile.
+\par Abbiamo, per ogni $t > 0$,
+\begin{align}
+	\ConditionalExpectationValue{\Delta X_t}{\SigmaAlgebra_{t - 1}} &= \ConditionalExpectationValue{H_t (M_t - M_{t - 1})}{\SigmaAlgebra_{t -1}},\nonumber\\
+	&= H_t\ConditionalExpectationValue{M_t}{\SigmaAlgebra_{t - 1}} - H_t\ConditionalExpectationValue{M_{t - 1}}{\SigmaAlgebra_{t - 1}},\nonumber\\
+	&= H_tM_{t - 1} - H_t M_{t - 1} = 0.\nonumber
+\end{align}
+\par Dunque $\ConditionalExpectationValue{X_t}{\SigmaAlgebra_{t - 1}} = \ConditionalExpectationValue{X_{t - 1}}{\SigmaAlgebra_{t - 1}} = X_{t - 1}$, cio\`e che prova che $(X_t)_{t \in T}$ \`e una martingala. \EndProof.
+\begin{Theorem}
+	Il processo stocastico $(M_t)_{t \in T}$ \`e una martingala se e solo se per ogni processo stocastico prevedibile $(H_t)_{t \in T}$ si ha, per ogni $t > 0$,  $\ExpectationValue{\sum_{j = 1}^t H_j \Delta M_j} = 0$.
+\end{Theorem}
+\Proof Supponiamo $(M_t)_{t \in T}$ sia una martingala. Sia $(H_t)_{t \in T}$ un processo stocastico prevedibile. Definiamo $K_t = \begin{cases} 0\text{, se } t = 0,\\H_t\text{, altrimenti}. \end{cases}$. Allora $(K_t)_{t \ in T}$ \`e prevedibile e la trasformata $(X_t)_{t \in T}$ di $(M_t)_{t \in T}$ tramite $(K_t)_{t \in T}$ \`e una martingala. Dunque, per ogni $t \in \mathbb{N}$,  $\ExpectationValue{\sum_{j = 1}^t H_j \Delta M_j} = \ExpectationValue{X_t} = \ExpectationValue{X_0} = 0$.
+\par Viceversa, supponiamo ora,  per ogni $t > 0$ e per ogni processo processo stocastico prevedibile $(H_t)_{t \ in T}$, $\ExpectationValue{\sum_{j = 1}^t H_j \Delta M_j} = 0$. Fissato $k > 0$, sia $A \in \SigmaAlgebra_{k - 1}$ e poniamo $H_t = \begin{cases} 0\text{, se }t \neq k,\\\Indicator{A}\text{, se }t = k. \end{cases}$: il processo stocastico $(H_t)_{t \in T}$ \`e prevedibile. Pertanto, abbiamo $\ExpectationValue{\sum_{j = 1}^k H_j \Delta M_j} = \ExpectationValue{H_k (M_k - M_{k - 1})} = 0$, cio\`e $\int_A M_k d\Probability = \int_A M_{k - 1} d\Probability$. Per l'arbitariet\`a di $A$, abbiamo $\ConditionalExpectationValue{M_k}{\SigmaAlgebra_{k - 1}} = M_{k - 1}$, cio\`e $(M_t)_{t \in T}$ \`e una martingala. \EndProof

@@ -1,0 +1,51 @@
+\subsection{Metodo di Gauss-Seidel.}
+\label{MetodiNumericiPerSistemiLineari_MetodoDiGaussSeidel}
+\begin{Definition}
+  Con le notazioni del teorema \ref{th_MetodiIterativiPerSistemiLineari},
+  posto
+  \begin{itemize}
+    \item $\TriangularMatrix$ la matrice triangolare superiore tale che,
+      per $(k,j) \in n \times n$,
+      $\TriangularMatrix =
+        \begin{cases}
+          - \Matrix_k^j\text{ se }k < j,\\
+          0\text{ altrimenti}.
+        \end{cases}$;
+    \item $\DiagonalMatrix$ la matrice triangolare superiore tale che,
+      per $(k,j) \in n \times n$,
+      $\DiagonalMatrix =
+        \begin{cases}
+          \Matrix_k^j\text{ se }k = j,\\
+          0\text{ altrimenti}.
+        \end{cases}$;
+    \item $\VarTriangularMatrix$ la matrice triangolare inferiore tale che,
+      per $(k,j) \in n \times n$,
+      $\VarTriangularMatrix =
+        \begin{cases}
+          - \Matrix_k^j\text{ se }k > j,\\
+          0\text{ altrimenti}.
+        \end{cases}$;
+  \end{itemize}
+  chiamiamo
+  \Define{metodo di Jacobi}[di Jacobi][metodo]
+  il metodo iterativo definito da
+  \begin{itemize}
+    \item $A = \DiagonalMatrix - \TriangularMatrix$;
+    \item $B = \VarTriangularMatrix$.
+  \end{itemize}
+\end{Definition}
+\begin{listing}
+	\insertcode{octave}{"Metodi_numerici_per_sistemi_lineari/MetodoDiGaussSeidel.m"}
+	\caption{Implementazione del metodo di Gauss-Seidel in linguaggio \LanguageName{octave}.}
+\end{listing}
+\begin{Theorem}
+  Con le notazioni della definizione precedente,
+  se \`e verificata una delle proposizioni seguente, allora
+  il metodo di Jacobi \`e convergente:
+  \begin{itemize}
+    \item $\Matrix$ \`e fortemente dominante diagonale;
+    \item $\HermitianTransposed{\Matrix}$ \`e fortemente dominante diagonale;
+    \item $\Matrix$ \`e irriducibilmente dominante diagonale;
+    \item $\HermitianTransposed{\Matrix}$ \`e irriducibilmente dominante diagonale.
+  \end{itemize}
+\end{Theorem}

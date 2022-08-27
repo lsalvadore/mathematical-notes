@@ -1,0 +1,95 @@
+\subsection{Classificazione proiettiva.}
+
+\begin{Definition}\label{def46}
+	Un polinomio $p \in \mathbb{K}[x_0, ..., x_n]$ si dice \Define{omogeneo}[omogeneo][polinomio] di grado $k$ se ogni suo termine ha lo stesso grado $k$. Una \Define{forma quadratica}[quadratica][forma] $F$ \`e un polinomio omogeneo di grado $2$.
+\end{Definition}
+	\par Nel seguito, $F$ denoter\`a sempre una forma quadratica assegnata, $X$ il vettore $(x_0, ..., x_n)$ e $A$ sar\`a la matrice simmetrica (necessariamente unica) tale che $F(X) = X^tAX$.
+\begin{Theorem}\label{th56}
+	Sia $p \in \mathbb{K}[x_0, ..., x_n]$ un polinomio omogeneo di grado $k$ e sia $X \in \mathbb{K}^{n + 1}$ tale che $p(X) = 0$. Allora, per ogni $\lambda \in \mathbb{K}^*$, $p(\lambda X) = 0$.
+\end{Theorem}
+\Proof Abbiamo, per ogni $Y \in \mathbb{K}^{n + 1}$, $p(\lambda Y) = \lambda^k p(Y) = 0$. \EndProof
+	\par Osserviamo che, dato un polinomio omogeneo $p$ di grado $k > 1$, l'applicazione di sostituzione $\phi: \mathbb{K}^{n + 1} \rightarrow \mathbb{K}$ che a $X \in \mathbb{K}^{n + 1}$ associa $p(X)$ non \`e compatibile con la relazione d'equivalenza $\sim$ che definisce $\mathbb{P}^n(\mathbb{K})$; tuttavia, il luogo degli zeri di $\phi$ \`e saturo per $\sim$ e possiamo dunque parlare di ``luogo degli zeri di $p$'' in $\mathbb{P}^n(\mathbb{K})$, intendendo con quest'espressione il proiettivizzato del luogo degli zeri di $p$ in $\mathbb{K}^{n + 1}$.
+\begin{Definition}\label{def47}
+	Una \Define{quadrica proiettiva}[proiettiva][quadrica] di $\mathbb{P}^n(\mathbb{K})$ \`e il luogo degli zeri di una qualche forma quadratica $F$. Una \Define{conica proiettiva}[proiettiva][conica] \`e una quadrica proiettiva di $\mathbb{P}^2(\mathbb{K})$.
+\end{Definition}
+	\par Nel seguito, $\mathcal{Q}$ denoter\`a la quadrica proiettiva descritta da $F(X) = 0$.
+\begin{Definition}\label{def48}
+	Due quadriche proiettive $\mathcal{Q}$ e $\mathcal{Q}'$ di $\mathbb{P}^n(\mathbb{K})$ si dicono \Define{proiettivamente equivalenti}[proiettivamente equivalenti][quadriche] quando esiste una proiettivit\`a $f: \mathbb{P}^n(\mathbb{K}) \rightarrow \mathbb{P}^n(\mathbb{K})$ tale che $f(\mathcal{Q}) = \mathcal{Q}'$.
+\end{Definition}
+\begin{Definition}\label{def50}
+	$\mathcal{Q}$ si dice \Define{degenere}[degenere][quadrica] quando $A$ \`e singolare.
+\end{Definition}
+\begin{Definition}\label{def51}
+	Sia $P \in \mathbb{P}^n(\mathbb{K})$. Si chiama \Define{spazio polare}[polare][spazio] di $P$ rispetto a $\mathcal{Q}$, denotato $\PolarSpace_\mathcal{Q}(P)$, il sottospazio di equazione $P^tAX = 0$\footnote{Si verifica facilmente che se la stessa quadrica \`e definita tramite due forme quadratiche diverse, e dunque da due matrici diverse, allora lo spazio polare associato ad uno stesso punto \`e lo stesso - i.e. che la definizione \`e ben posta.}. $P$ si dice \Define{singolare}[singolare rispetto a una quadrica][punto] rispetto a $\mathcal{Q}$ se $P^tA = AP = 0$ - i.e. se $\PolarSpace_\mathcal{Q}(P) = \mathbb{P}^n(\mathbb{K})$.
+\end{Definition}
+	\par Nel seguito, considereremo solo sottospazi polari e singolarit\`a relativi a $\mathcal{Q}$ senza ulteriori specificazioni.
+\begin{Theorem}\label{th56bis}
+	L'insieme dei punti singolari di $\mathcal{Q}$ \`e il sottospazio proiettivo $\mathbb{P}(\Kernel A)$ e ha dimensione non maggiore di $n - 1$.
+\end{Theorem}
+\Proof Per definizione di punto singolare, tale insieme non \`e altro che $\mathbb{P}(\Kernel A)$ ed \`e dunque un sottospazio proiettivo di dimensione $\dim (\Kernel A) - 1$. Affinch\'e $F$ sia una forma quadratica \`e necessario che la matrice $A$ abbia sulla sua diagonale almeno un elemento non nullo, per cui $\Rank A \geq 1$ e $\dim \Kernel A = n + 1 - \Rank A \leq n$. \EndProof
+\begin{Theorem}\label{th57}
+	Se $P \in \mathbb{P}^n(\mathbb{K})$ \`e non singolare, allora $\PolarSpace(P)$ \`e un iperpiano. Se invece $P$ \`e singolare allora $P \in \mathcal{Q}$.
+\end{Theorem}
+\Proof $\dim \PolarSpace(P) = n - 1$ equivale a $\Rank P^tA = 1$ e questo avviene se e solo se $P \notin \Kernel A$, equivalente alla condizione che $P$ sia non singolare.
+\par La seconda affermazione segue direttamente dalla definizione di punto singolare. \EndProof
+\begin{Theorem}\label{th58}
+	$P \in \mathbb{P}^n(\mathbb{K})$ appartiene a $\mathcal{Q}$ se e solo se $P \in \PolarSpace(P)$.
+\end{Theorem}
+\Proof Segue immediatamente dalla definizione. \EndProof
+\begin{Theorem}\label{th59}
+	Siano $P_1, P_2 \in \mathbb{P}^n(\mathbb{K})$. Allora $P_1 \in \PolarSpace(P_2)$ se e solo se $P_2 \in \PolarSpace(P_1)$.
+\end{Theorem}
+\Proof Sia $P_1 \in \PolarSpace(P_2)$. Allora $P_1$ soddisfa l'equazione $P_2^tAP_1 = 0$, equivalente a $P_1^tAP_2 = 0$, cio\`e a $P_2 \in \PolarSpace(P_1)$.\EndProof
+\begin{Theorem}\label{th57}
+	Sia $\PolarSpace: \mathbb{P}^n(\mathbb{K}) - \mathbb{P}(\Kernel A) \rightarrow \mathbb{P}^n(\mathbb{K})^*$, l'applicazione che ad ogni punto non singolare $P \in \mathbb{P}^n(\mathbb{K})$ associa il funzionale $X \mapsto P^tAX$  (a cui corrisponde un iperpiano di $\mathbb{P}^n(\mathbb{K})$ per la corrispondenza di dualit\`a) \`e un'applicazione proiettiva degenere. In particolare, se $\mathcal{Q}$ \`e non degenere, allora $\PolarSpace$ \`e un isomorfismo proiettivo.
+\end{Theorem}
+\Proof L'applicazione $\phi: \mathbb{K}^{n + 1} \rightarrow \mathbb{K}^{n+1,*}$ che a $P \in \mathbb{K}^{n + 1}$ associa il funzionale che a $X \mapsto P^tAX$ \`e un'applicazione lineare di nucleo $\Kernel A$. Il teorema segue dall'osservazione che $\PolarSpace$ \`e l'applicazione proiettiva degenere dedotta da $\phi$. \EndProof
+\begin{Definition}\label{def52}
+	Sia $\mathcal{Q}$ non degenere e sia $\pi$ un iperpiano di $\mathbb{P}^n(\mathbb{K})$. Il punto $P = \PolarSpace^{-1}(\delta(\pi))$, dove $\PolarSpace$ \`e la funzione del teorema precedente, si chiama \Define{polo} di $\pi$ rispetto a $\mathcal{Q}$.
+\end{Definition}
+	\par Nel seguito, considereremo solo poli relativi a $\mathcal{Q}$ senza ulteriori specificazioni.
+\begin{Definition}\label{def53}
+	Siano $P_1, P_2 \in \mathbb{P}^n(\mathbb{K})$. $P_1$ e $P_2$ si dicono \Define{coniugati}[coniugati rispetto a una quadrica][punti] rispetto a $\mathcal{Q}$ se e solo se $P_1^tAP_2 = 0$. Una famiglia $(P_i)_{i = 0, ..., n}$ di punti di $\mathbb{P}^n(\mathbb{K})$ determina i vertici di un \Define{simplesso autopolare}[autopolare][simplesso] quando i suoi elementi sono linearmente indipendenti e per ogni $(i, j) \in \lbrace 0, ..., n \rbrace^2$ si ha che $P_i$ e $P_j$ sono coniugati.
+\end{Definition}
+	\par Per $n = 2$ si parla di \Define{triangolo autopolare}[autopolare][triangolo], per $n = 3$ di \Define{tetraedro autopolare}[autopolare][tetraedro].
+\begin{Theorem}\label{th61}
+	Sia $(P_i)_{i = 0, ..., n}$ una famiglia di punti di $\mathbb{P}^n(\mathbb{K})$, vertici di un simplesso autopolare. Per ogni $i = 0, ..., n$, abbiamo che se $P_i$ \`e non singolare, allora $\PolarSpace(P_i) = L((P_j)_{j \in \lbrace 0, ..., n \rbrace - \lbrace i \rbrace})$.
+\end{Theorem}
+\Proof $P_i$ \`e non singolare, dunque $\PolarSpace(P_i)$ \`e un iperpiano, univocamente determinato da una famiglia di $n$ punti indipendenti che gli appartengono: basta dunque provare che per ogni $j \in \lbrace 0, ..., n \rbrace - \lbrace i \rbrace$ abbiamo $P_j \in \PolarSpace(P_i)$, ma questo segue direttamente dalla definizione di simplesso autopolare. \EndProof
+\begin{Theorem}\label{th62}
+	Per $n \geq 1$, esiste un simplesso autopolare.
+\end{Theorem}
+\Proof Procediamo per induzione su $n$.
+	\par Se $n = 1$. Sia $P_0 \in \mathbb{P}^1(\mathbb{K})$ tale che $P_0 \notin \mathcal{Q}$\footnote{Esiste certamente un punto con questa propriet\`a: basta scegliere un punto opportuno del riferimento proiettivo canonico.}. Necessariamente, $P_0$ \`e non singolare e il suo iperpiano polare \`e un punto $P_1 \neq P_0$: $P_0$ e $P_1$ sono punti linearmente indipendenti e coniugati, quindi vertici di un simplesso autopolare.
+	\par Supponiamo il teorema vero per $n = k$ ($k \in \mathbb{N} - \lbrace 0 \rbrace$) e proviamolo per $n = k + 1$. Sia $P_0 \in \mathbb{P}^{k + 1}(\mathbb{K})$ tale che $P_0 \notin \mathcal{Q}$. Necessariamente, $P_0$ \`e non singolare. La traccia di $\mathcal{Q}$ su $\PolarSpace(P_0)$ \`e una quadrica in un sottospazio proiettivo isomorfo a $\mathbb{P}^k(\mathbb{K})$: esiste dunque una famiglia di punti $(P_i)_{i = 1, ..., n}$ tale che i $P_i$ sono tutti indipendenti, coniugati e appartenenti a $\PolarSpace(P_0)$. Quindi la famiglia $(P_i)_{i = 0, ..., n}$ determina un simplesso autopolare. \EndProof
+\begin{Theorem}\label{th63}
+	Se $n \geq 0$, allora $\mathcal{Q}$ \`e proiettivamente equivalente ad una quadrica proiettiva $\mathcal{Q}'$ descritta da $X^tDX$, dove $D$ \`e una matrice diagonale.
+\end{Theorem}
+\Proof La tesi \`e ovvia per $n = 0$. Supponiamo $n \geq 1$.
+	\par Sia $\mathcal{R} = (P_i)_{i = 0, ..., n + 1}$ un riferimento proiettivo i cui punti fondamentali costituiscono i vertici di un simplesso autopolare e sia $M$ la matrice di cambio di riferimento proiettivo dal riferimento canonico a $\mathcal{R}$. Allora $\mathcal{Q}$ \`e proiettivamente equivalente a $\mathcal{Q}'$ di equazione $X^tM^tAMX = 0$ e $D = M^tAM$ \`e una matrice simmetrica avente nel posto $(i,j)$ ($i,j \in \lbrace 1, ..., n + 2 \rbrace$) l'elemento $P_{i - 1}^tAP_{j - 1}$, il quale \`e nullo quando $i \neq j$\footnote{La condizione \`e sufficiente, ma non necessaria: $P_i^tAP_i$ \`e nullo se $P_i$ \`e singolare.}. \EndProof
+\begin{Theorem}\label{th64}
+	\TheoremName{(Classificazione proiettiva delle quadriche complesse.)} Sia $\mathbb{K} = \mathbb{C}$. $\mathcal{Q}$ \`e proiettivamente equivalente ad una e una sola quadrica della famiglia di quadriche $X^tD_kX = 0$, dove $D_k = \left ( \begin{array}{c|c} \Identity_k & 0\\\hline 0 & 0 \end{array} \right )$, con $k \in [1, n] \cap \mathbb{N}$.
+\end{Theorem}
+\Proof Riprendiamo le notazioni del teorema \ref{th63} e della sua dimostrazione. Gli elementi diagonali di $D$ sono dati da $P_{i - 1}^tAP_{i - 1}$, per $i = 1, ..., n + 2$: denotiamoli $\lambda_i$. A meno di permutazione degli indici $i$ (corrispondente ad una trasformazione proiettiva), possiamo assumere che i $\lambda_i$ non nulli siano tutti e soli quelli con $i \leq k$ ($k < n + 1$). Abbiamo dunque, per $i = 0, ..., k$, $1 = \lambda_i^{-1} P_i^tAP_i = (\lambda_i^{-\frac{1}{2}}P_i)^tA(\lambda_i^{-\frac{1}{2}} P_i)$, da cui, dato che $\lambda_i P_i$ e $P_i$ sono rappresentanti dello stesso punto in $\mathbb{P}^n(\mathbb{C})$, $D$ pu\`o essere scelta della forma enunciata dal teorema.
+	\par L'unicit\`a della forma canonica cos\`i individuata segue dal fatto che il numero $k$ \`e necessariamente uguale al rango di $A$, invariante per trasformazione proiettiva. \EndProof
+\begin{Theorem}\label{th65}
+	\TheoremName{(Classificazione proiettiva delle quadriche reali.)} Sia $\mathbb{K} = \mathbb{R}$. $\mathcal{Q}$ \`e proiettivamente equivalente ad una e una sola quadrica della famiglia di quadriche $X^tD_{k_1, k_2}X = 0$, dove $D_{k_1, k_2} = \left ( \begin{array}{c|c|c} \Identity_{k_1} & 0 & 0\\\hline 0 & - Id_{k_2} & 0\\\hline 0& 0& 0\end{array} \right )$, con $k_1, k_2 \in [0, n + 1] \cap \mathbb{N}$ e $k_1 + k_2 \leq n + 1$.
+\end{Theorem}
+\Proof Analoga a quella del teorema precedente, permutando stavolta i vertici del simplesso autopolare in modo tale che sulla diagonale di $D$ appaiano prima gli autovalori positivi, poi quelli negativi, e con la differenza che in $\mathbb{R}$ non esistono le radici degli autovalori negativi, per cui, posto $k_1$ e $k_2$ uguali al numero di autovalori positivi e negativi rispettivamente, per gli $i = k_1 + 1, ..., k_1 + k_2$ sfrutteremo invece la relazione $- 1 = \left | \lambda_i \right |^{-1} P_i^tAP_i = (\left | \lambda_i \right | ^{-\frac{1}{2}} P_i^t)A(\left | \lambda_i \right | ^{-\frac{1}{2}} P_i)$.
+	\par L'unicit\`a deriva stavolta dall'invarianza della segnatura di $A$ per trasformazioni proiettive. \EndProof
+\begin{Theorem}\label{th66}
+	Sia $(U_0,j_0^{-1})$ la carta affine canonica di $\mathbb{K}^n$ e sia $\mathcal{Q}$ un sottoinsieme di $\mathbb{K}^n$. $\mathcal{Q}$ \`e una quadrica affine di equazione $X^tAX + 2B^tX + C = 0$ (rispetto alla base canonica), dove $A$ \`e una matrice simmetrica $n \times n$, $B$ un vettore colonna di $n$ componenti, $C \in \mathbb{K}$, $X = (x_1, ..., x_n)$, se e solo se $j_0(\mathcal{Q}) = \bar{\mathcal{Q}} \cap U_0$, dove $\bar{\mathcal{Q}}$ \`e la quadrica proiettiva descritta da $\bar{X}^t\bar{A}\bar{X} = 0$ (nel riferimento proiettivo canonico), dove $\bar{X} = (x_0, ..., x_n)$, $\bar{A} = \left ( \begin{array}{c|c} C & B^t\\\hline B & A \end{array} \right )$.
+\end{Theorem}
+\Proof Sia $\mathcal{Q}$ una quadrica affine di equazione $X^tAX + 2 B^tX + C = 0$, con $A$, $B$, $C$ oggetti della forma descritta dall'enunciato. Sia $j_0(X) = Y$. Abbiamo $X \in \mathcal{Q}$ se e solo $j_0^{-1}(Y)^tAj_0^{-1}(Y) + 2 B^tj_0^{-1}(Y) + C = 0$, la qual cosa, scegliendo $(1 \cdots X \cdots)^t$ per rappresentante di $Y$, \`e evidentemente equivalente a $Y^t\bar{A}Y = 0$ e dunque a $j_0(X) \in \bar{\mathcal{Q}}$.
+	\par Il viceversa \`e analogo. \EndProof
+\begin{Definition}\label{def54}
+	Sia $\mathcal{Q}$ una quadrica affine di $\mathbb{K}^n$. La quadrica proiettiva costruita come nel teorema precedente si chiama \Define{chiusura proiettiva}[proiettiva][chiusura] di $\mathcal{Q}$, mentre la quadrica proiettiva $\mathcal{Q}_\infty = \bar{\mathcal{Q}} \cap H_0$ si chiama \Define{quadrica all'infinito}[all'infinito][quadrica].
+\end{Definition}
+	\par Nel seguito, $\mathcal{Q}$ sar\`a sempre una quadrica affine di $\mathbb{K}^n$ di equazione $X^tAX + 2B^tX + C = 0$ rispetto alla base canonica, dove $A$ \`e una matrice simmetrica $n \times n$, $B$ un vettore di $n$ componenti, $C$ una costante e $X = (x_1, ..., x_n)$. $\bar{\mathcal{Q}}$ sar\`a la chiusura proiettiva di $\mathcal{Q}$ di equazione $\bar{X}^t\bar{A}\bar{X} = 0$ rispetto al riferimento proiettivo canonico, dove $\bar{X} = (x_0, ..., x_n)$ e $\bar{A} = \left ( \begin{array}{c|c} C & B^t\\\hline B & A \end{array} \right )$.
+	\par Osserviamo che $\bar{\mathcal{Q}}$ non \`e l'unica quadrica proiettiva che contiene $j_0(\mathcal{Q})$, n\'e la pi\`u piccola in un qualche senso. Consideriamo come modello del piano proiettivo la sfera $S^2$ con i punti antipodali identificati. Visualizziamo il piano affine in cui giace $\mathcal{Q}$ nel piano $x = 1$ dello spazio affine $\mathbb{R}^3$: allora la chiusura proiettiva della quadrica $\mathcal{Q}$ \`e data dall'intersezione delle rette individuate dall'origine e da ciascuno dei punti di $\mathcal{Q}$ con la sfera $S^2$. Supponiamo ora che $\mathcal{Q}$ sia una circonferenza centra nell'origine (del piano affine): in $\mathbb{R}^3$ esistono almeno due quadriche a centro che passano per la detta circonferenza e per l'origine (per esempio un cono e un iperboloide a una falda entrambi di rotazione), la cui traccia su $S^2$ individua due quadriche distinte.
+\begin{Theorem}\label{th74}
+	Siano $\mathcal{Q}$ e $\mathcal{Q}'$ due quadriche affini di $\mathbb{K}^n$. $\mathcal{Q}$ e $\mathcal{Q}'$ sono affinemente equivalenti se e solo se le loro chiusure proiettive, $\bar{\mathcal{Q}}$ e $\bar{\mathcal{Q}'}$ rispettivamente, sono proiettivamente equivalenti.
+\end{Theorem}
+\Proof Su tutti gli spazi affini consideriamo la base canonica e su tutti gli spazi proiettivi il riferimento proiettivo canonico. Per semplicit\`a, non specificheremo le dimensioni di ogni matrice coinvolta nella dimostrazione: tali dimensioni si possono facilmente inferire dal contesto.
+\par Sia $\phi(X) = MX + v$ un'affinit\`a tale che $\phi(\mathcal{Q}) = \mathcal{Q}'$. L'equazione di $\mathcal{Q}'$ \`e allora $X^tM^{-1}AM^{-1}X + 2B^tM^{-1}X + C = 0$. La chiusura proiettiva $\bar{\mathcal{Q}'}$ \`e dunque definita dalla matrice $\left ( \begin{array}{c|c} C & B^tM^{-1}\\\hline M^{-1,t}B & M^{-1}AM^{-1} \end{array} \right )$.
+\par Sia $M_P$ la matrice $M_P = \left ( \begin{array}{c|c} 1 & \cdots 0 \cdots\\\hline v & M \end{array} \right )$. Posto $f(\bar{X}) = M_P(\bar{X})$, abbiamo $f(\mathcal{Q}) = \bar{X}^tM_P^{-1,t}AM_P^{-1}\bar{X}$, che non \`e altro che l'equazione di $\bar{\mathcal{Q}'}$.\EndProof

@@ -1,0 +1,103 @@
+\subsection{Coda.}
+\label{AlgoritmiEStruttureDiDati_Coda}
+\begin{Definition}
+	Si dice che una struttura di dati implementa la strategia \Define{FIFO}
+  (\English{First in first out}) quando memorizza dati in successione e, quando
+  interrogata, restituisce ed espelle il dato memorizzato meno di recente.
+\end{Definition}
+\begin{Definition}
+  Una struttura di dati che implementa la strategia FIFO si chiama \Define{coda}
+  (\Define{\English{queue}}). Inoltre,
+  \begin{itemize}
+    \item il metodo che aggiunge un dato alla coda \`e solitamente chiamato
+      \Define{\English{enqueue}};
+    \item il metodo che estrae un dato dalla coda \`e solitamente chiamato
+      \Define{\English{dequeue}}.
+  \end{itemize}
+\end{Definition}
+\par Strutture di dati particolaremente utili per l'implementazione di una coda
+sono l'\English{array} circolare e la lista. Generalmente, \`e preferita la
+lista, che come si pu\`o osservare dai codici \`e di pi\`u immediata
+implementazione.
+\par Per l'esemplificazione di un'implementazione
+tramite \English{array} circolare, ci asteniamo da utilizzare i codici gi\`a
+usati nella sezione \ref{AlgoritmiEStruttureDiDati_ArrayCircolare} perch\'e non
+sono convenienti: in effetti, come si pu\`o notare, gli indici
+\mintinline{cpp}{Cima} e
+\mintinline{cpp}{Fondo} crescono sempre di un'unit\`a per volta e necessitano,
+in generale, di essere rimpiazzati da rappresentati della stessa classe di resto
+modulo la lunghezza della coda per evitare errori generati da un eventuale
+traboccamento.
+\par Segnaliamo, senza dettagli, che \`e possibile implementare una coda anche
+con un \English{array} non circolare: ci\`o richiede attenzione con l'uso dei
+puntatori che tengono conto del progresso della cosa e il mantenimento di una
+cella di memoria vuota per poter distinguere casi limiti di riempimento della
+coda.
+\par Un'implementazione di una coda tramite \English{array}, circolari o meno,
+richiede normalmente di conoscere a tempo di compilazione qual \`e il massimo
+numero di elementi che possa essere accodato; tuttavia, qualora ci\`o non fosse
+possibile, esiste comunque la possibilit\`a di ricollocare una coda esistente in
+un nuovo \English{array} pi\`u lungo quando necessario, e successivamente di
+ricollocare nuovamente la coda in un
+\English{array} pi\`u piccolo qualora si ritenesse utile mantenere limitata la
+quantit\`a di memoria occupata da un programma. Al fine di ammortizzare i costi
+di ricollocazione, conviene evitare di allungare o accorciare l'\English{array}
+di una cella per volta, per esempio preferendo invece procedere per
+raddoppiamenti e dimezzamenti.
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_ArrayCircolare.h"}
+	\caption{Implementazione di una coda in \LanguageName{C++} tramite
+    \English{array} circolare: dichiarazione della classe.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Enqueue_ArrayCircolare.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per l'aggiunta di un
+    elemento ad una coda implementata tramite \English{array} circolare.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Dequeue_ArrayCircolare.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per l'estrazione di
+    un elemento da una coda implementata tramite \English{array} circolare.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_RestituisciPrimo_ArrayCircolare.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per la restituzione
+    di un elemento da una coda implementata tramite \English{array} circolare,
+    ma senza estrazione.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Vuota_ArrayCircolare.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per determinare se
+    una coda implementata tramite \English{array} circolare \`e vuota.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Lista.h"}
+	\caption{Implementazione di una coda in \LanguageName{C++} tramite una lista:
+    dichiarazione della classe.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Lista.cpp"}
+	\caption{Implementazione di una coda in \LanguageName{C++} tramite una lista:
+    distruttore.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Enqueue_Lista.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per l'aggiunta di un
+    elemento ad una coda implementata tramite una lista.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Dequeue_Lista.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per l'estrazione di
+    un elemento da una coda implementata tramite una lista.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_RestituisciPrimo_Lista.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per la restituzione
+    di un elemento da una coda implementata tramite una lista, ma senza
+    estrazione.}
+\end{listing}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/Coda_Vuota_Lista.cpp"}
+	\caption{Implementazione di un metodo \LanguageName{C++} per determinare se
+    una coda implementata tramite una lista \`e vuota.}
+\end{listing}

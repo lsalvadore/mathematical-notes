@@ -1,0 +1,8 @@
+\section{Successioni di funzioni.}
+\label{AnalisiFunzionale_SuccessioniDiFunzioni}
+\begin{Definition}
+	Siano $(f_n)_{n \in \mathbb{N}}$ e $f$ funzioni tutte definite sugli stessi domini e codomini e tale che $\Cod{f}$ sia uno spazio topologico. $(f_n)_{n \in \mathbb{N}}$ \Define{converge puntualmente}[puntuale][convergenza] a $f$ quando $\ForAll{x \in \Dom{f}}{\lim_{n \rightarrow \infty} f_n(x) = f(x)}$.
+\end{Definition}
+\begin{Definition}
+	Siano $(f_n)_{n \in \mathbb{N}}$ e $f$ funzioni tutte definite sugli stessi domini e codomini e tale che $\Cod{f}$ sia uno spazio metrico con distanza $\Distance$. $(f_n)_{n \in \mathbb{N}}$ \Define{converge uniformemente}[uniformemente][convergenza] a $f$ quando $\ForAll{\epsilon > 0}{\Exists{N \in \mathbb{N}}{\ForAll{n \in \mathbb{N}}{\Implies{n \geq N}{\ForAll{x \in \Dom{f}}{\Distance(f_n(x),f(x)) < \epsilon}}}}}$.
+\end{Definition}

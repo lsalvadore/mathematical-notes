@@ -1,0 +1,41 @@
+\subsubsection{\English{Selection sort}.}
+\label{AlgoritmiEStruttureDiDati_SelectionSort}
+\begin{Definition}
+	Si chiama \Define{\English{selection sort}}[\English{selection}][\English{sort}] l'algoritmo seguente:
+	\begin{enumerate}
+		\item\label{SelectionSort_1} si ponga $I = 0$;
+		\item\label{SelectionSort_2} si scambi $e_I$ con $\min_{j \in n \SetMin I} e_j$;
+		\item\label{SelectionSort_3} si incrementi $I$ di $1$;
+		\item\label{SelectionSort_4} se $I < n - 1$ si torni al punto \ref{SelectionSort_2}, altrimenti l'algoritmo termina.
+	\end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/SelectionSort.cpp"}
+	\caption{\textit{Selection sort} implementato in \LanguageName{C++}.}
+\end{listing}
+\begin{Theorem}
+	Il \English{selection sort} risolve il problema dell'ordinamento.
+\end{Theorem}
+\Proof Osserviamo che ad ogni passaggio dal punto \ref{SelectionSort_2}
+dell'algoritmo di \English{selection sort} $I$ ha un valore diverso,
+incrementato di $1$ ad ogni passaggio: procediamo per induzione su $I$,
+dimostrando che per ogni $I \in n - 1$, $(e_i)_{i \in I + 1}$ sono ordinati al
+termine del punto \ref{SelectionSort_2}. Ne conseguir\`a il teorema nel caso
+$I = n - 1$.
+\par Fissato $I \in n - 1$, supponiamo vera l'affermazione per $I - 1$ e
+dimostriamola per $I$. Per ipotesi induttiva, gli $(e_i)_{i \in I}$ sono
+ordinati: occorre provare che
+$\ForAll{i \in I}{\min_{j \in n \SetMin I} e_j \geq e_i}$. Ma se per assurdo
+cos\`i non fosse, allora in uno dei passaggi precedenti
+-- diciamo l'$i$-esimo --,
+l'algoritmo non avrebbe scambiato $e_i$ con $\min_{j \in n \SetMin I} e_j$ come
+invece prescritto dalla definizione. \EndProof
+\begin{Theorem}
+	Il \English{selection sort} ha costo $\BigTheta{n^2}$.
+\end{Theorem}
+\Proof Il punto \ref{SelectionSort_2} calcola un minimo su $n - I$ elementi,
+problema che non \`e risolubile in meno di $n - I$ confronti (occorre
+confrontare almeno una volta ogni elemento con almeno un altro elemento). Il
+costo dell'algoritmo \`e dunque
+$\sum_{I = 0}^{n - 2} (n - I)
+= (n - 2)n - \frac{(n - 1)(n - 2)}{2} = \BigTheta{n^2}$. \EndProof

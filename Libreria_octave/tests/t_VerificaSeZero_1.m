@@ -1,0 +1,2 @@
+load A;
+VerificaSeZero(A)

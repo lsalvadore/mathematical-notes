@@ -1,0 +1,52 @@
+\section{Teoremi generali sugli anelli commutativi.}\label{TeoremiCommutativi}
+\begin{Theorem}
+\TheoremName{Teorema binomiale di Newton}[binomiale di Newton][teorema]
+	Sia $\Ring$ un anello commutativo e siano $a,b \in \Ring$.
+	Per ogni $n \in \mathbb{N}$ \`e verificata l'equazione
+	$(a + b)^n = \sum_{i = 0}^n \binom{n}{i} a^ib^{n - i}$.
+\end{Theorem}
+\Proof
+Per la distributivit\`a del prodotto rispetto alla somma,
+$(a + b)^n$ \`e uguale a una somma di prodotti di $n$ fattori,
+ciascuno dei quali pu\`o assumere il valore $a$ o $b$.
+Poich\'e esistono $\binom{n}{i}$ prodotti
+in cui esattamente $i$ fattori sono uguali ad $a$ e
+i restanti sono uguali a $b$, si ha la tesi.
+\EndProof
+\begin{Theorem}
+	Dato un anello $\Ring$ di caratteristica
+	$\Characteristic{\Ring}$ finita,
+	per ogni $a, b \in \Ring$,
+	abbiamo $(a + b)^\Prime = a^\Prime + b^\Prime$.
+\end{Theorem}
+\Proof
+Applichiamo la formula del binomio di Newton:
+$(a + b)^{\Characteristic{\Ring}} =
+\sum_{k = 0}^{\Characteristic{\Ring}}
+\binom{\Characteristic{\Ring}}{k} a^kb^{n - k}$.
+Per $k = 0$ e $k = \Characteristic{\Ring}$ otteniamo i termini
+$b^{\Characteristic{\Ring}}$ e $a^{\Characteristic{\Ring}}$ rispettivamente.
+Tutti gli altri termini hanno coefficiente divisible per
+$\Characteristic{\Ring}$, e dunque nullo.
+\EndProof
+\begin{Theorem}
+	Sia $\Ring$ un anello di caratteristica $\Prime \in \mathbb{Z}$ finita e
+	sia $\Frobenius: \Ring \rightarrow \Ring$ l'applicazione che ad
+	$x \in \Ring$ associa $x^{\Prime}$.
+	$\Frobenius$ \`e un endomorfismo.
+\end{Theorem}
+\Proof
+Per ogni $x,y \in \Ring$, abbiamo
+$\Frobenius(x + y) =
+(x + y)^{\Prime} =
+x^\Prime + y^\Prime =
+\Frobenius(x) + \Frobenius(y)$ e
+$\Frobenius(xy) =
+(xy)^\Prime =
+x^\Prime y^\Prime =
+\Frobenius(x)\Frobenius(y)$.
+\EndProof
+\begin{Definition}
+	L'endomorfismo $\Frobenius$ del teorema precedente si chiama
+	\Define{endomorfismo di Frobenius}[di Frobenius][endomorfismo].
+\end{Definition}

@@ -1,0 +1,233 @@
+\subsubsection{\English{Quick sort}.}
+\label{AlgoritmiEStruttureDiDati_QuickSort}
+\begin{Definition}
+	Si chiama
+  \Define{\English{quick sort}}
+  l'algoritmo seguente:
+  \begin{enumerate}
+    \item\label{QuickSort_1} se $n = 0$ o $n = 1$, allora l'algoritmo termina;
+    \item\label{QuickSort_2} si fissi un $P \in n$: chiamiamo
+      \Define{\Francais{pivot}}[nel \English{quick sort}][\Francais{pivot}]
+      l'elemento $e_P$;
+    \item\label{QuickSort_3} si scambino $e_P$ con $e_{n - 1}$;
+    \item\label{QuickSort_4} si ponga $I = 0$ e $J = n - 2$;
+    \item\label{QuickSort_5} se
+      $I \leq J$ e $e_I \leq e_{n - 1}$
+      si incrementi $I$ di $1$ e si torni al punto
+      \ref{QuickSort_5}
+    \item\label{QuickSort_6} se
+      $I \leq J$ e $e_J \geq e_{n - 1}$
+      si decrementi $J$ di $1$ e si torni al punto
+      \ref{QuickSort_6}
+    \item\label{QuickSort_7} se $I < J$ si scambino
+      $e_I$ e $e_J$;
+    \item\label{QuickSort_8} se $I \leq J$, allora vai al punto
+      \ref{QuickSort_5};
+    \item\label{QuickSort_9} si scambino
+      $e_I$ e $e_{n - 1}$;
+    \item\label{QuickSort_10} si ripeta l'intero algoritmo sulle successioni
+      $(e_i)_{i = 0}^{I - 1}$ e $(e_i)_{I + 1}^{n - 1}$: l'algoritmo termina.
+  \end{enumerate}
+\end{Definition}
+\begin{listing}
+	\insertcode{cpp}{"Algoritmi_e_strutture_di_dati/QuickSort.cpp"}
+	\caption{\textit{Quick sort} implementato in \LanguageName{C++}.}
+\end{listing}
+\begin{Theorem}
+	Il \English{quick sort} risolve il problema dell'ordinamento.
+\end{Theorem}
+\Proof Se $n = 0$ e $n = 1$ la tesi \`e immediata, altrimenti procediamo
+per induzione su $n$ assumendo la tesi vera per ogni $n < N$
+($N \in \mathbb{N} \SetMin 2$) e proviamola per $N$.
+\par Per induzione, \`e sufficiente provare che, dopo il passo
+\ref{QuickSort_9} tutti gli elementi della successione
+$(e_i)_{i = 0}^{I - 1}$
+sono minori o uguali di $e_I$ e che tutti gli elementi della successione
+$(e_i)_{I + 1}^{N - 1}$
+sono maggiori o uguali di $e_I$.
+\par Osserviamo che la variabile $I$ prende nel corso dell'algoritmo tutti i
+valori da $0$ al valore finale di $I$ in ordine crescente una e una sola volta.
+Inoltre,
+\begin{itemize}
+  \item se al termine del punto \ref{QuickSort_5} l'esecuzione ripete lo stesso
+    punto \ref{QuickSort_5}, allora $e_I \leq e_{N - 1}$;
+  \item altrimenti, se al punto \ref{QuickSort_7} $I < J$, allora abbiamo
+    $e_I \leq e_{N - 1}$ dopo lo scambio;
+  \item altrimenti, se al punto \ref{QuickSort_7} $I > J$, $I$ ha raggiunto il
+    suo valore finale;
+  \item altrimenti, se al punto \ref{QuickSort_7} $I = J$, poich\'e
+    simultaneamente
+    $e_I \leq e_{N - 1}$ (per il punto \ref{QuickSort_5}) e
+    $e_I \geq e_{N - 1}$ (per il punto \ref{QuickSort_6}), abbiamo
+    $e_I = e_{N - 1}$.
+\end{itemize}
+\par Dunque effettivamente  tutti gli elementi della successione
+$(e_i)_{i = 0}^{I - 1}$
+sono minori o uguali di $e_I$.
+\par Analogamente osserviamo che la variabile $J$ prende nel corso
+dell'algoritmo tutti i valori da $n - 2$ al valore finale di $I + 1$ in
+ordine decrescente una e una sola volta. Inoltre,
+\begin{itemize}
+  \item se al termine del punto \ref{QuickSort_6} l'esecuzione ripete lo stesso
+    punto \ref{QuickSort_6}, allora $e_J > e_{N - 1}$;
+  \item altrimenti, se al punto \ref{QuickSort_7} $I < J$, allora abbiamo
+    $e_J \geq e_{N - 1}$ dopo lo scambio;
+  \item altrimenti, se al punto \ref{QuickSort_7} $I > J$, $J$ ha raggiunto il
+    suo valore finale;
+  \item altrimenti, se al punto \ref{QuickSort_7} $I = J$, poich\'e
+    simultaneamente
+    $e_J \leq e_{N - 1}$ (per il punto \ref{QuickSort_5}) e
+    $e_J \geq e_{N - 1}$ (per il punto \ref{QuickSort_6}), abbiamo
+    $e_J = e_{N - 1}$.
+\end{itemize}
+\par Dunque effettivamente  tutti gli elementi della successione
+$(e_i)_{I + 1}^{N - 1}$
+sono maggiori o uguali di $e_I$. \EndProof
+\begin{Theorem}
+  \label{AlgoritmiEStruttureDiDati_CostoQuickSortDeterministico}
+	Il \English{quick sort} ha costo
+  \begin{itemize}
+    \item $\BigTheta{n^2}$ tempo al caso
+      pessimo;
+    \item $\BigO{n \log n}$ tempo al caso
+      ottimo.
+  \end{itemize}
+\end{Theorem}
+\Proof Se $n = 0$ o $n = 1$ il costo \`e esattamente $0$.
+\par Supponiamo $n \geq 2$ senza perdita di generalit\`a dato che
+siamo interessati ad un'analisi asintotica.
+\par Contiamo i confronti propri di ciascuna singola esecuzione dell'algoritmo:
+\begin{itemize}
+  \item nella chiamata iniziale abbiamo $n - 1$ confronti;
+  \item nelle due chiamate successive abbiamo
+      \begin{itemize}
+        \item da una parte $I - 1$ confronti se $I \geq 2$, altrimenti $0$;
+        \item dall'altra $n - 1 - I - 1 = n - I - 2$ confronti se
+          $n - 1 - I \geq 2$, cio\`e $I \leq n - 3$, altrimenti $0$;
+      \end{itemize}
+      dunque in ogni caso abbiamo $\BigO{n}$ confronti.
+\end{itemize}
+\par Ad ogni chiamata corrisponde la scelta di un \Francais{pivot},
+tutti i \Francais{pivot} sono necessariamente distinti e
+non possono essere scelti pi\`u di $n - 1$ \Francais{pivot}, dunque
+l'altezza dell'albero di ricorsione \`e al pi\`u $n - 1$, e quindi il costo
+\`e al pi\`u $(n - 1) \BigO{n} = \BigO{n^2}$.
+\par Ora, ricontiamo i confronti per l'intero algoritmo stavolta, denotanto
+$T(n)$ il costo dell'esecuzione dell'algoritmo al caso pessimo:
+\begin{itemize}
+  \item i passi \ref{QuickSort_5} e \ref{QuickSort_6} eseguono, in totale
+    $n - 1$ confronti;
+  \item al passo \ref{QuickSort_10} vengono effettuati al pi\`u
+    $T(I) + T(n - 1 - I)$ confronti.
+\end{itemize}
+\par Abbiamo dunque
+\[
+	T(n) \leq n - 1 + T(I) + T(n - 1 - I).
+\]
+\par Ora, supponiamo che come \Francais{pivot} sia scelto sempre il minimo:
+abbiamo
+\[
+	T(n) = n - 1 + T(n - 1).
+\]
+\par Ne deduciamo
+\begin{align*}
+  T(n)
+  &= \sum_{k = 0}^{n - 1} k,\\
+  &= \frac{n(n - 1)}{2},\\
+  &= \BigTheta{n^2}.
+\end{align*}
+\par Quindi al caso pessimo $T(n) = \BigTheta{n^2}$.
+\par Per il caso ottimo, osserviamo che l'albero di ricorsione contiene meno di
+$n$ nodi e che l'albero di $n$ nodi e di altezza minima possibile $h$
+verifica la condizione $2^h \leq n$ e dunque necessariamente $h \leq \log n$.
+Il costo dell'algoritmo sar\`a allora $\BigO{n \log n}$. \EndProof
+\begin{Definition}
+  Chiamiamo
+  \Define{\English{quick sort} aleatorio}[aleatorio][\English{quick sort}]
+  l'algoritmo di \English{quick sort} ottenuto scegliendo $P \in n$
+  al passo \ref{QuickSort_2} con probabilit\`a uniforme.
+\end{Definition}
+\begin{Theorem}
+  Il valore atteso del costo del \English{quick sort} aleatorio \`e
+  $\BigO{n \log n}$.
+\end{Theorem}
+\Proof Assumiamo $n \geq 2$, che non \`e restrittivo visto che siamo interessati
+ad un'analisi asintotica.
+\par Definiamo la successione $(f_r)_{r \in n}$ definita da
+$f_r = e_{\Permutation{r}}$
+dove
+$\Permutation \in \SymmetricGroup{n}$
+\`e la permutazione che riordina la successione $(e_i)_{i \in n}$ di partenza.
+\par Introduciamo per ogni $(i,j) \in n \times n$ la variabile aleatoria
+$\RandomVariable_{i,j}$ il cui valore \`e uguale al numero di volte in cui
+l'elemento $f_i$ \`e stato confrontato con l'elemento $f_j$.
+\par Osserviamo che i confronti espliciti avvengono solo ai passi
+\ref{QuickSort_5}
+e
+\ref{QuickSort_6}
+e in entrambi i casi uno dei due elementi \`e \Francais{pivot}.
+Inoltre, poich\'e il \Francais{pivot} \`e escluso dalle sottosuccessioni
+su cui viene riapplicato l'algoritmo al passo
+\ref{QuickSort_10}, ogni confronto tra due elementi avviene al massimo
+una volta.
+\par Dunque la variabile aleatoria
+$\RandomVariable
+= \sum_{\substack{(i,j) \in n \times n\\i < j}} \RandomVariable_{i,j}$
+\`e proprio il costo dell'esecuzione del \English{quick sort} aleatorio.
+\par Dati $(i,j) \in n \times n$ con $i < j$, la probabilit\`a che il confronto
+tra $f_i$ e $f_j$ avvenga equivale alla probabilit\`a che esso avvenga
+all'ultima chiamata dell'algoritmo che comprende entrambi gli elementi nella
+successione di ingresso. Inoltre, quest'ultima chiamata contiene
+necessariamente anche ogni $f_k$ con $k \in j \SetMin i$ poich\'e
+\begin{itemize}
+  \item o l'istanza \`e l'istanza iniziale e allora contiene tutti gli $f_k$ con
+    $k \in n$;
+  \item o l'istanza precedente ha definito un \Francais{pivot}, che \`e
+    necessariamente o pi\`u grande o pi\`u piccolo sia di $f_i$ che di $f_j$ e
+    dunque, per transitivit\`a, anche pi\`u grande o pi\`u piccolo di ogni $f_k$
+    con $k \in j \SetMin i$.
+\end{itemize}
+\par Abbiamo allora che la probabilit\`a in questione \`e al pi\`u di
+$\frac{2}{j - i + 1}$.
+\par Abbiamo infine
+\begin{align*}
+  \ExpectedValue{\RandomVariable}
+  &= \ExpectedValue{
+    \sum_{\substack{(i,j) \in n \times n\\i < j}} \RandomVariable_{i,j}},\\
+  &= \sum_{\substack{(i,j) \in n \times n\\i < j}}
+    \ExpectedValue{\RandomVariable_{i,j}},\\
+  &\leq \sum_{\substack{(i,j) \in n \times n\\i < j}}
+    \frac{2}{j - i + 1},\\
+  &< \sum_{\substack{(i,j) \in n \times n\\i < j}}
+    \frac{1}{j - i + 1},\\
+  &= \sum_{i = 0}^{n - 1} \sum_{k = 0}^{n - i}
+    \frac{1}{k},\\
+  &\leq n \sum_{k = 0}^{i - n + 2}
+    \frac{1}{k},\\
+  &= \BigO{n \log n}.\text{ \EndProof}
+\end{align*}
+\begin{Corollary}
+  Il costo medio del \English{quick sort} deterministico \`e
+  $\BigO{n \log n}$.
+\end{Corollary}
+%Dimostrazione vaga: da migliorare.
+\Proof Si consideri lo spazio $\SamplesSpace$ di tutte le successioni di
+lunghezza $n$, nel quale si ritengono uguali due successioni
+$(e_i)_{i \in n}$
+e
+$(f_i)_{i \in n}$
+tali che esista una permutazione
+$\Permutation \in \SymmetricGroup{n}$
+per cui
+$(e_{\Permutation(i)})_{i \in n}$
+e
+$(f_{\Permutation(i)})_{i \in n}$
+siano entrambe ordinate. Il costo medio si ottiene calcolando il valore
+atteso del costo dell'algoritmo considerando una distribuzione di probabilit\`a
+uniforme si $\SamplesSpace$. Tale distribuzione induce una scelta del
+\Francais{pivot} in ogni istanza dell'algoritmo con probabilit\`a uniforme
+su tutti gli elementi della sottosuccessione passata in ingresso all'istanza
+stessa, che \`e esattamente quanto previsto dal \English{quick sort} aleatorio.
+\par Dunque il costo medio del \English{quick sort} deterministico coincide col
+valore atteso del \English{quick sort} aleatorio e questo vale anche per
+un'analisi asintotica. \EndProof

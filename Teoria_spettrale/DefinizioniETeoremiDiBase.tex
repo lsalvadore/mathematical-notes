@@ -1,0 +1,407 @@
+\section{Autovettori e autovalori.}\label{AutovettoriEAutovalori}
+\begin{Definition}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriali $\LinearSpace$.
+  Se $\Eigenvector \in \LinearSpace \SetMin \lbrace 0 \rbrace$ \`e tale che per
+  $\Eigenvalue \in \Field$ opportuno abbiamo
+  \[
+    \LinearTransformation(\Eigenvector) = \Eigenvalue \Eigenvector,
+  \]
+  allora chiamiamo $\Eigenvalue$ \Define{autovalore} di
+  $\LinearTransformation$ e $\Eigenvector$ \Define{autovettore} di
+  $\LinearTransformation$ relativo a $\Eigenvalue$.
+  Chiamiamo inoltre
+  \Define{spettro}[di una trasformazione lineare][spettro]
+  di $\LinearTransformation$, denotato $\Spectrum{\LinearTransformation}$,
+  la classe di tutti gli autovalori di $\LinearTransformation$ e
+  \Define{raggio spettrale}[spettrale][raggio] di $\LinearTransformation$,
+  denotato $\SpectralRadius{\LinearTransformation}$, la quantit\`a
+  $\sup_{\Eigenvalue \in \Spectrum{\LinearTransformation}} \Eigenvalue$.
+\end{Definition}
+\begin{Definition}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriali $\LinearSpace$.
+  Se $\GeneralizedEigenvector \in \LinearSpace \SetMin \lbrace 0 \rbrace$ \`e
+  tale che per
+  $\Eigenvalue \in \Field$ e $m \in \mathbb{N}$ opportuno abbiamo
+  $(\LinearTransformation - \Eigenvalue \Identity)\GeneralizedEigenvector = 0$,
+  allora chiamiamo
+  $\GeneralizedEigenvector$
+  \Define{autovettore generalizzato}[generalizzato][autovettore] di
+  $\LinearTransformation$ relativo a $\Eigenvalue$ di
+  \Define{rango}[di un autovettore generalizzato][rango] $m$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriali $\LinearSpace$.
+  Un autovettore di $\LinearTransformation$ \`e un autovettore generalizzato
+  di $\LinearTransformation$ di rango $1$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale $\LinearSpace$ e sia
+  $\Eigenvalue \in \Field$ un autovalore di $\LinearTransformation$.
+  $\LinearSpace_\Eigenvalue
+    = \lbrace \Vector \in \LinearSpace | \LinearTransformation(\Vector)
+    = \Eigenvalue\Vector \rbrace$
+  \`e un sottospazio vettoriale di $\LinearSpace$.
+\end{Theorem}
+\Proof Abbiamo
+$\LinearSpace_\Eigenvalue
+  = \Kernel ( \LinearTransformation - \Eigenvalue )$. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, $\LinearSpace_\Eigenvalue$ si chiama
+\Define{autospazio} di $\Linear$ relativo a $\Eigenvalue$. Inoltre definiamo
+$\Dimension{\LinearSpace_\Eigenvalue}$
+\Define{molteplicit\`a geometrica}[geometrica di un autovalore][molteplicit\`a]
+di $\Eigenvalue$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale $\LinearSpace$.
+  $\Image{(\LinearTransformation - \Eigenvalue\Identity}$
+  \`e un sottospazio vettoriale invariante per $\LinearTransformation$.
+\end{Theorem}
+\Proof Siano
+\begin{itemize}
+  \item $\Vector \in \Image{(\LinearTransformation - \Eigenvalue\Identity}$;
+  \item $\VarVector \in \LinearSpace$ tale che
+    $(\LinearTransformation - \Eigenvalue\Identity)\VarVector = \Vector$.
+\end{itemize}
+\par Abbiamo
+\begin{align*}
+  \LinearTransformation\Vector
+  &=\LinearTransformation(\LinearTransformation - \Eigenvalue\Identity)\VarVector,\\
+  &= \LinearTransformation^2\VarVector -\Eigenvalue\VarVector,\\
+  &=(\LinearTransformation - \Eigenvalue\Identity)\LinearTransformation\VarVector.
+  \text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$.
+	Abbiamo
+  $\CharacteristicPolynomial(\lambda)
+    = \Determinant(\LinearTransformation - \lambda \Identity)
+    \in \RingAdjunction{\Field}{\lambda}$.
+  Inoltre $\PolynomialDegree{\CharacteristicPolynomial} = n$;
+\end{Theorem}
+\Proof Fissata una base $(\LinearBase_i)_{i \in n}$ di $\LinearSpace$, se $\Matrix \in \Field^{n \times n}$ rappresenta $\LinearTransformation$ rispetto a $(\LinearBase_i)_{i \in n}$, allora, posto $\VarMatrix = \Matrix - \lambda \Identity$, abbiamo $\CharacteristicPolynomial(\lambda) = \Determinant(\LinearTransformation - \lambda \Identity) = \Determinant(\VarMatrix) = \sum_{\Permutation \in \SymmetricGroup{n}} \PermutationSign{\Permutation} \prod_{i \in n} \VarMatrix_{\Permutation(i),i} \in \RingAdjunction{\Field}{\lambda}$.
+\par Abbiamo $\LeadingTerm{\CharacteristicPolynomial} = \LeadingTerm{\prod_{i \in n} (\Matrix_{i,i} - \lambda)} = (- 1)^n \lambda^n$ e quindi $\PolynomialDegree{\CharacteristicPolynomial} = n$. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, chiamiamo $\CharacteristicPolynomial(\lambda) = \Determinant(\LinearTransformation - \lambda \Identity)$ \Define{polinomio caratteristico}[caratteristico di una trasformazione lineare][polinomio].
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di dimensione $n = \Dimension{\LinearSpace}$.
+	Gli autovalori di $\LinearTransformation$ sono tutte e sole le radici del polinomio caratteristico $\CharacteristicPolynomial(\lambda)$.
+\end{Theorem}
+\Proof $\lambda \in \Field$ \`e autovalore di $\LinearTransformation$ se e solo se, per opportuno $\lambda \in \NotZero{\LinearSpace}$, abbiamo $\LinearTransformation \Eigenvector = \lambda \Eigenvector$, equivalente a $(\LinearTransformation - \lambda \Identity) \Eigenvector = 0$ e dunque a $\Kernel(\LinearTransformation - \lambda \Identity) \neq \lbrace 0 \rbrace$, condizione verificata se e solo se $\Determinant(\LinearTransformation - \lambda \Identity) = 0$. \EndProof
+\begin{Corollary}
+	Sia
+  $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$
+  un endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$, con $\Field$ campo algebricamente
+  chiuso.
+  $\Spectrum{\LinearTransformation}$ \`e un insieme finito di cardinalit\`a non
+  maggiore di $n$.
+\end{Corollary}
+\Proof Segue direttamente dall'ipotesi che $\Field$ sia algebricamente chiuso.
+\EndProof
+\begin{Definition}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$.
+	Sia $\Eigenvalue \in \Spectrum{\LinearTransformation}$, chiamiamo
+  \Define{molteplicit\`a algebrica}[algebrica di un autovalore][molteplicit\`a]
+  la molteplicit\`a di $\Eigenvalue$ come radice del polinomio caratteristico di
+  $\LinearTransformation$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$ e sia
+  $\Eigenvalue \in \Spectrum{\LinearTransformation}$.
+  La molteplicit\`a geometrica di $\Eigenvalue$ non \`e maggiore della sua 
+  molteplicit\`a algebrica.
+\end{Theorem}
+\Proof Sia $\Eigenspace$ l'autospazio relativo a $\Eigenvalue$: esso \`e
+invariante rispetto a $\LinearTransformation - \Eigenvalue\Identity$,
+essendone il nucleo.
+\par Il polinomio caratteristico di
+$\Restricted{\LinearTransformation}{\Eigenspace}$
+\`e
+$\Determinant
+(\Restricted{\LinearTransformation}{\Eigenspace} - \Eigenvalue\Identity)
+= \Determinant(\Restricted{\LinearTransformation - \Eigenvalue\Identity}
+{\Eigenspace)}$
+e dunque
+$\Determinant
+(\Restricted{\LinearTransformation}{\Eigenspace} - \Eigenvalue\Identity)
+| \Determinant(\LinearTransformation - \Eigenvalue\Identity)$.
+\par La molteplicit\`a geometrica di $\Eigenvalue$ \`e
+$\LinearDimension{\Eigenspace}$. Inoltre
+$\Restricted{\LinearTransformation}{\Eigenspace} = \Eigenvalue\Identity$
+e dunque il polinomio caratteristico di
+$\Restricted{\LinearTransformation}{\Eigenspace}$
+\`e
+$\CharacteristicPolynomial(x)
+= (\Eigenvalue - x)^{\LinearDimension{\Eigenspace}}$:
+pertanto la molteplicit\`a algebrica di $\Eigenvalue$ per
+$\LinearTransformation$ \`e almeno $\LinearDimension{\Eigenspace}$.
+\EndProof
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$ con $\Field$ campo algebricamente
+  chiuso. Allora $\LinearTransformation$ ammette una base
+  $(\GeneralizedEigenvector_k)_{k \in n}$ tale che
+  \begin{itemize}
+    \item per ogni $k \in n$, $\GeneralizedEigenvector_k$ \`e un autovettore
+      generalizzato;
+    \item per ogni autovalore $\Eigenvalue \in \Spectrum{\LinearTransformation}$
+      $(\GeneralizedEigenvector_k)_{k\in n}$ contiene tanti autovettori relativi
+      a $\Eigenvalue$ quanta \`e la molteplicit\`a geometrica di $\Eigenvalue$;
+    \item per $k, q \in n$ tali che
+      \begin{itemize}
+        \item $\GeneralizedEigenvector_k$ e $\GeneralizedEigenvector_q$
+              sono autovettori;
+        \item per ogni $l \in q \SetMin (k + 1)$, $\GeneralizedEigenvector_l$ non
+              \`e un autovettore;
+      \end{itemize}
+      abbiamo, per ogni $l \in q \SetMin (k +  1)$,
+      $(\LinearTransformation - \Eigenvalue \Identity)\GeneralizedEigenvector_l
+      = \GeneralizedEigenvector_{l - 1}$.
+  \end{itemize}
+  La matrice che rappresenta $\LinearTransformation$ rispetto a questa base ha
+  la forma
+  \[
+    J =
+    \lmatrix
+      \begin{array}{cccc}
+        J_0 &     &         &\\
+            & J_1 &         &\\
+            &     & \ddots  &\\
+            &     &         & J_s
+      \end{array}
+    \rmatrix,
+  \]
+  dove $s$ \`e la somma delle molteplicit\`a geometriche degli autovalori di
+  $\LinearTransformation$ e, per ogni $k \in s + 1$, abbiamo
+  \[
+    J_k =
+    \lmatrix
+      \begin{array}{cccc}
+        \Eigenvalue & 1       &             &\\
+                    & \ddots  & \ddots      &\\
+                    &         & \Eigenvalue & 1\\
+                    &         &             & \Eigenvalue
+      \end{array}
+    \rmatrix
+  \]
+  per qualche $\Eigenvalue \in \Spectrum{\LinearTransformation}$.
+\end{Theorem}
+\Proof Procediamo per induzione su $\LinearDimension{\LinearSpace}$. Il caso
+$\LinearDimension{\LinearSpace} = 1$ \`e immediato. Supponiamo dunque il teorema
+provato per ogni $N < n$ con $N \in n \in \mathbb{N} \SetMin \lbrace 1 \rbrace$
+e dimostriamo il caso $\LinearDimension{\LinearSpace} = n$.
+\par Sia $\Eigenvalue \in \Spectrum{\LinearTransformation}$.
+\par Lo spazio
+$\Image{(\LinearTransformation - \Eigenvalue\Identity)}$
+\`e invariante per $\LinearTransformation$ e, poich\'e $\Eigenvalue$ \`e
+autovalore,
+posto
+$m = \LinearDimension{(\Image{(\LinearTransformation - \Eigenvalue\Identity)}}$,
+abbiamo
+$m =
+\LinearDimension{\LinearSpace} -
+\LinearDimension{(\Kernel{(\LinearTransformation - \Eigenvalue\Identity)})} < n$.
+Dunque, per ipotesi induttiva, esiste una base
+$(\GeneralizedEigenvector_k)_{k \in m}$
+di
+$\Image{(\LinearTransformation - \Eigenvalue\Identity)}$
+che verifica le ipotesi del teorema.
+\par Sia ora
+$s = \LinearDimension{(\Image{(\LinearTransformation - \Eigenvalue\Identity)}
+\cap \Kernel{(\LinearTransformation - \Eigenvalue\Identity)})}$.
+\par Necessariamente,
+$(\GeneralizedEigenvector_k)_{k \in m}$
+contiene $s$ autovettori di $\LinearTransformation$ a cui corrispondono
+$s$ catene di autovettori generalizzati che si trasformano l'uno nell'altro
+tramite l'applicazione $\LinearTransformation - \Eigenvalue\Identity$:
+definiamo i vettori
+$(\GeneralizedEigenvector_k)_{k \in (m + s) \SetMin m}$,
+controimmagini tramite
+$\LinearTransformation - \Eigenvalue\Identity$ dell'autovettore generalizzato
+inziale di ogni catena. Dato che gli autovettori generalizzati
+iniziali sono linearmente indipendenti, devono esserlo anche le loro
+controimmagini; inoltre, tali controimmagini sono essi stessi autovettori
+generalizzati e, dato che
+$(\GeneralizedEigenvector_k)_{k \in m}$
+\`e una base di
+$\Image{(\LinearTransformation - \Eigenvalue\Identity)}$,
+essi non appartengono a 
+$\Image{(\LinearTransformation - \Eigenvalue\Identity)}$.
+\par Poniamo infine
+$(\GeneralizedEigenvector_k)_{k \in n \SetMin (m + s)}$
+autovettori linearmente indipendenti dell'autospazio
+$\Kernel{(\LinearTransformation - \Eigenvalue\Identity)}$
+che non giacciono in
+$\Image{(\LinearTransformation - \Eigenvalue\Identity)}
+\cap \Kernel{(\LinearTransformation - \Eigenvalue\Identity)}$.
+$(\GeneralizedEigenvector_k)_{k \in n \SetMin (m + s)}$
+sono indipendenti da
+$(\GeneralizedEigenvector_k)_{k \in m}$
+perch\'e nessuno di essi appartiene a 
+$\Image{(\LinearTransformation - \Eigenvalue\Identity)}$;
+sono inoltre indipendenti anche da
+$(\GeneralizedEigenvector_k)_{k \in (m + s) \SetMin m}$
+perch\'e nessuno di questi ultimi vettori \`e autovettore di
+$\LinearTransformation$ per $\Eigenvalue$.
+\par $(\GeneralizedEigenvector_k)_{k \in n}$ \`e dunque una base di
+$\LinearTransformation$ interamente costituita da autovettori generalizzati:
+gli autovettori di $\LinearTransformation$ relativi a $\Eigenvalue$ sono
+$s + (n - (m + s)) = n - m =
+\LinearDimension{(\Kernel{(\LinearTransformation - \Eigenvalue\Identity)})}$.
+\`e sufficiente riordinarla per ottenere una base con le propriet\`a
+dell'enunciato.
+MANCA LA PARTE SULLA MOLTEPLICITA GEOMETRICA DEGLI AUTOVALORI
+\par La parte matriciale del teorema segue direttamente per induzione.
+\begin{Definition}
+  Con le notazioni del teorema precedente, diciamo che
+  $(\GeneralizedEigenvector_k)_{k \in n}$ \`e una
+  \Define{base di Jordan}[di Jordan][base]; inoltre chiamiamo
+  \Define{catena di Jordan}[di Jordan][catena]
+  ogni sottosuccessione
+  $(\GeneralizedEigenvector_k)_{k = a}^b$ ($a, b \in n$) tale che
+  \begin{itemize}
+    \item $a = 0$ o
+      $\LinearTransformation \GeneralizedEigenvector_{a - 1}
+        \neq \GeneralizedEigenvector_a$;
+    \item $\ForAll{k \in (b + 1) \SetMin a}
+      {\LinearTransformation \GeneralizedEigenvector_k
+        = \GeneralizedEigenvector_{k + 1}}$.
+  \end{itemize}
+  \par Si dice che la matrice $J$
+  \`e in
+  \Define{forma canonica di Jordan}[canonica di Jordan][forma]
+  \footnote{Altri testi definiscono la forma canonica di Jordan ponendo la
+  diagonale degli $1$ sotto la diagonale principale anzich\'e sopra o
+  ponendo condizione sull'ordinamento degli autovalori sulla diagonale. Le
+  definizioni si equivalgono tutte a meno di premutazioni degli elementi
+  della base $(\GeneralizedEigenvector_k)_{k \in n}$.} e le sottomatrici
+  $(J_k)_{k \in s + 1}$ si chiamano
+  \Define{blocchi di Jordan}[di Jordan][blocco].
+\end{Definition}
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$ con $\Field$ campo algebricamente
+  chiuso. Allora $\LinearTransformation$ \`e rappresentato da un'unica matrice
+  in forma canonica di Jordan a meno di permutazione dei blocchi di Jordan ed
+  essa \`e tale che per ogni autovalore
+  $\Eigenvalue \in \Spectrum{\LinearTransformation}$ esistono esattamente
+  tanti blocchi di Jordan con $\Eigenvalue$ sulla diagonale quanta \`e la
+  molteplicit\`a geometrica di $\Eigenvalue$.
+\end{Theorem}
+\Proof Il teorema precedente dimostra l'esistenza.
+\par Supponendo $J$ sia una forma canonica di Jordan di $\LinearTransformation$.
+E' chiaro che le colonne che contengono solo l'autovalore corrispondono ad
+autovettori.
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$.
+  $\PolynomialIdeal
+    = \lbrace \Polynomial \in \RingAdjunction{\Field}{x}
+    | \Polynomial(\LinearTransformation) = 0$
+  \`e un ideale principale.
+\end{Theorem}
+\begin{Definition}
+  Con le notazioni del teorema precedente, il generatore monico
+  $\LinearMinimalPolynomial$ dell'ideale $\PolynomialIdeal$ si chiama
+  \Define{polinomio minimo}[minimo di una trasformazione lineare][polinomio]
+  di $\LinearTransformation$.
+\end{Definition}
+\begin{Theorem}
+  \TheoremName{Teorema di Hamilton-Cayley}[di Hamilton-Cayley][teorema]
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo del $\Field$-spazio vettoriale finito $\LinearSpace$ di
+  dimensione $n = \Dimension{\LinearSpace}$. Il polinomio caratteristico
+  $\CharacteristicPolynomial$ di $\LinearTransformation$ valutato in
+  $\LinearTransformation$ \`e nullo:
+  $\CharacteristicPolynomial(\LinearTransformation) = 0$.
+\end{Theorem}
+\begin{Definition}
+  Sia $\Matrix \in \Field^{n \times n}$ ($n \in \mathbb{N}$).
+  Chiamiamo
+  \Define{autovettore destro}[destro][autovettore]
+  di $\Matrix$ un autovettore dell'endomorfismo lineare
+  $\Vector \mapsto \Matrix\Vector$ di $\Field^n$.
+  Chiamiamo
+  \Define{autovettore sinistro}[sinistro][autovettore]
+  di $\Matrix$ un autovettore dell'endomorfismo lineare
+  $\HermitianTransposed{\Vector} \mapsto \HermitianTransposed{\Vector}\Matrix$
+  di $\Dual{\Field^n}$.
+\end{Definition}
+\begin{Theorem}
+  Sia $\Matrix \in \Field^{n \times n}$ ($n \in \mathbb{N}$).
+  $\Eigenvector \in \Field^n$ \`e
+  \begin{itemize}
+    \item autovettore destro di $\Matrix$ per $\Eigenvalue$ se e solo se
+      $\Matrix\Eigenvector = \Eigenvalue\Eigenvector$;
+    \item autovettore destro di $\Matrix$ per $\Eigenvalue$ se e solo se
+      $\HermitianTransposed{\Vector} \Matrix
+      = \Eigenvalue\HermitianTransposed{\Vector}$.
+  \end{itemize}
+\end{Theorem}
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo lineare. Abbiamo
+  $\Spectrum{\LinearTransformation} =
+  \Spectrum{\Transposed{\LinearTransformation}}$, inoltre ogni autovalore
+  $\Eigenvalue \in \Spectrum{\LinearTransformation}$ ha la stessa molteplicit\`a
+  algebrica sia come autovalore di $\LinearTransformation$ che come autovalore
+  di $\Transposed{\LinearTransformation}$.
+\end{Theorem}
+\Proof Segue direttamente dal fatto che gli autovalori sono le radici del
+polinomio caratteristico e che il determinante di un'applicazione \`e uguale
+al determinante dell'applicazione trasposta.
+\EndProof
+\begin{Theorem}
+	Sia $\LinearTransformation: \LinearSpace \rightarrow \LinearSpace$ un
+  endomorfismo nilpotente del $\Field$-spazio vettoriale $\LinearSpace$.
+  Abbiamo $\Spectrum{\LinearTransformation} = \lbrace 0 \rbrace$.
+\end{Theorem}
+\Proof Se $n \in \NotZero{\mathbb{N}}$ \`e tale che
+$\LinearTransformation^n = 0$ e $\Eigenvalue$ \`e un autovalore di
+$\LinearTransformation$ corrispondente ad un autovettore $\Eigenvector$,
+allora abbiamo
+$\LinearTransformation^n \Eigenvector = \Eigenvalue^n \Eigenvector$,
+ma anche $\LinearTransformation^n \Eigenvector = 0$, da cui
+$\Eigenvalue^n = 0$ e quindi $\Eigenvalue = 0$. \EndProof
+\begin{Theorem}
+  Fissato un campo $\Field$, siano
+  \begin{itemize}
+    \item siano $n, p \in \NotZero{\mathbb{N}}$;
+    \item $A \in \Field^{n \times n}$;
+    \item $B \in \Field^{p \times p}$;
+    \item $\Eigenvalue \in \Spectrum{A}$;
+    \item $\VarEigenvalue \in \Spectrum{B}$;
+    \item $\Vector \in \NotZero{\Field^n}$ tale che
+      $A\Vector = \Eigenvalue\Vector$;
+    \item $\VarVector \in \NotZero{\Field^n}$ tale che
+      $B\VarVector = \VarEigenvalue\VarVector$.
+  \end{itemize}
+  Abbiamo
+  $(A \KroneckerProduct B)(\Vector \KroneckerProduct \VarVector)
+  = \Eigenvalue\VarEigenvalue (\Vector \KroneckerProduct \VarVector)$.
+\end{Theorem}
+\Proof Abbiamo
+\begin{align*}
+  (A \KroneckerProduct B)(\Vector \KroneckerProduct \VarVector)
+  &= A\Vector \KroneckerProduct B\VarVector,\\
+  &= \Eigenvalue\Vector \KroneckerProduct \VarEigenvalue\VarVector,\\
+  &= \Eigenvalue\VarEigenvalue (\Vector \KroneckerProduct \VarVector).
+  \text{ \EndProof}
+\end{align*}

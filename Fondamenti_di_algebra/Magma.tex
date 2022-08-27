@@ -1,0 +1,218 @@
+\section{Magma e monoidi.}\label{Magma}
+\begin{Definition}
+	Un \Definition{magma} \`e il dato di
+	\begin{itemize}
+		\item una classe $\Magma$;
+		\item un'operazione binaria interna $\cdot$.
+	\end{itemize}
+	Esso si dice inoltre
+	\begin{itemize}
+		\item \Define{moltiplicativo}[moltiplicativo][magma] quando l'operazione \`e denotata moltiplicativamente;
+		\item \Define{additivo}[additivo][magma] quando l'operazione \`e denotata additivamente;
+		\item \Define{assiociativo}[assiociativo][magma] quando l'operazione \`e associativa;
+		\item \Define{commutativo}[commutativo][magma] quando l'operazione \`e commutativa;
+		\item \Define{unitario}[unitario][magma] quando l'operazione ammette elemento neutro.
+	\end{itemize}
+	Infine chiamiamo \Define{monoide} un magma associativo e unitario.
+	\par Un magma viene sempre denotato con lo stesso simbolo della classe che lo definisce, quando ci\`o non genera confusione.
+\end{Definition}
+\begin{Definition}
+	Dati due magma $\Magma_1$, $\Magma_2$, un \Define{omomorfismo di magma}[di magma][omomorfismo] \`e un'applicazione $\Homomorphism: \Magma_1 \rightarrow \Magma_2$ tale che per ogni $x, y \in \Magma_1$ si abbia $\Homomorphism(xy) = \Homomorphism(x)\Homomorphism(y)$. La dicitura ``di magma'', utile per future distinzioni, viene spesso omessa quando questo non porta confusione, cos\`i come future analoghe diciture.
+	\par Quando un'applicazione \`e un omomorfismo di magma si dice anche che essa \`e
+	\begin{item}
+		\item \Define{moltiplicativa}[moltiplicativa][applicazione] quando dominio e codominio sono due magma moltiplicativi;
+		\item \Define{additiva}[additiva][applicazione] quando dominio e codominio sono due magma additivi.
+	\end{item}
+\end{Definition}
+\begin{Theorem}
+	Gli omomorfismi di magma costituiscono una categoria.
+\end{Theorem}
+\Proof Poich\'e gli omomorfismi sono applicazioni, le quali come sappiamo costituiscono la categoria $\CatClass$, \`e sufficiente provare che la composizione di due omomorfismi \`e un omomorfismo. Siano dunque $\Homomorphism_1$ e $\Homomorphism_2$ due omomorfismi e siano $x, y \in \Dom{\Homomorphism_1}$. Abbiamo $(\Homomorphism_2 \circ \Homomorphism_1)(xy) = \Homomorphism_2(\Homomorphism_1(xy)) = \Homomorphism_2(\Homomorphism_1(x) \Homomorphism_1(y)) = \Homomorphism_2(\Homomorphism_1(x)) \Homomorphism_2(\Homomorphism_1(y)) = (\Homomorphism_2 \circ \Homomorphism_1)(x) (\Homomorphism_2 \circ \Homomorphism_1)(y)$. \EndProof
+\begin{Corollary}
+	Costituiscono una categoria
+	\begin{itemize}
+		\item gli omomorfismi tra magma associativi;
+		\item gli omomorfismi tra magma commutativi.
+	\end{itemize}
+\end{Corollary}
+\Proof Conseguenza immediata del teorema precedente. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{categoria dei magma}[dei magma][categoria] la categoria le cui frecce sono tutti gli omomorfismi di magma, d'ora in poi denotata $\CatMagma$. \`E inoltre definito il \Define{funtore dimenticante canonico dei magma}[dimenticante canonico dei magma] $\Forgetful: \CatMagma \rightarrow \CatClass$ che ad ogni magma associa la classe che lo definisce.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo
+	\begin{itemize}
+		\item \Define{categoria dei magma assiociativi}[dei magma associativi][categoria] la categoria le cui frecce sono tutti gli omomorfismi tra magma associativi, d'ora in poi denotata $\CatMagmaAss$;
+		\item \Define{categoria dei magma commutativi}[dei magma commutativi][categoria] la categoria le cui frecce sono tutti gli omomorfismi tra magma commutativi, d'ora in poi denotata $\CatMagmaComm$.
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Dati due magma unitari $\Magma_1$, $\Magma_2$, un \Define{omomorfismo di magma unitari}[di magma unitari][omomorfismo] o \Define{omomorfismo unitario}[unitario][omomorfismo] \`e un omomorfismo $\UnitaryHomomorphism: \Magma_1 \rightarrow \Magma_2$ tale che $\UnitaryHomomorphism(1) = 1$.
+\end{Definition}
+\par Salvo quando diversamente specificato, un omomorfismo unitario sar\`a sempre supposto unitario.
+\begin{Theorem}
+	Gli omomorfismi di magma unitari costituiscono una categoria.
+\end{Theorem}
+\Proof Basta verificare che la composizione di due omomorfismi unitari $\UnitaryHomomorphism_1$ e $\UnitaryHomomorphism_2$ qualsiasi \`e un omomorfismo unitario. Sappiamo gi\`a che la composizione di omomorfismi \`e un omomorfismo. Abbiamo $(\UnitaryHomomorphism_2 \circ \UnitaryHomomorphism_1)(1) = \UnitaryHomomorphism_2(\UnitaryHomomorphism_1(1)) = \UnitaryHomomorphism_2(1) = 1$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{categoria dei magma unitari}[dei magma unitari][categoria] la categoria le cui frecce sono tutti gli omomorfismi di magma unitari, d'ora in poi denotata $\CatMagmaUn$.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{omomorfismo di monoidi} un omomorfismo unitario tra monoidi.
+\end{Definition}
+\begin{Theorem}
+	Gli omomorfismi di monoidi costituiscono una categoria.
+\end{Theorem}
+\Proof Si tratta della categoria $\CatMagmaAss \cap \CatMagmaUn$. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{categoria dei monoidi}[dei monoidi][categoria] la categoria le cui frecce sono tutti gli omomorfismi di monoidi, d'ora in poi denotata $\CatMonoid$.
+\end{Definition}
+\begin{Definition}
+	Sia $(\Magma_i)_{i \in I}$ una famiglia di magma. Diciamo che i magma della famiglia sono \Define{compatibili}[compatibili][magma] quando, per ogni coppia $x, y \in \bigcap_{i \in I} \Magma_i$ si ha che $xy$ \`e lo stesso elemento sia secondo l'operazione definita in tutti i $\Magma_i$.
+\end{Definition}
+\begin{Theorem}
+	L'inclusione canonica di un magma in un altro \`e un omomorfismo. Inoltre questo omomorfismo \`e unitario se i magma sono unitari.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Sia $(\Magma_i)_{i \in I}$ una famiglia di magma compatibili. La classe $\bigcap_{i \in I} \Magma_i$, munita della struttura di magma indotta da ciascuno dei $\Magma_i$ \`e un sottomagma di tutti i $\Magma_i$.
+\end{Theorem}
+\Proof Immediata dalle definizioni. \EndProof
+\begin{Definition}
+	Dato un magma $\Magma$, una relazione d'equivalenza $\Equivalence$ si dice \Define{compatibile}[compatibile][relazione d'equivalenza] con la struttura di magma di $\Magma$ quando $\Equivalence$ \`e compatibile con l'operazione di $\Magma$.
+\end{Definition}
+\begin{Theorem}
+	Siano dati un magma $\Magma$ e una relazione d'equivalenza $\Equivalence$ compatibile con la struttura di magma di $\Magma$. Esiste il magma quoziente $\Quotient{\Magma}{\Equivalence}$.
+\end{Theorem}
+\Proof Si tratta di dotare la classe $\Quotient{\Magma}{\Equivalence}$ di un'operazione binaria interna e dimostrare che la proiezione sul quoziente $\Projection: \Magma \rightarrow \Quotient{\Magma}{\Equivalence}$ \`e un omomorfismo.
+\par Per la compatibilit\`a di $\Equivalence$ con la struttura di magma di $\Magma$, possiamo definire l'operazione binaria interna nel modo seguente: se $x, y \in \Magma$, allora $\EquivalenceClass{x}\EquivalenceClass{y} = \EquivalenceClass{xy}$. A questo punto segue direttamente per costruzione che $\Projection$ \`e un omomorfismo. \EndProof
+\begin{Corollary}
+	Se $\Magma$ \`e un magma associativo, allora ogni suo quoziente \`e anch'esso associativo.
+\end{Corollary}
+\Proof La dimostrazione del teorema precedente pu\`o essere ripetuta identicamente in $\CatMagmaAss$ anzich\'e in $\CatMagma$. \EndProof
+\begin{Theorem}
+	Siano dati un magma $\UnitaryMagma$ unitario e una relazione d'equivalenza $\Equivalence$ compatibile con la struttura di magma di $\Magma$. Il magma quoziente $\Quotient{\UnitaryMagma}{\Equivalence}$ \`e unitario.
+\end{Theorem}
+\Proof Basta provare che l'omomorfismo di proiezione sul quoziente $\Projection: \UnitaryMagma \rightarrow \Quotient{\UnitaryMagma}{\Equivalence}$ \`e unitario.
+\par Proviamo che $\Projection{1}$ \`e l'elemento neutro di $\Quotient{\UnitaryMagma}{\Equivalence}$. Sia $\xi \in \Quotient{\UnitaryMagma}{\Equivalence}$: esiste $x \in \UnitaryMagma$ tale che $x \in \xi$. Abbiamo $\xi\Projection{1} = \Projection{x}\Projection{1} = \Projection{x \cdot 1} = \Projection{x} = \xi$ e, analogamente, $\Projection{1}\xi = \xi$. \EndProof
+\begin{Corollary}
+	Siano dati un monoide $\Monoid$ e una relazione d'equivalenza $\Equivalence$ compatibile con la struttura di monoide di $\Monoid$. Esiste il monoide quoziente $\Quotient{\Monoid}{\Equivalence}$.
+\end{Corollary}
+\Proof I teoremi precedenti provano che il magma quoziente $\Quotient{\Monoid}{\Equivalence}$ \`e un monoide. \EndProof
+\begin{Theorem}
+	Sia data una famiglia di magma $(\Magma_i)_{i \in I}$. Esiste il magma prodotto $\DirectProduct_{i \in I} \Magma_i$.
+\end{Theorem}
+\Proof Si tratta di dotare la classe $\DirectProduct_{i \in I} \Magma_i$ di un'operazione binaria interna e dimostrare che, per ogni $i \in I$, la proiezione sul fattore $i$ \`e un omomorfismo.
+\par Dati $(x_i)_{i \in I}, (y_i)_{i \in I} \in \DirectProduct_{i \in I} \Magma_i$, definiamo $(x_i)_{i \in I}(y_i)_{i \in I} = (x_iy_i)_{i \in I}$. A questo punto segue direttamente per costruzione che le proiezioni sui fattori sono omomorfismi. \EndProof
+\begin{Corollary}
+	Se $(\Magma_i)_{i \in I}$ \`e una famiglia di magma tutti associativi, allora il loro prodotto \`e associativo.
+\end{Corollary}
+\Proof La dimostrazione del teorema precedente pu\`o essere ripetuta identicamente in $\CatMagmaAss$ anzich\'e in $\CatMagma$. \EndProof
+\begin{Theorem}
+	Sia data una famiglia di magma unitari $(\UnitaryMagma_i)_{i \in I}$. Il magma prodotto $\DirectProduct_{i \in I} \UnitaryMagma_i$ \`e unitario.
+\end{Theorem}
+\Proof Basta provare che, per ogni $i \in I$, la proieione sul fattore $i$ \`e unitaria.
+\par Ci\`o segue immediatamente osservando che l'elemento neutro di $\DirectProduct_{i \in I} \Magma_i$ \`e $(1)_{i \in I}$. \EndProof
+\begin{Corollary}
+	Sia data una famiglia di monoidi $(\Monoid_i)_{i \in I}$. Esiste il monoide prodotto $\DirectProduct_{i \in I} \Monoid_i$.
+\end{Corollary}
+\Proof I teoremi precedenti provano che il magma prodotto $\DirectProduct_{i \in I} \Monoid_i$ \`e un monoide. \EndProof
+\begin{Definition}
+	Sia data una famiglia di magma unitari $(\UnitaryMagma_i)_{i \in I}$. Dato un qualsiasi elemento $(x_i)_{i \in I} \in \DirectProduct_{i \in I} \UnitaryMagma_i$ diciamo che esso ha \Define{supporto finito}[finito][supporto] se la sottoclasse $J = \lbrace j \in I | x_j \neq 1 \rbrace$ \`e una classe finita.
+\end{Definition}
+\begin{Theorem}
+	Sia data una famiglia di magma unitari $(\UnitaryMagma_i)_{i \in I}$. Esiste il magma unitario somma $\DirectSum_{i \in I} \UnitaryMagma_i$.
+\end{Theorem}
+\Proof Definiamo $\DirectSum_{i \in I} \Magma_i$ come il sottomagma il cui sostegno \`e la classe di tutti gli elementi a supporto finito di $\DirectProduct_{i \in I} \Magma_i$. Si verifica facilmente che per, ogni $i \in I$, l'applicazione $\Injection_i: \Magma_i \rightarrow \DirectSum_{i \in I} \Magma_i$ che a $x \in \Magma_i$ associa $(y_j)_{j \in I}$, dove $y_j = \begin{cases} x\text{, se }i = j,\\ 1,\text{ altrimenti}.\end{cases}$ \`e un'immersione. \EndProof
+\begin{Corollary}
+	Se $(\Monoid_i)_{i \in I}$ \`e una famiglia di monoidi, allora la loro somma \`e un monoide.
+\end{Corollary}
+\Proof La dimostrazione del teorema precedente pu\`o essere ripetuta identicamente in $\CatMonoid$ anzich\'e in $\CatMagmaUn$. \EndProof
+\begin{Theorem}
+	Sia $\Homomorphism: \Magma_1 \rightarrow \Magma_2$ un omomorfismo tra i magma $\Magma_1$ e $\Magma_2$. Sono vere le seguenti affermazioni:
+	\begin{itemize}
+		\item $\Image{\Homomorphism}$ \`e un magma;
+		\item se $\Magma_1$ \`e associativo, allora $\Image{\Homomorphism}$ \`e associativo;
+		\item se $\Magma_1$ \`e commutativo, allora $\Image{\Homomorphism}$ \`e commutativo;
+		\item se $\Magma_1$ \`e unitario, allora $\Image{\Homomorphism}$ \`e unitario;
+		\item se $\Magma_1$ \`e un monoide, allora $\Image{\Homomorphism}$ \`e un monoide.
+	\end{itemize}
+\end{Theorem}
+\Proof La prima affermazione segue direttamente dalle definizioni.
+\par Supponiamo $\Magma_1$ associativo. Per ogni $x,y,z \in \Magma_1$, abbiamo $(\Homomorphism(x)\Homomorphism(y))\Homomorphism(z) = \Homomorphism(xy)\Homomorphism(z) = \Homomorphism((xy)z) = \Homomorphism(x(yz)) = \Homomorphism(x)\Homomorphism(yz) = \Homomorphism(x)(\Homomorphism(y)\Homomorphism(z))$.
+\par Supponiamo $\Magma_1$ commutativo. Per ogni $x, y \in \Magma_2$, abbiamo $\Homomorphism(x)\Homomorphism(y) = \Homomorphism(xy) = \Homomorphism(yx) = \Homomorphism(y)\Homomorphism(x)$.
+\par Supponiamo $\Magma_1$ unitario. Per ogni $x \in \Magma_1$, abbiamo $\Homomorphism(x)\Homomorphism(1) = \Homomorphism(x)$ e $\Homomorphism(1)\Homomorphism(x) = \Homomorphism(x)$, dunque $\Homomorphism(1)$ \`e elemento neutro in $\Magma_2$.
+\par L'ultima affermazione segue dal fatto che un monoide \`e un magma associativo e unitario.\EndProof
+\begin{Corollary}
+	Sia $\Homomorphism: \Monoid_1 \rightarrow \Monoid_2$ un omomorfismo tra i monoidi $\Monoid_1$ e $\Monoid_2$. $\Image{\Homomorphism}$ \`e un monoide.
+\end{Corollary}
+\Proof Segue dal teorema precedente e dal fatto che un omomorfismo di monoidi \`e un omomorfismo di magma. \EndProof
+\begin{Definition}
+	Sia $\Homomorphism: \Monoid_1 \rightarrow \Monoid_2$ un omomorfismo tra magma unitari $\Magma_1$ e $\Magma_2$. Definiamo \Define{nucleo} di $\Homomorphism$, denotato $\Kernel{\Homomorphism}$ la classe $\Homomorphism^{-1}(1)$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Homomorphism: \Magma_1 \rightarrow \Magma_2$ un omomorfismo tra i magma unitari $\Magma_1$ e $\Magma_2$. $\Kernel{\Homomorphism}$ \`e un sottomagma unitario.
+\end{Theorem}
+\Proof Abbiamo
+\begin{itemize}
+	\item se $x, y \in \Magma_1$ sono tali che $\Homomorphism(x) = \Homomorphism(y) = 1$, allora $\Homomorphism(xy) = 1$;
+	\item $\Homomorphism(1) = 1$ per definizione di omomorfismo unitario. \EndProof
+\end{itemize}
+\begin{Corollary}
+	Sia $\Homomorphism: \Monoid_1 \rightarrow \Monoid_2$ un omomorfismo tra i monoidi $\Monoid_1$ e $\Monoid_2$. $\Kernel{\Homomorphism}$ \`e un sottomonoide.
+\end{Corollary}
+\Proof I monoidi sono magma unitari e gli omomorfismi di monoidi sono omomorfismi di magma unitari. \EndProof
+\begin{Theorem}
+	Siano $\Monoid$ un monoide e $x, y \in \Monoid$ entrambi invertibili. Allora $xy$ \`e invertibile e il suo inverso \`e $y^{-1}x^{-1}$.
+\end{Theorem}
+\Proof $(xy)(y^{-1}x^{-1}) = x(yy^{-1})x^{-1} = xx^{-1} = 1$. \EndProof
+\begin{Theorem}
+	Siano $\Magma$ un magma unitario e $x \in \Magma$. Per qualsiasi omomorfismo di magma (non necessariamente unitari) $\Homomorphism$ tale che $\Dom{\Homomorphism} = \Magma$, se $x$ \`e invertibile, allora
+	\begin{itemize}
+		\item $f(x)$ \`e invertibile;
+		\item $f(x)^{-1} = f(x^{-1})$.
+	\end{itemize}
+\end{Theorem}
+\Proof L'esistenza di un elemento neutro in $\Cod{\Homomorphism}$ segue dal fatto che l'immagine di un magma unitario tramite un omomorfismo di magma \`e un magma unitario. Inoltre $f(x)f(x^{-1}) = f(xx^{-1}) = f(1) = 1$ e $f(x^{-1})f(x) = f(x^{-1}x) = f(1) = 1$. \EndProof
+\begin{Theorem}
+	Sia $\Magma$ un magma e sia $(x_i)_{i \in I}$ una famiglia di
+	elementi di $\Magma$. Il pi\`u piccolo sottomagma $\Magma_0$ di
+	$\Magma$ \`e il magma di tutti i prodotti di elementi di
+	$(x_i)_{i \in I}$.
+\end{Theorem}
+\Proof I prodotti in questione costituiscono effettivamente un sottomagma
+di $\Magma$ ed ogni sottomagma di $\Magma$ che contiene gli elementi di
+$(x_i)_{i \in I}$ deve necessariamente contenere tutti i prodotti.
+\EndProof
+\begin{Definition}
+	Sia $\Magma$ un magma e sia $(x_i)_{i \in I}$ una famiglia di
+	elementi di $\Magma$. Il pi\`u piccolo sottomagma $\Magma_0$ di
+	$\Magma$ tale che $\ForAll{i \in I}{x_i \in \Magma_0}$ si chiama
+	\Define{magma generato}[generato][magma] da
+	$(x_i)_{i \in \Magma_0}$.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Homomorphism: \Magma_0 \rightarrow \Magma_1$ un omomorfismo
+	biettivo tra i magma $\Magma_0$ e $\Magma_1$. $\Homomorphism^{-1}$
+	\`e un omomorfismo.
+\end{Theorem}
+\Proof Siano $a, b \in \Magma_1$. Abbiamo
+$\Homomorphism(\Homomorphism^{-1}(a)\Homomorphism^{-1}(b)) =
+\Homomorphism(\Homomorphism^{-1}(a))\Homomorphism(\Homomorphism^{-1}(b)) =
+ab =
+\Homomorphism(\Homomorphism^{-1}(ab))$.
+Per l'iniettivit\`a di $\Homomorphism$, abbiamo
+$\Homomorphism^{1}(a)\Homomorphism^{-1}(b) = \Homomorphism^{-1}(ab)$.
+\EndProof
+\begin{Definition}
+	Chiamiamo \Define{notazione multi-indice}[multi-indice][notazione] la notazione che definisce le seguenti operazioni e relazioni sulle $n$-uple $\alpha, \beta \in \mathbb{N}^n$, dove $n \in \NotZero{\mathbb{N}}$:
+	\begin{itemize}
+		\item $\alpha + \beta = (\alpha_i + \beta_i)_{i \in n}$;
+		\item $\alpha - \beta = (\alpha_i - \beta_i)_{i \in n}$;
+		\item $\Coimplies{\alpha \leq \beta}{\ForAll{i \in n}{\alpha_i \leq \beta_i}}$;
+		\item $\NaturalDegree{\alpha} = \sum_{i \in n} \alpha_i$;
+		\item $\alpha! = \prod_{i \in n}\alpha_i!$;
+		\item $\binom{\alpha}{\beta} = \frac{\alpha!}{(\alpha - \beta)!\beta!}$;
+		\item posto $x = (x_i)_{i \in n}$, dove $x_i$ sono elementi di un magma, $x^\alpha = \prod_{i \in n} x_i^{\alpha_i}$.
+	\end{itemize}
+\end{Definition}

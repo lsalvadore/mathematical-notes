@@ -1,0 +1,51 @@
+\section{Serie in spazi vettoriali normati.}
+\label{SuccessioniESerie_SerieInSpaziVettorialiNormati}
+\begin{Definition}
+	Sia $\NormedSpace$ un $\Field$-spazio vettoriale normato.
+	Data una successione $(a_i)_{i \in \mathbb{N}} \in \mathbb{\NormedSpace}^\mathbb{N}$, diciamo che la successione $\left ( \sum_{i = 0}^N a_i \right )_{N \in \mathbb{N}}$, denotata pi\`u brevemente $\sum_{i \in \mathbb{N}} a_i$ o anche $\sum_{i = 0}^\infty a_i$, \`e una \Define{serie}[in uno spazio vettoriale normato][serie] in $\NormedSpace$; chiamiamo inoltre
+	\begin{itemize}
+		\item \Define{somme parziali}[parziale][somma] gli elementi di tale successione;
+		\item \Define{somma della serie}[di una serie][somma] il limite della serie, cio\`e della succcessione delle somme parziali;
+		\item \Define{termini della serie}[di una serie][termine] gli elementi della successione originale $(a_i)_{i \in \mathbb{N}}$;
+		\item \Define{successione associata a $\sum_{i \in \mathbb{N}} a_i$}[associata a una serie][successione] o \Define{successione dei termini di $\sum_{i \in \mathbb{N}} a_i$}[dei termini][successione] la successione originale $(a_i)_{i \in \mathbb{N}}$.
+	\end{itemize}
+	Definiamo la serie \Define{complessa}[complessa][serie], \Define{reale}[reale][serie] ecc, a seconda che la successione dei suoi termini sia una successione complessa, reale ecc. rispettivamente.
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{$\Field$-spazio di Banach}[di Banach][spazio] un $\Field$-spazio vettoriale normato completo.
+\end{Definition}
+\begin{Definition}
+	Sia $\BanachSpace$ un $\Field$-spazio di Banach.
+	Sia $\sum_{i \in \mathbb{N}} a_i$ una serie in $\BanachSpace$. $\sum_{i \in \mathbb{N}} a_i$ si dice \Define{assolutamente convegente}[assolutamente convergente][serie] quando $\sum_{i \in \mathbb{N}} \Norm{a_i}$ converge.
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Criterio di convergenza di Cauchy}[di convergenza di Cauchy][criterio]
+	Siano $\BanachSpace$ un $\Field$-spazio di Banach e $\sum_{n \in \mathbb{N}} a_n$ una serie in $\BanachSpace$. $\sum_{i \in \mathbb{N}} a_i$ \`e convergente se e solo se $\ForAll{\epsilon > 0}{\Exists{N \in \mathbb{N}}{\ForAll{p \in \mathbb{N}}{\AbsoluteValue{\sum_{n = 0}^p a_{N + n}} < \epsilon}}}$.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Corollary}
+	Siano $\BanachSpace$ un $\Field$-spazio vettoriale normato e sia $\sum_{n \in \mathbb{N}} a_n$ una serie in $\BanachSpace$. $(a_n)_{n \in \mathbb{N}}$ \`e una successione infinitesima.
+\end{Corollary}
+\Proof Segue direttamente dal criterio di convergenza di Cauchy. \EndProof
+\begin{Corollary}
+	Sia $\sum_{n \in \mathbb{N}} a_n$ una serie assolutamente convergente: $\sum_{n \in \mathbb{N}} a_n$ converge anche semplicmente.
+\end{Corollary}
+\Proof Fissiamo $\epsilon > 0$. Esiste $N \in \mathbb{N}$ tale che, per ogni $p \in \mathbb{N}$, $\Norm{\sum_{n = 0}^p \Norm{a_{N + p}}} < \epsilon$, da cui $\sum_{n = 0}^p \Norm{a_{N + p}} < \epsilon$ e quindi $\Norm{\sum_{n = 0}^p a_{N + p}} < \epsilon$. Per il criterio di convergenza di Cauchy, $\sum_{n \in \mathbb{N}} a_n$ converge. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{serie aritmetica}[aritmetica][serie] la serie i cui termini costituiscono una progressione aritmetica.
+\end{Definition}
+\begin{Theorem}
+	Sia $\sum_{n = 0}^\infty a_n$ una serie aritmetica. Abbiamo
+	\begin{itemize}
+		\item fissato $N \in \mathbb{N}$, $\sum_{n = 0}^N a_n = \frac{(N + 1)(a_0 + a_N)}{2}$;
+		\item $\sum_{n = 0}^\infty a_n$ \`e divergente.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $K = a_1 - a_0$ la ragione della progressione aritmetica. Abbiamo $\ForAll{n \in \mathbb{N}}{a_n = a_0 + nK}$. Inoltre, per ogni $q \in N + 1$, $a_q + a_{N - q} = a_0 + qK + a_0 + NK - qK = 2 a_0 + NK = a_0 + a_N$.
+\par Ora, se $N$ \`e pari, allora $\sum_{n = 0}^N a_n = a_{\frac{N}{2}} + \sum_{n = 0}^{\frac{N}{2} - 1} (a_0 + a_N) = a_0 + \frac{N}{2}K + \frac{N}{2} (a_0 + a_N) = \frac{a_0 + a_n}{2} + \frac{N}{2}(a_0 + a_N) = \frac{(N + 1)(a_0 + a_N)}{2}$.
+\par Se invece $N$ \`e dispari, allora $\sum_{n = 0}^N a_n = \sum_{n = 0}^{\frac{N + 1}{2}} a_n = \frac{N + 1}{2}(a_0 + a_n)$.
+\par Infine, la serie \`e divergente per il criterio di convergenza di Cauchy. \EndProof
+\begin{Corollary}
+	Sia $\sum_{n = 1}^\infty a_n$ una serie aritmetica. Abbiamo, fissato $N \in \mathbb{N}$, $\sum_{n = 1}^N a_n = \frac{N(a_1 + a_N)}{2}$.
+\end{Corollary}
+\Proof Abbiamo $\sum_{n = 1}^\infty a_n = \sum_{n = 0}^\infty a_{n + 1}$, da cui $\sum_{n = 1}^N a_n = \sum_{n = 0}^{N - 1} a_{n + 1} = \frac{N(a_1 + a_N)}{2}$. \EndProof

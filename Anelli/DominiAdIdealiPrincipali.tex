@@ -1,0 +1,54 @@
+\subsection{Domini ad ideali principali.}\label{DominiAdIdealiPrinciapli}
+\begin{Definition}
+	Un \Define{dominio ad ideali principali}[ad ideali principali][dominio] $\PID$ \`e un dominio d'integrit\`a tale che ogni suo ideale $\Ideal$ sia principale.
+\end{Definition}
+\begin{Theorem}
+	Un dominio ad ideali principali \`e un anello noetheriano.
+\end{Theorem}
+\Proof Ogni ideale \`e finitamente generato. \EndProof
+\begin{Theorem}
+	In un dominio ad ideali principali $\PID$ ogni elemento irriducibile \`e primo.
+\end{Theorem}
+\Proof Se $\Irreducible \in \PID$ \`e irriducibile, allora l'ideale $\SpanIdeal{\Irreducible}$ \`e massimale in virt\`u del teorema \ref{DomIntIrridMax} e quindi primo. Quindi $\Irreducible$ \`e primo. \EndProof
+\begin{Theorem}
+	Ogni dominio ad ideali principali $\PID$ \`e un dominio a fattorizzazione unica.
+\end{Theorem}
+\Proof Proviamo prima che ogni $a \in \PID$ non invertibile \`e fattorizzabile: proveremo in un secondo momento che la fattorizzazione \`e unica a meno di invertibili. Se $a$ \`e irriducibile la dimostrazione d'esistenza della fattorizzazione \`e immediata. Se invece $a$ \`e riducibile, allora si scrive come prodotto di due elementi non invertibili $b, c \in \PID$ e abbiamo $\SpanIdeal{a} \subseteq \SpanIdeal{b}$ e $\SpanIdeal{a} \subseteq \SpanIdeal{c}$. Ripetendo il procedimento su $b$ e $c$ e sugli elementi che se ne deducono finch\'e possile costruiamo catene ascendenti di ideali: poich\'e $\PID$ \`e noetheriano, queste catene non possono essere continuate indefinitamente e si giunge dunque ad individuare una famiglia di ideali principali generati ciascuno da un elemento irriducibile; il prodotto di tutti questi elementi irriducibili \`e una fattorizzazione di $a$.
+\par Dimostriamo ora l'unicit\`a della fattorizzazione. Consideriamo due fattorizzazioni in irriducibili di $a$: siano $(p_i)_{i = 1}^n$ ($n \in \mathbb{N}$) i fattori della prima fattorizzazione e $(q_j)_{j = 1}^m$ ($m \in \mathbb{N}$) i fattori della seconda fattorizzazione. Poich\'e in un dominio di integrit\`a valgono le leggi di cancellazione, possiamo supporre che tutti i fattori della prima fattorizzazione siano diversi da tutti i fattori della seconda fattorizzazione.
+\par Consideriamo il fattore $p_1$. $p_1$ \`e primo ed esiste dunque un indice $j \in \lbrace 1, ..., m \rbrace$ tale che $p_1 | q_j$, ma per l'irriducibilit\`a di $q_j$ deve essere $p_1 = q_j$: i due fattori possono essere cancellati dall'equazione data dalle due fattorizzazione e si pu\`o procedere alla cancellazione di tutti i fattori $p_i$ ($i \in \lbrace 1, ..., n \rbrace$) uno alla volta ripetendo il procedimento: chiaramente le fattorizzazioni si esauriscono simultaneamente e coincidono. \EndProof
+\begin{Theorem}
+	Sia $\PID$ un dominio ad ideali principali e siano $a, b \in \PID$: $a$ e $b$ ammettono un massimo comun divisore.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	\TheoremName{Identit\`a di B\'ezout}[di B\'ezout][identit\`a] Sia $\PID$ un dominio ad ideali e siano $a, b \in \PID$. Scelto $d \in \MCD{a}{b}$, esistono $\xi, \eta \in \PID$ tali che $\xi a + \eta b = d$.
+\end{Theorem}
+\Proof $d$ \`e per definizione un generatore di $\SpanIdeal{a,b}$ ed ogni elemento di $\SpanIdeal{a,b}$ \`e della forma $\xi a + \eta b$ per $\xi, \eta \in \PID$ opportuni. \EndProof
+\begin{Theorem}
+	Sia $a \in \PID$. $\EquivalenceClass{b} \in \Quotient{\PID}{\SpanIdeal{a}}$ \`e invertibile se e solo se $b$ \`e coprimo con $a$.
+\end{Theorem}
+\Proof Se $b$ \`e coprimo con $a$, allora esistono $\xi, \eta \in \PID$ tali che $\xi a + \eta b = 1$. Se $\Projection: \PID \rightarrow \Quotient{\PID}{\SpanIdeal{a}}$ \`e la proiezione sul quoziente, allora dall'identit\`a di B\'ezout appena citata deduciamo $\Projection{\xi}\Projection{a} + \Projection{\eta}\Projection{b} = \Projection{1}$, e, essendo $\Projection{a} = 0$, $\EquivalenceClass{\eta}\EquivalenceClass{b} = 1$.
+\par D'altra parte, se $\EquivalenceClass{b}$ \`e invertibile, allora esiste $\eta \in \PID$ tale che $\EquivalenceClass{\eta}\EquivalenceClass{b} = 1$, da cui $1 - \eta b \in \SpanIdeal{a}$ e quindi esiste $\xi \in \PID$ tale che $1 = \xi a + \eta b$, cio\`e che prova che $1 \in \MCD{a}{b}$. \EndProof
+\begin{Theorem}
+	Siano $\PID$ un dominio ad ideali principali e $a, b \in \PID$. L'identit\`a di $\PID$ \`e compatibile con le relazioni d'equivalenza in $x$ e $y$ seguenti:
+	\begin{itemize}
+		\item $x - y \in \SpanIdeal{ab}$ e $x - y \in \SpanIdeal{a}$;
+		\item $x - y \in \SpanIdeal{ab}$ e $x - y \in \SpanIdeal{b}$.
+	\end{itemize}
+\end{Theorem}
+\Proof Siano $x, y \in \PID$ tali che $x - y \in \SpanIdeal{ab}$. Allora $ab$ divide $x - y$, da cui $a$ divide $x - y$ e dunque $x - y \in \SpanIdeal{a}$; analogamente $x - y \in \SpanIdeal{b}$: l'identit\`a di $\PID$ \`e dunque compatibile con le relazioni d'equivalenza $x - y \in \SpanIdeal{ab}$ da una parte e $x - y \in \SpanIdeal{a}$ e $x - y \in \SpanIdeal{b}$ dall'altra. \EndProof
+\begin{Theorem}
+	\TheoremName{Teorema cinese del resto}[cinese del resto][teorema] Siano $\PID$ un dominio ad ideali principali e $a, b \in \PID$. Se $a$ e $b$ sono coprimi, allora $\Quotient{\PID}{\SpanIdeal{ab}} \Isomorphic \Quotient{\PID}{\SpanIdeal{a}} \times \Quotient{\PID}{\SpanIdeal{b}}$ e un isomorfismo \`e dato dall'applicazione $\phi: \Quotient{\PID}{\SpanIdeal{ab}} \rightarrow \Quotient{\PID}{\SpanIdeal{a}} \times \Quotient{\PID}{\SpanIdeal{b}}$ che a $\EquivalenceClass{x}[\SpanIdeal{ab}]$ associa $(\EquivalenceClass{x}[\SpanIdeal{a}],\EquivalenceClass{x}[\SpanIdeal{b}])$.
+\end{Theorem}
+\par Si verifica facilmente che $\phi$ \`e un omomorfismo. Inoltre $\phi$ \`e
+\begin{itemize}
+	\item iniettivo perch\'e, se $a$ e $b$ sono coprimi, le fattorizzazioni uniche di $a$ e di $b$ provano che $\Implies{x \in \SpanIdeal{a} \cup \SpanIdeal{b}}{x \in \SpanIdeal{ab}}$;
+	\item suriettivo: sia $(\EquivalenceClass{x}[\SpanIdeal{a}],\EquivalenceClass{y}[\SpanIdeal{b}]) \in \Quotient{\PID}{\SpanIdeal{a}} \times \Quotient{\PID}{\SpanIdeal{b}}$. Esistono $\xi, \eta \in \PID$ tali che $\xi a + \eta b = 1$ (identit\`a di B\'ezout). Consideriamo $z = y \xi a + x \eta b$. Abbiamo $z = y ( 1 - x \eta b) + x \eta b = y - yx \eta b + x \eta b$, da cui $z - y \in \SpanIdeal{b}$ e analogamente si prova che $z - x \in \SpanIdeal{a}$. \EndProof 
+\end{itemize}
+\begin{Theorem}\label{ThCaratteristica}
+	Sia $\Ring$ un anello. L'insieme delle soluzioni intere dell'equazione $x \cdot 1 = 0$, dove $1$ \`e l'identit\`a di $\Ring$, costituisce un ideale principale\footnote{$\mathbb{Z}$ \`e un dominio a ideali principali.}.
+\end{Theorem}
+\Proof Basta considerare l'omomorfismo $\phi: \mathbb{Z} \rightarrow \Ring$ definito tra i gruppi additivi tale che $\phi(1) = 1$: l'insieme delle soluzioni cercato \`e il nucleo di $\phi$. \EndProof
+\begin{Definition}
+	Il generatore non negativo dell'ideale descritto nel teorema precedente si chiama \Define{caratteristica} dell'anello $\Ring$, denotata $\Characteristic{\Ring}$.
+\end{Definition}

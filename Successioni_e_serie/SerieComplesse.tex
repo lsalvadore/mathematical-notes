@@ -1,0 +1,22 @@
+\section{Serie complesse.}\label{SerieComplesse}
+\begin{Definition}
+	Chiamiamo \Define{serie geometrica}[geometrica][serie] la serie i cui termini costituiscono una progressione geometrica.
+\end{Definition}
+\begin{Theorem}
+	Sia $\sum_{n = 0}^\infty a^n$ una serie geometrica di ragione $a$. Abbiamo
+	\begin{itemize}
+		\item fissato $N \in \mathbb{N}$, abbiamo $\sum_{n = 0}^N a^n = \frac{1 - a^{N + 1}}{1 - a}$;
+		\item $\sum_{n = 0}^\infty a^n$ \`e convergente per $\AbsoluteValue{a} < 1$ e abbiamo $\sum_{n = 0}^\infty a^n = \frac{1}{1 - a}$.
+		\item $\sum_{n = 0}^\infty a^n$ \`e divergente per $\AbsoluteValue{a} > 1$.
+	\end{itemize}
+\end{Theorem}
+\Proof Abbiamo $(1 - a) \sum_{n = 0}^N a^N = 1 - a^N$, da cui $\sum_{n = 0}^N a^N = \frac{1 - a^N}{1 - a}$.
+\par Se $\AbsoluteValue{a} < 1$, allora $\lim_{n \rightarrow \infty} a^n = 0$ e dunque, per $N \rightarrow \infty$, $\frac{1 - a^N}{1 - a} \rightarrow \frac{1}{1 - a}$, da cui $\sum_{n = 0}^\infty$ converge a $\frac{1}{1 - a}$.
+\par Se invece $\AbsoluteValue{a} > 1$, allora $(\AbsoluteValue{a^n})_{n \in \mathbb{N}}$ diverge e quindi diverge anche $\left ( \frac{1 - a^N}{1 - a} \right )_{N \in \mathbb{N}} = \left ( \sum_{n = 0}^N a_n \right )_{N \in \mathbb{N}}$. Dunque $\sum_{n = 0}^\infty a_n$ diverge. \EndProof
+\begin{Definition}
+	Sia $\sum_{n = 0}^\infty a_n$ una serie complessa tale che esista una successione $(b_n)_{n \in \mathbb{N}}$ tale che $\ForAll{n \in \mathbb{N}}{a_n = b_n - b_{n + 1}}$. $\sum_{n = 0}^\infty a_n$ si chiama \Define{serie telescopica}[telescopica][serie].
+\end{Definition}
+\begin{Theorem}
+	Sia $\sum_{n = 0}^\infty a_n$ una serie complessa telescopica e $(b_n)_{n \in \mathbb{N}} \in \mathbb{C}^\mathbb{N}$ tale che $\ForAll{n \in \mathbb{N}}{a_n = b_n - b_{n + 1}}$. Per ogni $N \in \mathbb{N}$, abbiamo $\sum_{n = 0}^N a_n = b_0 - b_N$.
+\end{Theorem}
+\Proof Segue direttamente per induzione. \EndProof

@@ -1,0 +1,237 @@
+\section{Determinanti}
+\label{GeometriaLineare_Determinante}
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione $n = \Dimension{\LinearSpace}$. Abbiamo, per ogni $k \in \NotZero{\mathbb{N}}$ $\Dimension{\AlternatingForms{(\LinearSpace)_{i \in k}}} = \binom{k}{n}$.
+\end{Theorem}
+\Proof Fissiamo una base $(\LinearBase_j)_{j \in n}$ di $\LinearSpace$. Ricordiamo che $\Dimension{\MultilinearForms{(\LinearSpace)_{i \in k}}} = n^k$ e che una forma multilineare \`e interamente determinata dai suoi $n^k$ coefficienti, cio\`e dai valori che essa assume in ogni $k$-upla di elementi di $(\LinearBase_j)_{j \in n}$.
+\par Osserviamo che, fissato un coefficiente al valore $\Scalar \in \Field$, sono automaticamente fissati tutti i $\Factorial{k}$ coefficienti che coinvolgono gli stessi vettori di $(\LinearBase_i)_{i \in n}$ in ordine diverso, senza ulteriori vincoli. Dunque abbiamo appunto $\Dimension{\AlternatingForms{(\LinearSpace)_{i \in k}}} = \binom{k}{n}$. \EndProof
+\begin{Theorem}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale di dimensione finita
+  $n = \Dimension{\LinearSpace}$.
+  Siano $\LinearTransformation \in \Endomorphisms{\LinearSpace}$.
+  Esiste uno e un solo scalare
+  $\Determinant(\LinearTransformation)$ tale che, per ogni
+  $\AlternatingForm \in \AlternatingForms{(\LinearSpace)_{i \in n}}$,
+  abbiamo
+  $\ForAll{(\Vector_i)_{i \in n} \in \LinearSpace^n}
+    {\AlternatingForm((\LinearTransformation(\Vector_i))_{i \in n})
+  =\Determinant(\LinearTransformation)\AlternatingForm((\Vector_i)_{i \in n})}$.
+\end{Theorem}
+\Proof Osserviamo che, per ogni $\AlternatingForm \in \AlternatingForms{(\LinearSpace)_{i \in n}}$, $\VarAlternatingForm((\Vector_i)_{i \in n}) = \AlternatingForm((\LinearTransformation(\Vector_i))_{i \in n})$ \`e una forma alternante. Sia l'applicazione $\Linear: \AlternatingForms{(\LinearSpace)_{i \in n}} \rightarrow \AlternatingForms{(\LinearSpace)_{i \in n}}$ che a $\AlternatingForm \in \AlternatingForms{(\LinearSpace)_{i \in n}}$ associa $\VarAlternatingForm \in \AlternatingForms{(\LinearSpace)_{i \in n}}$ tale che $\ForAll{(\Vector_i)_{i \in n}}{\VarAlternatingForm((\Vector_i)_{i \in n}) = ((\LinearTransformation(\Vector_i))_{i \in n})}$. 
+\par Si verifica immediatamente che $\Linear$ \`e lineare e, ricordando che $\Dimension{\AlternatingForms{(\LinearSpace)_{i \in n}}} = 1$ deve esistere un unico scalare $\Determinant(\LinearTransformation)$ tale che $\ForAll{(\Vector_i)_{i \in n} \in \LinearSpace^n}{\AlternatingForm((\LinearTransformation(\Vector_i))_{i \in n}) = \Determinant(\LinearTransformation)\AlternatingForm((\Vector_i)_{i \in n})}$. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, chiamiamo $\Determinant: \Endomorphisms{\LinearSpace} \rightarrow \Field$ \Define{determinante}[di un'applicazione lineare][determinante]. Diciamo inoltre che un endomorfismo $\LinearTransformation \in \Endomorphisms{\LinearSpace}$ \`e \Define{singolare}[singolare][endomorfismo] quando $\Determinant(\LinearTransformation) = 0$.
+\end{Definition}
+\begin{Theorem}
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione
+  $n = \Dimension{\LinearSpace}$ e sia
+  $\LinearTransformation \in \Endomorphisms{\LinearSpace}$.
+  Supponiamo inoltre che
+  $\LinearSubspace, \VarLinearSubspace \subseteq \LinearSpace$
+  siano sottospazi vettoriali supplementari tali che
+  \begin{itemize}
+    \item $\LinearSubspace$ sia invariante per $\LinearTransformation$;
+    \item $\VarLinearSubspace$ sia invariante puntualmente per
+      $\LinearTransformation$.
+  \end{itemize}
+  Abbiamo
+  $\Determinant{\Restricted{\LinearTransformation}{\LinearSubspace}}
+  = \Determinant{\LinearTransformation}$.
+\end{Theorem}
+\Proof Sia $(\LinearBase_k)_{k \in n}$ una base di $\LinearSpace$ e poniamo
+$m = \LinearDimension{\LinearSubspace}$.
+\par Fissiamo una forma alternante
+$\AlternatingForm_0 \in
+\AlternatingForms{(\LinearSubspace)_{k \in m}}$.
+Sia
+$\AlternatingForm \in
+\AlternatingForms{(\LinearSpace)_{k \in n}}$
+la forma alternante definita come segue:
+\begin{itemize}
+  \item $\AlternatingForm((\Vector_k)_{k \in n}) = 0$ se i vettori
+    $(\Vector_k)_{k \in n}$ sono vettori di $(\LinearBase_k)_{k \in n}$ e almeno due di
+    essi sono uguali;
+  \item $\AlternatingForm((\Vector_k)_{k \in n})
+    = \AlternatingForm_0((\Vector_k)_{k \in m})$ se i vettori
+    $(\Vector_k)_{k \in n}$ sono una permutazione dei vettori
+    $(\LinearBase_k)_{k \in n}$.
+\end{itemize}
+\par Abbiamo
+\begin{align*}
+  \Determinant{\LinearTransformation}
+  &= \frac{\AlternatingForm((\LinearTransformation(\LinearBase_k))_{k \in n})}
+      {\AlternatingForm((\LinearBase_k)_{k \in n})},\\
+  &= \frac{\AlternatingForm_0((\LinearTransformation(\LinearBase_k))_{k \in m})}
+      {\AlternatingForm_0((\LinearBase_k)_{k \in m})},\\
+  &= \Determinant{\Restricted{\LinearTransformation}{\LinearSubspace}}.
+  \text{ \EndProof}
+\end{align*}
+\begin{Theorem}
+	\TheoremName{Teorema di Binet}[di Binet][teorema]
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione
+  $n = \Dimension{\LinearSpace}$ e siano
+  $\LinearTransformation, \VarLinearTransformation
+    \in \Endomorphisms{\LinearSpace}$.
+  Abbiamo
+  $\Determinant(\LinearTransformation\VarLinearTransformation)
+  = \Determinant(\LinearTransformation)\Determinant(\VarLinearTransformation)$.
+\end{Theorem}
+\Proof Per ogni
+$\AlternatingForm \in \AlternatingForms{(\LinearSpace)_{i \in n}}$
+abbiamo
+$\ForAll{(\Vector_i)_{i \in n} \in \LinearSpace^n}{
+  \AlternatingForm(((\LinearTransformation\VarLinearTransformation)(
+    \Vector_i))_{i \in n})
+  = \AlternatingForm((\LinearTransformation(\VarLinearTransformation(
+    \Vector_i)))_{i \in n})}$. \EndProof
+\begin{Corollary}
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione
+  $n = \Dimension{\LinearSpace}$ e sia
+  $\LinearTransformation \in \Endomorphisms{\LinearSpace}$.
+  Supponiamo inoltre che
+  $\LinearSubspace \subseteq \LinearSpace$
+  sia un sottospazio vettoriale invariante per $\LinearTransformation$.
+  Abbiamo
+  $\Determinant(\Restricted{\LinearTransformation}{\LinearSubspace})
+  | \Determinant(\LinearTransformation)$.
+\end{Corollary}
+\Proof Sia 
+$(\LinearBase_k)_{k \in \LinearDimension{\LinearSubspace}}$
+una base di $\LinearSubspace$:
+sia essa estesa ad una base
+$(\LinearBase_k)_{k \in n}$.
+\par Consideriamo gli endomorfismi di $\LinearSpace$
+\begin{itemize}
+  \item $\LinearTransformation_0$ tale che
+    $\LinearTransformation_0(\LinearBase_k) =
+      \begin{cases}
+        \LinearTransformation(\LinearBase_k)\text{ se }
+          k \in \LinearDimension{\LinearSubspace},\\
+        \LinearBase_k\text{ se }
+          k \in n \SetMin \LinearDimension{\LinearSubspace};
+      \end{cases}$
+  \item $\LinearTransformation_1$ tale che
+    $\LinearTransformation_1(\LinearBase_k) =
+      \begin{cases}
+        \LinearBase_k\text{ se }
+          k \in \LinearDimension{\LinearSubspace},\\
+        \LinearTransformation(\LinearBase_k)\text{ se }
+          k \in n \SetMin \LinearDimension{\LinearSubspace}.
+      \end{cases}$
+\end{itemize}
+Abbiamo
+$\LinearTransformation = \LinearTransformation_1 \circ \LinearTransformation_0$.
+\par Per il teorema di Binet,
+$\Determinant{\Restricted{\LinearTransformation}{\LinearSubspace}}
+= \Determinant{\LinearTransformation_0} | \Determinant{\LinearTransformation}$.
+\EndProof
+\begin{Corollary}
+  Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione
+  $n = \Dimension{\LinearSpace}$ e sia
+  $\LinearTransformation \in \Endomorphisms{\LinearSpace}$.
+  Supponiamo inoltre che
+  $\LinearSubspace, \VarLinearSubspace \subseteq \LinearSpace$
+  siano sottospazi vettoriali supplementari e invarianti per
+  $\LinearTransformation$.
+  Abbiamo
+  $\Determinant(\Restricted{\LinearTransformation}{\LinearSubspace})
+  \Determinant(\Restricted{\LinearTransformation}{\VarLinearSubspace})
+  = \Determinant(\LinearTransformation)$.
+\end{Corollary}
+\Proof Sia
+$(\LinearBase_k)_{k \in n}$
+una base di $\LinearSpace$ tale che
+\begin{itemize}
+  \item $(\LinearBase_k)_{k = 0}^{\LinearDimension{\LinearSubspace}}$
+    sia una base di $\LinearSubspace$;
+  \item $(\LinearBase_k)_{k = \LinearDimension{\LinearSubspace}}^n$
+    sia una base di $\VarLinearSubspace$.
+\end{itemize}
+\par Consideriamo gli endomorfismi di $\LinearSpace$
+\begin{itemize}
+  \item $\LinearTransformation_0$ tale che
+    $\LinearTransformation_0(\LinearBase_k) =
+      \begin{cases}
+        \LinearTransformation(\LinearBase_k)\text{ se }
+          k \in \LinearDimension{\LinearSubspace},\\
+        \LinearBase_k\text{ se }
+          k \in n \SetMin \LinearDimension{\LinearSubspace};
+      \end{cases}$
+  \item $\LinearTransformation_1$ tale che
+    $\LinearTransformation_1(\LinearBase_k) =
+      \begin{cases}
+        \LinearBase_k\text{ se }
+          k \in \LinearDimension{\LinearSubspace},\\
+        \LinearTransformation(\LinearBase_k)\text{ se }
+          k \in n \SetMin \LinearDimension{\LinearSubspace}.
+      \end{cases}$
+\end{itemize}
+Abbiamo
+$\LinearTransformation = \LinearTransformation_1 \circ \LinearTransformation_0$.
+\par Per il teorema di Binet,
+$\Determinant{\Restricted{\LinearTransformation}{\LinearSubspace}}
+\Determinant{\Restricted{\LinearTransformation}{\VarLinearSubspace}}
+= \Determinant{\LinearTransformation_0}\Determinant{\LinearTransformation_1}
+= \Determinant{\LinearTransformation}$.
+\EndProof
+\begin{Corollary}
+	Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione
+  $n = \Dimension{\LinearSpace}$ e sia
+  $\LinearTransformation \in \Endomorphisms{\LinearSpace}$.
+  $\LinearTransformation$ \`e invertibile se e solo se \`e non singolare.
+\end{Corollary}
+\Proof Se $\LinearTransformation$ invertibile, allora esiste
+$\VarLinearTransformation \in \Endomorphisms{\LinearSpace}$ tale che
+$\LinearTransformation\VarLinearTransformation = \Identity$.
+Per il teorema di Binet,
+$\Determinant{\LinearTransformation}{\VarLinearTransformation} = \Identity$, da
+cui $\Determinant{\LinearTransformation} \neq 0$.
+\par  Supponiamo ora
+$\Determinant{\LinearTransformation} \neq 0$.
+Sia $(\LinearBase_i)_{i \in n}$ una base di $\LinearSpace$ e
+$\AlternatingForm \in \AlternatingForms{(\LinearSpace)_{i \in n}}$ non nulla.
+Abbiamo
+$(\Determinant{\LinearTransformation})
+(\AlternatingForm((\LinearBase_i)_{i \in n})) \neq 0$, da cui
+$\AlternatingForm((\LinearTransformation(\LinearBase_i))_{i \in n}) \neq 0$ e
+quindi
+$(\LinearTransformation(\LinearBase_i))_{i \in n}$
+\`e una famiglia indipendente, da cui $\LinearTransformation$ \`e invertibile.
+\EndProof
+\begin{Theorem}
+	\TheoremName{Formula di Leibniz}[di Leibniz][formula] Sia $\LinearSpace$ un $\Field$-spazio vettoriale finito di dimensione $n = \Dimension{\LinearSpace}$ e sia $\LinearTransformation \in \Endomorphisms{\LinearSpace}$. Sia inoltre $(\LinearBase_i)_{i \in n}$ una base di $\LinearSpace$. Se $\Matrix \in \Field^{n \times n}$ \`e la matrice che rappresenta $\LinearTransformation$ rispetto alla base fissata, allora $\Determinant{\LinearTransformation} = \sum_{\Permutation \in \SymmetricGroup{n}} \PermutationSign{\Permutation} \prod_{i \in n} \Matrix_{\Permutation(i),i}$.
+\end{Theorem}
+\Proof Sia $\AlternatingForm \in \AlternatingForms{(\LinearSpace)_{i \in n}}$ con $\AlternatingForm \neq 0$. Abbiamo $\Determinant{\LinearTransformation} = \frac{\AlternatingForm{(\LinearTransformation(\LinearBase_i))_{i \in n}}}{\AlternatingForm{(\LinearBase_i)_{i \in n}}} = \frac{\AlternatingForm((\sum_{i \in n}\Matrix_{i,j}\LinearBase_i)_{j \in n})}{\AlternatingForm((\LinearBase_i)_{i \in n})} = \frac{\sum_{\Permutation \in \SymmetricGroup{n}} \Matrix_{\Permutation(i),i} \AlternatingForm((\LinearBase_{\Permutation(i)})_{i \in n})}{\AlternatingForm((\LinearBase_i)_{i \in n})} = \sum_{\Permutation \in \SymmetricGroup{n}} \PermutationSign{\Permutation} \prod_{i \in n} \Matrix_{\Permutation(i),i}$. \EndProof
+\begin{Definition}
+	Fissato $n \in \mathbb{N}$, per ogni matrice $\Matrix = (\MatrixElement_{i,j})_{(i,j) \in n \times n}\in \Field^{n \times n}$ definiamo il \Define{determinante}[di una matrice][determinante] $\Determinant{\Matrix} = \sum_{\Permutation \in \SymmetricGroup{n}} \PermutationSign{\Permutation} \prod_{i \in n} \MatrixElement_{\Permutation(i),i}$. Denotiamo il determinante $\Determinant{\Matrix}$ anche $\lvert \Matrix \rvert$ o ancora
+$$\left \lvert
+\begin{array}{ccc}
+	\MatrixElement_{0,0}	&	\cdots	&	\MatrixElement_{0,n} \\
+	\vdots	&	\ddots	&	\vdots \\
+	\MatrixElement_{m,0}	&	\cdots	&	\MatrixElement_{m,n}
+\end{array}
+\right \rvert$$ 
+\end{Definition}
+\begin{Theorem}
+	Siano $\Field$ un campo e $n \in \NotZero{\mathbb{N}}$. Sia $\AlternatingForm: {\Field^n}^n \rightarrow \Field$ l'applicazione che a $\Matrix \in \Field^{n \times n}$ associa $\Determinant{\Matrix}$. Allora $\AlternatingForm$ \`e l'unica applicazione da $\Field^{n \times n}$ in $\Field$ che sia $n$-lineare alternante e tale che $\AlternatingForm(\Identity) = 1$.
+\end{Theorem}
+\Proof Il fatto che $\AlternatingForm$ sia $n$-lineare alternante e che $\AlternatingForm(\Identity) = 1$ segue per calcolo diretto sulla formula di Leibniz.
+\par L'unicit\`a segue dal fatto che $\Dimension{\AlternatingForms{(\Field^n)_{i \in n}}} = 1$ e da $\AlternatingForm(\Identity) = 1$. \EndProof
+\begin{Theorem}
+	Sia $\Field$ un campo, $n \in \NotZero{\mathbb{N}}$ e $\Matrix \in \Field^{n \times n}$. Abbiamo $\Determinant{\Matrix} = \Determinant{\Transposed{\Matrix}}$.
+\end{Theorem}
+\Proof Segue direttamente dall'equazione $\sum_{\Permutation \in \SymmetricGroup{n}} \PermutationSign{\Permutation} \prod_{i \in n} \Matrix_{\Permutation(i),i} = \sum_{\Permutation \in \SymmetricGroup{n}} \PermutationSign{\Permutation} \prod_{i \in n} \Matrix_{i,\Permutation(i)}$. \EndProof
+\begin{Definition}
+	Siano $\Field$ un campo, $n \in \NotZero{\mathbb{N}}$ e $\Matrix \in \Field^{n \times n}$. Si chiama \Define{minore}[di una matrice][minore] di $\Matrix$ il determinante di una sottomatrice di $\Matrix$. Fissati $(I,J) \in n \times n$, chiamiamo inoltre \Define{complemento algebrico}[algebrico][complemento] o anche \Define{cofattore} lo scalare $(-1)^{i + j} \Determinant \left ( (\Matrix_{i,j})_{\substack{(i,j) \in n \times n\\i \neq I\\j \neq J}} \right )$.
+\end{Definition}
+\begin{Theorem}
+	\TheoremName{Sviluppo di Laplace}[di Laplace][sviluppo] Siano $\Field$ un campo, $n \in \mathbb{N}$ e $\Matrix \in \Field^{n \times n}$. Abbiamo
+	\begin{itemize}
+		\item se $n = 1$, $\Determinant{\Matrix} = \Matrix_{0,0}$;
+		\item se $n > 1$, fissato $I \in n$, $\Determinant{\Matrix} = \sum_{J \in n} (-1)^{I+J} \Matrix_{I,J} \Determinant \left ( (\Matrix_{i,j})_{\substack{(i,j) \in n \times n\\i \neq I\\j \neq J}} \right )$;
+		\item se $n > 1$, fissato $J \in n$, $\Determinant{\Matrix} = \sum_{I \in n} (-1)^{I+J} \Matrix_{I,J} \Determinant \left ( (\Matrix_{i,j})_{\substack{(i,j) \in n \times n\\i \neq I\\j \neq J}} \right )$.
+	\end{itemize}
+\end{Theorem}
+\Proof Se $n = 1$ segue direttamente dalle definizioni che $\Determinant{\Matrix} = \Matrix_{0,0}$.
+\par Assumiamo $n > 1$. Abbiamo, fissato $I \in n$, $\sum_{J \in n} (-1)^{I + J} \Matrix_{I,J} \Determinant \left ( (\Matrix_{i, j})_{\substack{(i,j) \in n \times n\\i \neq I\\j \neq J}} \right ) = \sum_{J \in n} (-1)^{I + J} \Matrix_{I,J} \sum_{\Permutation \in \SymmetricGroup{n - 1}} \PermutationSign{\Permutation} \prod_{i \in n - 1} \Matrix_{(f \circ \Permutation)(i),g(i)} = \sum_{\Permutation \in \SymmetricGroup{n}} \PermutationSign{\Permutation} \prod_{i \in n} \Matrix_{\Permutation(i),i} = \Determinant{\Matrix}$, dove $f: n - 1 \rightarrow n \SetMin I$ \`e l'applicazione tale che $f(i) = \begin{cases} i\text{, se }i < I\\i + 1\text{, altrimenti,} \end{cases}$ e $g: n - 1 \rightarrow n \SetMin J$ \`e l'applicazione tale che $g(j) = \begin{cases} j\text{, se }j < J\\j + 1\text{, altrimenti.}\end{cases}$
+\par L'ultima affermazione segue dalla penultima applicata a $\Transposed{\Matrix}$. \EndProof

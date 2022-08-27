@@ -1,0 +1,41 @@
+\subsection{Equazioni alle derivate parziali lineari.}
+\label{EquazioniDifferenziali_EquazioniAlleDerivateParzialiLineari}
+\begin{Definition}
+  Siano
+  \begin{itemize}
+    \item $\OpenConnected \subseteq \mathbb{R}^2$ un aperto connesso;
+    \item $u: \Closure{\OpenConnected} \rightarrow \mathbb{R}$ incognita;
+    \item $f: \OpenConnected \rightarrow \mathbb{R}$ nota e
+      sufficientemente regolare;
+    \item $A, B, C, D, E, F: \OpenConnected \rightarrow \mathbb{R}$;
+    \item $L$ un'operatore differenziale lineare sulle funzioni di classe
+      $\CClass{2}[\Closure{\OpenConnected}][\mathbb{R}]$ definito da
+      \[
+        L[u]
+        = A \frac{\partial^2 u}{\partial x^2}
+        + B \frac{\partial^2 u}{\partial x \partial y}
+        + C \frac{\partial^2 u}{\partial y^2}
+        + D \frac{\partial u}{\partial x}
+        + E \frac{\partial u}{\partial y}
+        + Fu.
+      \]
+  \end{itemize}
+  L'equazione $L[u] = f$ si dice
+  \begin{itemize}
+    \item \Define{ellittica}[differenziale ellittica][equazione]
+      quando $\ForAll{(x,y) \in \OpenConnected}{B^2 - 4AC < 0}$;
+    \item \Define{parabolica}[differenziale parabolica][equazione]
+      quando $\ForAll{(x,y) \in \OpenConnected}{B^2 - 4AC = 0}$;
+    \item \Define{iperbolica}[differenziale iperbolica][equazione]
+      quando $\ForAll{(x,y) \in \OpenConnected}{B^2 - 4AC > 0}$.
+  \end{itemize}
+\end{Definition}
+\begin{Theorem}
+  Con le notazioni della definizione precedente, $L[u] = f$ \`e
+  ellittica, parabolica o iperbolica se e solo se, per ogni
+  $(x,y) \in \mathbb{R}^2$, la conica $A\xi^2 + B\xi\eta + C\eta^2 = 0$
+  nel piano $\xi\eta$ \`e un'ellisse, una parabola o un'iperbole
+  rispettivamente.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni e dal teorema di classificazione
+delle coniche. \EndProof

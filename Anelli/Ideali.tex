@@ -1,0 +1,104 @@
+\section{Ideali.}\label{Ideali}
+\begin{Definition}
+	Sia $\Ring$ un anello. Un sottogruppo $\Ideal$ del gruppo additivo soggiacente a $\Ring$ si chiama \Define{ideale sinistro}[ideale] quando $(\forall x \in \Ring)(x\Ideal \subseteq \Ring)$.
+\end{Definition}
+\begin{Theorem}
+	In un anello commutativo tutti gli ideali sono bilateri.
+\end{Theorem}
+\Proof La dimostrazione segue immediatamente dalla definizione. \EndProof
+\par In virt\`u il teorema precedente, in un anello commutativo ci si riferisce sempre agli ideali senza specificare sinistro, destro o bilatero.
+\begin{Definition}
+	Un anello $\Ring$ si dice
+	\begin{itemize}
+		\item \Define{semplice sinistro}[semplice][anello] se i suoi unici ideali sinistri sono $\lbrace 0 \rbrace$ e $\Ring$;
+		\item \Define{noetheriano sinistro}[noetheriano][anello] se ogni catena ascendente\footnote{Rispetto alla relazione di inclusione.} di ideali sinistri \`e stazionaria;
+		\item \Define{artiniano sinistro}[artiniano][anello] se ogni catena discendente di ideali sinistri \`e stazionaria;
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Siano $(x_i)_{i \in I}$ elementi di un anello $\Ring$. Il pi\`u piccolo ideale sinistro [destro, bilatero] contenente gli elementi $(x_i)_{i \in I}$, denotato $\SpanIdeal{(x_i)_{i \in I}}$, si chiama \Define{ideale sinistro generato}[generato][ideale] da $(x_i)_{i \in I}$. Un ideale si dice
+	\begin{itemize}
+		\item \Define{principale}[principale][ideale] se \`e generato da un solo elemento;
+		\item \Define{finitamente generato}[finitamente generato][ideale] se \`e generato da una famiglia finita di elementi.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Siano $\Ring$ un anello e $a \in \Ring$. L'ideale sinistro $\SpanIdeal{a}$ \`e l'insieme di tutti i multipli sinistri di $a$.
+\end{Theorem}
+\Proof \`E chiaro che tutti i multipli di $a$ apparengono a $\SpanIdeal{a}$: verifichiamo che $\SpanIdeal{a}$ sia un ideale. Siano $b, c \in \Ring$: abbiamo $ba - ca = (b - c)a$, dunque l'insieme dei multipli di $a$ costituisce un sottogruppo del gruppo additivo soggiacente ad $A$. Il resto della dimostrazione \`e evidente. \EndProof
+\begin{Theorem}
+	Un anello $\Noether$ \`e noetheriano sinistro se e solo se ogni suo ideale sinistro \`e finitamente generato.
+\end{Theorem}
+\Proof Se $\Noether$ ammette un ideale $\Ideal$ non finitamente generato, allora, dato un ideale $\Ideal_0 \subseteq \Ideal$ finitamente generato \`e sempre possibile un nuovo ideale finitamente generato $\Ideal_1$ tale che $\Ideal_0 \subseteq \Ideal_1 \subseteq \Ideal$ considerando come famiglia di generatori una qualunque famiglia finita di generatori di $\Ideal_0$ completata con un elemento $a \in \Ideal \SetMin \Ideal_0$.
+\par Viceversa, supponiamo ogni ideale sia finitamente generato e consideriamo una catena crescente di ideali $(\Ideal_i)_{i \in I}$: l'unione $\bigcup_{i \in I} \Ideal_i$ \`e un ideale, necessariamente finitamente generato. Pertanto la catena diventa stazionaria dal primo indice $i$ a cui corrisponde un ideale che contiene tutti i generatori di $\bigcup_{i \in I} \Ideal_i$. \EndProof
+\begin{Definition}
+	Sia $\Ring$ un anello. Un ideale sinistro si dice \Define{massimale sinistro}[massimale][ideale] quando \`e un elemento massimale dell'insieme di tutti gli ideali propri sinistri di $\Ring$ ordinati per la relazioni d'inclusione.
+\end{Definition}
+\begin{Definition}
+	Sia $\Ring$ un anello. Un ideale sinistro, destro o bilatero $\PrimeIdeal$ si dice \Define{primo}[primo][ideale] se, dati $a, b \in \Ring$, la condizione $(\forall c \in \Ring)(acb \in \PrimeIdeal)$ implica $a \in \PrimeIdeal \vee b \in \PrimeIdeal$
+\end{Definition}
+\begin{Definition}
+	Sia $\Ring$ un anello. Un ideale $\PrimeIdeal$ si dice \Define{completamente primo}[completamente primo][ideale] se, dati $a, b \in \Ring$, la condizione $ab \in \PrimeIdeal$ implica $a \in \PrimeIdeal \vee b \in \PrimeIdeal$
+\end{Definition}
+\begin{Theorem}
+	Ogni ideale sinistro completamente primo \`e primo.
+\end{Theorem}
+\Proof Siano $a$ e $b$ elementi di un anello $\Ring$ tali che $(\forall c \in \Ring)(acb \in \PrimeIdeal)$, dove $\PrimeIdeal$ \`e un ideale completamente primo. Abbiamo dunque $aab \in \PrimeIdeal$, da cui $a \in \PrimeIdeal \vee b \in \PrimeIdeal$. \EndProof
+\begin{Theorem}
+	Se $\Ring$ \`e un anello e $p \in \Ring$ \`e primo, allora l'ideale sinistro $\SpanIdeal{p}$ \`e completamente primo.
+\end{Theorem}
+\Proof Siano $a, b \in \Ring$ tali che $ab \in \SpanIdeal{p}$. Allora $ab$ \`e multiplo sinistro di $p$. \EndProof
+\begin{Theorem}
+	Siano $\Ring$ un anello e $\MaximalIdeal$ un suo ideale. $\MaximalIdeal$ \`e massimale se e solo se il quoziente $\Quotient{\Ring}{\MaximalIdeal}$ \`e un anello semplice.
+\end{Theorem}
+\Proof Il teorema \`e conseguenza immediata della corrispondenza biunivoca tra gli ideali di $\Quotient{\Ring}{\MaximalIdeal}$ e gli ideali di $\Ring$ contenenti $\MaximalIdeal$.
+\begin{Corollary}
+	Siano $\Ring$ un anello e $\MaximalIdeal$ un suo ideale massimale. $\Quotient{\Ring}{\MaximalIdeal}$ \`e
+	\begin{itemize}
+		\item un corpo se $\Ring$ \`e un anello unitario e $\MaximalIdeal$ \`e bilatero;
+		\item un campo se $\Ring$ \`e un anello commutativo unitario.
+	\end{itemize}
+\end{Corollary}
+\Proof Il quoziente $\Quotient{\Ring}{\MaximalIdeal}$ \`e un anello semplice. Se $a \in \Ring$ \`e invertibile, allora necessarimente $\Class{a} = \Ring$ e dunque $1 \in \Class{a}$, da cui $a$ \`e invertibile. Il resto del teorema si dimostra immediatamente. \EndProof
+\begin{Theorem}
+	Siano $\Ring$ un anello e $\PrimeIdeal$ un ideale. $\PrimeIdeal$ \`e un ideale completamente primo se e solo se nel quoziente $\Quotient{\Ring}{\PrimeIdeal}$ l'unico divisore di $0$ sinistro, destro o bilatero \`e $0$.
+\end{Theorem}
+\Proof Assumiamo inizialmente che $\PrimeIdeal$ sia completamente primo e dimostriamo solo il caso dei divisori di $0$ sinistri: per i destri la dimostrazione \`e analoga e dal caso sinistro e destro segue quello bilatero. Siano $a, b \in \Ring$ tali che $\Class{a} \Class{b} = 0$ e $\Class{b} \neq 0$. Allora $\Class{ab} = 0$, da cui $a \in \PrimeIdeal \vee b \in \PrimeIdeal$, cio\`e $\Class{a} = 0 \vee \Class{b} = 0$. Necessariamente, $\Class{a} = 0$.
+\par Vediamo l'implicazione reciproca. Siano $a, b \in \Ring$ tali che $ab \in \PrimeIdeal$. Allora $\Class{ab} = \Class{a} \Class{b} = 0$, da cui $\Class{a} = 0 \vee \Class{b} = 0$, cio\`e $a \in \PrimeIdeal \vee b \in \PrimeIdeal$. \EndProof
+\begin{Theorem}
+	Ogni ideale sinistro, destro o bilatero massimale bilatero di un anello unitario \`e completamente primo.
+\end{Theorem}
+\Proof Sia $\Ring$ un anello unitario e $\MaximalIdeal$ un suo ideale massimale bilatero. Allora $\Quotient{\Ring}{\MaximalIdeal}$ \`e un corpo, dunque non esistono al suo interno divisori di $0$ e quindi $\MaximalIdeal$ \`e completamente primo. \EndProof
+\begin{Lemma}
+	\TheoremName{Lemma di Krull}[di Krull][lemma] Si assuma vero il lemma di Zorn. Dati un anello $\Ring$, un suo ideale $\Ideal$ e una classe moltiplicativamente chiusa $S \subseteq \Ring$ disgiunta da $\Ideal$, allora
+	\begin{itemize}
+		\item esiste un ideale massimale $\MaximalIdeal$ tale che $\Ideal \subseteq \MaximalIdeal$;
+		\item esiste un ideale completamente primo $\PrimeIdeal$ tale che $\Ideal \subseteq \PrimeIdeal$ e $S \cap \PrimeIdeal = \emptyset$.
+	\end{itemize}
+\end{Lemma}
+\Proof Il primo punto segue per immediata applicazione del lemma di Zorn dopo aver osservato che l'unione di una catena ascendente di ideali \`e un ideale.
+\par Per il secondo punto, utilizzando ancora il lemma di Zorn, proviamo l'esistenza di un ideale massimale $\PrimeIdeal$ tra quelli che contengono $\Ideal$ ma sono disgiunti da $S$. Occore provare che $\PrimeIdeal$ \`e primo.
+\par Siano $a, b \in \Ring$ tali che $ab \in \PrimeIdeal$ e supponiamo che n\'e $a$ n\'e $b$ appartengono a $\PrimeIdeal$. Allora gli ideali $\SpanIdeal{\PrimeIdeal,a}$ e $\SpanIdeal{\PrimeIdeal,b}$ incontrano $S$. Siano $x, y \in \Ring$ e $c, d \in \PrimeIdeal$ tali che $xa + c \in \SpanIdeal{\PrimeIdeal,a} \cap S$ e $yb + d \in \SpanIdeal{\PrimeIdeal,b} \cap S$. Abbiamo $(xa + c)(yb + d) = xyab + xad + cyb + cd \in \SpanIdeal{\PrimeIdeal,ab} \cap S$, contro l'ipotesi di massimalit\`a di $\PrimeIdeal$. Dunque almeno uno tra $a$ e $b$ deve appartenere a $\PrimeIdeal$.  \EndProof
+\begin{Theorem}
+	Siano $\Ideal_1$ e $\Ideal_2$ ideali sinistri in un anello $\Ring$. $\Ideal = \lbrace x \in \Ring | \Exists{a \in \Ideal_1}{\Exists{b \in \Ideal_2}{x = a + b}} \rbrace$ \`e un ideale sinistro.
+\end{Theorem}
+\Proof Siano $x, y \in \Ideal$. Esistono $a_x, a_y \in \Ideal_1$ e $b_x, b_y \in \Ideal_2$ tali che $x = a_x + b_x$ e $y = a_y + b_y$. Abbiamo $x - y = a_x + b_x - a_y - b_y = (a_x - a_y) + (b_x - b_y)$. Quindi $x - y \in \Ideal$.
+\par Inoltre, se $\alpha \in \Ring$, allora $\alpha x = \alpha(a_x + b_x) = \alpha a_x + \alpha b_x$, da cui $\alpha x \in \Ideal$. \EndProof
+\begin{Definition}
+	Siano $\Ideal_1$ e $\Ideal_2$ ideali sinistri in un anello $\Ring$. L'ideale $\Ideal = \lbrace x \in \Ring | \Exists{a \in \Ideal_1}{\Exists{b \in \Ideal_2}{x = a + b}} \rbrace$ si chiama \Define{ideale somma}[somma][ideale] di $\Ideal_1$ e $\Ideal_2$, denotato $\Ideal_1 + \Ideal_2$.
+\end{Definition}
+\begin{Theorem}
+	Siano $\Ideal_1$ e $\Ideal_2$ ideali sinistri in un anello $\Ring$. La classe $\Ideal$ di tutti gli elementi di $\Ring$ della forma $\sum_{n \in \mathbb{N}} a_nb_n$ con $(a_n)_{n \in \mathbb{N}} \in \DirectSum_{n \in \mathbb{N}} \Ideal_1$ e $(b_n)_{n \in \mathbb{N}} \in \DirectSum_{n \in \mathbb{N}} \Ideal_2$ \`e un ideale sinistro.
+\end{Theorem}
+\Proof La verifica \`e immediata.
+\begin{Definition}
+	Siano $\Ideal_1$ e $\Ideal_2$ ideali sinistri in un anello $\Ring$. L'ideale $\Ideal$ del teorema precedente si chiama \Define{ideale prodotto}[prodotto][ideale] di $\Ideal_1$ e $\Ideal_2$, denotato $\Ideal_1\Ideal_2$.
+\end{Definition}
+\begin{Definition}
+	Sia $\Ideal$ un ideale sinistro in un anello $\Ring$. L'ideale intersezione di tutti gli ideali completamente primi che contengono $\Ideal$\footnote{La famiglia degli ideali primi \`e non vuota per il lemma di Krull.} si chiama \Define{radicale}[di un ideale][radicale] di $\Ideal$, denotato $\Radical{\Ideal}$. Inoltre un ideale si dice \Define{radicale}[radicale][ideale] quando coincide col suo radicale.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Ring$ un anello e $\Ideal$ un suo ideale. Abbiamo $\Radical{\Ideal} = \lbrace x \in \Ring | \Exists{n \in \mathbb{N}}{x^n \in \Ideal} \rbrace$.
+\end{Theorem}
+\Proof Sia ora un ideale completamente primo $\PrimeIdeal$ tale che $\Ideal \subseteq \PrimeIdeal$ e sia $x \in J$. Per opportuno $n \in \mathbb{N}$, $x^n \in \Ideal$, dunque $x^n \in \PrimeIdeal$ e quindi $x \in \PrimeIdeal$, da cui $J \subseteq \PrimeIdeal$. Quindi $J \subseteq \Radical{\Ideal}$.
+\par Sia ora $r \in \Radical{\Ideal}$ tale che $r \notin J$. Allora, per definizione di $J$, l'insieme moltiplicativamente chiuso $S = \lbrace x | \Exists{n \in \NotZero{\mathbb{N}}}{x = r^n}$ \`e disgiunto da $\Ideal$. Esiste dunque un ideale completamente primo $\PrimeIdeal$ contenente $\Ideal$ e disgiunto da $S$. Ma $r \in \Radical{\Ideal} \subseteq \PrimeIdeal$, dunque $r \in \PrimeIdeal$, che \`e una contraddizione. Quindi $J = \Radical{\Ideal}$. \EndProof

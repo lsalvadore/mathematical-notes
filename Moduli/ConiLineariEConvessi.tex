@@ -1,0 +1,25 @@
+\section{Coni convessi e lineari.}\label{ConiConvessiELineari}
+\begin{Definition}
+	Sia $\Module$ un $\Ring$-modulo e sia $\Class \subseteq \Module$. $\Class$ si chiama
+	\begin{itemize}
+		\item \Define{cono lineare}[lineare][cono] se contiene ogni combinazione lineare di ogni insieme costituito da un solo punto di $\Class$; 
+		\item \Define{cono convesso}[convesso][cono] se contiene ogni combinazione convessa di ogni insieme costituito da due soli punti di $\Class$. 
+	\end{itemize}
+\end{Definition}
+\begin{Definition}
+	Un cono lineare che \`e inviluppo conico di un numero finito di vettori si dice \Define{finitamente generato}[finitamente generato][cono].
+\end{Definition}
+\begin{Theorem}
+	Un cono convesso \`e una parte convessa.
+\end{Theorem}
+\Proof Segue direttamente dalla definizione di cono convesso. \EndProof
+\begin{Theorem}
+	Sono vere le seguenti affermazioni:
+	\begin{itemize}
+		\item un cono convesso \`e un cono lineare;
+		\item un inviluppo conico \`e un cono convesso;
+		\item un cono finitamente generato \`e un cono convesso.
+	\end{itemize}
+\end{Theorem}
+\Proof Sia $\ConvexCone$ un cono convesso e siano $\ModuleElement \in \ConvexCone$ e $\Scalar \in \Ring$, dove $\Ring$ \`e l'anello degli scalari del modulo in cui giace il cono convesso. Abbiamo $\Scalar\ModuleElement = \frac{\Scalar}{2}\ModuleElement + \frac{\Scalar}{2}\ModuleElement$.
+\par La seconda e la terza affermazione seguono direttamente dalle definizioni. \EndProof

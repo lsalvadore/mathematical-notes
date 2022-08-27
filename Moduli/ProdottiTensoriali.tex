@@ -1,0 +1,46 @@
+\section{Prodotti tensoriali.}\label{ProdottiTensoriali}
+\begin{Definition}
+	Siano $(\Module_i)_{i \in I}$ $\Ring$-moduli, con $\Ring$ anello commutativo. Chiamiamo \Define{prodotto tensoriale}[tensoriale][prodotto] dei $(\Module_i)_{i \in I}$ una coppia costituita da un $\Ring$-modulo denotato $\bigotimes_{i \in I} \Module_i$ e un'applicazione $\otimes \in \Multilinears{(\Module_i)_{i \in I}}{\bigotimes_{i \in I} \Module_i}$ che sia universale da $\bigtimes_{i \in I} \Module_i$ nel funtore $\Functor: \CatModule \rightarrow \CatClass$ che ad ogni $\Linear \in \CatModule$ associa $\Functor(\Linear): \Dom{\Linear} \rightarrow f$, dove $f$ \`e l'applicazione $f: \Multilinears{(\Module_i)_{i \in I}}{\Dom{\Linear}} \rightarrow \Multilinears{(\Module_i)_{i \in I}}{\Cod{\Linear}}$ che a $\Multilinear \in \Multilinears{(\Module_i)_{i \in I}}{\Dom{\Linear}}$ associa $\Linear \circ \Multilinear \in \Multilinears{(\Module_i)_{i \in I}}{\Cod{\Linear}}$.
+\end{Definition}
+\begin{Theorem}%Questo teorema \`e la definizione pi\`u comune di prodotto tensoriale e dunque \`e quasi certamente giusto. Se non fosse coerente con la definizione data sopra, sospettare maggiormente della definizione. 
+	Siano $(\Module_i)_{i \in  I}$ $\Ring$-moduli, con $\Ring$ anello commutativo. Siano $\Module$ un ulteriore $\Ring$ modulo e $\Multilinear_\otimes \in \Multilinears{(\Module_i)_{i \in I}}{\Module}$. $(\Module,\Multilinear_\otimes)$ \`e prodotto tensoriale dei $(\Module_i)_{i \in I}$ se e solo se per ogni $\Ring$-modulo $\VarModule$ e $\Multilinear \in \Multilinears{(\Module_i)_{i \in I}}{\VarModule}$ esiste una e una sola applicazione lineare $\Linear$ tale che $\Linear \circ \Multilinear_\otimes = \Multilinear$.
+\end{Theorem}
+\begin{Theorem}
+	Siano $(\Module_i)_{i \in n}$ ($n \in \mathbb{N}$) $\Ring$-moduli, con $\Ring$ anello commutativo. Il prodotto tensoriale $\bigotimes_{i \in n} \Module_i$ esiste ed \`e unico a meno di isomorfismo.
+\end{Theorem}
+\Proof 
+\par L'unicit\`a segue direttamente dall'universalit\`a.
+\begin{Theorem}\label{th_tensor_product_properties}
+	Il prodotto tensoriale, visto come operazione tra moduli, \`e
+	\begin{itemize}
+		\item commutativo;
+		\item associativo;
+		\item distributivo rispetto alla somma diretta.
+	\end{itemize}
+\end{Theorem}
+\Proof Siano $(\Module_i)_{i \in I}$ $\Ring$-moduli, con $\Ring$ anello commutativo.
+\par La commutativit\`a segue dalla commutativit\`a del diagramma \ref{tensor_product_commutative}, con $\Permutation \in \Automorphisms{I}$.
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		{\prod_{i \in I} \Module_i} \arrow{r}{(\ModuleElement_i)_{i \in I} \mapsto (\ModuleElement_{\Permutation(i)})_{i \in I}} \arrow{d}{\otimes} & {\prod_{i \in I} \Module_{\Permutation(i)}} \arrow{r}{(\ModuleElement_{\Permutation(i)})_{i \in I} \mapsto (\ModuleElement_i)_{i \in I}}\arrow{d}{\otimes} & {\prod_{i \in I} \Module_i} \arrow{d}{\otimes}\\
+		{\bigotimes_{i \in I} \Module_i} \arrow{r}{} & {\bigotimes_{i \in I} \Module_{\Permutation(i)}} \arrow{r}{} & {\bigotimes_{i \in I} \Module_i}
+	\end{tikzcd}
+	\caption{Dimostrazione del teorema \ref{th_tensor_product_properties}: commutativit\`a.}
+	\label{tensor_product_commutative}
+\end{figure}
+%\par L'associativit\`a segue dalla commutativit\`a del diagramma \ref{tensor_product_associative}.
+%\begin{figure}
+%	\center
+%	\begin{tikzcd}[column sep=6em, row sep=6em]
+%		{(\Module_0 \times \Module_1) \times \Module_2} \arrow{r}{((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2) \mapsto (\ModuleElement_0,(\ModuleElement_1,\ModuleElement_2))} \arrow{d}{((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2) \mapsto (\ModuleElement_0 \otimes \ModuleElement_1, \ModuleElement_2)} &
+%		{\Module_0 \times (\Module_1 \times \Module_2)} \arrow{r}{(\ModuleElement_0,(\ModuleElement_1,\ModuleElement_2)) \mapsto ((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2))} \arrow{d}{(\ModuleElement_0,(\ModuleElement_1,\ModuleElement_2)) \mapsto (\ModuleElement_0, \ModuleElement_1 \otimes \ModuleElement_2)} &
+%		{(\Module_0 \times \Module_1) \times \Module_2} \arrow{d}{((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2) \mapsto (\ModuleElement_0 \otimes \ModuleElement_1, \ModuleElement_2)}\\
+		
+%		{(\Module_0 \otimes \Module_1) \times \Module_2} \arrow{r}{((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2) \mapsto (\ModuleElement_0,(\ModuleElement_1,\ModuleElement_2))} \arrow{d}{((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2) \mapsto (\ModuleElement_0 \otimes \ModuleElement_1, \ModuleElement_2)} &
+%		{\Module_0 \times (\Module_1 \times \Module_2)} \arrow{r}{(\ModuleElement_0,(\ModuleElement_1,\ModuleElement_2)) \mapsto ((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2))} \arrow{d}{(\ModuleElement_0,(\ModuleElement_1,\ModuleElement_2)) \mapsto (\ModuleElement_0, \ModuleElement_1 \otimes \ModuleElement_2)} &
+%		{(\Module_0 \times \Module_1) \times \Module_2} \arrow{d}{((\ModuleElement_0,\ModuleElement_1),\ModuleElement_2) \mapsto (\ModuleElement_0 \otimes \ModuleElement_1, \ModuleElement_2)}\\
+%	\end{tikzcd}
+%	\caption{Dimostrazione del teorema \ref{th_tensor_product_properties}: associativit\`a.}
+%	\label{tensor_product_associative}
+%\end{figure}

@@ -1,0 +1,135 @@
+\subsection{Universalit\`a.}\label{Univarsalita}
+\begin{Theorem}\label{comma_th}
+	Siano i funtori $T: \Category_1 \rightarrow \Category_3$ e $S: \Category_2 \rightarrow \Category_3$. Definiamo la seguente struttura:
+	\begin{itemize}
+		\item chiamiamo ``frecce'' tutte le quadruple $(f_S,h,k,f_T)$, con $h$ freccia di $\Category_1$, $k$ freccia di $\Category_2$ e $f_T$ e $f_S$ frecce di $\Category_3$ per cui $f_T \circ T(h) = S(k) \circ f_S$ (diagramma di figura \ref{comma_1});
+		\item diciamo che due ``frecce'' $(f_S,h,k,f_T)$ e $(f_S',h',k',f_T')$ sono ``componibili'' se e solo se $f_T = f_S'$, $h'$ e $h$ sono componibili in $\Category_1$ e $k'$ e $k$ sono componibili in $\Category_2$ (diagramma di figura \ref{comma_2});
+		\item chiamiamo ``composizione'' l'operazione sulle ``frecce componibili'' cos\`i definita:  $(f_S,h,k,f_T) \circ (f_T,h',k',f_T') = (f_T',h' \circ h, k' \circ k,f_S)$ (perimetro esterno del diagramma di figura \ref{comma_2}).
+	\end{itemize}
+	Tale struttura \`e una categoria.
+\end{Theorem}
+\par La verifica degli assiomi \`e immediata. Verifichiamo esplicitamente solo che la composizione di due ``frecce'' \`e ancora una ``freccia'': $f_T' \circ T(h'h) = f_T' \circ T(h') \circ T(h) = S(k') \circ f_T \circ T(h) = S(k') \circ S(k) \circ f_S = S(k'k) \circ f_S$. \EndProof
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		{} \arrow{r}{T(h)} \arrow{d}{f_S} & {} \arrow{d}{f_T}\\
+		{} \arrow{r}{S(k)} & {}
+	\end{tikzcd}
+	\caption{Enunciato del teorema \ref{comma_th}, diagramma 1.}
+	\label{comma_1}
+\end{figure}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		{} \arrow{r}{T(h)} \arrow{d}{f_S} & {} \arrow{d}{f_T} \arrow{r}{T(h')} & {} \arrow{d}{f_T'}\\
+		{} \arrow{r}{S(k)} & {} \arrow{r}{S(k')} & {}
+	\end{tikzcd}
+	\caption{Enunciato del teorema \ref{comma_th}, diagramma 2.}
+	\label{comma_2}
+\end{figure}
+\begin{Definition}\label{comma_def}
+	La categoria costruita nel teorema precedente si chiama \Define{categoria delle frecce}[delle frecce][categoria] o \Define{categoria dei morfismi}[dei morfismi][categoria]\footnote{In inglese si usa il termine \Define{comma category}[comma][categoria].} da $T$ in $S$, denotata $\CommaCategory{T}{S}$. Definiamo inoltre, per ogni $d,e \in \Category_3$, le categorie seguenti:
+	\begin{itemize}
+		\item $\CommaCategory{d}{S} = \CommaCategory{F_d}{S}$, dove $F_d$ \`e il funtore $F_d: 1 \rightarrow \Category_3$ definito da $F_d(1) = d$ (diagramma di figura \ref{comma_3});
+		\item $\CommaCategory{T}{e} = \CommaCategory{T}{F_e}$, dove $F_e$ \`e il funtore $F_e: 1 \rightarrow \Category_3$ definito da $F_e(1) = e$ (diagramma di figura \ref{comma_4});
+		\item $\CommaCategory{d}{e} = \CommaCategory{F_d}{F_e}$, dove $F_d$ e $F_e$ sono gli stessi funtori definiti nei due casi precedenti (diagramma di figura \ref{comma_5}).
+	\end{itemize}
+\end{Definition}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		& {d} \arrow{dl}{f_S} \arrow{dr}{f_T} & \\
+		{} \arrow{rr}{S(k)} & {} & {}
+	\end{tikzcd}
+	\caption{Definizione \ref{comma_def}, diagramma 1.}
+	\label{comma_3}
+\end{figure}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		{} \arrow{rr}{T(h)} \arrow{dr}{f_S} & & {} \arrow{dl}{f_T}\\
+		& {e} &
+	\end{tikzcd}
+	\caption{Definizione \ref{comma_def}, diagramma 2.}
+	\label{comma_4}
+\end{figure}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		{d} \arrow{d}{f_S = f_T}\\
+		{e}
+	\end{tikzcd}
+	\caption{Definizione \ref{comma_def}, diagramma 3.}
+	\label{comma_5}
+\end{figure}
+\begin{Theorem}
+	Data una categoria $\CommaCategory{T}{S}$, le sue identit\`a sono tutte e sole le frecce tali che (usiamo le stesse notazioni del teorema \ref{comma_th})
+	\begin{itemize}
+		\item $h$ e $k$ sono identit\`a;
+		\item $f_S = f_T$.
+	\end{itemize}
+\end{Theorem}
+\Proof \`E immediato verificare che se $h$ e $k$ sono identit\`a e $f_S = f_T$ allora $(f_T,h,k,f_S)$ \`e un'identit\`a.
+\par Sia $(f_S,h,k,f_T)$ un'identit\`a. Poich\'e le identit\`a
+sono componibili con loro stesse, deve essere $f_S = f_T$.
+\par Sia poi $a$ una freccia componibile a sinistra e si consideri la
+freccia $(g_S,a,\Dom k,f_S)$, dove $g_S$ \`e il funtore che ad ogni
+freccia di $\Category_1$ associa $\Dom k$: componendola con
+$(f_S,h,k,f_T)$ proviamo che $ah = h$. Analogamente proviamo che per ogni
+freccia $b$ componibile a destra con $h$ abbiamo $hb = b$. Dunque $h$ \`e
+un'identit\`a. Allo stesso modo si prova che $k$ \`e un'identit\`a.
+\EndProof
+\begin{Definition}\label{universale_def}
+	Sia $c$ un oggetto della categoria $\Category_2$ e $S: \Category_1 \rightarrow \Category_2$ un funtore. Un oggetto iniziale nella categoria $\CommaCategory{c}{S}$ \`e detto \Define{universale}[universalit\`a] da $c$ in $S$. Inoltre, con riferimento al diagramma di figura \ref{universale_1} si dice ancora che $A$ e $\phi$ sono \NIDefine{universali} per $c$ ed $S$, che $A$ \`e un \Define{oggetto universale}[universale][oggetto] e che $\phi$ \`e una \Define{freccia universale}[universale][freccia]. Diciamo \NIDefine{universale} anche il duale di un'identit\`a universale\footnote{Alcuni autori distinguono i due concetti usando i termini \NIDefine{universale} e \Define{couniversale}[couniversale][freccia], ma non c'\`e accordo riguardo a quali dei due sarebbe quello universale e quale quello couniversale.}, rappresentato dal diagramma di figura \ref{universale_2}.
+\end{Definition}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		& c \arrow{dl}{\phi} \arrow{dr}{f} & \\
+		S(A) \arrow{rr}{S(g)} & & S(B)
+	\end{tikzcd}
+	\caption{Definizione \ref{universale_def}, caso iniziale.}
+	\label{universale_1}
+\end{figure}
+\begin{figure}
+	\center
+	\begin{tikzcd}[column sep=6em, row sep=6em]
+		S(A) \arrow{dr}{\phi} & & S(B)\arrow{ll}{S(g)}\arrow{dl}{f} \\
+		& c &
+	\end{tikzcd}
+	\caption{Definizione \ref{universale_def}, caso finale.}
+	\label{universale_2}
+\end{figure}
+\par Nel seguito, salvo indicazioni contrarie, analizzeremo solo i casi iniziali di universalit\`a, mentre quelli finali seguiranno automaticamente per dualit\`a.
+\begin{Theorem}
+	Con le medesime notazioni della definizione \label{universale_def}, affermare che $(A,\phi)$ \`e universale in una categoria $\CommaCategory{c}{S}$ equivale a dire che per ogni scelta di $B \in \Category_1$ esiste una e una sola freccia $g \in \Category_1$ che faccia commutare il diagramma \ref{universale_1}.
+\end{Theorem}
+\Proof Segue direttamente dalle definizioni. \EndProof
+\begin{Theorem}
+	Un oggetto universale dall'identit\`a $c$ nella categoria $\Category_2$ nel funtore $S: \Category_1 \rightarrow \Category_2$, se esiste, \`e unico.
+\end{Theorem}
+\Proof Conseguenza immediata del teorema \ref{unicita_finale}. \EndProof
+\begin{Definition}\label{def_proiezione}
+	Data una categoria $\Category$ e un funtore $S$ avente per codominio $\Category$, chiamiamo \Define{proiezione} un epimorfismo universale da $c$ in $S$.
+\end{Definition}
+\begin{Theorem}
+	Data una classe $\Class$, sia $\Category_1$ una categoria. Possiamo definie una categoria $\Category_2$
+	\begin{itemize}
+		\item scegliendo come frecce la classe di tutte le classi funzionali dove gli argomenti di $\Function$ costituiscono una classe $\Class$ e tutte le immagini di $\Function$ appartengono a $\Category_1$;
+		\item definendo due frecce $f$ e $g$ componibili se e solo per ogni $x \in \Class$ sono componibili $f(x)$ e $g(x)$.
+	\end{itemize}
+\end{Theorem}
+\Proof La verifica \`e immediata. \EndProof
+\begin{Definition}
+	Con le notazioni del teorema precedente, chiamiamo $\Category_2$ \Define{categoria potenza}[potenza][categoria] di $\Category_1$ in $\Class$, d'ora in poi denotata $\Category_1^\Class$.
+\end{Definition}
+\begin{Definition}
+	Fissate una categoria $\Category$ e una classe $\Class$, definiamo \Define{funtore replicante}[replicante][funtore]\footnote{Questa terminologia \`e nostra.} il funtore da $\Category$ in $\Category^\Class$ che alla freccia $f$ associa la classe funzionale in cui tutte le immagini sono uguali a $f$.
+\end{Definition}
+\begin{Definition}
+	Fissate una categoria $\Category$ e una classe $\Class$ e scelta una famiglia di oggetti $(\Object_i)_{i \in \Class} \in \Category^\Class$ chiamiamo
+	\begin{itemize}
+		\item \Define{oggetto prodotto}[prodotto][oggetto] della famiglia $(\Object_i)_{i \in \Class}$, denotato $\DirectProduct_{i \in \Class} \Object_i$, un oggetto universale da $\ReplicantFunctor$ in $(\Object_i)_{i \in \Class}$, dove $\ReplicantFunctor$ \`e il funtore replicante, e, fissato $i \in \Class$, \Define{proiezione}[in un prodotto][proiezione]\footnote{Queste proiezioni, pur essendo epimorfismi, non sono universali singolarmente, ma solo ``tutte insieme''. Non sono dunque universali nel senso della definizione \ref{def_proiezione}.} sul fattore $i$ l'$i$-esima componente della freccia universale;
+		\item \Define{oggetto somma}[somma][oggetto] della famiglia $(\Object_i)_{i \in \Class}$, denotato $\DirectSum_{i \in \Class} \Object_i$, il duale dell'oggetto prodotto, vale a dire un oggetto universale da $(\Object_i)_{i \in \Class}$ in $\ReplicantFunctor$, dove $\ReplicantFunctor$ \`e il funtore replicante; fissato inoltre $i \in \Class$, chiamiamo \Define{immersione}[in una somma][immersione] nel fattore $i$ l'$i$-esima componente della freccia universale.
+	\end{itemize}
+\end{Definition}

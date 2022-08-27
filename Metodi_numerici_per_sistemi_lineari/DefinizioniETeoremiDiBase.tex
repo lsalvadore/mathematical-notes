@@ -1,0 +1,37 @@
+\section{Definizioni e teoremi di base.}
+\label{MetodiNumericiPerSistemiLineari_DefinizioniETeoremiDiBase}
+\begin{Theorem}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Vector, \VarVector \in \mathbb{C}^n$.
+  \end{itemize}
+  Il costo computazionale del prodotto
+  $\Transposed{\Vector}\VarVector$ \`e
+  $2n - 1 = \BigO{n}$ operazioni aritmetiche.
+\end{Theorem}
+\Proof Abbiamo
+$\Transposed{\Vector}\VarVector
+= \Vector_k\VarVector_k$: il calcolo prevede dunque
+\begin{itemize}
+  \item $n$ operazioni di coniugazione, che non consideriamo operazioni
+    aritmetiche perch\'e possiamo effettuarle con un semplice cambio di
+    segno se rappresentiamo le componenti di $\Vector$ in forma cartesiana
+    o polare;
+  \item $n$ moltiplicazioni;
+  \item $n - 1$ somme. \EndProof
+\end{itemize}
+\begin{Corollary}
+  Siano
+  \begin{itemize}
+    \item $n \in \NotZero{\mathbb{N}}$;
+    \item $\Matrix, \VarMatrix \in \mathbb{C}^{n \times n}$.
+  \end{itemize}
+  Il costo computazionale del prodotto
+  $\Matrix\VarMatrix$ \`e
+  $2n^3 - n^2 = \BigO{n^3}$ operazioni aritmetiche.
+\end{Corollary}
+\Proof Il calcolo del prodotto
+$\Matrix\VarMatrix$
+comporta il calcolo di $n^2$ elementi calcolati come prodotto scalare
+di vettori di $n$ elementi. \EndProof

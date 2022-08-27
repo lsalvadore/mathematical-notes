@@ -1,0 +1,60 @@
+\section{L'algoritmo di \PageRank.}\label{PageRank}
+\par Una delle principali applicazioni della teoria delle catene di Markov si verifica nel contesto della valutazione dell'importanza dei vari elementi di una rete di dati in maniera indipendente dal contenuto: si tratta del problema del \Define{\PageRank}. La sua soluzione consente per esempio ai motori di ricerca su Internet di elencare i risulati di una ricerca in ordine di attinenza e viene anche usata in ambiti accademici per valutare il prestigio di un'istituzione o di una rivista.
+\par Procediamo alla formalizzazione del problema.
+\begin{Definition}
+	Chiamiamo
+	\begin{itemize}
+		\item \Define{banca dati} una qualsiasi collezioni di dati, che possiamo rappresentare con un insieme $\Database$;
+		\item \Define{nodi}[nodo] gli elementi della banca dati $\Database$;
+		\item \Define{rete di dati} un sottoinsieme $\Datanet$ del prodotto cartesiano $\Database \times \Database$. Quanto $(i,j) \in \Datanet$ diciamo che $i$ \Define{punta}[puntatore] a $j$ e che $j$ \`e \Define{riferito}[riferimento] da $i$.
+	\end{itemize}
+\end{Definition}
+\par Assumeremo d'ora in poi data una banca dati $\Database$, costituita da tutti numeri da $1$ ad un certo $N \in \mathbb{N}$, e una rete di dati $\Datanet \subseteq \Database \times \Database$. Naturalmente, la nostra ipotesi sulla banca dati non significa altro se non che associamo un numero identificativo ad ogni nodo della banca dati reale (non di quella matematica) che desideriamo studiare. Nel caso di una banca dati che comprenda le pagine del WWW $N$ \`e circa $10^{10}$.
+\begin{Definition}
+	Chiamiamo \Define{matrice d'adiacenza grezza}[d'adiacenza grezza][matrice] la matrice $\RawAdjacencyMatrix = (\Adjacency_{i,j})_{(i,j) \in \Database \times \Database}$ definita da $\Adjacency_{i,j} = \begin{cases} 1\text{ se }(i,j) \in \Datanet,\\0\text{ altrimenti}.\end{cases}$.
+\end{Definition}
+\begin{Definition}
+	Definiamo
+	\begin{itemize}
+		\item il \Define{vettore delle molteplicit\`a}[delle molteplicit\`a][vettore] $\MultiplicitiesVector = (\Multiplicity_i)_{i = 1}^N = \RawAdjacencyMatrix \Ones{N}{1}$, la cui $i$-esima componente $\Multiplicity_i$ \`e la \Define{molteplicit\`a} del nodo $i$, cio\`e, per definizione, il numero di nodi puntati dal nodo $i$;
+		\item la \Define{matrice delle molteplicit\`a}[delle molteplicit\`a][matrice] $\MultiplicitiesMatrix = (\Multiplicity_{i,j})_{(i,j) \in \Database \times \Database}$, dove $d_{i,j} = \begin{cases} d_i\text{ se }i = j,\\0\text{ altrimenti}.\end{cases}$
+	\end{itemize}
+	Se $d_i = 0$ allora diciamo che il nodo $i$ \`e un nodo \Define{cieco}[cieco][nodo] (\Define{\textit{dangling node}}).
+\end{Definition}
+\begin{Definition}
+	Chiamiamo \Define{vettore dei pesi}[dei pesi][vettore] un autovettore $\WeightsVector = (\NodeWeight_i)_{i = 1}^N$ sinistro di $\RawSystemMatrix$, dove $\RawSystemMatrix = \MultiplicitiesMatrix^{-1}\RawAdjacencyMatrix$, corrispondente ad un autovalore di modulo massimo: chiameremo quest'equazione \Define{equazione caratteristica grezza del problema di \PageRank}[caratteristica grezza del problema di \PageRank][equazione], mentre $\RawSystemMatrix$ sar\a la \Define{matrice caratteristica grezza del problema di \PageRank}[caratteristica grezza del problema di \PageRank][matrice]. $\NodeWeight_i$ \`e il \Define{peso} del nodo $i$.
+\end{Definition}
+\par I nodi col peso maggiore sono i nodi pi\`u importanti, secondo l'algoritmo di \PageRank.
+\par Se leggiamo l'equazione che definisce i pesi lungo l'$i$-esima componente, deduciamo l'equazione $w_i = \sum_{j = 1}^N w_j \Multiplicity_j^{-1} \Adjacency_{j,i}$. Essa pu\`o essere interpretata nel modo seguente: il peso di ogni nodo $j$ viene equiripartito a tutti i nodi puntati da $j$; la somma di tutti i pesi cos\`i ottenuta da un nodo $i$ \`e il peso del nodo $i$ stesso.
+\par Vediamo subito che, bench\'e la descrizione euristica dell'algoritmo sembri efficace, la sua implementazione porta molti problemi. Il primo \`e quello dei nodi ciechi: in una rete che contiene nodi ciechi la matrice $\RawSystemMatrix$ non \`e costruibile in quanto $\MultiplicitiesMatrix$ non \`e invertibile. Possiamo rimediare ponendo la seguente definizione:
+\begin{Definition}
+	Chiamiamo \Define{matrice d'adiacenza} la matrice $\AdjacencyMatrix = \RawAdjacencyMatrix + u \Ones{1}{N}$, dove $u = (u_i)_{i = 1}^N$ \`e il \Define{vettore caratteristico dei nodi ciechi}[caratteristico dei nodi ciechi][vettore] definito da $u = \begin{cases} 1\text{ se $i$ \`e un nodo cieco},\\ 0\text{ altrimenti}.\end{cases}$.
+\end{Definition}
+\par Se ripetiamo la costruzione delle molteplicit\`a utilizzando la matrice d'adiacenza anzich\'e quella di adiacenza grezza, otteniamo che $\MultiplicitiesMatrix$ \`e sempre invertibile e dunque $\RawSystemMatrix$ sempre definita. La sostituzione della matrice d'adiacenza con la matrice d'adiacenza corretta pu\`o essere interpretata nel modo seguente: i nodi ciechi distribuisono la propria importanza in maniera uguale a tutti i nodi della rete.
+\par D'ora in poi, quando considereremo l'equazione caratteristica del \PageRank\ supporremo sempre di averla costruita per mezzo della matrice d'adiacenza e non pi\`u della matrice di adiacenza grezza.
+\par Il seguente teorema \`e un corollario del teorema di Perron-Frobenius.
+\begin{Corollary}
+	Se $\RawSystemMatrix$ \`e una matrice irriducibile, allora il problema di \PageRank\ ammette un unico vettore dei pesi a meno di moltiplicazione per scalare.
+\end{Corollary}
+\par In generale la matrice del sistema non \`e irriducibile, pertanto, diamo la seguente definizione.
+\begin{Definition}
+	Chiamiamo \Define{matrice del sistema}[del sistema][matrice] la matrice $\SystemMatrix = \gamma\RawSystemMatrix + (1 - \gamma)\Ones{n}{1}\Transposed{\CustomizationVector}$, dove
+	\begin{itemize}
+		\item $\gamma \in ]0,1[$;
+		\item $\CustomizationVector \in \mathbb{R}^n$;
+		\item le componenti di $\CustomizationVector$ sono tutte positive;
+		\item $\Transposed{\CustomizationVector}\Ones{n}{1} = 1$.
+	\end{itemize}
+	Il vettore $\CustomizationVector$ si chiama \Define{vettore di personalizzazione}[di personalizzazione][vettore]. Chiamiamo \Define{equazione caratteristica del problema di \PageRank}[caratteristica del problema di \PageRank][equazione] l'equazione ottenuta dall'equazione caratteristica del problema di \PageRank\ sostituiendo $\RawSystemMatrix$ con $\SystemMatrix$.
+\end{Definition}
+\par Sostituire la matrice $\RawSystemMatrix$ con $\SystemMatrix$ nell'equazione caratteristica del problema di \PageRank equivale a considerare che ogni nodo riceva la sua importanza dalla rete di dati nella misura data da $\gamma$ e da un altro criterio, definito dal vettore di personalizzazione $\CustomizationVector$, nella misura di $1 - \gamma$.
+\begin{Theorem}
+	Il problema di \PageRank, corretto sostituendo la matrice $\SystemMatrix$ alla matrice $\RawSystemMatrix$, ammette sempre uno e un solo vettore dei pesi.
+\end{Theorem}
+\Proof Segue dal fatto che $\SystemMatrix$ ha tutte le componenti positive. \EndProof
+\par D'ora in poi assumeremo sempre di aver effettuato la sostituzione di $\RawSystemMatrix$ con $\SystemMatrix$.
+\begin{Theorem}
+	Abbiamo $\SpectralRay{\SystemMatrix} = 1$.
+\end{Theorem}
+\Proof
+

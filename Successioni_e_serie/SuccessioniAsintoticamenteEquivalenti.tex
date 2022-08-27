@@ -1,0 +1,11 @@
+\section{Successioni asintoticamente equivalenti.}
+\label{TeoriaDelleSuccessioniEDelleSerie_SuccessioniAsintoticamenteEquivalenti}
+\begin{Definition}
+	Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}} \in \mathbb{C}^\mathbb{N} - \SetMin \mathbb{C}^{(\mathbb{N})}$. $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$ si dicono \Define{asintoticamente equivalenti}[asintoticamente equivalenti][successioni], denotato $(a_n)_{n \in \mathbb{N}} \AsymptoticallyEquivalent (b_n)_{n \in \mathbb{N}}$, quando la successione $(\frac{a_n}{b_n})_{n \in \mathbb{N}}$ (supponiamo senza perdita di generalit\`a $\ForAll{n \in \mathbb{N}}{b_n \neq 0}$: in caso contrario omettiamo l'$n$-esimo rapporto e rinumeriamo la successione) converge e $\lim_{n \rightarrow \infty} \frac{a_n}{b_n} = 1$.
+\end{Definition}
+\begin{Theorem}
+	L'equivalenza asintotica \`e una relazione di equivalenza su $\mathbb{C}^\mathbb{N} \SetMin \mathbb{C}^{(\mathbb{N})}$.
+\end{Theorem}
+\Proof La dimostrazione della riflessivit\`a e della simmetria di $\AsymptoticallyEquivalent$ \`e immediata.
+\par Siano $(a_n)_{n \in \mathbb{N}}, (b_n)_{n \in \mathbb{N}}, (c_n)_{n \in \mathbb{N}} \in \mathbb{C}^\mathbb{N} \SetMin \mathbb{C}^{(\mathbb{N})}$ e assumiamo $(a_n)_{n \in \mathbb{N}} \AsymptoticallyEquivalent (b_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}} \AsymptoticallyEquivalent (c_n)_{n \in \mathbb{N}}$.
+\par Abbiamo, per ogni $n \in \mathbb{N}$ tale che $b_n \neq 0$ e $c_n \neq 0$, $\frac{a_n}{c_n} = \frac{a_n}{b_n}\frac{b_n}{c_n}$ e quindi $\left ( \frac{a_n}{c_n} \right )$ converge a $1$, da cui $(a_n)_{n \in \mathbb{N}} \AsymptoticallyEquivalent (c_n)_{n \in \mathbb{N}}$. \EndProof

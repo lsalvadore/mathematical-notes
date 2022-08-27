@@ -1,0 +1,24 @@
+\section{Programmazione lineare.}\label{ProgrammazioneLineare}
+\begin{Definition}
+	Si chiama
+	\Define{problema di programmazione lineare}[di programmazione lineare][problema]
+	un problema di ottimizzazione tale che
+	\begin{itemize}
+		\item esistono $\ConstraintsNumber \in \mathbb{N}$ condizioni del tipo $a \cdot \AdmissibleSolution \left \lbrace \begin{array}{c} \leq\\=\\\geq \end{array} \right \rbrace b$, con $a \in \mathbb{R}^\ProblemDimension$ e $b \in \mathbb{R}$ e dove $\ProblemDimension$ \`e la dimensione del problema, tale che $\AdmissibleSolution \in \AdmissibleSet$ se e solo se $\AdmissibleSolution$ verifica tutte le condizioni: tali condizioni si chiamano \Define{vincoli lineari}[lineare][vincolo];
+		\item la sua funzione obiettivo $\ObjectiveFunction$ sia della forma
+		$\ObjectiveFunction(\AdmissibleSolution) = \CostsVector \cdot \AdmissibleSolution$, dove $\CostsVector \in \mathbb{R}^\ProblemDimension$ \`e un vettore caratteristico della particolare istanza del problema in esame detto \Define{vettore dei costi}[dei costi][vettore]: $\ObjectiveFunction$ \`e dunque una funzione lineare, pi\`u precisamente un funzionale.
+	\end{itemize}
+	Il problema si dice di \Define{programmazione lineare intera}[di programmazione lineare intera][problema] quando $\AdmissibleSet \subseteq \mathbb{Z}^\ProblemDimension$; si dice di \Define{programmazione lineare mista}[di programmazione lineare mista][problema] quando si richiede che solo alcune delle componenti di una soluzione ammissibile siano intere.
+\end{Definition}
+\begin{Definition}
+	Dato un problema di ottimizzazione e una sua variabile $x$, il vincolo $x \in \mathbb{Z}$ si chiama \Define{vincolo di integrit\`a}[di integrit\`a][vincolo].
+\end{Definition}
+\begin{Theorem}
+	Ogni problema di programmazione lineare di dimensione $\ProblemDimension$ e con $\ConstraintsNumber$ vincoli lineari pu\`o essere messo nella forma $\max\ \lbrace \CostsVector \cdot x : A\AdmissibleSolution \leq b \rbrace$, dove $\CostsVector,\AdmissibleSolution \in \mathbb{R}^\ProblemDimension$, $A \in \mathbb{R}^{\ConstraintsNumber \times \ProblemDimension}$, $b \in \mathbb{R}^\ConstraintsNumber$ e su $\ConstraintsNumber$ consideriamo l'ordinamento parziale definito da $\Coimplies{(x_i)_{i \in \ConstraintsNumber} \leq (y_i)_{i \in \ConstraintsNumber}}{\ForAll{i \in \ConstraintsNumber}{x_i \leq y_i}}$.
+\end{Theorem}
+\Proof Abbiamo gi\`a provato l'equivalenza tra problemi di massimo e di minimo tramite la moltiplifcazione per $-1$ della funzione obiettivo. Basta dunque provare che tutti i vincoli lineari possono essere riscritti nella forma $a \cdot \AdmissibleSolution \leq b$ per opportuni $a \in \mathbb{R}^\ProblemDimension$ e $b \in \mathbb{R}$.
+\par Supponiamo dato il vincolo lineare $a \cdot \AdmissibleSolution \geq b$ ($a \in \mathbb{R}^\ProblemDimension$, $b \in \mathbb{R}$): esso \`e equivalente al vincolo $-a \cdot \AdmissibleSolution \leq -b$. Supponiamo dato il vincolo $a \cdot \AdmissibleSolution = b$ ($a \in \mathbb{R}^\ProblemDimension$, $b \in \mathbb{R}$): esso \`e equivalente alla congiunzione dei vincoli $a \cdot \AdmissibleSolution \leq b$ e $a \cdot \AdmissibleSolution \geq b$. \EndProof
+\begin{Definition}
+	Dati $a \in \mathbb{R}^\ProblemDimension$ e $b \in \mathbb{R}$, sia un vincolo lineare del tipo $a \cdot \AdmissibleSolution \leq b$ o $a \cdot \AdmissibleSolution \geq b$. La variabile $b - a \cdot \AdmissibleSolution$ nel primo caso e $a \cdot \AdmissibleSolution - b$ nel secondo caso si chiamano \Define{variabili di scarto}[di scarto][variabile].
+\end{Definition}
+\input{Ricerca_operativa/EsempiDiProgrammazioneLineare.tex}

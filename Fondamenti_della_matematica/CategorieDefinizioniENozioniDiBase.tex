@@ -1,0 +1,78 @@
+\subsection{Definizioni e nozioni di base.}\label{CategorieDefinizioniENozioniDiBase}
+\begin{Definition}
+	Una \Define{categoria} $\Category$ \`e una classe -- i cui elementi chiamiamo \Define{frecce}[freccia] o \Define{morfismi}[morfismo] -- munita di un'operazione binaria interna associativa $\cdot$ che chiamiamo \Define{composizione}[composizione di frecce]. Quando per due frecce $f,g \in \Category$ abbiamo $(f,g) \in \Dom{\cdot}$ diciamo che $f$ e $g$ sono \Define{componibili}[frecce componibili] o che $f$ \`e \NIDefine{componibile a sinistra} con $g$. Richiediamo inoltre che la composizione verifichi la seguente propriet\`a: per ogni freccia $f$, esistono frecce $u_d$ e $u_c$ tali che
+		\begin{enumerate}
+			\item per ogni freccia $g$ componibile a sinistra con $u_d$ [$u_c$] abbiamo $g \circ u_d = g$ [$g \circ u_c = g$],\label{identita_1}
+			\item per ogni freccia $g$ componibile a destra con $u_d$ [$u_c$] abbiamo $u_d \circ g = g$ [$u_c \circ g = g$],\label{identita_2}
+			\item $f$ \`e componibile a sinistra con $u_d$ e componibile a destra con $u_c$.
+		\end{enumerate}
+	Chiamiamo una freccia $u$ con le propriet\`a \ref{identita_1} e \ref{identita_2}, dove si pone $u_c = u_d = u$, \Define{identit\`a} o \Define{oggetto}: dunque richiediamo che per ogni freccia $f$ esistano un'identit\`a componibile a sinistra con $f$ e una componibile a destra.
+\end{Definition}
+\begin{Theorem}
+	Sia $(\Category_i)_{i \in I}$ una famiglia di categorie tali che per ogni coppia di frecce di $\bigcap_{i \in I} \Category_i$ la composizione sia definita nella stessa maniera in tutte le categorie di $(\Category_i)_{i \in I}$. Allora le frecce di $\bigcap_{i \in I} \Category_i$ costituiscono una categoria.
+\end{Theorem}
+\Proof La verifica \`e immediata. \EndProof
+\begin{Theorem}
+	Il duale di una categoria \`e una categoria e le identit\`a della categoria originale e della categoria duale coincidono.
+\end{Theorem}
+\Proof Gli assiomi di categoria sono invarianti per dualit\`a. \EndProof
+\begin{Theorem}\label{unicita_dominio}
+	Sia $\Category$ una categoria e $f$ una freccia. Esiste un'unica identit\`a $u_d$ componibile a destra con $f$.
+\end{Theorem}
+\Proof L'esistenza \`e garantita dagli assiomi.
+\par Siano $u_d$ e $v_d$ due identit\`a componibili a destra con $f$. Poich\'e $v_d$ \`e componibile a destra con $f = f u_d$, allora $v_d$ \`e anche componibile a destra con $u_d$. Abbiamo $u_d = u_d \circ v_d = v_d$ per definizione di identit\`a. \EndProof
+\begin{Definition}
+	Sia $f$ una freccia in una categoria $\Category$. Il \Define{dominio} di $f$, denotato $\Dom f$, \`e l'unica identit\`a componibile a destra con $f$. Il duale del dominio di $f$, denotato $\Cod f$, \`e chiamato \Define{codominio} di $f$ (\`e l'unica identit\`a componibile a sinistra con $f$). Chiamiamo \Define{parallele} due frecce che hanno lo stesso dominio e lo stesso codominio.
+\end{Definition}
+\begin{Theorem}
+	Due frecce $f$ e $g$ sono componibili (in quest'ordine) se e solo se $\Dom f = \Cod g$.
+\end{Theorem}
+\Proof Siano $f$ e $g$ componibili. Poich\'e $f \circ \Dom f = f$, $\Dom f$ e $g$ sono componibili. Inoltre $\Dom f$ \`e un'identit\`a componibile a sinistra con $g$, dunque necessariamente $\Cod g = \Dom f$.
+\par Viceversa, se $\Dom f = \Cod g$, allora, poich\'e $f$ \`e componibile a sinistra con $\Dom f$ e $\Cod g = \Dom f$ \`e componibile a sinistra con $g$, allora $f$ e $g$ sono componibili. \EndProof
+\par D'ora in poi, invece di affermare che $f$ \`e una freccia tale che $\Dom f = a$ e $\Cod f = b$, scriveremo $f: a \rightarrow b$. Pi\`u generalmente, diamo la definizione seguente.
+\begin{Definition}
+	Un \Define{diagramma} \`e un disegno composto di frecce grafiche $\rightarrow$, eventualmente etichettate, che rappresentano parti di categorie secondo le seguenti regole:
+	\begin{itemize}
+		\item ogni freccia grafica corrisponde ad una ed una sola freccia di categoria;
+		\item un'etichetta associata ad una freccia grafica \`e un nome per la freccia di categoria corrispondente;
+		\item un'etichetta all'inizio [alla fine] di una freccia grafica \`e un nome per il dominio [codominio] della freccia di categoria corrispondente.
+	\end{itemize}
+	Un diagramma si dice \Define{commutativo}[commutativo][diagramma] se e solo qualsiasi coppia di sequenze di frecce grafiche consecutive che cominciano nello stesso punto e finiscono nello stesso punto, le composizioni delle corrispondenti frecce di categoria sono uguali.
+\end{Definition}
+\begin{Theorem}
+	Sia $\Identity$ una identit\`a. Abbiamo $\Cod{\Identity} =
+	\Dom{\Identity} = \Identity$.
+\end{Theorem}
+\Proof Abbiamo $\Cod{\Identity} = \Cod{\Identity} \Identity =
+\Cod{\Identity} \Identity \Dom{\Identity} =
+\Identity \Dom{\Identity} = \Dom{\Identity}$.
+\par Inoltre, $\Cod{\Identity} = \Dom{\Identity}$ implica che
+$\Identity$ \`e componibile con se stessa, dunque $\Identity$ deve
+coincidere col proprio dominio e col proprio codominio. \EndProof
+\begin{Corollary}
+	Le identit\`a di una categoria sono tutti e soli i domini delle frecce della stessa categoria. 
+\end{Corollary}
+\Proof I domini sono identit\`a per definizione e ogni identit\`a \`e dominio di se stessa. \EndProof
+\begin{Definition}
+	Chiamiamo \Define{inversa sinistra}[inversa sinistra][freccia] di una freccia $f$ una freccia $r$ tale che $rf$ \`e un'identit\`a. Quando $f$ ammette un'inversa sinistra si dice che $f$ \`e \Define{invertibile a sinistra}[invertibile a sinistra][freccia].
+\end{Definition}
+\begin{Definition}
+	Chiamiamo
+	\begin{itemize}
+		\item \Define{monomorfismo} una freccia semplificabile a sinistra;
+		\item \Define{epimorfismo} una freccia semplificable a destra;
+		\item \Define{retrazione} una freccia invertibile a destra;
+		\item \Define{sezione} una freccia invertibile a sinistra;
+		\item \Define{isomorfismo} una freccia invertibile;
+		\item \Define{endomorfismo} una freccia $f$ tale che $\Dom f = \Cod f$;
+		\item \Define{automorfismo} una freccia che \`e simultaneamente un endomorfismo e un isomorfismo.
+	\end{itemize}
+	Se $r$ e $s$ sono, rispettivamente, una retrazione e una sezione tale che $rs$ \`e un'identit\`a, diciamo che $r$ ed $s$ sono \Define{associate}[associate][frecce].
+\end{Definition}
+\begin{Definition}
+	Un monomorfismo $m$ che \`e un'identit\`a e tale che per ogni altra identit\`a $i$ esiste una e una sola freccia $f$ di dominio $i$ e codominio $m$ si dice \Define{finale}[finale][freccia]; una freccia che soddisfa la condizione duale si dice \Define{iniziale}[iniziale][freccia]. Una freccia iniziale e finale si dice \Define{nulla}[nulla][freccia].
+\end{Definition}
+\begin{Theorem}\label{unicita_finale}
+	Se una categoria ammette un oggetto finale, esso \`e unico a meno di isomorfismo.
+\end{Theorem}
+\Proof Siano $a$ e $b$ oggetti finali. Per la finalit\`a di $a$ esiste un'unica freccia $f: b \rightarrow a$ e per la finalit\`a di $g$ esiste un'unica freccia $g: a \rightarrow b$. Abbiamo necessariamente $f \circ g = \Id_a$ e $g \circ f = \Id_b$, dunque $f$ e $g$ sono isomorfismi, l'uno l'inverso dell'altro. \EndProof

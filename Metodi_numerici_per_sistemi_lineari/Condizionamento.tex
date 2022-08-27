@@ -1,0 +1,60 @@
+\section{Condizionamento.}
+\label{MetodiNumericiPerLaRisoluzioneDiSistemiLineari_Condizionamento}
+\begin{Definition}
+  Sia $\Matrix \in \mathbb{N}$, chiamiamo
+  \Define{numero di condizionamento}[di condizionamento di una matrice][numero]
+  la quantit\`a $\MatrixConditionNumber = \Norm{\Matrix}\Norm{\Matrix^{-1}}$.
+\end{Definition}
+\begin{Theorem}
+  Fissato $n \in \NotZero{\mathbb{N}}$
+  e denotato $\Set$ l'insieme di tutte le matrici invertibili di
+  $\mathbb{C}^{n \times n}$, sia
+  $f: \Set \times \mathbb{C}^n \rightarrow \mathbb{C}^n$
+  l'applicazione che a
+  $(A,B) \in \Set \times \mathbb{C}^n$
+  associa $X = A^{-1}B$, cio\`e l'unica soluzione del sistema lineare
+  $AX = B$.
+  Al primo ordine, il numero di condizionamento di $f$ in
+  $(A,B) \in \Set \times \mathbb{C}^n$
+  verifica
+  \[
+    \ConditionNumber \leq \MatrixConditionNumber,
+  \]
+  dove $\MatrixConditionNumber$ \`e il numero di condizionamento di $A$.
+\end{Theorem}
+\Proof Siano $\Perturbation{A}$ e $\Perturbation{B}$ le perturbazioni di $A$ e
+$B$: esse perturbano la soluzione originale $X \in \mathbb{C}^n$ del sistema
+$AX = B$.
+\par Abbiamo allora
+\[
+  (A + \Perturbation{A})(X + \Perturbation{X}) = (B + \Perturbation{B},
+\]
+equivalente, al primo ordine, a
+\[
+  AX + A\Perturbation{X} + \Perturbation{A}X = B + \Perturbation{B},
+\]
+e dunque a
+\[
+  A\Perturbation{X} + \Perturbation{A}X = \Perturbation{B},
+\]
+equivalente a
+\[
+  \Perturbation{X}
+  = A^{-1}(\Perturbation{B} - \Perturbation{A}X).
+\]
+Ne deduciamo
+\begin{align*}
+  \Norm{\Perturbation{X}}
+  &\leq \Norm{A^{-1}(\Perturbation{B} - \Perturbation{A}X)},\\
+  &\leq \Norm{A^{-1}}\Norm{\Perturbation{B} - \Perturbation{A}X)},\\
+  &\leq \Norm{A^{-1}}(\Norm{\Perturbation{B} + \Perturbation{A}X}),\\
+  &\leq \Norm{A^{-1}}\Norm{\Perturbation{B}}.
+\end{align*}
+\par Inoltre da $AX = B$, deduciamo $\Norm{X} \geq \frac{\Norm{B}}{\Norm{A}}$.
+\par Abbiamo infine
+\begin{align*}
+  \frac{\Perturbation{X}}{\Norm{X}}
+  &\leq \Norm{A^{-1}}\Norm{\Perturbation{B}} \cdot \frac{\Norm{A}}{\Norm{B}},\\
+  &= \Norm{A}\Norm{A^{-1}},\\
+  &= \MatrixConditionNumber.\text{ \EndProof}
+\end{align*}

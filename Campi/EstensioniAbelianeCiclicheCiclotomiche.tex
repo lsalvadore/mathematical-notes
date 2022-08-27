@@ -1,0 +1,174 @@
+\subsection{Estensioni abeliane, cicliche, ciclotomiche.}
+\label{EstensioniAbelianeCiclicheCiclotomiche}
+\begin{Definition}
+	Sia $\FieldExtension{\Field_2}{\Field_1}$
+	un'estensione di Galois. L'estensione si dice
+	\begin{itemize}
+		\item \Define{abeliana}[abeliana][estensione] quando
+		$\GaloisGroup{\Field_2}{\Field_1}$ \`e un gruppo abeliano;
+		\item \Define{ciclica}[ciclica][estensione] quando
+		$\GaloisGroup{\Field_2}{\Field_1}$ \`e un gruppo ciclico.
+	\end{itemize}
+\end{Definition}
+\begin{Theorem}
+	Abelianit\`a e ciclicit\`a non sono propriet\`a che si
+	trasferiscono lungo le torri.
+\end{Theorem}
+\Proof
+Segue immediatamente dal fatto che la propriet\`a di essere di Galois non
+si trasferisce lungo le torri.
+\EndProof
+\begin{Theorem}
+	Sia $\Field_1 \subseteq \Field_2 \subseteq \Field_3$ una torre
+	d'estensioni con $\FieldExtension{\Field_2}{\Field_1}$ normale. Se
+	\begin{itemize}
+		\item $\FieldExtension{\Field_3}{\Field_1}$ \`e abeliana,
+		allora $\FieldExtension{\Field_3}{\Field_2}$ e
+		$\FieldExtension{\Field_2}{\Field_1}$ sono abeliane;
+		\item $\FieldExtension{\Field_3}{\Field_1}$ \`e ciclica,
+		allora $\FieldExtension{\Field_3}{\Field_2}$ e
+		$\FieldExtension{\Field_2}{\Field_1}$ sono cicliche;
+	\end{itemize}
+\end{Theorem}
+\Proof
+$\FieldExtension{\Field_3}{\Field_2}$ e
+$\FieldExtension{\Field_2}{\Field_1}$ sono estensioni di Galois: la prima
+perch\'e \`e di Galois $\FieldExtension{\Field_3}{\Field_2}$, la seconda
+per lo stesso motivo unito alla normalit\`a dell'estensione stessa.
+\par
+L'abelianit\`a o ciclit\`a di
+$\FieldExtension{\Field_3}{\Field_2}$ segue dal fatto che sottogruppi di
+gruppi abeliani o ciclici sono abeliani o ciclici rispettivamente.
+\par
+L'abelianit\`a o ciclit\`a di
+$\FieldExtension{\Field_2}{\Field_1}$ segue dal fatto che quozienti di
+gruppi abeliani o ciclici sono abeliani o ciclici rispettivamente.
+\EndProof
+\begin{Theorem}
+	Consideriamo le estenioni
+	$\FieldExtension{\Field_2}{\Field_1}$ e
+	$\FieldExtension{\Field_3}{\Field_1}$, con
+	$\FieldExtension{\Field_2}{\Field_1}$ finita.
+	Abbiamo
+	\begin{itemize}
+		\item
+		se $\FieldExtension{\Field_2}{\Field_1}$ \`e abeliana,
+		allora
+		$\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}
+		{\Field_3}$ \`e abeliana;
+		\item
+		se $\FieldExtension{\Field_2}{\Field_1}$ \`e ciclica,
+		allora
+		$\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}
+		{\Field_3}$ \`e ciclica.
+	\end{itemize}
+\end{Theorem}
+\Proof
+Segue immediatamente dal fatto che
+$\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}{\Field_3} \Isomorphic
+\GaloisGroup{\Field_2}{\Field_2 \cap \Field_3} \IsSubgroup
+\GaloisGroup{\Field_2}{\Field_1}$ e dal fatto che sottogruppi di gruppi
+abeliani o ciclici sono abeliani o ciclici rispettivamente.
+\EndProof
+\begin{Theorem}
+	Siano le estensioni
+	$\FieldExtension{\Field_2}{\Field_1}$ e
+	$\FieldExtension{\Field_3}{\Field_1}$.
+	Abbiamo,
+	\begin{itemize}
+		\item
+		se
+		$\FieldExtension{\Field_2}{\Field_1}$ e
+		$\FieldExtension{\Field_3}{\Field_1}$ sono abeliane,
+		allora
+		$\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}
+		{\Field_1}$ \`e abeliana;
+		\item
+		se
+		$\FieldExtension{\Field_2}{\Field_1}$ e
+		$\FieldExtension{\Field_3}{\Field_1}$ sono ciclice,
+		e
+		$\FieldDegree{\Field_2}{\Field_1}$ e
+		$\FieldDegree{\Field_3}{\Field_1}$ sono coprimi,
+		allora
+		$\FieldExtension{\FieldComposition{\Field_2}{\Field_3}}
+		{\Field_1}$ \`e ciclica.
+	\end{itemize}
+\end{Theorem}
+\Proof
+Abbiamo provato che
+$\GaloisGroup{\FieldComposition{\Field_2}{\Field_3}}
+{\Field_1}$ si immerge in
+$\GaloisGroup{\Field_2}{\Field_1} \times
+\GaloisGroup{\Field_3}{\Field_1}$, il quale \`e
+\begin{itemize}
+	\item un gruppo abeliano se i fattori sono abeliani;
+	\item un gruppo ciclico se i fattori sono ciclici e di ordini
+	coprimi.
+\end{itemize}
+\EndProof
+\begin{Theorem}
+	Sia $\Field$ un campo algebricamente chiuso e
+	$\Automorphism \in \Automorphisms{\Field}$.
+	Sia $\Field_0$ un'estensione finita di
+	$\Fixed{\Field}{\SpanGroup{\Automorphism}}$.
+	$\Field_0$ \`e ciclica.
+\end{Theorem}
+\Proof
+Poich\'e $\SpanGroup{\Automorphism}$ \`e un gruppo ciclico,
+\`e un gruppo ciclico anche $\SpanGroup{\Automorphism_0}$, dove
+$\Automorphism_0$ \`e l'autormofismo di $\Field_0$ con lo stesso
+grafo di $\Restricted{\Automorphism}{\Field_0}$.
+\par
+Abbamo allora $\Field = \Fixed{\Field_0}{\SpanGroup{\Automorphism_0}}$ e,
+per il lemma di Artin, $\FieldExtension{\Field_0}{\Field}$ \`e
+un'estensione di Galois con gruppo di Galois $\SpanGroup{\Automorphism_0}$
+e dunque ciclica.
+\EndProof
+\begin{Theorem}
+	Sia $a \in \mathbb{N}$. $\FieldAdjunction{\mathbb{Q}}{\sqrt{-a}}$
+	non si immerge in un'estensione ciclica di $\mathbb{Q}$ di grado
+	multiplo di $4$.
+\end{Theorem}
+\Proof
+Sia la torre d'estensione
+$\mathbb{Q} \subseteq
+\FieldAdjunction{\mathbb{Q}}{\sqrt{-a}} \subseteq
+\Field$,
+con $\FieldExtension{\Field}{\mathbb{Q}}$ estensione ciclica
+di grado $4d$, con $d \in \NotZero{\mathbb{N}}$.
+Procediamo per induzione su $d$.
+\par
+Supponiamo $d = 1$.
+$\Field \cap \mathbb{R} \neq \Field$ perch\'e
+$\sqrt{-a} \notin \mathbb{R}$.
+Inoltre $\Field \cap \mathbb{R} \neq \mathbb{Q}$ perch\'e
+\par
+Quindi
+$\FieldDegree{\Field}{\Field \cap \mathbb{R}} = 2 =
+\FieldDegree{\Field}{\FieldAdjunction{\mathbb{Q}}{\sqrt{-a}}}$:
+$\Field$ ammette dunque sottocampi distinti di grado $2$ che estendono
+$\mathbb{Q}$, in contraddizione con la ciclicit\`a di
+$\GaloisField{\Field}{\mathbb{Q}}$ e il teorema di corrispondenza di
+Galois.
+\par
+Sia $d > 1$, all'estensione
+$\FieldExtension{\Field}{\FieldAdjunction{\mathbb{Q}}{\sqrt{-a}}}$
+corrisponde un sottogruppo ciclico
+$\Subgroup \IsSubgroup \GaloisGroup{\Field}{\mathbb{Q}}$ di ordine $2d$.
+Sia poi $\Subgroup_0 \IsSubgroup \Subgroup$ di ordine $d$: a $\Subgroup_0$
+corrisponde un'estensione di campo $\FieldExtension{\Field}{\Field_0}$,
+con
+$\FieldAdjunction{\mathbb{Q}}{\sqrt{-a}} \subseteq \Field_0$ e tale che
+$\FieldDegree{\Field_0}{\FieldAdjunction{\mathbb{Q}}{\sqrt{-a}}} = 2$.
+Abbiamo dunque la torre d'estensioni
+$\mathbb{Q} \subseteq \FieldAdjunction{\mathbb{Q}}{\sqrt{-a}} \subseteq
+\Field_0$ con
+$\FieldDegree{\Field_0}{\mathbb{Q}} = 4$.
+L'estensione $\FieldDegree{\Field_0}{\mathbb{Q}}$ \`e anche ciclica
+perch\'e il suo gruppo di Galois \`e isomorfo al quoziente
+$\Quotient{\GaloisGroup{\Field}{\mathbb{Q}}}
+{\GaloisGroup{\Field}{\Field_0}}$.
+\par
+Ci si riconduce dunque al caso $d = 1$.
+\EndProof
