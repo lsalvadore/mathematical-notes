@@ -1,0 +1,21 @@
+= Mathematical notes
+(Più sotto la traduzione in italiano.)
+
+This repository contains some of my mathematical notes. This is not an exhaustive mathematical course and it is an always in progress work.
+
+I am writing these notes with the following rules in mind:
+- the reader should be able to read them in order, without needing to jump back and forth in the pages;
+- everything should be proved, no proof should ever be declared as just trivial.
+
+At the moment the work is available in Italian only. 
+
+== Appunti di matematica
+(The Italian translation of the text you can read above.)
+
+Questo __repository__ contiene alcuni dei miei appunti di matematica. Non si tratta di un corso di matematica esaustivo ed è un lavoro sempre in corso d'opera.
+
+Scrivo questi appunti cercando di seguire le regole seguenti:
+- il lettore dovrebbe essere in grado di leggerle in ordine, senza aver bisogno di scorrere le pagine avanti e indietro;
+- tutto dovrebbe essere dimostrato, nessuna dimostrazione dovrebbe mai essere dichiarta semplicemente banale.
+
+Al momento il lavoro è disponibile solo in italiano.
