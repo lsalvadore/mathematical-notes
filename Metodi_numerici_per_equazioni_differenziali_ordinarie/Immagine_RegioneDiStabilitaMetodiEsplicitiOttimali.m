@@ -6,9 +6,9 @@ Intervallo = linspace(EstremoSinistro,EstremoDestro,Risoluzione);
 [XX YY] = meshgrid(Intervallo);
 
 R1 = @(z) 1 + z;
-R2 = @(z) 1 + z + z.**2/2;
-R3 = @(z) 1 + z + z.**2/2 + z.**3 / 6;
-R4 = @(z) 1 + z + z.**2/2 + z.**3 / 6 + z.**4 /24;
+R2 = @(z) 1 + z + z.^2/2;
+R3 = @(z) 1 + z + z.^2/2 + z.^3 / 6;
+R4 = @(z) 1 + z + z.^2/2 + z.^3 / 6 + z.^4 /24;
 
 Z = XX + i * YY;
 

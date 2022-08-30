@@ -6,7 +6,7 @@ dx = 1;
 dy = 1;
 
 X = linspace(Sinistra,Destra,Res);
-Y = - (X - 3) .**2 + 2;
+Y = - (X - 3) .^2 + 2;
 
 Immagine = figure("visible","off");
 axis("equal");

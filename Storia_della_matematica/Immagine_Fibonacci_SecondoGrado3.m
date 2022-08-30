@@ -6,7 +6,7 @@ Censi = 1;
 Radici = 3;
 Numero = 4;
 
-x = sqrt(Numero + Radici.**2/4) + Radici/2;
+x = sqrt(Numero + Radici.^2/4) + Radici/2;
 AB = x;
 AE = Radici;
 AM = AE/2;

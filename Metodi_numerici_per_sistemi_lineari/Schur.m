@@ -5,8 +5,8 @@ function [Triangolare Unitaria] = Schur(Matrice)
     Triangolare = Matrice;
   else
     [Autovettori Autovalori] = eig(Matrice);
-    Alpha = (norm(Autovettori(:,1),2) ** 2 + ...
-            abs(Autovettori(1,1)) * norm(Autovettori(:,1),2)) ** (-1);
+    Alpha = (norm(Autovettori(:,1),2) ^ 2 + ...
+            abs(Autovettori(1,1)) * norm(Autovettori(:,1),2)) ^ (-1);
     Vettore = Autovettori(:,1);
     if Autovettori(1,1) == 0
       Vettore(1) = norm(Autovettori(:,1),2);
@@ -15,7 +15,7 @@ function [Triangolare Unitaria] = Schur(Matrice)
       (1 + norm(Autovettori(:,1),2)/abs(Autovettori(1,1))) * Autovettori(1,1);
     endif
     Householder = eye(n) - Alpha * Vettore * Vettore';
-    Householder = (Householder * Autovettori(:,1))(1) ** (- 1) * Householder;
+    Householder = (Householder * Autovettori(:,1))(1) ^ (- 1) * Householder;
     MatricePerInduzione = Householder' * Matrice * Householder;
     [TriangolarePerInduzione UnitariaPerInduzione] = ...
       Schur(MatricePerInduzione(2:end,2:end));

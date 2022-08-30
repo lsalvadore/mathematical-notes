@@ -3,7 +3,7 @@ addpath("../Metodi_numerici_per_la_risoluzione_di_equazioni");
 t0 = - 0; 
 tmax = 5;
 
-Passi = 2.**-(1:10);
+Passi = 2.^-(1:10);
 
 ErroreEuleroEsplicito = [];
 ErroreEuleroImplicito = [];
@@ -13,7 +13,7 @@ ErroreTrapezi = [];
 %DerivataDifRispettoAdy = @(t,y) -1;
 %FunzioneSoluzione = @(t) exp(-t) + sin(t);
 
-epsilon = 10.**-6;
+epsilon = 10.^-6;
 f = @(t,y) - (1 + 1./(2 * sqrt(t + epsilon))) * y + (1 + 1./(2 * sqrt(t + epsilon))) * sin(t) + cos(t);
 DerivataDifRispettoAdy = @(t,y) - (1 + 1./(2 * sqrt(t + epsilon)));
 FunzioneSoluzione = @(t) exp(-t-sqrt(t + epsilon)) + sin(t);

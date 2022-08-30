@@ -6,7 +6,7 @@ Censi = 1;
 Radici = 10;
 Numero = 39;
 
-x = sqrt(Numero + Radici.**2/4) - Radici/2;
+x = sqrt(Numero + Radici.^2/4) - Radici/2;
 h = Radici/4;
 L = x + 2 * h;
 

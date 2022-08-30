@@ -1,6 +1,6 @@
 SemilatoRetto = 1;
 Eccentricita = 1.001;
-SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ** 2);
+SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ^ 2);
 SemidistanzaFocale = SemiasseMaggiore * Eccentricita;
 Perielio = SemilatoRetto/2;
 Raggio = SemidistanzaFocale + Perielio;
@@ -31,14 +31,14 @@ axis("off");
 plot(XXE,YYE,".b");
 
 XXC = linspace(min(XXE),max(XXE),RisoluzioneIperbole);
-YYC = sqrt((XXC - (SemilatoRetto/(1 + Eccentricita)) - 1).**2 - 1);
+YYC = sqrt((XXC - (SemilatoRetto/(1 + Eccentricita)) - 1).^2 - 1);
 XXC = [XXC, XXC];
 YYC = [YYC,  - YYC];
 plot(XXC,YYC,".b");
 
 XXA = linspace(2 * (min(XXC) - max(XXC)),max(XXC) - min(XXC),RisoluzioneAsintoto);
 YYA = XXA;
-XXA = XXA + (SemilatoRetto/(1 + Eccentricita)).**2 + 1;
+XXA = XXA + (SemilatoRetto/(1 + Eccentricita)).^2 + 1;
 plot(XXA,YYA,"--k");
 plot(XXA,-YYA,"--k");
 
@@ -59,11 +59,11 @@ text([AnomaliaVeraModulo * cos(AnomaliaVera)] - 2 * dx, [AnomaliaVeraModulo * si
 text([0,0] + dx, [0, - 2 * dy] + dy, {'\nu' 'O'});
 
 plot(AnomaliaVeraModulo * cos(AnomaliaVera) * [1, 1],[EstremoAlto,EstremoBasso],"--k");
-plot( [(SemilatoRetto/(1 + Eccentricita)).**2 + 1, AnomaliaVeraModulo * cos(AnomaliaVera)],
-      [0, sqrt((AnomaliaVeraModulo * cos(AnomaliaVera) - (SemilatoRetto/(1 + Eccentricita)) - 1).**2 - 1)],
+plot( [(SemilatoRetto/(1 + Eccentricita)).^2 + 1, AnomaliaVeraModulo * cos(AnomaliaVera)],
+      [0, sqrt((AnomaliaVeraModulo * cos(AnomaliaVera) - (SemilatoRetto/(1 + Eccentricita)) - 1).^2 - 1)],
       "-g", "linewidth", Spessore);
-text( [(SemilatoRetto/(1 + Eccentricita)).**2 + 1, AnomaliaVeraModulo * cos(AnomaliaVera) - 3 * dx] + dx,
-      [0, sqrt((AnomaliaVeraModulo * cos(AnomaliaVera) - (SemilatoRetto/(1 + Eccentricita)) - 1).**2 - 1)] + dy,
+text( [(SemilatoRetto/(1 + Eccentricita)).^2 + 1, AnomaliaVeraModulo * cos(AnomaliaVera) - 3 * dx] + dx,
+      [0, sqrt((AnomaliaVeraModulo * cos(AnomaliaVera) - (SemilatoRetto/(1 + Eccentricita)) - 1).^2 - 1)] + dy,
       {'C' 'B'});
 
 text([AnomaliaVeraModulo * cos(AnomaliaVera) - 3 * dx, SemilatoRetto/(1 + Eccentricita)] + dx,[0, 0] + dy,{'H' 'D'});

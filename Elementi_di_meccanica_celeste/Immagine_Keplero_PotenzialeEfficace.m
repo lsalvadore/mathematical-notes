@@ -13,7 +13,7 @@ hold on;
 
 axis("off");
 
-PotenzialeEfficace = @(r) MomentoAngolarePerUnitaDiMassa ** 2./(2 * r .** 2) - CostanteGravitazionale * MassaTotale ./ r;
+PotenzialeEfficace = @(r) MomentoAngolarePerUnitaDiMassa ^ 2./(2 * r .^ 2) - CostanteGravitazionale * MassaTotale ./ r;
 
 R = linspace(AscissaSinistra,EstremoDestro,Risoluzione);
 V = PotenzialeEfficace(R);

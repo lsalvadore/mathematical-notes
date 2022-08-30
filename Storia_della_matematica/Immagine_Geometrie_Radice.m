@@ -7,7 +7,7 @@ dy = 0.5;
 Piede = Res/4;
 
 XCirc = linspace(- Destra, Destra, Res);
-YCirc = sqrt(Destra ** 2 - XCirc .** 2);
+YCirc = sqrt(Destra ^ 2 - XCirc .^ 2);
 
 XPiede = XCirc(Piede);
 YPiede = YCirc(Piede);

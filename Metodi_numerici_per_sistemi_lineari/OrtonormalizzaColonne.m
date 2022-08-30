@@ -4,7 +4,7 @@ function [Q R] = OrtonormalizzaColonne(Matrice)
   NumeroDiFattori = 0;
   for j = 1:min([n m])
     Colonna = R(j:end,j);
-    Alpha = (norm(Colonna,2) ** 2 + abs(Colonna(1)) * norm(Colonna,2)) ** (-1);
+    Alpha = (norm(Colonna,2) ^ 2 + abs(Colonna(1)) * norm(Colonna,2)) ^ (-1);
     Vettore = Colonna;
     if Colonna(1) == 0
       Vettore(1) = norm(Colonna,2);

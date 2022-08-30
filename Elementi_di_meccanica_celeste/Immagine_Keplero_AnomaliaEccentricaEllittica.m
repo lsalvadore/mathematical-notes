@@ -1,6 +1,6 @@
 SemilatoRetto = 1;
 Eccentricita = 0.7;
-SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ** 2);
+SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ^ 2);
 SemidistanzaFocale = SemiasseMaggiore * Eccentricita;
 Perielio = SemilatoRetto/2;
 Raggio = SemidistanzaFocale + Perielio;

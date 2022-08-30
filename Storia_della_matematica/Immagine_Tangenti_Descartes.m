@@ -7,11 +7,11 @@ dx = 75;
 dy = 75;
 
 Xpar = linspace(0,Destra,Res);
-Ypar = Coeff * Xpar.**2;
+Ypar = Coeff * Xpar.^2;
 
 Xtan = Xpar(Tangenza);
 Ytan = Ypar(Tangenza);
-XCentro = Xtan + 2 * Coeff **2 * Xtan ** 3;
+XCentro = Xtan + 2 * Coeff ^2 * Xtan ^ 3;
 
 Immagine = figure("visible","off");
 axis("equal");

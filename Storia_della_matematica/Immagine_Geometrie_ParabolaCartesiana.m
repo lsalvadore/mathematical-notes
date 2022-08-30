@@ -3,7 +3,7 @@ Destra = -0.5;
 Sinistra = -2;
 
 X = linspace(Sinistra,Destra,Res);
-Y = 1./X - X .**2 - X - 1;
+Y = 1./X - X .^2 - X - 1;
 
 Immagine = figure("visible","off");
 axis("equal");

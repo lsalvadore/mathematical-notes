@@ -1,7 +1,7 @@
 SemilatoRetto = 0.4;
 Eccentricita = 0.7;
-SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ** 2);
-SemiasseMinore = SemiasseMaggiore * sqrt(1 - Eccentricita ** 2);
+SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ^ 2);
+SemiasseMinore = SemiasseMaggiore * sqrt(1 - Eccentricita ^ 2);
 SemidistanzaFocale = SemiasseMaggiore * Eccentricita;
 
 EstremoDestro = SemilatoRetto + SemilatoRetto;

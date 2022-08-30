@@ -9,7 +9,7 @@ function Matrice = EliminazioneGaussiana(Matrice)
     Riga = Matrice(Indice,:);
     Matrice(Indice,:) = Matrice(j,:);
     Matrice(j,:) = Riga;
-    Matrice(j,:) = Matrice(j,j) ** (-1) * Matrice(j,:);
+    Matrice(j,:) = Matrice(j,j) ^ (-1) * Matrice(j,:);
     for k = j + 1:n
       Matrice(k,:) = Matrice(k,:) - Matrice(k,j) * Matrice(j,:);
     endfor

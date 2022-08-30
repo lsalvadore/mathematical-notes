@@ -1,7 +1,7 @@
 SemilatoRetto = 0.4;
 Eccentricita = 1.7;
 AnomaliaMassimaDisegnata = 0.6 * pi;
-SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ** 2);
+SemiasseMaggiore = SemilatoRetto/(1 - Eccentricita ^ 2);
 SemidistanzaFocale = SemiasseMaggiore * Eccentricita;
 Perielio = SemilatoRetto/(1 + Eccentricita);
 
